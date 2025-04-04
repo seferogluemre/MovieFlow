@@ -3,6 +3,7 @@ import { CreateUserType, UpdateUserType } from "src/validators/user.validation";
 import bcryptjs from 'bcryptjs'
 import { USER_WHERE_CLAUSE } from "src/constants/user.constant";
 import { UserQueryProps } from "src/types/types";
+import { string } from "zod";
 
 export class UserService {
 
@@ -44,13 +45,15 @@ export class UserService {
         })
     }
 
-    static async get(id: number) {
+    static async get(id?: number) {
         if (!id) {
-            return { message: "ID is required" }
+            return { message: "Incorrect id or email submission" };
         }
+
+
         return await prisma.user.findUnique({
             where: {
-                id: Number(id)
+                id: id
             },
             select: {
                 id: true,
@@ -68,7 +71,32 @@ export class UserService {
                 watchlist: true,
                 createdAt: true,
             }
-        })
+        });
+    }
+
+    static async getUserByEmail(email?: string) {
+        return await prisma.user.findUnique({
+            where: {
+                email: email
+            },
+            select: {
+                id: true,
+                name: true,
+                username: true,
+                email: true,
+                profileImage: true,
+                password: true,
+                isAdmin: true,
+                friends: true,
+                friendsOf: true,
+                library: true,
+                reviews: true,
+                ratings: true,
+                wishlist: true,
+                watchlist: true,
+                createdAt: true,
+            }
+        });
     }
 
     static async update(id: number, body: UpdateUserType) {

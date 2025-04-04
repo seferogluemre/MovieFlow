@@ -5,13 +5,11 @@ import { UserService } from "src/services/user.service";
 import { CreateUserProps, UpdateUserProps } from "src/types/types";
 import { logInfo, logWarn } from "src/utils/logger.util";
 
-
 export class UserController {
 
     static async index(req: Request, res: Response): Promise<void> {
         try {
             const { isAdmin, username } = req.params;
-
             const users = await UserService.index({ isAdmin, username });
             logInfo(`List Users --- İstek Alındı`)
             if (users.length > 0) {
@@ -29,6 +27,7 @@ export class UserController {
                 message: 'An unexpected error occurred while retrieving the user.',
             });
         }
+
     }
 
     static async create(req: Request, res: Response): Promise<void> {

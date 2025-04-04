@@ -42,6 +42,7 @@ model User {
   friendsOf Friendship[] @relation("friendsOfUser")
   wishlist  Wishlist[]
   library   Library[]
+  Session   Session[]
 
   @@map("users")
 }
@@ -207,4 +208,17 @@ model MovieActor {
 
   @@id([movieId, actorId])
   @@map("movie_actors")
+}
+
+model Session {
+  id     Int  @id @default(autoincrement())
+  userId Int
+  user   User @relation(fields: [userId], references: [id])
+
+  createdAt DateTime  @default(now())
+  updatedAt DateTime
+  expiresAt DateTime
+  revokedAt DateTime?
+
+  @@map("sessions")
 }
