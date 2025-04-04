@@ -42,6 +42,8 @@ model User {
   friendsOf Friendship[] @relation("friendsOfUser")
   wishlist  Wishlist[]
   library   Library[]
+
+  @@map("users")
 }
 
 // Film modeli
@@ -66,6 +68,8 @@ model Movie {
   watchlist Watchlist[]
   wishlist  Wishlist[]
   library   Library[]
+
+  @@map("movies")
 }
 
 // Oyuncu modeli
@@ -81,6 +85,8 @@ model Actor {
 
   // İlişkiler
   movies MovieActor[]
+
+  @@map("actors")
 }
 
 // Tür modeli
@@ -88,6 +94,8 @@ model Genre {
   id     Int          @id @default(autoincrement())
   name   String       @unique
   movies MovieGenre[]
+
+  @@map("genres")
 }
 
 // Film değerlendirme modeli
@@ -104,6 +112,7 @@ model Review {
   movieId Int
 
   @@unique([userId, movieId])
+  @@map("reviews")
 }
 
 // Film puanlama modeli
@@ -119,6 +128,7 @@ model Rating {
   movieId Int
 
   @@unique([userId, movieId])
+  @@map("ratings")
 }
 
 // İzleme listesi modeli
@@ -133,6 +143,7 @@ model Watchlist {
   movieId Int
 
   @@unique([userId, movieId])
+  @@map("user_watchlist")
 }
 
 // İstek listesi modeli
@@ -145,6 +156,7 @@ model Wishlist {
   addedAt DateTime @default(now())
 
   @@unique([userId, movieId])
+  @@map("user_wishlist")
 }
 
 // Kütüphane modeli
@@ -158,6 +170,7 @@ model Library {
   lastWatched DateTime?
 
   @@unique([userId, movieId])
+  @@map("libraries")
 }
 
 // Arkadaşlık modeli
@@ -171,6 +184,7 @@ model Friendship {
   createdAt DateTime         @default(now())
 
   @@unique([userId, friendId])
+  @@map("friendships")
 }
 
 // Ara tablolar
@@ -181,6 +195,7 @@ model MovieGenre {
   genreId Int
 
   @@id([movieId, genreId])
+  @@map("movie_genres")
 }
 
 model MovieActor {
@@ -191,4 +206,5 @@ model MovieActor {
   role    String // Oyuncunun canlandırdığı karakter
 
   @@id([movieId, actorId])
+  @@map("movie_actors")
 }
