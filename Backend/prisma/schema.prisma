@@ -1,0 +1,194 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Enum tanımlamaları
+enum AgeRating {
+  GENERAL
+  PARENTAL_GUIDANCE
+  TEEN
+  MATURE
+  ADULT
+}
+
+enum FriendshipStatus {
+  PENDING
+  ACCEPTED
+  BLOCKED
+}
+
+// Kullanıcı modeli
+model User {
+  id           Int      @id @default(autoincrement())
+  email        String   @unique
+  username     String   @unique
+  password     String
+  name         String?
+  profileImage String?
+  isAdmin      Boolean  @default(false)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  // İlişkiler
+  reviews   Review[]
+  ratings   Rating[]
+  watchlist Watchlist[]
+  friends   Friendship[] @relation("userFriends")
+  friendsOf Friendship[] @relation("friendsOfUser")
+  wishlist  Wishlist[]
+  library   Library[]
+}
+
+// Film modeli
+model Movie {
+  id          Int       @id @default(autoincrement())
+  title       String
+  description String    @db.Text
+  releaseYear Int
+  duration    Int // Dakika cinsinden süre
+  posterImage String?
+  director    String
+  rating      Float     @default(0)
+  ageRating   AgeRating @default(GENERAL)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  // İlişkiler
+  genres    MovieGenre[]
+  actors    MovieActor[]
+  reviews   Review[]
+  ratings   Rating[]
+  watchlist Watchlist[]
+  wishlist  Wishlist[]
+  library   Library[]
+}
+
+// Oyuncu modeli
+model Actor {
+  id          Int      @id @default(autoincrement())
+  name        String
+  biography   String?  @db.Text
+  birthYear   Int?
+  nationality String?
+  photo       String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // İlişkiler
+  movies MovieActor[]
+}
+
+// Tür modeli
+model Genre {
+  id     Int          @id @default(autoincrement())
+  name   String       @unique
+  movies MovieGenre[]
+}
+
+// Film değerlendirme modeli
+model Review {
+  id        Int      @id @default(autoincrement())
+  content   String   @db.Text
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // İlişkiler
+  user    User  @relation(fields: [userId], references: [id])
+  userId  Int
+  movie   Movie @relation(fields: [movieId], references: [id])
+  movieId Int
+
+  @@unique([userId, movieId])
+}
+
+// Film puanlama modeli
+model Rating {
+  id        Int      @id @default(autoincrement())
+  score     Int // 1-5 arası puan
+  createdAt DateTime @default(now())
+
+  // İlişkiler
+  user    User  @relation(fields: [userId], references: [id])
+  userId  Int
+  movie   Movie @relation(fields: [movieId], references: [id])
+  movieId Int
+
+  @@unique([userId, movieId])
+}
+
+// İzleme listesi modeli
+model Watchlist {
+  id      Int      @id @default(autoincrement())
+  addedAt DateTime @default(now())
+
+  // İlişkiler
+  user    User  @relation(fields: [userId], references: [id])
+  userId  Int
+  movie   Movie @relation(fields: [movieId], references: [id])
+  movieId Int
+
+  @@unique([userId, movieId])
+}
+
+// İstek listesi modeli
+model Wishlist {
+  id      Int      @id @default(autoincrement())
+  user    User     @relation(fields: [userId], references: [id])
+  userId  Int
+  movie   Movie    @relation(fields: [movieId], references: [id])
+  movieId Int
+  addedAt DateTime @default(now())
+
+  @@unique([userId, movieId])
+}
+
+// Kütüphane modeli
+model Library {
+  id          Int       @id @default(autoincrement())
+  user        User      @relation(fields: [userId], references: [id])
+  userId      Int
+  movie       Movie     @relation(fields: [movieId], references: [id])
+  movieId     Int
+  addedAt     DateTime  @default(now())
+  lastWatched DateTime?
+
+  @@unique([userId, movieId])
+}
+
+// Arkadaşlık modeli
+model Friendship {
+  id        Int              @id @default(autoincrement())
+  user      User             @relation("userFriends", fields: [userId], references: [id])
+  userId    Int
+  friend    User             @relation("friendsOfUser", fields: [friendId], references: [id])
+  friendId  Int
+  status    FriendshipStatus @default(PENDING)
+  createdAt DateTime         @default(now())
+
+  @@unique([userId, friendId])
+}
+
+// Ara tablolar
+model MovieGenre {
+  movie   Movie @relation(fields: [movieId], references: [id])
+  movieId Int
+  genre   Genre @relation(fields: [genreId], references: [id])
+  genreId Int
+
+  @@id([movieId, genreId])
+}
+
+model MovieActor {
+  movie   Movie  @relation(fields: [movieId], references: [id])
+  movieId Int
+  actor   Actor  @relation(fields: [actorId], references: [id])
+  actorId Int
+  role    String // Oyuncunun canlandırdığı karakter
+
+  @@id([movieId, actorId])
+}
