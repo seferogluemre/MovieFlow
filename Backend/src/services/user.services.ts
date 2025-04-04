@@ -1,8 +1,27 @@
 import prisma from "src/config/db";
-import { CreateUserType } from "src/validators/user.validation";
+import { CreateUserType, UpdateUserType } from "src/validators/user.validation";
 import bcryptjs from 'bcryptjs'
+import { USER_WHERE_CLAUSE } from "src/constants/user.constant";
+import { UserQueryProps } from "src/types/types";
 
 export class UserService {
+
+    static async index(query: UserQueryProps) {
+        const users = await prisma.user.findMany({
+            where: USER_WHERE_CLAUSE(query),
+            select: {
+                id: true,
+                email: true,
+                name: true,
+                username: true,
+                isAdmin: true,
+                password: true,
+                profileImage: true,
+                createdAt: true,
+            }
+        })
+        return users;
+    }
 
     static async create(body: CreateUserType) {
         const hashedPassword = await bcryptjs.hash(body.password, 10)
@@ -25,4 +44,47 @@ export class UserService {
         })
     }
 
+    static async get(id: number) {
+        if (!id) {
+            return { message: "ID is required" }
+        }
+        return await prisma.user.findUnique({
+            where: {
+                id: Number(id)
+            },
+            select: {
+                id: true,
+                name: true,
+                username: true,
+                email: true,
+                profileImage: true,
+                isAdmin: true,
+                friends: true,
+                friendsOf: true,
+                library: true,
+                reviews: true,
+                ratings: true,
+                wishlist: true,
+                watchlist: true,
+                createdAt: true,
+            }
+        })
+    }
+
+    static async update(id: number, body: UpdateUserType) {
+        if (!id) {
+            return { message: "ID is required" }
+        }
+        return await prisma.user.update({
+            where: {
+                id: Number(id)
+            },
+            data: {
+                name: body.name,
+                username: body.username,
+                password: body.password,
+                email: body.email,
+            }
+        })
+    }
 }

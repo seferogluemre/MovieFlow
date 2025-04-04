@@ -22,7 +22,7 @@ const corsOptions = {
 
 dotenv.config();
 const app = express()
-const port = 3000
+const port = process.env.PORT || 3001;
 
 app.use(helmet())
 app.use(express.json())
@@ -31,7 +31,6 @@ app.use(globalLimiter)
 app.use(cors(corsOptions))
 
 app.use("/api/users", user_routes)
-
 
 app.listen(port, () => {
     console.log(`Sunucu ${port}'da çalışıyor...`)
