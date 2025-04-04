@@ -95,7 +95,7 @@ export class AuthController {
 
             const updatedSession = await AuthService.update(Number(session?.id))
 
-            logInfo(`Login - Başarıyla çıkış yapıldı`);
+            logInfo(`Login User - Logout Successfully`);
             res.status(200).json({ message: "Başarıyla çıkış yapıldı" });
         } catch (error) {
             res.status(500).json({

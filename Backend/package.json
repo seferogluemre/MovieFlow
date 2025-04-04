@@ -20,6 +20,7 @@
     "express-rate-limit": "^7.5.0",
     "helmet": "^8.1.0",
     "jsonwebtoken": "^9.0.2",
+    "multer": "1.4.5-lts.2",
     "pg": "^8.14.1",
     "prisma": "^6.5.0",
     "prisma-client": "^0.0.0",
@@ -31,6 +32,7 @@
     "@types/bcryptjs": "^3.0.0",
     "@types/cors": "^2.8.17",
     "@types/express": "^5.0.1",
-    "@types/jsonwebtoken": "^9.0.9"
+    "@types/jsonwebtoken": "^9.0.9",
+    "@types/multer": "^1.4.12"
   }
 }
