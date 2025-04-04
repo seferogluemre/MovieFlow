@@ -5,6 +5,7 @@ import cors from 'cors'
 import helmet from 'helmet';
 import dotenv from 'dotenv'
 
+
 // Config options
 const globalLimiter = rateLimit({
     windowMs: 1 * 60 * 1000,
@@ -22,7 +23,7 @@ const corsOptions = {
 
 dotenv.config();
 const app = express()
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || 3000
 
 app.use(helmet())
 app.use(express.json())
@@ -30,8 +31,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(globalLimiter)
 app.use(cors(corsOptions))
 
+
+// Routes
 app.use("/api/users", user_routes)
 
 app.listen(port, () => {
-    console.log(`Sunucu ${port}'da çalışıyor...`)
+    console.log(`Sunucu ${port} çalışıyor...`)
 })

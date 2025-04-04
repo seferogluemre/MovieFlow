@@ -87,4 +87,21 @@ export class UserService {
             }
         })
     }
+
+    static async delete(id: number) {
+        if (!id) {
+            return { message: "ID is required" }
+        }
+
+        return await prisma.user.delete({
+            where: {
+                id: id
+            },
+            select: {
+                id: true,
+                name: true,
+                username: true,
+            }
+        })
+    }
 }

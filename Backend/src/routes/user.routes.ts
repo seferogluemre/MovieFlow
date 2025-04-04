@@ -7,6 +7,6 @@ router.get('/', UserController.index)
 router.post('/', UserController.create)
 router.get('/:id', UserController.get)
 router.patch('/:id', UserController.update)
-
+router.delete('/:id', UserController.delete)
 
 export default router;
