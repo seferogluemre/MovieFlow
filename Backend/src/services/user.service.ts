@@ -1,4 +1,4 @@
-import prisma from "src/config/db";
+import prisma from "src/config/database";
 import { CreateUserType, UpdateUserType } from "src/validators/user.validation";
 import bcryptjs from 'bcryptjs'
 import { USER_WHERE_CLAUSE } from "src/constants/user.constant";

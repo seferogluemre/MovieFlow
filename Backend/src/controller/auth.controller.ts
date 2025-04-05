@@ -1,6 +1,6 @@
 import bcrypt from 'bcryptjs';
 import { Request, Response } from 'express'
-import prisma from 'src/config/db';
+import prisma from 'src/config/database';
 import { UserService } from 'src/services/user.service';
 import jwt, { JwtPayload } from 'jsonwebtoken'
 import dotenv from 'dotenv'

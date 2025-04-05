@@ -4,6 +4,9 @@ import { z } from "zod";
 import { UserService } from "src/services/user.service";
 import { CreateUserProps, UpdateUserProps } from "src/types/types";
 import { logInfo, logWarn } from "src/utils/logger.util";
+import prisma from "src/config/database";
+import path from 'path'
+import fs from "fs";
 
 export class UserController {
 
@@ -153,4 +156,46 @@ export class UserController {
         }
     }
 
+    static async upload(req: Request, res: Response): Promise<void> {
+        const { id } = req.params;
+        const { file } = req;
+
+        if (!file) {
+            res.status(400).send('No file uploaded');
+        }
+
+        try {
+            const updatedUser = await prisma.user.update({
+                where: { id: parseInt(id) },
+                data: { profileImage: file?.filename },
+            });
+
+            res.status(200).send(`Profile image updated for user ${updatedUser.username}`);
+        } catch (error) {
+            console.error(error);
+            res.status(500).send('Error updating user profile image');
+        }
+    }
+
+    static async getProfilePicture(req: Request, res: Response): Promise<void> {
+        const { id } = req.params;
+
+        try {
+            const user = await prisma.user.findUnique({
+                where: { id: parseInt(id) },
+            });
+
+            if (!user || !user.profileImage) {
+                res.status(404).send('User or profile image not found');
+                return;
+            }
+
+            const imagePath = path.join(__dirname, '..', 'public', 'uploads', user.profileImage);
+
+            res.json({ imagePath });
+        } catch (error) {
+            console.error(error);
+            res.status(500).send('Error retrieving profile image');
+        }
+    }
 }
