@@ -7,6 +7,7 @@ import user_routes from "./routes/user.routes";
 import actor_routes from "./routes/actor.routes";
 import movie_routes from "./routes/movie.routes";
 import auth_routes from "./routes/auth.routes";
+import genre_routes from "./routes/genre.routes";
 import path from "path";
 
 const globalLimiter = rateLimit({
@@ -65,6 +66,7 @@ app.use("/api/users", user_routes);
 app.use("/api/actors", actor_routes);
 app.use("/api/movies", movie_routes);
 app.use("/api/auth", auth_routes);
+app.use("/api/genres", genre_routes);
 
 app.listen(port, () => {
   console.log(`Sunucu ${port} portunda çalışıyor...`);

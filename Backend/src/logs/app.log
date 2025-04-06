@@ -89,3 +89,25 @@
 [INFO] 2025-04-06T18:09:35.049Z - Update Actor - Updated Actor [object Object]
 [INFO] 2025-04-06T18:09:41.765Z - List Actors --- Request Received
 [INFO] 2025-04-06T18:09:55.371Z - List Actors --- Request Received
+[INFO] 2025-04-06T18:40:20.743Z - Create Genre --- Created Genre [object Object]
+[INFO] 2025-04-06T18:43:01.881Z - Get Movies by Genre - Retrieved movies for Genre 1
+[INFO] 2025-04-06T18:43:11.463Z - Get Movies by Genre - Retrieved movies for Genre 1
+[INFO] 2025-04-06T18:43:46.033Z - Add Movie to Genre - Added Movie 2 to Genre 1
+[INFO] 2025-04-06T18:44:06.354Z - Get Movies by Genre - Retrieved movies for Genre 1
+[INFO] 2025-04-06T18:45:11.619Z - Get Movies by Genre - Retrieved movies for Genre 1
+[INFO] 2025-04-06T18:45:23.239Z - List movies --- Request Received
+[INFO] 2025-04-06T18:45:56.554Z - Get Movies by Genre - Retrieved movies for Genre 1
+[INFO] 2025-04-06T18:46:32.180Z - Update Genre - Updated Genre [object Object]
+[INFO] 2025-04-06T18:46:41.732Z - Update Genre - Updated Genre [object Object]
+[INFO] 2025-04-06T18:48:40.966Z - List Genres --- Request Received
+[INFO] 2025-04-06T18:49:42.077Z - Delete Genre - Deleted Genre [object Object]
+[INFO] 2025-04-06T18:50:48.840Z - Create Genre --- Created Genre [object Object]
+[INFO] 2025-04-06T18:53:03.311Z - Add Movie to Genre - Added Movie 2 to Genre 2
+[INFO] 2025-04-06T18:55:10.435Z - Remove Movie from Genre - Removed Movie 2 from Genre 2
+[INFO] 2025-04-06T18:55:13.207Z - List Genres --- Request Received
+[INFO] 2025-04-06T18:55:17.428Z - Add Movie to Genre - Added Movie 2 to Genre 2
+[INFO] 2025-04-06T18:55:19.781Z - List Genres --- Request Received
+[INFO] 2025-04-06T18:55:42.867Z - List Genres --- Request Received
+[INFO] 2025-04-06T18:56:47.152Z - List Genres --- Request Received
+[INFO] 2025-04-06T18:57:24.651Z - List Genres --- Request Received
+[INFO] 2025-04-06T18:58:29.346Z - List Genres --- Request Received
