@@ -4,7 +4,7 @@ import bcryptjs from "bcryptjs";
 import { USER_WHERE_CLAUSE } from "src/constants/user.constant";
 import { UserQueryProps } from "src/types/types";
 
-const BASE_URL = process.env.BASE_URL || "http://localhost:3000";
+export const BASE_URL = process.env.BASE_URL || "http://localhost:3000";
 
 export class UserService {
   static async index(query: UserQueryProps) {

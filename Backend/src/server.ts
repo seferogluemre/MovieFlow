@@ -4,6 +4,7 @@ import cors from "cors";
 import helmet from "helmet";
 import dotenv from "dotenv";
 import user_routes from "./routes/user.routes";
+import actor_routes from "./routes/actor.routes";
 import movie_routes from "./routes/movie.routes";
 import auth_routes from "./routes/auth.routes";
 import path from "path";
@@ -20,7 +21,7 @@ const globalLimiter = rateLimit({
 });
 
 const corsOptions = {
-  origin: "http://localhost:5173",
+  origin: "*",
   methods: ["GET", "POST", "PATCH", "DELETE"],
   allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true,
@@ -61,6 +62,7 @@ app.use(
 );
 
 app.use("/api/users", user_routes);
+app.use("/api/actors", actor_routes);
 app.use("/api/movies", movie_routes);
 app.use("/api/auth", auth_routes);
 

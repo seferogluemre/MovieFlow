@@ -26,3 +26,13 @@ export interface CreateSession {
   updatedAt: Date;
   expiresAt: Date;
 }
+
+
+// Actor types
+export interface CreateActorProps {
+  biography?: string;
+  birthYear?: number;
+  name: string;
+  nationality?: string;
+  actorImage?: string | null;
+}

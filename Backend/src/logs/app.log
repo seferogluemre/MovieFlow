@@ -69,3 +69,23 @@
 [INFO] 2025-04-06T10:23:25.717Z - Update User - Updated User [object Object]
 [INFO] 2025-04-06T10:23:27.618Z - Get User --- Request Received
 [INFO] 2025-04-06T10:24:00.738Z - List Users --- Request Received
+[INFO] 2025-04-06T10:31:44.875Z - Get User --- Request Received
+[INFO] 2025-04-06T10:31:46.968Z - List Users --- Request Received
+[INFO] 2025-04-06T17:57:33.468Z - Create Actor --- Created Actor [object Object]
+[INFO] 2025-04-06T18:00:19.679Z - Create Actor --- Created Actor [object Object]
+[INFO] 2025-04-06T18:04:35.356Z - Create Actor --- Created Actor [object Object]
+[INFO] 2025-04-06T18:05:21.557Z - Update Actor - Updated Actor [object Object]
+[INFO] 2025-04-06T18:05:34.605Z - Update Actor - Updated Actor [object Object]
+[INFO] 2025-04-06T18:05:51.678Z - Update Actor - Updated Actor [object Object]
+[INFO] 2025-04-06T18:06:31.367Z - Update Actor - Updated Actor [object Object]
+[INFO] 2025-04-06T18:06:36.980Z - Update Actor - Updated Actor [object Object]
+[INFO] 2025-04-06T18:07:05.568Z - Get Actor --- Request Received
+[INFO] 2025-04-06T18:07:28.043Z - Get Actor --- Request Received
+[INFO] 2025-04-06T18:08:01.617Z - Delete Actor - Deleted Actor [object Object]
+[INFO] 2025-04-06T18:08:10.776Z - List Actors --- Request Received
+[INFO] 2025-04-06T18:08:29.961Z - Create Actor --- Created Actor [object Object]
+[INFO] 2025-04-06T18:09:22.324Z - Update Actor - Updated Actor [object Object]
+[INFO] 2025-04-06T18:09:32.119Z - Update Actor - Updated Actor [object Object]
+[INFO] 2025-04-06T18:09:35.049Z - Update Actor - Updated Actor [object Object]
+[INFO] 2025-04-06T18:09:41.765Z - List Actors --- Request Received
+[INFO] 2025-04-06T18:09:55.371Z - List Actors --- Request Received
