@@ -53,7 +53,7 @@ model Movie {
   title       String
   description String    @db.Text
   releaseYear Int
-  duration    Int // Dakika cinsinden süre
+  duration    Int
   posterImage String?
   director    String
   rating      Float     @default(0)

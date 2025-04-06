@@ -1,2 +1,35 @@
 [INFO] 2025-04-04T11:43:31.661Z - Login User --- Login successful 🚀
 [INFO] 2025-04-04T11:44:11.247Z - Login - Başarıyla çıkış yapıldı
+[INFO] 2025-04-05T22:38:44.169Z - List Users --- Request Received
+[INFO] 2025-04-05T22:38:53.714Z - List Users --- Request Received
+[INFO] 2025-04-05T22:38:58.621Z - List Users --- Request Received
+[INFO] 2025-04-05T22:39:59.329Z - List Users --- Request Received
+[INFO] 2025-04-05T22:40:50.379Z - List Users --- Request Received
+[INFO] 2025-04-05T22:41:05.951Z - List Users --- Request Received
+[INFO] 2025-04-05T22:41:26.022Z - List Users --- Request Received
+[INFO] 2025-04-05T22:41:36.511Z - List Users --- Request Received
+[INFO] 2025-04-05T22:41:49.859Z - List Users --- Request Received
+[INFO] 2025-04-05T22:42:27.121Z - List Users --- Request Received
+[INFO] 2025-04-05T22:44:16.673Z - List Users --- Request Received
+[INFO] 2025-04-05T22:45:17.026Z - List Users --- Request Received
+[INFO] 2025-04-05T22:47:26.288Z - List Users --- Request Received
+[INFO] 2025-04-05T22:48:42.074Z - List movies --- Request Received
+[WARN] 2025-04-05T22:55:57.186Z - User Get Profile Image --- User or profile image not found
+[WARN] 2025-04-05T22:57:35.429Z - User Get Profile Image --- User or profile image not found
+[INFO] 2025-04-05T22:57:38.392Z - User Get Profile Image - Request Received
+[INFO] 2025-04-05T23:20:06.004Z - User Get Profile Image - Request Received
+[INFO] 2025-04-06T07:40:50.069Z - User Get Profile Image - Request Received
+[INFO] 2025-04-06T07:41:21.301Z - User Get Profile Image - Request Received
+[INFO] 2025-04-06T08:29:54.423Z - List movies --- Request Received
+[INFO] 2025-04-06T08:36:26.109Z - Get User --- Request Received
+[INFO] 2025-04-06T08:38:15.014Z - Get User --- Request Received
+[INFO] 2025-04-06T08:38:15.022Z - Get User --- Request Received
+[INFO] 2025-04-06T08:38:54.224Z - Get User --- Request Received
+[INFO] 2025-04-06T08:39:07.059Z - Get User --- Request Received
+[INFO] 2025-04-06T08:39:07.065Z - Get User --- Request Received
+[INFO] 2025-04-06T08:39:26.362Z - Get User --- Request Received
+[INFO] 2025-04-06T08:39:26.367Z - Get User --- Request Received
+[INFO] 2025-04-06T08:56:05.015Z - Get User --- Request Received
+[INFO] 2025-04-06T08:56:05.022Z - Get User --- Request Received
+[INFO] 2025-04-06T08:56:13.514Z - Get User --- Request Received
+[INFO] 2025-04-06T08:56:13.518Z - Get User --- Request Received

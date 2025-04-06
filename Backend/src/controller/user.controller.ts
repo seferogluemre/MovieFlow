@@ -6,7 +6,7 @@ import { CreateUserProps, UpdateUserProps } from "src/types/types";
 import { logInfo, logWarn } from "src/utils/logger.util";
 import prisma from "src/config/database";
 import path from 'path'
-import fs from "fs";
+
 
 export class UserController {
 
@@ -14,7 +14,7 @@ export class UserController {
         try {
             const { isAdmin, username } = req.params;
             const users = await UserService.index({ isAdmin, username });
-            logInfo(`List Users --- İstek Alındı`)
+            logInfo(`List Users --- Request Received`)
             if (users.length > 0) {
                 res.status(200).json({
                     results: users
@@ -38,9 +38,10 @@ export class UserController {
             const user = createUserSchema.parse(req.body as CreateUserProps)
 
             const createdUser = UserService.create(user);
-            logInfo(`Create User --- Oluşturulan kullanıcı ${createdUser}`)
+            logInfo(`Create User --- Created User ${createdUser}`)
+
             res.status(201).json({
-                status: "SUCCESS",
+                status: "User Created Successfully",
                 data: user
             });
         } catch (error) {
@@ -107,7 +108,7 @@ export class UserController {
             }
 
             const updatedUser = await UserService.update(Number(id), user)
-            logInfo(`Update User - Güncellenen kullanıcı ${updatedUser}`)
+            logInfo(`Update User - Updated User ${updatedUser}`)
 
             res.status(200).json({
                 status: "SUCCESS",
@@ -142,7 +143,7 @@ export class UserController {
 
             const deletedUser = await UserService.delete(Number(id))
 
-            logInfo(`Delete User - Silinen kullanıcı ${deletedUser}`)
+            logInfo(`Delete User - Deleted User ${deletedUser}`)
 
             res.status(200).json({
                 message: "User Deleted Successfully",
@@ -161,6 +162,7 @@ export class UserController {
         const { file } = req;
 
         if (!file) {
+            logWarn(`User Upload Image --- No file uploaded`)
             res.status(400).send('No file uploaded');
         }
 
@@ -170,6 +172,8 @@ export class UserController {
                 data: { profileImage: file?.filename },
             });
 
+            logInfo(`User Upload Image - Request Received`)
+
             res.status(200).send(`Profile image updated for user ${updatedUser.username}`);
         } catch (error) {
             console.error(error);
@@ -177,7 +181,7 @@ export class UserController {
         }
     }
 
-    static async getProfilePicture(req: Request, res: Response): Promise<void> {
+    static async getProfile(req: Request, res: Response): Promise<void> {
         const { id } = req.params;
 
         try {
@@ -186,13 +190,15 @@ export class UserController {
             });
 
             if (!user || !user.profileImage) {
+                logWarn(`User Get Profile Image --- User or profile image not found`)
                 res.status(404).send('User or profile image not found');
                 return;
             }
 
-            const imagePath = path.join(__dirname, '..', 'public', 'uploads', user.profileImage);
+            const imageUrl = `${process.env.BASE_URL || 'http://localhost:3000'}/posters/${user.profileImage}`;
+            logInfo(`User Get Profile Image - Request Received`);
 
-            res.json({ imagePath });
+            res.json({ imageUrl });
         } catch (error) {
             console.error(error);
             res.status(500).send('Error retrieving profile image');

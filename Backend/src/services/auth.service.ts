@@ -18,26 +18,18 @@ export class AuthService {
     }
 
     static async get(userId: number) {
-        try {
-            return await prisma.session.findFirst({
-                where: {
-                    userId,
-                    revokedAt: null,
-                },
-            });
-        } catch (error) {
-            console.error("Hata tespit edildi", error)
-        }
+        return await prisma.session.findFirst({
+            where: {
+                userId,
+                revokedAt: null,
+            },
+        });
     }
 
     static async update(sessionId: number) {
-        try {
-            return await prisma.session.update({
-                where: { id: sessionId },
-                data: { revokedAt: new Date() },
-            });
-        } catch (error) {
-            console.error("Hata tespit edildi", error)
-        }
+        return await prisma.session.update({
+            where: { id: sessionId },
+            data: { revokedAt: new Date() },
+        });
     }
 }
