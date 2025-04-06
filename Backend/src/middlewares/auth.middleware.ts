@@ -9,7 +9,7 @@ export const authMiddleware = async (
 ) => {
   try {
     const authHeader = req.headers.authorization;
-    console.log("Auth Header:", authHeader); // Token'ı görelim
+    console.log("Auth Header:", authHeader);
 
     if (!authHeader) {
       res.status(401).json({ message: "No authorization header provided" });
@@ -17,7 +17,7 @@ export const authMiddleware = async (
     }
 
     const token = authHeader.split(" ")[1];
-    console.log("Token:", token); // Token'ı görelim
+    console.log("Token:", token);
 
     if (!token) {
       res
@@ -27,7 +27,7 @@ export const authMiddleware = async (
     }
 
     const decoded = verifyToken(token);
-    console.log("Decoded:", decoded); // Decoded token'ı görelim
+    console.log("Decoded:", decoded);
     const user = await prisma.user.findUnique({
       where: { id: decoded.userId },
     });
@@ -40,7 +40,7 @@ export const authMiddleware = async (
     req.user = user;
     next();
   } catch (error) {
-    console.error("Auth Error:", error); // Hatayı görelim
+    console.error("Auth Error:", error);
     res
       .status(401)
       .json({ message: "Invalid token", error: (error as Error).message });

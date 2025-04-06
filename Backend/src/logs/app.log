@@ -115,3 +115,26 @@
 [INFO] 2025-04-06T20:08:23.155Z - Login User --- Login successful 🚀
 [INFO] 2025-04-06T20:43:03.801Z - Login User --- Login successful 🚀
 [INFO] 2025-04-06T20:46:44.703Z - Create Review --- Created Review [object Object]
+[INFO] 2025-04-06T20:52:51.763Z - Get Movie Reviews - Retrieved reviews for Movie 2
+[INFO] 2025-04-06T21:08:04.445Z - Get Review --- Request Received
+[INFO] 2025-04-06T21:08:25.536Z - List Reviews --- Request Received
+[INFO] 2025-04-06T21:10:12.551Z - Login User --- Login successful 🚀
+[INFO] 2025-04-06T21:10:28.433Z - Update Review - Updated Review [object Object]
+[INFO] 2025-04-06T21:10:37.716Z - Update Review - Updated Review [object Object]
+[INFO] 2025-04-06T21:10:59.437Z - Delete Review - Deleted Review [object Object]
+[INFO] 2025-04-06T21:13:20.954Z - Get User Reviews - Retrieved reviews for User 4
+[INFO] 2025-04-06T21:13:37.205Z - Login User --- Login successful 🚀
+[INFO] 2025-04-06T21:13:43.222Z - Create Review --- Created Review [object Object]
+[INFO] 2025-04-06T21:13:46.468Z - Get User Reviews - Retrieved reviews for User 4
+[INFO] 2025-04-06T21:14:18.256Z - List Ratings --- Request Received
+[WARN] 2025-04-06T21:14:31.500Z - Get Rating --- Rating not found
+[INFO] 2025-04-06T21:15:43.756Z - Create Rating --- Created Rating [object Object]
+[INFO] 2025-04-06T21:15:50.518Z - Get Rating --- Request Received
+[INFO] 2025-04-06T21:16:32.875Z - Update Rating - Updated Rating [object Object]
+[INFO] 2025-04-06T21:16:44.558Z - Get Rating --- Request Received
+[INFO] 2025-04-06T21:16:56.492Z - Update Rating - Updated Rating [object Object]
+[INFO] 2025-04-06T21:17:19.852Z - Delete Rating - Deleted Rating [object Object]
+[INFO] 2025-04-06T21:17:25.833Z - Create Rating --- Created Rating [object Object]
+[INFO] 2025-04-06T21:17:53.021Z - Get User Ratings - Retrieved ratings for User 4
+[INFO] 2025-04-06T21:18:27.353Z - Get Movie Average Rating - Retrieved average rating for Movie 2
+[INFO] 2025-04-06T21:19:21.269Z - Get Movie Ratings - Retrieved ratings for Movie 2

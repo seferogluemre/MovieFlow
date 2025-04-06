@@ -12,7 +12,7 @@ router.get("/movie/:movieId/average", RatingController.getMovieAverageRating);
 
 // Protected routes
 router.post("/", authMiddleware, RatingController.create);
-router.put("/:id", authMiddleware, RatingController.update);
+router.patch("/:id", authMiddleware, RatingController.update);
 router.delete("/:id", authMiddleware, RatingController.delete);
 router.get("/user/ratings", authMiddleware, RatingController.getUserRatings);
 

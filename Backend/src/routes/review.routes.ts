@@ -11,7 +11,7 @@ router.get("/movie/:movieId", ReviewController.getMovieReviews);
 
 // Protected routes
 router.post("/", authMiddleware, ReviewController.create);
-router.put("/:id", authMiddleware, ReviewController.update);
+router.patch("/:id", authMiddleware, ReviewController.update);
 router.delete("/:id", authMiddleware, ReviewController.delete);
 router.get("/user/reviews", authMiddleware, ReviewController.getUserReviews);
 
