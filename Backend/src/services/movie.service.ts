@@ -1,6 +1,11 @@
 import prisma from "src/config/database";
-import { CreateMovieType } from "src/validators/movie.validation";
+import {
+  CreateMovieType,
+  UpdateMovieType,
+} from "src/validators/movie.validation";
 import dotenv from "dotenv";
+import path from "path";
+import fs from "fs";
 
 dotenv.config();
 
@@ -80,5 +85,54 @@ export class MovieService {
     }
 
     return movie;
+  }
+
+  static async update(id: number, body: UpdateMovieType) {
+    const movie = await prisma.movie.update({
+      where: { id },
+      data: body,
+    });
+    if (movie) {
+      return {
+        ...movie,
+        posterImage: movie.posterImage
+          ? `${BASE_URL}/posters/${movie.posterImage}`
+          : null,
+      };
+    }
+  }
+
+  static async delete(id: number) {
+    if (!id) {
+      return { message: "ID is required" };
+    }
+
+    const movie = await prisma.movie.findUnique({
+      where: { id },
+      select: { posterImage: true },
+    });
+
+    if (movie?.posterImage) {
+      const posterPath = path.join(
+        __dirname,
+        "..",
+        "..",
+        "public",
+        "posters",
+        movie.posterImage
+      );
+      if (fs.existsSync(posterPath)) {
+        fs.unlinkSync(posterPath);
+      }
+    }
+
+    return await prisma.movie.delete({
+      where: { id },
+      select: {
+        id: true,
+        title: true,
+        description: true,
+      },
+    });
   }
 }

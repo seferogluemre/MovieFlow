@@ -39,6 +39,7 @@ export class UserService {
         password: hashedPassword,
         isAdmin: body.isAdmin,
         username: body.username,
+        profileImage: body.profileImage,
       },
       select: {
         id: true,
@@ -47,6 +48,7 @@ export class UserService {
         name: true,
         isAdmin: true,
         password: true,
+        profileImage: true,
       },
     });
 
@@ -137,7 +139,16 @@ export class UserService {
     if (!id) {
       return { message: "ID is required" };
     }
-    const user = await prisma.user.update({
+
+    const existingUser = await prisma.user.findUnique({
+      where: { id: Number(id) },
+    });
+
+    if (!existingUser) {
+      throw new Error("User not found");
+    }
+
+    const updatedUser = await prisma.user.update({
       where: {
         id: Number(id),
       },
@@ -146,13 +157,14 @@ export class UserService {
         username: body.username,
         password: body.password,
         email: body.email,
+        profileImage: body.profileImage,
       },
     });
 
     return {
-      ...user,
-      profileImage: user.profileImage
-        ? `${BASE_URL}/uploads/${user.profileImage}`
+      ...updatedUser,
+      profileImage: updatedUser.profileImage
+        ? `${BASE_URL}/uploads/${updatedUser.profileImage}`
         : null,
     };
   }

@@ -33,3 +33,39 @@
 [INFO] 2025-04-06T08:56:05.022Z - Get User --- Request Received
 [INFO] 2025-04-06T08:56:13.514Z - Get User --- Request Received
 [INFO] 2025-04-06T08:56:13.518Z - Get User --- Request Received
+[INFO] 2025-04-06T09:02:57.590Z - Get User --- Request Received
+[WARN] 2025-04-06T09:03:44.450Z - Get User --- User not found
+[INFO] 2025-04-06T09:03:44.451Z - Get User --- Request Received
+[INFO] 2025-04-06T09:03:47.126Z - Get User --- Request Received
+[INFO] 2025-04-06T09:34:48.322Z - Update User - Updated User [object Object]
+[INFO] 2025-04-06T09:37:22.107Z - Update User - Updated User [object Object]
+[INFO] 2025-04-06T09:37:53.235Z - Get User --- Request Received
+[INFO] 2025-04-06T09:38:29.642Z - Get User --- Request Received
+[INFO] 2025-04-06T09:38:29.647Z - Get User --- Request Received
+[INFO] 2025-04-06T09:38:39.254Z - Get User --- Request Received
+[INFO] 2025-04-06T09:38:39.259Z - Get User --- Request Received
+[INFO] 2025-04-06T09:38:52.162Z - Get User --- Request Received
+[INFO] 2025-04-06T09:38:52.168Z - Get User --- Request Received
+[INFO] 2025-04-06T09:40:30.550Z - Update User - Updated User [object Object]
+[INFO] 2025-04-06T09:40:32.798Z - Get User --- Request Received
+[INFO] 2025-04-06T09:40:32.802Z - Get User --- Request Received
+[INFO] 2025-04-06T09:42:14.914Z - Get User --- Request Received
+[INFO] 2025-04-06T09:42:14.923Z - Get User --- Request Received[INFO] 2025-04-06T09:48:08.372Z - List Users --- Request Received
+[INFO] 2025-04-06T09:48:21.081Z - User Get Profile Image - Request Received
+[INFO] 2025-04-06T09:48:34.528Z - List movies --- Request Received
+[INFO] 2025-04-06T09:49:36.255Z - List movies --- Request Received
+[INFO] 2025-04-06T09:54:32.956Z - Update Movie - Updated Movie [object Object]
+[INFO] 2025-04-06T09:55:03.880Z - Update Movie - Updated Movie [object Object]
+[INFO] 2025-04-06T09:55:35.152Z - Delete Movie - Deleted Movie [object Object]
+[INFO] 2025-04-06T10:02:42.311Z - List movies --- Request Received
+[INFO] 2025-04-06T10:15:09.752Z - Create Movie - Created Movie[object Object]
+[INFO] 2025-04-06T10:15:17.815Z - Get User --- Request Received
+[INFO] 2025-04-06T10:15:17.819Z - Get User --- Request Received
+[INFO] 2025-04-06T10:15:32.998Z - Get User --- Request Received
+[INFO] 2025-04-06T10:15:33.003Z - Get User --- Request Received
+[INFO] 2025-04-06T10:21:11.022Z - Get User --- Request Received
+[INFO] 2025-04-06T10:22:37.582Z - User Get Profile Image - Request Received
+[INFO] 2025-04-06T10:23:04.195Z - Get User --- Request Received
+[INFO] 2025-04-06T10:23:25.717Z - Update User - Updated User [object Object]
+[INFO] 2025-04-06T10:23:27.618Z - Get User --- Request Received
+[INFO] 2025-04-06T10:24:00.738Z - List Users --- Request Received

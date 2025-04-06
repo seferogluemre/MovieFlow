@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import "./App.css";
 
 const MovieDetailPage = () => {
   const [movie, setMovie] = useState(null);
@@ -7,7 +8,7 @@ const MovieDetailPage = () => {
     const fetchMovie = async () => {
       try {
         // Sabit URL'ye fetch isteği atıyoruz
-        const response = await fetch("http://localhost:3000/api/movies/1");
+        const response = await fetch("http://localhost:3000/api/movies/2");
 
         if (response.ok) {
           const data = await response.json(); // JSON olarak yanıtı çözümleyin
@@ -24,17 +25,21 @@ const MovieDetailPage = () => {
   }, []); // component mount olduğunda sadece bir kere çalışır
 
   if (!movie) {
-    return <div>Loading...</div>; // Veri yüklenene kadar loading mesajı
+    return <div>Loading...</div>;
   }
   console.log(movie.posterImage);
   return (
     <div>
       <h1>{movie.title}</h1>
       <p>{movie.description}</p>
-      <p>Release Year: {movie.releaseYear}</p>
-      <p>Duration: {movie.duration} mins</p>
+      <p>{movie.ageRating}</p>
+      <p>{movie.releaseYear}</p>
       {movie.posterImage && (
-        <img src={`${movie.posterImage}`} alt={`${movie.title} Poster`} />
+        <img
+          src={`${movie.posterImage}`}
+          className="profile"
+          alt={`${movie.title} Poster`}
+        />
       )}
     </div>
   );
