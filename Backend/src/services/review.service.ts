@@ -3,7 +3,10 @@ import {
   CreateReviewType,
   UpdateReviewType,
 } from "src/validators/review.validation";
-import { getFullPosterUrl } from "../helpers/url.helper";
+import {
+  getFullPosterUrl,
+  getFullProfileImageUrl,
+} from "../helpers/url.helper";
 
 const prisma = new PrismaClient();
 
@@ -47,6 +50,7 @@ export class ReviewService {
             id: true,
             name: true,
             username: true,
+            profileImage: true,
           },
         },
         movie: {
@@ -57,6 +61,12 @@ export class ReviewService {
         },
       },
     });
+
+    if (review && review.user) {
+      review.user.profileImage = getFullProfileImageUrl(
+        review.user.profileImage
+      );
+    }
 
     return review;
   }
@@ -123,12 +133,19 @@ export class ReviewService {
             id: true,
             name: true,
             username: true,
+            profileImage: true,
           },
         },
       },
     });
 
-    return reviews;
+    return reviews.map((review) => ({
+      ...review,
+      user: {
+        ...review.user,
+        profileImage: getFullProfileImageUrl(review.user.profileImage),
+      },
+    }));
   }
 
   static async getUserReviews(userId: number) {

@@ -18,7 +18,7 @@ export class MovieService {
       data: {
         title: data.title,
         description: data.description,
-        releaseYear: data.releaseYear,
+        releaseYear: Number(data.releaseYear),
         duration: Number(data.duration),
         posterImage: data.posterImage,
         director: data.director,

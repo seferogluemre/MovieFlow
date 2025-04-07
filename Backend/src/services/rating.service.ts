@@ -3,7 +3,10 @@ import {
   CreateRatingType,
   UpdateRatingType,
 } from "src/validators/rating.validation";
-import { getFullPosterUrl } from "../helpers/url.helper";
+import {
+  getFullPosterUrl,
+  getFullProfileImageUrl,
+} from "../helpers/url.helper";
 
 const prisma = new PrismaClient();
 
@@ -52,12 +55,26 @@ export class RatingService {
       where: { id },
       include: {
         movie: true,
-        user: true,
+        user: {
+          select: {
+            id: true,
+            name: true,
+            username: true,
+            profileImage: true,
+          },
+        },
       },
     });
 
-    if (rating && rating.movie) {
-      rating.movie.posterImage = getFullPosterUrl(rating.movie.posterImage);
+    if (rating) {
+      if (rating.movie) {
+        rating.movie.posterImage = getFullPosterUrl(rating.movie.posterImage);
+      }
+      if (rating.user) {
+        rating.user.profileImage = getFullProfileImageUrl(
+          rating.user.profileImage
+        );
+      }
     }
 
     return rating;
@@ -104,6 +121,14 @@ export class RatingService {
       where: { userId },
       include: {
         movie: true,
+        user: {
+          select: {
+            id: true,
+            name: true,
+            username: true,
+            profileImage: true,
+          },
+        },
       },
     });
 
@@ -113,6 +138,12 @@ export class RatingService {
         ? {
             ...rating.movie,
             posterImage: getFullPosterUrl(rating.movie.posterImage),
+          }
+        : null,
+      user: rating.user
+        ? {
+            ...rating.user,
+            profileImage: getFullProfileImageUrl(rating.user.profileImage),
           }
         : null,
     }));

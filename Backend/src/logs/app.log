@@ -54,3 +54,59 @@
 [INFO] 2025-04-07T04:05:17.207Z - Get Actor --- Request Received
 [INFO] 2025-04-07T04:05:20.818Z - List Actors --- Request Received
 [INFO] 2025-04-07T04:06:54.438Z - Get Actor --- Request Received
+[INFO] 2025-04-07T11:18:34.120Z - Create User --- Created User [object Object]
+[INFO] 2025-04-07T11:22:15.541Z - Update User - Updated User [object Object]
+[INFO] 2025-04-07T11:24:35.013Z - Get User --- Request Received
+[INFO] 2025-04-07T11:25:21.795Z - List Users --- Request Received
+[INFO] 2025-04-07T11:26:30.157Z - User Upload Image - Request Received
+[INFO] 2025-04-07T11:26:41.658Z - Login User --- Login successful 🚀
+[INFO] 2025-04-07T11:27:19.564Z - Login User - Logout Successfully
+[INFO] 2025-04-07T11:33:00.608Z - Create Movie - Created Movie[object Object]
+[INFO] 2025-04-07T11:33:24.096Z - List movies --- Request Received
+[INFO] 2025-04-07T11:34:35.556Z - Update Movie - Updated Movie [object Object]
+[INFO] 2025-04-07T11:34:49.402Z - Update Movie - Updated Movie [object Object]
+[INFO] 2025-04-07T11:36:28.064Z - Create Actor --- Created Actor [object Object]
+[INFO] 2025-04-07T11:36:36.555Z - Update Actor - Updated Actor [object Object]
+[INFO] 2025-04-07T11:36:51.808Z - Update Actor - Updated Actor [object Object]
+[INFO] 2025-04-07T11:36:56.255Z - Get Actor --- Request Received
+[INFO] 2025-04-07T11:36:59.736Z - List Actors --- Request Received
+[INFO] 2025-04-07T11:39:45.554Z - Create Genre --- Created Genre [object Object]
+[INFO] 2025-04-07T11:40:08.016Z - Add Movie to Genre - Added Movie 3 to Genre 5
+[INFO] 2025-04-07T11:40:18.267Z - Get Movies by Genre - Retrieved movies for Genre 5
+[INFO] 2025-04-07T11:40:29.830Z - List Genres --- Request Received
+[INFO] 2025-04-07T12:04:25.506Z - Login User --- Login successful 🚀
+[INFO] 2025-04-07T12:04:42.016Z - Get User Reviews - Retrieved reviews for User 3
+[INFO] 2025-04-07T12:05:00.270Z - Create Review --- Created Review [object Object]
+[INFO] 2025-04-07T12:06:37.694Z - Get Movie Reviews - Retrieved reviews for Movie 2
+[INFO] 2025-04-07T12:06:40.040Z - Get Movie Reviews - Retrieved reviews for Movie 3
+[INFO] 2025-04-07T12:06:43.966Z - List Reviews --- Request Received
+[INFO] 2025-04-07T12:06:51.155Z - Get Review --- Request Received
+[INFO] 2025-04-07T12:07:08.833Z - Create Rating --- Created Rating [object Object]
+[INFO] 2025-04-07T12:07:57.631Z - Get User Ratings - Retrieved ratings for User 3
+[INFO] 2025-04-07T12:08:14.219Z - Get User Ratings - Retrieved ratings for User 3
+[INFO] 2025-04-07T12:08:21.060Z - Get Movie Ratings - Retrieved ratings for Movie 2
+[INFO] 2025-04-07T12:08:25.122Z - Get Movie Ratings - Retrieved ratings for Movie 3
+[INFO] 2025-04-07T12:08:32.724Z - Get Movie Average Rating - Retrieved average rating for Movie 3
+[INFO] 2025-04-07T12:08:39.533Z - Get Rating --- Request Received
+[INFO] 2025-04-07T12:14:18.658Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-07T12:15:04.608Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-07T12:15:18.488Z - LibraryController.create ---- Library entry created for user ${userId} and movie ${data.movieId}
+[INFO] 2025-04-07T12:15:35.039Z - LibraryController.getById ---- Retrieved library entry 1
+[WARN] 2025-04-07T12:15:44.075Z - LibraryController.getById ---- Library entry not found with id 2
+[WARN] 2025-04-07T12:15:47.063Z - LibraryController.getById ---- Library entry not found with id 3
+[INFO] 2025-04-07T12:15:49.638Z - LibraryController.getById ---- Retrieved library entry 4
+[INFO] 2025-04-07T12:19:49.373Z - Get Rating --- Request Received
+[INFO] 2025-04-07T12:20:57.853Z - Login User --- Login successful 🚀
+[INFO] 2025-04-07T12:21:31.129Z - Create Rating --- Created Rating [object Object]
+[WARN] 2025-04-07T12:21:41.577Z - Get Rating --- Rating not found
+[INFO] 2025-04-07T12:21:44.808Z - Get Rating --- Request Received
+[INFO] 2025-04-07T12:23:34.613Z - Create Actor --- Created Actor [object Object]
+[INFO] 2025-04-07T12:24:54.174Z - Update Actor - Updated Actor [object Object]
+[INFO] 2025-04-07T12:26:07.795Z - List Actors --- Request Received
+[INFO] 2025-04-07T12:26:23.942Z - Update Actor - Updated Actor [object Object]
+[INFO] 2025-04-07T12:26:28.647Z - Get Actor --- Request Received
+[WARN] 2025-04-07T12:27:55.008Z - Get User --- User not found
+[INFO] 2025-04-07T12:27:55.010Z - Get User --- Request Received
+[INFO] 2025-04-07T12:27:59.098Z - Get User --- Request Received
+[INFO] 2025-04-07T12:28:15.942Z - Get User --- Request Received
+[INFO] 2025-04-07T12:28:35.737Z - List Users --- Request Received
