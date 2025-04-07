@@ -110,3 +110,5 @@
 [INFO] 2025-04-07T12:27:59.098Z - Get User --- Request Received
 [INFO] 2025-04-07T12:28:15.942Z - Get User --- Request Received
 [INFO] 2025-04-07T12:28:35.737Z - List Users --- Request Received
+[INFO] 2025-04-07T21:03:57.481Z - Create User --- Created User [object Object]
+[INFO] 2025-04-07T21:05:23.345Z - Update User - Updated User [object Object]

@@ -16,4 +16,4 @@ export const getFullActorPhotoUrl = (photo: string | null): string | null => {
   if (!photo) return null;
   if (photo.startsWith("http")) return photo;
   return `http://localhost:3000/uploads/${photo}`;
-};
+}; 
