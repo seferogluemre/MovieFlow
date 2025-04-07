@@ -1,25 +1,27 @@
-import prisma from "src/config/database";
+import { PrismaClient } from "@prisma/client";
 import {
   CreateGenreType,
   UpdateGenreType,
-} from "src/validators/genre.validation";
-import { BASE_URL } from "./user.service";
+} from "../validators/genre.validation";
+import { getFullPosterUrl } from "../helpers/url.helper";
+
+const prisma = new PrismaClient();
 
 export class GenreService {
-  static async index() {
+  static async create(data: CreateGenreType) {
+    return prisma.genre.create({
+      data: {
+        name: data.name,
+      },
+    });
+  }
+
+  static async getAll() {
     const genres = await prisma.genre.findMany({
-      select: {
-        id: true,
-        name: true,
+      include: {
         movies: {
-          select: {
-            movie: {
-              select: {
-                id: true,
-                title: true,
-                posterImage: true,
-              },
-            },
+          include: {
+            movie: true,
           },
         },
       },
@@ -27,130 +29,87 @@ export class GenreService {
 
     return genres.map((genre) => ({
       ...genre,
-      movies: genre.movies.map((movie) => ({
-        ...movie.movie,
-        posterImage: movie.movie.posterImage
-          ? `${BASE_URL}/posters/${movie.movie.posterImage}`
+      movies: genre.movies.map((movieGenre) => ({
+        ...movieGenre,
+        movie: movieGenre.movie
+          ? {
+              ...movieGenre.movie,
+              posterImage: getFullPosterUrl(movieGenre.movie.posterImage),
+            }
           : null,
       })),
     }));
   }
 
-  static async get(id: number) {
+  static async getById(id: number) {
     const genre = await prisma.genre.findUnique({
       where: { id },
-      select: {
-        id: true,
-        name: true,
+      include: {
         movies: {
-          select: {
-            movie: {
-              select: {
-                id: true,
-                title: true,
-                posterImage: true,
-              },
-            },
+          include: {
+            movie: true,
           },
         },
       },
     });
 
-    if (!genre) {
-      return null;
-    }
+    if (!genre) return null;
 
     return {
       ...genre,
-      movies: genre.movies.map((movie) => movie.movie),
+      movies: genre.movies.map((movieGenre) => ({
+        ...movieGenre,
+        movie: movieGenre.movie
+          ? {
+              ...movieGenre.movie,
+              posterImage: getFullPosterUrl(movieGenre.movie.posterImage),
+            }
+          : null,
+      })),
     };
   }
 
-  static async create(body: CreateGenreType) {
-    const genre = await prisma.genre.create({
-      data: {
-        name: body.name,
-      },
-      select: {
-        id: true,
-        name: true,
-      },
-    });
-
-    return genre;
-  }
-
-  static async update(id: number, body: UpdateGenreType) {
-    const genre = await prisma.genre.update({
+  static async update(id: number, data: UpdateGenreType) {
+    return prisma.genre.update({
       where: { id },
       data: {
-        name: body.name,
-      },
-      select: {
-        id: true,
-        name: true,
+        name: data.name,
       },
     });
-
-    return genre;
   }
 
   static async delete(id: number) {
-    await prisma.movieGenre.deleteMany({
-      where: { genreId: id },
-    });
-    return await prisma.genre.delete({
+    return prisma.genre.delete({
       where: { id },
-      select: {
-        id: true,
-        name: true,
-      },
     });
   }
 
   static async addMovieToGenre(genreId: number, movieId: number) {
-    return await prisma.movieGenre.create({
+    const movieGenre = await prisma.movieGenre.create({
       data: {
         genreId,
         movieId,
       },
-      select: {
-        genre: {
-          select: {
-            id: true,
-            name: true,
-          },
-        },
-        movie: {
-          select: {
-            id: true,
-            title: true,
-          },
-        },
+      include: {
+        movie: true,
       },
     });
+
+    if (movieGenre.movie) {
+      movieGenre.movie.posterImage = getFullPosterUrl(
+        movieGenre.movie.posterImage
+      );
+    }
+
+    return movieGenre;
   }
 
   static async removeMovieFromGenre(genreId: number, movieId: number) {
-    return await prisma.movieGenre.delete({
+    return prisma.movieGenre.delete({
       where: {
         movieId_genreId: {
           genreId,
           movieId,
-        },
-      },
-      select: {
-        genre: {
-          select: {
-            id: true,
-            name: true,
-          },
-        },
-        movie: {
-          select: {
-            id: true,
-            title: true,
-          },
         },
       },
     });
@@ -159,21 +118,15 @@ export class GenreService {
   static async getMoviesByGenre(genreId: number) {
     const movies = await prisma.movieGenre.findMany({
       where: { genreId },
-      select: {
-        movie: {
-          select: {
-            id: true,
-            title: true,
-            posterImage: true,
-          },
-        },
+      include: {
+        movie: true,
       },
     });
 
-    return movies.map((movie) => ({
-      ...movie.movie,
-      posterImage: movie.movie.posterImage
-        ? `${BASE_URL}/posters/${movie.movie.posterImage}`
+    return movies.map((movieGenre) => ({
+      ...movieGenre.movie,
+      posterImage: movieGenre.movie.posterImage
+        ? getFullPosterUrl(movieGenre.movie.posterImage)
         : null,
     }));
   }

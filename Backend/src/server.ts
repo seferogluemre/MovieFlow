@@ -12,6 +12,8 @@ import review_routes from "./routes/review.routes";
 import rating_routes from "./routes/rating.routes";
 
 import path from "path";
+import watchList_routes from "./routes/watchlist.routes";
+import wishList_routes from "./routes/wishlist.routes";
 
 const globalLimiter = rateLimit({
   windowMs: 1 * 60 * 1000,
@@ -65,6 +67,8 @@ app.use(
   express.static(path.join(__dirname, "../", "public", "posters"))
 );
 
+app.use("/api/watchlist", watchList_routes);
+app.use("/api/wishlist", wishList_routes);
 app.use("/api/users", user_routes);
 app.use("/api/actors", actor_routes);
 app.use("/api/movies", movie_routes);

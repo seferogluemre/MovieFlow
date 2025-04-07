@@ -1,144 +1,98 @@
-import prisma from "src/config/database";
+import { PrismaClient } from "@prisma/client";
 import {
   CreateRatingType,
   UpdateRatingType,
 } from "src/validators/rating.validation";
+import { getFullPosterUrl } from "../helpers/url.helper";
+
+const prisma = new PrismaClient();
 
 export class RatingService {
-  static async index() {
-    const ratings = await prisma.rating.findMany({
-      select: {
-        id: true,
-        score: true,
-        createdAt: true,
-        user: {
-          select: {
-            id: true,
-            name: true,
-            username: true,
-          },
-        },
-        movie: {
-          select: {
-            id: true,
-            title: true,
-          },
-        },
-      },
-    });
-
-    return ratings;
-  }
-
-  static async get(id: number) {
-    const rating = await prisma.rating.findUnique({
-      where: { id },
-      select: {
-        id: true,
-        score: true,
-        createdAt: true,
-        user: {
-          select: {
-            id: true,
-            name: true,
-            username: true,
-          },
-        },
-        movie: {
-          select: {
-            id: true,
-            title: true,
-          },
-        },
-      },
-    });
-
-    return rating;
-  }
-
-  static async create(userId: number, body: CreateRatingType) {
+  static async create(userId: number, data: CreateRatingType) {
     const rating = await prisma.rating.create({
       data: {
-        score: body.score,
+        score: data.score,
         userId,
-        movieId: body.movieId,
+        movieId: data.movieId,
       },
-      select: {
-        id: true,
-        score: true,
-        createdAt: true,
-        user: {
-          select: {
-            id: true,
-            name: true,
-            username: true,
-          },
-        },
-        movie: {
-          select: {
-            id: true,
-            title: true,
-          },
-        },
+      include: {
+        movie: true,
+        user: true,
       },
     });
+
+    if (rating.movie) {
+      rating.movie.posterImage = getFullPosterUrl(rating.movie.posterImage);
+    }
 
     return rating;
   }
 
-  static async update(id: number, userId: number, body: UpdateRatingType) {
+  static async getAll() {
+    const ratings = await prisma.rating.findMany({
+      include: {
+        movie: true,
+        user: true,
+      },
+    });
+
+    return ratings.map((rating) => ({
+      ...rating,
+      movie: rating.movie
+        ? {
+            ...rating.movie,
+            posterImage: getFullPosterUrl(rating.movie.posterImage),
+          }
+        : null,
+    }));
+  }
+
+  static async getById(id: number) {
+    const rating = await prisma.rating.findUnique({
+      where: { id },
+      include: {
+        movie: true,
+        user: true,
+      },
+    });
+
+    if (rating && rating.movie) {
+      rating.movie.posterImage = getFullPosterUrl(rating.movie.posterImage);
+    }
+
+    return rating;
+  }
+
+  static async update(id: number, data: UpdateRatingType) {
     const rating = await prisma.rating.update({
       where: { id },
       data: {
-        score: body.score,
+        score: data.score,
       },
-      select: {
-        id: true,
-        score: true,
-        createdAt: true,
-        user: {
-          select: {
-            id: true,
-            name: true,
-            username: true,
-          },
-        },
-        movie: {
-          select: {
-            id: true,
-            title: true,
-          },
-        },
+      include: {
+        movie: true,
+        user: true,
       },
     });
+
+    if (rating.movie) {
+      rating.movie.posterImage = getFullPosterUrl(rating.movie.posterImage);
+    }
 
     return rating;
   }
 
   static async delete(id: number) {
-    return await prisma.rating.delete({
+    return prisma.rating.delete({
       where: { id },
-      select: {
-        id: true,
-        score: true,
-      },
     });
   }
 
   static async getMovieRatings(movieId: number) {
     const ratings = await prisma.rating.findMany({
       where: { movieId },
-      select: {
-        id: true,
-        score: true,
-        createdAt: true,
-        user: {
-          select: {
-            id: true,
-            name: true,
-            username: true,
-          },
-        },
+      include: {
+        user: true,
       },
     });
 
@@ -148,20 +102,20 @@ export class RatingService {
   static async getUserRatings(userId: number) {
     const ratings = await prisma.rating.findMany({
       where: { userId },
-      select: {
-        id: true,
-        score: true,
-        createdAt: true,
-        movie: {
-          select: {
-            id: true,
-            title: true,
-          },
-        },
+      include: {
+        movie: true,
       },
     });
 
-    return ratings;
+    return ratings.map((rating) => ({
+      ...rating,
+      movie: rating.movie
+        ? {
+            ...rating.movie,
+            posterImage: getFullPosterUrl(rating.movie.posterImage),
+          }
+        : null,
+    }));
   }
 
   static async getMovieAverageRating(movieId: number) {

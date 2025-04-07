@@ -1,8 +1,11 @@
-import prisma from "src/config/database";
+import { PrismaClient } from "@prisma/client";
 import {
   CreateReviewType,
   UpdateReviewType,
 } from "src/validators/review.validation";
+import { getFullPosterUrl } from "../helpers/url.helper";
+
+const prisma = new PrismaClient();
 
 export class ReviewService {
   static async index() {
@@ -65,26 +68,15 @@ export class ReviewService {
         userId,
         movieId: body.movieId,
       },
-      select: {
-        id: true,
-        content: true,
-        createdAt: true,
-        updatedAt: true,
-        user: {
-          select: {
-            id: true,
-            name: true,
-            username: true,
-          },
-        },
-        movie: {
-          select: {
-            id: true,
-            title: true,
-          },
-        },
+      include: {
+        movie: true,
+        user: true,
       },
     });
+
+    if (review.movie) {
+      review.movie.posterImage = getFullPosterUrl(review.movie.posterImage);
+    }
 
     return review;
   }
@@ -95,26 +87,15 @@ export class ReviewService {
       data: {
         content: body.content,
       },
-      select: {
-        id: true,
-        content: true,
-        createdAt: true,
-        updatedAt: true,
-        user: {
-          select: {
-            id: true,
-            name: true,
-            username: true,
-          },
-        },
-        movie: {
-          select: {
-            id: true,
-            title: true,
-          },
-        },
+      include: {
+        movie: true,
+        user: true,
       },
     });
+
+    if (review.movie) {
+      review.movie.posterImage = getFullPosterUrl(review.movie.posterImage);
+    }
 
     return review;
   }
@@ -168,5 +149,40 @@ export class ReviewService {
     });
 
     return reviews;
+  }
+
+  static async getAll() {
+    const reviews = await prisma.review.findMany({
+      include: {
+        movie: true,
+        user: true,
+      },
+    });
+
+    return reviews.map((review) => ({
+      ...review,
+      movie: review.movie
+        ? {
+            ...review.movie,
+            posterImage: getFullPosterUrl(review.movie.posterImage),
+          }
+        : null,
+    }));
+  }
+
+  static async getById(id: number) {
+    const review = await prisma.review.findUnique({
+      where: { id },
+      include: {
+        movie: true,
+        user: true,
+      },
+    });
+
+    if (review && review.movie) {
+      review.movie.posterImage = getFullPosterUrl(review.movie.posterImage);
+    }
+
+    return review;
   }
 }

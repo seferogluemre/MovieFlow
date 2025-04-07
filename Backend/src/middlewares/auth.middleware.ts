@@ -9,7 +9,6 @@ export const authMiddleware = async (
 ) => {
   try {
     const authHeader = req.headers.authorization;
-    console.log("Auth Header:", authHeader);
 
     if (!authHeader) {
       res.status(401).json({ message: "No authorization header provided" });
@@ -17,7 +16,6 @@ export const authMiddleware = async (
     }
 
     const token = authHeader.split(" ")[1];
-    console.log("Token:", token);
 
     if (!token) {
       res
@@ -27,7 +25,7 @@ export const authMiddleware = async (
     }
 
     const decoded = verifyToken(token);
-    console.log("Decoded:", decoded);
+
     const user = await prisma.user.findUnique({
       where: { id: decoded.userId },
     });

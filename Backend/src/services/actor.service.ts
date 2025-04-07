@@ -1,8 +1,14 @@
-import prisma from "src/config/database";
-import { CreateActorType } from "src/validators/actor.validation";
+import { PrismaClient, Movie } from "@prisma/client";
+import {
+  CreateActorType,
+  UpdateActorType,
+} from "../validators/actor.validation";
+import { getFullPosterUrl } from "../helpers/url.helper";
 import { BASE_URL } from "./user.service";
 import path from "path";
 import fs from "fs";
+
+const prisma = new PrismaClient();
 
 export class ActorService {
   static async index() {
@@ -19,42 +25,46 @@ export class ActorService {
 
     return actors.map((actor) => ({
       ...actor,
-      profileImage: actor.photo ? `${BASE_URL}/uploads/${actor.photo}` : null,
+      profileImage: actor.photo ? getFullPosterUrl(actor.photo) : null,
     }));
   }
 
   static async get(id: number) {
     const actor = await prisma.actor.findUnique({
       where: { id },
-      select: {
-        id: true,
-        name: true,
-        biography: true,
-        birthYear: true,
-        nationality: true,
-        photo: true,
-        movies: true,
+      include: {
+        movies: {
+          include: {
+            movie: true,
+          },
+        },
       },
     });
 
-    if (!actor) {
-      return null;
-    }
+    if (!actor) return null;
 
     return {
       ...actor,
-      profileImage: actor.photo ? `${BASE_URL}/uploads/${actor.photo}` : null,
+      movies: actor.movies.map((movieActor) => ({
+        ...movieActor,
+        movie: movieActor.movie
+          ? {
+              ...movieActor.movie,
+              posterImage: getFullPosterUrl(movieActor.movie.posterImage),
+            }
+          : null,
+      })),
     };
   }
 
-  static async create(body: CreateActorType) {
+  static async create(data: CreateActorType) {
     const actor = await prisma.actor.create({
       data: {
-        name: body.name,
-        biography: body.biography,
-        birthYear: body.birthYear,
-        nationality: body.nationality,
-        photo: body.actorImage,
+        name: data.name,
+        biography: data.biography,
+        birthYear: data.birthYear,
+        nationality: data.nationality,
+        photo: data.photo,
       },
       select: {
         id: true,
@@ -68,19 +78,71 @@ export class ActorService {
 
     return {
       ...actor,
-      profileImage: actor.photo ? `${BASE_URL}/uploads/${actor.photo}` : null,
+      profileImage: actor.photo ? getFullPosterUrl(actor.photo) : null,
     };
   }
 
-  static async update(id: number, body: CreateActorType) {
+  static async getAll() {
+    const actors = await prisma.actor.findMany({
+      include: {
+        movies: {
+          include: {
+            movie: true,
+          },
+        },
+      },
+    });
+
+    return actors.map((actor) => ({
+      ...actor,
+      movies: actor.movies.map((movieActor) => ({
+        ...movieActor,
+        movie: movieActor.movie
+          ? {
+              ...movieActor.movie,
+              posterImage: getFullPosterUrl(movieActor.movie.posterImage),
+            }
+          : null,
+      })),
+    }));
+  }
+
+  static async getById(id: number) {
+    const actor = await prisma.actor.findUnique({
+      where: { id },
+      include: {
+        movies: {
+          include: {
+            movie: true,
+          },
+        },
+      },
+    });
+
+    if (actor) {
+      actor.movies = actor.movies.map((movieActor) => ({
+        ...movieActor,
+        movie: movieActor.movie
+          ? {
+              ...movieActor.movie,
+              posterImage: getFullPosterUrl(movieActor.movie.posterImage),
+            }
+          : null,
+      }));
+    }
+
+    return actor;
+  }
+
+  static async update(id: number, data: UpdateActorType) {
     const actor = await prisma.actor.update({
       where: { id },
       data: {
-        name: body.name,
-        biography: body.biography,
-        birthYear: body.birthYear,
-        nationality: body.nationality,
-        photo: body.actorImage,
+        name: data.name,
+        biography: data.biography,
+        birthYear: data.birthYear,
+        nationality: data.nationality,
+        photo: data.photo,
       },
       select: {
         id: true,
@@ -94,7 +156,7 @@ export class ActorService {
 
     return {
       ...actor,
-      profileImage: actor.photo ? `${BASE_URL}/uploads/${actor.photo}` : null,
+      profileImage: actor.photo ? getFullPosterUrl(actor.photo) : null,
     };
   }
 

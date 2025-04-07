@@ -1,105 +1,121 @@
-import prisma from "src/config/database";
+import { PrismaClient } from "@prisma/client";
 import {
   CreateMovieType,
   UpdateMovieType,
-} from "src/validators/movie.validation";
+} from "../validators/movie.validation";
+import { getFullPosterUrl } from "../helpers/url.helper";
 import dotenv from "dotenv";
 import path from "path";
 import fs from "fs";
 
 dotenv.config();
 
-const BASE_URL = process.env.BASE_URL || "http://localhost:3000";
+const prisma = new PrismaClient();
 
 export class MovieService {
-  static async index() {
-    const movies = await prisma.movie.findMany({});
-    return movies.map((movie) => ({
-      ...movie,
-      posterImage: movie.posterImage
-        ? `${BASE_URL}/posters/${movie.posterImage}`
-        : null,
-    }));
-  }
-
-  static async create(body: CreateMovieType) {
+  static async create(data: CreateMovieType) {
     const movie = await prisma.movie.create({
       data: {
-        title: body.title,
-        description: body.description,
-        director: body.director,
-        duration: Number(body.duration),
-        releaseYear: Number(body.releaseYear),
-        ageRating: body.ageRating,
-        posterImage: String(body.posterImage),
+        title: data.title,
+        description: data.description,
+        releaseYear: data.releaseYear,
+        duration: Number(data.duration),
+        posterImage: data.posterImage,
+        director: data.director,
+        ageRating: data.ageRating,
       },
-      select: {
-        id: true,
-        title: true,
-        description: true,
-        director: true,
-        duration: true,
-        ageRating: true,
-        posterImage: true,
-        releaseYear: true,
+      include: {
+        genres: {
+          include: {
+            genre: true,
+          },
+        },
+        actors: {
+          include: {
+            actor: true,
+          },
+        },
       },
     });
 
-    return {
-      ...movie,
-      posterImage: movie.posterImage
-        ? `${BASE_URL}/posters/${movie.posterImage}`
-        : null,
-    };
+    movie.posterImage = getFullPosterUrl(movie.posterImage);
+    return movie;
   }
 
-  static async get(id: number) {
+  static async getAll() {
+    const movies = await prisma.movie.findMany({
+      include: {
+        genres: {
+          include: {
+            genre: true,
+          },
+        },
+        actors: {
+          include: {
+            actor: true,
+          },
+        },
+      },
+    });
+
+    return movies.map((movie) => ({
+      ...movie,
+      posterImage: getFullPosterUrl(movie.posterImage),
+    }));
+  }
+
+  static async getById(id: number) {
     const movie = await prisma.movie.findUnique({
       where: { id },
-      select: {
-        id: true,
-        title: true,
-        description: true,
-        director: true,
-        duration: true,
-        ageRating: true,
-        posterImage: true,
-        releaseYear: true,
-        genres: true, // Film türlerini dahil et
-        actors: true, // Film oyuncularını dahil et
-        reviews: true, // Film yorumlarını dahil et
-        ratings: true, // Film puanlarını dahil et
-        watchlist: true, // Watchlist ilişkisini dahil et
-        wishlist: true, // Wishlist ilişkisini dahil et
-        library: true, // Library ilişkisini dahil et
+      include: {
+        genres: {
+          include: {
+            genre: true,
+          },
+        },
+        actors: {
+          include: {
+            actor: true,
+          },
+        },
       },
     });
 
     if (movie) {
-      return {
-        ...movie,
-        posterImage: movie.posterImage
-          ? `${BASE_URL}/posters/${movie.posterImage}`
-          : null,
-      };
+      movie.posterImage = getFullPosterUrl(movie.posterImage);
     }
 
     return movie;
   }
 
-  static async update(id: number, body: UpdateMovieType) {
+  static async update(id: number, data: UpdateMovieType) {
     const movie = await prisma.movie.update({
       where: { id },
-      data: body,
+      data: {
+        title: data.title,
+        description: data.description,
+        releaseYear: data.releaseYear,
+        duration: data.duration,
+        posterImage: data.posterImage,
+        director: data.director,
+        ageRating: data.ageRating,
+      },
+      include: {
+        genres: {
+          include: {
+            genre: true,
+          },
+        },
+        actors: {
+          include: {
+            actor: true,
+          },
+        },
+      },
     });
-    if (movie) {
-      return {
-        ...movie,
-        posterImage: movie.posterImage
-          ? `${BASE_URL}/posters/${movie.posterImage}`
-          : null,
-      };
-    }
+
+    movie.posterImage = getFullPosterUrl(movie.posterImage);
+    return movie;
   }
 
   static async delete(id: number) {
