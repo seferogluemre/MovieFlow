@@ -1,8 +1,9 @@
 import { Request, Response, NextFunction } from "express";
-import { verifyToken } from "../utils/jwt.util";
-import prisma from "../config/database";
+import { verifyToken } from "../utils/auth/jwt.util";
+import { AppError } from "./error.middleware";
+import { User } from "@prisma/client";
 
-export const authMiddleware = async (
+export const authenticate = async (
   req: Request,
   res: Response,
   next: NextFunction
@@ -11,36 +12,33 @@ export const authMiddleware = async (
     const authHeader = req.headers.authorization;
 
     if (!authHeader) {
-      res.status(401).json({ message: "No authorization header provided" });
-      return;
+      throw new AppError(401, {
+        code: "UNAUTHORIZED",
+        message: "No token provided"
+      });
     }
 
     const token = authHeader.split(" ")[1];
 
     if (!token) {
-      res
-        .status(401)
-        .json({ message: "No token provided in authorization header" });
-      return;
+      throw new AppError(401, {
+        code: "UNAUTHORIZED",
+        message: "Invalid token format"
+      });
     }
 
     const decoded = verifyToken(token);
+    req.user = decoded as unknown as User;
 
-    const user = await prisma.user.findUnique({
-      where: { id: decoded.userId },
-    });
-
-    if (!user) {
-      res.status(401).json({ message: "User not found" });
-      return;
-    }
-
-    req.user = user;
     next();
   } catch (error) {
-    console.error("Auth Error:", error);
-    res
-      .status(401)
-      .json({ message: "Invalid token", error: (error as Error).message });
+    if (error instanceof AppError) {
+      next(error);
+    } else {
+      next(new AppError(401, {
+        code: "UNAUTHORIZED",
+        message: "Invalid token"
+      }));
+    }
   }
 };

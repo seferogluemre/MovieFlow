@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { RatingController } from "src/controller/rating.controller";
-import { authMiddleware } from "src/middlewares/auth.middleware";
+import { authenticate } from "src/middlewares/auth.middleware";
 
 const router = Router();
 
@@ -11,9 +11,9 @@ router.get("/movie/:movieId", RatingController.getMovieRatings);
 router.get("/movie/:movieId/average", RatingController.getMovieAverageRating);
 
 // Protected routes
-router.post("/", authMiddleware, RatingController.create);
-router.patch("/:id", authMiddleware, RatingController.update);
-router.delete("/:id", authMiddleware, RatingController.delete);
-router.get("/user/ratings", authMiddleware, RatingController.getUserRatings);
+router.post("/", authenticate, RatingController.create);
+router.patch("/:id", authenticate, RatingController.update);
+router.delete("/:id", authenticate, RatingController.delete);
+router.get("/user/ratings", authenticate, RatingController.getUserRatings);
 
 export default router;

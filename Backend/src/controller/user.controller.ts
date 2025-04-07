@@ -6,7 +6,7 @@ import { Request, Response } from "express";
 import { z } from "zod";
 import { UserService } from "src/services/user.service";
 import { CreateUserProps, UpdateUserProps } from "src/types/types";
-import { logInfo, logWarn } from "src/utils/logger.util";
+import { logInfo, logWarn } from "src/utils/logging/logger.util";
 import prisma from "src/config/database";
 import path from "path";
 import fs from "fs";

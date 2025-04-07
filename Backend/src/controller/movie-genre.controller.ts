@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { MovieGenreService } from "../services/movie-genre.service";
 import { CreateMovieGenreType } from "../validators/movie-genre.validation";
-import { logInfo, logWarn } from "../utils/logger.util";
+import { logInfo, logWarn } from "src/utils/logging/logger.util";
 
 export class MovieGenreController {
   static async create(req: Request, res: Response): Promise<void> {

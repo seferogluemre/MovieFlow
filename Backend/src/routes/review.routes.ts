@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { ReviewController } from "src/controller/review.controller";
-import { authMiddleware } from "../middlewares/auth.middleware";
+import { authenticate } from "src/middlewares/auth.middleware";
 
 const router = Router();
 
@@ -10,9 +10,9 @@ router.get("/:id", ReviewController.get);
 router.get("/movie/:movieId", ReviewController.getMovieReviews);
 
 // Protected routes
-router.post("/", authMiddleware, ReviewController.create);
-router.patch("/:id", authMiddleware, ReviewController.update);
-router.delete("/:id", authMiddleware, ReviewController.delete);
-router.get("/user/reviews", authMiddleware, ReviewController.getUserReviews);
+router.post("/", authenticate, ReviewController.create);
+router.patch("/:id", authenticate, ReviewController.update);
+router.delete("/:id", authenticate, ReviewController.delete);
+router.get("/user/reviews", authenticate, ReviewController.getUserReviews);
 
 export default router;

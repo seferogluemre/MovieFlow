@@ -3,7 +3,7 @@ import {
   CreateMovieType,
   UpdateMovieType,
 } from "../validators/movie.validation";
-import { getFullPosterUrl, getFullActorPhotoUrl } from "../helpers/url.helper";
+import { getFullPosterUrl, getFullActorPhotoUrl } from "src/utils/url/url.helper";
 import dotenv from "dotenv";
 import path from "path";
 import fs from "fs";

@@ -1,10 +1,10 @@
 import { Router } from "express";
-import { authMiddleware } from "../middlewares/auth.middleware";
+import { authenticate } from "../middlewares/auth.middleware";
 import { WatchListController } from "src/controller/watchlist.controller";
 
 const router = Router();
 
-router.use(authMiddleware);
+router.use(authenticate);
 
 router.post("/", WatchListController.create);
 router.get("/", WatchListController.getAll);

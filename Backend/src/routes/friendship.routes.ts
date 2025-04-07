@@ -1,10 +1,10 @@
 import { Router } from "express";
 import { FriendshipController } from "../controller/friendship.controller";
-import { authMiddleware } from "src/middlewares/auth.middleware";
+import { authenticate } from "src/middlewares/auth.middleware";
 
 const router = Router();
 
-router.use(authMiddleware);
+router.use(authenticate);
 
 router.post("/", FriendshipController.create);
 router.get("/pending", FriendshipController.getPendingRequests);

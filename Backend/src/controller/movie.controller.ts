@@ -3,7 +3,7 @@ import { Request, Response } from "express";
 import multer from "multer";
 import { MovieService } from "src/services/movie.service";
 import { storage, postersStorage } from "src/config/multer";
-import { logInfo, logWarn } from "src/utils/logger.util";
+import { logInfo, logWarn } from "src/utils/logging/logger.util";
 import prisma from "src/config/database";
 import path from "path";
 import fs from "fs";

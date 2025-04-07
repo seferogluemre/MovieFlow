@@ -3,7 +3,7 @@ import {
   CreateWishlistInput,
   UpdateWishlistInput,
 } from "../validators/wishlist.validator";
-import { getFullPosterUrl } from "../helpers/url.helper";
+import { getFullPosterUrl } from "src/utils/url/url.helper";
 
 const prisma = new PrismaClient();
 

@@ -5,7 +5,7 @@ import {
   updateRatingSchema,
 } from "src/validators/rating.validation";
 import { RatingService } from "src/services/rating.service";
-import { logInfo, logWarn } from "src/utils/logger.util";
+import { logInfo, logWarn } from "src/utils/logging/logger.util";
 
 export class RatingController {
   static async index(req: Request, res: Response): Promise<void> {

@@ -112,3 +112,12 @@
 [INFO] 2025-04-07T12:28:35.737Z - List Users --- Request Received
 [INFO] 2025-04-07T21:03:57.481Z - Create User --- Created User [object Object]
 [INFO] 2025-04-07T21:05:23.345Z - Update User - Updated User [object Object]
+[INFO] 2025-04-07T21:56:28.382Z - Create User --- Created User [object Object]
+[INFO] 2025-04-07T21:59:06.783Z - Get User --- Request Received
+[WARN] 2025-04-07T21:59:14.775Z - Login User --- Invalid email or password 
+[WARN] 2025-04-07T22:00:11.203Z - Login User --- Invalid email or password 
+[INFO] 2025-04-07T22:02:25.951Z - Create User --- Created User [object Object]
+[INFO] 2025-04-07T22:02:33.780Z - Get User --- Request Received
+[INFO] 2025-04-07T22:02:42.582Z - Login User --- Login successful 🚀
+[INFO] 2025-04-07T22:03:21.177Z - Create Movie - Created Movie[object Object]
+[INFO] 2025-04-07T22:03:36.133Z - List movies --- Request Received

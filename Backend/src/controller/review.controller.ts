@@ -5,7 +5,7 @@ import {
   updateReviewSchema,
 } from "src/validators/review.validation";
 import { ReviewService } from "src/services/review.service";
-import { logInfo, logWarn } from "src/utils/logger.util";
+import { logInfo, logWarn } from "src/utils/logging/logger.util";
 
 export class ReviewController {
   static async index(req: Request, res: Response): Promise<void> {

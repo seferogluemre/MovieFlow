@@ -3,7 +3,7 @@ import {
   CreateMovieActorType,
   UpdateMovieActorType,
 } from "../validators/movie-actor.validation";
-import { getFullPosterUrl, getFullActorPhotoUrl } from "../helpers/url.helper";
+import { getFullPosterUrl, getFullActorPhotoUrl } from "src/utils/url/url.helper";
 
 export class MovieActorService {
   static async create(data: CreateMovieActorType) {

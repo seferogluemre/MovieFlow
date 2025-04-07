@@ -4,7 +4,7 @@ import { z } from "zod";
 import { Request, Response } from "express";
 import { createActorSchema } from "src/validators/actor.validation";
 import { ActorService } from "src/services/actor.service";
-import { logInfo, logWarn } from "src/utils/logger.util";
+import { logInfo, logWarn } from "src/utils/logging/logger.util";
 import { CreateActorProps } from "src/types/types";
 import prisma from "src/config/database";
 import path from "path";

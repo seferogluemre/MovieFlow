@@ -4,7 +4,7 @@ import {
   CreateFriendshipType,
   UpdateFriendshipType,
 } from "../validators/friendship.validation";
-import { logInfo, logWarn } from "../utils/logger.util";
+import { logInfo, logWarn } from "src/utils/logging/logger.util";
 
 export class FriendshipController {
   static async create(req: Request, res: Response): Promise<void> {

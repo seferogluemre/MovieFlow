@@ -1,6 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 import { CreateMovieGenreType } from "../validators/movie-genre.validation";
-import { getFullPosterUrl } from "../helpers/url.helper";
+import { getFullPosterUrl } from "src/utils/url/url.helper";
 
 const prisma = new PrismaClient();
 

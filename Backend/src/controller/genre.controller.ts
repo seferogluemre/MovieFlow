@@ -5,8 +5,7 @@ import {
   updateGenreSchema,
 } from "src/validators/genre.validation";
 import { GenreService } from "src/services/genre.service";
-import { logInfo, logWarn } from "src/utils/logger.util";
-
+import { logInfo, logWarn } from "src/utils/logging/logger.util";
 export class GenreController {
   static async index(req: Request, res: Response): Promise<void> {
     try {

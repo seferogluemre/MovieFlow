@@ -6,7 +6,7 @@ import {
 import {
   getFullPosterUrl,
   getFullProfileImageUrl,
-} from "../helpers/url.helper";
+} from "src/utils/url/url.helper";
 
 const prisma = new PrismaClient();
 

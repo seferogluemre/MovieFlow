@@ -3,7 +3,7 @@ import {
   CreateFriendshipType,
   UpdateFriendshipType,
 } from "../validators/friendship.validation";
-import { getFullProfileImageUrl } from "../helpers/url.helper";
+import { getFullProfileImageUrl } from "src/utils/url/url.helper";
 
 export class FriendshipService {
   static async create(userId: number, data: CreateFriendshipType) {

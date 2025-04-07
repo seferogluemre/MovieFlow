@@ -1,10 +1,10 @@
 import { Router } from "express";
 import { WishlistController } from "../controller/wishlist.controller";
-import { authMiddleware } from "src/middlewares/auth.middleware";
+import { authenticate } from "src/middlewares/auth.middleware";
 
 const router = Router();
 
-router.use(authMiddleware);
+router.use(authenticate);
 
 router.post("/", WishlistController.create);
 router.get("/", WishlistController.getAll);

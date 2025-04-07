@@ -4,7 +4,7 @@ import {
   CreateLibraryType,
   UpdateLibraryType,
 } from "../validators/library.validation";
-import { logInfo, logWarn } from "../utils/logger.util";
+import { logInfo, logWarn } from "src/utils/logging/logger.util";
 
 export class LibraryController {
   static async create(req: Request, res: Response): Promise<void> {

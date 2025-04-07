@@ -1,8 +1,9 @@
 import { PrismaClient } from "@prisma/client";
 import { CreateUserType, UpdateUserType } from "../validators/user.validation";
-import { getFullProfileImageUrl } from "../helpers/url.helper";
 import { USER_WHERE_CLAUSE } from "src/constants/user.constant";
 import { UserQueryProps } from "src/types/types";
+import { getFullProfileImageUrl } from "src/utils/url/url.helper";
+import bcrypt from "bcryptjs";
 
 export const BASE_URL = process.env.BASE_URL || "http://localhost:3000";
 
@@ -17,7 +18,6 @@ export class UserService {
         name: true,
         username: true,
         isAdmin: true,
-        password: true,
         profileImage: true,
         createdAt: true,
       },
@@ -32,9 +32,14 @@ export class UserService {
 
   static async create(data: CreateUserType) {
     const prisma = new PrismaClient();
+    
+    // Şifreyi hashle
+    const hashedPassword = await bcrypt.hash(data.password, 10);
+    
     const user = await prisma.user.create({
       data: {
         ...data,
+        password: hashedPassword, // Hashlenmiş şifreyi kaydet
         profileImage: data.profileImage
           ? getFullProfileImageUrl(data.profileImage)
           : null,

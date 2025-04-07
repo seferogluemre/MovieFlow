@@ -1,10 +1,10 @@
 import { Router } from "express";
 import { LibraryController } from "../controller/library.controller";
-import { authMiddleware } from "src/middlewares/auth.middleware";
+import { authenticate } from "src/middlewares/auth.middleware";
 
 const router = Router();
 
-router.use(authMiddleware);
+router.use(authenticate);
 
 // Library routes
 router.post("/", LibraryController.create);
