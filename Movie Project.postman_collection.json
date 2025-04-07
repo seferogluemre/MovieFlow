@@ -1,0 +1,2980 @@
+{
+	"info": {
+		"_postman_id": "55e4e3a1-1c38-46e0-8bcb-167593c1207d",
+		"name": "Movie Project",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "40427526"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Create User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Ahmet Mehmetinoglu\",\r\n    \"username\": \"mehmedogluahmet\",\r\n    \"password\": \"ahmet1234\",\r\n    \"isAdmin\": false,\r\n    \"email\": \"ahmet@mail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/users",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/users/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"users",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Ahmet Mehmetoglu",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "profileImage",
+									"type": "file",
+									"src": "postman-cloud:///1f012cb2-dc1e-4bf0-aff4-ae0f00b44026"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/api/users/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"users",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/users?isAdmin=true",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"users"
+							],
+							"query": [
+								{
+									"key": "isAdmin",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/users/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"users",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Upload User Profile",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "1",
+									"value": "3",
+									"description": "3",
+									"type": "text"
+								},
+								{
+									"key": "profileImage",
+									"type": "file",
+									"src": "postman-cloud:///1f01150d-0907-47b0-8a8c-76cd7c4ab02b"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/api/users/upload/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"upload",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Auth Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"emre@mail.com\",\r\n    \"password\": \"emre1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/auth/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Auth Logout",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"refreshToken\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQsImlhdCI6MTc0Mzc2NzAxMSwiZXhwIjoxNzQ0MzcxODExfQ.xP2rgwDLQOddiyijrLFr4lYZ-gCyk8iMdTGad1GTDyk\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/auth/logout",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Movie",
+			"item": [
+				{
+					"name": "Create Movie",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "poster",
+									"type": "file",
+									"src": "postman-cloud:///1f012d00-571f-4fa0-814a-77e1ee9d5793"
+								},
+								{
+									"key": "title",
+									"value": "Sisu 2022",
+									"description": "Sisu 2022",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Sisu, İkinci Dünya Savaşı’nın son günlerinde bir yandan hava şartlarıyla boğuşurken bir yandan da Naziler karşısında hayatta kalmak için mücadele eden eski bir askerin hikayesini konu ediyor. Aatami adında eski bir asker, İkinci Dünya Savaşı’nın son günlerinde Finlandiya’nın vahşi topraklarında altın bulur. Bir an önce şehre gitmeye çalışan Aatami, bu sırada şehri yerle bir eden Naziler ile karşılaşır. Naziler, Aatami’nin altınlarını çalar ancak çok geçmeden sıradan bir madenciye bulaşmadıklarını anlarlar",
+									"description": "Sisu, İkinci Dünya Savaşı’nın son günlerinde bir yandan hava şartlarıyla boğuşurken bir yandan da Naziler karşısında hayatta kalmak için mücadele eden eski bir askerin hikayesini konu ediyor. Aatami adında eski bir asker, İkinci Dünya Savaşı’nın son günlerinde Finlandiya’nın vahşi topraklarında altın bulur. Bir an önce şehre gitmeye çalışan Aatami, bu sırada şehri yerle bir eden Naziler ile karşılaşır. Naziler, Aatami’nin altınlarını çalar ancak çok geçmeden sıradan bir madenciye bulaşmadıklarını anlarlar",
+									"type": "text"
+								},
+								{
+									"key": "releaseYear",
+									"value": "2022",
+									"description": "2022",
+									"type": "text"
+								},
+								{
+									"key": "duration",
+									"value": "91",
+									"description": "91",
+									"type": "text"
+								},
+								{
+									"key": "director",
+									"value": "Jalmari Helander",
+									"description": "Jalmari Helander",
+									"type": "text"
+								},
+								{
+									"key": "ageRating",
+									"value": "GENERAL",
+									"description": "GENERAL",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/api/movies",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"movies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Movies",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/movies",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"movies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Movie",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/movies/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"movies",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Movie Example",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/movies/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"movies",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "cross-origin"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "RateLimit-Policy",
+									"value": "70;w=60"
+								},
+								{
+									"key": "RateLimit-Limit",
+									"value": "70"
+								},
+								{
+									"key": "RateLimit-Remaining",
+									"value": "66"
+								},
+								{
+									"key": "RateLimit-Reset",
+									"value": "33"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1356"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"54c-izExISV+0GdDbBV6Zus/X+wHPQM\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 07 Apr 2025 04:02:22 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"id\": 2,\n        \"title\": \"Sisu 2022\",\n        \"description\": \"Sisu, İkinci Dünya Savaşı’nın son günlerinde bir yandan hava şartlarıyla boğuşurken bir yandan da Naziler karşısında hayatta kalmak için mücadele eden eski bir askerin hikayesini konu ediyor. Aatami adında eski bir asker, İkinci Dünya Savaşı’nın son günlerinde Finlandiya’nın vahşi topraklarında altın bulur. Bir an önce şehre gitmeye çalışan Aatami, bu sırada şehri yerle bir eden Naziler ile karşılaşır. Naziler, Aatami’nin altınlarını çalar ancak çok geçmeden sıradan bir madenciye bulaşmadıklarını anlarlar\",\n        \"releaseYear\": 2022,\n        \"duration\": 91,\n        \"posterImage\": \"http://localhost:3000/posters/1743934509705.jpg\",\n        \"director\": \"Jalmari Helander\",\n        \"rating\": 0,\n        \"ageRating\": \"GENERAL\",\n        \"createdAt\": \"2025-04-06T10:15:09.711Z\",\n        \"updatedAt\": \"2025-04-06T10:15:09.711Z\",\n        \"genres\": [\n            {\n                \"movieId\": 2,\n                \"genreId\": 2,\n                \"genre\": {\n                    \"id\": 2,\n                    \"name\": \"Aksiyon\"\n                }\n            }\n        ],\n        \"actors\": [\n            {\n                \"movieId\": 2,\n                \"actorId\": 4,\n                \"role\": \"Ana Karakter\",\n                \"actor\": {\n                    \"id\": 4,\n                    \"name\": \"Leonardo DiKaprio\",\n                    \"biography\": \"Leonardo Wilhelm DiCaprio, Amerikalı oyuncu ve film yapımcısı. Biyografik ve dönem filmlerindeki çalışmalarıyla tanınan oyuncu\",\n                    \"birthYear\": 1974,\n                    \"nationality\": \"USA\",\n                    \"photo\": \"http://localhost:3000/uploads/1743962909956.jpg\",\n                    \"createdAt\": \"2025-04-06T18:08:29.960Z\",\n                    \"updatedAt\": \"2025-04-06T18:09:35.049Z\"\n                }\n            }\n        ]\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Movie",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\":\"Sisu 2022 Aksiyon serisi\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/movies/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"movies",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Movie",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/movies/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"movies",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Actor",
+			"item": [
+				{
+					"name": "Create Actor",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Leonardo DiCaprio",
+									"type": "text"
+								},
+								{
+									"key": "biography",
+									"value": "Leonardo Wilhelm DiCaprio, Amerikalı oyuncu ve film yapımcısı. Biyografik ve dönem filmlerindeki çalışmalarıyla tanınan oyuncu",
+									"type": "text"
+								},
+								{
+									"key": "birthYear",
+									"value": "1974",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "actorImage",
+									"type": "file",
+									"src": "postman-cloud:///1f013101-22c8-4f40-bcbe-c6672e75cf6f"
+								},
+								{
+									"key": "nationality",
+									"value": "USA",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/api/actors",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"actors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Actor",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Leonardo DiKaprio\",\r\n    \"birthYear\":1974\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/actors/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"actors",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "4"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Actor",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/actors/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"actors",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "4"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Actor",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/actors/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"actors",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Actors",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/actors",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"actors"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Genre",
+			"item": [
+				{
+					"name": "Create Genre",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Aksiyon\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/genres",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"genres"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Movie To Genre",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/genres/:genreId/movie/:movieId",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"genres",
+								":genreId",
+								"movie",
+								":movieId"
+							],
+							"variable": [
+								{
+									"key": "genreId",
+									"value": "2"
+								},
+								{
+									"key": "movieId",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Movies Genre",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/genres/:id/movie",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"genres",
+								":id",
+								"movie"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Genre",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Aksiyon\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/genres/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"genres",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Genre",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/genres/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"genres",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Genres",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/genres",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"genres"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "List Genres Example",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/genres",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"genres"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "cross-origin"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "RateLimit-Policy",
+									"value": "70;w=60"
+								},
+								{
+									"key": "RateLimit-Limit",
+									"value": "70"
+								},
+								{
+									"key": "RateLimit-Remaining",
+									"value": "69"
+								},
+								{
+									"key": "RateLimit-Reset",
+									"value": "60"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "143"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"8f-U0BIpAldCQX40KjsrerNoGGJ+8U\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 06 Apr 2025 18:58:29 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"results\": [\n        {\n            \"id\": 2,\n            \"name\": \"Aksiyon\",\n            \"movies\": [\n                {\n                    \"id\": 2,\n                    \"title\": \"Sisu 2022\",\n                    \"posterImage\": \"http://localhost:3000/posters/1743934509705.jpg\"\n                }\n            ]\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Movie To Genre",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/genres/:genreId/movie/:movieId",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"genres",
+								":genreId",
+								"movie",
+								":movieId"
+							],
+							"variable": [
+								{
+									"key": "genreId",
+									"value": "2"
+								},
+								{
+									"key": "movieId",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Review",
+			"item": [
+				{
+					"name": "Protected",
+					"item": [
+						{
+							"name": "Create Review",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQsImlhdCI6MTc0Mzk3NDAxNywiZXhwIjoxNzQzOTc0OTE3fQ.oQN5fujesnXBl_nk-EjLG2wDvKXJk9eFVgPXEE5AHcc",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQsImlhdCI6MTc0Mzk3MjE4MywiZXhwIjoxNzQzOTczMDgzfQ.DlgJQiuB_P1g6CQgbjmY7zJ04ARX3B1NqIIkpYPsZjw",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"content\": \"Çok güzel bir film izlemenizi öneririm\",\r\n    \"movieId\": 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/reviews",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"reviews"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Review",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQsImlhdCI6MTc0Mzk3MzgxMiwiZXhwIjoxNzQzOTc0NzEyfQ.4VQKZE1btZo-6IV-K-1D9cEBJkxAbXfORKazGVu8OXI",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"content\":\"Güzel bir film\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/reviews/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"reviews",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Review",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQsImlhdCI6MTc0Mzk3MzgxMiwiZXhwIjoxNzQzOTc0NzEyfQ.4VQKZE1btZo-6IV-K-1D9cEBJkxAbXfORKazGVu8OXI",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/reviews/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"reviews",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get User Reviews",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQsImlhdCI6MTc0Mzk3MzgxMiwiZXhwIjoxNzQzOTc0NzEyfQ.4VQKZE1btZo-6IV-K-1D9cEBJkxAbXfORKazGVu8OXI",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/reviews/user/reviews",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"reviews",
+										"user",
+										"reviews"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Get Movie Reviews",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/reviews/movie/:movieId",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"reviews",
+								"movie",
+								":movieId"
+							],
+							"variable": [
+								{
+									"key": "movieId",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Review",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/reviews/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"reviews",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Reviews",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/reviews",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"reviews"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Rating",
+			"item": [
+				{
+					"name": "Protected",
+					"item": [
+						{
+							"name": "Create Rating",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQsImlhdCI6MTc0Mzk3NDAxNywiZXhwIjoxNzQzOTc0OTE3fQ.oQN5fujesnXBl_nk-EjLG2wDvKXJk9eFVgPXEE5AHcc",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"score\": 4,\r\n    \"movieId\": 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/ratings",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"ratings"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Rating",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQsImlhdCI6MTc0Mzk3NDAxNywiZXhwIjoxNzQzOTc0OTE3fQ.oQN5fujesnXBl_nk-EjLG2wDvKXJk9eFVgPXEE5AHcc",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"score\": 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/ratings/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"ratings",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Rating",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQsImlhdCI6MTc0Mzk3NDAxNywiZXhwIjoxNzQzOTc0OTE3fQ.oQN5fujesnXBl_nk-EjLG2wDvKXJk9eFVgPXEE5AHcc",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/ratings/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"ratings",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get User Ratings",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQsImlhdCI6MTc0Mzk3NDAxNywiZXhwIjoxNzQzOTc0OTE3fQ.oQN5fujesnXBl_nk-EjLG2wDvKXJk9eFVgPXEE5AHcc",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/ratings/user/ratings",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"ratings",
+										"user",
+										"ratings"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "List Ratings",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/ratings",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"ratings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Rating",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/ratings/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"ratings",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Movie Average Rating",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/ratings/movie/:movieId/average",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"ratings",
+								"movie",
+								":movieId",
+								"average"
+							],
+							"variable": [
+								{
+									"key": "movieId",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Movie Rating",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/ratings/movie/:movieId",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"ratings",
+								"movie",
+								":movieId"
+							],
+							"variable": [
+								{
+									"key": "movieId",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "WatchList",
+			"item": [
+				{
+					"name": "Create Watchlist",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQsImlhdCI6MTc0Mzk4OTY0OSwiZXhwIjoxNzQzOTkwNTQ5fQ.kFq_L2Wd7SwnTcawHlHdh5Qwrut84NOswYRdzoWdiwg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"movieId\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/watchlist",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"watchlist"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Watchlist",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQsImlhdCI6MTc0Mzk5MDY1MiwiZXhwIjoxNzQzOTkxNTUyfQ.tVKnzl8CJYT6zKcGVuMwcIIJxARpSTYWTrpeBcJexW0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/watchlist",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"watchlist"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQsImlhdCI6MTc0Mzk5MDY1MiwiZXhwIjoxNzQzOTkxNTUyfQ.tVKnzl8CJYT6zKcGVuMwcIIJxARpSTYWTrpeBcJexW0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/watchlist/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"watchlist",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "4"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Watchlist",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQsImlhdCI6MTc0Mzk5MDY1MiwiZXhwIjoxNzQzOTkxNTUyfQ.tVKnzl8CJYT6zKcGVuMwcIIJxARpSTYWTrpeBcJexW0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"movieId\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/watchlist/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"watchlist",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "4"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Watchlist",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQsImlhdCI6MTc0Mzk5MDY1MiwiZXhwIjoxNzQzOTkxNTUyfQ.tVKnzl8CJYT6zKcGVuMwcIIJxARpSTYWTrpeBcJexW0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/watchlist/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"watchlist",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "4"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "WishList",
+			"item": [
+				{
+					"name": "Create Wishlist",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsImlhdCI6MTc0Mzk5ODExNiwiZXhwIjoxNzQzOTk5MDE2fQ.GvpaQHVc2cVUhEuSZOZiXFks5sgB0kPWxqjI3xM44aQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"movieId\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/wishlist",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"wishlist"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create Watchlist Example",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"movieId\": 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/wishlist",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"wishlist"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "cross-origin"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "RateLimit-Policy",
+									"value": "70;w=60"
+								},
+								{
+									"key": "RateLimit-Limit",
+									"value": "70"
+								},
+								{
+									"key": "RateLimit-Remaining",
+									"value": "68"
+								},
+								{
+									"key": "RateLimit-Reset",
+									"value": "53"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "926"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"39e-nwNds+t6DgsPwnzPoeZli/s3Tk8\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 07 Apr 2025 01:59:06 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"userId\": 4,\n    \"movieId\": 2,\n    \"addedAt\": \"2025-04-07T01:59:06.411Z\",\n    \"movie\": {\n        \"id\": 2,\n        \"title\": \"Sisu 2022\",\n        \"description\": \"Sisu, İkinci Dünya Savaşı’nın son günlerinde bir yandan hava şartlarıyla boğuşurken bir yandan da Naziler karşısında hayatta kalmak için mücadele eden eski bir askerin hikayesini konu ediyor. Aatami adında eski bir asker, İkinci Dünya Savaşı’nın son günlerinde Finlandiya’nın vahşi topraklarında altın bulur. Bir an önce şehre gitmeye çalışan Aatami, bu sırada şehri yerle bir eden Naziler ile karşılaşır. Naziler, Aatami’nin altınlarını çalar ancak çok geçmeden sıradan bir madenciye bulaşmadıklarını anlarlar\",\n        \"releaseYear\": 2022,\n        \"duration\": 91,\n        \"posterImage\": \"http://localhost:3000/posters/1743934509705.jpg\",\n        \"director\": \"Jalmari Helander\",\n        \"rating\": 0,\n        \"ageRating\": \"GENERAL\",\n        \"createdAt\": \"2025-04-06T10:15:09.711Z\",\n        \"updatedAt\": \"2025-04-06T10:15:09.711Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Wishlist",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsImlhdCI6MTc0Mzk5ODExNiwiZXhwIjoxNzQzOTk5MDE2fQ.GvpaQHVc2cVUhEuSZOZiXFks5sgB0kPWxqjI3xM44aQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/wishlist",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"wishlist"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsImlhdCI6MTc0Mzk5ODExNiwiZXhwIjoxNzQzOTk5MDE2fQ.GvpaQHVc2cVUhEuSZOZiXFks5sgB0kPWxqjI3xM44aQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/wishlist/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"wishlist",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Wishlist",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQsImlhdCI6MTc0Mzk5MDY1MiwiZXhwIjoxNzQzOTkxNTUyfQ.tVKnzl8CJYT6zKcGVuMwcIIJxARpSTYWTrpeBcJexW0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"movieId\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/wishlist/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"wishlist",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update Wishlist Example",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"movieId\": 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/wishlist/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"wishlist",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "cross-origin"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "RateLimit-Policy",
+									"value": "70;w=60"
+								},
+								{
+									"key": "RateLimit-Limit",
+									"value": "70"
+								},
+								{
+									"key": "RateLimit-Remaining",
+									"value": "61"
+								},
+								{
+									"key": "RateLimit-Reset",
+									"value": "5"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "926"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"39e-nwNds+t6DgsPwnzPoeZli/s3Tk8\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 07 Apr 2025 01:59:53 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"userId\": 4,\n    \"movieId\": 2,\n    \"addedAt\": \"2025-04-07T01:59:06.411Z\",\n    \"movie\": {\n        \"id\": 2,\n        \"title\": \"Sisu 2022\",\n        \"description\": \"Sisu, İkinci Dünya Savaşı’nın son günlerinde bir yandan hava şartlarıyla boğuşurken bir yandan da Naziler karşısında hayatta kalmak için mücadele eden eski bir askerin hikayesini konu ediyor. Aatami adında eski bir asker, İkinci Dünya Savaşı’nın son günlerinde Finlandiya’nın vahşi topraklarında altın bulur. Bir an önce şehre gitmeye çalışan Aatami, bu sırada şehri yerle bir eden Naziler ile karşılaşır. Naziler, Aatami’nin altınlarını çalar ancak çok geçmeden sıradan bir madenciye bulaşmadıklarını anlarlar\",\n        \"releaseYear\": 2022,\n        \"duration\": 91,\n        \"posterImage\": \"http://localhost:3000/posters/1743934509705.jpg\",\n        \"director\": \"Jalmari Helander\",\n        \"rating\": 0,\n        \"ageRating\": \"GENERAL\",\n        \"createdAt\": \"2025-04-06T10:15:09.711Z\",\n        \"updatedAt\": \"2025-04-06T10:15:09.711Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Wishlist",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQsImlhdCI6MTc0Mzk5MDY1MiwiZXhwIjoxNzQzOTkxNTUyfQ.tVKnzl8CJYT6zKcGVuMwcIIJxARpSTYWTrpeBcJexW0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/wishlist/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"wishlist",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Friendship",
+			"item": [
+				{
+					"name": "Protected",
+					"item": [
+						{
+							"name": "Get Friendships Listr",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsImlhdCI6MTc0Mzk5ODExNiwiZXhwIjoxNzQzOTk5MDE2fQ.GvpaQHVc2cVUhEuSZOZiXFks5sgB0kPWxqjI3xM44aQ",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/friendships",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"friendships"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Friendship",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsImlhdCI6MTc0Mzk5ODExNiwiZXhwIjoxNzQzOTk5MDE2fQ.GvpaQHVc2cVUhEuSZOZiXFks5sgB0kPWxqjI3xM44aQ",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/friendships/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"friendships",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Friendships",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQsImlhdCI6MTc0Mzk5NTE1NCwiZXhwIjoxNzQzOTk2MDU0fQ.OctnSSbxZXP0LqLDgtRdrcNa5qu1aMs_iKeeNs7HhyU",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"friendId\": 3\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/friendships",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"friendships"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Friendship",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsImlhdCI6MTc0Mzk5NTUyOCwiZXhwIjoxNzQzOTk2NDI4fQ.8BA3BpuDVdlVFLRwTPoL8BD7gIIeRnVs8GIRbNxPCUI",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"status\":\"ACCEPTED\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/friendships/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"friendships",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Friendship",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsImlhdCI6MTc0Mzk5NTUyOCwiZXhwIjoxNzQzOTk2NDI4fQ.8BA3BpuDVdlVFLRwTPoL8BD7gIIeRnVs8GIRbNxPCUI",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/friendships/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"friendships",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Pending Friendships",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsImlhdCI6MTc0Mzk5ODExNiwiZXhwIjoxNzQzOTk5MDE2fQ.GvpaQHVc2cVUhEuSZOZiXFks5sgB0kPWxqjI3xM44aQ",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/friendships/pending",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"friendships",
+										"pending"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Library",
+			"item": [
+				{
+					"name": "Protected",
+					"item": [
+						{
+							"name": "Create Library",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsImlhdCI6MTc0Mzk5ODExNiwiZXhwIjoxNzQzOTk5MDE2fQ.GvpaQHVc2cVUhEuSZOZiXFks5sgB0kPWxqjI3xM44aQ",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"movieId\":2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/library",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"library"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "List Library",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsImlhdCI6MTc0Mzk5ODExNiwiZXhwIjoxNzQzOTk5MDE2fQ.GvpaQHVc2cVUhEuSZOZiXFks5sgB0kPWxqjI3xM44aQ",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/library",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"library"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get User Library",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsImlhdCI6MTc0Mzk5ODExNiwiZXhwIjoxNzQzOTk5MDE2fQ.GvpaQHVc2cVUhEuSZOZiXFks5sgB0kPWxqjI3xM44aQ",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/library/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"library",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Library",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsImlhdCI6MTc0Mzk5NTUyOCwiZXhwIjoxNzQzOTk2NDI4fQ.8BA3BpuDVdlVFLRwTPoL8BD7gIIeRnVs8GIRbNxPCUI",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"movieId\":2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/library/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"library",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Library",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsImlhdCI6MTc0Mzk5NTUyOCwiZXhwIjoxNzQzOTk2NDI4fQ.8BA3BpuDVdlVFLRwTPoL8BD7gIIeRnVs8GIRbNxPCUI",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/library/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"library",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Movie Actor",
+			"item": [
+				{
+					"name": "Create Actor To Movie",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"actorId\": 4,\r\n    \"movieId\": 2,\r\n    \"role\": \"Ana Karakter\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/movie-actors",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"movie-actors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Movies Actors",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/movie-actors",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"movie-actors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Movie Actors",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/movie-actors/movie/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"movie-actors",
+								"movie",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Movie Actors Example",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/movie-actors/movie/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"movie-actors",
+										"movie",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "cross-origin"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "RateLimit-Policy",
+									"value": "70;w=60"
+								},
+								{
+									"key": "RateLimit-Limit",
+									"value": "70"
+								},
+								{
+									"key": "RateLimit-Remaining",
+									"value": "69"
+								},
+								{
+									"key": "RateLimit-Reset",
+									"value": "60"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1245"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4dd-lY804gKrceoYlHvungvlS8QZ5iE\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 07 Apr 2025 03:27:44 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"movieId\": 2,\n        \"actorId\": 4,\n        \"role\": \"Ana Karakter\",\n        \"movie\": {\n            \"id\": 2,\n            \"title\": \"Sisu 2022\",\n            \"description\": \"Sisu, İkinci Dünya Savaşı’nın son günlerinde bir yandan hava şartlarıyla boğuşurken bir yandan da Naziler karşısında hayatta kalmak için mücadele eden eski bir askerin hikayesini konu ediyor. Aatami adında eski bir asker, İkinci Dünya Savaşı’nın son günlerinde Finlandiya’nın vahşi topraklarında altın bulur. Bir an önce şehre gitmeye çalışan Aatami, bu sırada şehri yerle bir eden Naziler ile karşılaşır. Naziler, Aatami’nin altınlarını çalar ancak çok geçmeden sıradan bir madenciye bulaşmadıklarını anlarlar\",\n            \"releaseYear\": 2022,\n            \"duration\": 91,\n            \"posterImage\": \"http://localhost:3000/posters/1743934509705.jpg\",\n            \"director\": \"Jalmari Helander\",\n            \"rating\": 0,\n            \"ageRating\": \"GENERAL\",\n            \"createdAt\": \"2025-04-06T10:15:09.711Z\",\n            \"updatedAt\": \"2025-04-06T10:15:09.711Z\"\n        },\n        \"actor\": {\n            \"id\": 4,\n            \"name\": \"Leonardo DiKaprio\",\n            \"biography\": \"Leonardo Wilhelm DiCaprio, Amerikalı oyuncu ve film yapımcısı. Biyografik ve dönem filmlerindeki çalışmalarıyla tanınan oyuncu\",\n            \"birthYear\": 1974,\n            \"nationality\": \"USA\",\n            \"photo\": \"1743962909956.jpg\",\n            \"createdAt\": \"2025-04-06T18:08:29.960Z\",\n            \"updatedAt\": \"2025-04-06T18:09:35.049Z\"\n        }\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Get Actor Movies",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/movie-actors/actor/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"movie-actors",
+								"actor",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "4"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Actor To Movie",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/movie-actors/:movieId/:actorId",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"movie-actors",
+								":movieId",
+								":actorId"
+							],
+							"variable": [
+								{
+									"key": "movieId",
+									"value": "2"
+								},
+								{
+									"key": "actorId",
+									"value": "4"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Movie Genre",
+			"item": [
+				{
+					"name": "Create Genre To Movie",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"genreId\": 2,\r\n    \"movieId\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/movie-genres",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"movie-genres"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Movies Genres",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/movie-genres",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"movie-genres"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Movie By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/movie-genres/movie/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"movie-genres",
+								"movie",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Movies To Genre Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/movie-genres/genre/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"movie-genres",
+								"genre",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Genre To Movie",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/movie-genres/:movieId/:genreId",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"movie-genres",
+								":movieId",
+								":genreId"
+							],
+							"variable": [
+								{
+									"key": "movieId",
+									"value": "2"
+								},
+								{
+									"key": "genreId",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:3000",
+			"type": "string"
+		}
+	]
+}
