@@ -1,0 +1,56 @@
+[INFO] 2025-04-07T03:48:04.017Z - List movies --- Request Received
+[WARN] 2025-04-07T03:50:34.524Z - Get Actor --- Actor not found
+[WARN] 2025-04-07T03:50:36.869Z - Get Actor --- Actor not found
+[INFO] 2025-04-07T03:50:40.345Z - Get Actor --- Request Received
+[INFO] 2025-04-07T03:51:31.623Z - List Users --- Request Received
+[INFO] 2025-04-07T03:51:43.718Z - List movies --- Request Received
+[INFO] 2025-04-07T03:52:22.515Z - List Genres --- Request Received
+[INFO] 2025-04-07T03:54:07.527Z - Get Movie Reviews - Retrieved reviews for Movie 2
+[WARN] 2025-04-07T03:54:14.503Z - Get Review --- Review not found
+[INFO] 2025-04-07T03:54:18.623Z - Get Review --- Request Received
+[INFO] 2025-04-07T03:54:22.743Z - List Reviews --- Request Received
+[INFO] 2025-04-07T03:54:30.728Z - List Ratings --- Request Received
+[INFO] 2025-04-07T03:55:16.929Z - Login User --- Login successful 🚀
+[INFO] 2025-04-07T03:56:04.142Z - Friendship getAll ---- Retrieved all friendships
+[WARN] 2025-04-07T03:56:16.428Z - Friendship getById ---- Friendship not found
+[WARN] 2025-04-07T03:56:16.429Z - Friendship getById ---- Unauthorized access attempt
+[WARN] 2025-04-07T03:56:16.430Z - Friendship getById ---- Error retrieving friendship
+[WARN] 2025-04-07T03:56:20.979Z - Friendship getById ---- Friendship not found
+[WARN] 2025-04-07T03:56:20.980Z - Friendship getById ---- Unauthorized access attempt
+[WARN] 2025-04-07T03:56:20.980Z - Friendship getById ---- Error retrieving friendship
+[INFO] 2025-04-07T03:56:23.556Z - Friendship getById ---- Retrieved friendship
+[INFO] 2025-04-07T03:56:32.399Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[WARN] 2025-04-07T03:56:44.777Z - LibraryController.create ---- Error creating library entry: ${error}
+[WARN] 2025-04-07T03:57:06.189Z - LibraryController.create ---- Error creating library entry: ${error}
+[INFO] 2025-04-07T03:57:17.583Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
+[WARN] 2025-04-07T03:57:27.135Z - LibraryController.getById ---- Library entry not found with id ${id}
+[WARN] 2025-04-07T03:57:27.136Z - LibraryController.getById ---- Unauthorized access to library entry ${id}
+[WARN] 2025-04-07T03:57:27.137Z - LibraryController.getById ---- Error retrieving library entry: ${error}
+[WARN] 2025-04-07T03:57:31.566Z - LibraryController.getById ---- Library entry not found with id ${id}
+[WARN] 2025-04-07T03:57:31.567Z - LibraryController.getById ---- Unauthorized access to library entry ${id}
+[WARN] 2025-04-07T03:57:31.567Z - LibraryController.getById ---- Error retrieving library entry: ${error}
+[WARN] 2025-04-07T03:57:34.144Z - LibraryController.getById ---- Library entry not found with id ${id}
+[WARN] 2025-04-07T03:57:34.145Z - LibraryController.getById ---- Unauthorized access to library entry ${id}
+[WARN] 2025-04-07T03:57:34.146Z - LibraryController.getById ---- Error retrieving library entry: ${error}
+[WARN] 2025-04-07T03:59:12.875Z - MovieActor create ---- Error creating movie-actor relationship
+[INFO] 2025-04-07T03:59:16.457Z - MovieActor getByMovieId ---- Retrieved actors for movie
+[INFO] 2025-04-07T03:59:30.636Z - MovieActor getByActorId ---- Retrieved movies for actor
+[INFO] 2025-04-07T03:59:41.337Z - MovieActor getAll ---- Retrieved all movie-actor relationships
+[INFO] 2025-04-07T03:59:52.209Z - MovieGenre getAll ---- Retrieved all movie-genre relationships
+[INFO] 2025-04-07T03:59:58.395Z - MovieGenre getByGenreId ---- Retrieved movies for genre
+[INFO] 2025-04-07T04:01:55.037Z - List movies --- Request Received
+[INFO] 2025-04-07T04:02:53.212Z - Get Actor --- Request Received
+[INFO] 2025-04-07T04:03:05.315Z - Get Actor --- Request Received
+[INFO] 2025-04-07T04:03:28.758Z - List Genres --- Request Received
+[WARN] 2025-04-07T04:03:49.516Z - LibraryController.getById ---- Library entry not found with id 3
+[WARN] 2025-04-07T04:03:54.081Z - LibraryController.getById ---- Library entry not found with id 4
+[WARN] 2025-04-07T04:03:59.157Z - LibraryController.getById ---- Library entry not found with id 4
+[INFO] 2025-04-07T04:04:02.857Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
+[WARN] 2025-04-07T04:04:10.057Z - LibraryController.getById ---- Library entry not found with id 3
+[INFO] 2025-04-07T04:04:14.412Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
+[INFO] 2025-04-07T04:04:19.695Z - LibraryController.getById ---- Retrieved library entry 1
+[INFO] 2025-04-07T04:04:43.307Z - Get Actor --- Request Received
+[INFO] 2025-04-07T04:05:13.629Z - Get Actor --- Request Received
+[INFO] 2025-04-07T04:05:17.207Z - Get Actor --- Request Received
+[INFO] 2025-04-07T04:05:20.818Z - List Actors --- Request Received
+[INFO] 2025-04-07T04:06:54.438Z - Get Actor --- Request Received

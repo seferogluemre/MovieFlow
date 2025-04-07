@@ -58,30 +58,33 @@ export class LibraryController {
       if (!userId) {
         logWarn("LibraryController.getById ---- Unauthorized access attempt");
         res.status(401).json({ message: "Unauthorized" });
+        return;
       }
-      // TODO: Check if the user is the owner of the library entry
+
       const { id } = req.params;
       const library = await LibraryService.getById(Number(id));
 
       if (!library) {
         logWarn(
-          "LibraryController.getById ---- Library entry not found with id ${id}"
+          `LibraryController.getById ---- Library entry not found with id ${id}`
         );
         res.status(404).json({ message: "Library entry not found" });
+        return;
       }
 
-      if (library?.userId !== userId) {
+      if (library.userId !== userId) {
         logWarn(
-          "LibraryController.getById ---- Unauthorized access to library entry ${id}"
+          `LibraryController.getById ---- Unauthorized access to library entry ${id}`
         );
         res.status(403).json({ message: "Forbidden" });
+        return;
       }
 
-      logInfo("LibraryController.getById ---- Retrieved library entry ${id}");
+      logInfo(`LibraryController.getById ---- Retrieved library entry ${id}`);
       res.json(library);
     } catch (error) {
       logWarn(
-        "LibraryController.getById ---- Error retrieving library entry: ${error}"
+        `LibraryController.getById ---- Error retrieving library entry: ${error}`
       );
       res.status(500).json({ message: "Internal server error" });
     }

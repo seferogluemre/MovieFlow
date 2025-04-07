@@ -61,6 +61,15 @@ app.use(
   express.static(path.join(__dirname, "../", "public", "uploads"))
 );
 
+app.use(
+  "/posters",
+  (req, res, next) => {
+    res.setHeader("Cross-Origin-Resource-Policy", "cross-origin");
+    next();
+  },
+  express.static(path.join(__dirname, "../", "public", "posters"))
+);
+
 app.use("/api/watchlist", watchList_routes);
 app.use("/api/wishlist", wishList_routes);
 app.use("/api/users", user_routes);

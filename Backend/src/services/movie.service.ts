@@ -3,7 +3,7 @@ import {
   CreateMovieType,
   UpdateMovieType,
 } from "../validators/movie.validation";
-import { getFullPosterUrl } from "../helpers/url.helper";
+import { getFullPosterUrl, getFullActorPhotoUrl } from "../helpers/url.helper";
 import dotenv from "dotenv";
 import path from "path";
 import fs from "fs";
@@ -61,6 +61,13 @@ export class MovieService {
     return movies.map((movie) => ({
       ...movie,
       posterImage: getFullPosterUrl(movie.posterImage),
+      actors: movie.actors.map((movieActor) => ({
+        ...movieActor,
+        actor: {
+          ...movieActor.actor,
+          photo: getFullActorPhotoUrl(movieActor.actor.photo),
+        },
+      })),
     }));
   }
 
@@ -83,6 +90,13 @@ export class MovieService {
 
     if (movie) {
       movie.posterImage = getFullPosterUrl(movie.posterImage);
+      movie.actors = movie.actors.map((movieActor) => ({
+        ...movieActor,
+        actor: {
+          ...movieActor.actor,
+          photo: getFullActorPhotoUrl(movieActor.actor.photo),
+        },
+      }));
     }
 
     return movie;

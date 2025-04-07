@@ -25,7 +25,7 @@ export class ActorService {
 
     return actors.map((actor) => ({
       ...actor,
-      profileImage: actor.photo ? getFullPosterUrl(actor.photo) : null,
+      photo: actor.photo ? getFullActorPhotoUrl(actor.photo) : null,
     }));
   }
 
@@ -45,6 +45,7 @@ export class ActorService {
 
     return {
       ...actor,
+      photo: getFullActorPhotoUrl(actor.photo),
       movies: actor.movies.map((movieActor) => ({
         ...movieActor,
         movie: movieActor.movie
