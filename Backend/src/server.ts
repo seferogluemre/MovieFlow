@@ -10,10 +10,13 @@ import auth_routes from "./routes/auth.routes";
 import genre_routes from "./routes/genre.routes";
 import review_routes from "./routes/review.routes";
 import rating_routes from "./routes/rating.routes";
-
 import path from "path";
 import watchList_routes from "./routes/watchlist.routes";
 import wishList_routes from "./routes/wishlist.routes";
+import libraryRoutes from "./routes/library.routes";
+import friendshipRoutes from "./routes/friendship.routes";
+import movieGenreRoutes from "./routes/movie-genre.routes";
+import movieActorRoutes from "./routes/movie-actor.routes";
 
 const globalLimiter = rateLimit({
   windowMs: 1 * 60 * 1000,
@@ -58,15 +61,6 @@ app.use(
   express.static(path.join(__dirname, "../", "public", "uploads"))
 );
 
-app.use(
-  "/posters",
-  (req, res, next) => {
-    res.setHeader("Cross-Origin-Resource-Policy", "cross-origin");
-    next();
-  },
-  express.static(path.join(__dirname, "../", "public", "posters"))
-);
-
 app.use("/api/watchlist", watchList_routes);
 app.use("/api/wishlist", wishList_routes);
 app.use("/api/users", user_routes);
@@ -76,6 +70,11 @@ app.use("/api/auth", auth_routes);
 app.use("/api/genres", genre_routes);
 app.use("/api/reviews", review_routes);
 app.use("/api/ratings", rating_routes);
+
+app.use("/api/library", libraryRoutes);
+app.use("/api/friendships", friendshipRoutes);
+app.use("/api/movie-genres", movieGenreRoutes);
+app.use("/api/movie-actors", movieActorRoutes);
 
 app.listen(port, () => {
   console.log(`Sunucu ${port} portunda çalışıyor...`);

@@ -3,7 +3,7 @@ import {
   CreateActorType,
   UpdateActorType,
 } from "../validators/actor.validation";
-import { getFullPosterUrl } from "../helpers/url.helper";
+import { getFullPosterUrl, getFullActorPhotoUrl } from "../helpers/url.helper";
 import { BASE_URL } from "./user.service";
 import path from "path";
 import fs from "fs";
@@ -60,26 +60,12 @@ export class ActorService {
   static async create(data: CreateActorType) {
     const actor = await prisma.actor.create({
       data: {
-        name: data.name,
-        biography: data.biography,
-        birthYear: data.birthYear,
-        nationality: data.nationality,
-        photo: data.photo,
-      },
-      select: {
-        id: true,
-        name: true,
-        biography: true,
-        birthYear: true,
-        nationality: true,
-        photo: true,
+        ...data,
+        photo: data.photo ? getFullActorPhotoUrl(data.photo) : null,
       },
     });
-
-    return {
-      ...actor,
-      profileImage: actor.photo ? getFullPosterUrl(actor.photo) : null,
-    };
+    await prisma.$disconnect();
+    return actor;
   }
 
   static async getAll() {
@@ -92,17 +78,18 @@ export class ActorService {
         },
       },
     });
-
+    await prisma.$disconnect();
     return actors.map((actor) => ({
       ...actor,
+      photo: getFullActorPhotoUrl(actor.photo),
       movies: actor.movies.map((movieActor) => ({
         ...movieActor,
-        movie: movieActor.movie
-          ? {
-              ...movieActor.movie,
-              posterImage: getFullPosterUrl(movieActor.movie.posterImage),
-            }
-          : null,
+        movie: {
+          ...movieActor.movie,
+          posterImage: movieActor.movie.posterImage
+            ? `http://localhost:3000/posters/${movieActor.movie.posterImage}`
+            : null,
+        },
       })),
     }));
   }
@@ -118,74 +105,46 @@ export class ActorService {
         },
       },
     });
-
-    if (actor) {
-      actor.movies = actor.movies.map((movieActor) => ({
+    await prisma.$disconnect();
+    if (!actor) return null;
+    return {
+      ...actor,
+      photo: getFullActorPhotoUrl(actor.photo),
+      movies: actor.movies.map((movieActor) => ({
         ...movieActor,
-        movie: movieActor.movie
-          ? {
-              ...movieActor.movie,
-              posterImage: getFullPosterUrl(movieActor.movie.posterImage),
-            }
-          : null,
-      }));
-    }
-
-    return actor;
+        movie: {
+          ...movieActor.movie,
+          posterImage: movieActor.movie.posterImage
+            ? `http://localhost:3000/posters/${movieActor.movie.posterImage}`
+            : null,
+        },
+      })),
+    };
   }
 
   static async update(id: number, data: UpdateActorType) {
     const actor = await prisma.actor.update({
       where: { id },
       data: {
-        name: data.name,
-        biography: data.biography,
-        birthYear: data.birthYear,
-        nationality: data.nationality,
-        photo: data.photo,
-      },
-      select: {
-        id: true,
-        name: true,
-        biography: true,
-        birthYear: true,
-        nationality: true,
-        photo: true,
+        ...data,
+        photo: data.photo ? getFullActorPhotoUrl(data.photo) : undefined,
       },
     });
-
+    await prisma.$disconnect();
     return {
       ...actor,
-      profileImage: actor.photo ? getFullPosterUrl(actor.photo) : null,
+      photo: getFullActorPhotoUrl(actor.photo),
     };
   }
 
   static async delete(id: number) {
-    const actor = await prisma.actor.findUnique({
+    const actor = await prisma.actor.delete({
       where: { id },
-      select: { photo: true },
     });
-
-    if (actor?.photo) {
-      const photoPath = path.join(
-        __dirname,
-        "..",
-        "..",
-        "public",
-        "uploads",
-        actor.photo
-      );
-      if (fs.existsSync(photoPath)) {
-        fs.unlinkSync(photoPath);
-      }
-    }
-
-    return await prisma.actor.delete({
-      where: { id },
-      select: {
-        id: true,
-        name: true,
-      },
-    });
+    await prisma.$disconnect();
+    return {
+      ...actor,
+      photo: getFullActorPhotoUrl(actor.photo),
+    };
   }
 }

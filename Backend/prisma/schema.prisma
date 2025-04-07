@@ -160,6 +160,7 @@ model Wishlist {
   @@map("user_wishlist")
 }
 
+// ------------------------------------------------------------
 // Kütüphane modeli
 model Library {
   id          Int       @id @default(autoincrement())
@@ -209,6 +210,7 @@ model MovieActor {
   @@id([movieId, actorId])
   @@map("movie_actors")
 }
+
 
 model Session {
   id     Int  @id @default(autoincrement())

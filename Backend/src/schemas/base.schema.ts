@@ -1,8 +1,7 @@
-// base.schema.ts
-import { z } from 'zod';
+import { z } from "zod";
 
 export const BaseSchema = z.object({
-    id: z.number().int().optional(),
-    createdAt: z.date().optional(),
-    updatedAt: z.date().optional(),
+  id: z.number().int().optional(),
+  createdAt: z.date().optional(),
+  updatedAt: z.date().optional(),
 });

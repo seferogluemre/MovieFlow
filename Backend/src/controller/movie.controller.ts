@@ -14,7 +14,7 @@ const uploadPoster = multer({ storage: postersStorage }).single("poster");
 export class MovieController {
   static async index(req: Request, res: Response): Promise<void> {
     try {
-      const movies = await MovieService.index();
+      const movies = await MovieService.getAll();
 
       logInfo(`List movies --- Request Received`);
 
@@ -99,7 +99,7 @@ export class MovieController {
         return;
       }
 
-      const movie = await MovieService.get(Number(id));
+      const movie = await MovieService.getById(Number(id));
 
       if (!movie) {
         res.status(404).json({

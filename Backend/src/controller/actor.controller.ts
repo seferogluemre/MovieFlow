@@ -81,7 +81,7 @@ export class ActorController {
         const { file } = req;
 
         if (file) {
-          actor.actorImage = file.filename;
+          actor.photo = file.filename;
         }
 
         const createdActor = await ActorService.create(actor);
@@ -155,7 +155,7 @@ export class ActorController {
             }
           }
 
-          actor.actorImage = file.filename;
+          actor.photo = file.filename;
         }
 
         const updatedActor = await ActorService.update(Number(id), actor);

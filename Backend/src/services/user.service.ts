@@ -1,6 +1,6 @@
-import prisma from "src/config/database";
-import { CreateUserType, UpdateUserType } from "src/validators/user.validation";
-import bcryptjs from "bcryptjs";
+import { PrismaClient } from "@prisma/client";
+import { CreateUserType, UpdateUserType } from "../validators/user.validation";
+import { getFullProfileImageUrl } from "../helpers/url.helper";
 import { USER_WHERE_CLAUSE } from "src/constants/user.constant";
 import { UserQueryProps } from "src/types/types";
 
@@ -8,6 +8,7 @@ export const BASE_URL = process.env.BASE_URL || "http://localhost:3000";
 
 export class UserService {
   static async index(query: UserQueryProps) {
+    const prisma = new PrismaClient();
     const users = await prisma.user.findMany({
       where: USER_WHERE_CLAUSE(query),
       select: {
@@ -21,43 +22,26 @@ export class UserService {
         createdAt: true,
       },
     });
+    await prisma.$disconnect();
 
     return users.map((user) => ({
       ...user,
-      profileImage: user.profileImage
-        ? `${BASE_URL}/uploads/${user.profileImage}`
-        : null,
+      profileImage: getFullProfileImageUrl(user.profileImage),
     }));
   }
 
-  static async create(body: CreateUserType) {
-    const hashedPassword = await bcryptjs.hash(body.password, 10);
+  static async create(data: CreateUserType) {
+    const prisma = new PrismaClient();
     const user = await prisma.user.create({
       data: {
-        name: body.name,
-        email: body.email,
-        password: hashedPassword,
-        isAdmin: body.isAdmin,
-        username: body.username,
-        profileImage: body.profileImage,
-      },
-      select: {
-        id: true,
-        email: true,
-        username: true,
-        name: true,
-        isAdmin: true,
-        password: true,
-        profileImage: true,
+        ...data,
+        profileImage: data.profileImage
+          ? getFullProfileImageUrl(data.profileImage)
+          : null,
       },
     });
-
-    return {
-      ...user,
-      profileImage: user.profileImage
-        ? `${BASE_URL}/uploads/${user.profileImage}`
-        : null,
-    };
+    await prisma.$disconnect();
+    return user;
   }
 
   static async get(id?: number) {
@@ -65,6 +49,7 @@ export class UserService {
       return { message: "Incorrect id or email submission" };
     }
 
+    const prisma = new PrismaClient();
     const user = await prisma.user.findUnique({
       where: {
         id: id,
@@ -86,13 +71,12 @@ export class UserService {
         createdAt: true,
       },
     });
+    await prisma.$disconnect();
 
     if (user) {
       return {
         ...user,
-        profileImage: user.profileImage
-          ? `${BASE_URL}/uploads/${user.profileImage}`
-          : null,
+        profileImage: getFullProfileImageUrl(user.profileImage),
       };
     }
 
@@ -100,6 +84,7 @@ export class UserService {
   }
 
   static async getUserByEmail(email?: string) {
+    const prisma = new PrismaClient();
     const user = await prisma.user.findUnique({
       where: {
         email: email,
@@ -122,24 +107,24 @@ export class UserService {
         createdAt: true,
       },
     });
+    await prisma.$disconnect();
 
     if (user) {
       return {
         ...user,
-        profileImage: user.profileImage
-          ? `${BASE_URL}/uploads/${user.profileImage}`
-          : null,
+        profileImage: getFullProfileImageUrl(user.profileImage),
       };
     }
 
     return user;
   }
 
-  static async update(id: number, body: UpdateUserType) {
+  static async update(id: number, data: UpdateUserType) {
     if (!id) {
       return { message: "ID is required" };
     }
 
+    const prisma = new PrismaClient();
     const existingUser = await prisma.user.findUnique({
       where: { id: Number(id) },
     });
@@ -148,24 +133,25 @@ export class UserService {
       throw new Error("User not found");
     }
 
-    const updatedUser = await prisma.user.update({
+    const user = await prisma.user.update({
       where: {
         id: Number(id),
       },
       data: {
-        name: body.name,
-        username: body.username,
-        password: body.password,
-        email: body.email,
-        profileImage: body.profileImage,
+        name: data.name,
+        username: data.username,
+        password: data.password,
+        email: data.email,
+        profileImage: data.profileImage
+          ? getFullProfileImageUrl(data.profileImage)
+          : undefined,
       },
     });
+    await prisma.$disconnect();
 
     return {
-      ...updatedUser,
-      profileImage: updatedUser.profileImage
-        ? `${BASE_URL}/uploads/${updatedUser.profileImage}`
-        : null,
+      ...user,
+      profileImage: getFullProfileImageUrl(user.profileImage),
     };
   }
 
@@ -174,7 +160,8 @@ export class UserService {
       return { message: "ID is required" };
     }
 
-    return await prisma.user.delete({
+    const prisma = new PrismaClient();
+    const user = await prisma.user.delete({
       where: {
         id: id,
       },
@@ -182,7 +169,14 @@ export class UserService {
         id: true,
         name: true,
         username: true,
+        profileImage: true,
       },
     });
+    await prisma.$disconnect();
+
+    return {
+      ...user,
+      profileImage: getFullProfileImageUrl(user.profileImage),
+    };
   }
 }

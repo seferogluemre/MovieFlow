@@ -10,7 +10,7 @@ import { logInfo, logWarn } from "src/utils/logger.util";
 export class GenreController {
   static async index(req: Request, res: Response): Promise<void> {
     try {
-      const genres = await GenreService.index();
+      const genres = await GenreService.getAll();
       logInfo(`List Genres --- Request Received`);
 
       if (genres.length > 0) {
@@ -42,7 +42,7 @@ export class GenreController {
         return;
       }
 
-      const genre = await GenreService.get(Number(id));
+      const genre = await GenreService.getById(Number(id));
       if (!genre) {
         logWarn(`Get Genre --- Genre not found`);
         res.status(404).json({

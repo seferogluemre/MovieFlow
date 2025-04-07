@@ -10,7 +10,7 @@ import { logInfo, logWarn } from "src/utils/logger.util";
 export class RatingController {
   static async index(req: Request, res: Response): Promise<void> {
     try {
-      const ratings = await RatingService.index();
+      const ratings = await RatingService.getAll();
       logInfo(`List Ratings --- Request Received`);
 
       if (ratings.length > 0) {
@@ -42,7 +42,7 @@ export class RatingController {
         return;
       }
 
-      const rating = await RatingService.get(Number(id));
+      const rating = await RatingService.getById(Number(id));
       if (!rating) {
         logWarn(`Get Rating --- Rating not found`);
         res.status(404).json({
@@ -122,11 +122,7 @@ export class RatingController {
       }
 
       const rating = updateRatingSchema.parse(req.body);
-      const updatedRating = await RatingService.update(
-        Number(id),
-        userId,
-        rating
-      );
+      const updatedRating = await RatingService.update(Number(id), rating);
       logInfo(`Update Rating - Updated Rating ${updatedRating}`);
 
       res.status(200).json({
