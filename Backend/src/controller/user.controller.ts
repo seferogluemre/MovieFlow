@@ -64,6 +64,7 @@ export class UserController {
           status: "User Created Successfully",
           data: createdUser,
         });
+        
       });
     } catch (error) {
       if (error instanceof z.ZodError) {

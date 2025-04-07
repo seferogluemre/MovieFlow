@@ -35,4 +35,4 @@ export interface CreateActorProps {
   name: string;
   nationality?: string;
   actorImage?: string | null;
-},
+}

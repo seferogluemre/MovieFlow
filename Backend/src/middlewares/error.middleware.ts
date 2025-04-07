@@ -25,7 +25,6 @@ export const errorHandler = (
     return res.status(err.statusCode).json(createErrorResponse(err.error));
   }
 
-  // Handle unexpected errors
   const unexpectedError: ApiError = {
     code: 'INTERNAL_SERVER_ERROR',
     message: 'An unexpected error occurred',

@@ -121,3 +121,9 @@
 [INFO] 2025-04-07T22:02:42.582Z - Login User --- Login successful 🚀
 [INFO] 2025-04-07T22:03:21.177Z - Create Movie - Created Movie[object Object]
 [INFO] 2025-04-07T22:03:36.133Z - List movies --- Request Received
+[INFO] 2025-04-07T22:10:03.111Z - List Users --- Request Received
+[INFO] 2025-04-07T22:10:25.591Z - List movies --- Request Received
+[INFO] 2025-04-07T22:25:37.422Z - List Users --- Request Received
+[INFO] 2025-04-07T22:26:09.427Z - List Users --- Request Received
+[INFO] 2025-04-07T22:39:53.701Z - Update User - Updated User [object Object]
+[INFO] 2025-04-07T22:40:09.283Z - Update User - Updated User [object Object]

@@ -16,7 +16,6 @@ const writeLog = (level: LogLevel, message: string, error?: Error) => {
     : "";
   const logMessage = `[${level}] ${timestamp} - ${message}${errorMessage}\n`;
 
-  console.log(logMessage);
   fs.appendFileSync(logFilePath, logMessage);
 };
 
