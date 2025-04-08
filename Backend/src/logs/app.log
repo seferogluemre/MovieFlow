@@ -162,3 +162,28 @@
 [INFO] 2025-04-08T11:48:02.561Z - Notification getUserNotifications ---- Retrieved user notifications
 [INFO] 2025-04-08T11:51:07.394Z - Notification markAsRead ---- Notification marked as read
 [INFO] 2025-04-08T11:51:57.832Z - Notification markAllAsRead ---- All notifications marked as read
+[INFO] 2025-04-08T12:04:38.761Z - Login User --- Login successful 🚀
+[INFO] 2025-04-08T12:04:55.133Z - Notification getUserNotifications ---- Retrieved user notifications
+[WARN] 2025-04-08T12:05:34.884Z - Friendship update ---- Error updating friendship status
+[INFO] 2025-04-08T12:05:37.799Z - Friendship update ---- Friendship status updated successfully
+[WARN] 2025-04-08T12:07:57.682Z - Friendship delete ---- Friendship not found
+[WARN] 2025-04-08T12:07:57.690Z - Friendship delete ---- Unauthorized access attempt
+[WARN] 2025-04-08T12:07:57.691Z - Friendship delete ---- Error deleting friendship
+[INFO] 2025-04-08T12:08:04.354Z - Friendship delete ---- Friendship deleted successfully
+[INFO] 2025-04-08T12:08:31.216Z - Friendship create ---- Friendship request sent successfully
+[INFO] 2025-04-08T12:09:49.596Z - Login User --- Login successful 🚀
+[INFO] 2025-04-08T12:10:50.772Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-08T12:12:03.846Z - Notification markAsRead ---- Notification marked as read
+[INFO] 2025-04-08T12:12:27.231Z - Notification markAllAsRead ---- All notifications marked as read
+[INFO] 2025-04-08T12:12:51.417Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-08T12:49:16.458Z - List movies --- Request Received
+[INFO] 2025-04-08T12:51:40.854Z - List movies --- Request Received
+[INFO] 2025-04-08T12:51:40.859Z - List movies --- Request Received
+[INFO] 2025-04-08T12:52:02.379Z - List movies --- Request Received
+[INFO] 2025-04-08T12:52:02.384Z - List movies --- Request Received
+[INFO] 2025-04-08T12:53:21.320Z - List movies --- Request Received
+[INFO] 2025-04-08T12:53:21.325Z - List movies --- Request Received
+[INFO] 2025-04-08T12:53:36.337Z - List movies --- Request Received
+[INFO] 2025-04-08T12:53:36.342Z - List movies --- Request Received
+[INFO] 2025-04-08T13:10:04.864Z - List movies --- Request Received
+[INFO] 2025-04-08T13:10:04.869Z - List movies --- Request Received
