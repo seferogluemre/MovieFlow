@@ -155,3 +155,10 @@
 [INFO] 2025-04-08T11:42:55.590Z - Create Review --- Created Review [object Object]
 [INFO] 2025-04-08T11:44:18.228Z - Get User Reviews - Retrieved reviews for User 5
 [INFO] 2025-04-08T11:44:51.439Z - Friendship create ---- Friendship request sent successfully
+[WARN] 2025-04-08T11:46:59.493Z - Friendship create ---- Error sending friendship request
+[WARN] 2025-04-08T11:47:03.290Z - Friendship create ---- Error sending friendship request
+[WARN] 2025-04-08T11:47:08.403Z - Friendship create ---- Error sending friendship request
+[INFO] 2025-04-08T11:47:37.474Z - Login User --- Login successful 🚀
+[INFO] 2025-04-08T11:48:02.561Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-08T11:51:07.394Z - Notification markAsRead ---- Notification marked as read
+[INFO] 2025-04-08T11:51:57.832Z - Notification markAllAsRead ---- All notifications marked as read
