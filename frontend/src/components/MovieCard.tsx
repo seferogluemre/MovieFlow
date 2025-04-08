@@ -1,30 +1,78 @@
-import { Movie } from '@store/useMovieStore'
+import { Card, CardActionArea, CardContent, CardMedia, Typography, Box, Chip } from '@mui/material';
+import StarIcon from '@mui/icons-material/Star';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-interface MovieCardProps {
-  movie: Movie
-  onRemove?: () => void
+interface Movie {
+  id: number;
+  title: string;
+  year: number;
+  rating: number;
+  poster: string;
 }
 
-export const MovieCard = ({ movie, onRemove }: MovieCardProps) => {
+interface MovieCardProps {
+  movie: Movie;
+}
+
+export default function MovieCard({ movie }: MovieCardProps) {
+  const [isHovered, setIsHovered] = useState(false);
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/movie/${movie.id}`);
+  };
+
   return (
-    <div className="bg-white rounded-lg shadow-md overflow-hidden">
-      <img
-        src={movie.poster_path}
-        alt={movie.title}
-        className="w-full h-64 object-cover"
-      />
-      <div className="p-4">
-        <h3 className="text-lg font-semibold mb-2">{movie.title}</h3>
-        <p className="text-gray-600 text-sm mb-4">{movie.overview}</p>
-        {onRemove && (
-          <button
-            onClick={onRemove}
-            className="w-full bg-red-500 text-white py-2 rounded hover:bg-red-600 transition-colors"
+    <Card 
+      className="h-full overflow-hidden transition-shadow hover:shadow-lg"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      <CardActionArea onClick={handleClick}>
+        <div className="relative">
+          <CardMedia
+            component="img"
+            height="450"
+            image={movie.poster}
+            alt={movie.title}
+            className="h-64 object-cover transition-transform duration-300"
+            sx={{ transform: isHovered ? 'scale(1.05)' : 'scale(1)' }}
+          />
+          <Box 
+            className="absolute top-2 right-2 rounded p-1"
+            sx={{ 
+              bgcolor: 'rgba(0, 0, 0, 0.6)', 
+              display: 'flex', 
+              alignItems: 'center',
+              padding: '4px 8px',
+              borderRadius: '4px'
+            }}
           >
-            Listeden Kaldır
-          </button>
-        )}
-      </div>
-    </div>
-  )
+            <StarIcon sx={{ color: '#FFD700', fontSize: '16px', marginRight: '4px' }} />
+            <Typography variant="body2" component="span" sx={{ color: 'white', fontWeight: 'bold' }}>
+              {movie.rating.toFixed(1)}
+            </Typography>
+          </Box>
+        </div>
+
+        <CardContent>
+          <Typography gutterBottom variant="h6" component="div" className="font-bold line-clamp-1" title={movie.title}>
+            {movie.title}
+          </Typography>
+          <Box display="flex" alignItems="center" justifyContent="space-between">
+            <Typography variant="body2" color="text.secondary">
+              {movie.year}
+            </Typography>
+            <Chip 
+              label="Action" 
+              size="small" 
+              className="bg-accent/50 text-xs"
+              sx={{ height: '20px' }}
+            />
+          </Box>
+        </CardContent>
+      </CardActionArea>
+    </Card>
+  );
 } 
