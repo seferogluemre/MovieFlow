@@ -127,3 +127,31 @@
 [INFO] 2025-04-07T22:26:09.427Z - List Users --- Request Received
 [INFO] 2025-04-07T22:39:53.701Z - Update User - Updated User [object Object]
 [INFO] 2025-04-07T22:40:09.283Z - Update User - Updated User [object Object]
+[INFO] 2025-04-08T11:26:22.701Z - Login User --- Login successful 🚀
+[WARN] 2025-04-08T11:26:31.028Z - Notification getUserNotifications ---- Unauthorized access attempt
+[WARN] 2025-04-08T11:27:11.819Z - Friendship create ---- Unauthorized access attempt
+[WARN] 2025-04-08T11:27:11.827Z - Friendship create ---- Error sending friendship request
+[WARN] 2025-04-08T11:28:19.513Z - Friendship create ---- Unauthorized access attempt
+[WARN] 2025-04-08T11:28:19.570Z - Friendship create ---- Error sending friendship request
+[WARN] 2025-04-08T11:28:33.309Z - Friendship create ---- Unauthorized access attempt
+[WARN] 2025-04-08T11:28:33.317Z - Friendship create ---- Error sending friendship request
+[WARN] 2025-04-08T11:28:39.321Z - Friendship create ---- Unauthorized access attempt
+[WARN] 2025-04-08T11:28:39.327Z - Friendship create ---- Error sending friendship request
+[WARN] 2025-04-08T11:29:13.951Z - Notification getUserNotifications ---- Unauthorized access attempt
+[WARN] 2025-04-08T11:30:37.353Z - Friendship create ---- Unauthorized access attempt
+[WARN] 2025-04-08T11:30:37.443Z - Friendship create ---- Error sending friendship request
+[WARN] 2025-04-08T11:32:39.326Z - Login User --- Invalid email or password 
+[INFO] 2025-04-08T11:33:22.339Z - Create User --- Created User [object Object]
+[INFO] 2025-04-08T11:33:31.157Z - Login User --- Login successful 🚀
+[WARN] 2025-04-08T11:33:54.058Z - Friendship create ---- Unauthorized access attempt
+[WARN] 2025-04-08T11:33:54.078Z - Friendship create ---- Error sending friendship request
+[WARN] 2025-04-08T11:34:03.704Z - Friendship create ---- Unauthorized access attempt
+[WARN] 2025-04-08T11:34:03.712Z - Friendship create ---- Error sending friendship request
+[WARN] 2025-04-08T11:37:20.008Z - Friendship getById ---- Unauthorized access attempt
+[WARN] 2025-04-08T11:37:20.073Z - Friendship getById ---- Error retrieving friendship
+[WARN] 2025-04-08T11:40:11.606Z - Friendship getById ---- Unauthorized access attempt
+[WARN] 2025-04-08T11:40:11.675Z - Friendship getById ---- Error retrieving friendship
+[INFO] 2025-04-08T11:41:14.628Z - Login User --- Login successful 🚀
+[INFO] 2025-04-08T11:42:55.590Z - Create Review --- Created Review [object Object]
+[INFO] 2025-04-08T11:44:18.228Z - Get User Reviews - Retrieved reviews for User 5
+[INFO] 2025-04-08T11:44:51.439Z - Friendship create ---- Friendship request sent successfully

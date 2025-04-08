@@ -1,6 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import { verifyToken } from "../utils/auth/jwt.util";
-import { AppError } from "./error.middleware";
+import jwt from "jsonwebtoken";
 import { User } from "@prisma/client";
 
 export const authenticate = async (
@@ -9,36 +8,18 @@ export const authenticate = async (
   next: NextFunction
 ) => {
   try {
-    const authHeader = req.headers.authorization;
-
-    if (!authHeader) {
-      throw new AppError(401, {
-        code: "UNAUTHORIZED",
-        message: "No token provided"
-      });
-    }
-
-    const token = authHeader.split(" ")[1];
-
+    const token = req.headers.authorization?.split(" ")[1];
+    
     if (!token) {
-      throw new AppError(401, {
-        code: "UNAUTHORIZED",
-        message: "Invalid token format"
-      });
+      return res.status(401).json({ message: "Token bulunamadı" });
     }
 
-    const decoded = verifyToken(token);
-    req.user = decoded as unknown as User;
-
+    const decoded = jwt.verify(token, process.env.JWT_SECRET || "supersecret") as { userId: number };
+    req.user = { id: decoded.userId } as User;
+    
     next();
   } catch (error) {
-    if (error instanceof AppError) {
-      next(error);
-    } else {
-      next(new AppError(401, {
-        code: "UNAUTHORIZED",
-        message: "Invalid token"
-      }));
-    }
+    console.error("Auth error:", error);
+    return res.status(401).json({ message: "Geçersiz token" });
   }
 };

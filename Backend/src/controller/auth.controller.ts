@@ -36,7 +36,7 @@ export class AuthController {
         return;
       }
 
-      const accessTokenExpiresIn = 15 * 60;
+      const accessTokenExpiresIn = 24 * 60 * 60;
       const accessToken = jwt.sign({ userId: existingUser.id }, JWT_SECRET, {
         expiresIn: accessTokenExpiresIn,
       });
