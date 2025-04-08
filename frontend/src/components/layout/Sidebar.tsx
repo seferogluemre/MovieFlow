@@ -5,6 +5,7 @@ import {
   Drawer,
   List,
   ListItem,
+  ListItemButton,
   ListItemIcon,
   ListItemText,
   Divider,
@@ -20,14 +21,10 @@ import {
   Favorite as WishlistIcon,
   VideoLibrary as LibraryIcon,
   People as FriendsIcon,
-  Stars as TopRatedIcon,
-  NewReleases as NewReleasesIcon,
 } from '@mui/icons-material';
 import { useAuth } from '../../context/AuthContext';
 import { Genre } from '../../types';
 import { movieService } from '../../services/movieService';
-
-
 
 interface SidebarProps {
   open?: boolean;
@@ -59,53 +56,19 @@ const Sidebar: React.FC<SidebarProps> = ({ open, onClose }) => {
   const drawerContent = (
     <Box sx={{ overflow: 'auto', height: '100%' }}>
       <List component="nav">
-        <ListItem 
-          button 
-          component={Link} 
-          to="/"
-          selected={isActive('/')}
-        >
+        <ListItemButton component={Link} to="/">
           <ListItemIcon>
             <HomeIcon color={isActive('/') ? "primary" : "inherit"} />
           </ListItemIcon>
           <ListItemText primary="Ana Sayfa" />
-        </ListItem>
+        </ListItemButton>
         
-        <ListItem 
-          button 
-          component={Link} 
-          to="/movies"
-          selected={isActive('/movies')}
-        >
+        <ListItemButton component={Link} to="/movies">
           <ListItemIcon>
             <MovieIcon color={isActive('/movies') ? "primary" : "inherit"} />
           </ListItemIcon>
           <ListItemText primary="Tüm Filmler" />
-        </ListItem>
-        
-        <ListItem 
-          button 
-          component={Link} 
-          to="/movies/top-rated"
-          selected={isActive('/movies/top-rated')}
-        >
-          <ListItemIcon>
-            <TopRatedIcon color={isActive('/movies/top-rated') ? "primary" : "inherit"} />
-          </ListItemIcon>
-          <ListItemText primary="En Çok Puanlananlar" />
-        </ListItem>
-        
-        <ListItem 
-          button 
-          component={Link} 
-          to="/movies/new-releases"
-          selected={isActive('/movies/new-releases')}
-        >
-          <ListItemIcon>
-            <NewReleasesIcon color={isActive('/movies/new-releases') ? "primary" : "inherit"} />
-          </ListItemIcon>
-          <ListItemText primary="Yeni Çıkanlar" />
-        </ListItem>
+        </ListItemButton>
       </List>
       
       <Divider />
@@ -120,52 +83,33 @@ const Sidebar: React.FC<SidebarProps> = ({ open, onClose }) => {
               Kişisel
             </Typography>
             
-            <ListItem 
-              button 
-              component={Link} 
-              to="/watchlist"
-              selected={isActive('/watchlist')}
-            >
+            <ListItemButton component={Link} to="/watchlist">
               <ListItemIcon>
                 <WatchlistIcon color={isActive('/watchlist') ? "primary" : "inherit"} />
               </ListItemIcon>
               <ListItemText primary="İzleme Listesi" />
-            </ListItem>
+            </ListItemButton>
             
-            <ListItem 
-              component={Link} 
-              to="/wishlist"
-              selected={isActive('/wishlist')}
-            >
+            <ListItemButton component={Link} to="/wishlist">
               <ListItemIcon>
                 <WishlistIcon color={isActive('/wishlist') ? "primary" : "inherit"} />
               </ListItemIcon>
               <ListItemText primary="Favori Filmler" />
-            </ListItem>
+            </ListItemButton>
             
-            <ListItem 
-               
-              component={Link} 
-              to="/library"
-              selected={isActive('/library')}
-            >
+            <ListItemButton component={Link} to="/library">
               <ListItemIcon>
                 <LibraryIcon color={isActive('/library') ? "primary" : "inherit"} />
               </ListItemIcon>
               <ListItemText primary="Kütüphane" />
-            </ListItem>
+            </ListItemButton>
             
-            <ListItem 
-              button 
-              component={Link} 
-              to="/friends"
-              selected={isActive('/friends')}
-            >
+            <ListItemButton component={Link} to="/friends">
               <ListItemIcon>
                 <FriendsIcon color={isActive('/friends') ? "primary" : "inherit"} />
               </ListItemIcon>
               <ListItemText primary="Arkadaşlar" />
-            </ListItem>
+            </ListItemButton>
           </List>
           
           <Divider />
@@ -180,11 +124,10 @@ const Sidebar: React.FC<SidebarProps> = ({ open, onClose }) => {
           Kategoriler
         </Typography>
         
-        {genres.map((genre) => (
-          <ListItem 
+        {Array.isArray(genres) && genres.map((genre) => (
+          <ListItemButton
             key={genre.id}
-            button 
-            component={Link} 
+            component={Link}
             to={`/genres/${genre.id}`}
             selected={isActive(`/genres/${genre.id}`)}
           >
@@ -192,7 +135,7 @@ const Sidebar: React.FC<SidebarProps> = ({ open, onClose }) => {
               <GenresIcon color={isActive(`/genres/${genre.id}`) ? "primary" : "inherit"} />
             </ListItemIcon>
             <ListItemText primary={genre.name} />
-          </ListItem>
+          </ListItemButton>
         ))}
       </List>
     </Box>

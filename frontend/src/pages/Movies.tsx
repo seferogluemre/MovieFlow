@@ -1,187 +1,209 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
-  Typography, 
-  Box, 
-  Grid, 
   Container, 
+  Typography, 
+  Grid, 
+  Box, 
+  TextField, 
+  MenuItem, 
+  FormControl, 
+  InputLabel, 
+  Select, 
   CircularProgress,
   Pagination,
-  TextField,
-  MenuItem,
-  Select,
-  FormControl,
-  InputLabel,
-  SelectChangeEvent,
+  InputAdornment
 } from '@mui/material';
+import { Search as SearchIcon } from '@mui/icons-material';
 import { useParams, useSearchParams } from 'react-router-dom';
-import { useQuery } from '@tanstack/react-query';
+import { Genre, Movie } from '../types';
 import { movieService } from '../services/movieService';
-import MovieCard from '../components/ui/MovieCard';
-import { Movie, Genre } from '../types';
+import MovieCard from '../components/movie/MovieCard';
 
-const MoviesPage: React.FC = () => {
-  const { id: genreId } = useParams<{ id: string }>();
-  const [searchParams] = useSearchParams();
-  const searchQuery = searchParams.get('q') || '';
-
-  const [currentPage, setCurrentPage] = useState(1);
-  const [sortBy, setSortBy] = useState('releaseYear');
-  const [sortOrder, setSortOrder] = useState('desc');
-  const itemsPerPage = 12;
-
-  // Tüm filmleri getir
-  const { data: moviesData, isLoading: isMoviesLoading } = useQuery({
-    queryKey: ['movies', genreId, searchQuery],
-    queryFn: async () => {
-      if (genreId) {
-        return movieService.getMoviesByGenre(parseInt(genreId));
-      } else if (searchQuery) {
-        return movieService.searchMovies(searchQuery);
-      } else {
-        return movieService.getMovies();
+const Movies: React.FC = () => {
+  const { id: genreId } = useParams<{ id?: string }>();
+  const [searchParams, setSearchParams] = useSearchParams();
+  
+  const [movies, setMovies] = useState<Movie[]>([]);
+  const [genres, setGenres] = useState<Genre[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  
+  const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+  const [search, setSearch] = useState('');
+  const [sort, setSort] = useState('popular');
+  const [selectedGenre, setSelectedGenre] = useState<string>(genreId || '');
+  
+  useEffect(() => {
+    // URL parametrelerini güncelle
+    const params: any = {};
+    if (page > 1) params.page = page;
+    if (search) params.search = search;
+    if (sort !== 'popular') params.sort = sort;
+    if (selectedGenre) params.genre = selectedGenre;
+    
+    setSearchParams(params);
+  }, [page, search, sort, selectedGenre, setSearchParams]);
+  
+  useEffect(() => {
+    // URL parametrelerini kontrol et
+    const pageParam = searchParams.get('page');
+    const searchParam = searchParams.get('search');
+    const sortParam = searchParams.get('sort');
+    const genreParam = searchParams.get('genre');
+    
+    if (pageParam) setPage(parseInt(pageParam));
+    if (searchParam) setSearch(searchParam);
+    if (sortParam) setSort(sortParam);
+    if (genreParam) setSelectedGenre(genreParam);
+  }, [searchParams]);
+  
+  useEffect(() => {
+    // Tüm türleri yükle
+    const fetchGenres = async () => {
+      try {
+        const response = await movieService.getGenres();
+        if (response.success && response.data) {
+          setGenres(response.data);
+        }
+      } catch (err) {
+        console.error('Türler yüklenirken hata oluştu:', err);
       }
-    },
-  });
-
-  // Türleri getir
-  const { data: genresData } = useQuery({
-    queryKey: ['genres'],
-    queryFn: () => movieService.getGenres(),
-  });
-
-  // Mevcut tür ismini bul
-  const currentGenre = genresData?.data?.find(
-    (genre) => genre.id === parseInt(genreId || '0')
-  );
-
-  // Filmleri filtrele ve sırala
-  const filteredAndSortedMovies = React.useMemo(() => {
-    if (!moviesData?.data) return [];
-
-    const filtered = [...moviesData.data];
-
-    // Sıralama
-    return filtered.sort((a, b) => {
-      // @ts-ignore - Dynamic property access
-      const valueA = a[sortBy];
-      // @ts-ignore - Dynamic property access
-      const valueB = b[sortBy];
-
-      if (typeof valueA === 'string' && typeof valueB === 'string') {
-        return sortOrder === 'asc'
-          ? valueA.localeCompare(valueB)
-          : valueB.localeCompare(valueA);
-      }
-
-      return sortOrder === 'asc' ? valueA - valueB : valueB - valueA;
-    });
-  }, [moviesData?.data, sortBy, sortOrder]);
-
-  // Sayfalama
-  const paginatedMovies = React.useMemo(() => {
-    const startIndex = (currentPage - 1) * itemsPerPage;
-    return filteredAndSortedMovies.slice(startIndex, startIndex + itemsPerPage);
-  }, [filteredAndSortedMovies, currentPage]);
-
-  const totalPages = Math.ceil(filteredAndSortedMovies.length / itemsPerPage);
-
-  // Sayfa değiştirme
-  const handlePageChange = (_: React.ChangeEvent<unknown>, value: number) => {
-    setCurrentPage(value);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+    
+    fetchGenres();
+  }, []);
+  
+  
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearch(e.target.value);
+    setPage(1); // Aramada her zaman ilk sayfaya dön
   };
-
-  // Sıralama değiştirme
-  const handleSortChange = (event: SelectChangeEvent) => {
-    setSortBy(event.target.value);
+  
+  const handleSortChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSort(e.target.value);
+    setPage(1);
   };
-
-  // Sıralama yönü değiştirme
-  const handleOrderChange = (event: SelectChangeEvent) => {
-    setSortOrder(event.target.value);
+  
+  const handleGenreChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSelectedGenre(e.target.value);
+    setPage(1);
   };
-
-  if (isMoviesLoading) {
-    return (
-      <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '50vh' }}>
-        <CircularProgress />
-      </Box>
-    );
-  }
-
+  
+  const handlePageChange = (event: React.ChangeEvent<unknown>, value: number) => {
+    setPage(value);
+    window.scrollTo(0, 0);
+  };
+  
   return (
-    <Container className="fade-in">
-      <Box sx={{ mb: 4 }}>
+    <Container maxWidth="xl">
+      <Box sx={{ my: 4 }}>
         <Typography variant="h4" component="h1" gutterBottom>
-          {searchQuery
-            ? `"${searchQuery}" için Arama Sonuçları`
-            : genreId
-            ? `${currentGenre?.name || 'Kategori'} Filmleri`
-            : 'Tüm Filmler'}
+          Filmler
         </Typography>
-
+        
         {/* Filtreler */}
-        <Box sx={{ display: 'flex', gap: 2, mb: 3, flexWrap: 'wrap' }}>
-          <FormControl size="small" sx={{ minWidth: 150 }}>
-            <InputLabel>Sıralama</InputLabel>
-            <Select
-              value={sortBy}
-              label="Sıralama"
-              onChange={handleSortChange}
-            >
-              <MenuItem value="title">Film Adı</MenuItem>
-              <MenuItem value="releaseYear">Yayın Yılı</MenuItem>
-              <MenuItem value="rating">Puan</MenuItem>
-            </Select>
-          </FormControl>
-
-          <FormControl size="small" sx={{ minWidth: 150 }}>
-            <InputLabel>Sıralama Yönü</InputLabel>
-            <Select
-              value={sortOrder}
-              label="Sıralama Yönü"
-              onChange={handleOrderChange}
-            >
-              <MenuItem value="asc">Artan</MenuItem>
-              <MenuItem value="desc">Azalan</MenuItem>
-            </Select>
-          </FormControl>
-        </Box>
-      </Box>
-
-      {/* Film Listesi */}
-      {paginatedMovies.length > 0 ? (
-        <>
-          <Grid container spacing={3}>
-            {paginatedMovies.map((movie) => (
-              <Grid item key={movie.id} xs={12} sm={6} md={4} lg={3}>
-                <MovieCard movie={movie} />
-              </Grid>
-            ))}
+        <Grid container spacing={2} sx={{ mb: 4 }}>
+          {/* Arama */}
+          <Grid item xs={12} md={4}>
+            <TextField
+              fullWidth
+              label="Film Ara"
+              variant="outlined"
+              value={search}
+              onChange={handleSearchChange}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <SearchIcon />
+                  </InputAdornment>
+                ),
+              }}
+            />
           </Grid>
-
-          {/* Sayfalama */}
-          {totalPages > 1 && (
-            <Box sx={{ display: 'flex', justifyContent: 'center', mt: 4 }}>
-              <Pagination
-                count={totalPages}
-                page={currentPage}
-                onChange={handlePageChange}
-                color="primary"
-                size="large"
-              />
-            </Box>
-          )}
-        </>
-      ) : (
-        <Box sx={{ textAlign: 'center', py: 5 }}>
-          <Typography variant="h6" color="text.secondary">
-            Film bulunamadı
+          
+          {/* Sıralama */}
+          <Grid item xs={12} sm={6} md={4}>
+            <FormControl fullWidth>
+              <InputLabel id="sort-label">Sıralama</InputLabel>
+              <Select
+                labelId="sort-label"
+                value={sort}
+                label="Sıralama"
+                onChange={handleSortChange as any}
+              >
+                <MenuItem value="popular">Popülerlik</MenuItem>
+                <MenuItem value="rating">En Yüksek Puan</MenuItem>
+                <MenuItem value="newest">Yeni Eklenenler</MenuItem>
+              </Select>
+            </FormControl>
+          </Grid>
+          
+          {/* Tür Filtresi */}
+          <Grid item xs={12} sm={6} md={4}>
+            <FormControl fullWidth>
+              <InputLabel id="genre-label">Tür</InputLabel>
+              <Select
+                labelId="genre-label"
+                value={selectedGenre}
+                label="Tür"
+                onChange={handleGenreChange as any}
+              >
+                <MenuItem value="all">Tüm Türler</MenuItem>
+                {genres.map(genre => (
+                  <MenuItem key={genre.id} value={genre.id.toString()}>
+                    {genre.name}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          </Grid>
+        </Grid>
+        
+        {/* Film Listesi */}
+        {loading ? (
+          <Box sx={{ display: 'flex', justifyContent: 'center', my: 5 }}>
+            <CircularProgress />
+          </Box>
+        ) : error ? (
+          <Typography color="error" sx={{ my: 4 }}>
+            {error}
           </Typography>
-        </Box>
-      )}
+        ) : movies.length === 0 ? (
+          <Typography sx={{ my: 4 }}>
+            Arama kriterlerinize uygun film bulunamadı.
+          </Typography>
+        ) : (
+          <>
+            <Grid container spacing={3}>
+              {movies.map(movie => (
+                <Grid item key={movie.id} xs={12} sm={6} md={4} lg={3}>
+                  <MovieCard 
+                    movie={movie} 
+                    showAddToWatchlistButton={true}
+                    showAddToWishlistButton={true}
+                  />
+                </Grid>
+              ))}
+            </Grid>
+            
+            {/* Sayfalama */}
+            {totalPages > 1 && (
+              <Box sx={{ display: 'flex', justifyContent: 'center', mt: 4 }}>
+                <Pagination 
+                  count={totalPages} 
+                  page={page} 
+                  onChange={handlePageChange} 
+                  color="primary" 
+                  size="large"
+                />
+              </Box>
+            )}
+          </>
+        )}
+      </Box>
     </Container>
   );
 };
 
-export default MoviesPage; 
+export default Movies; 

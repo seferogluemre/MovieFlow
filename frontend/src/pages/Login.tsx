@@ -27,7 +27,6 @@ const Login: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
   
-  // URL'den "from" parametresini al (varsa)
   const from = location.state?.from?.pathname || '/';
   
   const handleSubmit = async (e: React.FormEvent) => {
@@ -45,7 +44,6 @@ const Login: React.FC = () => {
       const success = await login(email, password);
       
       if (success) {
-        // Başarılı giriş, kullanıcıyı yönlendir
         navigate(from, { replace: true });
       } else {
         setError('Geçersiz e-posta veya şifre.');

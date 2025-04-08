@@ -12,21 +12,6 @@ export const movieService = {
     return apiService.get<Movie>(`/movies/${id}`);
   },
 
-  // En çok puanlanan filmleri getir
-  getTopRated: async (limit = 10) => {
-    return apiService.get<Movie[]>('/movies/top-rated', { params: { limit } });
-  },
-
-  // Yeni çıkan filmleri getir
-  getNewReleases: async (limit = 10) => {
-    return apiService.get<Movie[]>('/movies/new-releases', { params: { limit } });
-  },
-
-  // Popüler filmleri getir
-  getPopular: async (limit = 10) => {
-    return apiService.get<Movie[]>('/movies/popular', { params: { limit } });
-  },
-
   // Film türlerini getir
   getGenres: async () => {
     return apiService.get<Genre[]>('/genres');

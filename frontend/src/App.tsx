@@ -87,7 +87,6 @@ const App: React.FC = () => {
           }
         />
         
-        
         {/* 404 */}
         <Route path="*" element={<NotFound />} />
       </Routes>
