@@ -1,0 +1,105 @@
+@import 'variables';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  font-family: $font-family;
+  font-size: $font-size-base;
+  line-height: 1.5;
+  background-color: var(--background);
+  color: var(--text-primary);
+  transition: background-color $transition-speed ease, color $transition-speed ease;
+}
+
+body {
+  @include theme-light;
+}
+
+body.dark-theme {
+  @include theme-dark;
+}
+
+a {
+  color: $primary;
+  text-decoration: none;
+  transition: color $transition-speed ease;
+
+  &:hover {
+    color: darken($primary, 10%);
+  }
+}
+
+button {
+  cursor: pointer;
+}
+
+.container {
+  width: 100%;
+  max-width: $container-max-width;
+  margin: 0 auto;
+  padding: 0 $spacing-md;
+}
+
+.page-container {
+  padding-top: $navbar-height;
+  min-height: 100vh;
+  padding-left: $sidebar-width;
+  transition: padding-left $transition-speed ease;
+}
+
+.page-container-no-sidebar {
+  padding-left: 0;
+}
+
+.page-content {
+  padding: $spacing-xl;
+}
+
+.section {
+  margin-bottom: $spacing-xxl;
+}
+
+.section-title {
+  font-size: $font-size-xl;
+  margin-bottom: $spacing-lg;
+  font-weight: 600;
+}
+
+// Responsive adjustments
+@media (max-width: $breakpoint-lg) {
+  .page-container {
+    padding-left: 0;
+  }
+
+  .page-content {
+    padding: $spacing-lg;
+  }
+}
+
+@media (max-width: $breakpoint-md) {
+  .section-title {
+    font-size: $font-size-lg;
+  }
+
+  .page-content {
+    padding: $spacing-md;
+  }
+}
+
+// Animations
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease;
+} 

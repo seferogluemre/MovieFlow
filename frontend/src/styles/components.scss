@@ -1,0 +1,216 @@
+@import 'variables';
+
+// Button styles
+.custom-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-sm $spacing-lg;
+  border-radius: 4px;
+  font-weight: 500;
+  transition: all $transition-speed ease;
+  border: none;
+  outline: none;
+  
+  &.btn-primary {
+    background-color: $primary;
+    color: white;
+    
+    &:hover {
+      background-color: darken($primary, 10%);
+    }
+  }
+  
+  &.btn-secondary {
+    background-color: $secondary;
+    color: white;
+    
+    &:hover {
+      background-color: darken($secondary, 10%);
+    }
+  }
+  
+  &.btn-outlined {
+    background-color: transparent;
+    border: 1px solid $primary;
+    color: $primary;
+    
+    &:hover {
+      background-color: rgba($primary, 0.1);
+    }
+  }
+  
+  &.btn-icon {
+    .icon {
+      margin-right: $spacing-sm;
+    }
+  }
+}
+
+// Card styles
+.movie-card {
+  background-color: var(--card-background);
+  border-radius: $card-border-radius;
+  box-shadow: $card-shadow;
+  overflow: hidden;
+  transition: transform $transition-speed ease, box-shadow $transition-speed ease;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: $card-hover-shadow;
+  }
+  
+  .movie-poster {
+    width: 100%;
+    aspect-ratio: 2/3;
+    object-fit: cover;
+  }
+  
+  .movie-info {
+    padding: $spacing-md;
+    
+    .movie-title {
+      font-size: $font-size-lg;
+      font-weight: 600;
+      margin-bottom: $spacing-sm;
+      color: var(--text-primary);
+    }
+    
+    .movie-meta {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: $spacing-sm;
+      color: var(--text-secondary);
+      font-size: $font-size-sm;
+    }
+    
+    .movie-rating {
+      display: flex;
+      align-items: center;
+      
+      .star-icon {
+        color: $warning;
+        margin-right: 2px;
+      }
+    }
+  }
+  
+  .movie-actions {
+    padding: 0 $spacing-md $spacing-md;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+// Badge styles
+.badge {
+  display: inline-block;
+  padding: 2px $spacing-sm;
+  border-radius: 12px;
+  font-size: $font-size-sm;
+  font-weight: 500;
+  margin-right: $spacing-xs;
+  
+  &.badge-primary {
+    background-color: rgba($primary, 0.2);
+    color: $primary;
+  }
+  
+  &.badge-secondary {
+    background-color: rgba($secondary, 0.2);
+    color: $secondary;
+  }
+}
+
+// Movie grid
+.movie-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: $spacing-lg;
+  
+  @media (max-width: $breakpoint-sm) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: $spacing-md;
+  }
+}
+
+// Movie slider
+.movie-slider {
+  position: relative;
+  margin-bottom: $spacing-xl;
+  
+  .slider-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: $spacing-md;
+    
+    h3 {
+      font-size: $font-size-lg;
+    }
+    
+    .slider-controls {
+      display: flex;
+      gap: $spacing-sm;
+    }
+  }
+  
+  .slider-content {
+    display: flex;
+    overflow-x: auto;
+    gap: $spacing-md;
+    padding-bottom: $spacing-md;
+    scroll-behavior: smooth;
+    
+    &::-webkit-scrollbar {
+      height: 8px;
+    }
+    
+    &::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: 4px;
+    }
+    
+    &::-webkit-scrollbar-thumb {
+      background: #ccc;
+      border-radius: 4px;
+    }
+    
+    &::-webkit-scrollbar-thumb:hover {
+      background: #999;
+    }
+    
+    .movie-card {
+      flex: 0 0 200px;
+    }
+  }
+}
+
+// Navigation
+.navigation {
+  .nav-list {
+    list-style: none;
+    
+    .nav-item {
+      margin-bottom: $spacing-sm;
+      
+      .nav-link {
+        display: flex;
+        align-items: center;
+        padding: $spacing-sm;
+        border-radius: 4px;
+        color: var(--text-secondary);
+        transition: all $transition-speed ease;
+        
+        .icon {
+          margin-right: $spacing-sm;
+        }
+        
+        &:hover, &.active {
+          background-color: rgba($primary, 0.1);
+          color: $primary;
+        }
+      }
+    }
+  }
+} 
