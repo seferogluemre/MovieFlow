@@ -4,10 +4,11 @@ import {
   UpdateFriendshipType,
 } from "../validators/friendship.validation";
 import { getFullProfileImageUrl } from "src/utils/url/url.helper";
+import { NotificationService } from "./notification.service";
+import prisma from "src/config/database";
 
 export class FriendshipService {
   static async create(userId: number, data: CreateFriendshipType) {
-    const prisma = new PrismaClient();
     const friendship = await prisma.friendship.create({
       data: {
         userId,
@@ -19,6 +20,14 @@ export class FriendshipService {
         friend: true,
       },
     });
+
+    await NotificationService.create(
+      data.friendId,
+      userId,
+      "FRIEND_REQUEST",
+      `${friendship.user.username} size arkadaşlık isteği gönderdi.`
+    );
+
     await prisma.$disconnect();
     return {
       ...friendship,
@@ -34,7 +43,6 @@ export class FriendshipService {
   }
 
   static async getAll(userId: number) {
-    const prisma = new PrismaClient();
     const friendships = await prisma.friendship.findMany({
       where: {
         OR: [{ userId }, { friendId: userId }],
@@ -59,7 +67,6 @@ export class FriendshipService {
   }
 
   static async getById(id: number) {
-    const prisma = new PrismaClient();
     const friendship = await prisma.friendship.findUnique({
       where: { id },
       include: {
@@ -83,7 +90,6 @@ export class FriendshipService {
   }
 
   static async update(id: number, data: UpdateFriendshipType) {
-    const prisma = new PrismaClient();
     const friendship = await prisma.friendship.update({
       where: { id },
       data: {
@@ -94,6 +100,23 @@ export class FriendshipService {
         friend: true,
       },
     });
+
+    if (data.status === "ACCEPTED") {
+      await NotificationService.create(
+        friendship.userId,
+        friendship.friendId,
+        "FRIEND_REQUEST_ACCEPTED",
+        `${friendship.friend.username} arkadaşlık isteğinizi kabul etti.`
+      );
+    } else if (data.status === "BLOCKED") {
+      await NotificationService.create(
+        friendship.userId,
+        friendship.friendId,
+        "FRIEND_REQUEST_REJECTED",
+        `${friendship.friend.username} arkadaşlık isteğinizi reddetti.`
+      );
+    }
+
     await prisma.$disconnect();
     return {
       ...friendship,
@@ -109,7 +132,6 @@ export class FriendshipService {
   }
 
   static async delete(id: number) {
-    const prisma = new PrismaClient();
     const friendship = await prisma.friendship.delete({
       where: { id },
       include: {
@@ -132,7 +154,6 @@ export class FriendshipService {
   }
 
   static async getByUserAndFriend(userId: number, friendId: number) {
-    const prisma = new PrismaClient();
     const friendship = await prisma.friendship.findFirst({
       where: {
         OR: [
@@ -161,7 +182,6 @@ export class FriendshipService {
   }
 
   static async getPendingRequests(userId: number) {
-    const prisma = new PrismaClient();
     const friendships = await prisma.friendship.findMany({
       where: {
         friendId: userId,
