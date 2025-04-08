@@ -1,13 +1,22 @@
 // User Types
 export interface User {
   id: number;
-  email: string;
   username: string;
+  email: string;
   name?: string;
   profileImage?: string;
-  isAdmin: boolean;
+  bio?: string;
   createdAt: string;
   updatedAt: string;
+}
+
+// Yetkilendirme ile ilgili tipler
+export interface AuthState {
+  isAuthenticated: boolean;
+  user: User | null;
+  token: string | null;
+  isLoading: boolean;
+  error: string | null;
 }
 
 // Movie Types
@@ -22,30 +31,20 @@ export enum AgeRating {
 export interface Movie {
   id: number;
   title: string;
-  description: string;
-  releaseYear: number;
-  duration: number;
-  posterImage?: string;
-  director: string;
-  rating: number;
-  ageRating: AgeRating;
-  createdAt: string;
-  updatedAt: string;
-  genres?: Genre[];
-  actors?: Actor[];
+  overview: string;
+  posterPath: string;
+  backdropPath?: string;
+  releaseDate: string;
+  voteAverage: number;
+  genreIds: number[];
 }
 
 // Actor Types
 export interface Actor {
   id: number;
   name: string;
-  biography?: string;
-  birthYear?: number;
-  nationality?: string;
   photo?: string;
-  createdAt: string;
-  updatedAt: string;
-  role?: string; // MovieActor ilişkisi için
+  role?: string;
 }
 
 // Genre Types
@@ -58,11 +57,10 @@ export interface Genre {
 export interface Review {
   id: number;
   content: string;
+  user?: User;
+  movieId: number;
   createdAt: string;
   updatedAt: string;
-  userId: number;
-  movieId: number;
-  user?: User;
 }
 
 // Rating Types
@@ -77,10 +75,10 @@ export interface Rating {
 // Watchlist Types
 export interface Watchlist {
   id: number;
-  addedAt: string;
   userId: number;
   movieId: number;
-  movie?: Movie;
+  movie: Movie;
+  createdAt: string;
 }
 
 // Wishlist Types
@@ -88,8 +86,8 @@ export interface Wishlist {
   id: number;
   userId: number;
   movieId: number;
-  addedAt: string;
-  movie?: Movie;
+  movie: Movie;
+  createdAt: string;
 }
 
 // Library Types
@@ -97,9 +95,9 @@ export interface Library {
   id: number;
   userId: number;
   movieId: number;
-  addedAt: string;
-  lastWatched?: string;
-  movie?: Movie;
+  movie: Movie;
+  watchDate: string;
+  createdAt: string;
 }
 
 // Friendship Types
@@ -113,9 +111,9 @@ export interface Friendship {
   id: number;
   userId: number;
   friendId: number;
-  status: FriendshipStatus;
+  status: 'pending' | 'accepted' | 'rejected';
   createdAt: string;
-  friend?: User;
+  friend: User;
 }
 
 // Notification Types
@@ -127,13 +125,13 @@ export enum NotificationType {
 
 export interface Notification {
   id: number;
-  type: NotificationType;
-  message: string;
   userId: number;
-  fromUserId: number;
-  isRead: boolean;
+  type: 'friend_request' | 'friend_accepted' | 'system';
+  message: string;
+  read: boolean;
   createdAt: string;
-  fromUser?: User;
+  relatedUserId?: number;
+  relatedUser?: User;
 }
 
 // Session Types
@@ -146,10 +144,58 @@ export interface Session {
   revokedAt?: string;
 }
 
-// API Response Types
+// API ile ilgili tipler
 export interface ApiResponse<T> {
   success: boolean;
   data?: T;
   error?: string;
   message?: string;
+  status?: number;
+}
+
+// Pagination için tipler
+export interface PaginatedResponse<T> {
+  data: T[];
+  total: number;
+  page: number;
+  pageSize: number;
+  totalPages: number;
+}
+
+// Tema ile ilgili tipler
+export interface ThemeState {
+  mode: 'light' | 'dark';
+}
+
+// Filtre ve sıralama tipleri
+export interface MovieFilters {
+  genres?: number[];
+  year?: number;
+  rating?: number;
+  search?: string;
+}
+
+export interface SortOption {
+  label: string;
+  value: string;
+}
+
+// İzleme listesi tipleri
+export interface WatchlistItem {
+  id: number;
+  movie: Movie;
+  addedAt: string;
+}
+
+// Film listesi tipleri
+export interface MovieList {
+  id: number;
+  name: string;
+  description?: string;
+  isPublic: boolean;
+  userId: number;
+  user?: User;
+  movies: Movie[];
+  createdAt: string;
+  updatedAt: string;
 } 

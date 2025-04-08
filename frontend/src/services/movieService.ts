@@ -1,15 +1,45 @@
-import { apiService } from './api';
+import { apiService } from './apiService';
 import { Movie, ApiResponse, Genre, Actor, Review, Rating } from '../types';
 
 export const movieService = {
-  // Tüm filmleri getir
-  getMovies: async () => {
-    return apiService.get<Movie[]>('/movies');
+  // Film listesini getir (sayfalama ve filtrelerle)
+  getMovies: async (page = 1, filters = {}) => {
+    return apiService.get<Movie[]>('/movies', { params: { page, ...filters } });
   },
 
-  // ID'ye göre film getir
-  getMovieById: async (id: number) => {
+  // Tek bir filmi ID'ye göre getir
+  getMovie: async (id: number) => {
     return apiService.get<Movie>(`/movies/${id}`);
+  },
+
+  // En çok puanlanan filmleri getir
+  getTopRated: async (limit = 10) => {
+    return apiService.get<Movie[]>('/movies/top-rated', { params: { limit } });
+  },
+
+  // Yeni çıkan filmleri getir
+  getNewReleases: async (limit = 10) => {
+    return apiService.get<Movie[]>('/movies/new-releases', { params: { limit } });
+  },
+
+  // Popüler filmleri getir
+  getPopular: async (limit = 10) => {
+    return apiService.get<Movie[]>('/movies/popular', { params: { limit } });
+  },
+
+  // Film türlerini getir
+  getGenres: async () => {
+    return apiService.get<Genre[]>('/genres');
+  },
+
+  // Belirli bir türe ait filmleri getir
+  getMoviesByGenre: async (genreId: number, page = 1) => {
+    return apiService.get<Movie[]>(`/genres/${genreId}/movies`, { params: { page } });
+  },
+
+  // Film arama
+  searchMovies: async (query: string, page = 1) => {
+    return apiService.get<Movie[]>('/movies/search', { params: { query, page } });
   },
 
   // Yeni film ekle (Admin)
@@ -47,24 +77,9 @@ export const movieService = {
     return apiService.post<Rating>('/ratings', { movieId, score });
   },
 
-  // Film türüne göre filmleri getir
-  getMoviesByGenre: async (genreId: number) => {
-    return apiService.get<Movie[]>(`/genres/${genreId}/movies`);
-  },
-
-  // Tüm türleri getir
-  getGenres: async () => {
-    return apiService.get<Genre[]>('/genres');
-  },
-
   // Filmin oyuncularını getir
   getMovieActors: async (movieId: number) => {
     return apiService.get<Actor[]>(`/movies/${movieId}/actors`);
-  },
-
-  // Film arama
-  searchMovies: async (query: string) => {
-    return apiService.get<Movie[]>('/movies', { query });
   },
 };
 

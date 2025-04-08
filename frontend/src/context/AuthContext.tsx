@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { User } from '../types';
-import { userService } from '../services/userService';
+import { apiService } from '../services/apiService';
 
 interface AuthContextType {
   user: User | null;
@@ -9,7 +9,7 @@ interface AuthContextType {
   isAuthenticated: boolean;
   login: (email: string, password: string) => Promise<boolean>;
   logout: () => Promise<void>;
-  register: (userData: { email: string; username: string; password: string; name?: string }) => Promise<boolean>;
+  register: (username: string, email: string, password: string) => Promise<boolean>;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -17,7 +17,7 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 export const useAuth = () => {
   const context = useContext(AuthContext);
   if (!context) {
-    throw new Error('useAuth must be used within an AuthProvider');
+    throw new Error('useAuth, AuthProvider içinde kullanılmalıdır');
   }
   return context;
 };
@@ -45,10 +45,14 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     const fetchUser = async () => {
       if (token) {
         setIsLoading(true);
-        const response = await userService.getCurrentUser();
-        if (response.success && response.data) {
-          setUser(response.data);
-        } else {
+        try {
+          const response = await apiService.get<User>('/auth/me');
+          if (response.success && response.data) {
+            setUser(response.data);
+          } else {
+            setToken(null);
+          }
+        } catch (error) {
           setToken(null);
         }
       }
@@ -62,7 +66,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const login = async (email: string, password: string) => {
     setIsLoading(true);
     try {
-      const response = await userService.login(email, password);
+      const response = await apiService.post<{ token: string; user: User }>('/auth/login', { email, password });
       if (response.success && response.data) {
         setToken(response.data.token);
         setUser(response.data.user);
@@ -80,7 +84,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const logout = async () => {
     setIsLoading(true);
     try {
-      await userService.logout();
+      await apiService.post<boolean>('/auth/logout');
     } finally {
       setToken(null);
       setUser(null);
@@ -89,10 +93,11 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   };
 
   // Kayıt fonksiyonu
-  const register = async (userData: { email: string; username: string; password: string; name?: string }) => {
+  const register = async (username: string, email: string, password: string) => {
     setIsLoading(true);
     try {
-      const response = await userService.register(userData);
+      const userData = { username, email, password, name: username };
+      const response = await apiService.post<User>('/users', userData);
       return response.success;
     } catch (error) {
       return false;
