@@ -1,5 +1,5 @@
-import { FC, useState, useEffect } from 'react';
-import { Outlet, useNavigate } from 'react-router-dom';
+import { FC, useState, useEffect } from "react";
+import { Outlet, useNavigate } from "react-router-dom";
 import {
   Box,
   AppBar,
@@ -16,8 +16,8 @@ import {
   DarkMode as DarkModeIcon,
 } from "@mui/icons-material";
 import Sidebar from "../components/Sidebar";
-import { userService } from '../utils/api';
-import { User } from '../utils/types';
+import { userService } from "../utils/api";
+import { User } from "../utils/types";
 
 const SearchBar = styled("div")(({ theme }) => ({
   position: "relative",
@@ -66,9 +66,9 @@ const MainLayout: FC = () => {
 
   useEffect(() => {
     const checkAuth = async () => {
-      const token = localStorage.getItem('accessToken');
+      const token = localStorage.getItem("accessToken");
       if (!token) {
-        navigate('/login');
+        navigate("/login");
         return;
       }
 
@@ -76,10 +76,8 @@ const MainLayout: FC = () => {
         const userData = await userService.getCurrentUser();
         setUser(userData);
       } catch (error) {
-        console.error('Error fetching user data:', error);
-        // Eğer kullanıcı verileri çekilemezse, token geçersiz olabilir
-        // Bu durumda login sayfasına yönlendir
-        navigate('/login');
+        console.error("Error fetching user data:", error);
+        navigate("/login");
       }
     };
 
@@ -87,23 +85,46 @@ const MainLayout: FC = () => {
   }, [navigate]);
 
   const getInitials = (name?: string): string => {
-    if (!name) return 'U';
-    
-    return name
-      .split(' ')
-      .map(part => part.length > 0 ? part[0] : '')
-      .join('')
-      .toUpperCase() || 'U';
+    if (!name) return "U";
+
+    return (
+      name
+        .split(" ")
+        .map((part) => (part.length > 0 ? part[0] : ""))
+        .join("")
+        .toUpperCase() || "U"
+    );
   };
 
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box
+      sx={{
+        display: "flex",
+        width: "100vw", // Viewport genişliği
+        maxWidth: "100%", // Maksimum genişlik
+        height: "100vh", // Tam ekran yüksekliği
+        overflow: "hidden", // Dış taşmaları engelle
+        position: "relative", // Konumlandırma için
+      }}
+    >
       <Sidebar />
-      <Box component="main" sx={{ flexGrow: 1 }}>
+      <Box
+        component="main"
+        sx={{
+          flexGrow: 1,
+          width: "100%", // Ana içeriği tam genişliğe yay
+          height: "100vh", // Tam ekran yüksekliği
+          overflowY: "auto", // Dikey kaydırma
+          overflowX: "hidden", // Yatay kaydırmayı engelle
+          backgroundColor: "background.default", // Arka plan rengini varsayılan tema rengine ayarla
+          position: "relative", // Konumlandırma için
+        }}
+      >
         <AppBar
           position="static"
           color="transparent"
           sx={{
+            width: "100%", // AppBar'ı da tam genişliğe yay
             boxShadow: "none",
             borderBottom: "1px solid rgba(255, 255, 255, 0.1)",
           }}
@@ -129,14 +150,25 @@ const MainLayout: FC = () => {
                 <DarkModeIcon />
               </IconButton>
               <IconButton edge="end" sx={{ ml: 1 }}>
-                <Avatar>
-                  {user ? getInitials(user.name || user.username) : 'U'}
+                <Avatar
+                  src={user?.profileImage}
+                  alt={user?.name || user?.username}
+                >
+                  {user ? getInitials(user.name || user.username) : "U"}
                 </Avatar>
               </IconButton>
             </Box>
           </Toolbar>
         </AppBar>
-        <Box sx={{ p: 3 }}>
+        <Box
+          sx={{
+            p: 3,
+            width: "100%", // İçerik alanını tam genişliğe yay
+            height: "calc(100vh - 64px)", // AppBar yüksekliği çıkarılmış tam yükseklik
+            overflowY: "auto", // Dikey kaydırma
+            overflowX: "hidden", // Yatay kaydırmayı engelle
+          }}
+        >
           <Outlet />
         </Box>
       </Box>
