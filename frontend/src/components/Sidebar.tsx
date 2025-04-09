@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import {
   Box,
   List,
@@ -8,6 +8,8 @@ import {
   ListItemText,
   Typography,
   styled,
+  Button,
+  Divider,
 } from "@mui/material";
 import {
   Dashboard as DashboardIcon,
@@ -20,7 +22,9 @@ import {
   People as FriendsIcon,
   Settings as SettingsIcon,
   Movie as FilmIcon,
+  ExitToApp as LogoutIcon,
 } from "@mui/icons-material";
+import { authService } from "../utils/api";
 
 // Create a styled component for the logo
 const Logo = styled(Box)(({ theme }) => ({
@@ -45,6 +49,7 @@ const StyledListItem = styled(ListItem)<{ active: number }>(
 
 const Sidebar: FC = () => {
   const location = useLocation();
+  const navigate = useNavigate();
 
   // Navigation items data
   const navigationItems = [
@@ -59,6 +64,20 @@ const Sidebar: FC = () => {
     { name: "Settings", icon: <SettingsIcon />, path: "/settings" },
   ];
 
+  const handleLogout = async () => {
+    try {
+      await authService.logout();
+      navigate('/login');
+    } catch (error) {
+      console.error('Logout error:', error);
+      // Hata olsa bile token'ları temizleyerek login sayfasına yönlendir
+      localStorage.removeItem('accessToken');
+      localStorage.removeItem('refreshToken');
+      localStorage.removeItem('userId');
+      navigate('/login');
+    }
+  };
+
   return (
     <Box
       sx={{
@@ -66,6 +85,8 @@ const Sidebar: FC = () => {
         backgroundColor: "background.paper",
         height: "100vh",
         borderRight: "1px solid rgba(255, 255, 255, 0.1)",
+        display: "flex",
+        flexDirection: "column",
       }}
     >
       <Logo>
@@ -75,7 +96,7 @@ const Sidebar: FC = () => {
         </Typography>
       </Logo>
 
-      <List>
+      <List sx={{ flexGrow: 1 }}>
         {navigationItems.map((item) => (
           <StyledListItem
             key={item.name}
@@ -107,6 +128,25 @@ const Sidebar: FC = () => {
           </StyledListItem>
         ))}
       </List>
+
+      <Divider sx={{ mx: 2, my: 1, backgroundColor: 'rgba(255, 255, 255, 0.1)' }} />
+      
+      <Box sx={{ p: 2 }}>
+        <Button
+          variant="outlined"
+          color="inherit"
+          startIcon={<LogoutIcon />}
+          fullWidth
+          onClick={handleLogout}
+          sx={{ 
+            justifyContent: 'flex-start',
+            textTransform: 'none',
+            py: 1 
+          }}
+        >
+          Logout
+        </Button>
+      </Box>
     </Box>
   );
 };

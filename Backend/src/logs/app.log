@@ -1,315 +1,158 @@
-[INFO] 2025-04-07T03:48:04.017Z - List movies --- Request Received
-[WARN] 2025-04-07T03:50:34.524Z - Get Actor --- Actor not found
-[WARN] 2025-04-07T03:50:36.869Z - Get Actor --- Actor not found
-[INFO] 2025-04-07T03:50:40.345Z - Get Actor --- Request Received
-[INFO] 2025-04-07T03:51:31.623Z - List Users --- Request Received
-[INFO] 2025-04-07T03:51:43.718Z - List movies --- Request Received
-[INFO] 2025-04-07T03:52:22.515Z - List Genres --- Request Received
-[INFO] 2025-04-07T03:54:07.527Z - Get Movie Reviews - Retrieved reviews for Movie 2
-[WARN] 2025-04-07T03:54:14.503Z - Get Review --- Review not found
-[INFO] 2025-04-07T03:54:18.623Z - Get Review --- Request Received
-[INFO] 2025-04-07T03:54:22.743Z - List Reviews --- Request Received
-[INFO] 2025-04-07T03:54:30.728Z - List Ratings --- Request Received
-[INFO] 2025-04-07T03:55:16.929Z - Login User --- Login successful 🚀
-[INFO] 2025-04-07T03:56:04.142Z - Friendship getAll ---- Retrieved all friendships
-[WARN] 2025-04-07T03:56:16.428Z - Friendship getById ---- Friendship not found
-[WARN] 2025-04-07T03:56:16.429Z - Friendship getById ---- Unauthorized access attempt
-[WARN] 2025-04-07T03:56:16.430Z - Friendship getById ---- Error retrieving friendship
-[WARN] 2025-04-07T03:56:20.979Z - Friendship getById ---- Friendship not found
-[WARN] 2025-04-07T03:56:20.980Z - Friendship getById ---- Unauthorized access attempt
-[WARN] 2025-04-07T03:56:20.980Z - Friendship getById ---- Error retrieving friendship
-[INFO] 2025-04-07T03:56:23.556Z - Friendship getById ---- Retrieved friendship
-[INFO] 2025-04-07T03:56:32.399Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
-[WARN] 2025-04-07T03:56:44.777Z - LibraryController.create ---- Error creating library entry: ${error}
-[WARN] 2025-04-07T03:57:06.189Z - LibraryController.create ---- Error creating library entry: ${error}
-[INFO] 2025-04-07T03:57:17.583Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
-[WARN] 2025-04-07T03:57:27.135Z - LibraryController.getById ---- Library entry not found with id ${id}
-[WARN] 2025-04-07T03:57:27.136Z - LibraryController.getById ---- Unauthorized access to library entry ${id}
-[WARN] 2025-04-07T03:57:27.137Z - LibraryController.getById ---- Error retrieving library entry: ${error}
-[WARN] 2025-04-07T03:57:31.566Z - LibraryController.getById ---- Library entry not found with id ${id}
-[WARN] 2025-04-07T03:57:31.567Z - LibraryController.getById ---- Unauthorized access to library entry ${id}
-[WARN] 2025-04-07T03:57:31.567Z - LibraryController.getById ---- Error retrieving library entry: ${error}
-[WARN] 2025-04-07T03:57:34.144Z - LibraryController.getById ---- Library entry not found with id ${id}
-[WARN] 2025-04-07T03:57:34.145Z - LibraryController.getById ---- Unauthorized access to library entry ${id}
-[WARN] 2025-04-07T03:57:34.146Z - LibraryController.getById ---- Error retrieving library entry: ${error}
-[WARN] 2025-04-07T03:59:12.875Z - MovieActor create ---- Error creating movie-actor relationship
-[INFO] 2025-04-07T03:59:16.457Z - MovieActor getByMovieId ---- Retrieved actors for movie
-[INFO] 2025-04-07T03:59:30.636Z - MovieActor getByActorId ---- Retrieved movies for actor
-[INFO] 2025-04-07T03:59:41.337Z - MovieActor getAll ---- Retrieved all movie-actor relationships
-[INFO] 2025-04-07T03:59:52.209Z - MovieGenre getAll ---- Retrieved all movie-genre relationships
-[INFO] 2025-04-07T03:59:58.395Z - MovieGenre getByGenreId ---- Retrieved movies for genre
-[INFO] 2025-04-07T04:01:55.037Z - List movies --- Request Received
-[INFO] 2025-04-07T04:02:53.212Z - Get Actor --- Request Received
-[INFO] 2025-04-07T04:03:05.315Z - Get Actor --- Request Received
-[INFO] 2025-04-07T04:03:28.758Z - List Genres --- Request Received
-[WARN] 2025-04-07T04:03:49.516Z - LibraryController.getById ---- Library entry not found with id 3
-[WARN] 2025-04-07T04:03:54.081Z - LibraryController.getById ---- Library entry not found with id 4
-[WARN] 2025-04-07T04:03:59.157Z - LibraryController.getById ---- Library entry not found with id 4
-[INFO] 2025-04-07T04:04:02.857Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
-[WARN] 2025-04-07T04:04:10.057Z - LibraryController.getById ---- Library entry not found with id 3
-[INFO] 2025-04-07T04:04:14.412Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
-[INFO] 2025-04-07T04:04:19.695Z - LibraryController.getById ---- Retrieved library entry 1
-[INFO] 2025-04-07T04:04:43.307Z - Get Actor --- Request Received
-[INFO] 2025-04-07T04:05:13.629Z - Get Actor --- Request Received
-[INFO] 2025-04-07T04:05:17.207Z - Get Actor --- Request Received
-[INFO] 2025-04-07T04:05:20.818Z - List Actors --- Request Received
-[INFO] 2025-04-07T04:06:54.438Z - Get Actor --- Request Received
-[INFO] 2025-04-07T11:18:34.120Z - Create User --- Created User [object Object]
-[INFO] 2025-04-07T11:22:15.541Z - Update User - Updated User [object Object]
-[INFO] 2025-04-07T11:24:35.013Z - Get User --- Request Received
-[INFO] 2025-04-07T11:25:21.795Z - List Users --- Request Received
-[INFO] 2025-04-07T11:26:30.157Z - User Upload Image - Request Received
-[INFO] 2025-04-07T11:26:41.658Z - Login User --- Login successful 🚀
-[INFO] 2025-04-07T11:27:19.564Z - Login User - Logout Successfully
-[INFO] 2025-04-07T11:33:00.608Z - Create Movie - Created Movie[object Object]
-[INFO] 2025-04-07T11:33:24.096Z - List movies --- Request Received
-[INFO] 2025-04-07T11:34:35.556Z - Update Movie - Updated Movie [object Object]
-[INFO] 2025-04-07T11:34:49.402Z - Update Movie - Updated Movie [object Object]
-[INFO] 2025-04-07T11:36:28.064Z - Create Actor --- Created Actor [object Object]
-[INFO] 2025-04-07T11:36:36.555Z - Update Actor - Updated Actor [object Object]
-[INFO] 2025-04-07T11:36:51.808Z - Update Actor - Updated Actor [object Object]
-[INFO] 2025-04-07T11:36:56.255Z - Get Actor --- Request Received
-[INFO] 2025-04-07T11:36:59.736Z - List Actors --- Request Received
-[INFO] 2025-04-07T11:39:45.554Z - Create Genre --- Created Genre [object Object]
-[INFO] 2025-04-07T11:40:08.016Z - Add Movie to Genre - Added Movie 3 to Genre 5
-[INFO] 2025-04-07T11:40:18.267Z - Get Movies by Genre - Retrieved movies for Genre 5
-[INFO] 2025-04-07T11:40:29.830Z - List Genres --- Request Received
-[INFO] 2025-04-07T12:04:25.506Z - Login User --- Login successful 🚀
-[INFO] 2025-04-07T12:04:42.016Z - Get User Reviews - Retrieved reviews for User 3
-[INFO] 2025-04-07T12:05:00.270Z - Create Review --- Created Review [object Object]
-[INFO] 2025-04-07T12:06:37.694Z - Get Movie Reviews - Retrieved reviews for Movie 2
-[INFO] 2025-04-07T12:06:40.040Z - Get Movie Reviews - Retrieved reviews for Movie 3
-[INFO] 2025-04-07T12:06:43.966Z - List Reviews --- Request Received
-[INFO] 2025-04-07T12:06:51.155Z - Get Review --- Request Received
-[INFO] 2025-04-07T12:07:08.833Z - Create Rating --- Created Rating [object Object]
-[INFO] 2025-04-07T12:07:57.631Z - Get User Ratings - Retrieved ratings for User 3
-[INFO] 2025-04-07T12:08:14.219Z - Get User Ratings - Retrieved ratings for User 3
-[INFO] 2025-04-07T12:08:21.060Z - Get Movie Ratings - Retrieved ratings for Movie 2
-[INFO] 2025-04-07T12:08:25.122Z - Get Movie Ratings - Retrieved ratings for Movie 3
-[INFO] 2025-04-07T12:08:32.724Z - Get Movie Average Rating - Retrieved average rating for Movie 3
-[INFO] 2025-04-07T12:08:39.533Z - Get Rating --- Request Received
-[INFO] 2025-04-07T12:14:18.658Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
-[INFO] 2025-04-07T12:15:04.608Z - Friendship getAll ---- Retrieved all friendships
-[INFO] 2025-04-07T12:15:18.488Z - LibraryController.create ---- Library entry created for user ${userId} and movie ${data.movieId}
-[INFO] 2025-04-07T12:15:35.039Z - LibraryController.getById ---- Retrieved library entry 1
-[WARN] 2025-04-07T12:15:44.075Z - LibraryController.getById ---- Library entry not found with id 2
-[WARN] 2025-04-07T12:15:47.063Z - LibraryController.getById ---- Library entry not found with id 3
-[INFO] 2025-04-07T12:15:49.638Z - LibraryController.getById ---- Retrieved library entry 4
-[INFO] 2025-04-07T12:19:49.373Z - Get Rating --- Request Received
-[INFO] 2025-04-07T12:20:57.853Z - Login User --- Login successful 🚀
-[INFO] 2025-04-07T12:21:31.129Z - Create Rating --- Created Rating [object Object]
-[WARN] 2025-04-07T12:21:41.577Z - Get Rating --- Rating not found
-[INFO] 2025-04-07T12:21:44.808Z - Get Rating --- Request Received
-[INFO] 2025-04-07T12:23:34.613Z - Create Actor --- Created Actor [object Object]
-[INFO] 2025-04-07T12:24:54.174Z - Update Actor - Updated Actor [object Object]
-[INFO] 2025-04-07T12:26:07.795Z - List Actors --- Request Received
-[INFO] 2025-04-07T12:26:23.942Z - Update Actor - Updated Actor [object Object]
-[INFO] 2025-04-07T12:26:28.647Z - Get Actor --- Request Received
-[WARN] 2025-04-07T12:27:55.008Z - Get User --- User not found
-[INFO] 2025-04-07T12:27:55.010Z - Get User --- Request Received
-[INFO] 2025-04-07T12:27:59.098Z - Get User --- Request Received
-[INFO] 2025-04-07T12:28:15.942Z - Get User --- Request Received
-[INFO] 2025-04-07T12:28:35.737Z - List Users --- Request Received
-[INFO] 2025-04-07T21:03:57.481Z - Create User --- Created User [object Object]
-[INFO] 2025-04-07T21:05:23.345Z - Update User - Updated User [object Object]
-[INFO] 2025-04-07T21:56:28.382Z - Create User --- Created User [object Object]
-[INFO] 2025-04-07T21:59:06.783Z - Get User --- Request Received
-[WARN] 2025-04-07T21:59:14.775Z - Login User --- Invalid email or password 
-[WARN] 2025-04-07T22:00:11.203Z - Login User --- Invalid email or password 
-[INFO] 2025-04-07T22:02:25.951Z - Create User --- Created User [object Object]
-[INFO] 2025-04-07T22:02:33.780Z - Get User --- Request Received
-[INFO] 2025-04-07T22:02:42.582Z - Login User --- Login successful 🚀
-[INFO] 2025-04-07T22:03:21.177Z - Create Movie - Created Movie[object Object]
-[INFO] 2025-04-07T22:03:36.133Z - List movies --- Request Received
-[INFO] 2025-04-07T22:10:03.111Z - List Users --- Request Received
-[INFO] 2025-04-07T22:10:25.591Z - List movies --- Request Received
-[INFO] 2025-04-07T22:25:37.422Z - List Users --- Request Received
-[INFO] 2025-04-07T22:26:09.427Z - List Users --- Request Received
-[INFO] 2025-04-07T22:39:53.701Z - Update User - Updated User [object Object]
-[INFO] 2025-04-07T22:40:09.283Z - Update User - Updated User [object Object]
-[INFO] 2025-04-08T11:26:22.701Z - Login User --- Login successful 🚀
-[WARN] 2025-04-08T11:26:31.028Z - Notification getUserNotifications ---- Unauthorized access attempt
-[WARN] 2025-04-08T11:27:11.819Z - Friendship create ---- Unauthorized access attempt
-[WARN] 2025-04-08T11:27:11.827Z - Friendship create ---- Error sending friendship request
-[WARN] 2025-04-08T11:28:19.513Z - Friendship create ---- Unauthorized access attempt
-[WARN] 2025-04-08T11:28:19.570Z - Friendship create ---- Error sending friendship request
-[WARN] 2025-04-08T11:28:33.309Z - Friendship create ---- Unauthorized access attempt
-[WARN] 2025-04-08T11:28:33.317Z - Friendship create ---- Error sending friendship request
-[WARN] 2025-04-08T11:28:39.321Z - Friendship create ---- Unauthorized access attempt
-[WARN] 2025-04-08T11:28:39.327Z - Friendship create ---- Error sending friendship request
-[WARN] 2025-04-08T11:29:13.951Z - Notification getUserNotifications ---- Unauthorized access attempt
-[WARN] 2025-04-08T11:30:37.353Z - Friendship create ---- Unauthorized access attempt
-[WARN] 2025-04-08T11:30:37.443Z - Friendship create ---- Error sending friendship request
-[WARN] 2025-04-08T11:32:39.326Z - Login User --- Invalid email or password 
-[INFO] 2025-04-08T11:33:22.339Z - Create User --- Created User [object Object]
-[INFO] 2025-04-08T11:33:31.157Z - Login User --- Login successful 🚀
-[WARN] 2025-04-08T11:33:54.058Z - Friendship create ---- Unauthorized access attempt
-[WARN] 2025-04-08T11:33:54.078Z - Friendship create ---- Error sending friendship request
-[WARN] 2025-04-08T11:34:03.704Z - Friendship create ---- Unauthorized access attempt
-[WARN] 2025-04-08T11:34:03.712Z - Friendship create ---- Error sending friendship request
-[WARN] 2025-04-08T11:37:20.008Z - Friendship getById ---- Unauthorized access attempt
-[WARN] 2025-04-08T11:37:20.073Z - Friendship getById ---- Error retrieving friendship
-[WARN] 2025-04-08T11:40:11.606Z - Friendship getById ---- Unauthorized access attempt
-[WARN] 2025-04-08T11:40:11.675Z - Friendship getById ---- Error retrieving friendship
-[INFO] 2025-04-08T11:41:14.628Z - Login User --- Login successful 🚀
-[INFO] 2025-04-08T11:42:55.590Z - Create Review --- Created Review [object Object]
-[INFO] 2025-04-08T11:44:18.228Z - Get User Reviews - Retrieved reviews for User 5
-[INFO] 2025-04-08T11:44:51.439Z - Friendship create ---- Friendship request sent successfully
-[WARN] 2025-04-08T11:46:59.493Z - Friendship create ---- Error sending friendship request
-[WARN] 2025-04-08T11:47:03.290Z - Friendship create ---- Error sending friendship request
-[WARN] 2025-04-08T11:47:08.403Z - Friendship create ---- Error sending friendship request
-[INFO] 2025-04-08T11:47:37.474Z - Login User --- Login successful 🚀
-[INFO] 2025-04-08T11:48:02.561Z - Notification getUserNotifications ---- Retrieved user notifications
-[INFO] 2025-04-08T11:51:07.394Z - Notification markAsRead ---- Notification marked as read
-[INFO] 2025-04-08T11:51:57.832Z - Notification markAllAsRead ---- All notifications marked as read
-[INFO] 2025-04-08T12:04:38.761Z - Login User --- Login successful 🚀
-[INFO] 2025-04-08T12:04:55.133Z - Notification getUserNotifications ---- Retrieved user notifications
-[WARN] 2025-04-08T12:05:34.884Z - Friendship update ---- Error updating friendship status
-[INFO] 2025-04-08T12:05:37.799Z - Friendship update ---- Friendship status updated successfully
-[WARN] 2025-04-08T12:07:57.682Z - Friendship delete ---- Friendship not found
-[WARN] 2025-04-08T12:07:57.690Z - Friendship delete ---- Unauthorized access attempt
-[WARN] 2025-04-08T12:07:57.691Z - Friendship delete ---- Error deleting friendship
-[INFO] 2025-04-08T12:08:04.354Z - Friendship delete ---- Friendship deleted successfully
-[INFO] 2025-04-08T12:08:31.216Z - Friendship create ---- Friendship request sent successfully
-[INFO] 2025-04-08T12:09:49.596Z - Login User --- Login successful 🚀
-[INFO] 2025-04-08T12:10:50.772Z - Notification getUserNotifications ---- Retrieved user notifications
-[INFO] 2025-04-08T12:12:03.846Z - Notification markAsRead ---- Notification marked as read
-[INFO] 2025-04-08T12:12:27.231Z - Notification markAllAsRead ---- All notifications marked as read
-[INFO] 2025-04-08T12:12:51.417Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
-[INFO] 2025-04-08T12:49:16.458Z - List movies --- Request Received
-[INFO] 2025-04-08T12:51:40.854Z - List movies --- Request Received
-[INFO] 2025-04-08T12:51:40.859Z - List movies --- Request Received
-[INFO] 2025-04-08T12:52:02.379Z - List movies --- Request Received
-[INFO] 2025-04-08T12:52:02.384Z - List movies --- Request Received
-[INFO] 2025-04-08T12:53:21.320Z - List movies --- Request Received
-[INFO] 2025-04-08T12:53:21.325Z - List movies --- Request Received
-[INFO] 2025-04-08T12:53:36.337Z - List movies --- Request Received
-[INFO] 2025-04-08T12:53:36.342Z - List movies --- Request Received
-[INFO] 2025-04-08T13:10:04.864Z - List movies --- Request Received
-[INFO] 2025-04-08T13:10:04.869Z - List movies --- Request Received
-[INFO] 2025-04-08T13:56:34.926Z - List movies --- Request Received
-[INFO] 2025-04-08T13:56:34.933Z - List movies --- Request Received
-[INFO] 2025-04-08T13:56:38.817Z - List movies --- Request Received
-[INFO] 2025-04-08T13:56:38.821Z - List movies --- Request Received
-[INFO] 2025-04-08T13:56:43.613Z - List movies --- Request Received
-[INFO] 2025-04-08T13:56:43.617Z - List movies --- Request Received
-[INFO] 2025-04-08T13:56:55.457Z - List movies --- Request Received
-[INFO] 2025-04-08T13:56:55.462Z - List movies --- Request Received
-[INFO] 2025-04-08T16:11:52.644Z - List Genres --- Request Received
-[INFO] 2025-04-08T16:11:52.657Z - List Genres --- Request Received
-[INFO] 2025-04-08T16:11:56.692Z - List Genres --- Request Received
-[INFO] 2025-04-08T16:11:56.717Z - List Genres --- Request Received
-[INFO] 2025-04-08T16:11:58.621Z - List Genres --- Request Received
-[INFO] 2025-04-08T16:11:58.649Z - List Genres --- Request Received
-[INFO] 2025-04-08T16:12:07.434Z - List Genres --- Request Received
-[INFO] 2025-04-08T16:12:07.449Z - List Genres --- Request Received
-[INFO] 2025-04-08T16:12:58.656Z - List Genres --- Request Received
-[INFO] 2025-04-08T16:12:58.665Z - List Genres --- Request Received
-[INFO] 2025-04-08T16:14:20.278Z - List Genres --- Request Received
-[INFO] 2025-04-08T16:14:20.291Z - List Genres --- Request Received
-[INFO] 2025-04-08T16:14:47.595Z - List Genres --- Request Received
-[INFO] 2025-04-08T16:14:47.613Z - List Genres --- Request Received
-[INFO] 2025-04-08T16:14:51.758Z - List Genres --- Request Received
-[INFO] 2025-04-08T16:14:51.773Z - List Genres --- Request Received
-[INFO] 2025-04-08T16:14:57.653Z - List Genres --- Request Received
-[INFO] 2025-04-08T16:14:57.664Z - List Genres --- Request Received
-[INFO] 2025-04-08T16:15:05.945Z - List Genres --- Request Received
-[INFO] 2025-04-08T16:15:05.951Z - List Genres --- Request Received
-[INFO] 2025-04-08T16:15:09.948Z - List Genres --- Request Received
-[INFO] 2025-04-08T16:15:09.952Z - List Genres --- Request Received
-[INFO] 2025-04-08T16:15:15.719Z - List Genres --- Request Received
-[INFO] 2025-04-08T16:15:15.723Z - List Genres --- Request Received
-[INFO] 2025-04-08T16:15:17.697Z - List Genres --- Request Received
-[INFO] 2025-04-08T16:15:17.702Z - List Genres --- Request Received
-[INFO] 2025-04-08T16:15:27.577Z - List Genres --- Request Received
-[INFO] 2025-04-08T16:15:27.582Z - List Genres --- Request Received
-[INFO] 2025-04-08T16:15:31.513Z - List Genres --- Request Received
-[INFO] 2025-04-08T16:15:31.517Z - List Genres --- Request Received
-[INFO] 2025-04-08T16:15:34.570Z - List Genres --- Request Received
-[INFO] 2025-04-08T16:15:34.574Z - List Genres --- Request Received
-[INFO] 2025-04-08T16:15:37.685Z - List Genres --- Request Received
-[INFO] 2025-04-08T16:15:37.689Z - List Genres --- Request Received
-[INFO] 2025-04-08T16:15:39.557Z - List Genres --- Request Received
-[INFO] 2025-04-08T16:15:39.561Z - List Genres --- Request Received
-[INFO] 2025-04-08T16:17:09.686Z - List Genres --- Request Received
-[INFO] 2025-04-08T16:17:09.690Z - List Genres --- Request Received
-[INFO] 2025-04-08T16:17:16.726Z - List Genres --- Request Received
-[INFO] 2025-04-08T16:17:16.729Z - List Genres --- Request Received
-[INFO] 2025-04-08T16:17:17.846Z - List Genres --- Request Received
-[INFO] 2025-04-08T16:17:17.851Z - List Genres --- Request Received
-[INFO] 2025-04-08T16:17:21.830Z - List Genres --- Request Received
-[INFO] 2025-04-08T16:17:21.835Z - List Genres --- Request Received
-[INFO] 2025-04-08T16:17:24.738Z - List Genres --- Request Received
-[INFO] 2025-04-08T16:17:24.743Z - List Genres --- Request Received
-[INFO] 2025-04-08T16:17:28.601Z - List Genres --- Request Received
-[INFO] 2025-04-08T16:17:28.606Z - List Genres --- Request Received
-[INFO] 2025-04-08T16:17:50.727Z - List Genres --- Request Received
-[INFO] 2025-04-08T16:17:50.737Z - List Genres --- Request Received
-[INFO] 2025-04-08T16:18:11.659Z - List Genres --- Request Received
-[INFO] 2025-04-08T16:18:11.673Z - List Genres --- Request Received
-[INFO] 2025-04-08T16:20:34.550Z - List Genres --- Request Received
-[INFO] 2025-04-08T16:20:34.553Z - List Genres --- Request Received
-[INFO] 2025-04-08T16:20:36.875Z - List Genres --- Request Received
-[INFO] 2025-04-08T16:20:36.882Z - List Genres --- Request Received
-[INFO] 2025-04-08T16:20:50.047Z - List Genres --- Request Received
-[INFO] 2025-04-08T16:20:50.056Z - List Genres --- Request Received
-[INFO] 2025-04-08T16:21:50.609Z - List Genres --- Request Received
-[INFO] 2025-04-08T16:21:50.621Z - List Genres --- Request Received
-[INFO] 2025-04-08T16:21:51.730Z - List Genres --- Request Received
-[INFO] 2025-04-08T16:21:51.739Z - List Genres --- Request Received
-[INFO] 2025-04-08T16:22:01.571Z - List Genres --- Request Received
-[INFO] 2025-04-08T16:22:01.574Z - List Genres --- Request Received
-[INFO] 2025-04-08T16:22:06.730Z - List Genres --- Request Received
-[INFO] 2025-04-08T16:22:06.738Z - List Genres --- Request Received
-[INFO] 2025-04-08T16:22:11.593Z - List Genres --- Request Received
-[INFO] 2025-04-08T16:22:11.597Z - List Genres --- Request Received
-[INFO] 2025-04-08T16:22:12.638Z - List Genres --- Request Received
-[INFO] 2025-04-08T16:22:12.642Z - List Genres --- Request Received
-[INFO] 2025-04-08T16:22:29.585Z - List Genres --- Request Received
-[INFO] 2025-04-08T16:22:29.589Z - List Genres --- Request Received
-[INFO] 2025-04-08T16:22:48.956Z - List Genres --- Request Received
-[INFO] 2025-04-08T16:22:48.960Z - List Genres --- Request Received
-[INFO] 2025-04-08T16:22:50.301Z - List Genres --- Request Received
-[INFO] 2025-04-08T16:22:50.304Z - List Genres --- Request Received
-[INFO] 2025-04-08T16:22:56.795Z - List Genres --- Request Received
-[INFO] 2025-04-08T16:22:56.799Z - List Genres --- Request Received
-[INFO] 2025-04-08T16:23:06.627Z - List Genres --- Request Received
-[INFO] 2025-04-08T16:23:06.631Z - List Genres --- Request Received
-[INFO] 2025-04-08T16:23:08.530Z - List Genres --- Request Received
-[INFO] 2025-04-08T16:23:08.534Z - List Genres --- Request Received
-[INFO] 2025-04-08T16:23:49.043Z - List Genres --- Request Received
-[INFO] 2025-04-08T16:23:49.047Z - List Genres --- Request Received
-[INFO] 2025-04-08T16:23:49.051Z - List Genres --- Request Received
-[INFO] 2025-04-08T16:23:49.055Z - List Genres --- Request Received
-[INFO] 2025-04-08T16:23:52.113Z - List Genres --- Request Received
-[INFO] 2025-04-08T16:23:52.117Z - List Genres --- Request Received
-[INFO] 2025-04-08T17:26:37.313Z - List Genres --- Request Received
-[INFO] 2025-04-08T17:26:37.320Z - List Genres --- Request Received
-[WARN] 2025-04-09T15:07:29.545Z - Login User --- Invalid email or password 
-[INFO] 2025-04-09T15:08:15.081Z - Login User --- Login successful 🚀
-[INFO] 2025-04-09T15:08:33.426Z - LibraryController.getById ---- Retrieved library entry 4
-[INFO] 2025-04-09T15:08:41.818Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
-[WARN] 2025-04-09T16:27:54.619Z - Get User --- User not found
-[INFO] 2025-04-09T16:27:54.621Z - Get User --- Request Received
-[WARN] 2025-04-09T16:27:54.681Z - Get User --- User not found
-[INFO] 2025-04-09T16:27:54.682Z - Get User --- Request Received
-[WARN] 2025-04-09T16:27:58.701Z - Get User --- User not found
-[INFO] 2025-04-09T16:27:58.702Z - Get User --- Request Received
-[WARN] 2025-04-09T16:27:58.763Z - Get User --- User not found
-[INFO] 2025-04-09T16:27:58.764Z - Get User --- Request Received
-[WARN] 2025-04-09T16:28:01.737Z - Get User --- User not found
-[INFO] 2025-04-09T16:28:01.738Z - Get User --- Request Received
-[WARN] 2025-04-09T16:28:01.783Z - Get User --- User not found
-[INFO] 2025-04-09T16:28:01.784Z - Get User --- Request Received
-[WARN] 2025-04-09T16:28:14.969Z - Get User --- User not found
-[INFO] 2025-04-09T16:28:14.970Z - Get User --- Request Received
-[WARN] 2025-04-09T16:28:15.047Z - Get User --- User not found
-[INFO] 2025-04-09T16:28:15.048Z - Get User --- Request Received
-[WARN] 2025-04-09T16:28:31.096Z - Get User --- User not found
-[INFO] 2025-04-09T16:28:31.097Z - Get User --- Request Received
-[WARN] 2025-04-09T16:28:31.143Z - Get User --- User not found
-[INFO] 2025-04-09T16:28:31.144Z - Get User --- Request Received
-[WARN] 2025-04-09T16:28:34.198Z - Get User --- User not found
-[INFO] 2025-04-09T16:28:34.199Z - Get User --- Request Received
-[WARN] 2025-04-09T16:28:34.245Z - Get User --- User not found
-[INFO] 2025-04-09T16:28:34.246Z - Get User --- Request Received
+[WARN] 2025-04-09T16:35:07.725Z - Get User --- User not found
+[INFO] 2025-04-09T16:35:07.728Z - Get User --- Request Received
+[WARN] 2025-04-09T16:35:07.787Z - Get User --- User not found
+[INFO] 2025-04-09T16:35:07.788Z - Get User --- Request Received
+[WARN] 2025-04-09T16:35:58.623Z - Get User --- User not found
+[INFO] 2025-04-09T16:35:58.624Z - Get User --- Request Received
+[WARN] 2025-04-09T16:35:58.670Z - Get User --- User not found
+[INFO] 2025-04-09T16:35:58.671Z - Get User --- Request Received
+[WARN] 2025-04-09T16:36:12.538Z - Get User --- User not found
+[INFO] 2025-04-09T16:36:12.539Z - Get User --- Request Received
+[WARN] 2025-04-09T16:36:12.585Z - Get User --- User not found
+[INFO] 2025-04-09T16:36:12.586Z - Get User --- Request Received
+[INFO] 2025-04-09T16:38:31.259Z - Login User --- Login successful 🚀
+[INFO] 2025-04-09T16:42:34.685Z - Login User --- Login successful 🚀
+[INFO] 2025-04-09T16:42:34.791Z - Get User --- Request Received
+[INFO] 2025-04-09T16:42:34.959Z - Get User --- Request Received
+[INFO] 2025-04-09T16:42:35.130Z - Get User --- Request Received
+[INFO] 2025-04-09T16:42:35.299Z - Get User --- Request Received
+[INFO] 2025-04-09T16:44:05.381Z - Get User --- Request Received
+[INFO] 2025-04-09T16:44:05.445Z - Get User --- Request Received
+[INFO] 2025-04-09T16:44:05.507Z - Get User --- Request Received
+[INFO] 2025-04-09T16:44:05.569Z - Get User --- Request Received
+[INFO] 2025-04-09T16:44:20.516Z - Get User --- Request Received
+[INFO] 2025-04-09T16:44:20.686Z - Get User --- Request Received
+[INFO] 2025-04-09T16:44:20.747Z - Get User --- Request Received
+[INFO] 2025-04-09T16:44:20.810Z - Get User --- Request Received
+[INFO] 2025-04-09T16:46:04.375Z - Get User --- Request Received
+[INFO] 2025-04-09T16:46:04.437Z - Get User --- Request Received
+[INFO] 2025-04-09T16:46:08.409Z - Get User --- Request Received
+[INFO] 2025-04-09T16:46:09.391Z - Get User --- Request Received
+[INFO] 2025-04-09T16:46:32.813Z - Get User --- Request Received
+[INFO] 2025-04-09T16:46:32.876Z - Get User --- Request Received
+[INFO] 2025-04-09T16:46:32.938Z - Get User --- Request Received
+[INFO] 2025-04-09T16:46:33.001Z - Get User --- Request Received
+[INFO] 2025-04-09T16:46:43.934Z - Get User --- Request Received
+[INFO] 2025-04-09T16:46:44.012Z - Get User --- Request Received
+[INFO] 2025-04-09T16:46:44.248Z - Get User --- Request Received
+[INFO] 2025-04-09T16:46:44.310Z - Get User --- Request Received
+[INFO] 2025-04-09T16:47:28.650Z - Get User --- Request Received
+[INFO] 2025-04-09T16:47:28.712Z - Get User --- Request Received
+[INFO] 2025-04-09T16:47:28.773Z - Get User --- Request Received
+[INFO] 2025-04-09T16:47:28.833Z - Get User --- Request Received
+[INFO] 2025-04-09T16:47:34.433Z - Get User --- Request Received
+[INFO] 2025-04-09T16:47:34.495Z - Get User --- Request Received
+[INFO] 2025-04-09T16:47:40.774Z - Get User --- Request Received
+[INFO] 2025-04-09T16:47:40.835Z - Get User --- Request Received
+[INFO] 2025-04-09T16:47:46.203Z - Get User --- Request Received
+[INFO] 2025-04-09T16:47:50.721Z - Get User --- Request Received
+[INFO] 2025-04-09T16:47:50.798Z - Get User --- Request Received
+[INFO] 2025-04-09T16:48:18.614Z - Get User --- Request Received
+[INFO] 2025-04-09T16:48:18.677Z - Get User --- Request Received
+[INFO] 2025-04-09T16:49:06.808Z - Get User --- Request Received
+[INFO] 2025-04-09T16:49:06.870Z - Get User --- Request Received
+[INFO] 2025-04-09T16:49:12.377Z - Get User --- Request Received
+[INFO] 2025-04-09T16:49:12.453Z - Get User --- Request Received
+[INFO] 2025-04-09T16:50:21.850Z - Get User --- Request Received
+[INFO] 2025-04-09T16:50:22.019Z - Get User --- Request Received
+[INFO] 2025-04-09T16:50:32.410Z - Get User --- Request Received
+[INFO] 2025-04-09T16:50:44.085Z - Get User --- Request Received
+[INFO] 2025-04-09T16:54:02.034Z - Get User --- Request Received
+[INFO] 2025-04-09T16:54:02.096Z - Get User --- Request Received
+[INFO] 2025-04-09T16:54:05.419Z - Get User --- Request Received
+[INFO] 2025-04-09T16:54:05.481Z - Get User --- Request Received
+[INFO] 2025-04-09T16:54:16.942Z - Login User - Logout Successfully
+[INFO] 2025-04-09T16:54:31.554Z - Login User --- Login successful 🚀
+[INFO] 2025-04-09T16:54:31.674Z - Get User --- Request Received
+[INFO] 2025-04-09T16:54:31.736Z - Get User --- Request Received
+[INFO] 2025-04-09T16:54:47.015Z - Get User --- Request Received
+[INFO] 2025-04-09T16:54:47.078Z - Get User --- Request Received
+[INFO] 2025-04-09T16:55:30.974Z - Get User --- Request Received
+[INFO] 2025-04-09T16:55:31.037Z - Get User --- Request Received
+[INFO] 2025-04-09T16:55:43.919Z - Get User --- Request Received
+[INFO] 2025-04-09T16:55:43.981Z - Get User --- Request Received
+[INFO] 2025-04-09T16:56:52.858Z - Get User --- Request Received
+[INFO] 2025-04-09T16:56:52.936Z - Get User --- Request Received
+[INFO] 2025-04-09T16:58:05.453Z - Get User --- Request Received
+[INFO] 2025-04-09T16:58:08.830Z - Get User --- Request Received
+[INFO] 2025-04-09T16:58:08.892Z - Get User --- Request Received
+[INFO] 2025-04-09T16:59:21.958Z - Get User --- Request Received
+[INFO] 2025-04-09T16:59:22.020Z - Get User --- Request Received
+[INFO] 2025-04-09T17:00:21.492Z - Get User --- Request Received
+[INFO] 2025-04-09T17:01:01.410Z - Get User --- Request Received
+[INFO] 2025-04-09T17:01:22.860Z - Get User --- Request Received
+[INFO] 2025-04-09T17:01:22.923Z - Get User --- Request Received
+[INFO] 2025-04-09T17:01:31.749Z - Get User --- Request Received
+[INFO] 2025-04-09T17:01:31.811Z - Get User --- Request Received
+[INFO] 2025-04-09T17:01:34.454Z - Get User --- Request Received
+[INFO] 2025-04-09T17:02:17.782Z - Get User --- Request Received
+[INFO] 2025-04-09T17:02:17.845Z - Get User --- Request Received
+[INFO] 2025-04-09T17:02:24.058Z - Get User --- Request Received
+[INFO] 2025-04-09T17:02:24.123Z - Get User --- Request Received
+[INFO] 2025-04-09T17:02:55.409Z - Get User --- Request Received
+[INFO] 2025-04-09T17:03:26.412Z - Get User --- Request Received
+[INFO] 2025-04-09T17:03:41.410Z - Get User --- Request Received
+[INFO] 2025-04-09T17:03:55.282Z - Get User --- Request Received
+[INFO] 2025-04-09T17:03:55.377Z - Get User --- Request Received
+[INFO] 2025-04-09T17:06:07.291Z - Get User --- Request Received
+[INFO] 2025-04-09T17:06:07.352Z - Get User --- Request Received
+[INFO] 2025-04-09T17:06:12.052Z - Login User - Logout Successfully
+[INFO] 2025-04-09T17:06:18.969Z - Login User --- Login successful 🚀
+[INFO] 2025-04-09T17:06:19.059Z - Get User --- Request Received
+[INFO] 2025-04-09T17:06:19.121Z - Get User --- Request Received
+[INFO] 2025-04-09T17:06:21.734Z - Get User --- Request Received
+[INFO] 2025-04-09T17:06:21.797Z - Get User --- Request Received
+[INFO] 2025-04-09T17:08:58.610Z - Get User --- Request Received
+[INFO] 2025-04-09T17:10:18.929Z - Get User --- Request Received
+[INFO] 2025-04-09T17:10:19.101Z - Get User --- Request Received
+[INFO] 2025-04-09T17:10:21.107Z - Get User --- Request Received
+[INFO] 2025-04-09T17:10:21.276Z - Get User --- Request Received
+[INFO] 2025-04-09T17:12:38.298Z - Get User --- Request Received
+[INFO] 2025-04-09T17:12:38.362Z - Get User --- Request Received
+[INFO] 2025-04-09T17:12:38.424Z - Get User --- Request Received
+[INFO] 2025-04-09T17:12:38.482Z - Get User --- Request Received
+[INFO] 2025-04-09T17:12:38.549Z - Get User --- Request Received
+[INFO] 2025-04-09T17:12:38.613Z - Get User --- Request Received
+[INFO] 2025-04-09T17:12:38.694Z - Get User --- Request Received
+[INFO] 2025-04-09T17:12:38.784Z - Get User --- Request Received
+[INFO] 2025-04-09T17:12:38.863Z - Get User --- Request Received
+[INFO] 2025-04-09T17:12:38.924Z - Get User --- Request Received
+[INFO] 2025-04-09T17:12:38.985Z - Get User --- Request Received
+[INFO] 2025-04-09T17:12:39.144Z - Get User --- Request Received
+[INFO] 2025-04-09T17:13:22.621Z - Get User --- Request Received
+[INFO] 2025-04-09T17:13:22.794Z - Get User --- Request Received
+[INFO] 2025-04-09T17:13:22.855Z - Get User --- Request Received
+[INFO] 2025-04-09T17:13:22.917Z - Get User --- Request Received
+[INFO] 2025-04-09T17:13:22.979Z - Get User --- Request Received
+[INFO] 2025-04-09T17:13:23.041Z - Get User --- Request Received
+[INFO] 2025-04-09T17:13:23.104Z - Get User --- Request Received
+[INFO] 2025-04-09T17:13:23.165Z - Get User --- Request Received
+[INFO] 2025-04-09T17:13:23.228Z - Get User --- Request Received
+[INFO] 2025-04-09T17:13:25.524Z - Get User --- Request Received
+[INFO] 2025-04-09T17:13:25.588Z - Get User --- Request Received
+[INFO] 2025-04-09T17:13:25.649Z - Get User --- Request Received
+[WARN] 2025-04-09T17:13:41.695Z - Login User --- Invalid email or password 
+[INFO] 2025-04-09T17:13:47.621Z - Login User --- Login successful 🚀
+[INFO] 2025-04-09T17:13:47.730Z - Get User --- Request Received
+[INFO] 2025-04-09T17:13:47.793Z - Get User --- Request Received
+[INFO] 2025-04-09T17:13:47.841Z - Get User --- Request Received
+[INFO] 2025-04-09T17:13:47.903Z - Get User --- Request Received
+[INFO] 2025-04-09T17:13:47.965Z - Get User --- Request Received
+[INFO] 2025-04-09T17:13:48.026Z - Get User --- Request Received
+[INFO] 2025-04-09T17:13:48.196Z - Get User --- Request Received
+[INFO] 2025-04-09T17:13:48.257Z - Get User --- Request Received
+[INFO] 2025-04-09T17:13:48.319Z - Get User --- Request Received
+[INFO] 2025-04-09T17:13:48.366Z - Get User --- Request Received
+[INFO] 2025-04-09T17:13:48.428Z - Get User --- Request Received
+[INFO] 2025-04-09T17:13:50.839Z - Get User --- Request Received
+[INFO] 2025-04-09T17:13:50.901Z - Get User --- Request Received
+[INFO] 2025-04-09T17:13:50.964Z - Get User --- Request Received
+[INFO] 2025-04-09T17:13:51.025Z - Get User --- Request Received
+[INFO] 2025-04-09T17:13:51.089Z - Get User --- Request Received
+[INFO] 2025-04-09T17:13:51.152Z - Get User --- Request Received
+[INFO] 2025-04-09T17:13:51.215Z - Get User --- Request Received
+[INFO] 2025-04-09T17:13:51.277Z - Get User --- Request Received
+[INFO] 2025-04-09T17:13:51.324Z - Get User --- Request Received
+[INFO] 2025-04-09T17:14:04.451Z - Get User --- Request Received
+[INFO] 2025-04-09T17:14:04.512Z - Get User --- Request Received
+[INFO] 2025-04-09T17:14:04.575Z - Get User --- Request Received

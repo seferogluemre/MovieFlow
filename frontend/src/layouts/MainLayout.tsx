@@ -1,5 +1,5 @@
-import { FC } from "react";
-import { Outlet } from "react-router-dom";
+import { FC, useState, useEffect } from 'react';
+import { Outlet, useNavigate } from 'react-router-dom';
 import {
   Box,
   AppBar,
@@ -16,6 +16,8 @@ import {
   DarkMode as DarkModeIcon,
 } from "@mui/icons-material";
 import Sidebar from "../components/Sidebar";
+import { userService } from '../utils/api';
+import { User } from '../utils/types';
 
 const SearchBar = styled("div")(({ theme }) => ({
   position: "relative",
@@ -59,6 +61,41 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 const MainLayout: FC = () => {
+  const navigate = useNavigate();
+  const [user, setUser] = useState<User | null>(null);
+
+  useEffect(() => {
+    const checkAuth = async () => {
+      const token = localStorage.getItem('accessToken');
+      if (!token) {
+        navigate('/login');
+        return;
+      }
+
+      try {
+        const userData = await userService.getCurrentUser();
+        setUser(userData);
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+        // Eğer kullanıcı verileri çekilemezse, token geçersiz olabilir
+        // Bu durumda login sayfasına yönlendir
+        navigate('/login');
+      }
+    };
+
+    checkAuth();
+  }, [navigate]);
+
+  const getInitials = (name?: string): string => {
+    if (!name) return 'U';
+    
+    return name
+      .split(' ')
+      .map(part => part.length > 0 ? part[0] : '')
+      .join('')
+      .toUpperCase() || 'U';
+  };
+
   return (
     <Box sx={{ display: "flex" }}>
       <Sidebar />
@@ -92,7 +129,9 @@ const MainLayout: FC = () => {
                 <DarkModeIcon />
               </IconButton>
               <IconButton edge="end" sx={{ ml: 1 }}>
-                <Avatar>JD</Avatar>
+                <Avatar>
+                  {user ? getInitials(user.name || user.username) : 'U'}
+                </Avatar>
               </IconButton>
             </Box>
           </Toolbar>

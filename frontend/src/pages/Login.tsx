@@ -27,24 +27,19 @@ const Login: FC = () => {
       setLoading(true);
       setError(null);
 
-      // For demo purposes, let's just check for valid-looking email and non-empty password
-      if (!email.includes("@") || password.length < 6) {
-        throw new Error("Invalid email or password");
-      }
+      // API üzerinden login isteği at
+      const response = await authService.login(email, password);
 
-      // In a real app, we would call the login API
-      // const { accessToken, refreshToken, session } = await authService.login(email, password);
+      // Token ve session bilgilerini localStorage'a kaydet
+      localStorage.setItem("accessToken", response.accessToken);
+      localStorage.setItem("refreshToken", response.refreshToken);
+      localStorage.setItem("userId", response.session.userId.toString());
 
-      // For demo purposes, we'll just simulate a successful login
-      // Store tokens in localStorage
-      localStorage.setItem("accessToken", "demo-access-token");
-      localStorage.setItem("refreshToken", "demo-refresh-token");
-      localStorage.setItem("userId", "1");
-
-      // Navigate to dashboard
+      // Dashboard'a yönlendir
       navigate("/");
     } catch (err) {
-      setError((err as Error).message);
+      console.error("Login error:", err);
+      setError("Login failed. Please check your credentials and try again.");
     } finally {
       setLoading(false);
     }
