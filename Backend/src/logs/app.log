@@ -289,3 +289,27 @@
 [INFO] 2025-04-09T15:08:15.081Z - Login User --- Login successful 🚀
 [INFO] 2025-04-09T15:08:33.426Z - LibraryController.getById ---- Retrieved library entry 4
 [INFO] 2025-04-09T15:08:41.818Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
+[WARN] 2025-04-09T16:27:54.619Z - Get User --- User not found
+[INFO] 2025-04-09T16:27:54.621Z - Get User --- Request Received
+[WARN] 2025-04-09T16:27:54.681Z - Get User --- User not found
+[INFO] 2025-04-09T16:27:54.682Z - Get User --- Request Received
+[WARN] 2025-04-09T16:27:58.701Z - Get User --- User not found
+[INFO] 2025-04-09T16:27:58.702Z - Get User --- Request Received
+[WARN] 2025-04-09T16:27:58.763Z - Get User --- User not found
+[INFO] 2025-04-09T16:27:58.764Z - Get User --- Request Received
+[WARN] 2025-04-09T16:28:01.737Z - Get User --- User not found
+[INFO] 2025-04-09T16:28:01.738Z - Get User --- Request Received
+[WARN] 2025-04-09T16:28:01.783Z - Get User --- User not found
+[INFO] 2025-04-09T16:28:01.784Z - Get User --- Request Received
+[WARN] 2025-04-09T16:28:14.969Z - Get User --- User not found
+[INFO] 2025-04-09T16:28:14.970Z - Get User --- Request Received
+[WARN] 2025-04-09T16:28:15.047Z - Get User --- User not found
+[INFO] 2025-04-09T16:28:15.048Z - Get User --- Request Received
+[WARN] 2025-04-09T16:28:31.096Z - Get User --- User not found
+[INFO] 2025-04-09T16:28:31.097Z - Get User --- Request Received
+[WARN] 2025-04-09T16:28:31.143Z - Get User --- User not found
+[INFO] 2025-04-09T16:28:31.144Z - Get User --- Request Received
+[WARN] 2025-04-09T16:28:34.198Z - Get User --- User not found
+[INFO] 2025-04-09T16:28:34.199Z - Get User --- Request Received
+[WARN] 2025-04-09T16:28:34.245Z - Get User --- User not found
+[INFO] 2025-04-09T16:28:34.246Z - Get User --- Request Received
