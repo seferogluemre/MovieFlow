@@ -285,3 +285,7 @@
 [INFO] 2025-04-08T16:23:52.117Z - List Genres --- Request Received
 [INFO] 2025-04-08T17:26:37.313Z - List Genres --- Request Received
 [INFO] 2025-04-08T17:26:37.320Z - List Genres --- Request Received
+[WARN] 2025-04-09T15:07:29.545Z - Login User --- Invalid email or password 
+[INFO] 2025-04-09T15:08:15.081Z - Login User --- Login successful 🚀
+[INFO] 2025-04-09T15:08:33.426Z - LibraryController.getById ---- Retrieved library entry 4
+[INFO] 2025-04-09T15:08:41.818Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
