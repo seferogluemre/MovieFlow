@@ -32,10 +32,10 @@ export class UserService {
 
   static async create(data: CreateUserType) {
     const prisma = new PrismaClient();
-    
+
     // Şifreyi hashle
     const hashedPassword = await bcrypt.hash(data.password, 10);
-    
+
     const user = await prisma.user.create({
       data: {
         ...data,
@@ -71,6 +71,7 @@ export class UserService {
         library: true,
         reviews: true,
         ratings: true,
+        notifications: true,
         wishlist: true,
         watchlist: true,
         createdAt: true,

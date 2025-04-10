@@ -21,6 +21,7 @@ import {
   ListItem,
   ListItemAvatar,
   CircularProgress,
+  Button,
 } from "@mui/material";
 import {
   Search as SearchIcon,
@@ -81,11 +82,29 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 interface Notification {
   id: number;
   userId: number;
-  content: string;
-  type: string;
-  read: boolean;
+  fromUserId: number;
+  message: string;
+  type: NotificationType;
+  isRead: boolean;
   createdAt: string;
-  updatedAt: string;
+  user: {
+    id: number;
+    username: string;
+    name?: string;
+    profileImage?: string;
+  };
+  fromUser: {
+    id: number;
+    username: string;
+    name?: string;
+    profileImage?: string;
+  };
+}
+
+enum NotificationType {
+  FRIEND_REQUEST = "FRIEND_REQUEST",
+  FRIEND_REQUEST_ACCEPTED = "FRIEND_REQUEST_ACCEPTED",
+  FRIEND_REQUEST_REJECTED = "FRIEND_REQUEST_REJECTED",
 }
 
 const MainLayout: FC = () => {
@@ -151,9 +170,44 @@ const MainLayout: FC = () => {
     setNotificationAnchorEl(null);
   };
 
-  const handleNotificationAction = (notificationId: number, type: string) => {
-    console.log(`Notification action: ${type}, id: ${notificationId}`);
-    // Burada notifications API'sine istek atılabilir mark as read gibi
+  const handleNotificationAction = async (
+    notificationId: number,
+    action: "accept" | "reject" | "markAsRead"
+  ) => {
+    try {
+      const notification = notifications.find((n) => n.id === notificationId);
+      if (!notification) return;
+
+      switch (action) {
+        case "accept":
+          if (notification.type === NotificationType.FRIEND_REQUEST) {
+            await api.post(`/friendships/accept/${notification.fromUserId}`);
+            await markNotificationAsRead(notificationId);
+          }
+          break;
+
+        case "reject":
+          if (notification.type === NotificationType.FRIEND_REQUEST) {
+            await api.post(`/friendships/reject/${notification.fromUserId}`);
+            await markNotificationAsRead(notificationId);
+          }
+          break;
+
+        case "markAsRead":
+          await markNotificationAsRead(notificationId);
+          break;
+      }
+
+      // İşlem tamamlandıktan sonra bildirimleri yenile
+      fetchNotifications();
+    } catch (error) {
+      console.error(`Error handling notification action ${action}:`, error);
+    }
+  };
+
+  // Bildirimi okundu olarak işaretleme yardımcı fonksiyonu
+  const markNotificationAsRead = async (notificationId: number) => {
+    await api.patch(`/notifications/${notificationId}/read`);
   };
 
   const getInitials = (username?: string): string => {
@@ -188,7 +242,7 @@ const MainLayout: FC = () => {
 
   const notificationsOpen = Boolean(notificationAnchorEl);
   const unreadCount = notifications.filter(
-    (notification) => !notification.read
+    (notification) => !notification.isRead
   ).length;
 
   return (
@@ -287,11 +341,37 @@ const MainLayout: FC = () => {
           }}
         >
           <Box
-            sx={{ p: 2, borderBottom: "1px solid rgba(255, 255, 255, 0.1)" }}
+            sx={{
+              p: 2,
+              borderBottom: "1px solid rgba(255, 255, 255, 0.1)",
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+            }}
           >
             <Typography variant="h6" sx={{ fontWeight: "bold" }}>
-              Notifications
+              Bildirimler {unreadCount > 0 && `(${unreadCount})`}
             </Typography>
+
+            {unreadCount > 0 && (
+              <Button
+                size="small"
+                variant="text"
+                onClick={async () => {
+                  try {
+                    await api.patch("/notifications/read-all");
+                    fetchNotifications();
+                  } catch (error) {
+                    console.error(
+                      "Error marking all notifications as read:",
+                      error
+                    );
+                  }
+                }}
+              >
+                Tümünü Okundu İşaretle
+              </Button>
+            )}
           </Box>
 
           {loadingNotifications ? (
@@ -314,35 +394,85 @@ const MainLayout: FC = () => {
                   alignItems="flex-start"
                   sx={{
                     borderBottom: "1px solid rgba(255, 255, 255, 0.05)",
-                    backgroundColor: notification.read
+                    backgroundColor: notification.isRead
                       ? "transparent"
                       : "rgba(255, 255, 255, 0.05)",
                     "&:hover": {
                       backgroundColor: "rgba(255, 255, 255, 0.1)",
                     },
+                    padding: 2,
                   }}
                 >
                   <ListItemAvatar>
                     <Avatar
+                      src={
+                        notification.fromUser.profileImage
+                          ? `http://localhost:3000/uploads/${notification.fromUser.profileImage}`
+                          : undefined
+                      }
+                      alt={notification.fromUser.username}
                       sx={{
-                        bgcolor: notification.read
+                        bgcolor: notification.isRead
                           ? "grey.700"
                           : "primary.main",
                       }}
                     >
-                      {getNotificationIcon(notification.type)}
+                      {!notification.fromUser.profileImage
+                        ? getInitials(notification.fromUser.username)
+                        : null}
                     </Avatar>
                   </ListItemAvatar>
                   <ListItemText
-                    primary={notification.content}
-                    secondary={formatNotificationDate(notification.createdAt)}
+                    primary={notification.message}
+                    secondary={
+                      <Box
+                        sx={{
+                          display: "flex",
+                          flexDirection: "column",
+                          mt: 0.5,
+                        }}
+                      >
+                        <Typography variant="caption" color="text.secondary">
+                          {formatNotificationDate(notification.createdAt)}
+                        </Typography>
+
+                        {notification.type ===
+                          NotificationType.FRIEND_REQUEST &&
+                          !notification.isRead && (
+                            <Box sx={{ display: "flex", gap: 1, mt: 1 }}>
+                              <Button
+                                size="small"
+                                variant="contained"
+                                color="primary"
+                                onClick={() =>
+                                  handleNotificationAction(
+                                    notification.id,
+                                    "accept"
+                                  )
+                                }
+                              >
+                                Kabul Et
+                              </Button>
+                              <Button
+                                size="small"
+                                variant="outlined"
+                                color="error"
+                                onClick={() =>
+                                  handleNotificationAction(
+                                    notification.id,
+                                    "reject"
+                                  )
+                                }
+                              >
+                                Reddet
+                              </Button>
+                            </Box>
+                          )}
+                      </Box>
+                    }
                     primaryTypographyProps={{
                       variant: "body1",
-                      fontWeight: notification.read ? "normal" : "bold",
-                    }}
-                    secondaryTypographyProps={{
-                      variant: "caption",
-                      color: "text.secondary",
+                      fontWeight: notification.isRead ? "normal" : "bold",
                     }}
                   />
                 </ListItem>
