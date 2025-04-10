@@ -32,6 +32,7 @@ import {
 } from "@mui/icons-material";
 import api, { processApiError } from "../utils/api";
 import { useAuth } from "../context/AuthContext";
+import { tr } from "date-fns/locale";
 
 interface MovieDetails {
   id: number;
@@ -109,7 +110,9 @@ const MovieDetails: FC = () => {
       setError(null);
     } catch (err) {
       console.error("Error fetching movie details:", err);
-      setError("Failed to load movie details. Please try again later.");
+      setError(
+        "Film detayları yüklenirken bir hata oluştu. Lütfen daha sonra tekrar deneyin."
+      );
     } finally {
       setLoading(false);
     }
@@ -120,7 +123,7 @@ const MovieDetails: FC = () => {
 
     try {
       await api.post("/watchlist", { movieId: movie.id });
-      setSuccessMessage("Movie successfully added to your watchlist");
+      setSuccessMessage("Film başarıyla izleme listenize eklendi");
       setTimeout(() => setSuccessMessage(null), 3000);
     } catch (err) {
       console.error("Error adding movie to watchlist:", err);
@@ -135,10 +138,25 @@ const MovieDetails: FC = () => {
 
     try {
       await api.post("/library", { movieId: movie.id });
-      setSuccessMessage("Movie successfully added to your library");
+      setSuccessMessage("Film başarıyla kütüphanenize eklendi");
       setTimeout(() => setSuccessMessage(null), 3000);
     } catch (err) {
       console.error("Error adding movie to library:", err);
+      const errorMessage = processApiError(err);
+      setError(errorMessage);
+      setTimeout(() => setError(null), 3000);
+    }
+  };
+
+  const handleAddToWishlist = async () => {
+    if (!isAuthenticated || !movie) return;
+
+    try {
+      await api.post("/wishlist", { movieId: movie.id });
+      setSuccessMessage("Film başarıyla istek listenize eklendi");
+      setTimeout(() => setSuccessMessage(null), 3000);
+    } catch (err) {
+      console.error("Error adding movie to wishlist:", err);
       const errorMessage = processApiError(err);
       setError(errorMessage);
       setTimeout(() => setError(null), 3000);
@@ -163,6 +181,24 @@ const MovieDetails: FC = () => {
     }
   };
 
+  // Yaş sınırı etiketlerini Türkçe karşılıklarına çevir
+  const translateAgeRating = (rating: string) => {
+    switch (rating) {
+      case "GENERAL":
+        return "GENEL";
+      case "PARENTAL_GUIDANCE":
+        return "EBEVEYN REHBERLİĞİ";
+      case "TEEN":
+        return "GENÇ";
+      case "MATURE":
+        return "YETİŞKİN";
+      case "ADULT":
+        return "18+";
+      default:
+        return rating;
+    }
+  };
+
   if (loading) {
     return (
       <Box sx={{ display: "flex", justifyContent: "center", my: 4 }}>
@@ -179,7 +215,7 @@ const MovieDetails: FC = () => {
           onClick={handleBack}
           sx={{ mb: 2 }}
         >
-          Back
+          Geri
         </Button>
         <Alert severity="error">{error}</Alert>
       </Box>
@@ -194,9 +230,9 @@ const MovieDetails: FC = () => {
           onClick={handleBack}
           sx={{ mb: 2 }}
         >
-          Back
+          Geri
         </Button>
-        <Alert severity="info">Movie not found</Alert>
+        <Alert severity="info">Film bulunamadı</Alert>
       </Box>
     );
   }
@@ -210,7 +246,7 @@ const MovieDetails: FC = () => {
       )}
 
       <Button startIcon={<ArrowBackIcon />} onClick={handleBack} sx={{ mb: 2 }}>
-        Back
+        Geri
       </Button>
 
       <Grid container spacing={4}>
@@ -221,7 +257,7 @@ const MovieDetails: FC = () => {
               component="img"
               image={
                 movie.posterImage ||
-                "https://via.placeholder.com/500x750?text=No+Poster"
+                "https://via.placeholder.com/500x750?text=Afiş+Yok"
               }
               alt={movie.title}
               sx={{ height: "auto", maxHeight: 600 }}
@@ -229,86 +265,107 @@ const MovieDetails: FC = () => {
           </Card>
 
           {/* Action Buttons */}
-          <Box sx={{ mt: 2, display: "flex", gap: 2 }}>
+          <Box
+            sx={{
+              mt: 2,
+              display: "flex",
+              gap: 2,
+              flexDirection: { xs: "column", sm: "row" },
+            }}
+          >
             <Button
               variant="contained"
               fullWidth
               startIcon={<PlaylistAddIcon />}
               onClick={handleAddToWatchlist}
             >
-              Add to Watchlist
+              İzleme Listesine Ekle
             </Button>
+            <Button
+              variant="outlined"
+              fullWidth
+              startIcon={<BookmarkAddIcon />}
+              onClick={handleAddToWishlist}
+            >
+              İstek Listesine Ekle
+            </Button>
+          </Box>
+
+          <Box sx={{ mt: 2 }}>
             <Button
               variant="outlined"
               fullWidth
               startIcon={<BookmarkAddIcon />}
               onClick={handleAddToLibrary}
             >
-              Add to Library
+              Kütüphaneye Ekle
             </Button>
           </Box>
         </Grid>
 
-        {/* Movie Details */}
+        {/* Movie Info */}
         <Grid item xs={12} md={8}>
-          <Typography
-            variant="h3"
-            component="h1"
-            fontWeight="bold"
-            gutterBottom
-          >
+          <Typography variant="h4" fontWeight="bold" gutterBottom>
             {movie.title}
           </Typography>
 
-          <Box sx={{ display: "flex", alignItems: "center", mb: 2, gap: 3 }}>
-            {movie.rating > 0 && (
-              <Box sx={{ display: "flex", alignItems: "center" }}>
-                <StarIcon sx={{ color: "warning.main", mr: 0.5 }} />
-                <Typography variant="h6" fontWeight="bold">
-                  {movie.rating.toFixed(1)}
-                </Typography>
-              </Box>
-            )}
-
-            <Box sx={{ display: "flex", alignItems: "center" }}>
-              <AccessTimeIcon sx={{ mr: 0.5, color: "text.secondary" }} />
-              <Typography>{movie.duration} min</Typography>
-            </Box>
-
-            <Box sx={{ display: "flex", alignItems: "center" }}>
-              <CalendarTodayIcon sx={{ mr: 0.5, color: "text.secondary" }} />
-              <Typography>{movie.releaseYear}</Typography>
-            </Box>
-
+          <Box sx={{ display: "flex", gap: 2, mb: 2, flexWrap: "wrap" }}>
+            {/* Duration */}
             <Chip
-              label={
-                movie.ageRating ? movie.ageRating.replace("_", " ") : "GENERAL"
-              }
-              color={getAgeRatingColor(movie.ageRating)}
-              size="medium"
+              icon={<AccessTimeIcon />}
+              label={`${movie.duration} dakika`}
+              size="small"
+              variant="outlined"
             />
+
+            {/* Release Year */}
+            <Chip
+              icon={<CalendarTodayIcon />}
+              label={movie.releaseYear}
+              size="small"
+              variant="outlined"
+            />
+
+            {/* Age Rating */}
+            <Chip
+              label={translateAgeRating(movie.ageRating)}
+              size="small"
+              color={getAgeRatingColor(movie.ageRating)}
+            />
+
+            {/* Rating */}
+            {movie.rating > 0 && (
+              <Chip
+                icon={<StarIcon sx={{ color: "warning.main" }} />}
+                label={movie.rating.toFixed(1)}
+                size="small"
+                sx={{ fontWeight: "bold" }}
+              />
+            )}
           </Box>
 
           {/* Director */}
           <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
-            <Typography variant="subtitle1" fontWeight="bold" sx={{ mr: 1 }}>
-              Director:
+            <PersonIcon sx={{ mr: 1, color: "text.secondary" }} />
+            <Typography variant="body1">
+              <strong>Yönetmen:</strong> {movie.director}
             </Typography>
-            <Typography>{movie.director}</Typography>
           </Box>
 
           {/* Genres */}
           {movie.genres && movie.genres.length > 0 && (
             <Box sx={{ mb: 3 }}>
-              <Typography variant="subtitle1" fontWeight="bold" gutterBottom>
-                Genres
+              <Typography variant="body1" fontWeight="bold" gutterBottom>
+                Türler:
               </Typography>
-              <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1 }}>
-                {movie.genres.map((genreItem) => (
+              <Box sx={{ display: "flex", gap: 1, flexWrap: "wrap" }}>
+                {movie.genres.map((genreEntry) => (
                   <Chip
-                    key={genreItem.genreId}
-                    label={genreItem.genre.name}
-                    variant="outlined"
+                    key={genreEntry.genreId}
+                    label={genreEntry.genre.name}
+                    size="small"
+                    variant="filled"
+                    color="primary"
                   />
                 ))}
               </Box>
@@ -316,52 +373,50 @@ const MovieDetails: FC = () => {
           )}
 
           {/* Description */}
-          <Box sx={{ mb: 3 }}>
-            <Typography variant="subtitle1" fontWeight="bold" gutterBottom>
-              Overview
+          <Box sx={{ mb: 4 }}>
+            <Typography variant="body1" fontWeight="bold" gutterBottom>
+              Açıklama:
             </Typography>
-            <Typography paragraph>{movie.description}</Typography>
+            <Typography variant="body1" paragraph>
+              {movie.description}
+            </Typography>
           </Box>
-
-          <Divider sx={{ my: 3 }} />
 
           {/* Cast */}
           {movie.actors && movie.actors.length > 0 && (
-            <Box sx={{ mb: 3 }}>
-              <Typography variant="h5" fontWeight="bold" gutterBottom>
-                Cast
+            <Box>
+              <Typography variant="h6" fontWeight="bold" gutterBottom>
+                Oyuncular
               </Typography>
+              <Divider sx={{ mb: 2 }} />
+
               <List>
-                {movie.actors.map((actorItem) => (
-                  <ListItem key={actorItem.actorId} alignItems="flex-start">
+                {movie.actors.map((actorEntry) => (
+                  <ListItem key={actorEntry.actorId} alignItems="flex-start">
                     <ListItemAvatar>
                       <Avatar
-                        alt={actorItem.actor.name}
-                        src={actorItem.actor.photo || undefined}
-                        sx={{ width: 56, height: 56 }}
+                        src={
+                          actorEntry.actor.photo ||
+                          "https://via.placeholder.com/100?text=Foto+Yok"
+                        }
+                        alt={actorEntry.actor.name}
                       />
                     </ListItemAvatar>
                     <ListItemText
-                      primary={
-                        <Typography variant="subtitle1" fontWeight="bold">
-                          {actorItem.actor.name}
-                        </Typography>
-                      }
+                      primary={actorEntry.actor.name}
                       secondary={
                         <>
-                          <Typography
-                            component="span"
-                            variant="body2"
-                            color="text.primary"
-                          >
-                            {actorItem.role}
+                          <Typography component="span" variant="body2">
+                            Rol: {actorEntry.role}
                           </Typography>
-                          {actorItem.actor.birthYear && (
-                            <Typography variant="body2" color="text.secondary">
-                              Born: {actorItem.actor.birthYear} •{" "}
-                              {actorItem.actor.nationality}
-                            </Typography>
-                          )}
+                          <br />
+                          <Typography component="span" variant="body2">
+                            Doğum Yılı: {actorEntry.actor.birthYear}
+                          </Typography>
+                          <br />
+                          <Typography component="span" variant="body2">
+                            Uyruk: {actorEntry.actor.nationality}
+                          </Typography>
                         </>
                       }
                     />

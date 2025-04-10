@@ -39,6 +39,7 @@ import {
 } from "@mui/icons-material";
 import api, { processApiError } from "../utils/api";
 import { formatDistanceToNow } from "date-fns";
+import { tr } from "date-fns/locale";
 import { useAuth } from "../context/AuthContext";
 
 interface WatchlistItem {
@@ -110,7 +111,9 @@ const Watchlist: FC = () => {
       setError(null);
     } catch (err) {
       console.error("Error fetching watchlist:", err);
-      setError("Failed to load your watchlist. Please try again later.");
+      setError(
+        "İzleme listeniz yüklenirken bir hata oluştu. Lütfen daha sonra tekrar deneyin."
+      );
     } finally {
       setLoading(false);
     }
@@ -216,9 +219,12 @@ const Watchlist: FC = () => {
 
   const formatDate = (dateString: string) => {
     try {
-      return formatDistanceToNow(new Date(dateString), { addSuffix: true });
+      return formatDistanceToNow(new Date(dateString), {
+        addSuffix: true,
+        locale: tr,
+      });
     } catch (e) {
-      return "Invalid date";
+      return "Geçersiz tarih";
     }
   };
 
@@ -236,6 +242,24 @@ const Watchlist: FC = () => {
     }
   };
 
+  // Yaş sınırı etiketlerini Türkçe karşılıklarına çevir
+  const translateAgeRating = (rating: string) => {
+    switch (rating) {
+      case "GENERAL":
+        return "GENEL";
+      case "PARENTAL_GUIDANCE":
+        return "EBEVEYN REHBERLİĞİ";
+      case "TEEN":
+        return "GENÇ";
+      case "MATURE":
+        return "YETİŞKİN";
+      case "ADULT":
+        return "18+";
+      default:
+        return rating;
+    }
+  };
+
   return (
     <Box>
       <Box
@@ -248,15 +272,15 @@ const Watchlist: FC = () => {
       >
         <Box>
           <Typography variant="h4" fontWeight="bold">
-            My Watchlist
+            İzleme Listem
           </Typography>
           <Typography variant="subtitle1" color="text.secondary">
-            Movies you want to watch in the future.
+            Gelecekte izlemek istediğiniz filmler.
           </Typography>
         </Box>
 
         <TextField
-          placeholder="Search watchlist..."
+          placeholder="İzleme listesinde ara..."
           size="small"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
@@ -284,21 +308,21 @@ const Watchlist: FC = () => {
       ) : filteredWatchlist.length === 0 ? (
         <Alert severity="info">
           {searchQuery
-            ? "No movies found matching your search."
-            : "Your watchlist is empty. Add movies to watch later!"}
+            ? "Aramanızla eşleşen film bulunamadı."
+            : "İzleme listeniz boş. Daha sonra izlemek için film ekleyin!"}
         </Alert>
       ) : (
         <TableContainer component={Paper} sx={{ mt: 2 }}>
           <Table sx={{ minWidth: 650 }}>
             <TableHead>
               <TableRow>
-                <TableCell>Movie</TableCell>
-                <TableCell>Director</TableCell>
-                <TableCell>Year</TableCell>
-                <TableCell>Rating</TableCell>
-                <TableCell>Age Rating</TableCell>
-                <TableCell>Added Date</TableCell>
-                <TableCell align="right">Actions</TableCell>
+                <TableCell>Film</TableCell>
+                <TableCell>Yönetmen</TableCell>
+                <TableCell>Yıl</TableCell>
+                <TableCell>Puan</TableCell>
+                <TableCell>Yaş Sınırı</TableCell>
+                <TableCell>Eklenme Tarihi</TableCell>
+                <TableCell align="right">İşlemler</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -320,7 +344,7 @@ const Watchlist: FC = () => {
                         }}
                         src={
                           item.movie.posterImage ||
-                          "https://via.placeholder.com/60x80?text=No+Image"
+                          "https://via.placeholder.com/60x80?text=Resim+Yok"
                         }
                         alt={item.movie.title}
                       />
@@ -342,15 +366,15 @@ const Watchlist: FC = () => {
                         </Typography>
                       </Box>
                     ) : (
-                      "Not rated"
+                      "Puanlanmamış"
                     )}
                   </TableCell>
                   <TableCell>
                     <Chip
                       label={
                         item.movie.ageRating
-                          ? item.movie.ageRating.replace("_", " ")
-                          : "GENERAL"
+                          ? translateAgeRating(item.movie.ageRating)
+                          : "GENEL"
                       }
                       size="small"
                       color={getAgeRatingColor(item.movie.ageRating)}
@@ -359,7 +383,7 @@ const Watchlist: FC = () => {
                   <TableCell>{formatDate(item.addedAt)}</TableCell>
                   <TableCell align="right">
                     <IconButton
-                      aria-label="actions"
+                      aria-label="işlemler"
                       onClick={(e) => handleMenuOpen(e, item.id)}
                     >
                       <MoreVertIcon />
@@ -383,35 +407,35 @@ const Watchlist: FC = () => {
           variant="subtitle2"
           sx={{ px: 2, py: 1, fontWeight: "bold" }}
         >
-          Actions
+          İşlemler
         </Typography>
 
         <MenuItem onClick={handleViewDetails}>
           <ListItemIcon>
             <VisibilityIcon fontSize="small" />
           </ListItemIcon>
-          <ListItemText>View Details</ListItemText>
+          <ListItemText>Detayları Gör</ListItemText>
         </MenuItem>
 
         <MenuItem onClick={handleMarkAsWatched}>
           <ListItemIcon>
             <CheckIcon fontSize="small" />
           </ListItemIcon>
-          <ListItemText>Mark as Watched</ListItemText>
+          <ListItemText>İzlendi Olarak İşaretle</ListItemText>
         </MenuItem>
 
         <MenuItem onClick={handleAddToWishlist}>
           <ListItemIcon>
             <BookmarkIcon fontSize="small" />
           </ListItemIcon>
-          <ListItemText>Add to Wishlist</ListItemText>
+          <ListItemText>İstek Listesine Ekle</ListItemText>
         </MenuItem>
 
         <MenuItem onClick={handleRemoveClick} sx={{ color: "error.main" }}>
           <ListItemIcon>
             <DeleteIcon fontSize="small" color="error" />
           </ListItemIcon>
-          <ListItemText>Remove</ListItemText>
+          <ListItemText>Kaldır</ListItemText>
         </MenuItem>
       </Menu>
 
@@ -419,24 +443,24 @@ const Watchlist: FC = () => {
       <Dialog open={confirmDialog.open} onClose={handleCloseDialog}>
         <DialogTitle>
           {confirmDialog.action === "delete"
-            ? "Confirm Removal"
-            : "Add to Wishlist"}
+            ? "Kaldırmayı Onayla"
+            : "İstek Listesine Ekle"}
         </DialogTitle>
         <DialogContent>
           <DialogContentText>
             {confirmDialog.action === "delete"
-              ? "Are you sure you want to remove this movie from your watchlist?"
-              : "Do you want to add this movie to your wishlist?"}
+              ? "Bu filmi izleme listenizden kaldırmak istediğinizden emin misiniz?"
+              : "Bu filmi istek listenize eklemek istiyor musunuz?"}
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleCloseDialog}>Cancel</Button>
+          <Button onClick={handleCloseDialog}>İptal</Button>
           <Button
             onClick={handleConfirmAction}
             color={confirmDialog.action === "delete" ? "error" : "primary"}
             autoFocus
           >
-            {confirmDialog.action === "delete" ? "Remove" : "Add"}
+            {confirmDialog.action === "delete" ? "Kaldır" : "Ekle"}
           </Button>
         </DialogActions>
       </Dialog>

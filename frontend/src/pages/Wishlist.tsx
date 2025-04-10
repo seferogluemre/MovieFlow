@@ -37,6 +37,7 @@ import {
 } from "@mui/icons-material";
 import api, { processApiError } from "../utils/api";
 import { formatDistanceToNow } from "date-fns";
+import { tr } from "date-fns/locale";
 import { useAuth } from "../context/AuthContext";
 
 interface WishlistItem {
@@ -209,7 +210,10 @@ const Wishlist: FC = () => {
 
   const formatDate = (dateString: string) => {
     try {
-      return formatDistanceToNow(new Date(dateString), { addSuffix: true });
+      return formatDistanceToNow(new Date(dateString), {
+        addSuffix: true,
+        locale: tr,
+      });
     } catch (e) {
       return "Geçersiz tarih";
     }
@@ -229,6 +233,24 @@ const Wishlist: FC = () => {
     }
   };
 
+  // Yaş sınırı etiketlerini Türkçe karşılıklarına çevir
+  const translateAgeRating = (rating: string) => {
+    switch (rating) {
+      case "GENERAL":
+        return "GENEL";
+      case "PARENTAL_GUIDANCE":
+        return "EBEVEYN REHBERLİĞİ";
+      case "TEEN":
+        return "GENÇ";
+      case "MATURE":
+        return "YETİŞKİN";
+      case "ADULT":
+        return "18+";
+      default:
+        return rating;
+    }
+  };
+
   return (
     <Box>
       <Box
@@ -241,10 +263,10 @@ const Wishlist: FC = () => {
       >
         <Box>
           <Typography variant="h4" fontWeight="bold">
-            My Wishlist
+            İstek Listem
           </Typography>
           <Typography variant="subtitle1" color="text.secondary">
-            Movies you wish to add to your collection.
+            Koleksiyonunuza eklemek istediğiniz filmler.
           </Typography>
         </Box>
 
@@ -313,7 +335,7 @@ const Wishlist: FC = () => {
                         }}
                         src={
                           item.movie.posterImage ||
-                          "https://via.placeholder.com/60x80?text=No+Image"
+                          "https://via.placeholder.com/60x80?text=Resim+Yok"
                         }
                         alt={item.movie.title}
                       />
@@ -342,8 +364,8 @@ const Wishlist: FC = () => {
                     <Chip
                       label={
                         item.movie.ageRating
-                          ? item.movie.ageRating.replace("_", " ")
-                          : "GENERAL"
+                          ? translateAgeRating(item.movie.ageRating)
+                          : "GENEL"
                       }
                       size="small"
                       color={getAgeRatingColor(item.movie.ageRating)}
@@ -352,7 +374,7 @@ const Wishlist: FC = () => {
                   <TableCell>{formatDate(item.addedAt)}</TableCell>
                   <TableCell align="right">
                     <IconButton
-                      aria-label="actions"
+                      aria-label="işlemler"
                       onClick={(e) => handleMenuOpen(e, item.id)}
                     >
                       <MoreVertIcon />
@@ -406,13 +428,13 @@ const Wishlist: FC = () => {
         <DialogTitle>
           {confirmDialog.action === "delete"
             ? "Kaldırmayı Onayla"
-            : "İzleme Listesine Eklemeyi Onayla"}
+            : "İzleme Listesine Ekle"}
         </DialogTitle>
         <DialogContent>
           <DialogContentText>
             {confirmDialog.action === "delete"
               ? "Bu filmi istek listenizden kaldırmak istediğinizden emin misiniz?"
-              : "Bu filmi izleme listenize eklemek istediğinizden emin misiniz?"}
+              : "Bu filmi izleme listenize eklemek istiyor musunuz?"}
           </DialogContentText>
         </DialogContent>
         <DialogActions>
