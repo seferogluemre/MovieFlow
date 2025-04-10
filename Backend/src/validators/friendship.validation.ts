@@ -10,6 +10,7 @@ export const updateFriendshipSchema = BaseSchema.extend({
   status: z.enum([
     FriendshipStatus.PENDING,
     FriendshipStatus.ACCEPTED,
+    FriendshipStatus.FOLLOWING,
     FriendshipStatus.BLOCKED,
   ]),
 });

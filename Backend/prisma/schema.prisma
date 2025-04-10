@@ -19,6 +19,7 @@ enum AgeRating {
 enum FriendshipStatus {
   PENDING
   ACCEPTED
+  FOLLOWING
   BLOCKED
 }
 
@@ -26,6 +27,8 @@ enum NotificationType {
   FRIEND_REQUEST
   FRIEND_REQUEST_ACCEPTED
   FRIEND_REQUEST_REJECTED
+  FOLLOW
+  UNFOLLOW
 }
 
 // Kullanıcı modeli

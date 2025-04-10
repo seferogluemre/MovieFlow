@@ -8,6 +8,8 @@ export interface User {
   isAdmin: boolean;
   createdAt: string;
   updatedAt: string;
+  friends?: Friendship[];
+  friendsOf?: Friendship[];
 }
 
 export interface Movie {

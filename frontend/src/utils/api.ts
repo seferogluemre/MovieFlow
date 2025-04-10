@@ -511,6 +511,84 @@ export const friendshipService = {
       throw error;
     }
   },
+
+  // Get relationship status with another user
+  getRelationshipStatus: async (targetUserId: number) => {
+    try {
+      console.log(`Checking relationship status with user ID: ${targetUserId}`);
+      const response = await api.get(`/friendships/status/${targetUserId}`);
+      console.log("Relationship status:", response.data);
+      return response.data;
+    } catch (error) {
+      console.error("Get relationship status error:", error);
+      throw error;
+    }
+  },
+
+  // Follow a user
+  followUser: async (targetUserId: number) => {
+    try {
+      console.log(`Following user ID: ${targetUserId}`);
+      const response = await api.post(`/friendships/follow/${targetUserId}`);
+      console.log("Follow user response:", response.data);
+      return response.data;
+    } catch (error) {
+      console.error("Follow user error:", error);
+      throw error;
+    }
+  },
+
+  // Unfollow a user
+  unfollowUser: async (targetUserId: number) => {
+    try {
+      console.log(`Unfollowing user ID: ${targetUserId}`);
+      const response = await api.delete(`/friendships/follow/${targetUserId}`);
+      console.log("Unfollow user response:", response.data);
+      return response.data;
+    } catch (error) {
+      console.error("Unfollow user error:", error);
+      throw error;
+    }
+  },
+
+  // Get user followers
+  getUserFollowers: async (userId: number) => {
+    try {
+      console.log(`Fetching followers for user ID: ${userId}`);
+      const response = await api.get(`/friendships/followers/${userId}`);
+      console.log("User followers:", response.data);
+      return response.data;
+    } catch (error) {
+      console.error("Get user followers error:", error);
+      throw error;
+    }
+  },
+
+  // Get user following
+  getUserFollowing: async (userId: number) => {
+    try {
+      console.log(`Fetching following for user ID: ${userId}`);
+      const response = await api.get(`/friendships/following/${userId}`);
+      console.log("User following:", response.data);
+      return response.data;
+    } catch (error) {
+      console.error("Get user following error:", error);
+      throw error;
+    }
+  },
+
+  // Get mutual friends
+  getMutualFriends: async (userId: number) => {
+    try {
+      console.log(`Fetching mutual friends for user ID: ${userId}`);
+      const response = await api.get(`/friendships/mutual/${userId}`);
+      console.log("Mutual friends:", response.data);
+      return response.data;
+    } catch (error) {
+      console.error("Get mutual friends error:", error);
+      throw error;
+    }
+  },
 };
 
 // Hata mesajlarını işleme yardımcı fonksiyonu

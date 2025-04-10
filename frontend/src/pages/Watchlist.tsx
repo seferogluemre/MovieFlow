@@ -76,9 +76,11 @@ const Watchlist: FC = () => {
   const [confirmDialog, setConfirmDialog] = useState<{
     open: boolean;
     itemId: number | null;
+    action: "delete" | "wishlist" | null;
   }>({
     open: false,
     itemId: null,
+    action: null,
   });
 
   useEffect(() => {
@@ -154,7 +156,11 @@ const Watchlist: FC = () => {
   };
 
   const handleAddToWishlist = () => {
-    // Bu özellik şimdilik dummy olarak kalacak
+    setConfirmDialog({
+      open: true,
+      itemId: selectedItemId,
+      action: "wishlist",
+    });
     handleMenuClose();
   };
 
@@ -162,27 +168,40 @@ const Watchlist: FC = () => {
     setConfirmDialog({
       open: true,
       itemId: selectedItemId,
+      action: "delete",
     });
     handleMenuClose();
   };
 
-  const handleRemoveConfirm = async () => {
+  const handleConfirmAction = async () => {
     try {
       if (confirmDialog.itemId) {
-        await api.delete(`/watchlist/${confirmDialog.itemId}`);
-        setWatchlist((prevWatchlist) =>
-          prevWatchlist.filter((item) => item.id !== confirmDialog.itemId)
+        const selectedItem = watchlist.find(
+          (item) => item.id === confirmDialog.itemId
         );
-        setError(null);
+
+        if (confirmDialog.action === "delete") {
+          // İzleme listesinden silme işlemi
+          await api.delete(`/watchlist/${confirmDialog.itemId}`);
+          setWatchlist((prevWatchlist) =>
+            prevWatchlist.filter((item) => item.id !== confirmDialog.itemId)
+          );
+          setError(null);
+        } else if (confirmDialog.action === "wishlist" && selectedItem) {
+          // İstek listesine ekleme işlemi
+          await api.post("/wishlist", { movieId: selectedItem.movie.id });
+          setError(null);
+        }
       }
     } catch (err) {
-      console.error("Error removing from watchlist:", err);
+      console.error("Error with watchlist action:", err);
       const errorMessage = processApiError(err);
       setError(errorMessage);
     } finally {
       setConfirmDialog({
         open: false,
         itemId: null,
+        action: null,
       });
     }
   };
@@ -191,6 +210,7 @@ const Watchlist: FC = () => {
     setConfirmDialog({
       open: false,
       itemId: null,
+      action: null,
     });
   };
 
@@ -397,16 +417,26 @@ const Watchlist: FC = () => {
 
       {/* Confirm Dialog */}
       <Dialog open={confirmDialog.open} onClose={handleCloseDialog}>
-        <DialogTitle>Confirm Removal</DialogTitle>
+        <DialogTitle>
+          {confirmDialog.action === "delete"
+            ? "Confirm Removal"
+            : "Add to Wishlist"}
+        </DialogTitle>
         <DialogContent>
           <DialogContentText>
-            Are you sure you want to remove this movie from your watchlist?
+            {confirmDialog.action === "delete"
+              ? "Are you sure you want to remove this movie from your watchlist?"
+              : "Do you want to add this movie to your wishlist?"}
           </DialogContentText>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleCloseDialog}>Cancel</Button>
-          <Button onClick={handleRemoveConfirm} color="error" autoFocus>
-            Remove
+          <Button
+            onClick={handleConfirmAction}
+            color={confirmDialog.action === "delete" ? "error" : "primary"}
+            autoFocus
+          >
+            {confirmDialog.action === "delete" ? "Remove" : "Add"}
           </Button>
         </DialogActions>
       </Dialog>
