@@ -130,6 +130,13 @@ export class UserService {
       return { message: "ID is required" };
     }
 
+    console.log("UserService.update çağrıldı:", { id, data });
+    console.log("ProfileImage değeri:", data.profileImage);
+    console.log(
+      "ProfileImage tipi:",
+      data.profileImage === null ? "null" : typeof data.profileImage
+    );
+
     const prisma = new PrismaClient();
     const existingUser = await prisma.user.findUnique({
       where: { id: Number(id) },
@@ -139,24 +146,42 @@ export class UserService {
       throw new Error("User not found");
     }
 
+    // Güncellenecek alanları belirle
+    const updateData: any = {};
+
+    if (data.name !== undefined) updateData.name = data.name;
+    if (data.username !== undefined) updateData.username = data.username;
+    if (data.password !== undefined) updateData.password = data.password;
+    if (data.email !== undefined) updateData.email = data.email;
+
+    // profileImage özel işleme
+    if (data.profileImage !== undefined) {
+      // null değeri alabilir - profil resmi siliniyor
+      if (data.profileImage === null) {
+        console.log("ProfileImage NULL olarak işleniyor");
+        updateData.profileImage = null;
+      }
+      // string değeri - dosya adı veya tam URL
+      else if (typeof data.profileImage === "string") {
+        console.log("ProfileImage string olarak işleniyor:", data.profileImage);
+        updateData.profileImage = data.profileImage.startsWith("http")
+          ? data.profileImage
+          : data.profileImage; // zaten dosya adı
+      }
+    }
+
+    console.log("Veritabanı güncellemesi yapılıyor:", updateData);
+
     const user = await prisma.user.update({
       where: {
         id: Number(id),
       },
-      data: {
-        name: data.name,
-        username: data.username,
-        password: data.password,
-        email: data.email,
-        profileImage:
-          data.profileImage !== undefined
-            ? data.profileImage
-              ? getFullProfileImageUrl(data.profileImage)
-              : null
-            : undefined,
-      },
+      data: updateData,
     });
+
     await prisma.$disconnect();
+
+    console.log("Kullanıcı başarıyla güncellendi:", user);
 
     return {
       ...user,

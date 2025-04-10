@@ -41,15 +41,15 @@ model User {
   updatedAt    DateTime @updatedAt
 
   // İlişkiler
-  reviews       Review[]
-  ratings       Rating[]
-  watchlist     Watchlist[]
-  friends       Friendship[] @relation("userFriends")
-  friendsOf     Friendship[] @relation("friendsOfUser")
-  wishlist      Wishlist[]
-  library       Library[]
-  Session       Session[]
-  notifications Notification[]
+  reviews           Review[]
+  ratings           Rating[]
+  watchlist         Watchlist[]
+  friends           Friendship[]   @relation("userFriends")
+  friendsOf         Friendship[]   @relation("friendsOfUser")
+  wishlist          Wishlist[]
+  library           Library[]
+  Session           Session[]
+  notifications     Notification[]
   sentNotifications Notification[] @relation("NotificationFromUser")
 
   @@map("users")
@@ -234,15 +234,16 @@ model Session {
 
 // Bildirim modeli
 model Notification {
-  id        Int             @id @default(autoincrement())
-  type      NotificationType
-  message   String
-  userId    Int
+  id         Int              @id @default(autoincrement())
+  type       NotificationType
+  message    String
+  userId     Int
   fromUserId Int
-  isRead    Boolean         @default(false)
-  createdAt DateTime        @default(now())
-  user      User           @relation(fields: [userId], references: [id])
-  fromUser  User           @relation("NotificationFromUser", fields: [fromUserId], references: [id])
+  isRead     Boolean          @default(false)
+  createdAt  DateTime         @default(now())
+  metadata   Json?            @default("{}")
+  user       User             @relation(fields: [userId], references: [id])
+  fromUser   User             @relation("NotificationFromUser", fields: [fromUserId], references: [id])
 
   @@map("notifications")
 }

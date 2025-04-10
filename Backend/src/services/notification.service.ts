@@ -1,4 +1,4 @@
-import { NotificationType} from "@prisma/client";
+import { NotificationType } from "@prisma/client";
 import prisma from "src/config/database";
 
 export class NotificationService {
@@ -6,7 +6,8 @@ export class NotificationService {
     userId: number,
     fromUserId: number,
     type: NotificationType,
-    message: string
+    message: string,
+    metadata?: Record<string, any>
   ) {
     const notification = await prisma.notification.create({
       data: {
@@ -14,6 +15,7 @@ export class NotificationService {
         fromUserId,
         type,
         message,
+        metadata: metadata || {},
       },
       include: {
         user: true,
@@ -34,7 +36,7 @@ export class NotificationService {
         fromUser: true,
       },
       orderBy: {
-        createdAt: 'desc',
+        createdAt: "desc",
       },
     });
     await prisma.$disconnect();
@@ -57,4 +59,4 @@ export class NotificationService {
     });
     await prisma.$disconnect();
   }
-} 
+}

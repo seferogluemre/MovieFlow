@@ -64,7 +64,6 @@ export class UserController {
           status: "User Created Successfully",
           data: createdUser,
         });
-        
       });
     } catch (error) {
       if (error instanceof z.ZodError) {
@@ -120,6 +119,7 @@ export class UserController {
     try {
       upload(req, res, async (err: any) => {
         if (err) {
+          console.error("Dosya yükleme hatası:", err);
           return res.status(500).json({
             message: "File upload error",
             error: err.message,
@@ -128,59 +128,81 @@ export class UserController {
 
         const { id } = req.params;
         const { file } = req;
-        const user = updateUserSchema.parse(req.body as UpdateUserProps);
 
-        if (!id) {
-          logWarn(`Get User --- Id Parameter is required`);
-          res.status(404).json({
-            message: "Id parameter is required",
-          });
-          return;
-        }
-
-        if (file) {
-          const existingUser = await prisma.user.findUnique({
-            where: { id: Number(id) },
-            select: { profileImage: true },
-          });
-
-          if (existingUser?.profileImage) {
-            const oldImagePath = path.join(
-              __dirname,
-              "..",
-              "..",
-              "public",
-              "uploads",
-              existingUser.profileImage
-            );
-            if (fs.existsSync(oldImagePath)) {
-              fs.unlinkSync(oldImagePath);
-            }
-          }
-
-          user.profileImage = file.filename;
-        }
+        console.log("Update isteği alındı - User ID:", id);
+        console.log("Form verileri:", req.body);
+        console.log("Yüklenen dosya:", file);
 
         try {
+          // Form verileri doğru şekilde parse edilmiş mi kontrol et
+          const user = updateUserSchema.parse(req.body as UpdateUserProps);
+          console.log("Doğrulanmış kullanıcı verisi:", user);
+
+          if (!id) {
+            logWarn(`Get User --- Id Parameter is required`);
+            res.status(404).json({
+              message: "Id parameter is required",
+            });
+            return;
+          }
+
+          if (file) {
+            console.log("Dosya yüklendi:", file.filename);
+            const existingUser = await prisma.user.findUnique({
+              where: { id: Number(id) },
+              select: { profileImage: true },
+            });
+
+            if (existingUser?.profileImage) {
+              const oldImagePath = path.join(
+                __dirname,
+                "..",
+                "..",
+                "public",
+                "uploads",
+                existingUser.profileImage
+              );
+              if (fs.existsSync(oldImagePath)) {
+                fs.unlinkSync(oldImagePath);
+                console.log("Eski profil resmi silindi:", oldImagePath);
+              }
+            }
+
+            user.profileImage = file.filename;
+            console.log("Profil resmi güncellendi:", file.filename);
+          } else if (user.profileImage === null) {
+            console.log("Profil resmi siliniyor - null değeri alındı");
+          }
+
           const updatedUser = await UserService.update(Number(id), user);
-          logInfo(`Update User - Updated User ${updatedUser}`);
+          logInfo(`Update User - Updated User ${JSON.stringify(updatedUser)}`);
 
           res.status(200).json({
             status: "SUCCESS",
             data: updatedUser,
           });
         } catch (error) {
+          if (error instanceof z.ZodError) {
+            console.error("Zod validation error:", error.errors);
+            return res.status(400).json({
+              error: "Validation Error",
+              issues: error.errors,
+            });
+          }
+
           if (error instanceof Error && error.message === "User not found") {
             res.status(404).json({
               error: "User not found",
               message: "No user found with the provided ID.",
             });
           } else {
+            console.error("User update error:", error);
             throw error;
           }
         }
       });
     } catch (error) {
+      console.error("General error in update function:", error);
       if (error instanceof z.ZodError) {
         res.status(400).json({
           error: "Validation Error",

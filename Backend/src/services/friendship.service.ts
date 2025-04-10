@@ -25,7 +25,8 @@ export class FriendshipService {
       data.friendId,
       userId,
       "FRIEND_REQUEST",
-      `${friendship.user.username} size arkadaşlık isteği gönderdi.`
+      `${friendship.user.username} size arkadaşlık isteği gönderdi.`,
+      { friendshipId: friendship.id }
     );
 
     await prisma.$disconnect();
@@ -106,14 +107,16 @@ export class FriendshipService {
         friendship.userId,
         friendship.friendId,
         "FRIEND_REQUEST_ACCEPTED",
-        `${friendship.friend.username} arkadaşlık isteğinizi kabul etti.`
+        `${friendship.friend.username} arkadaşlık isteğinizi kabul etti.`,
+        { friendshipId: friendship.id }
       );
     } else if (data.status === "BLOCKED") {
       await NotificationService.create(
         friendship.userId,
         friendship.friendId,
         "FRIEND_REQUEST_REJECTED",
-        `${friendship.friend.username} arkadaşlık isteğinizi reddetti.`
+        `${friendship.friend.username} arkadaşlık isteğinizi reddetti.`,
+        { friendshipId: friendship.id }
       );
     }
 

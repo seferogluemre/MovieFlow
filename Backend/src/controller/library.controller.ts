@@ -5,6 +5,7 @@ import {
   UpdateLibraryType,
 } from "../validators/library.validation";
 import { logInfo, logWarn } from "src/utils/logging/logger.util";
+import { Logger } from "src/utils/logging/logger.util";
 
 export class LibraryController {
   static async create(req: Request, res: Response): Promise<void> {
@@ -162,6 +163,34 @@ export class LibraryController {
         "LibraryController.delete ---- Error deleting library entry: ${error}"
       );
       res.status(500).json({ message: "Internal server error" });
+    }
+  }
+
+  public static async getAllByUserId(req: Request, res: Response) {
+    try {
+      const userId = req.params.userId;
+
+      // Check if userId matches current user or user is admin
+      const currentUser = req.user;
+      if (currentUser.id !== userId && currentUser.role !== "ADMIN") {
+        return res.status(403).json({
+          success: false,
+          message: "You are not authorized to access this library",
+        });
+      }
+
+      const libraries = await LibraryService.getAllByUserId(userId);
+
+      return res.status(200).json({
+        success: true,
+        data: libraries,
+      });
+    } catch (error) {
+      Logger.error("Error in LibraryController.getAllByUserId", error);
+      return res.status(500).json({
+        success: false,
+        message: "Failed to retrieve libraries",
+      });
     }
   }
 }

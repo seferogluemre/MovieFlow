@@ -1,5 +1,5 @@
 import { FC, useState, useEffect } from "react";
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet, useNavigate, Link } from "react-router-dom";
 import {
   Box,
   AppBar,
@@ -22,21 +22,25 @@ import {
   ListItemAvatar,
   CircularProgress,
   Button,
+  Tooltip,
 } from "@mui/material";
 import {
   Search as SearchIcon,
   Notifications as NotificationsIcon,
   DarkMode as DarkModeIcon,
+  LightMode as LightModeIcon,
   Person as PersonIcon,
   PlaylistAdd as PlaylistAddIcon,
   ThumbUp as ThumbUpIcon,
   Close as CloseIcon,
 } from "@mui/icons-material";
 import Sidebar from "../components/Sidebar";
-import api, { userService } from "../utils/api";
-import { User } from "../utils/types";
+import api, { userService, friendshipService } from "../utils/api";
+import { User, Notification } from "../utils/types";
 import { formatDistanceToNow } from "date-fns";
 import { useAuth } from "../context/AuthContext";
+import { useTheme } from "../context/ThemeContext";
+import { notificationService } from "../services/NotificationService";
 
 const SearchBar = styled("div")(({ theme }) => ({
   position: "relative",
@@ -79,28 +83,6 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-interface Notification {
-  id: number;
-  userId: number;
-  fromUserId: number;
-  message: string;
-  type: NotificationType;
-  isRead: boolean;
-  createdAt: string;
-  user: {
-    id: number;
-    username: string;
-    name?: string;
-    profileImage?: string;
-  };
-  fromUser: {
-    id: number;
-    username: string;
-    name?: string;
-    profileImage?: string;
-  };
-}
-
 enum NotificationType {
   FRIEND_REQUEST = "FRIEND_REQUEST",
   FRIEND_REQUEST_ACCEPTED = "FRIEND_REQUEST_ACCEPTED",
@@ -110,6 +92,7 @@ enum NotificationType {
 const MainLayout: FC = () => {
   const navigate = useNavigate();
   const { user, isAuthenticated, isLoading, checkAuthStatus } = useAuth();
+  const { mode, toggleTheme } = useTheme();
   const [notifications, setNotifications] = useState<Notification[]>([]);
   const [loadingNotifications, setLoadingNotifications] =
     useState<boolean>(false);
@@ -151,8 +134,8 @@ const MainLayout: FC = () => {
   const fetchNotifications = async () => {
     try {
       setLoadingNotifications(true);
-      const response = await api.get("/notifications");
-      setNotifications(response.data || []);
+      const notifications = await notificationService.getNotifications();
+      setNotifications(notifications || []);
       setNotificationError(null);
     } catch (err) {
       console.error("Error fetching notifications:", err);
@@ -172,29 +155,53 @@ const MainLayout: FC = () => {
 
   const handleNotificationAction = async (
     notificationId: number,
-    action: "accept" | "reject" | "markAsRead"
+    action: "accept" | "reject" | "markAsRead" | "viewProfile"
   ) => {
     try {
       const notification = notifications.find((n) => n.id === notificationId);
       if (!notification) return;
 
+      // Get friendshipId from metadata
+      const friendshipId = notification.metadata?.friendshipId;
+
       switch (action) {
         case "accept":
           if (notification.type === NotificationType.FRIEND_REQUEST) {
-            await api.post(`/friendships/accept/${notification.fromUserId}`);
-            await markNotificationAsRead(notificationId);
+            if (friendshipId) {
+              console.log(`Accepting friendship ID: ${friendshipId}`);
+              await notificationService.acceptFriendRequest(friendshipId);
+              console.log("Friendship accepted successfully");
+              await notificationService.markAsRead(notificationId);
+            } else {
+              console.error("Missing friendshipId in notification metadata");
+            }
           }
           break;
 
         case "reject":
           if (notification.type === NotificationType.FRIEND_REQUEST) {
-            await api.post(`/friendships/reject/${notification.fromUserId}`);
-            await markNotificationAsRead(notificationId);
+            if (friendshipId) {
+              console.log(`Rejecting friendship ID: ${friendshipId}`);
+              await notificationService.rejectFriendRequest(friendshipId);
+              console.log("Friendship rejected successfully");
+              await notificationService.markAsRead(notificationId);
+            } else {
+              console.error("Missing friendshipId in notification metadata");
+            }
           }
           break;
 
         case "markAsRead":
-          await markNotificationAsRead(notificationId);
+          await notificationService.markAsRead(notificationId);
+          break;
+
+        case "viewProfile":
+          // Bildirimi okundu olarak işaretle
+          await notificationService.markAsRead(notificationId);
+          // Notification popover'ı kapat
+          handleNotificationClose();
+          // Profil sayfasına yönlendir
+          navigate(`/profile/${notification.fromUserId}`);
           break;
       }
 
@@ -207,7 +214,7 @@ const MainLayout: FC = () => {
 
   // Bildirimi okundu olarak işaretleme yardımcı fonksiyonu
   const markNotificationAsRead = async (notificationId: number) => {
-    await api.patch(`/notifications/${notificationId}/read`);
+    await notificationService.markAsRead(notificationId);
   };
 
   const getInitials = (username?: string): string => {
@@ -295,23 +302,35 @@ const MainLayout: FC = () => {
                   <NotificationsIcon />
                 </Badge>
               </IconButton>
-              <IconButton color="inherit" sx={{ ml: 1 }}>
-                <DarkModeIcon />
-              </IconButton>
-              <IconButton edge="end" sx={{ ml: 1 }}>
-                <Avatar
-                  src={
-                    user?.profileImage && user.profileImage !== null
-                      ? user.profileImage.startsWith("http")
-                        ? user.profileImage
-                        : `http://localhost:3000/uploads/${user.profileImage}`
-                      : undefined
-                  }
-                  alt={user?.username || "User"}
+              <Tooltip title={mode === "dark" ? "Light mode" : "Dark mode"}>
+                <IconButton
+                  color="inherit"
+                  sx={{ ml: 1 }}
+                  onClick={toggleTheme}
                 >
-                  {user ? getInitials(user.username) : "U"}
-                </Avatar>
-              </IconButton>
+                  {mode === "dark" ? <LightModeIcon /> : <DarkModeIcon />}
+                </IconButton>
+              </Tooltip>
+              <Tooltip title="Profil">
+                <IconButton
+                  edge="end"
+                  sx={{ ml: 1 }}
+                  onClick={() => navigate(`/profile/${user?.id}`)}
+                >
+                  <Avatar
+                    src={
+                      user?.profileImage && user.profileImage !== null
+                        ? user.profileImage.startsWith("http")
+                          ? user.profileImage
+                          : `http://localhost:3000/uploads/${user.profileImage}`
+                        : undefined
+                    }
+                    alt={user?.username || "User"}
+                  >
+                    {user ? getInitials(user.username) : "U"}
+                  </Avatar>
+                </IconButton>
+              </Tooltip>
             </Box>
           </Toolbar>
         </AppBar>
@@ -368,7 +387,7 @@ const MainLayout: FC = () => {
                 variant="text"
                 onClick={async () => {
                   try {
-                    await api.patch("/notifications/read-all");
+                    await notificationService.markAllAsRead();
                     fetchNotifications();
                   } catch (error) {
                     console.error(
@@ -415,24 +434,55 @@ const MainLayout: FC = () => {
                   <ListItemAvatar>
                     <Avatar
                       src={
-                        notification.fromUser.profileImage
-                          ? `http://localhost:3000/uploads/${notification.fromUser.profileImage}`
+                        notification.fromUser?.profileImage
+                          ? notification.fromUser.profileImage.startsWith(
+                              "http"
+                            )
+                            ? notification.fromUser.profileImage
+                            : `http://localhost:3000/uploads/${notification.fromUser.profileImage}`
                           : undefined
                       }
-                      alt={notification.fromUser.username}
+                      alt={notification.fromUser?.username}
                       sx={{
                         bgcolor: notification.isRead
                           ? "grey.700"
                           : "primary.main",
+                        cursor: "pointer",
                       }}
                     >
-                      {!notification.fromUser.profileImage
-                        ? getInitials(notification.fromUser.username)
+                      {!notification.fromUser?.profileImage
+                        ? getInitials(notification.fromUser?.username)
                         : null}
                     </Avatar>
                   </ListItemAvatar>
                   <ListItemText
-                    primary={notification.message}
+                    primary={
+                      <Box sx={{ display: "flex", alignItems: "center" }}>
+                        <Typography
+                          variant="body1"
+                          component="span"
+                          sx={{
+                            fontWeight: notification.isRead ? "normal" : "bold",
+                            cursor: "pointer",
+                          }}
+                          onClick={() =>
+                            handleNotificationAction(
+                              notification.id,
+                              "viewProfile"
+                            )
+                          }
+                        >
+                          {notification.fromUser?.name ||
+                            notification.fromUser?.username}
+                        </Typography>
+                        <Typography variant="body1" component="span" ml={1}>
+                          {notification.message.replace(
+                            notification.fromUser?.username || "",
+                            ""
+                          )}
+                        </Typography>
+                      </Box>
+                    }
                     secondary={
                       <Box
                         sx={{

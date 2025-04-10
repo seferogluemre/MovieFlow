@@ -308,27 +308,51 @@ export const userService = {
   },
   uploadProfileImage: async (userId: number, file: File) => {
     try {
-      console.log(`Uploading profile image for user ID: ${userId}`);
+      console.log(
+        `Profil fotoğrafı yükleme işlemi başlatıldı (User ID: ${userId})`
+      );
+      console.log("Dosya detayları:", file.name, file.type, file.size);
 
       // FormData oluştur
       const formData = new FormData();
       formData.append("profileImage", file);
 
+      // FormData içeriğini debug amaçlı kontrol et
+      console.log(
+        "FormData içeriğini kontrol etme:",
+        Array.from(formData.entries())
+      );
+
+      // Header bilgisi günlüğe al
+      const headers = {
+        "Content-Type": "multipart/form-data",
+        Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      };
+      console.log("İstek başlıkları:", headers);
+
       // PATCH isteği ile form-data olarak gönder
-      // Not: axios otomatik olarak Content-Type'ı ayarlar, el ile ayarlamayın
-      // Timeout ekleyelim
       const response = await api.patch(`/users/${userId}`, formData, {
-        timeout: 15000, // 15 saniye timeout
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+        timeout: 30000, // 30 saniye timeout
       });
 
-      console.log("Profile image upload response:", response.data);
+      console.log("Profil fotoğrafı yükleme yanıtı:", response);
+      console.log("Yanıt verileri:", response.data);
       return response.data;
     } catch (error: unknown) {
       // Hata durumunda daha detaylı bilgi
-      console.error("Upload profile image error:", error);
+      console.error("Profil fotoğrafı yükleme hatası:", error);
 
       // Hata nesnesine erişmek için tip kontrolü
       if (axios.isAxiosError(error)) {
+        if (error.response) {
+          console.error("Hata yanıtı:", error.response);
+          console.error("Hata durum kodu:", error.response.status);
+          console.error("Hata verileri:", error.response.data);
+        }
+
         // Network hatası durumunda
         if (error.code === "ERR_NETWORK") {
           console.error("Network error details:", error);
@@ -408,6 +432,82 @@ export const friendshipService = {
       return response.data;
     } catch (error) {
       console.error("Get user friends error:", error);
+      throw error;
+    }
+  },
+
+  // Arkadaşlık isteğini kabul etme
+  acceptFriendRequest: async (friendshipId: number) => {
+    try {
+      console.log(`Accepting friendship request ID: ${friendshipId}`);
+      const response = await api.patch(`/friendships/${friendshipId}`, {
+        status: "ACCEPTED",
+      });
+      console.log("Accept friendship response:", response.data);
+      return response.data;
+    } catch (error) {
+      console.error("Accept friendship error:", error);
+      throw error;
+    }
+  },
+
+  // Arkadaşlık isteğini reddetme
+  rejectFriendRequest: async (friendshipId: number) => {
+    try {
+      console.log(`Rejecting friendship request ID: ${friendshipId}`);
+      const response = await api.patch(`/friendships/${friendshipId}`, {
+        status: "BLOCKED",
+      });
+      console.log("Reject friendship response:", response.data);
+      return response.data;
+    } catch (error) {
+      console.error("Reject friendship error:", error);
+      throw error;
+    }
+  },
+
+  // Arkadaşlık isteği gönderme
+  sendFriendRequest: async (userId: number) => {
+    try {
+      console.log(`Sending friendship request to user ID: ${userId}`);
+      const response = await api.post(`/friendships`, {
+        friendId: userId,
+      });
+      console.log("Send friendship request response:", response.data);
+      return response.data;
+    } catch (error) {
+      console.error("Send friendship request error:", error);
+      throw error;
+    }
+  },
+
+  // Arkadaşlıktan çıkarma
+  removeFriend: async (userId: number) => {
+    try {
+      console.log(`Removing friendship with user ID: ${userId}`);
+      // Önce arkadaşlık ID'sini bulmak için arkadaşlık durumunu sorgula
+      const currentUserId = localStorage.getItem("userId");
+      if (!currentUserId) {
+        throw new Error("User ID not found in localStorage");
+      }
+
+      const friendships = await friendshipService.getUserFriends(
+        parseInt(currentUserId)
+      );
+      const friendship = friendships.find(
+        (f: any) => f.friendId === userId || f.userId === userId
+      );
+
+      if (!friendship) {
+        throw new Error("Friendship not found");
+      }
+
+      // Arkadaşlığı kaldır (PATCH isteği veya silme isteği - API'nin tasarımına bağlı)
+      const response = await api.delete(`/friendships/${friendship.id}`);
+      console.log("Remove friendship response:", response.data);
+      return response.data;
+    } catch (error) {
+      console.error("Remove friendship error:", error);
       throw error;
     }
   },

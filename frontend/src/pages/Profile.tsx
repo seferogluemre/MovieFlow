@@ -236,23 +236,37 @@ const Profile: FC = () => {
 
     setLoading(true);
     try {
-      await userService.uploadProfileImage(user.id, selectedFile);
+      console.log("Profil fotoğrafı yükleme işlemi başlatılıyor...");
+      console.log(
+        "Yüklenecek dosya:",
+        selectedFile.name,
+        selectedFile.type,
+        selectedFile.size
+      );
 
-      // Başarılı yüklemenin ardından kullanıcı verilerini yenile
-      await checkAuthStatus();
-
-      // Önizleme URL'sini güncelle - kullanıcı nesnesini almak için yükleme sonrası state güncellenmiş olmalı
-      const updatedUser = JSON.parse(localStorage.getItem("user") || "{}");
-      if (updatedUser?.profileImage) {
-        const imageUrl = updatedUser.profileImage.startsWith("http")
-          ? updatedUser.profileImage
-          : `http://localhost:3000/uploads/${updatedUser.profileImage}`;
-        setPreviewUrl(imageUrl);
-      }
+      // Yükleme işlemini gerçekleştir
+      const result = await userService.uploadProfileImage(
+        user.id,
+        selectedFile
+      );
+      console.log("Yükleme yanıtı:", result);
 
       // Modal'ı kapat
       setOpenModal(false);
       setSelectedFile(null);
+
+      // Kullanıcı verilerini yenile ve başarı mesajı göster
+      const updatedUser = await checkAuthStatus();
+      console.log("Güncellenmiş kullanıcı verisi:", updatedUser);
+
+      // previewUrl'i güncelle (doğrudan güncellenen kullanıcı nesnesinden)
+      if (user?.profileImage) {
+        const imageUrl = user.profileImage.startsWith("http")
+          ? user.profileImage
+          : `http://localhost:3000/uploads/${user.profileImage}`;
+        setPreviewUrl(imageUrl);
+        console.log("Önizleme URL'si güncellendi:", imageUrl);
+      }
 
       setSuccess(true);
       setTimeout(() => setSuccess(false), 3000);

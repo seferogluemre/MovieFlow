@@ -3,7 +3,10 @@ import {
   CreateLibraryType,
   UpdateLibraryType,
 } from "../validators/library.validation";
-import { getFullPosterUrl } from "src/utils/url/url.helper";
+import {
+  getFullPosterUrl,
+  getFullProfileImageUrl,
+} from "src/utils/url/url.helper";
 
 const prisma = new PrismaClient();
 
@@ -102,5 +105,44 @@ export class LibraryService {
     }
 
     return library;
+  }
+
+  public static async getAllByUserId(userId: string) {
+    const libraries = await prisma.library.findMany({
+      where: {
+        userId: userId,
+      },
+      include: {
+        movie: true,
+        user: {
+          select: {
+            id: true,
+            name: true,
+            email: true,
+            username: true,
+            profileImage: true,
+          },
+        },
+      },
+      orderBy: {
+        updatedAt: "desc",
+      },
+    });
+
+    return libraries.map((library) => ({
+      ...library,
+      user: {
+        ...library.user,
+        profileImage: library.user.profileImage
+          ? getFullProfileImageUrl(library.user.profileImage)
+          : null,
+      },
+      movie: {
+        ...library.movie,
+        poster: library.movie.poster
+          ? getFullPosterUrl(library.movie.poster)
+          : null,
+      },
+    }));
   }
 }

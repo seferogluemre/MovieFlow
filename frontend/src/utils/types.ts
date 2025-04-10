@@ -116,6 +116,10 @@ export interface Notification {
   message: string;
   userId: number;
   fromUserId: number;
+  metadata?: {
+    friendshipId?: number;
+    [key: string]: any;
+  };
   isRead: boolean;
   createdAt: string;
   user?: User;

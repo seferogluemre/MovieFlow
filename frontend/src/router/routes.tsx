@@ -4,6 +4,7 @@ import Dashboard from "../pages/Dashboard";
 import Login from "../pages/Login";
 import MovieDetails from "../pages/MovieDetails";
 import Profile from "../pages/Profile";
+import ProfileDetail from "../pages/ProfileDetail";
 import BrowseMovies from "../pages/BrowseMovies";
 import Watchlist from "../pages/Watchlist";
 import Wishlist from "../pages/Wishlist";
@@ -33,6 +34,10 @@ const routes = createBrowserRouter([
       {
         path: "profile",
         element: <Profile />,
+      },
+      {
+        path: "profile/:id",
+        element: <ProfileDetail />,
       },
       {
         path: "browse",
