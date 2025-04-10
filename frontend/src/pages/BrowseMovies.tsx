@@ -34,7 +34,7 @@ import {
   RemoveCircleOutline as RemoveIcon,
   Delete as DeleteIcon,
 } from "@mui/icons-material";
-import api from "../utils/api";
+import api, { processApiError } from "../utils/api";
 import { useAuth } from "../context/AuthContext";
 
 interface Movie {
@@ -188,7 +188,9 @@ const BrowseMovies: FC = () => {
       fetchUserWatchlist(); // Watchlist'i güncelle
     } catch (err) {
       console.error("Error adding movie to watchlist:", err);
-      setError("Failed to add movie to watchlist. Please try again.");
+      // Geliştirilmiş hata yönetimi
+      const errorMessage = processApiError(err);
+      setError(errorMessage);
       setTimeout(() => setError(null), 3000);
     }
   };
@@ -205,7 +207,9 @@ const BrowseMovies: FC = () => {
       fetchUserWatchlist(); // Watchlist'i güncelle
     } catch (err) {
       console.error("Error removing movie from watchlist:", err);
-      setError("Failed to remove movie from watchlist. Please try again.");
+      // Geliştirilmiş hata yönetimi
+      const errorMessage = processApiError(err);
+      setError(errorMessage);
       setTimeout(() => setError(null), 3000);
     }
   };
@@ -227,7 +231,9 @@ const BrowseMovies: FC = () => {
       fetchUserLibrary(); // Kütüphaneyi güncelle
     } catch (err) {
       console.error("Error adding movie to library:", err);
-      setError("Failed to add movie to library. Please try again.");
+      // Geliştirilmiş hata yönetimi
+      const errorMessage = processApiError(err);
+      setError(errorMessage);
       setTimeout(() => setError(null), 3000);
     }
   };
@@ -244,7 +250,9 @@ const BrowseMovies: FC = () => {
       fetchUserLibrary(); // Kütüphaneyi güncelle
     } catch (err) {
       console.error("Error removing movie from library:", err);
-      setError("Failed to remove movie from library. Please try again.");
+      // Geliştirilmiş hata yönetimi
+      const errorMessage = processApiError(err);
+      setError(errorMessage);
       setTimeout(() => setError(null), 3000);
     }
   };

@@ -278,4 +278,37 @@ export const friendshipService = {
   },
 };
 
+// Hata mesajlarını işleme yardımcı fonksiyonu
+export const processApiError = (error: any): string => {
+  // Varsayılan hata mesajı
+  let errorMessage = "An error occurred. Please try again.";
+
+  // Hata detayları varsa
+  if (error.response?.data?.message) {
+    errorMessage = error.response.data.message;
+
+    // Unique constraint hatası durumu
+    if (
+      typeof errorMessage === "string" &&
+      (errorMessage.toLowerCase().includes("unique constraint") ||
+        errorMessage.toLowerCase().includes("duplicate") ||
+        errorMessage.toLowerCase().includes("already exists"))
+    ) {
+      // İşleme göre özgün mesajlar
+      if (errorMessage.toLowerCase().includes("watchlist")) {
+        return "This movie is already in your watchlist.";
+      } else if (errorMessage.toLowerCase().includes("library")) {
+        return "This movie is already in your library.";
+      } else if (errorMessage.toLowerCase().includes("wishlist")) {
+        return "This movie is already in your wishlist.";
+      }
+      // Genel unique constraint mesajı
+      return "This item already exists.";
+    }
+  }
+
+  console.error("API Error:", error);
+  return errorMessage;
+};
+
 export default api;

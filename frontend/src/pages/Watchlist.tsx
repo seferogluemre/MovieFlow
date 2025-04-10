@@ -37,7 +37,7 @@ import {
   Check as CheckIcon,
   Star as StarIcon,
 } from "@mui/icons-material";
-import api from "../utils/api";
+import api, { processApiError } from "../utils/api";
 import { formatDistanceToNow } from "date-fns";
 import { useAuth } from "../context/AuthContext";
 
@@ -167,7 +167,8 @@ const Watchlist: FC = () => {
       }
     } catch (err) {
       console.error("Error removing from watchlist:", err);
-      setError("Failed to remove item from watchlist. Please try again.");
+      const errorMessage = processApiError(err);
+      setError(errorMessage);
     } finally {
       setConfirmDialog({
         open: false,
