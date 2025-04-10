@@ -270,6 +270,91 @@ export const userService = {
       throw error;
     }
   },
+  updateProfile: async (
+    userId: number,
+    userData: {
+      name?: string;
+      username?: string;
+      email?: string;
+      profileImage?: string | null;
+    }
+  ) => {
+    try {
+      console.log(
+        `Profil güncellemesi başlatılıyor (User ID: ${userId})`,
+        userData
+      );
+      console.log("profileImage değeri:", userData.profileImage);
+      console.log(
+        "profileImage tipi:",
+        userData.profileImage === null ? "null" : typeof userData.profileImage
+      );
+
+      // profileImage null ise özellikle belirtiyoruz
+      const requestData = { ...userData };
+
+      // profileImage değeri hem string hem null olabilir
+      if (userData.profileImage === null) {
+        console.log("profileImage null olarak gönderiliyor");
+      }
+
+      const response = await api.patch(`/users/${userId}`, requestData);
+      console.log("Profil güncelleme yanıtı:", response.data);
+      return response.data;
+    } catch (error) {
+      console.error("Profil güncelleme hatası:", error);
+      throw error;
+    }
+  },
+  uploadProfileImage: async (userId: number, file: File) => {
+    try {
+      console.log(`Uploading profile image for user ID: ${userId}`);
+
+      // FormData oluştur
+      const formData = new FormData();
+      formData.append("profileImage", file);
+
+      // PATCH isteği ile form-data olarak gönder
+      // Not: axios otomatik olarak Content-Type'ı ayarlar, el ile ayarlamayın
+      // Timeout ekleyelim
+      const response = await api.patch(`/users/${userId}`, formData, {
+        timeout: 15000, // 15 saniye timeout
+      });
+
+      console.log("Profile image upload response:", response.data);
+      return response.data;
+    } catch (error: unknown) {
+      // Hata durumunda daha detaylı bilgi
+      console.error("Upload profile image error:", error);
+
+      // Hata nesnesine erişmek için tip kontrolü
+      if (axios.isAxiosError(error)) {
+        // Network hatası durumunda
+        if (error.code === "ERR_NETWORK") {
+          console.error("Network error details:", error);
+          throw new Error(
+            "Sunucuya bağlanılamadı. Lütfen internet bağlantınızı kontrol edin."
+          );
+        }
+
+        // Timeout hatası durumunda
+        if (error.code === "ECONNABORTED") {
+          throw new Error(
+            "İstek zaman aşımına uğradı. Lütfen daha sonra tekrar deneyin."
+          );
+        }
+      }
+
+      // Genel hata
+      if (error instanceof Error) {
+        throw new Error(`Profil fotoğrafı yüklenemedi: ${error.message}`);
+      } else {
+        throw new Error(
+          "Profil fotoğrafı yüklenemedi. Bilinmeyen bir hata oluştu."
+        );
+      }
+    }
+  },
 };
 
 export const libraryService = {

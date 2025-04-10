@@ -299,7 +299,16 @@ const MainLayout: FC = () => {
                 <DarkModeIcon />
               </IconButton>
               <IconButton edge="end" sx={{ ml: 1 }}>
-                <Avatar src={user?.profileImage} alt={user?.username}>
+                <Avatar
+                  src={
+                    user?.profileImage && user.profileImage !== null
+                      ? user.profileImage.startsWith("http")
+                        ? user.profileImage
+                        : `http://localhost:3000/uploads/${user.profileImage}`
+                      : undefined
+                  }
+                  alt={user?.username || "User"}
+                >
                   {user ? getInitials(user.username) : "U"}
                 </Avatar>
               </IconButton>

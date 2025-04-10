@@ -21,8 +21,8 @@ import notificationRoutes from "./routes/notification.routes";
 import { errorHandler } from "./middlewares/error.middleware";
 
 const globalLimiter = rateLimit({
-  windowMs: 1 * 60 * 1000,
-  max: 70,
+  windowMs: 1 * 60 * 2000,
+  max: 150,
   message: {
     error: "Çok fazla istek yaptınız, lütfen daha sonra tekrar deneyin.",
   },

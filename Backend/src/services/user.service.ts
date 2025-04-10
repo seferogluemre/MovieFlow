@@ -148,9 +148,12 @@ export class UserService {
         username: data.username,
         password: data.password,
         email: data.email,
-        profileImage: data.profileImage
-          ? getFullProfileImageUrl(data.profileImage)
-          : undefined,
+        profileImage:
+          data.profileImage !== undefined
+            ? data.profileImage
+              ? getFullProfileImageUrl(data.profileImage)
+              : null
+            : undefined,
       },
     });
     await prisma.$disconnect();

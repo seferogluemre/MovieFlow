@@ -25,7 +25,7 @@ export const updateUserSchema = BaseSchema.extend({
     .min(6, "Password must be at least 6 characters")
     .optional(),
   name: z.string().min(2, "Name must be at least 6 characters").optional(),
-  profileImage: z.string().optional(),
+  profileImage: z.string().nullable().optional(),
 });
 
 export type CreateUserType = z.infer<typeof createUserSchema>;
