@@ -63,7 +63,7 @@ interface WatchlistItem {
 
 const Watchlist: FC = () => {
   const navigate = useNavigate();
-  const { isAuthenticated } = useAuth();
+  const { isAuthenticated, checkAuthStatus } = useAuth();
   const [watchlist, setWatchlist] = useState<WatchlistItem[]>([]);
   const [filteredWatchlist, setFilteredWatchlist] = useState<WatchlistItem[]>(
     []
@@ -82,11 +82,21 @@ const Watchlist: FC = () => {
   });
 
   useEffect(() => {
-    if (isAuthenticated) {
-      fetchWatchlist();
-    } else {
-      navigate("/login");
-    }
+    const init = async () => {
+      if (isAuthenticated) {
+        fetchWatchlist();
+      } else {
+        // Auth durumunu kontrol et, belki sayfa yenilendi
+        const isAuth = await checkAuthStatus();
+        if (isAuth) {
+          fetchWatchlist();
+        } else {
+          navigate("/login");
+        }
+      }
+    };
+
+    init();
   }, [isAuthenticated, navigate]);
 
   const fetchWatchlist = async () => {

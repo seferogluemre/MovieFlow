@@ -11,10 +11,11 @@ import {
   Alert,
 } from "@mui/material";
 import { Movie as MovieIcon } from "@mui/icons-material";
-import { authService } from "../utils/api";
+import { useAuth } from "../context/AuthContext";
 
 const Login: FC = () => {
   const navigate = useNavigate();
+  const { login, error: authError } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -27,16 +28,12 @@ const Login: FC = () => {
       setLoading(true);
       setError(null);
 
-      // API üzerinden login isteği at
-      const response = await authService.login(email, password);
+      // Use the login method from AuthContext instead of the direct API call
+      await login(email, password);
+      console.log("Login successful, redirecting to home page");
 
-      // Token ve session bilgilerini localStorage'a kaydet
-      localStorage.setItem("accessToken", response.accessToken);
-      localStorage.setItem("refreshToken", response.refreshToken);
-      localStorage.setItem("userId", response.session.userId.toString());
-
-      // Dashboard'a yönlendir
-      navigate("/");
+      // Navigate to the dashboard after successful login
+      navigate("/", { replace: true });
     } catch (err) {
       console.error("Login error:", err);
       setError("Login failed. Please check your credentials and try again.");
@@ -78,9 +75,9 @@ const Login: FC = () => {
             Enter your credentials to access your account
           </Typography>
 
-          {error && (
+          {(error || authError) && (
             <Alert severity="error" sx={{ mb: 3 }}>
-              {error}
+              {error || authError}
             </Alert>
           )}
 

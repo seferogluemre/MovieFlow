@@ -73,17 +73,29 @@ interface MovieDetails {
 const MovieDetails: FC = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
-  const { isAuthenticated } = useAuth();
+  const { isAuthenticated, checkAuthStatus } = useAuth();
   const [movie, setMovie] = useState<MovieDetails | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
 
   useEffect(() => {
-    if (id) {
-      fetchMovieDetails(parseInt(id));
-    }
-  }, [id]);
+    const init = async () => {
+      if (id) {
+        // Kimlik doğrulamasını kontrol et
+        if (!isAuthenticated) {
+          const isAuth = await checkAuthStatus();
+          if (!isAuth) {
+            navigate("/login");
+            return;
+          }
+        }
+        fetchMovieDetails(parseInt(id));
+      }
+    };
+
+    init();
+  }, [id, isAuthenticated, navigate, checkAuthStatus]);
 
   const fetchMovieDetails = async (movieId: number) => {
     try {

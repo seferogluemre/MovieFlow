@@ -1,637 +1,306 @@
-[WARN] 2025-04-09T16:35:07.725Z - Get User --- User not found
-[INFO] 2025-04-09T16:35:07.728Z - Get User --- Request Received
-[WARN] 2025-04-09T16:35:07.787Z - Get User --- User not found
-[INFO] 2025-04-09T16:35:07.788Z - Get User --- Request Received
-[WARN] 2025-04-09T16:35:58.623Z - Get User --- User not found
-[INFO] 2025-04-09T16:35:58.624Z - Get User --- Request Received
-[WARN] 2025-04-09T16:35:58.670Z - Get User --- User not found
-[INFO] 2025-04-09T16:35:58.671Z - Get User --- Request Received
-[WARN] 2025-04-09T16:36:12.538Z - Get User --- User not found
-[INFO] 2025-04-09T16:36:12.539Z - Get User --- Request Received
-[WARN] 2025-04-09T16:36:12.585Z - Get User --- User not found
-[INFO] 2025-04-09T16:36:12.586Z - Get User --- Request Received
-[INFO] 2025-04-09T16:38:31.259Z - Login User --- Login successful 🚀
-[INFO] 2025-04-09T16:42:34.685Z - Login User --- Login successful 🚀
-[INFO] 2025-04-09T16:42:34.791Z - Get User --- Request Received
-[INFO] 2025-04-09T16:42:34.959Z - Get User --- Request Received
-[INFO] 2025-04-09T16:42:35.130Z - Get User --- Request Received
-[INFO] 2025-04-09T16:42:35.299Z - Get User --- Request Received
-[INFO] 2025-04-09T16:44:05.381Z - Get User --- Request Received
-[INFO] 2025-04-09T16:44:05.445Z - Get User --- Request Received
-[INFO] 2025-04-09T16:44:05.507Z - Get User --- Request Received
-[INFO] 2025-04-09T16:44:05.569Z - Get User --- Request Received
-[INFO] 2025-04-09T16:44:20.516Z - Get User --- Request Received
-[INFO] 2025-04-09T16:44:20.686Z - Get User --- Request Received
-[INFO] 2025-04-09T16:44:20.747Z - Get User --- Request Received
-[INFO] 2025-04-09T16:44:20.810Z - Get User --- Request Received
-[INFO] 2025-04-09T16:46:04.375Z - Get User --- Request Received
-[INFO] 2025-04-09T16:46:04.437Z - Get User --- Request Received
-[INFO] 2025-04-09T16:46:08.409Z - Get User --- Request Received
-[INFO] 2025-04-09T16:46:09.391Z - Get User --- Request Received
-[INFO] 2025-04-09T16:46:32.813Z - Get User --- Request Received
-[INFO] 2025-04-09T16:46:32.876Z - Get User --- Request Received
-[INFO] 2025-04-09T16:46:32.938Z - Get User --- Request Received
-[INFO] 2025-04-09T16:46:33.001Z - Get User --- Request Received
-[INFO] 2025-04-09T16:46:43.934Z - Get User --- Request Received
-[INFO] 2025-04-09T16:46:44.012Z - Get User --- Request Received
-[INFO] 2025-04-09T16:46:44.248Z - Get User --- Request Received
-[INFO] 2025-04-09T16:46:44.310Z - Get User --- Request Received
-[INFO] 2025-04-09T16:47:28.650Z - Get User --- Request Received
-[INFO] 2025-04-09T16:47:28.712Z - Get User --- Request Received
-[INFO] 2025-04-09T16:47:28.773Z - Get User --- Request Received
-[INFO] 2025-04-09T16:47:28.833Z - Get User --- Request Received
-[INFO] 2025-04-09T16:47:34.433Z - Get User --- Request Received
-[INFO] 2025-04-09T16:47:34.495Z - Get User --- Request Received
-[INFO] 2025-04-09T16:47:40.774Z - Get User --- Request Received
-[INFO] 2025-04-09T16:47:40.835Z - Get User --- Request Received
-[INFO] 2025-04-09T16:47:46.203Z - Get User --- Request Received
-[INFO] 2025-04-09T16:47:50.721Z - Get User --- Request Received
-[INFO] 2025-04-09T16:47:50.798Z - Get User --- Request Received
-[INFO] 2025-04-09T16:48:18.614Z - Get User --- Request Received
-[INFO] 2025-04-09T16:48:18.677Z - Get User --- Request Received
-[INFO] 2025-04-09T16:49:06.808Z - Get User --- Request Received
-[INFO] 2025-04-09T16:49:06.870Z - Get User --- Request Received
-[INFO] 2025-04-09T16:49:12.377Z - Get User --- Request Received
-[INFO] 2025-04-09T16:49:12.453Z - Get User --- Request Received
-[INFO] 2025-04-09T16:50:21.850Z - Get User --- Request Received
-[INFO] 2025-04-09T16:50:22.019Z - Get User --- Request Received
-[INFO] 2025-04-09T16:50:32.410Z - Get User --- Request Received
-[INFO] 2025-04-09T16:50:44.085Z - Get User --- Request Received
-[INFO] 2025-04-09T16:54:02.034Z - Get User --- Request Received
-[INFO] 2025-04-09T16:54:02.096Z - Get User --- Request Received
-[INFO] 2025-04-09T16:54:05.419Z - Get User --- Request Received
-[INFO] 2025-04-09T16:54:05.481Z - Get User --- Request Received
-[INFO] 2025-04-09T16:54:16.942Z - Login User - Logout Successfully
-[INFO] 2025-04-09T16:54:31.554Z - Login User --- Login successful 🚀
-[INFO] 2025-04-09T16:54:31.674Z - Get User --- Request Received
-[INFO] 2025-04-09T16:54:31.736Z - Get User --- Request Received
-[INFO] 2025-04-09T16:54:47.015Z - Get User --- Request Received
-[INFO] 2025-04-09T16:54:47.078Z - Get User --- Request Received
-[INFO] 2025-04-09T16:55:30.974Z - Get User --- Request Received
-[INFO] 2025-04-09T16:55:31.037Z - Get User --- Request Received
-[INFO] 2025-04-09T16:55:43.919Z - Get User --- Request Received
-[INFO] 2025-04-09T16:55:43.981Z - Get User --- Request Received
-[INFO] 2025-04-09T16:56:52.858Z - Get User --- Request Received
-[INFO] 2025-04-09T16:56:52.936Z - Get User --- Request Received
-[INFO] 2025-04-09T16:58:05.453Z - Get User --- Request Received
-[INFO] 2025-04-09T16:58:08.830Z - Get User --- Request Received
-[INFO] 2025-04-09T16:58:08.892Z - Get User --- Request Received
-[INFO] 2025-04-09T16:59:21.958Z - Get User --- Request Received
-[INFO] 2025-04-09T16:59:22.020Z - Get User --- Request Received
-[INFO] 2025-04-09T17:00:21.492Z - Get User --- Request Received
-[INFO] 2025-04-09T17:01:01.410Z - Get User --- Request Received
-[INFO] 2025-04-09T17:01:22.860Z - Get User --- Request Received
-[INFO] 2025-04-09T17:01:22.923Z - Get User --- Request Received
-[INFO] 2025-04-09T17:01:31.749Z - Get User --- Request Received
-[INFO] 2025-04-09T17:01:31.811Z - Get User --- Request Received
-[INFO] 2025-04-09T17:01:34.454Z - Get User --- Request Received
-[INFO] 2025-04-09T17:02:17.782Z - Get User --- Request Received
-[INFO] 2025-04-09T17:02:17.845Z - Get User --- Request Received
-[INFO] 2025-04-09T17:02:24.058Z - Get User --- Request Received
-[INFO] 2025-04-09T17:02:24.123Z - Get User --- Request Received
-[INFO] 2025-04-09T17:02:55.409Z - Get User --- Request Received
-[INFO] 2025-04-09T17:03:26.412Z - Get User --- Request Received
-[INFO] 2025-04-09T17:03:41.410Z - Get User --- Request Received
-[INFO] 2025-04-09T17:03:55.282Z - Get User --- Request Received
-[INFO] 2025-04-09T17:03:55.377Z - Get User --- Request Received
-[INFO] 2025-04-09T17:06:07.291Z - Get User --- Request Received
-[INFO] 2025-04-09T17:06:07.352Z - Get User --- Request Received
-[INFO] 2025-04-09T17:06:12.052Z - Login User - Logout Successfully
-[INFO] 2025-04-09T17:06:18.969Z - Login User --- Login successful 🚀
-[INFO] 2025-04-09T17:06:19.059Z - Get User --- Request Received
-[INFO] 2025-04-09T17:06:19.121Z - Get User --- Request Received
-[INFO] 2025-04-09T17:06:21.734Z - Get User --- Request Received
-[INFO] 2025-04-09T17:06:21.797Z - Get User --- Request Received
-[INFO] 2025-04-09T17:08:58.610Z - Get User --- Request Received
-[INFO] 2025-04-09T17:10:18.929Z - Get User --- Request Received
-[INFO] 2025-04-09T17:10:19.101Z - Get User --- Request Received
-[INFO] 2025-04-09T17:10:21.107Z - Get User --- Request Received
-[INFO] 2025-04-09T17:10:21.276Z - Get User --- Request Received
-[INFO] 2025-04-09T17:12:38.298Z - Get User --- Request Received
-[INFO] 2025-04-09T17:12:38.362Z - Get User --- Request Received
-[INFO] 2025-04-09T17:12:38.424Z - Get User --- Request Received
-[INFO] 2025-04-09T17:12:38.482Z - Get User --- Request Received
-[INFO] 2025-04-09T17:12:38.549Z - Get User --- Request Received
-[INFO] 2025-04-09T17:12:38.613Z - Get User --- Request Received
-[INFO] 2025-04-09T17:12:38.694Z - Get User --- Request Received
-[INFO] 2025-04-09T17:12:38.784Z - Get User --- Request Received
-[INFO] 2025-04-09T17:12:38.863Z - Get User --- Request Received
-[INFO] 2025-04-09T17:12:38.924Z - Get User --- Request Received
-[INFO] 2025-04-09T17:12:38.985Z - Get User --- Request Received
-[INFO] 2025-04-09T17:12:39.144Z - Get User --- Request Received
-[INFO] 2025-04-09T17:13:22.621Z - Get User --- Request Received
-[INFO] 2025-04-09T17:13:22.794Z - Get User --- Request Received
-[INFO] 2025-04-09T17:13:22.855Z - Get User --- Request Received
-[INFO] 2025-04-09T17:13:22.917Z - Get User --- Request Received
-[INFO] 2025-04-09T17:13:22.979Z - Get User --- Request Received
-[INFO] 2025-04-09T17:13:23.041Z - Get User --- Request Received
-[INFO] 2025-04-09T17:13:23.104Z - Get User --- Request Received
-[INFO] 2025-04-09T17:13:23.165Z - Get User --- Request Received
-[INFO] 2025-04-09T17:13:23.228Z - Get User --- Request Received
-[INFO] 2025-04-09T17:13:25.524Z - Get User --- Request Received
-[INFO] 2025-04-09T17:13:25.588Z - Get User --- Request Received
-[INFO] 2025-04-09T17:13:25.649Z - Get User --- Request Received
-[WARN] 2025-04-09T17:13:41.695Z - Login User --- Invalid email or password 
-[INFO] 2025-04-09T17:13:47.621Z - Login User --- Login successful 🚀
-[INFO] 2025-04-09T17:13:47.730Z - Get User --- Request Received
-[INFO] 2025-04-09T17:13:47.793Z - Get User --- Request Received
-[INFO] 2025-04-09T17:13:47.841Z - Get User --- Request Received
-[INFO] 2025-04-09T17:13:47.903Z - Get User --- Request Received
-[INFO] 2025-04-09T17:13:47.965Z - Get User --- Request Received
-[INFO] 2025-04-09T17:13:48.026Z - Get User --- Request Received
-[INFO] 2025-04-09T17:13:48.196Z - Get User --- Request Received
-[INFO] 2025-04-09T17:13:48.257Z - Get User --- Request Received
-[INFO] 2025-04-09T17:13:48.319Z - Get User --- Request Received
-[INFO] 2025-04-09T17:13:48.366Z - Get User --- Request Received
-[INFO] 2025-04-09T17:13:48.428Z - Get User --- Request Received
-[INFO] 2025-04-09T17:13:50.839Z - Get User --- Request Received
-[INFO] 2025-04-09T17:13:50.901Z - Get User --- Request Received
-[INFO] 2025-04-09T17:13:50.964Z - Get User --- Request Received
-[INFO] 2025-04-09T17:13:51.025Z - Get User --- Request Received
-[INFO] 2025-04-09T17:13:51.089Z - Get User --- Request Received
-[INFO] 2025-04-09T17:13:51.152Z - Get User --- Request Received
-[INFO] 2025-04-09T17:13:51.215Z - Get User --- Request Received
-[INFO] 2025-04-09T17:13:51.277Z - Get User --- Request Received
-[INFO] 2025-04-09T17:13:51.324Z - Get User --- Request Received
-[INFO] 2025-04-09T17:14:04.451Z - Get User --- Request Received
-[INFO] 2025-04-09T17:14:04.512Z - Get User --- Request Received
-[INFO] 2025-04-09T17:14:04.575Z - Get User --- Request Received
-[INFO] 2025-04-09T17:16:53.740Z - Get User --- Request Received
-[INFO] 2025-04-09T17:16:53.800Z - Get User --- Request Received
-[INFO] 2025-04-09T17:16:53.866Z - Get User --- Request Received
-[INFO] 2025-04-09T17:16:53.928Z - Get User --- Request Received
-[INFO] 2025-04-09T17:16:53.991Z - Get User --- Request Received
-[INFO] 2025-04-09T17:16:54.054Z - Get User --- Request Received
-[INFO] 2025-04-09T17:16:54.116Z - Get User --- Request Received
-[INFO] 2025-04-09T17:16:54.273Z - Get User --- Request Received
-[INFO] 2025-04-09T17:16:54.444Z - Get User --- Request Received
-[INFO] 2025-04-09T17:16:54.492Z - Get User --- Request Received
-[INFO] 2025-04-09T17:16:54.539Z - Get User --- Request Received
-[INFO] 2025-04-09T17:18:09.442Z - Get User --- Request Received
-[INFO] 2025-04-09T17:18:09.520Z - Get User --- Request Received
-[INFO] 2025-04-09T17:18:09.582Z - Get User --- Request Received
-[INFO] 2025-04-09T17:18:09.645Z - Get User --- Request Received
-[INFO] 2025-04-09T17:18:09.708Z - Get User --- Request Received
-[INFO] 2025-04-09T17:18:09.772Z - Get User --- Request Received
-[INFO] 2025-04-09T17:18:09.834Z - Get User --- Request Received
-[INFO] 2025-04-09T17:18:10.005Z - Get User --- Request Received
-[INFO] 2025-04-09T17:18:21.385Z - Get User --- Request Received
-[INFO] 2025-04-09T17:18:21.433Z - Get User --- Request Received
-[INFO] 2025-04-09T17:19:42.378Z - Get User --- Request Received
-[INFO] 2025-04-09T17:22:35.421Z - Get User --- Request Received
-[INFO] 2025-04-09T17:22:36.356Z - Get User --- Request Received
-[INFO] 2025-04-09T17:23:11.741Z - Get User --- Request Received
-[INFO] 2025-04-09T17:23:11.803Z - Get User --- Request Received
-[INFO] 2025-04-09T17:23:11.866Z - Get User --- Request Received
-[INFO] 2025-04-09T17:23:11.927Z - Get User --- Request Received
-[INFO] 2025-04-09T17:23:11.977Z - Get User --- Request Received
-[INFO] 2025-04-09T17:23:12.024Z - Get User --- Request Received
-[INFO] 2025-04-09T17:23:12.086Z - Get User --- Request Received
-[INFO] 2025-04-09T17:23:12.147Z - Get User --- Request Received
-[INFO] 2025-04-09T17:23:12.211Z - Get User --- Request Received
-[INFO] 2025-04-09T17:23:57.381Z - Get User --- Request Received
-[INFO] 2025-04-09T17:23:59.356Z - Get User --- Request Received
-[INFO] 2025-04-09T17:24:01.371Z - Get User --- Request Received
-[INFO] 2025-04-09T17:24:01.814Z - Get User --- Request Received
-[INFO] 2025-04-09T17:24:03.359Z - Get User --- Request Received
-[INFO] 2025-04-09T17:24:04.369Z - Get User --- Request Received
-[INFO] 2025-04-09T17:24:06.066Z - Get User --- Request Received
-[INFO] 2025-04-09T17:24:06.846Z - Get User --- Request Received
-[INFO] 2025-04-09T17:24:07.000Z - Get User --- Request Received
-[INFO] 2025-04-09T17:24:07.063Z - Get User --- Request Received
-[INFO] 2025-04-09T17:24:07.126Z - Get User --- Request Received
-[INFO] 2025-04-09T17:24:07.190Z - Get User --- Request Received
-[INFO] 2025-04-09T17:24:07.253Z - Get User --- Request Received
-[INFO] 2025-04-09T17:24:07.316Z - Get User --- Request Received
-[INFO] 2025-04-09T17:24:07.380Z - Get User --- Request Received
-[INFO] 2025-04-09T17:24:07.443Z - Get User --- Request Received
-[INFO] 2025-04-09T17:24:07.506Z - Get User --- Request Received
-[INFO] 2025-04-09T17:24:07.554Z - Get User --- Request Received
-[INFO] 2025-04-09T17:24:07.617Z - Get User --- Request Received
-[INFO] 2025-04-09T17:24:08.404Z - Get User --- Request Received
-[INFO] 2025-04-09T17:24:22.378Z - Get User --- Request Received
-[INFO] 2025-04-09T17:24:26.992Z - Get User --- Request Received
-[INFO] 2025-04-09T17:24:27.054Z - Get User --- Request Received
-[INFO] 2025-04-09T17:24:27.225Z - Get User --- Request Received
-[INFO] 2025-04-09T17:24:27.289Z - Get User --- Request Received
-[INFO] 2025-04-09T17:24:27.350Z - Get User --- Request Received
-[INFO] 2025-04-09T17:24:27.412Z - Get User --- Request Received
-[INFO] 2025-04-09T17:24:27.474Z - Get User --- Request Received
-[INFO] 2025-04-09T17:24:27.647Z - Get User --- Request Received
-[INFO] 2025-04-09T17:24:27.708Z - Get User --- Request Received
-[INFO] 2025-04-09T17:24:27.771Z - Get User --- Request Received
-[INFO] 2025-04-09T17:24:27.818Z - Get User --- Request Received
-[INFO] 2025-04-09T17:24:31.032Z - Get User --- Request Received
-[INFO] 2025-04-09T17:24:31.095Z - Get User --- Request Received
-[INFO] 2025-04-09T17:24:59.993Z - Login User --- Login successful 🚀
-[INFO] 2025-04-09T17:25:00.100Z - Get User --- Request Received
-[INFO] 2025-04-09T17:25:00.163Z - Get User --- Request Received
-[INFO] 2025-04-09T17:25:00.336Z - Get User --- Request Received
-[INFO] 2025-04-09T17:25:00.495Z - Get User --- Request Received
-[INFO] 2025-04-09T17:25:00.557Z - Get User --- Request Received
-[INFO] 2025-04-09T17:25:00.620Z - Get User --- Request Received
-[INFO] 2025-04-09T17:25:00.681Z - Get User --- Request Received
-[INFO] 2025-04-09T17:25:00.728Z - Get User --- Request Received
-[INFO] 2025-04-09T17:25:00.776Z - Get User --- Request Received
-[INFO] 2025-04-09T17:25:00.839Z - Get User --- Request Received
-[INFO] 2025-04-09T17:25:00.902Z - Get User --- Request Received
-[INFO] 2025-04-09T17:25:05.144Z - Get User --- Request Received
-[INFO] 2025-04-09T17:25:05.206Z - Get User --- Request Received
-[INFO] 2025-04-09T17:25:05.269Z - Get User --- Request Received
-[INFO] 2025-04-09T17:25:05.331Z - Get User --- Request Received
-[INFO] 2025-04-09T17:25:05.394Z - Get User --- Request Received
-[INFO] 2025-04-09T17:25:05.458Z - Get User --- Request Received
-[INFO] 2025-04-09T17:25:05.521Z - Get User --- Request Received
-[INFO] 2025-04-10T00:19:17.387Z - Login User --- Login successful 🚀
-[INFO] 2025-04-10T00:19:17.491Z - Get User --- Request Received
-[INFO] 2025-04-10T00:19:17.554Z - Get User --- Request Received
-[INFO] 2025-04-10T00:19:17.602Z - Get User --- Request Received
-[INFO] 2025-04-10T00:19:17.665Z - Get User --- Request Received
-[INFO] 2025-04-10T00:19:17.713Z - Get User --- Request Received
-[INFO] 2025-04-10T00:19:17.775Z - Get User --- Request Received
-[INFO] 2025-04-10T00:19:17.823Z - Get User --- Request Received
-[INFO] 2025-04-10T00:19:17.870Z - Get User --- Request Received
-[INFO] 2025-04-10T00:19:17.934Z - Get User --- Request Received
-[INFO] 2025-04-10T00:19:17.981Z - Get User --- Request Received
-[INFO] 2025-04-10T00:19:18.027Z - Get User --- Request Received
-[INFO] 2025-04-10T00:20:16.974Z - Get User --- Request Received
-[INFO] 2025-04-10T00:20:17.036Z - Get User --- Request Received
-[INFO] 2025-04-10T00:20:17.100Z - Get User --- Request Received
-[INFO] 2025-04-10T00:20:17.162Z - Get User --- Request Received
-[INFO] 2025-04-10T00:20:17.223Z - Get User --- Request Received
-[INFO] 2025-04-10T00:20:17.284Z - Get User --- Request Received
-[INFO] 2025-04-10T00:20:17.331Z - Get User --- Request Received
-[INFO] 2025-04-10T00:20:17.394Z - Get User --- Request Received
-[INFO] 2025-04-10T00:20:17.458Z - Get User --- Request Received
-[INFO] 2025-04-10T00:20:18.390Z - Get User --- Request Received
-[INFO] 2025-04-10T00:20:18.451Z - Get User --- Request Received
-[INFO] 2025-04-10T00:20:18.514Z - Get User --- Request Received
-[INFO] 2025-04-10T00:20:18.671Z - Get User --- Request Received
-[INFO] 2025-04-10T00:20:18.718Z - Get User --- Request Received
-[INFO] 2025-04-10T00:20:18.764Z - Get User --- Request Received
-[INFO] 2025-04-10T00:20:18.826Z - Get User --- Request Received
-[INFO] 2025-04-10T00:20:29.599Z - Get User --- Request Received
-[INFO] 2025-04-10T00:20:29.660Z - Get User --- Request Received
-[INFO] 2025-04-10T00:20:29.720Z - Get User --- Request Received
-[INFO] 2025-04-10T00:20:29.784Z - Get User --- Request Received
-[INFO] 2025-04-10T00:20:29.831Z - Get User --- Request Received
-[INFO] 2025-04-10T00:20:29.893Z - Get User --- Request Received
-[INFO] 2025-04-10T00:20:29.954Z - Get User --- Request Received
-[INFO] 2025-04-10T00:20:30.001Z - Get User --- Request Received
-[INFO] 2025-04-10T00:20:30.048Z - Get User --- Request Received
-[INFO] 2025-04-10T00:20:32.255Z - Get User --- Request Received
-[INFO] 2025-04-10T00:20:32.318Z - Get User --- Request Received
-[INFO] 2025-04-10T00:20:32.379Z - Get User --- Request Received
-[INFO] 2025-04-10T00:20:32.440Z - Get User --- Request Received
-[INFO] 2025-04-10T00:20:32.503Z - Get User --- Request Received
-[INFO] 2025-04-10T00:20:32.551Z - Get User --- Request Received
-[INFO] 2025-04-10T00:20:32.598Z - Get User --- Request Received
-[INFO] 2025-04-10T00:20:32.662Z - Get User --- Request Received
-[INFO] 2025-04-10T00:20:32.725Z - Get User --- Request Received
-[INFO] 2025-04-10T00:20:57.075Z - Get User --- Request Received
-[INFO] 2025-04-10T00:24:03.069Z - List movies --- Request Received
-[INFO] 2025-04-10T00:26:38.310Z - Login User --- Login successful 🚀
-[WARN] 2025-04-10T00:26:48.349Z - LibraryController.create ---- Error creating library entry: ${error}
-[INFO] 2025-04-10T00:36:15.152Z - Get User --- Request Received
-[INFO] 2025-04-10T00:36:15.218Z - Get User --- Request Received
-[INFO] 2025-04-10T00:36:15.271Z - Get User --- Request Received
-[INFO] 2025-04-10T00:36:15.325Z - Get User --- Request Received
-[INFO] 2025-04-10T00:36:15.388Z - Get User --- Request Received
-[INFO] 2025-04-10T00:36:15.450Z - Get User --- Request Received
-[INFO] 2025-04-10T00:36:15.512Z - Get User --- Request Received
-[INFO] 2025-04-10T00:36:15.575Z - Get User --- Request Received
-[INFO] 2025-04-10T00:36:15.639Z - Get User --- Request Received
-[INFO] 2025-04-10T00:36:15.809Z - Get User --- Request Received
-[INFO] 2025-04-10T00:36:15.872Z - Get User --- Request Received
-[INFO] 2025-04-10T00:36:15.935Z - Get User --- Request Received
-[INFO] 2025-04-10T00:36:15.997Z - Get User --- Request Received
-[INFO] 2025-04-10T00:36:16.059Z - Get User --- Request Received
-[INFO] 2025-04-10T00:36:16.300Z - List movies --- Request Received
-[INFO] 2025-04-10T00:36:16.303Z - List movies --- Request Received
-[WARN] 2025-04-10T00:38:10.176Z - LibraryController.create ---- Error creating library entry: ${error}
-[INFO] 2025-04-10T00:38:16.589Z - List movies --- Request Received
-[INFO] 2025-04-10T00:38:16.598Z - List movies --- Request Received
-[INFO] 2025-04-10T00:38:16.655Z - Get User --- Request Received
-[INFO] 2025-04-10T00:38:16.729Z - Get User --- Request Received
-[INFO] 2025-04-10T00:38:16.794Z - Get User --- Request Received
-[INFO] 2025-04-10T00:38:16.857Z - Get User --- Request Received
-[INFO] 2025-04-10T00:38:39.937Z - List movies --- Request Received
-[INFO] 2025-04-10T00:38:39.942Z - List movies --- Request Received
-[WARN] 2025-04-10T00:39:06.693Z - LibraryController.create ---- Error creating library entry: ${error}
-[INFO] 2025-04-10T00:39:19.181Z - Get User --- Request Received
-[INFO] 2025-04-10T00:39:19.241Z - Get User --- Request Received
-[INFO] 2025-04-10T00:39:19.413Z - Get User --- Request Received
-[INFO] 2025-04-10T00:39:19.474Z - Get User --- Request Received
-[INFO] 2025-04-10T00:39:19.536Z - Get User --- Request Received
-[INFO] 2025-04-10T00:39:19.598Z - Get User --- Request Received
-[INFO] 2025-04-10T00:39:19.661Z - Get User --- Request Received
-[INFO] 2025-04-10T00:39:19.725Z - Get User --- Request Received
-[INFO] 2025-04-10T00:39:19.787Z - Get User --- Request Received
-[INFO] 2025-04-10T00:39:19.848Z - Get User --- Request Received
-[INFO] 2025-04-10T00:39:19.911Z - Get User --- Request Received
-[INFO] 2025-04-10T00:39:19.959Z - Get User --- Request Received
-[INFO] 2025-04-10T00:39:22.605Z - Get User --- Request Received
-[INFO] 2025-04-10T00:39:22.667Z - Get User --- Request Received
-[INFO] 2025-04-10T00:39:22.730Z - Get User --- Request Received
-[INFO] 2025-04-10T00:39:22.794Z - Get User --- Request Received
-[INFO] 2025-04-10T00:39:22.856Z - Get User --- Request Received
-[INFO] 2025-04-10T00:39:22.919Z - Get User --- Request Received
-[INFO] 2025-04-10T00:39:22.982Z - Get User --- Request Received
-[INFO] 2025-04-10T00:39:23.043Z - Get User --- Request Received
-[INFO] 2025-04-10T00:39:23.215Z - Get User --- Request Received
-[INFO] 2025-04-10T00:39:23.277Z - Get User --- Request Received
-[INFO] 2025-04-10T00:39:23.339Z - Get User --- Request Received
-[INFO] 2025-04-10T00:39:23.400Z - Get User --- Request Received
-[INFO] 2025-04-10T00:39:24.920Z - Get User --- Request Received
-[INFO] 2025-04-10T00:39:24.982Z - Get User --- Request Received
-[INFO] 2025-04-10T00:39:25.045Z - Get User --- Request Received
-[INFO] 2025-04-10T00:41:27.409Z - Login User --- Login successful 🚀
-[INFO] 2025-04-10T00:41:27.552Z - Get User --- Request Received
-[INFO] 2025-04-10T00:41:27.615Z - Get User --- Request Received
-[INFO] 2025-04-10T00:41:27.693Z - Get User --- Request Received
-[INFO] 2025-04-10T00:41:27.759Z - Get User --- Request Received
-[INFO] 2025-04-10T00:41:27.832Z - Get User --- Request Received
-[INFO] 2025-04-10T00:41:27.909Z - Get User --- Request Received
-[INFO] 2025-04-10T00:41:27.971Z - Get User --- Request Received
-[INFO] 2025-04-10T00:41:28.032Z - Get User --- Request Received
-[INFO] 2025-04-10T00:41:28.094Z - Get User --- Request Received
-[INFO] 2025-04-10T00:41:28.156Z - Get User --- Request Received
-[INFO] 2025-04-10T00:41:28.220Z - Get User --- Request Received
-[INFO] 2025-04-10T00:41:28.281Z - Get User --- Request Received
-[INFO] 2025-04-10T00:41:28.344Z - Get User --- Request Received
-[INFO] 2025-04-10T00:41:31.389Z - Get User --- Request Received
-[INFO] 2025-04-10T00:41:31.452Z - Get User --- Request Received
-[INFO] 2025-04-10T00:41:31.624Z - Get User --- Request Received
-[INFO] 2025-04-10T00:41:31.688Z - Get User --- Request Received
-[INFO] 2025-04-10T00:41:31.749Z - Get User --- Request Received
-[INFO] 2025-04-10T00:41:31.811Z - Get User --- Request Received
-[INFO] 2025-04-10T00:41:31.983Z - Get User --- Request Received
-[INFO] 2025-04-10T00:41:32.044Z - Get User --- Request Received
-[INFO] 2025-04-10T00:41:32.107Z - Get User --- Request Received
-[INFO] 2025-04-10T00:41:32.169Z - Get User --- Request Received
-[INFO] 2025-04-10T00:41:32.231Z - Get User --- Request Received
-[INFO] 2025-04-10T00:41:32.291Z - Get User --- Request Received
-[INFO] 2025-04-10T00:41:32.461Z - Get User --- Request Received
-[INFO] 2025-04-10T00:41:32.523Z - Get User --- Request Received
-[INFO] 2025-04-10T00:41:49.427Z - Get User --- Request Received
-[INFO] 2025-04-10T00:41:49.474Z - Get User --- Request Received
-[WARN] 2025-04-10T00:43:34.950Z - Login User --- Invalid email or password 
-[INFO] 2025-04-10T00:43:36.995Z - Login User --- Login successful 🚀
-[INFO] 2025-04-10T00:43:37.087Z - Get User --- Request Received
-[INFO] 2025-04-10T00:43:37.257Z - Get User --- Request Received
-[INFO] 2025-04-10T00:43:37.428Z - Get User --- Request Received
-[INFO] 2025-04-10T00:43:37.488Z - Get User --- Request Received
-[INFO] 2025-04-10T00:43:37.659Z - Get User --- Request Received
-[INFO] 2025-04-10T00:43:37.721Z - Get User --- Request Received
-[INFO] 2025-04-10T00:43:37.783Z - Get User --- Request Received
-[INFO] 2025-04-10T00:43:37.954Z - Get User --- Request Received
-[INFO] 2025-04-10T00:43:38.017Z - Get User --- Request Received
-[INFO] 2025-04-10T00:43:38.079Z - Get User --- Request Received
-[INFO] 2025-04-10T00:43:38.141Z - Get User --- Request Received
-[INFO] 2025-04-10T00:43:38.187Z - Get User --- Request Received
-[INFO] 2025-04-10T00:43:38.357Z - Get User --- Request Received
-[INFO] 2025-04-10T00:43:38.404Z - Get User --- Request Received
-[INFO] 2025-04-10T00:43:54.447Z - List movies --- Request Received
-[INFO] 2025-04-10T00:43:54.449Z - List movies --- Request Received
-[INFO] 2025-04-10T00:44:48.592Z - List movies --- Request Received
-[INFO] 2025-04-10T00:44:48.595Z - List movies --- Request Received
-[INFO] 2025-04-10T00:44:48.651Z - Get User --- Request Received
-[INFO] 2025-04-10T00:44:48.713Z - Get User --- Request Received
-[INFO] 2025-04-10T00:44:48.883Z - Get User --- Request Received
-[INFO] 2025-04-10T00:44:49.052Z - Get User --- Request Received
-[WARN] 2025-04-10T00:47:07.423Z - LibraryController.update ---- Library entry not found with id ${id}
-[WARN] 2025-04-10T00:47:07.423Z - LibraryController.update ---- Unauthorized access to library entry ${id}
-[WARN] 2025-04-10T00:47:07.424Z - LibraryController.update ---- Error updating library entry: ${error}
-[WARN] 2025-04-10T00:47:15.872Z - LibraryController.update ---- Library entry not found with id ${id}
-[WARN] 2025-04-10T00:47:15.873Z - LibraryController.update ---- Unauthorized access to library entry ${id}
-[WARN] 2025-04-10T00:47:15.873Z - LibraryController.update ---- Error updating library entry: ${error}
-[WARN] 2025-04-10T00:47:19.723Z - LibraryController.update ---- Error updating library entry: ${error}
-[WARN] 2025-04-10T00:48:53.792Z - LibraryController.update ---- Error updating library entry: ${error}
-[WARN] 2025-04-10T00:48:57.359Z - LibraryController.update ---- Library entry not found with id ${id}
-[WARN] 2025-04-10T00:48:57.360Z - LibraryController.update ---- Unauthorized access to library entry ${id}
-[WARN] 2025-04-10T00:48:57.360Z - LibraryController.update ---- Error updating library entry: ${error}
-[WARN] 2025-04-10T00:49:00.431Z - LibraryController.update ---- Library entry not found with id ${id}
-[WARN] 2025-04-10T00:49:00.432Z - LibraryController.update ---- Unauthorized access to library entry ${id}
-[WARN] 2025-04-10T00:49:00.433Z - LibraryController.update ---- Error updating library entry: ${error}
-[INFO] 2025-04-10T00:49:04.824Z - LibraryController.update ---- Updated library entry ${id}
-[WARN] 2025-04-10T00:49:35.265Z - LibraryController.delete ---- Library entry not found with id ${id}
-[WARN] 2025-04-10T00:49:35.265Z - LibraryController.delete ---- Unauthorized access to library entry ${id}
-[WARN] 2025-04-10T00:49:35.266Z - LibraryController.delete ---- Error deleting library entry: ${error}
-[INFO] 2025-04-10T00:49:43.911Z - LibraryController.delete ---- Deleted library entry ${id}
-[INFO] 2025-04-10T00:49:52.055Z - LibraryController.delete ---- Deleted library entry ${id}
-[INFO] 2025-04-10T00:55:21.179Z - Get User --- Request Received
-[INFO] 2025-04-10T00:55:21.241Z - Get User --- Request Received
-[INFO] 2025-04-10T00:55:21.536Z - Get User --- Request Received
-[INFO] 2025-04-10T00:55:21.598Z - Get User --- Request Received
-[INFO] 2025-04-10T00:56:15.535Z - List movies --- Request Received
-[INFO] 2025-04-10T00:56:15.542Z - List movies --- Request Received
-[INFO] 2025-04-10T00:56:15.599Z - Get User --- Request Received
-[INFO] 2025-04-10T00:56:15.667Z - Get User --- Request Received
-[INFO] 2025-04-10T00:56:15.693Z - List movies --- Request Received
-[INFO] 2025-04-10T00:56:15.729Z - Get User --- Request Received
-[INFO] 2025-04-10T00:56:15.751Z - List movies --- Request Received
-[INFO] 2025-04-10T00:56:15.791Z - Get User --- Request Received
-[INFO] 2025-04-10T00:56:19.209Z - List movies --- Request Received
-[INFO] 2025-04-10T00:56:19.214Z - List movies --- Request Received
-[INFO] 2025-04-10T00:56:19.286Z - Get User --- Request Received
-[INFO] 2025-04-10T00:56:19.453Z - Get User --- Request Received
-[INFO] 2025-04-10T00:56:19.476Z - List movies --- Request Received
-[INFO] 2025-04-10T00:56:19.514Z - Get User --- Request Received
-[INFO] 2025-04-10T00:56:19.576Z - Get User --- Request Received
-[INFO] 2025-04-10T00:56:19.595Z - List movies --- Request Received
-[INFO] 2025-04-10T00:56:21.857Z - LibraryController.create ---- Library entry created for user ${userId} and movie ${data.movieId}
-[INFO] 2025-04-10T00:56:38.316Z - List movies --- Request Received
-[INFO] 2025-04-10T00:56:40.028Z - LibraryController.create ---- Library entry created for user ${userId} and movie ${data.movieId}
-[INFO] 2025-04-10T00:56:43.473Z - Get User --- Request Received
-[INFO] 2025-04-10T00:56:43.543Z - Get User --- Request Received
-[INFO] 2025-04-10T00:56:43.612Z - Get User --- Request Received
-[INFO] 2025-04-10T00:56:43.785Z - Get User --- Request Received
-[INFO] 2025-04-10T00:57:54.050Z - Login User --- Login successful 🚀
-[INFO] 2025-04-10T00:57:54.235Z - Get User --- Request Received
-[INFO] 2025-04-10T00:57:54.306Z - Get User --- Request Received
-[INFO] 2025-04-10T00:57:54.375Z - Get User --- Request Received
-[INFO] 2025-04-10T00:57:54.454Z - Get User --- Request Received
-[INFO] 2025-04-10T00:57:54.546Z - Get User --- Request Received
-[INFO] 2025-04-10T00:57:54.640Z - Get User --- Request Received
-[INFO] 2025-04-10T00:57:54.810Z - Get User --- Request Received
-[INFO] 2025-04-10T00:57:54.871Z - Get User --- Request Received
-[INFO] 2025-04-10T00:57:55.043Z - Get User --- Request Received
-[INFO] 2025-04-10T00:57:55.105Z - Get User --- Request Received
-[INFO] 2025-04-10T00:57:55.276Z - Get User --- Request Received
-[INFO] 2025-04-10T00:57:55.339Z - Get User --- Request Received
-[INFO] 2025-04-10T00:57:55.400Z - Get User --- Request Received
-[INFO] 2025-04-10T00:57:55.463Z - Get User --- Request Received
-[INFO] 2025-04-10T00:57:57.875Z - List movies --- Request Received
-[INFO] 2025-04-10T00:57:57.878Z - List movies --- Request Received
-[INFO] 2025-04-10T00:58:16.408Z - List movies --- Request Received
-[INFO] 2025-04-10T00:58:16.414Z - List movies --- Request Received
-[INFO] 2025-04-10T00:58:16.545Z - Get User --- Request Received
-[INFO] 2025-04-10T00:58:16.606Z - Get User --- Request Received
-[INFO] 2025-04-10T00:58:16.630Z - List movies --- Request Received
-[INFO] 2025-04-10T00:58:16.668Z - Get User --- Request Received
-[INFO] 2025-04-10T00:58:53.066Z - Get User --- Request Received
-[INFO] 2025-04-10T00:58:53.128Z - Get User --- Request Received
-[INFO] 2025-04-10T00:58:53.298Z - Get User --- Request Received
-[INFO] 2025-04-10T00:58:53.360Z - Get User --- Request Received
-[INFO] 2025-04-10T00:58:53.421Z - Get User --- Request Received
-[INFO] 2025-04-10T00:58:53.482Z - Get User --- Request Received
-[INFO] 2025-04-10T00:58:53.654Z - Get User --- Request Received
-[INFO] 2025-04-10T00:58:53.715Z - Get User --- Request Received
-[INFO] 2025-04-10T00:58:53.777Z - Get User --- Request Received
-[INFO] 2025-04-10T00:58:53.839Z - Get User --- Request Received
-[INFO] 2025-04-10T00:58:53.900Z - Get User --- Request Received
-[INFO] 2025-04-10T00:58:56.019Z - Get User --- Request Received
-[INFO] 2025-04-10T00:58:56.081Z - Get User --- Request Received
-[INFO] 2025-04-10T00:58:56.143Z - Get User --- Request Received
-[INFO] 2025-04-10T00:58:56.204Z - Get User --- Request Received
-[INFO] 2025-04-10T00:58:56.374Z - Get User --- Request Received
-[INFO] 2025-04-10T00:58:56.436Z - Get User --- Request Received
-[INFO] 2025-04-10T00:58:56.499Z - Get User --- Request Received
-[INFO] 2025-04-10T00:58:56.561Z - Get User --- Request Received
-[INFO] 2025-04-10T00:58:56.624Z - Get User --- Request Received
-[INFO] 2025-04-10T00:58:56.685Z - Get User --- Request Received
-[INFO] 2025-04-10T00:58:56.747Z - Get User --- Request Received
-[INFO] 2025-04-10T00:59:03.219Z - List movies --- Request Received
-[INFO] 2025-04-10T00:59:03.226Z - List movies --- Request Received
-[INFO] 2025-04-10T00:59:45.154Z - List movies --- Request Received
-[INFO] 2025-04-10T00:59:45.156Z - List movies --- Request Received
-[INFO] 2025-04-10T00:59:45.201Z - Get User --- Request Received
-[INFO] 2025-04-10T00:59:45.263Z - Get User --- Request Received
-[INFO] 2025-04-10T00:59:45.325Z - Get User --- Request Received
-[INFO] 2025-04-10T00:59:45.332Z - List movies --- Request Received
-[INFO] 2025-04-10T00:59:45.387Z - Get User --- Request Received
-[INFO] 2025-04-10T00:59:45.404Z - List movies --- Request Received
-[INFO] 2025-04-10T01:09:53.725Z - Get User --- Request Received
-[INFO] 2025-04-10T01:09:53.802Z - Get User --- Request Received
-[INFO] 2025-04-10T01:09:54.810Z - Get User --- Request Received
-[INFO] 2025-04-10T01:09:54.872Z - Get User --- Request Received
-[INFO] 2025-04-10T01:09:54.932Z - Get User --- Request Received
-[INFO] 2025-04-10T01:09:54.994Z - Get User --- Request Received
-[INFO] 2025-04-10T01:09:59.911Z - Login User --- Login successful 🚀
-[INFO] 2025-04-10T01:10:00.010Z - Get User --- Request Received
-[INFO] 2025-04-10T01:10:00.072Z - Get User --- Request Received
-[INFO] 2025-04-10T01:10:00.135Z - Get User --- Request Received
-[INFO] 2025-04-10T01:10:00.305Z - Get User --- Request Received
-[INFO] 2025-04-10T01:10:00.365Z - Get User --- Request Received
-[INFO] 2025-04-10T01:10:00.428Z - Get User --- Request Received
-[INFO] 2025-04-10T01:10:00.488Z - Get User --- Request Received
-[INFO] 2025-04-10T01:10:00.535Z - Get User --- Request Received
-[INFO] 2025-04-10T01:10:00.597Z - Get User --- Request Received
-[INFO] 2025-04-10T01:10:00.770Z - Get User --- Request Received
-[INFO] 2025-04-10T01:10:00.833Z - Get User --- Request Received
-[INFO] 2025-04-10T01:10:00.896Z - Get User --- Request Received
-[INFO] 2025-04-10T01:10:00.959Z - Get User --- Request Received
-[INFO] 2025-04-10T01:10:09.158Z - List movies --- Request Received
-[INFO] 2025-04-10T01:10:09.163Z - List movies --- Request Received
-[INFO] 2025-04-10T01:12:16.435Z - List movies --- Request Received
-[INFO] 2025-04-10T01:12:16.440Z - List movies --- Request Received
-[WARN] 2025-04-10T01:12:21.092Z - LibraryController.create ---- Error creating library entry: ${error}
-[INFO] 2025-04-10T01:12:31.889Z - Get User --- Request Received
-[INFO] 2025-04-10T01:12:31.952Z - Get User --- Request Received
-[INFO] 2025-04-10T01:12:32.013Z - Get User --- Request Received
-[INFO] 2025-04-10T01:12:32.076Z - Get User --- Request Received
-[INFO] 2025-04-10T01:12:32.138Z - Get User --- Request Received
-[INFO] 2025-04-10T01:12:32.200Z - Get User --- Request Received
-[INFO] 2025-04-10T01:12:32.263Z - Get User --- Request Received
-[INFO] 2025-04-10T01:12:32.325Z - Get User --- Request Received
-[INFO] 2025-04-10T01:12:32.483Z - Get User --- Request Received
-[INFO] 2025-04-10T01:12:32.544Z - Get User --- Request Received
-[INFO] 2025-04-10T01:12:32.607Z - Get User --- Request Received
-[INFO] 2025-04-10T01:12:32.668Z - Get User --- Request Received
-[WARN] 2025-04-10T01:20:31.955Z - LibraryController.create ---- Error creating library entry: ${error}
-[INFO] 2025-04-10T01:20:33.778Z - Get User --- Request Received
-[INFO] 2025-04-10T01:20:33.840Z - Get User --- Request Received
-[INFO] 2025-04-10T01:20:33.902Z - Get User --- Request Received
-[INFO] 2025-04-10T01:20:33.964Z - Get User --- Request Received
-[INFO] 2025-04-10T01:20:34.027Z - Get User --- Request Received
-[INFO] 2025-04-10T01:20:34.200Z - Get User --- Request Received
-[INFO] 2025-04-10T01:20:34.263Z - Get User --- Request Received
-[INFO] 2025-04-10T01:20:34.311Z - Get User --- Request Received
-[INFO] 2025-04-10T01:20:34.467Z - Get User --- Request Received
-[INFO] 2025-04-10T01:20:34.529Z - Get User --- Request Received
-[INFO] 2025-04-10T01:20:34.576Z - Get User --- Request Received
-[INFO] 2025-04-10T01:20:34.637Z - Get User --- Request Received
-[INFO] 2025-04-10T01:22:49.498Z - Get User --- Request Received
-[INFO] 2025-04-10T01:22:49.563Z - Get User --- Request Received
-[INFO] 2025-04-10T01:22:49.625Z - Get User --- Request Received
-[INFO] 2025-04-10T01:22:49.688Z - Get User --- Request Received
-[INFO] 2025-04-10T01:22:49.750Z - Get User --- Request Received
-[INFO] 2025-04-10T01:22:49.812Z - Get User --- Request Received
-[INFO] 2025-04-10T01:22:49.875Z - Get User --- Request Received
-[INFO] 2025-04-10T01:22:50.046Z - Get User --- Request Received
-[INFO] 2025-04-10T01:22:50.108Z - Get User --- Request Received
-[INFO] 2025-04-10T01:22:50.170Z - Get User --- Request Received
-[INFO] 2025-04-10T01:22:50.233Z - Get User --- Request Received
-[INFO] 2025-04-10T01:22:50.294Z - Get User --- Request Received
-[INFO] 2025-04-10T01:22:50.357Z - Get User --- Request Received
-[INFO] 2025-04-10T01:22:50.404Z - Get User --- Request Received
-[INFO] 2025-04-10T01:22:50.465Z - Get User --- Request Received
-[INFO] 2025-04-10T01:23:25.771Z - Get User --- Request Received
-[INFO] 2025-04-10T01:23:25.849Z - Get User --- Request Received
-[INFO] 2025-04-10T01:23:25.913Z - Get User --- Request Received
-[INFO] 2025-04-10T01:23:26.083Z - Get User --- Request Received
-[INFO] 2025-04-10T01:23:26.147Z - Get User --- Request Received
-[INFO] 2025-04-10T01:23:26.210Z - Get User --- Request Received
-[INFO] 2025-04-10T01:23:26.270Z - Get User --- Request Received
-[INFO] 2025-04-10T01:23:26.332Z - Get User --- Request Received
-[INFO] 2025-04-10T01:23:26.394Z - Get User --- Request Received
-[INFO] 2025-04-10T01:23:26.458Z - Get User --- Request Received
-[INFO] 2025-04-10T01:23:26.522Z - Get User --- Request Received
-[WARN] 2025-04-10T01:23:46.012Z - LibraryController.create ---- Error creating library entry: ${error}
-[INFO] 2025-04-10T01:23:47.275Z - Get User --- Request Received
-[INFO] 2025-04-10T01:23:47.337Z - Get User --- Request Received
-[INFO] 2025-04-10T01:23:47.400Z - Get User --- Request Received
-[INFO] 2025-04-10T01:23:47.464Z - Get User --- Request Received
-[INFO] 2025-04-10T01:23:47.527Z - Get User --- Request Received
-[INFO] 2025-04-10T01:23:47.591Z - Get User --- Request Received
-[INFO] 2025-04-10T01:23:47.653Z - Get User --- Request Received
-[INFO] 2025-04-10T01:23:50.149Z - Get User --- Request Received
-[INFO] 2025-04-10T01:23:50.212Z - Get User --- Request Received
-[INFO] 2025-04-10T01:23:50.367Z - Get User --- Request Received
-[INFO] 2025-04-10T01:23:50.429Z - Get User --- Request Received
-[INFO] 2025-04-10T01:23:50.492Z - Get User --- Request Received
-[INFO] 2025-04-10T01:23:50.553Z - Get User --- Request Received
-[INFO] 2025-04-10T01:23:50.600Z - Get User --- Request Received
-[INFO] 2025-04-10T01:23:50.664Z - Get User --- Request Received
-[INFO] 2025-04-10T01:23:50.726Z - Get User --- Request Received
-[INFO] 2025-04-10T01:23:50.789Z - Get User --- Request Received
-[INFO] 2025-04-10T01:23:50.837Z - Get User --- Request Received
-[INFO] 2025-04-10T01:23:50.899Z - Get User --- Request Received
-[INFO] 2025-04-10T01:23:50.962Z - Get User --- Request Received
-[INFO] 2025-04-10T01:23:51.025Z - Get User --- Request Received
-[INFO] 2025-04-10T01:23:51.087Z - Get User --- Request Received
-[INFO] 2025-04-10T01:23:51.149Z - Get User --- Request Received
-[INFO] 2025-04-10T01:23:53.173Z - Get User --- Request Received
-[INFO] 2025-04-10T01:23:53.237Z - Get User --- Request Received
-[INFO] 2025-04-10T01:23:53.297Z - Get User --- Request Received
-[INFO] 2025-04-10T01:23:53.456Z - Get User --- Request Received
-[INFO] 2025-04-10T01:23:53.517Z - Get User --- Request Received
-[INFO] 2025-04-10T01:23:53.565Z - Get User --- Request Received
-[INFO] 2025-04-10T01:23:53.612Z - Get User --- Request Received
-[INFO] 2025-04-10T01:23:53.660Z - Get User --- Request Received
-[INFO] 2025-04-10T01:23:53.722Z - Get User --- Request Received
-[INFO] 2025-04-10T01:23:53.893Z - Get User --- Request Received
-[INFO] 2025-04-10T01:23:54.176Z - Get User --- Request Received
-[INFO] 2025-04-10T01:23:54.239Z - Get User --- Request Received
-[INFO] 2025-04-10T01:23:54.302Z - Get User --- Request Received
-[INFO] 2025-04-10T01:23:54.364Z - Get User --- Request Received
-[INFO] 2025-04-10T01:23:54.426Z - Get User --- Request Received
-[INFO] 2025-04-10T01:24:42.480Z - Login User --- Login successful 🚀
-[INFO] 2025-04-10T01:24:42.615Z - Get User --- Request Received
-[INFO] 2025-04-10T01:24:42.693Z - Get User --- Request Received
-[INFO] 2025-04-10T01:24:42.771Z - Get User --- Request Received
-[INFO] 2025-04-10T01:24:42.850Z - Get User --- Request Received
-[INFO] 2025-04-10T01:24:42.913Z - Get User --- Request Received
-[INFO] 2025-04-10T01:24:43.084Z - Get User --- Request Received
-[INFO] 2025-04-10T01:24:43.146Z - Get User --- Request Received
-[INFO] 2025-04-10T01:24:43.208Z - Get User --- Request Received
-[INFO] 2025-04-10T01:24:43.271Z - Get User --- Request Received
-[INFO] 2025-04-10T01:24:43.333Z - Get User --- Request Received
-[INFO] 2025-04-10T01:24:43.395Z - Get User --- Request Received
-[INFO] 2025-04-10T01:24:43.459Z - Get User --- Request Received
-[INFO] 2025-04-10T01:25:47.282Z - Create Actor --- Created Actor [object Object]
-[INFO] 2025-04-10T01:26:03.931Z - MovieActor create ---- Movie-actor relationship created successfully
-[INFO] 2025-04-10T01:26:07.467Z - Get User --- Request Received
-[INFO] 2025-04-10T01:26:07.536Z - Get User --- Request Received
-[INFO] 2025-04-10T01:26:07.591Z - Get User --- Request Received
-[INFO] 2025-04-10T01:26:07.651Z - Get User --- Request Received
+[INFO] 2025-04-10T01:47:14.436Z - Login User --- Login successful 🚀
+[INFO] 2025-04-10T01:47:14.558Z - Get User --- Request Received
+[INFO] 2025-04-10T01:47:14.621Z - Get User --- Request Received
+[INFO] 2025-04-10T01:47:14.636Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T01:47:14.683Z - Get User --- Request Received
+[INFO] 2025-04-10T01:47:14.854Z - Get User --- Request Received
+[INFO] 2025-04-10T01:47:14.917Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T01:47:14.918Z - Get User --- Request Received
+[INFO] 2025-04-10T01:47:14.980Z - Get User --- Request Received
+[INFO] 2025-04-10T01:47:15.041Z - Get User --- Request Received
+[INFO] 2025-04-10T01:47:15.088Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T01:47:15.199Z - Get User --- Request Received
+[INFO] 2025-04-10T01:47:15.278Z - Get User --- Request Received
+[INFO] 2025-04-10T01:47:15.340Z - Get User --- Request Received
+[INFO] 2025-04-10T01:47:15.392Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T01:47:15.403Z - Get User --- Request Received
+[INFO] 2025-04-10T01:47:15.465Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T01:47:15.466Z - Get User --- Request Received
+[INFO] 2025-04-10T01:47:15.527Z - Get User --- Request Received
+[INFO] 2025-04-10T01:47:15.591Z - Get User --- Request Received
+[INFO] 2025-04-10T01:47:15.642Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T01:47:15.654Z - Get User --- Request Received
+[INFO] 2025-04-10T01:47:15.685Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T01:47:15.716Z - Get User --- Request Received
+[INFO] 2025-04-10T01:47:15.731Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T01:47:15.793Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T01:47:15.886Z - Get User --- Request Received
+[INFO] 2025-04-10T01:47:15.947Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T01:47:15.996Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T01:47:16.059Z - Get User --- Request Received
+[INFO] 2025-04-10T01:47:16.108Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T01:47:16.120Z - Get User --- Request Received
+[INFO] 2025-04-10T01:47:16.170Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T01:47:16.180Z - Get User --- Request Received
+[INFO] 2025-04-10T01:47:16.231Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T01:47:16.244Z - Get User --- Request Received
+[INFO] 2025-04-10T01:47:16.397Z - Get User --- Request Received
+[INFO] 2025-04-10T01:47:16.402Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T01:47:16.465Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T01:47:16.466Z - Get User --- Request Received
+[INFO] 2025-04-10T01:47:16.529Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T01:47:16.530Z - Get User --- Request Received
+[INFO] 2025-04-10T01:47:16.593Z - Get User --- Request Received
+[INFO] 2025-04-10T01:47:16.594Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T01:47:16.645Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T01:47:16.656Z - Get User --- Request Received
+[INFO] 2025-04-10T01:47:16.701Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T01:47:16.826Z - Get User --- Request Received
+[INFO] 2025-04-10T01:47:16.889Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T01:47:16.890Z - Get User --- Request Received
+[INFO] 2025-04-10T01:47:16.953Z - Get User --- Request Received
+[INFO] 2025-04-10T01:47:16.954Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T01:47:17.004Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T01:47:17.015Z - Get User --- Request Received
+[INFO] 2025-04-10T01:47:17.078Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T01:47:17.078Z - Get User --- Request Received
+[INFO] 2025-04-10T01:47:17.141Z - Get User --- Request Received
+[INFO] 2025-04-10T01:50:09.277Z - Login User --- Login successful 🚀
+[INFO] 2025-04-10T01:50:09.402Z - Get User --- Request Received
+[INFO] 2025-04-10T01:50:09.464Z - Get User --- Request Received
+[INFO] 2025-04-10T01:50:09.480Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T01:50:09.528Z - Get User --- Request Received
+[INFO] 2025-04-10T01:50:09.605Z - Get User --- Request Received
+[INFO] 2025-04-10T01:50:09.660Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T01:50:09.667Z - Get User --- Request Received
+[INFO] 2025-04-10T01:50:09.761Z - Get User --- Request Received
+[INFO] 2025-04-10T01:50:09.821Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T01:50:09.841Z - Get User --- Request Received
+[INFO] 2025-04-10T01:50:09.903Z - Get User --- Request Received
+[INFO] 2025-04-10T01:50:09.966Z - Get User --- Request Received
+[INFO] 2025-04-10T01:50:10.029Z - Get User --- Request Received
+[INFO] 2025-04-10T01:50:10.077Z - Get User --- Request Received
+[INFO] 2025-04-10T01:50:10.128Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T01:50:10.140Z - Get User --- Request Received
+[INFO] 2025-04-10T01:50:10.203Z - Get User --- Request Received
+[INFO] 2025-04-10T01:50:10.265Z - Get User --- Request Received
+[INFO] 2025-04-10T01:50:10.315Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T01:50:10.329Z - Get User --- Request Received
+[INFO] 2025-04-10T01:50:10.379Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T01:50:10.390Z - Get User --- Request Received
+[INFO] 2025-04-10T01:50:10.451Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T01:50:10.452Z - Get User --- Request Received
+[INFO] 2025-04-10T01:50:10.514Z - Get User --- Request Received
+[INFO] 2025-04-10T01:50:10.515Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T01:50:10.568Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T01:50:10.576Z - Get User --- Request Received
+[INFO] 2025-04-10T01:50:10.628Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T01:50:10.637Z - Get User --- Request Received
+[INFO] 2025-04-10T01:50:10.700Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T01:50:10.701Z - Get User --- Request Received
+[INFO] 2025-04-10T01:50:10.752Z - Get User --- Request Received
+[INFO] 2025-04-10T01:50:10.757Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T01:50:10.801Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T01:50:10.806Z - Get User --- Request Received
+[INFO] 2025-04-10T01:50:10.869Z - Get User --- Request Received
+[INFO] 2025-04-10T01:50:10.870Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T01:50:10.923Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T01:50:10.932Z - Get User --- Request Received
+[INFO] 2025-04-10T01:50:10.980Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T01:50:10.993Z - Get User --- Request Received
+[INFO] 2025-04-10T01:50:11.057Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T01:50:11.058Z - Get User --- Request Received
+[INFO] 2025-04-10T01:50:11.120Z - Get User --- Request Received
+[INFO] 2025-04-10T01:50:11.121Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T01:50:11.169Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T01:50:11.183Z - Get User --- Request Received
+[INFO] 2025-04-10T01:50:11.246Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T01:50:11.246Z - Get User --- Request Received
+[INFO] 2025-04-10T01:50:11.310Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T01:50:11.403Z - Get User --- Request Received
+[INFO] 2025-04-10T01:50:11.466Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T01:50:11.467Z - Get User --- Request Received
+[INFO] 2025-04-10T01:50:11.528Z - Get User --- Request Received
+[INFO] 2025-04-10T01:50:11.623Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T01:51:11.629Z - Login User --- Login successful 🚀
+[INFO] 2025-04-10T01:51:11.731Z - Get User --- Request Received
+[INFO] 2025-04-10T01:51:11.795Z - Get User --- Request Received
+[INFO] 2025-04-10T01:51:11.811Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T01:51:11.965Z - Get User --- Request Received
+[INFO] 2025-04-10T01:51:12.027Z - Get User --- Request Received
+[INFO] 2025-04-10T01:51:12.088Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T01:51:12.089Z - Get User --- Request Received
+[INFO] 2025-04-10T01:51:12.151Z - Get User --- Request Received
+[INFO] 2025-04-10T01:51:12.212Z - Get User --- Request Received
+[INFO] 2025-04-10T01:51:12.247Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T01:51:12.275Z - Get User --- Request Received
+[INFO] 2025-04-10T01:51:12.290Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T01:51:12.336Z - Get User --- Request Received
+[INFO] 2025-04-10T01:51:12.384Z - Get User --- Request Received
+[INFO] 2025-04-10T01:51:12.445Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T01:51:12.446Z - Get User --- Request Received
+[INFO] 2025-04-10T01:51:12.493Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T01:51:12.509Z - Get User --- Request Received
+[INFO] 2025-04-10T01:51:12.557Z - Get User --- Request Received
+[INFO] 2025-04-10T01:51:12.620Z - Get User --- Request Received
+[INFO] 2025-04-10T01:51:12.651Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T01:51:12.683Z - Get User --- Request Received
+[INFO] 2025-04-10T01:51:12.699Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T01:51:12.745Z - Get User --- Request Received
+[INFO] 2025-04-10T01:51:12.807Z - Get User --- Request Received
+[INFO] 2025-04-10T01:51:12.869Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T01:51:12.870Z - Get User --- Request Received
+[INFO] 2025-04-10T01:51:12.917Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T01:51:12.933Z - Get User --- Request Received
+[INFO] 2025-04-10T01:51:12.964Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T01:51:12.996Z - Get User --- Request Received
+[INFO] 2025-04-10T01:51:13.011Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T01:51:13.059Z - Get User --- Request Received
+[INFO] 2025-04-10T01:51:13.123Z - Get User --- Request Received
+[INFO] 2025-04-10T01:51:13.157Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T01:51:13.184Z - Get User --- Request Received
+[INFO] 2025-04-10T01:51:13.199Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T01:51:13.245Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T01:51:13.246Z - Get User --- Request Received
+[INFO] 2025-04-10T01:51:13.302Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T01:51:13.308Z - Get User --- Request Received
+[INFO] 2025-04-10T01:51:13.355Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T01:51:13.371Z - Get User --- Request Received
+[INFO] 2025-04-10T01:51:13.402Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T01:51:13.434Z - Get User --- Request Received
+[INFO] 2025-04-10T01:51:13.450Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T01:51:13.492Z - List movies --- Request Received
+[INFO] 2025-04-10T01:51:13.497Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T01:51:13.498Z - Get User --- Request Received
+[INFO] 2025-04-10T01:51:13.503Z - List movies --- Request Received
+[INFO] 2025-04-10T01:51:13.553Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T01:51:13.554Z - List movies --- Request Received
+[INFO] 2025-04-10T01:51:13.574Z - Get User --- Request Received
+[INFO] 2025-04-10T01:51:13.605Z - List movies --- Request Received
+[INFO] 2025-04-10T01:51:13.636Z - Get User --- Request Received
+[INFO] 2025-04-10T01:51:13.714Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T01:52:21.896Z - Login User --- Login successful 🚀
+[INFO] 2025-04-10T01:52:59.297Z - Login User --- Login successful 🚀
+[INFO] 2025-04-10T01:52:59.407Z - Get User --- Request Received
+[INFO] 2025-04-10T01:52:59.579Z - Get User --- Request Received
+[INFO] 2025-04-10T01:52:59.595Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T01:52:59.642Z - Get User --- Request Received
+[INFO] 2025-04-10T01:52:59.705Z - Get User --- Request Received
+[INFO] 2025-04-10T01:52:59.759Z - Get User --- Request Received
+[INFO] 2025-04-10T01:52:59.769Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T01:52:59.926Z - Get User --- Request Received
+[INFO] 2025-04-10T01:52:59.990Z - Get User --- Request Received
+[INFO] 2025-04-10T01:53:00.052Z - Get User --- Request Received
+[INFO] 2025-04-10T01:53:00.115Z - Get User --- Request Received
+[INFO] 2025-04-10T01:53:00.165Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T01:53:00.178Z - Get User --- Request Received
+[INFO] 2025-04-10T01:53:00.240Z - Get User --- Request Received
+[INFO] 2025-04-10T01:53:00.411Z - Get User --- Request Received
+[INFO] 2025-04-10T01:53:00.465Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T01:53:00.474Z - Get User --- Request Received
+[INFO] 2025-04-10T01:53:00.537Z - Get User --- Request Received
+[INFO] 2025-04-10T01:53:00.598Z - Get User --- Request Received
+[INFO] 2025-04-10T01:53:00.648Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T01:53:00.660Z - Get User --- Request Received
+[INFO] 2025-04-10T01:53:00.713Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T01:53:00.723Z - Get User --- Request Received
+[INFO] 2025-04-10T01:53:00.785Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T01:53:00.786Z - Get User --- Request Received
+[INFO] 2025-04-10T01:53:00.849Z - Get User --- Request Received
+[INFO] 2025-04-10T01:53:00.850Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T01:53:00.910Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T01:53:00.911Z - Get User --- Request Received
+[INFO] 2025-04-10T01:53:00.972Z - Get User --- Request Received
+[INFO] 2025-04-10T01:53:00.973Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T01:53:01.034Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T01:53:01.035Z - Get User --- Request Received
+[INFO] 2025-04-10T01:53:01.096Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T01:53:01.097Z - Get User --- Request Received
+[INFO] 2025-04-10T01:53:01.159Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T01:53:01.160Z - Get User --- Request Received
+[INFO] 2025-04-10T01:53:01.221Z - Get User --- Request Received
+[INFO] 2025-04-10T01:53:01.222Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T01:53:01.267Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T01:53:01.392Z - Get User --- Request Received
+[INFO] 2025-04-10T01:53:01.455Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T01:53:01.472Z - Get User --- Request Received
+[INFO] 2025-04-10T01:53:01.522Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T01:53:01.536Z - Get User --- Request Received
+[INFO] 2025-04-10T01:53:01.599Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T01:53:01.600Z - Get User --- Request Received
+[INFO] 2025-04-10T01:53:01.661Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T01:53:01.662Z - Get User --- Request Received
+[INFO] 2025-04-10T01:53:01.711Z - Get User --- Request Received
+[INFO] 2025-04-10T01:53:01.724Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T01:53:01.771Z - Get User --- Request Received
+[INFO] 2025-04-10T01:53:01.772Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T01:53:01.822Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T01:53:01.833Z - Get User --- Request Received
+[INFO] 2025-04-10T01:58:50.930Z - Login User --- Login successful 🚀
+[INFO] 2025-04-10T01:58:51.057Z - Get User --- Request Received
+[INFO] 2025-04-10T01:58:51.120Z - Get User --- Request Received
+[INFO] 2025-04-10T02:03:16.639Z - Login User --- Login successful 🚀
+[INFO] 2025-04-10T02:03:16.705Z - Get User --- Request Received
+[INFO] 2025-04-10T02:03:16.847Z - Get User --- Request Received
+[INFO] 2025-04-10T02:03:16.909Z - Get User --- Request Received
+[INFO] 2025-04-10T02:03:16.933Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T02:03:16.974Z - Get User --- Request Received
+[INFO] 2025-04-10T02:03:17.034Z - Get User --- Request Received
+[INFO] 2025-04-10T02:03:17.099Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T02:03:17.101Z - Get User --- Request Received
+[INFO] 2025-04-10T02:03:17.170Z - Get User --- Request Received
+[INFO] 2025-04-10T02:03:17.183Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T02:03:17.225Z - Get User --- Request Received
+[INFO] 2025-04-10T02:03:17.279Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T02:03:17.287Z - Get User --- Request Received
+[INFO] 2025-04-10T02:03:17.350Z - Get User --- Request Received
+[INFO] 2025-04-10T02:03:17.351Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T02:03:17.412Z - Get User --- Request Received
+[INFO] 2025-04-10T02:03:17.474Z - Get User --- Request Received
+[INFO] 2025-04-10T02:03:17.536Z - Get User --- Request Received
+[INFO] 2025-04-10T02:03:17.599Z - Get User --- Request Received
+[INFO] 2025-04-10T02:03:17.661Z - Get User --- Request Received
+[INFO] 2025-04-10T02:03:17.723Z - Get User --- Request Received
+[INFO] 2025-04-10T02:03:17.773Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T02:03:17.835Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T02:03:17.883Z - Get User --- Request Received
+[INFO] 2025-04-10T02:03:17.933Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T02:03:17.945Z - Get User --- Request Received
+[INFO] 2025-04-10T02:03:18.112Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T02:03:18.131Z - Get User --- Request Received
+[INFO] 2025-04-10T02:03:18.193Z - Get User --- Request Received
+[INFO] 2025-04-10T02:03:18.256Z - Get User --- Request Received
+[INFO] 2025-04-10T02:03:18.427Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T02:03:18.428Z - Get User --- Request Received
+[INFO] 2025-04-10T02:03:18.506Z - Get User --- Request Received
+[INFO] 2025-04-10T02:03:18.507Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T02:03:18.568Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T02:03:18.569Z - Get User --- Request Received
+[INFO] 2025-04-10T02:03:18.631Z - Get User --- Request Received
+[INFO] 2025-04-10T02:03:18.694Z - Get User --- Request Received
+[INFO] 2025-04-10T02:03:18.732Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T02:03:18.757Z - Get User --- Request Received
+[INFO] 2025-04-10T02:03:18.821Z - Get User --- Request Received
+[INFO] 2025-04-10T02:03:18.899Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T02:03:18.900Z - Get User --- Request Received
+[INFO] 2025-04-10T02:03:18.963Z - Get User --- Request Received
+[INFO] 2025-04-10T02:03:19.027Z - Get User --- Request Received
+[INFO] 2025-04-10T02:03:19.057Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T02:03:19.089Z - Get User --- Request Received
+[INFO] 2025-04-10T02:03:19.105Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T02:03:19.154Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T02:03:19.154Z - Get User --- Request Received
+[INFO] 2025-04-10T02:03:19.212Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T02:03:19.232Z - Get User --- Request Received
+[INFO] 2025-04-10T02:03:19.261Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T02:03:19.293Z - Get User --- Request Received
+[INFO] 2025-04-10T02:08:09.884Z - Login User --- Login successful 🚀
+[INFO] 2025-04-10T02:08:09.946Z - Get User --- Request Received
+[INFO] 2025-04-10T02:08:10.040Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T02:08:10.088Z - Get User --- Request Received
+[INFO] 2025-04-10T02:08:10.182Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-10T02:08:10.258Z - Get User --- Request Received
+[INFO] 2025-04-10T02:08:10.429Z - Get User --- Request Received
+[INFO] 2025-04-10T02:08:10.490Z - Get User --- Request Received
+[INFO] 2025-04-10T02:08:10.553Z - Get User --- Request Received
+[INFO] 2025-04-10T02:08:10.616Z - Get User --- Request Received
+[INFO] 2025-04-10T02:08:10.679Z - Get User --- Request Received
+[INFO] 2025-04-10T02:08:10.726Z - Get User --- Request Received
+[INFO] 2025-04-10T02:08:10.788Z - Get User --- Request Received
+[INFO] 2025-04-10T02:08:10.850Z - Get User --- Request Received
+[INFO] 2025-04-10T02:08:10.898Z - Get User --- Request Received
+[INFO] 2025-04-10T02:08:10.945Z - Get User --- Request Received
+[INFO] 2025-04-10T02:08:13.200Z - List movies --- Request Received
+[INFO] 2025-04-10T02:08:13.205Z - List movies --- Request Received
+[INFO] 2025-04-10T02:08:22.733Z - List movies --- Request Received
+[INFO] 2025-04-10T02:08:22.743Z - List movies --- Request Received

@@ -18,6 +18,7 @@ import friendshipRoutes from "./routes/friendship.routes";
 import movieGenreRoutes from "./routes/movie-genre.routes";
 import movieActorRoutes from "./routes/movie-actor.routes";
 import notificationRoutes from "./routes/notification.routes";
+import { errorHandler } from "./middlewares/error.middleware";
 
 const globalLimiter = rateLimit({
   windowMs: 1 * 60 * 1000,
@@ -88,6 +89,8 @@ app.use("/api/friendships", friendshipRoutes);
 app.use("/api/movie-genres", movieGenreRoutes);
 app.use("/api/movie-actors", movieActorRoutes);
 app.use("/api/notifications", notificationRoutes);
+
+app.use(errorHandler);
 
 app.listen(port, () => {
   console.log(`Sunucu ${port} portunda çalışıyor...`);

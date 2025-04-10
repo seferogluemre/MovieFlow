@@ -101,15 +101,28 @@ const BrowseMovies: FC = () => {
   const [userLibrary, setUserLibrary] = useState<LibraryItem[]>([]);
   const [userWatchlist, setUserWatchlist] = useState<WatchlistItem[]>([]);
 
-  const { isAuthenticated, user } = useAuth();
+  const { isAuthenticated, user, checkAuthStatus } = useAuth();
 
   useEffect(() => {
-    fetchMovies();
-    if (isAuthenticated && user) {
-      fetchUserLibrary();
-      fetchUserWatchlist();
-    }
-  }, [isAuthenticated, user]);
+    const init = async () => {
+      // Sayfa ilk yüklendiğinde filmleri çek
+      fetchMovies();
+
+      // Kimlik doğrulamasını kontrol et ve yenileme yapılmışsa kullanıcı verilerini getir
+      if (!isAuthenticated) {
+        const isAuth = await checkAuthStatus();
+        if (isAuth && user) {
+          fetchUserLibrary();
+          fetchUserWatchlist();
+        }
+      } else if (user) {
+        fetchUserLibrary();
+        fetchUserWatchlist();
+      }
+    };
+
+    init();
+  }, [isAuthenticated, user, checkAuthStatus]);
 
   const fetchMovies = async () => {
     try {

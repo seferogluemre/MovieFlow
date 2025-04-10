@@ -71,16 +71,29 @@ api.interceptors.response.use(
       try {
         const refreshToken = localStorage.getItem("refreshToken");
         if (!refreshToken) {
+          console.log(
+            "Refresh token bulunamadı, login sayfasına yönlendiriliyor"
+          );
           // Refresh token yoksa login sayfasına yönlendir
-          window.location.href = "/login";
-          return Promise.reject(error);
+          return Promise.reject({
+            ...error,
+            redirectToLogin: true,
+            message: "Session expired. Please login again.",
+          });
         }
 
         // Yeni token alma işlemi
+        console.log("Refresh token ile yeni token alınıyor...");
         const response = await axios.post(`${API_URL}/auth/refresh`, {
           refreshToken,
         });
+
+        if (!response.data || !response.data.accessToken) {
+          throw new Error("Invalid refresh response");
+        }
+
         const { accessToken } = response.data;
+        console.log("Yeni access token alındı");
 
         // Yeni token'ı kaydet
         localStorage.setItem("accessToken", accessToken);
@@ -92,19 +105,21 @@ api.interceptors.response.use(
 
         return api(originalRequest);
       } catch (err) {
-        // Refresh token geçersiz veya süresi dolmuş
-        localStorage.removeItem("accessToken");
-        localStorage.removeItem("refreshToken");
-        localStorage.removeItem("userId");
-        window.location.href = "/login";
-        return Promise.reject(error);
+        console.error("Token yenileme hatası:", err);
+        // Sayfayı yenilemeden önce bir mesaj göster
+        // Burada doğrudan logout işlemi yapmıyoruz, sadece hata fırlatıyoruz
+        // Ana uygulama bu hatayı yakalayıp uygun işlemi yapacak
+        return Promise.reject({
+          ...error,
+          refreshFailed: true,
+          message: "Authentication failed. Please login again.",
+        });
       }
     }
 
     // 404 Not Found hatası - API endpoint mevcut değil
     if (error.response?.status === 404) {
       console.error(`API endpoint not found: ${originalRequest.url}`);
-      // Özel bir hata objesi döndür
       return Promise.reject({
         ...error,
         isApiNotFound: true,
@@ -134,9 +149,10 @@ export const authService = {
   login: async (email: string, password: string) => {
     try {
       console.log(`Attempting login with email: ${email}`);
-      // CORS ayarlarıyla ilgili hatalar için axios yerine api kullanacağız
       const response = await api.post("/auth/login", { email, password });
       console.log("Login successful:", response.data);
+      localStorage.setItem("accessToken", response.data.accessToken);
+      localStorage.setItem("refreshToken", response.data.refreshToken);
       return response.data;
     } catch (error) {
       console.error("Login error:", error);
@@ -181,10 +197,20 @@ export const userService = {
       }
 
       console.log(`Kullanıcı verisi çekiliyor: ID=${userId}`);
+      console.log(
+        `Authorization header: Bearer ${localStorage
+          .getItem("accessToken")
+          ?.substring(0, 10)}...`
+      );
+
       const response = await api.get(`/users/${userId}`);
 
       // API yanıtının yapısını incele
       console.log("Ham API yanıtı:", response);
+      console.log("Response status:", response.status);
+      console.log("Response headers:", response.headers);
+      console.log("Response data type:", typeof response.data);
+      console.log("Response data:", JSON.stringify(response.data, null, 2));
 
       // Veri data içinde olabilir
       let userData;
@@ -199,13 +225,37 @@ export const userService = {
         userData = response.data.data || response.data;
 
         console.log("İşlenmiş kullanıcı verisi:", userData);
+
+        // Make sure userData contains the expected properties
+        if (!userData.id || !userData.username) {
+          console.error("User data is missing required fields:", userData);
+          throw new Error("Invalid user data structure");
+        }
+
         return userData;
       } else {
         console.error("Geçersiz API yanıt formatı:", response);
         throw new Error("Invalid API response format");
       }
-    } catch (error) {
+    } catch (error: unknown) {
       console.error("Kullanıcı verisi çekme hatası:", error);
+
+      // If it's an AxiosError, provide more details
+      if (axios.isAxiosError(error)) {
+        if (error.response) {
+          console.error("Error response data:", error.response.data);
+          console.error("Error response status:", error.response.status);
+          console.error("Error response headers:", error.response.headers);
+        } else if (error.request) {
+          console.error("Error request:", error.request);
+        }
+      }
+
+      console.error(
+        "Error message:",
+        error instanceof Error ? error.message : String(error)
+      );
+
       throw error;
     }
   },
@@ -284,10 +334,54 @@ export const processApiError = (error: any): string => {
   let errorMessage = "An error occurred. Please try again.";
 
   // Hata detayları varsa
-  if (error.response?.data?.message) {
-    errorMessage = error.response.data.message;
+  if (error.response?.data) {
+    // Backend direkt olarak message dönüyorsa
+    if (typeof error.response.data.message === "string") {
+      errorMessage = error.response.data.message;
+    }
+    // Backend data içinde hata objesi dönüyorsa
+    else if (error.response.data.error) {
+      errorMessage =
+        typeof error.response.data.error === "string"
+          ? error.response.data.error
+          : "Unknown error occurred";
+    }
 
-    // Unique constraint hatası durumu
+    // Prisma hata kodlarını kontrol et
+    const prismaErrorCode = error.response.data.code;
+
+    if (prismaErrorCode) {
+      switch (prismaErrorCode) {
+        case "P2002": // Unique constraint hatası
+          const target = error.response.data.meta?.target;
+          if (target && Array.isArray(target) && target.length > 0) {
+            const field = target[0];
+            if (field === "email") {
+              return "This email is already in use. Please try a different one.";
+            } else if (field === "username") {
+              return "This username is already taken. Please choose another one.";
+            } else {
+              return `A record with this ${field} already exists.`;
+            }
+          }
+          return "This record already exists.";
+
+        case "P2003": // Foreign key constraint hatası
+          return "This operation references a record that doesn't exist.";
+
+        case "P2025": // Record not found hatası
+          return "The requested record was not found.";
+
+        case "P2000": // Input value is too long
+          return "One of the input values is too long.";
+
+        default:
+          // Diğer Prisma hataları için genel mesaj
+          return "Database operation failed. Please try again.";
+      }
+    }
+
+    // Unique constraint çeşitli hata mesajları
     if (
       typeof errorMessage === "string" &&
       (errorMessage.toLowerCase().includes("unique constraint") ||
@@ -301,10 +395,19 @@ export const processApiError = (error: any): string => {
         return "This movie is already in your library.";
       } else if (errorMessage.toLowerCase().includes("wishlist")) {
         return "This movie is already in your wishlist.";
+      } else if (errorMessage.toLowerCase().includes("email")) {
+        return "This email address is already registered.";
+      } else if (errorMessage.toLowerCase().includes("username")) {
+        return "This username is already taken.";
       }
       // Genel unique constraint mesajı
       return "This item already exists.";
     }
+  }
+
+  // Network hatası
+  if (error.message === "Network Error") {
+    return "Cannot connect to the server. Please check your internet connection.";
   }
 
   console.error("API Error:", error);
