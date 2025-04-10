@@ -31,10 +31,12 @@ const globalLimiter = rateLimit({
 });
 
 const corsOptions = {
-  origin: "*",
-  methods: ["GET", "POST", "PATCH", "DELETE"],
-  allowedHeaders: ["Content-Type", "Authorization"],
+  origin: ["http://localhost:5173", "http://127.0.0.1:5173"],
+  methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization", "X-Requested-With"],
+  exposedHeaders: ["Content-Range", "X-Content-Range"],
   credentials: true,
+  maxAge: 86400,
 };
 
 dotenv.config();

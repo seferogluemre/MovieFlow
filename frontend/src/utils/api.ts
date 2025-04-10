@@ -34,6 +34,7 @@ const api = axios.create({
   headers: {
     "Content-Type": "application/json",
   },
+  withCredentials: true, // CORS credential desteği için
   timeout: 10000, // 10 saniye timeout
 });
 
@@ -133,6 +134,7 @@ export const authService = {
   login: async (email: string, password: string) => {
     try {
       console.log(`Attempting login with email: ${email}`);
+      // CORS ayarlarıyla ilgili hatalar için axios yerine api kullanacağız
       const response = await api.post("/auth/login", { email, password });
       console.log("Login successful:", response.data);
       return response.data;

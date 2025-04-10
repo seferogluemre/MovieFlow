@@ -2,12 +2,15 @@ import { RouterProvider } from "react-router-dom";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import theme from "./theme/theme";
 import routes from "./router/routes";
+import { AuthProvider } from "./context/AuthContext";
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <RouterProvider router={routes} />
+      <AuthProvider>
+        <RouterProvider router={routes} />
+      </AuthProvider>
     </ThemeProvider>
   );
 }
