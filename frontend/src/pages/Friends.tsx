@@ -108,8 +108,15 @@ const Friends: FC = () => {
 
       // Fetch friendships
       const friendshipsResponse = await api.get("/friendships");
-      setFriendships(friendshipsResponse.data || []);
-      setFilteredFriendships(friendshipsResponse.data || []);
+      const fetchedFriendships = friendshipsResponse.data || [];
+
+      // Filter out current user from the friends list
+      const filteredFriendships = fetchedFriendships.filter(
+        (friendship) => friendship.friend.id !== currentUser?.id
+      );
+
+      setFriendships(filteredFriendships);
+      setFilteredFriendships(filteredFriendships);
 
       // Fetch pending requests
       const pendingResponse = await api.get("/friendships/pending");
@@ -184,17 +191,22 @@ const Friends: FC = () => {
   };
 
   useEffect(() => {
-    // Filter friendships based on search query
+    // Filter current user from friendships list
     if (searchQuery) {
       const query = searchQuery.toLowerCase();
 
-      const filtered = friendships.filter((friendship) => {
-        const friend = friendship.friend;
-        return (
-          friend.name.toLowerCase().includes(query) ||
-          friend.username.toLowerCase().includes(query)
-        );
-      });
+      const filtered = friendships
+        .filter((friendship) => {
+          // Remove friendships where the friend is the current user
+          return friendship.friend.id !== currentUser?.id;
+        })
+        .filter((friendship) => {
+          const friend = friendship.friend;
+          return (
+            friend.name.toLowerCase().includes(query) ||
+            friend.username.toLowerCase().includes(query)
+          );
+        });
       setFilteredFriendships(filtered);
 
       const filteredPending = pendingRequests.filter((request) => {
@@ -207,19 +219,31 @@ const Friends: FC = () => {
       setFilteredRequests(filteredPending);
 
       // Filter all users
-      const filteredAllUsers = allUsers.filter((user) => {
-        return (
-          user.name.toLowerCase().includes(query) ||
-          user.username.toLowerCase().includes(query)
-        );
-      });
+      const filteredAllUsers = allUsers
+        .filter((user) => user.id !== currentUser?.id) // Filter out current user
+        .filter((user) => {
+          return (
+            user.name.toLowerCase().includes(query) ||
+            user.username.toLowerCase().includes(query)
+          );
+        });
       setFilteredUsers(filteredAllUsers);
     } else {
-      setFilteredFriendships(friendships);
+      // Filter out current user from friendships
+      const filteredFriends = friendships.filter(
+        (friendship) => friendship.friend.id !== currentUser?.id
+      );
+      setFilteredFriendships(filteredFriends);
+
       setFilteredRequests(pendingRequests);
-      setFilteredUsers(allUsers);
+
+      // Filter out current user from all users
+      const filteredUsers = allUsers.filter(
+        (user) => user.id !== currentUser?.id
+      );
+      setFilteredUsers(filteredUsers);
     }
-  }, [searchQuery, friendships, pendingRequests, allUsers]);
+  }, [searchQuery, friendships, pendingRequests, allUsers, currentUser]);
 
   const handleTabChange = (_event: React.SyntheticEvent, newValue: number) => {
     setActiveTab(newValue);

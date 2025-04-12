@@ -222,20 +222,12 @@ const ProfileDetail: FC = () => {
 
   // Kullanıcı yorumlarını getir
   const fetchUserReviews = async (userId: number) => {
-    // Check if the current user can view this user's detailed profile data (including reviews)
-    // Only allow if one of these conditions is met:
-    // 1. The user is viewing their own profile
-    // 2. The target user has a public account
-    // 3. The user is friends or mutual follower with the target private account
+    // Only current user check is needed now
     const canViewUserReviews =
       // Current user is viewing their own profile
       (currentUser && currentUser.id === userId) ||
-      // Target user has a public account
-      (user && !user.isPrivate) ||
-      // Target user has a private account but current user is a friend or mutual follower
-      (user?.isPrivate &&
-        (relationshipStatus === "friends" ||
-          relationshipStatus === "mutualFollow"));
+      // All other profiles are public
+      true;
 
     // If user doesn't have permission to view reviews, set empty array and return
     if (!canViewUserReviews) {
@@ -394,15 +386,7 @@ const ProfileDetail: FC = () => {
       return true;
     }
 
-    // Check if the user has a private account and if the current user is not a friend
-    if (user?.isPrivate) {
-      return (
-        relationshipStatus === "friends" ||
-        relationshipStatus === "mutualFollow"
-      );
-    }
-
-    // Public account - anyone can view
+    // All accounts are now public - anyone can view
     return true;
   };
 
@@ -1101,12 +1085,6 @@ const ProfileDetail: FC = () => {
 
           <Typography variant="body1" color="text.secondary" gutterBottom>
             @{user.username}
-            {user.isPrivate && (
-              <VisibilityOffIcon
-                fontSize="small"
-                sx={{ ml: 1, verticalAlign: "middle", color: "text.secondary" }}
-              />
-            )}
           </Typography>
 
           {/* Email bilgisi */}
