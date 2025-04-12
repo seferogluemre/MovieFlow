@@ -673,3 +673,56 @@
 [INFO] 2025-04-12T03:52:55.663Z - Get Movie Reviews - Retrieved reviews for Movie 1
 [INFO] 2025-04-12T03:52:55.717Z - Get User --- Request Received
 [INFO] 2025-04-12T03:52:55.780Z - Get User --- Request Received
+[INFO] 2025-04-12T03:57:06.764Z - Get User --- Request Received
+[INFO] 2025-04-12T03:57:06.825Z - Get User --- Request Received
+[INFO] 2025-04-12T03:57:06.887Z - Get User --- Request Received
+[INFO] 2025-04-12T03:57:06.950Z - Get User --- Request Received
+[INFO] 2025-04-12T03:57:07.013Z - Get User --- Request Received
+[INFO] 2025-04-12T03:57:07.076Z - Get User --- Request Received
+[INFO] 2025-04-12T03:57:52.327Z - Get Movie Reviews - Retrieved reviews for Movie 1
+[INFO] 2025-04-12T03:57:52.329Z - Get Movie Reviews - Retrieved reviews for Movie 1
+[INFO] 2025-04-12T03:57:52.350Z - Get User --- Request Received
+[INFO] 2025-04-12T03:57:52.413Z - Get User --- Request Received
+[INFO] 2025-04-12T03:57:59.295Z - LibraryController.delete ---- Deleted library entry ${id}
+[INFO] 2025-04-12T03:58:00.397Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
+[INFO] 2025-04-12T03:58:00.402Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
+[INFO] 2025-04-12T03:58:02.475Z - Get Movie Reviews - Retrieved reviews for Movie 1
+[INFO] 2025-04-12T03:58:02.479Z - Get Movie Reviews - Retrieved reviews for Movie 1
+[INFO] 2025-04-12T03:58:02.633Z - Get User --- Request Received
+[INFO] 2025-04-12T03:58:02.695Z - Get User --- Request Received
+[INFO] 2025-04-12T03:58:03.525Z - LibraryController.create ---- Library entry created for user ${userId} and movie ${data.movieId}
+[INFO] 2025-04-12T03:58:04.329Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
+[INFO] 2025-04-12T03:58:04.334Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
+[INFO] 2025-04-12T03:58:05.315Z - Get Movie Reviews - Retrieved reviews for Movie 1
+[INFO] 2025-04-12T03:58:05.318Z - Get Movie Reviews - Retrieved reviews for Movie 1
+[INFO] 2025-04-12T03:58:05.371Z - Get User --- Request Received
+[INFO] 2025-04-12T03:58:05.433Z - Get User --- Request Received
+[INFO] 2025-04-12T04:04:35.554Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-12T04:05:57.522Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-12T04:09:59.692Z - Get User --- Request Received
+[INFO] 2025-04-12T04:09:59.754Z - Get User --- Request Received
+[INFO] 2025-04-12T04:09:59.817Z - Get User --- Request Received
+[INFO] 2025-04-12T04:09:59.879Z - Get User --- Request Received
+[INFO] 2025-04-12T04:09:59.940Z - Get User --- Request Received
+[INFO] 2025-04-12T04:10:00.111Z - Get User --- Request Received
+[INFO] 2025-04-12T04:11:27.909Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-12T04:11:27.988Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-12T04:11:27.989Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-12T04:11:28.051Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-12T04:11:30.683Z - Get User --- Request Received
+[INFO] 2025-04-12T04:11:30.735Z - Friendship getRelationshipStatus ---- Retrieved relationship status successfully
+[INFO] 2025-04-12T04:11:30.746Z - Get User --- Request Received
+[INFO] 2025-04-12T04:11:30.792Z - Friendship getRelationshipStatus ---- Retrieved relationship status successfully
+[INFO] 2025-04-12T04:11:32.552Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-12T04:11:34.283Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-12T04:11:34.351Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-12T04:11:34.351Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-12T04:11:34.407Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-12T04:11:39.453Z - Get User --- Request Received
+[INFO] 2025-04-12T04:11:39.515Z - Get User --- Request Received
+[INFO] 2025-04-12T04:11:40.788Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-12T04:11:45.027Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-12T04:11:45.106Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-12T04:11:45.106Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-12T04:11:45.152Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-12T04:12:09.963Z - Login User --- Login successful 🚀

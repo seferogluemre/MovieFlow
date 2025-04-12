@@ -85,6 +85,29 @@ interface Review {
   };
 }
 
+// Koleksiyon öğelerini tanımlayan arayüzler
+interface WatchlistItem {
+  id: number;
+  addedAt: string;
+  userId: number;
+  movieId: number;
+}
+
+interface LibraryItem {
+  id: number;
+  userId: number;
+  movieId: number;
+  addedAt: string;
+  lastWatched: string | null;
+}
+
+interface WishlistItem {
+  id: number;
+  addedAt: string;
+  userId: number;
+  movieId: number;
+}
+
 const MovieDetails: FC = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
@@ -101,6 +124,11 @@ const MovieDetails: FC = () => {
   const [isInWatchlist, setIsInWatchlist] = useState<boolean>(false);
   const [isInLibrary, setIsInLibrary] = useState<boolean>(false);
   const [isInWishlist, setIsInWishlist] = useState<boolean>(false);
+
+  // Koleksiyon öğelerinin ID'lerini saklamak için state'ler
+  const [watchlistItemId, setWatchlistItemId] = useState<number | null>(null);
+  const [libraryItemId, setLibraryItemId] = useState<number | null>(null);
+  const [wishlistItemId, setWishlistItemId] = useState<number | null>(null);
 
   useEffect(() => {
     const init = async () => {
@@ -182,22 +210,40 @@ const MovieDetails: FC = () => {
       const userData = response.data;
 
       // İzleme listesinde mi?
-      const inWatchlist =
-        userData.watchlist?.some((item: any) => item.movieId === movieId) ||
-        false;
-      setIsInWatchlist(inWatchlist);
+      const watchlistItem = userData.watchlist?.find(
+        (item: WatchlistItem) => item.movieId === movieId
+      );
+      if (watchlistItem) {
+        setIsInWatchlist(true);
+        setWatchlistItemId(watchlistItem.id);
+      } else {
+        setIsInWatchlist(false);
+        setWatchlistItemId(null);
+      }
 
       // Kütüphanede mi?
-      const inLibrary =
-        userData.library?.some((item: any) => item.movieId === movieId) ||
-        false;
-      setIsInLibrary(inLibrary);
+      const libraryItem = userData.library?.find(
+        (item: LibraryItem) => item.movieId === movieId
+      );
+      if (libraryItem) {
+        setIsInLibrary(true);
+        setLibraryItemId(libraryItem.id);
+      } else {
+        setIsInLibrary(false);
+        setLibraryItemId(null);
+      }
 
       // İstek listesinde mi?
-      const inWishlist =
-        userData.wishlist?.some((item: any) => item.movieId === movieId) ||
-        false;
-      setIsInWishlist(inWishlist);
+      const wishlistItem = userData.wishlist?.find(
+        (item: WishlistItem) => item.movieId === movieId
+      );
+      if (wishlistItem) {
+        setIsInWishlist(true);
+        setWishlistItemId(wishlistItem.id);
+      } else {
+        setIsInWishlist(false);
+        setWishlistItemId(null);
+      }
     } catch (err) {
       console.error("Error checking movie collections:", err);
     }
@@ -220,12 +266,13 @@ const MovieDetails: FC = () => {
   };
 
   const handleRemoveFromWatchlist = async () => {
-    if (!isAuthenticated || !movie) return;
+    if (!isAuthenticated || !movie || watchlistItemId === null) return;
 
     try {
-      await api.delete(`/watchlist/movie/${movie.id}`);
+      await api.delete(`/watchlist/${watchlistItemId}`);
       setSuccessMessage("Film izleme listenizden kaldırıldı");
       setIsInWatchlist(false);
+      setWatchlistItemId(null);
       setTimeout(() => setSuccessMessage(null), 3000);
     } catch (err) {
       console.error("Error removing movie from watchlist:", err);
@@ -252,12 +299,13 @@ const MovieDetails: FC = () => {
   };
 
   const handleRemoveFromLibrary = async () => {
-    if (!isAuthenticated || !movie) return;
+    if (!isAuthenticated || !movie || libraryItemId === null) return;
 
     try {
-      await api.delete(`/library/movie/${movie.id}`);
+      await api.delete(`/library/${libraryItemId}`);
       setSuccessMessage("Film kütüphanenizden kaldırıldı");
       setIsInLibrary(false);
+      setLibraryItemId(null);
       setTimeout(() => setSuccessMessage(null), 3000);
     } catch (err) {
       console.error("Error removing movie from library:", err);
@@ -284,12 +332,13 @@ const MovieDetails: FC = () => {
   };
 
   const handleRemoveFromWishlist = async () => {
-    if (!isAuthenticated || !movie) return;
+    if (!isAuthenticated || !movie || wishlistItemId === null) return;
 
     try {
-      await api.delete(`/wishlist/movie/${movie.id}`);
+      await api.delete(`/wishlist/${wishlistItemId}`);
       setSuccessMessage("Film istek listenizden kaldırıldı");
       setIsInWishlist(false);
+      setWishlistItemId(null);
       setTimeout(() => setSuccessMessage(null), 3000);
     } catch (err) {
       console.error("Error removing movie from wishlist:", err);
