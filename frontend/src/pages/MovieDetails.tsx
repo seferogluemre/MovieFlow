@@ -89,7 +89,7 @@ const MovieDetails: FC = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const location = useLocation();
-  const { isAuthenticated, checkAuthStatus } = useAuth();
+  const { isAuthenticated, checkAuthStatus, user } = useAuth();
   const [movie, setMovie] = useState<MovieDetails | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
@@ -98,6 +98,9 @@ const MovieDetails: FC = () => {
   const [loadingReviews, setLoadingReviews] = useState<boolean>(false);
   const [reviewError, setReviewError] = useState<string | null>(null);
   const highlightedReviewRef = useRef<HTMLDivElement>(null);
+  const [isInWatchlist, setIsInWatchlist] = useState<boolean>(false);
+  const [isInLibrary, setIsInLibrary] = useState<boolean>(false);
+  const [isInWishlist, setIsInWishlist] = useState<boolean>(false);
 
   useEffect(() => {
     const init = async () => {
@@ -112,6 +115,7 @@ const MovieDetails: FC = () => {
         }
         fetchMovieDetails(parseInt(id));
         fetchMovieReviews(parseInt(id));
+        checkMovieCollections(parseInt(id));
       }
     };
 
@@ -169,15 +173,62 @@ const MovieDetails: FC = () => {
     }
   };
 
+  const checkMovieCollections = async (movieId: number) => {
+    if (!isAuthenticated || !user) return;
+
+    try {
+      // Kullanıcı bilgilerini çek
+      const response = await api.get(`/users/${user.id}`);
+      const userData = response.data;
+
+      // İzleme listesinde mi?
+      const inWatchlist =
+        userData.watchlist?.some((item: any) => item.movieId === movieId) ||
+        false;
+      setIsInWatchlist(inWatchlist);
+
+      // Kütüphanede mi?
+      const inLibrary =
+        userData.library?.some((item: any) => item.movieId === movieId) ||
+        false;
+      setIsInLibrary(inLibrary);
+
+      // İstek listesinde mi?
+      const inWishlist =
+        userData.wishlist?.some((item: any) => item.movieId === movieId) ||
+        false;
+      setIsInWishlist(inWishlist);
+    } catch (err) {
+      console.error("Error checking movie collections:", err);
+    }
+  };
+
   const handleAddToWatchlist = async () => {
     if (!isAuthenticated || !movie) return;
 
     try {
       await api.post("/watchlist", { movieId: movie.id });
       setSuccessMessage("Film başarıyla izleme listenize eklendi");
+      setIsInWatchlist(true);
       setTimeout(() => setSuccessMessage(null), 3000);
     } catch (err) {
       console.error("Error adding movie to watchlist:", err);
+      const errorMessage = processApiError(err);
+      setError(errorMessage);
+      setTimeout(() => setError(null), 3000);
+    }
+  };
+
+  const handleRemoveFromWatchlist = async () => {
+    if (!isAuthenticated || !movie) return;
+
+    try {
+      await api.delete(`/watchlist/movie/${movie.id}`);
+      setSuccessMessage("Film izleme listenizden kaldırıldı");
+      setIsInWatchlist(false);
+      setTimeout(() => setSuccessMessage(null), 3000);
+    } catch (err) {
+      console.error("Error removing movie from watchlist:", err);
       const errorMessage = processApiError(err);
       setError(errorMessage);
       setTimeout(() => setError(null), 3000);
@@ -190,9 +241,26 @@ const MovieDetails: FC = () => {
     try {
       await api.post("/library", { movieId: movie.id });
       setSuccessMessage("Film başarıyla kütüphanenize eklendi");
+      setIsInLibrary(true);
       setTimeout(() => setSuccessMessage(null), 3000);
     } catch (err) {
       console.error("Error adding movie to library:", err);
+      const errorMessage = processApiError(err);
+      setError(errorMessage);
+      setTimeout(() => setError(null), 3000);
+    }
+  };
+
+  const handleRemoveFromLibrary = async () => {
+    if (!isAuthenticated || !movie) return;
+
+    try {
+      await api.delete(`/library/movie/${movie.id}`);
+      setSuccessMessage("Film kütüphanenizden kaldırıldı");
+      setIsInLibrary(false);
+      setTimeout(() => setSuccessMessage(null), 3000);
+    } catch (err) {
+      console.error("Error removing movie from library:", err);
       const errorMessage = processApiError(err);
       setError(errorMessage);
       setTimeout(() => setError(null), 3000);
@@ -205,9 +273,26 @@ const MovieDetails: FC = () => {
     try {
       await api.post("/wishlist", { movieId: movie.id });
       setSuccessMessage("Film başarıyla istek listenize eklendi");
+      setIsInWishlist(true);
       setTimeout(() => setSuccessMessage(null), 3000);
     } catch (err) {
       console.error("Error adding movie to wishlist:", err);
+      const errorMessage = processApiError(err);
+      setError(errorMessage);
+      setTimeout(() => setError(null), 3000);
+    }
+  };
+
+  const handleRemoveFromWishlist = async () => {
+    if (!isAuthenticated || !movie) return;
+
+    try {
+      await api.delete(`/wishlist/movie/${movie.id}`);
+      setSuccessMessage("Film istek listenizden kaldırıldı");
+      setIsInWishlist(false);
+      setTimeout(() => setSuccessMessage(null), 3000);
+    } catch (err) {
+      console.error("Error removing movie from wishlist:", err);
       const errorMessage = processApiError(err);
       setError(errorMessage);
       setTimeout(() => setError(null), 3000);
@@ -335,33 +420,70 @@ const MovieDetails: FC = () => {
               flexDirection: { xs: "column", sm: "row" },
             }}
           >
-            <Button
-              variant="contained"
-              fullWidth
-              startIcon={<PlaylistAddIcon />}
-              onClick={handleAddToWatchlist}
-            >
-              İzleme Listesine Ekle
-            </Button>
-            <Button
-              variant="outlined"
-              fullWidth
-              startIcon={<BookmarkAddIcon />}
-              onClick={handleAddToWishlist}
-            >
-              İstek Listesine Ekle
-            </Button>
+            {isInWatchlist ? (
+              <Button
+                variant="outlined"
+                color="error"
+                fullWidth
+                startIcon={<PlaylistAddIcon />}
+                onClick={handleRemoveFromWatchlist}
+              >
+                İzleme Listesinden Çıkar
+              </Button>
+            ) : (
+              <Button
+                variant="contained"
+                fullWidth
+                startIcon={<PlaylistAddIcon />}
+                onClick={handleAddToWatchlist}
+              >
+                İzleme Listesine Ekle
+              </Button>
+            )}
+
+            {isInWishlist ? (
+              <Button
+                variant="outlined"
+                color="error"
+                fullWidth
+                startIcon={<BookmarkAddIcon />}
+                onClick={handleRemoveFromWishlist}
+              >
+                İstek Listesinden Çıkar
+              </Button>
+            ) : (
+              <Button
+                variant="outlined"
+                fullWidth
+                startIcon={<BookmarkAddIcon />}
+                onClick={handleAddToWishlist}
+              >
+                İstek Listesine Ekle
+              </Button>
+            )}
           </Box>
 
           <Box sx={{ mt: 2 }}>
-            <Button
-              variant="outlined"
-              fullWidth
-              startIcon={<BookmarkAddIcon />}
-              onClick={handleAddToLibrary}
-            >
-              Kütüphaneye Ekle
-            </Button>
+            {isInLibrary ? (
+              <Button
+                variant="outlined"
+                color="error"
+                fullWidth
+                startIcon={<BookmarkAddIcon />}
+                onClick={handleRemoveFromLibrary}
+              >
+                Kütüphaneden Çıkar
+              </Button>
+            ) : (
+              <Button
+                variant="outlined"
+                fullWidth
+                startIcon={<BookmarkAddIcon />}
+                onClick={handleAddToLibrary}
+              >
+                Kütüphaneye Ekle
+              </Button>
+            )}
           </Box>
         </Grid>
 

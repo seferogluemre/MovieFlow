@@ -647,3 +647,29 @@
 [INFO] 2025-04-12T03:49:11.731Z - Get Movie Reviews - Retrieved reviews for Movie 1
 [INFO] 2025-04-12T03:49:11.733Z - Get Movie Reviews - Retrieved reviews for Movie 1
 [WARN] 2025-04-12T03:50:07.058Z - LibraryController.create ---- Error creating library entry: ${error}
+[INFO] 2025-04-12T03:51:27.347Z - Get User --- Request Received
+[INFO] 2025-04-12T03:51:27.399Z - Get Movie Reviews - Retrieved reviews for Movie 1
+[INFO] 2025-04-12T03:51:27.403Z - Get Movie Reviews - Retrieved reviews for Movie 1
+[INFO] 2025-04-12T03:51:27.425Z - Get User --- Request Received
+[INFO] 2025-04-12T03:51:27.466Z - Get Movie Reviews - Retrieved reviews for Movie 1
+[INFO] 2025-04-12T03:51:27.484Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-12T03:51:27.504Z - Get User --- Request Received
+[INFO] 2025-04-12T03:51:27.536Z - Get Movie Reviews - Retrieved reviews for Movie 1
+[INFO] 2025-04-12T03:51:27.567Z - Get User --- Request Received
+[INFO] 2025-04-12T03:51:27.573Z - Get Movie Reviews - Retrieved reviews for Movie 1
+[INFO] 2025-04-12T03:51:27.590Z - Get Movie Reviews - Retrieved reviews for Movie 1
+[INFO] 2025-04-12T03:51:27.736Z - Get User --- Request Received
+[INFO] 2025-04-12T03:51:27.767Z - Get Movie Reviews - Retrieved reviews for Movie 1
+[INFO] 2025-04-12T03:51:27.797Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-12T03:51:27.907Z - Get User --- Request Received
+[INFO] 2025-04-12T03:51:27.933Z - Get Movie Reviews - Retrieved reviews for Movie 1
+[INFO] 2025-04-12T03:52:12.144Z - Get Movie Reviews - Retrieved reviews for Movie 1
+[INFO] 2025-04-12T03:52:12.146Z - Get Movie Reviews - Retrieved reviews for Movie 1
+[INFO] 2025-04-12T03:52:12.203Z - Get User --- Request Received
+[INFO] 2025-04-12T03:52:12.265Z - Get User --- Request Received
+[INFO] 2025-04-12T03:52:53.495Z - Get User --- Request Received
+[INFO] 2025-04-12T03:52:53.665Z - Get User --- Request Received
+[INFO] 2025-04-12T03:52:55.661Z - Get Movie Reviews - Retrieved reviews for Movie 1
+[INFO] 2025-04-12T03:52:55.663Z - Get Movie Reviews - Retrieved reviews for Movie 1
+[INFO] 2025-04-12T03:52:55.717Z - Get User --- Request Received
+[INFO] 2025-04-12T03:52:55.780Z - Get User --- Request Received
