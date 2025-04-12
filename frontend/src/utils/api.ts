@@ -270,6 +270,19 @@ export const userService = {
       throw error;
     }
   },
+  getAllUsers: async () => {
+    try {
+      console.log("Fetching all users from the system");
+      const response = await api.get("/users");
+      console.log("All users data:", response.data);
+      return response.data && response.data.results
+        ? response.data.results
+        : [];
+    } catch (error) {
+      console.error("Get all users error:", error);
+      throw error;
+    }
+  },
   updateProfile: async (
     userId: number,
     userData: {
@@ -477,6 +490,19 @@ export const friendshipService = {
       return response.data;
     } catch (error) {
       console.error("Send friendship request error:", error);
+      throw error;
+    }
+  },
+
+  // Arkadaşlık isteğini iptal etme
+  cancelFriendRequest: async (friendshipId: number) => {
+    try {
+      console.log(`Canceling friendship request ID: ${friendshipId}`);
+      const response = await api.delete(`/friendships/${friendshipId}`);
+      console.log("Cancel friendship request response:", response.data);
+      return response.data;
+    } catch (error) {
+      console.error("Cancel friendship request error:", error);
       throw error;
     }
   },

@@ -6,6 +6,7 @@ export interface User {
   profileImage?: string;
   bio?: string;
   isAdmin: boolean;
+  isPrivate?: boolean;
   createdAt: string;
   updatedAt: string;
   friends?: Friendship[];

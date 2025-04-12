@@ -131,13 +131,38 @@ export class FriendshipService {
   }
 
   static async delete(id: number) {
-    const friendship = await prisma.friendship.delete({
+    const friendship = await prisma.friendship.findFirst({
       where: { id },
       include: {
         user: true,
         friend: true,
       },
     });
+
+    if (!friendship) {
+      throw new Error("Friendship not found");
+    }
+
+    // Delete any related notifications that have this friendship ID in their metadata
+    await prisma.notification.deleteMany({
+      where: {
+        AND: [
+          { type: "FRIEND_REQUEST" as NotificationType },
+          {
+            metadata: {
+              path: ["friendshipId"],
+              equals: id,
+            },
+          },
+        ],
+      },
+    });
+
+    // Now delete the friendship
+    await prisma.friendship.delete({
+      where: { id },
+    });
+
     await prisma.$disconnect();
     return this.enhanceFriendship(friendship);
   }

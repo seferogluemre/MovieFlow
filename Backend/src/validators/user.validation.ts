@@ -7,6 +7,7 @@ export const createUserSchema = BaseSchema.extend({
   password: z.string().min(6, "Password must be at least 6 characters"),
   name: z.string().optional(),
   isAdmin: z.boolean(),
+  isPrivate: z.boolean().optional().default(false),
   profileImage: z.string().optional(),
 });
 
@@ -25,6 +26,7 @@ export const updateUserSchema = BaseSchema.extend({
     .min(6, "Password must be at least 6 characters")
     .optional(),
   name: z.string().min(2, "Name must be at least 6 characters").optional(),
+  isPrivate: z.boolean().optional(),
   profileImage: z.string().nullable().optional(),
 });
 

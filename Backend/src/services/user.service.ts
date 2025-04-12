@@ -136,6 +136,7 @@ export class UserService {
       "ProfileImage tipi:",
       data.profileImage === null ? "null" : typeof data.profileImage
     );
+    console.log("isPrivate değeri:", data.isPrivate);
 
     const prisma = new PrismaClient();
     const existingUser = await prisma.user.findUnique({
@@ -153,6 +154,8 @@ export class UserService {
     if (data.username !== undefined) updateData.username = data.username;
     if (data.password !== undefined) updateData.password = data.password;
     if (data.email !== undefined) updateData.email = data.email;
+    // isPrivate alan güncellemesi
+    if (data.isPrivate !== undefined) updateData.isPrivate = data.isPrivate;
 
     // profileImage özel işleme
     if (data.profileImage !== undefined) {

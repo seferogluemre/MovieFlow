@@ -5,6 +5,7 @@ export interface CreateUserProps {
   password: string;
   name: string;
   isAdmin: boolean;
+  isPrivate?: boolean;
   profileImage?: string | null;
 }
 export interface UpdateUserProps {
@@ -12,6 +13,8 @@ export interface UpdateUserProps {
   username?: string;
   password?: string;
   name?: string;
+  isPrivate?: boolean;
+  profileImage?: string | null;
 }
 
 export interface UserQueryProps {
@@ -26,7 +29,6 @@ export interface CreateSession {
   updatedAt: Date;
   expiresAt: Date;
 }
-
 
 // Actor types
 export interface CreateActorProps {

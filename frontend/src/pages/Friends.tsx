@@ -34,7 +34,7 @@ import {
 } from "@mui/icons-material";
 import { formatDistanceToNow } from "date-fns";
 import { tr } from "date-fns/locale";
-import api, { processApiError } from "../utils/api";
+import api, { processApiError, userService } from "../utils/api";
 import { useAuth } from "../context/AuthContext";
 
 interface User {
@@ -55,17 +55,31 @@ interface Friendship {
   friend: User;
 }
 
+interface UserRelationship {
+  userId: number;
+  isFriend: boolean;
+  isPending: boolean;
+  isFollowing: boolean;
+  isBlocked: boolean;
+}
+
 const Friends: FC = () => {
   const navigate = useNavigate();
-  const { isAuthenticated, checkAuthStatus } = useAuth();
+  const { isAuthenticated, checkAuthStatus, currentUser } = useAuth();
   const [activeTab, setActiveTab] = useState(0);
   const [friendships, setFriendships] = useState<Friendship[]>([]);
   const [pendingRequests, setPendingRequests] = useState<Friendship[]>([]);
+  const [allUsers, setAllUsers] = useState<User[]>([]);
+  const [userRelationships, setUserRelationships] = useState<
+    Record<number, UserRelationship>
+  >({});
   const [filteredFriendships, setFilteredFriendships] = useState<Friendship[]>(
     []
   );
   const [filteredRequests, setFilteredRequests] = useState<Friendship[]>([]);
+  const [filteredUsers, setFilteredUsers] = useState<User[]>([]);
   const [loading, setLoading] = useState(true);
+  const [loadingUsers, setLoadingUsers] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
@@ -101,11 +115,71 @@ const Friends: FC = () => {
       const pendingResponse = await api.get("/friendships/pending");
       setPendingRequests(pendingResponse.data || []);
       setFilteredRequests(pendingResponse.data || []);
+
+      // When on All Users tab, fetch all users
+      if (activeTab === 2) {
+        fetchAllUsers();
+      }
     } catch (err) {
       console.error("Error fetching friendships:", err);
       setError("Arkadaşlık verileri yüklenirken bir hata oluştu.");
     } finally {
       setLoading(false);
+    }
+  };
+
+  const fetchAllUsers = async () => {
+    if (loadingUsers) return;
+
+    try {
+      setLoadingUsers(true);
+      const users = await userService.getAllUsers();
+      setAllUsers(users);
+      setFilteredUsers(users);
+
+      // Build relationship map
+      const relationships: Record<number, UserRelationship> = {};
+
+      users.forEach((user: User) => {
+        if (user.id === currentUser?.id) return; // Skip current user
+
+        const isFriend = friendships.some(
+          (f) =>
+            (f.friendId === user.id || f.userId === user.id) &&
+            f.status === "ACCEPTED"
+        );
+
+        const isPending = friendships.some(
+          (f) =>
+            (f.friendId === user.id || f.userId === user.id) &&
+            f.status === "PENDING"
+        );
+
+        const isFollowing = friendships.some(
+          (f) => f.friendId === user.id && f.status === "FOLLOWING"
+        );
+
+        const isBlocked = friendships.some(
+          (f) =>
+            (f.friendId === user.id || f.userId === user.id) &&
+            f.status === "BLOCKED"
+        );
+
+        relationships[user.id] = {
+          userId: user.id,
+          isFriend,
+          isPending,
+          isFollowing,
+          isBlocked,
+        };
+      });
+
+      setUserRelationships(relationships);
+    } catch (err) {
+      console.error("Error fetching all users:", err);
+      setError("Kullanıcılar yüklenirken bir hata oluştu.");
+    } finally {
+      setLoadingUsers(false);
     }
   };
 
@@ -131,14 +205,28 @@ const Friends: FC = () => {
         );
       });
       setFilteredRequests(filteredPending);
+
+      // Filter all users
+      const filteredAllUsers = allUsers.filter((user) => {
+        return (
+          user.name.toLowerCase().includes(query) ||
+          user.username.toLowerCase().includes(query)
+        );
+      });
+      setFilteredUsers(filteredAllUsers);
     } else {
       setFilteredFriendships(friendships);
       setFilteredRequests(pendingRequests);
+      setFilteredUsers(allUsers);
     }
-  }, [searchQuery, friendships, pendingRequests]);
+  }, [searchQuery, friendships, pendingRequests, allUsers]);
 
   const handleTabChange = (_event: React.SyntheticEvent, newValue: number) => {
     setActiveTab(newValue);
+    // Fetch all users when switching to the All Users tab
+    if (newValue === 2 && allUsers.length === 0) {
+      fetchAllUsers();
+    }
   };
 
   const handleProfileClick = (userId: number) => {
@@ -193,6 +281,65 @@ const Friends: FC = () => {
     }
   };
 
+  const handleSendFriendRequest = async (userId: number) => {
+    try {
+      await api.post(`/friendships`, {
+        friendId: userId,
+        status: "PENDING",
+      });
+
+      setSuccessMessage("Arkadaşlık isteği gönderildi.");
+
+      // Update the relationship for this user
+      setUserRelationships((prev) => ({
+        ...prev,
+        [userId]: {
+          ...prev[userId],
+          isPending: true,
+        },
+      }));
+
+      setTimeout(() => {
+        setSuccessMessage(null);
+      }, 3000);
+    } catch (err) {
+      console.error("Error sending friendship request:", err);
+      setError(processApiError(err));
+
+      setTimeout(() => {
+        setError(null);
+      }, 3000);
+    }
+  };
+
+  const handleFollowUser = async (userId: number) => {
+    try {
+      await api.post(`/friendships/follow/${userId}`);
+
+      setSuccessMessage("Kullanıcı takip edilmeye başlandı.");
+
+      // Update the relationship for this user
+      setUserRelationships((prev) => ({
+        ...prev,
+        [userId]: {
+          ...prev[userId],
+          isFollowing: true,
+        },
+      }));
+
+      setTimeout(() => {
+        setSuccessMessage(null);
+      }, 3000);
+    } catch (err) {
+      console.error("Error following user:", err);
+      setError(processApiError(err));
+
+      setTimeout(() => {
+        setError(null);
+      }, 3000);
+    }
+  };
+
   const formatDate = (dateString: string) => {
     try {
       return formatDistanceToNow(new Date(dateString), {
@@ -217,6 +364,7 @@ const Friends: FC = () => {
         <Tabs value={activeTab} onChange={handleTabChange}>
           <Tab label="My Friends" />
           <Tab label="Friend Requests" />
+          <Tab label="All Users" />
         </Tabs>
       </Box>
 
@@ -224,7 +372,11 @@ const Friends: FC = () => {
         <TextField
           fullWidth
           placeholder={
-            activeTab === 0 ? "Search friends..." : "Search friend requests..."
+            activeTab === 0
+              ? "Search friends..."
+              : activeTab === 1
+              ? "Search friend requests..."
+              : "Search users..."
           }
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
@@ -404,6 +556,129 @@ const Friends: FC = () => {
                       </Card>
                     </Grid>
                   ))}
+                </Grid>
+              )}
+            </>
+          )}
+
+          {/* All Users Tab */}
+          {activeTab === 2 && (
+            <>
+              {loadingUsers ? (
+                <Box sx={{ display: "flex", justifyContent: "center", my: 4 }}>
+                  <CircularProgress />
+                </Box>
+              ) : filteredUsers.length === 0 ? (
+                <Alert severity="info">
+                  {searchQuery
+                    ? "Arama kriterlerinize uygun kullanıcı bulunamadı."
+                    : "Sistemde henüz kullanıcı yok."}
+                </Alert>
+              ) : (
+                <Grid container spacing={3}>
+                  {filteredUsers
+                    .filter((user) => user.id !== currentUser?.id) // Filter out current user
+                    .map((user) => {
+                      const relationship = userRelationships[user.id];
+                      return (
+                        <Grid item xs={12} sm={6} md={4} key={user.id}>
+                          <Card>
+                            <CardContent>
+                              <Box
+                                sx={{
+                                  display: "flex",
+                                  alignItems: "center",
+                                  mb: 2,
+                                }}
+                              >
+                                <Avatar
+                                  src={user.profileImage || undefined}
+                                  alt={user.name}
+                                  onClick={() => handleProfileClick(user.id)}
+                                  sx={{
+                                    cursor: "pointer",
+                                    width: 60,
+                                    height: 60,
+                                  }}
+                                />
+                                <Box sx={{ ml: 2 }}>
+                                  <Typography variant="h6">
+                                    {user.name}
+                                  </Typography>
+                                  <Typography
+                                    variant="body2"
+                                    color="text.secondary"
+                                  >
+                                    @{user.username}
+                                  </Typography>
+                                </Box>
+                              </Box>
+                            </CardContent>
+                            <CardActions>
+                              <Button
+                                startIcon={<PersonIcon />}
+                                variant="outlined"
+                                onClick={() => handleProfileClick(user.id)}
+                              >
+                                Profile
+                              </Button>
+
+                              {relationship?.isFriend ? (
+                                <Button
+                                  startIcon={<PersonIcon />}
+                                  variant="contained"
+                                  color="success"
+                                  disabled
+                                >
+                                  Friends
+                                </Button>
+                              ) : relationship?.isPending ? (
+                                <Button
+                                  startIcon={<PersonAddIcon />}
+                                  variant="outlined"
+                                  color="primary"
+                                  disabled
+                                >
+                                  Request Sent
+                                </Button>
+                              ) : relationship?.isBlocked ? (
+                                <Button
+                                  startIcon={<CloseIcon />}
+                                  variant="outlined"
+                                  color="error"
+                                  disabled
+                                >
+                                  Blocked
+                                </Button>
+                              ) : (
+                                <Button
+                                  startIcon={<PersonAddIcon />}
+                                  variant="contained"
+                                  color="primary"
+                                  onClick={() =>
+                                    handleSendFriendRequest(user.id)
+                                  }
+                                >
+                                  Add Friend
+                                </Button>
+                              )}
+
+                              {!relationship?.isFriend &&
+                                !relationship?.isFollowing &&
+                                !relationship?.isBlocked && (
+                                  <Button
+                                    startIcon={<PersonAddIcon />}
+                                    variant="outlined"
+                                    onClick={() => handleFollowUser(user.id)}
+                                  >
+                                    Follow
+                                  </Button>
+                                )}
+                            </CardActions>
+                          </Card>
+                        </Grid>
+                      );
+                    })}
                 </Grid>
               )}
             </>

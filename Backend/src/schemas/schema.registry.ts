@@ -6,4 +6,5 @@ export const userCreateSchema = z.object({
   username: z.string().min(2),
   name: z.string().min(2),
   isAdmin: z.boolean(),
+  isPrivate: z.boolean().optional().default(false),
 });

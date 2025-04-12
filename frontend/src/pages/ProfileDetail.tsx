@@ -10,7 +10,6 @@ import {
   Alert,
   Button,
   Paper,
-  Grid,
   Dialog,
   DialogTitle,
   DialogContent,
@@ -23,7 +22,6 @@ import {
   Stack,
   Tabs,
   Tab,
-  Badge,
   Modal,
   Backdrop,
   Fade,
@@ -132,6 +130,7 @@ interface Review {
   movie?: {
     id?: number;
     title?: string;
+    posterImage?: string;
   };
 }
 
@@ -161,6 +160,13 @@ const ProfileDetail: FC = () => {
 
   // Profil resmi modalı için state
   const [avatarModalOpen, setAvatarModalOpen] = useState(false);
+
+  // Add new state for all users
+  const [allUsers, setAllUsers] = useState<User[]>([]);
+  const [loadingAllUsers, setLoadingAllUsers] = useState(false);
+
+  // Add state for success message if it doesn't exist
+  const [successMessage, setSuccessMessage] = useState<string | null>(null);
 
   // Profil resmi tıklandığında
   const handleAvatarClick = () => {
@@ -216,20 +222,25 @@ const ProfileDetail: FC = () => {
 
   // Kullanıcı yorumlarını getir
   const fetchUserReviews = async (userId: number) => {
-    // Profil gizli mi ve bu kullanıcı ile arkadaşlık var mı kontrol et
-    const canViewDetailedProfile =
-      // Kullanıcı kendisi mi?
+    // Check if the current user can view this user's detailed profile data (including reviews)
+    // Only allow if one of these conditions is met:
+    // 1. The user is viewing their own profile
+    // 2. The target user has a public account
+    // 3. The user is friends or mutual follower with the target private account
+    const canViewUserReviews =
+      // Current user is viewing their own profile
       (currentUser && currentUser.id === userId) ||
-      // Profil açık mı?
+      // Target user has a public account
       (user && !user.isPrivate) ||
-      // Arkadaşlık ilişkisi var mı?
-      ["friends", "following", "follower", "mutualFollow"].includes(
-        relationshipStatus
-      );
+      // Target user has a private account but current user is a friend or mutual follower
+      (user?.isPrivate &&
+        (relationshipStatus === "friends" ||
+          relationshipStatus === "mutualFollow"));
 
-    // Eğer kullanıcının yorumlarını görüntüleme yetkisi yoksa, işlemi atla
-    if (!canViewDetailedProfile) {
+    // If user doesn't have permission to view reviews, set empty array and return
+    if (!canViewUserReviews) {
       setUserReviews([]);
+      setLoadingReviews(false);
       return;
     }
 
@@ -249,7 +260,12 @@ const ProfileDetail: FC = () => {
             const reviewsArray = Array.isArray(response.data)
               ? response.data
               : response.data.data || [];
-            setUserReviews(reviewsArray);
+
+            // Enhance reviews with movie details if needed
+            const enhancedReviews = await enhanceReviewsWithMovieData(
+              reviewsArray
+            );
+            setUserReviews(enhancedReviews);
             return;
           }
         } catch (error) {
@@ -263,9 +279,14 @@ const ProfileDetail: FC = () => {
         const response = await api.get(`/users/${userId}`);
 
         if (response.data && response.data.reviews) {
-          setUserReviews(
-            Array.isArray(response.data.reviews) ? response.data.reviews : []
+          const reviewsArray = Array.isArray(response.data.reviews)
+            ? response.data.reviews
+            : [];
+          // Enhance reviews with movie details if needed
+          const enhancedReviews = await enhanceReviewsWithMovieData(
+            reviewsArray
           );
+          setUserReviews(enhancedReviews);
           return;
         }
       } catch (error) {
@@ -287,7 +308,11 @@ const ProfileDetail: FC = () => {
         if (response.ok) {
           const responseData = await response.json();
           const reviewsArray = responseData.data || responseData.results || [];
-          setUserReviews(Array.isArray(reviewsArray) ? reviewsArray : []);
+          // Enhance reviews with movie details if needed
+          const enhancedReviews = await enhanceReviewsWithMovieData(
+            Array.isArray(reviewsArray) ? reviewsArray : []
+          );
+          setUserReviews(enhancedReviews);
         } else {
           console.error("Error fetching user reviews from direct endpoint");
           setUserReviews([]);
@@ -304,6 +329,57 @@ const ProfileDetail: FC = () => {
     }
   };
 
+  // Helper function to enhance reviews with movie data if needed
+  const enhanceReviewsWithMovieData = async (
+    reviews: Review[]
+  ): Promise<Review[]> => {
+    // If no reviews, return empty array
+    if (!reviews.length) return [];
+
+    // Check if reviews already have movie data with posterImage
+    const needsMovieData = reviews.some(
+      (review) => !review.movie || !review.movie.posterImage
+    );
+
+    if (!needsMovieData) return reviews;
+
+    // Fetch movie data for reviews that need it
+    try {
+      const enhancedReviews = await Promise.all(
+        reviews.map(async (review) => {
+          // Skip if review already has complete movie data
+          if (review.movie && review.movie.posterImage) {
+            return review;
+          }
+
+          // Otherwise fetch movie data
+          try {
+            if (!review.movieId) return review;
+
+            const movieResponse = await api.get(`/movies/${review.movieId}`);
+            if (movieResponse && movieResponse.data) {
+              return {
+                ...review,
+                movie: movieResponse.data,
+              };
+            }
+          } catch (err) {
+            console.error(
+              `Error fetching movie data for review ${review.id}:`,
+              err
+            );
+          }
+          return review;
+        })
+      );
+
+      return enhancedReviews;
+    } catch (err) {
+      console.error("Error enhancing reviews with movie data:", err);
+      return reviews;
+    }
+  };
+
   // Kullanıcı ilişkisi değiştiğinde, yorumları yeniden kontrol et
   useEffect(() => {
     if (user && id) {
@@ -313,18 +389,21 @@ const ProfileDetail: FC = () => {
 
   // Profil görüntüleme izni kontrol et
   const canViewDetailedProfile = () => {
-    if (!user) return false;
+    // If it's the current user's profile, they can see everything
+    if (currentUser && user && currentUser.id === user.id) {
+      return true;
+    }
 
-    // Kullanıcı kendisi mi?
-    if (currentUser && currentUser.id === user.id) return true;
+    // Check if the user has a private account and if the current user is not a friend
+    if (user?.isPrivate) {
+      return (
+        relationshipStatus === "friends" ||
+        relationshipStatus === "mutualFollow"
+      );
+    }
 
-    // Profil açık mı?
-    if (!user.isPrivate) return true;
-
-    // Arkadaşlık ilişkisi var mı?
-    return ["friends", "following", "follower", "mutualFollow"].includes(
-      relationshipStatus
-    );
+    // Public account - anyone can view
+    return true;
   };
 
   // Handle follow user
@@ -339,8 +418,37 @@ const ProfileDetail: FC = () => {
       const status = await friendshipService.getRelationshipStatus(
         parseInt(id!)
       );
+
+      // Update relationship status locally
       setRelationshipStatus(status.type as RelationshipStatus);
       setRelationshipId(status.id);
+
+      // Always reload followers data when a user is followed
+      // This ensures the follower count is updated even if the modal isn't open
+      const updatedFollowers = await friendshipService.getUserFollowers(
+        user.id
+      );
+      setFollowers(updatedFollowers);
+
+      // Also refresh following list for the current user
+      // This ensures mutual followers are properly tracked
+      if (currentUser) {
+        const updatedFollowing = await friendshipService.getUserFollowing(
+          currentUser.id
+        );
+        setFollowing(updatedFollowing);
+      }
+
+      // Check if the other user is following back and update UI accordingly
+      if (status.type === "mutualFollow") {
+        // If it's mutual follow now, refresh mutual friends
+        const mutualData = await friendshipService.getMutualFriends(user.id);
+        setMutualFriends(mutualData);
+      }
+
+      // Show success message
+      setSuccessMessage("Kullanıcı başarıyla takip edildi");
+      setTimeout(() => setSuccessMessage(null), 3000);
     } catch (err: any) {
       console.error("Error following user:", err);
       setError("Kullanıcıyı takip ederken bir hata oluştu.");
@@ -363,6 +471,28 @@ const ProfileDetail: FC = () => {
       );
       setRelationshipStatus(status.type as RelationshipStatus);
       setRelationshipId(status.id);
+
+      // Always reload followers data when unfollowing
+      const updatedFollowers = await friendshipService.getUserFollowers(
+        user.id
+      );
+      setFollowers(updatedFollowers);
+
+      // Also update following data for the current user
+      if (currentUser) {
+        const updatedFollowing = await friendshipService.getUserFollowing(
+          currentUser.id
+        );
+        setFollowing(updatedFollowing);
+      }
+
+      // Update mutual friends in case a mutual relationship was broken
+      const mutualData = await friendshipService.getMutualFriends(user.id);
+      setMutualFriends(mutualData);
+
+      // Show success message
+      setSuccessMessage("Kullanıcıyı takip etmeyi bıraktınız");
+      setTimeout(() => setSuccessMessage(null), 3000);
     } catch (err: any) {
       console.error("Error unfollowing user:", err);
       setError("Kullanıcıyı takipten çıkarken bir hata oluştu.");
@@ -371,20 +501,31 @@ const ProfileDetail: FC = () => {
     }
   };
 
-  // Handle send friend request (legacy compatibility)
-  const handleSendFriendRequest = async () => {
-    if (!user || !currentUser) return;
+  // Handle send friend request
+  const handleSendFriendRequest = async (targetUserId?: number) => {
+    if (!currentUser) return;
+
+    // If no targetUserId provided, use the profile user's id
+    const userId = targetUserId || (user ? user.id : null);
+
+    if (!userId) {
+      console.error("No target user ID available for friend request");
+      return;
+    }
 
     try {
       setIsActionInProgress(true);
-      await friendshipService.sendFriendRequest(user.id);
+      await friendshipService.sendFriendRequest(userId);
 
-      // Update relationship status
-      const status = await friendshipService.getRelationshipStatus(
-        parseInt(id!)
-      );
-      setRelationshipStatus(status.type as RelationshipStatus);
-      setRelationshipId(status.id);
+      // If this is the current profile user, update relationship status
+      if (user && userId === user.id) {
+        // Update relationship status
+        const status = await friendshipService.getRelationshipStatus(
+          parseInt(id!)
+        );
+        setRelationshipStatus(status.type as RelationshipStatus);
+        setRelationshipId(status.id);
+      }
     } catch (err: any) {
       console.error("Error sending friend request:", err);
       setError("Arkadaşlık isteği gönderilirken bir hata oluştu.");
@@ -516,6 +657,41 @@ const ProfileDetail: FC = () => {
     }
   }, [friendsModalOpen, tabValue, user]);
 
+  // Load all users when the friends modal is opened
+  useEffect(() => {
+    if (friendsModalOpen && tabValue === 3 && allUsers.length === 0) {
+      const fetchAllUsers = async () => {
+        setLoadingAllUsers(true);
+        try {
+          const users = await userService.getAllUsers();
+          setAllUsers(users);
+        } catch (error) {
+          console.error("Error fetching all users:", error);
+        } finally {
+          setLoadingAllUsers(false);
+        }
+      };
+
+      fetchAllUsers();
+    }
+  }, [friendsModalOpen, tabValue, allUsers.length]);
+
+  // Check friendship status between current user and another user
+  const checkFriendshipStatus = async (otherUserId: number) => {
+    if (!currentUser) return "none";
+
+    try {
+      const status = await friendshipService.getRelationshipStatus(otherUserId);
+      return status.type;
+    } catch (error) {
+      console.error(
+        `Error checking friendship status with user ${otherUserId}:`,
+        error
+      );
+      return "none";
+    }
+  };
+
   // Profil fotoğrafı URL'sini oluştur
   const getProfileImageUrl = (profileImage?: string | null) => {
     if (!profileImage) return undefined;
@@ -570,6 +746,311 @@ const ProfileDetail: FC = () => {
 
   const getMutualFriendsCount = () => {
     return mutualFriends.length;
+  };
+
+  // Add helper function to handle add friend button click
+  const handleAddFriendClick = (e: React.MouseEvent, userId: number) => {
+    e.stopPropagation();
+    handleSendFriendRequest(userId);
+  };
+
+  // Function to handle cancelling friend request
+  const handleCancelFriendRequest = async () => {
+    if (!relationshipId) return;
+
+    try {
+      setIsActionInProgress(true);
+      await friendshipService.cancelFriendRequest(relationshipId);
+
+      // Update relationship status
+      const status = await friendshipService.getRelationshipStatus(
+        parseInt(id!)
+      );
+      setRelationshipStatus(status.type as RelationshipStatus);
+      setRelationshipId(status.id);
+
+      setSuccessMessage("Arkadaşlık isteği iptal edildi.");
+      setTimeout(() => setSuccessMessage(null), 3000);
+    } catch (err: any) {
+      console.error("Error cancelling friend request:", err);
+      setError("Arkadaşlık isteğini iptal ederken bir hata oluştu.");
+      setTimeout(() => setError(null), 3000);
+    } finally {
+      setIsActionInProgress(false);
+    }
+  };
+
+  // Add an effect to refresh the relationship lists when status changes
+  useEffect(() => {
+    // If we're on the profile page and we've taken an action that changed the relationship
+    if (user && relationshipStatus) {
+      const refreshRelationshipData = async () => {
+        try {
+          // Only refresh data if modal is open to avoid unnecessary API calls
+          if (friendsModalOpen) {
+            // Refresh mutual friends
+            const mutualData = await friendshipService.getMutualFriends(
+              user.id
+            );
+            setMutualFriends(mutualData);
+
+            // Refresh followers
+            const followersData = await friendshipService.getUserFollowers(
+              user.id
+            );
+            setFollowers(followersData);
+
+            // Refresh following
+            const followingData = await friendshipService.getUserFollowing(
+              user.id
+            );
+            setFollowing(followingData);
+          }
+        } catch (error) {
+          console.error("Error refreshing relationship data:", error);
+        }
+      };
+
+      refreshRelationshipData();
+    }
+  }, [relationshipStatus, friendsModalOpen, user]);
+
+  // Add a new effect that ensures the profile stats are loaded when visiting a profile
+  useEffect(() => {
+    if (user && user.id) {
+      const loadProfileStats = async () => {
+        try {
+          // Load followers, following and mutual friends even if modal isn't open
+          // This ensures the counts are accurate when first visiting the profile
+          const followersData = await friendshipService.getUserFollowers(
+            user.id
+          );
+          setFollowers(followersData);
+
+          const followingData = await friendshipService.getUserFollowing(
+            user.id
+          );
+          setFollowing(followingData);
+
+          const mutualData = await friendshipService.getMutualFriends(user.id);
+          setMutualFriends(mutualData);
+        } catch (error) {
+          console.error("Error loading profile stats:", error);
+        }
+      };
+
+      loadProfileStats();
+    }
+  }, [user]);
+
+  // Add a function to render the relationship status UI based on status
+  const renderRelationshipStatusUI = () => {
+    if (!currentUser || !user || currentUser.id === user.id) return null;
+
+    switch (relationshipStatus) {
+      case "none":
+        return (
+          <Stack direction="row" spacing={2}>
+            <Button
+              variant="contained"
+              startIcon={<PersonAddIcon />}
+              onClick={() => handleFollowUser()}
+              disabled={isActionInProgress}
+            >
+              {isActionInProgress ? <CircularProgress size={24} /> : "Takip Et"}
+            </Button>
+            <Button
+              variant="outlined"
+              startIcon={<PersonAddOutlinedIcon />}
+              onClick={() => handleSendFriendRequest()}
+              disabled={isActionInProgress}
+            >
+              Arkadaşlık İsteği Gönder
+            </Button>
+          </Stack>
+        );
+
+      case "pending":
+        return (
+          <Button
+            variant="outlined"
+            startIcon={<CheckIcon />}
+            onClick={() => handleCancelFriendRequest()}
+            disabled={isActionInProgress}
+          >
+            {isActionInProgress ? (
+              <CircularProgress size={24} />
+            ) : (
+              "İstek Gönderildi"
+            )}
+          </Button>
+        );
+
+      case "pendingIncoming":
+        return (
+          <Stack spacing={1} direction="column" alignItems="center">
+            <Typography variant="body2" color="text.secondary" gutterBottom>
+              Size arkadaşlık isteği gönderdi
+            </Typography>
+            <Stack spacing={1} direction="row">
+              <Button
+                variant="contained"
+                color="success"
+                startIcon={<ThumbUpIcon />}
+                onClick={handleAcceptFriendRequest}
+                disabled={isActionInProgress}
+              >
+                {isActionInProgress ? (
+                  <CircularProgress size={24} />
+                ) : (
+                  "Kabul Et"
+                )}
+              </Button>
+              <Button
+                variant="outlined"
+                color="error"
+                startIcon={<ThumbDownIcon />}
+                onClick={handleRejectFriendRequest}
+                disabled={isActionInProgress}
+              >
+                Reddet
+              </Button>
+            </Stack>
+          </Stack>
+        );
+
+      case "friends":
+        return (
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              gap: 1,
+            }}
+          >
+            <Button
+              variant="outlined"
+              color="primary"
+              startIcon={<CheckIcon />}
+              disabled
+            >
+              Arkadaşsınız
+            </Button>
+            <Button
+              variant="outlined"
+              color="error"
+              size="small"
+              startIcon={<PersonRemoveIcon />}
+              onClick={handleUnfollowUser}
+              disabled={isActionInProgress}
+            >
+              {isActionInProgress ? (
+                <CircularProgress size={16} />
+              ) : (
+                "Arkadaşlıktan Çıkar"
+              )}
+            </Button>
+          </Box>
+        );
+
+      case "following":
+        return (
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              gap: 1,
+            }}
+          >
+            <Button
+              variant="outlined"
+              color="primary"
+              startIcon={<CheckIcon />}
+              disabled
+            >
+              Takip Ediyorsunuz
+            </Button>
+            <Button
+              variant="outlined"
+              color="error"
+              size="small"
+              startIcon={<PersonRemoveIcon />}
+              onClick={handleUnfollowUser}
+              disabled={isActionInProgress}
+            >
+              {isActionInProgress ? (
+                <CircularProgress size={16} />
+              ) : (
+                "Takibi Bırak"
+              )}
+            </Button>
+          </Box>
+        );
+
+      case "follower":
+        return (
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              gap: 1,
+            }}
+          >
+            <Typography variant="body2" color="text.secondary">
+              Sizi takip ediyor
+            </Typography>
+            <Button
+              variant="contained"
+              startIcon={<PersonAddIcon />}
+              onClick={handleFollowUser}
+              disabled={isActionInProgress}
+            >
+              {isActionInProgress ? <CircularProgress size={24} /> : "Takip Et"}
+            </Button>
+          </Box>
+        );
+
+      case "mutualFollow":
+        return (
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              gap: 1,
+            }}
+          >
+            <Button
+              variant="outlined"
+              color="primary"
+              startIcon={<CheckIcon />}
+              disabled
+            >
+              Birbirinizi Takip Ediyorsunuz
+            </Button>
+            <Button
+              variant="outlined"
+              color="error"
+              size="small"
+              startIcon={<PersonRemoveIcon />}
+              onClick={handleUnfollowUser}
+              disabled={isActionInProgress}
+            >
+              {isActionInProgress ? (
+                <CircularProgress size={16} />
+              ) : (
+                "Takibi Bırak"
+              )}
+            </Button>
+          </Box>
+        );
+
+      default:
+        return null;
+    }
   };
 
   if (loading) {
@@ -649,271 +1130,19 @@ const ProfileDetail: FC = () => {
 
           {/* Relationship actions */}
           {currentUser && currentUser.id !== user.id && (
-            <Box mt={3}>
-              {relationshipStatus === "none" && (
-                <Stack direction="row" spacing={2}>
-                  <Button
-                    variant="contained"
-                    startIcon={<PersonAddIcon />}
-                    onClick={handleFollowUser}
-                    disabled={isActionInProgress}
-                  >
-                    {isActionInProgress ? (
-                      <CircularProgress size={24} />
-                    ) : (
-                      "Takip Et"
-                    )}
-                  </Button>
-                  <Button
-                    variant="outlined"
-                    startIcon={<PersonAddOutlinedIcon />}
-                    onClick={handleSendFriendRequest}
-                    disabled={isActionInProgress}
-                  >
-                    Arkadaşlık İsteği Gönder
-                  </Button>
-                </Stack>
-              )}
-
-              {relationshipStatus === "pending" && (
-                <Button variant="outlined" startIcon={<CheckIcon />} disabled>
-                  İstek Gönderildi
-                </Button>
-              )}
-
-              {relationshipStatus === "pendingIncoming" && (
-                <Stack spacing={1} direction="column" alignItems="center">
-                  <Typography
-                    variant="body2"
-                    color="text.secondary"
-                    gutterBottom
-                  >
-                    Size arkadaşlık isteği gönderdi
-                  </Typography>
-                  <Stack spacing={1} direction="row">
-                    <Button
-                      variant="contained"
-                      color="success"
-                      startIcon={<ThumbUpIcon />}
-                      onClick={handleAcceptFriendRequest}
-                      disabled={isActionInProgress}
-                    >
-                      {isActionInProgress ? (
-                        <CircularProgress size={24} />
-                      ) : (
-                        "Kabul Et"
-                      )}
-                    </Button>
-                    <Button
-                      variant="outlined"
-                      color="error"
-                      startIcon={<ThumbDownIcon />}
-                      onClick={handleRejectFriendRequest}
-                      disabled={isActionInProgress}
-                    >
-                      Reddet
-                    </Button>
-                  </Stack>
-                </Stack>
-              )}
-
-              {relationshipStatus === "friends" && (
-                <Box
-                  sx={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    gap: 1,
-                  }}
-                >
-                  <Button
-                    variant="outlined"
-                    color="primary"
-                    startIcon={<CheckIcon />}
-                    disabled
-                  >
-                    Arkadaşsınız
-                  </Button>
-                  <Button
-                    variant="outlined"
-                    color="error"
-                    size="small"
-                    startIcon={<PersonRemoveIcon />}
-                    onClick={handleUnfollowUser}
-                    disabled={isActionInProgress}
-                  >
-                    {isActionInProgress ? (
-                      <CircularProgress size={16} />
-                    ) : (
-                      "Arkadaşlıktan Çıkar"
-                    )}
-                  </Button>
-                </Box>
-              )}
-
-              {relationshipStatus === "following" && (
-                <Box
-                  sx={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    gap: 1,
-                  }}
-                >
-                  <Button
-                    variant="outlined"
-                    color="primary"
-                    startIcon={<CheckIcon />}
-                    disabled
-                  >
-                    Takip Ediyorsunuz
-                  </Button>
-                  <Button
-                    variant="outlined"
-                    color="error"
-                    size="small"
-                    startIcon={<PersonRemoveIcon />}
-                    onClick={handleUnfollowUser}
-                    disabled={isActionInProgress}
-                  >
-                    {isActionInProgress ? (
-                      <CircularProgress size={16} />
-                    ) : (
-                      "Takibi Bırak"
-                    )}
-                  </Button>
-                </Box>
-              )}
-
-              {relationshipStatus === "follower" && (
-                <Box
-                  sx={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    gap: 1,
-                  }}
-                >
-                  <Typography variant="body2" color="text.secondary">
-                    Sizi takip ediyor
-                  </Typography>
-                  <Button
-                    variant="contained"
-                    startIcon={<PersonAddIcon />}
-                    onClick={handleFollowUser}
-                    disabled={isActionInProgress}
-                  >
-                    {isActionInProgress ? (
-                      <CircularProgress size={24} />
-                    ) : (
-                      "Takip Et"
-                    )}
-                  </Button>
-                </Box>
-              )}
-
-              {relationshipStatus === "mutualFollow" && (
-                <Box
-                  sx={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    gap: 1,
-                  }}
-                >
-                  <Button
-                    variant="outlined"
-                    color="primary"
-                    startIcon={<CheckIcon />}
-                    disabled
-                  >
-                    Birbirinizi Takip Ediyorsunuz
-                  </Button>
-                  <Button
-                    variant="outlined"
-                    color="error"
-                    size="small"
-                    startIcon={<PersonRemoveIcon />}
-                    onClick={handleUnfollowUser}
-                    disabled={isActionInProgress}
-                  >
-                    {isActionInProgress ? (
-                      <CircularProgress size={16} />
-                    ) : (
-                      "Takibi Bırak"
-                    )}
-                  </Button>
-                </Box>
-              )}
-            </Box>
+            <Box mt={3}>{renderRelationshipStatusUI()}</Box>
           )}
         </CardContent>
       </Card>
 
-      {/* Yorumlar kısmı - Kullanıcı gizli profil ise ve arkadaş değilse gösterilmez */}
-      {canViewDetailedProfile() && (
-        <Card sx={{ mb: 4 }}>
-          <CardContent>
-            <Typography variant="h6" fontWeight="bold" gutterBottom>
-              Kullanıcının Yorumları
-            </Typography>
-
-            {loadingReviews ? (
-              <Box sx={{ display: "flex", justifyContent: "center", my: 2 }}>
-                <CircularProgress size={24} />
-              </Box>
-            ) : !Array.isArray(userReviews) || userReviews.length === 0 ? (
-              <Alert severity="info">Kullanıcı henüz yorum yapmamış.</Alert>
-            ) : (
-              <List>
-                {userReviews.map((review) => (
-                  <Box key={review.id}>
-                    <ListItem alignItems="flex-start">
-                      <ListItemText
-                        primary={
-                          <Typography fontWeight="medium">
-                            {review.movie?.title || "Film"}
-                          </Typography>
-                        }
-                        secondary={
-                          <>
-                            <Typography
-                              component="span"
-                              variant="body2"
-                              color="text.primary"
-                            >
-                              {review.content.length > 150
-                                ? `${review.content.substring(0, 150)}...`
-                                : review.content}
-                            </Typography>
-                            <br />
-                            <Typography
-                              component="span"
-                              variant="body2"
-                              color="text.secondary"
-                            >
-                              {formatCreationTime(review.createdAt)}
-                            </Typography>
-                          </>
-                        }
-                      />
-                    </ListItem>
-                    <Divider variant="inset" component="li" />
-                  </Box>
-                ))}
-              </List>
-            )}
-          </CardContent>
-        </Card>
-      )}
-
-      {/* Connections stats */}
+      {/* Connections stats - MOVED UP */}
       <Paper
         sx={{
           p: 3,
           textAlign: "center",
           cursor: "pointer",
           transition: "background-color 0.3s",
+          mb: 4, // Added margin bottom
           "&:hover": {
             backgroundColor: "rgba(0, 0, 0, 0.04)",
           },
@@ -956,6 +1185,86 @@ const ProfileDetail: FC = () => {
           </Box>
         </Box>
       </Paper>
+
+      {/* Yorumlar kısmı - NOW AFTER CONNECTIONS */}
+      {canViewDetailedProfile() && (
+        <Card sx={{ mb: 4 }}>
+          <CardContent>
+            <Typography variant="h6" fontWeight="bold" gutterBottom>
+              Kullanıcının Yorumları
+            </Typography>
+
+            {loadingReviews ? (
+              <Box sx={{ display: "flex", justifyContent: "center", my: 2 }}>
+                <CircularProgress size={24} />
+              </Box>
+            ) : !Array.isArray(userReviews) || userReviews.length === 0 ? (
+              <Alert severity="info">Kullanıcı henüz yorum yapmamış.</Alert>
+            ) : (
+              <List>
+                {userReviews.map((review) => (
+                  <Box key={review.id}>
+                    <ListItem alignItems="flex-start">
+                      {review.movie?.posterImage && (
+                        <Box
+                          component="img"
+                          src={
+                            review.movie.posterImage.startsWith("http")
+                              ? review.movie.posterImage
+                              : `http://localhost:3000/uploads/${review.movie.posterImage}`
+                          }
+                          alt={review.movie?.title || "Film"}
+                          sx={{
+                            width: 60,
+                            height: 90,
+                            objectFit: "cover",
+                            borderRadius: 1,
+                            mr: 2,
+                          }}
+                          onError={(e) => {
+                            // Fallback for broken images
+                            (e.target as HTMLImageElement).src =
+                              "https://via.placeholder.com/60x90?text=Film";
+                          }}
+                        />
+                      )}
+                      <ListItemText
+                        primary={
+                          <Typography fontWeight="medium">
+                            {review.movie?.title || "Film"}
+                          </Typography>
+                        }
+                        secondary={
+                          <>
+                            <Typography
+                              component="span"
+                              variant="body2"
+                              color="text.primary"
+                            >
+                              {review.content.length > 150
+                                ? `${review.content.substring(0, 150)}...`
+                                : review.content}
+                            </Typography>
+                            <br />
+                            <Typography
+                              component="span"
+                              variant="body2"
+                              color="text.secondary"
+                            >
+                              {formatCreationTime(review.createdAt)}
+                            </Typography>
+                          </>
+                        }
+                      />
+                    </ListItem>
+                    <Divider variant="inset" component="li" />
+                  </Box>
+                ))}
+              </List>
+            )}
+          </CardContent>
+        </Card>
+      )}
 
       {/* Connections Modal */}
       <Dialog
@@ -1156,10 +1465,25 @@ const ProfileDetail: FC = () => {
 
                       if (!followerUser) return null;
 
+                      // Check if current user is viewing and they follow this person back
+                      const isCurrentUser =
+                        currentUser && currentUser.id === user.id;
+                      const isMutualFollow = following.some(
+                        (f) => f.friendId === followerUser.id
+                      );
+                      const isFriend = friendship.status === "ACCEPTED";
+
                       return (
                         <Box key={friendship.id}>
                           <StyledListItem
                             onClick={() => navigateToProfile(followerUser.id)}
+                            sx={{
+                              borderLeft: isFriend
+                                ? "4px solid #4caf50"
+                                : isMutualFollow
+                                ? "4px solid #2196f3"
+                                : "none",
+                            }}
                           >
                             <ListItemAvatar>
                               <Avatar
@@ -1174,12 +1498,46 @@ const ProfileDetail: FC = () => {
                             </ListItemAvatar>
                             <ListItemText
                               primary={
-                                <Typography
-                                  variant="subtitle1"
-                                  fontWeight="bold"
+                                <Box
+                                  sx={{ display: "flex", alignItems: "center" }}
                                 >
-                                  {followerUser.name || followerUser.username}
-                                </Typography>
+                                  <Typography
+                                    variant="subtitle1"
+                                    fontWeight="bold"
+                                  >
+                                    {followerUser.name || followerUser.username}
+                                  </Typography>
+                                  {isFriend && (
+                                    <Typography
+                                      variant="caption"
+                                      sx={{
+                                        ml: 1,
+                                        color: "success.main",
+                                        bgcolor: "rgba(76, 175, 80, 0.12)",
+                                        px: 1,
+                                        py: 0.5,
+                                        borderRadius: 1,
+                                      }}
+                                    >
+                                      Arkadaş
+                                    </Typography>
+                                  )}
+                                  {!isFriend && isMutualFollow && (
+                                    <Typography
+                                      variant="caption"
+                                      sx={{
+                                        ml: 1,
+                                        color: "primary.main",
+                                        bgcolor: "rgba(33, 150, 243, 0.12)",
+                                        px: 1,
+                                        py: 0.5,
+                                        borderRadius: 1,
+                                      }}
+                                    >
+                                      Karşılıklı Takip
+                                    </Typography>
+                                  )}
+                                </Box>
                               }
                               secondary={
                                 <Box>

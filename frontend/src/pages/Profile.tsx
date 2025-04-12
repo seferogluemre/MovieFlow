@@ -12,12 +12,19 @@ import {
   CircularProgress,
   Alert,
   Paper,
+  Stack,
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import { Edit as EditIcon } from "@mui/icons-material";
+import {
+  Edit as EditIcon,
+  Settings as SettingsIcon,
+  Visibility as VisibilityIcon,
+  VisibilityOff as VisibilityOffIcon,
+} from "@mui/icons-material";
 import { useAuth } from "../context/AuthContext";
 import api, { userService } from "../utils/api";
 import { User } from "../utils/types";
+import { useNavigate } from "react-router-dom";
 
 const ProfileAvatar = styled(Avatar)(({ theme }) => ({
   width: 120,
@@ -71,6 +78,7 @@ const VisuallyHiddenInput = styled("input")({
 
 const Profile: FC = () => {
   const { user, checkAuthStatus } = useAuth();
+  const navigate = useNavigate();
   const [name, setName] = useState("");
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -368,7 +376,39 @@ const Profile: FC = () => {
   };
 
   return (
-    <Box sx={{ maxWidth: "800px", mx: "auto" }}>
+    <Box
+      sx={{
+        maxWidth: 800,
+        mx: "auto",
+        py: 4,
+        px: { xs: 2, md: 0 },
+      }}
+    >
+      {/* Add a settings button at the top */}
+      <Box sx={{ display: "flex", justifyContent: "flex-end", mb: 2 }}>
+        <Stack direction="row" spacing={1} alignItems="center">
+          {user?.isPrivate && (
+            <Box sx={{ display: "flex", alignItems: "center" }}>
+              <VisibilityOffIcon
+                color="action"
+                fontSize="small"
+                sx={{ mr: 0.5 }}
+              />
+              <Typography variant="body2" color="text.secondary">
+                Gizli Profil
+              </Typography>
+            </Box>
+          )}
+          <Button
+            variant="outlined"
+            startIcon={<SettingsIcon />}
+            onClick={() => navigate("/settings")}
+          >
+            Gizlilik Ayarları
+          </Button>
+        </Stack>
+      </Box>
+
       <Typography variant="h4" fontWeight="bold" mb={2}>
         Profil
       </Typography>
