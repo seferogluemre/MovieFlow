@@ -69,6 +69,7 @@ const Friends: FC = () => {
   const [activeTab, setActiveTab] = useState(0);
   const [friendships, setFriendships] = useState<Friendship[]>([]);
   const [pendingRequests, setPendingRequests] = useState<Friendship[]>([]);
+  const [sentRequests, setSentRequests] = useState<Friendship[]>([]);
   const [allUsers, setAllUsers] = useState<User[]>([]);
   const [userRelationships, setUserRelationships] = useState<
     Record<number, UserRelationship>
@@ -77,6 +78,9 @@ const Friends: FC = () => {
     []
   );
   const [filteredRequests, setFilteredRequests] = useState<Friendship[]>([]);
+  const [filteredSentRequests, setFilteredSentRequests] = useState<
+    Friendship[]
+  >([]);
   const [filteredUsers, setFilteredUsers] = useState<User[]>([]);
   const [loading, setLoading] = useState(true);
   const [loadingUsers, setLoadingUsers] = useState(false);
@@ -110,21 +114,64 @@ const Friends: FC = () => {
       const friendshipsResponse = await api.get("/friendships");
       const fetchedFriendships = friendshipsResponse.data || [];
 
-      // Filter out current user from the friends list
-      const filteredFriendships = fetchedFriendships.filter(
-        (friendship) => friendship.friend.id !== currentUser?.id
-      );
+      // Get current user ID from localStorage for direct comparison
+      const currentUserId = localStorage.getItem("user_id")
+        ? parseInt(localStorage.getItem("user_id")!)
+        : currentUser?.id;
 
-      setFriendships(filteredFriendships);
-      setFilteredFriendships(filteredFriendships);
+      setFriendships(fetchedFriendships);
 
-      // Fetch pending requests
+      // Filter out current user properly from displayed friendships
+      // This Map will track the most recent friendship for each unique user
+      const uniqueFriendships = new Map();
+
+      // Process each friendship to find the most recent one for each user
+      fetchedFriendships.forEach((friendship) => {
+        // Skip self-relationships and any friendship where the current user is one of the parties
+        if (
+          friendship.userId === currentUserId &&
+          friendship.friendId === currentUserId
+        ) {
+          return;
+        }
+
+        // Determine which user in this friendship is NOT the current user
+        const otherUserId =
+          friendship.userId === currentUserId
+            ? friendship.friendId
+            : friendship.userId;
+
+        // Skip if the other user is somehow the current user (extra safety)
+        if (otherUserId === currentUserId) {
+          return;
+        }
+
+        // than the one we've already tracked, update the map
+        if (
+          !uniqueFriendships.has(otherUserId) ||
+          new Date(friendship.createdAt) >
+            new Date(uniqueFriendships.get(otherUserId).createdAt)
+        ) {
+          uniqueFriendships.set(otherUserId, friendship);
+        }
+      });
+
+      // Convert the Map values back to an array
+      const filtered = Array.from(uniqueFriendships.values());
+      setFilteredFriendships(filtered);
+
+      // Fetch received friend requests
       const pendingResponse = await api.get("/friendships/pending");
       setPendingRequests(pendingResponse.data || []);
       setFilteredRequests(pendingResponse.data || []);
 
+      // Fetch sent friend requests
+      const sentResponse = await api.get("/friendships/sent");
+      setSentRequests(sentResponse.data || []);
+      setFilteredSentRequests(sentResponse.data || []);
+
       // When on All Users tab, fetch all users
-      if (activeTab === 2) {
+      if (activeTab === 3) {
         fetchAllUsers();
       }
     } catch (err) {
@@ -141,15 +188,22 @@ const Friends: FC = () => {
     try {
       setLoadingUsers(true);
       const users = await userService.getAllUsers();
-      setAllUsers(users);
-      setFilteredUsers(users);
+
+      // Get current user ID from localStorage for direct comparison
+      const currentUserId = localStorage.getItem("user_id")
+        ? parseInt(localStorage.getItem("user_id")!)
+        : currentUser?.id;
+
+      // Filter out the current user from the list of all users
+      const filteredUsers = users.filter((user) => user.id !== currentUserId);
+
+      setAllUsers(filteredUsers);
+      setFilteredUsers(filteredUsers);
 
       // Build relationship map
       const relationships: Record<number, UserRelationship> = {};
 
-      users.forEach((user: User) => {
-        if (user.id === currentUser?.id) return; // Skip current user
-
+      filteredUsers.forEach((user: User) => {
         const isFriend = friendships.some(
           (f) =>
             (f.friendId === user.id || f.userId === user.id) &&
@@ -191,24 +245,65 @@ const Friends: FC = () => {
   };
 
   useEffect(() => {
-    // Filter current user from friendships list
+    // Get current user ID from localStorage for direct comparison
+    const currentUserId = localStorage.getItem("user_id")
+      ? parseInt(localStorage.getItem("user_id")!)
+      : currentUser?.id;
+
     if (searchQuery) {
       const query = searchQuery.toLowerCase();
 
-      const filtered = friendships
-        .filter((friendship) => {
-          // Remove friendships where the friend is the current user
-          return friendship.friend.id !== currentUser?.id;
-        })
-        .filter((friendship) => {
-          const friend = friendship.friend;
-          return (
-            friend.name.toLowerCase().includes(query) ||
-            friend.username.toLowerCase().includes(query)
-          );
-        });
+      // This Map will track the most recent friendship for each unique user
+      const uniqueFriendships = new Map();
+
+      // Process each friendship to find the most recent one for each user that matches search
+      friendships.forEach((friendship) => {
+        // Skip self-relationships
+        if (
+          friendship.userId === currentUserId &&
+          friendship.friendId === currentUserId
+        ) {
+          return;
+        }
+
+        // Get the other user in the friendship
+        const otherUserId =
+          friendship.userId === currentUserId
+            ? friendship.friendId
+            : friendship.userId;
+
+        // Skip if the other user is somehow the current user (extra safety)
+        if (otherUserId === currentUserId) {
+          return;
+        }
+
+        const otherUser =
+          friendship.userId === currentUserId
+            ? friendship.friend
+            : friendship.user;
+
+        // Check if the other user matches the search query
+        if (
+          otherUser.name.toLowerCase().includes(query) ||
+          otherUser.username.toLowerCase().includes(query)
+        ) {
+          // If this is the first time we've seen this user, or this friendship is more recent
+          // than the one we've already tracked, update the map
+          if (
+            !uniqueFriendships.has(otherUserId) ||
+            new Date(friendship.createdAt) >
+              new Date(uniqueFriendships.get(otherUserId).createdAt)
+          ) {
+            uniqueFriendships.set(otherUserId, friendship);
+          }
+        }
+      });
+
+      // Convert the Map values back to an array
+      const filtered = Array.from(uniqueFriendships.values());
       setFilteredFriendships(filtered);
 
+      // Filter received friend requests
       const filteredPending = pendingRequests.filter((request) => {
         const user = request.user;
         return (
@@ -217,6 +312,16 @@ const Friends: FC = () => {
         );
       });
       setFilteredRequests(filteredPending);
+
+      // Filter sent friend requests
+      const filteredSent = sentRequests.filter((request) => {
+        const user = request.friend;
+        return (
+          user.name.toLowerCase().includes(query) ||
+          user.username.toLowerCase().includes(query)
+        );
+      });
+      setFilteredSentRequests(filteredSent);
 
       // Filter all users
       const filteredAllUsers = allUsers
@@ -229,13 +334,42 @@ const Friends: FC = () => {
         });
       setFilteredUsers(filteredAllUsers);
     } else {
-      // Filter out current user from friendships
-      const filteredFriends = friendships.filter(
-        (friendship) => friendship.friend.id !== currentUser?.id
-      );
-      setFilteredFriendships(filteredFriends);
+      // When no search query, filter out friendships that only involve the current user
+      // This Map will track the most recent friendship for each unique user
+      const uniqueFriendships = new Map();
 
+      // Process each friendship to find the most recent one for each user
+      friendships.forEach((friendship) => {
+        // Skip friendships where both user and friend are the current user
+        if (
+          friendship.userId === currentUserId &&
+          friendship.friendId === currentUserId
+        ) {
+          return;
+        }
+
+        // Determine which user in this friendship is NOT the current user
+        const otherUserId =
+          friendship.userId === currentUserId
+            ? friendship.friendId
+            : friendship.userId;
+
+        // If this is the first time we've seen this user, or this friendship is more recent
+        // than the one we've already tracked, update the map
+        if (
+          !uniqueFriendships.has(otherUserId) ||
+          new Date(friendship.createdAt) >
+            new Date(uniqueFriendships.get(otherUserId).createdAt)
+        ) {
+          uniqueFriendships.set(otherUserId, friendship);
+        }
+      });
+
+      // Convert the Map values back to an array
+      const filteredFriends = Array.from(uniqueFriendships.values());
+      setFilteredFriendships(filteredFriends);
       setFilteredRequests(pendingRequests);
+      setFilteredSentRequests(sentRequests);
 
       // Filter out current user from all users
       const filteredUsers = allUsers.filter(
@@ -243,12 +377,19 @@ const Friends: FC = () => {
       );
       setFilteredUsers(filteredUsers);
     }
-  }, [searchQuery, friendships, pendingRequests, allUsers, currentUser]);
+  }, [
+    searchQuery,
+    friendships,
+    pendingRequests,
+    sentRequests,
+    allUsers,
+    currentUser,
+  ]);
 
   const handleTabChange = (_event: React.SyntheticEvent, newValue: number) => {
     setActiveTab(newValue);
     // Fetch all users when switching to the All Users tab
-    if (newValue === 2 && allUsers.length === 0) {
+    if (newValue === 3 && allUsers.length === 0) {
       fetchAllUsers();
     }
   };
@@ -364,6 +505,28 @@ const Friends: FC = () => {
     }
   };
 
+  const handleCancelRequest = async (friendshipId: number) => {
+    try {
+      await api.delete(`/friendships/${friendshipId}`);
+
+      setSuccessMessage("Arkadaşlık isteği iptal edildi.");
+
+      // Refresh data
+      fetchData();
+
+      setTimeout(() => {
+        setSuccessMessage(null);
+      }, 3000);
+    } catch (err) {
+      console.error("Error canceling friendship request:", err);
+      setError(processApiError(err));
+
+      setTimeout(() => {
+        setError(null);
+      }, 3000);
+    }
+  };
+
   const formatDate = (dateString: string) => {
     try {
       return formatDistanceToNow(new Date(dateString), {
@@ -388,6 +551,7 @@ const Friends: FC = () => {
         <Tabs value={activeTab} onChange={handleTabChange}>
           <Tab label="My Friends" />
           <Tab label="Friend Requests" />
+          <Tab label="Sent Requests" />
           <Tab label="All Users" />
         </Tabs>
       </Box>
@@ -400,6 +564,8 @@ const Friends: FC = () => {
               ? "Search friends..."
               : activeTab === 1
               ? "Search friend requests..."
+              : activeTab === 2
+              ? "Search sent requests..."
               : "Search users..."
           }
           value={searchQuery}
@@ -445,66 +611,87 @@ const Friends: FC = () => {
               ) : (
                 <Paper>
                   <List>
-                    {filteredFriendships.map((friendship, index) => (
-                      <Box key={friendship.id}>
-                        <ListItem
-                          secondaryAction={
-                            <IconButton
-                              edge="end"
-                              onClick={() =>
-                                handleProfileClick(friendship.friend.id)
-                              }
-                            >
-                              <MoreVertIcon />
-                            </IconButton>
-                          }
-                        >
-                          <ListItemAvatar>
-                            <Avatar
-                              src={friendship.friend.profileImage || undefined}
-                              alt={friendship.friend.name}
-                              onClick={() =>
-                                handleProfileClick(friendship.friend.id)
-                              }
-                              sx={{ cursor: "pointer", width: 50, height: 50 }}
-                            />
-                          </ListItemAvatar>
-                          <ListItemText
-                            primary={
-                              <Typography
-                                variant="subtitle1"
-                                component="span"
-                                fontWeight="bold"
+                    {filteredFriendships.map((friendship, index) => {
+                      const currentUserId = localStorage.getItem("userId")
+                        ? parseInt(localStorage.getItem("userId")!)
+                        : currentUser?.id;
+
+                      const otherUserId =
+                        friendship.userId === currentUserId
+                          ? friendship.friendId
+                          : friendship.userId;
+
+                      const otherUser =
+                        friendship.userId === currentUserId
+                          ? friendship.friend
+                          : friendship.user;
+
+                      // Double-check that we're not displaying the current user
+                      if (otherUserId === currentUserId) return null;
+
+                      return (
+                        <Box key={friendship.id}>
+                          <ListItem
+                            secondaryAction={
+                              <IconButton
+                                edge="end"
+                                onClick={() => handleProfileClick(otherUserId)}
                               >
-                                {friendship.friend.name}
-                              </Typography>
+                                <MoreVertIcon />
+                              </IconButton>
                             }
-                            secondary={
-                              <>
+                          >
+                            <ListItemAvatar>
+                              <Avatar
+                                src={otherUser.profileImage || undefined}
+                                alt={otherUser.name}
+                                onClick={() => handleProfileClick(otherUserId)}
+                                sx={{
+                                  cursor: "pointer",
+                                  width: 50,
+                                  height: 50,
+                                }}
+                              />
+                            </ListItemAvatar>
+                            <ListItemText
+                              primary={
                                 <Typography
+                                  variant="subtitle1"
                                   component="span"
-                                  variant="body2"
-                                  color="text.secondary"
+                                  fontWeight="bold"
                                 >
-                                  @{friendship.friend.username}
+                                  {otherUser.name}
                                 </Typography>
-                                <br />
-                                <Typography
-                                  component="span"
-                                  variant="body2"
-                                  color="text.secondary"
-                                >
-                                  Arkadaş oldu:{" "}
-                                  {formatDate(friendship.createdAt)}
-                                </Typography>
-                              </>
-                            }
-                            sx={{ ml: 2 }}
-                          />
-                        </ListItem>
-                        {index < filteredFriendships.length - 1 && <Divider />}
-                      </Box>
-                    ))}
+                              }
+                              secondary={
+                                <>
+                                  <Typography
+                                    component="span"
+                                    variant="body2"
+                                    color="text.secondary"
+                                  >
+                                    @{otherUser.username}
+                                  </Typography>
+                                  <br />
+                                  <Typography
+                                    component="span"
+                                    variant="body2"
+                                    color="text.secondary"
+                                  >
+                                    Arkadaş oldu:{" "}
+                                    {formatDate(friendship.createdAt)}
+                                  </Typography>
+                                </>
+                              }
+                              sx={{ ml: 2 }}
+                            />
+                          </ListItem>
+                          {index < filteredFriendships.length - 1 && (
+                            <Divider />
+                          )}
+                        </Box>
+                      );
+                    })}
                   </List>
                 </Paper>
               )}
@@ -585,8 +772,83 @@ const Friends: FC = () => {
             </>
           )}
 
-          {/* All Users Tab */}
+          {/* Sent Requests Tab */}
           {activeTab === 2 && (
+            <>
+              {filteredSentRequests.length === 0 ? (
+                <Alert severity="info">
+                  {searchQuery
+                    ? "Arama kriterlerinize uygun gönderilen istek bulunamadı."
+                    : "Gönderilen arkadaşlık isteği yok."}
+                </Alert>
+              ) : (
+                <Grid container spacing={3}>
+                  {filteredSentRequests.map((request) => (
+                    <Grid item xs={12} md={4} key={request.id}>
+                      <Card>
+                        <CardContent>
+                          <Box
+                            sx={{
+                              display: "flex",
+                              alignItems: "center",
+                              mb: 2,
+                            }}
+                          >
+                            <Avatar
+                              src={request.friend.profileImage || undefined}
+                              alt={request.friend.name}
+                              onClick={() =>
+                                handleProfileClick(request.friend.id)
+                              }
+                              sx={{ cursor: "pointer", width: 60, height: 60 }}
+                            />
+                            <Box sx={{ ml: 2 }}>
+                              <Typography variant="h6">
+                                {request.friend.name}
+                              </Typography>
+                              <Typography
+                                variant="body2"
+                                color="text.secondary"
+                              >
+                                @{request.friend.username}
+                              </Typography>
+                            </Box>
+                          </Box>
+                          <Typography variant="body2" color="text.secondary">
+                            Sent {formatDate(request.createdAt)}
+                          </Typography>
+                        </CardContent>
+                        <CardActions>
+                          <Button
+                            startIcon={<CloseIcon />}
+                            variant="outlined"
+                            color="error"
+                            onClick={() => handleCancelRequest(request.id)}
+                            fullWidth
+                          >
+                            Cancel Request
+                          </Button>
+                          <Button
+                            startIcon={<PersonIcon />}
+                            variant="outlined"
+                            onClick={() =>
+                              handleProfileClick(request.friend.id)
+                            }
+                            fullWidth
+                          >
+                            View Profile
+                          </Button>
+                        </CardActions>
+                      </Card>
+                    </Grid>
+                  ))}
+                </Grid>
+              )}
+            </>
+          )}
+
+          {/* All Users Tab */}
+          {activeTab === 3 && (
             <>
               {loadingUsers ? (
                 <Box sx={{ display: "flex", justifyContent: "center", my: 4 }}>
@@ -600,109 +862,113 @@ const Friends: FC = () => {
                 </Alert>
               ) : (
                 <Grid container spacing={3}>
-                  {filteredUsers
-                    .filter((user) => user.id !== currentUser?.id) // Filter out current user
-                    .map((user) => {
-                      const relationship = userRelationships[user.id];
-                      return (
-                        <Grid item xs={12} sm={6} md={4} key={user.id}>
-                          <Card>
-                            <CardContent>
-                              <Box
+                  {filteredUsers.map((user) => {
+                    const relationship = userRelationships[user.id];
+                    // Get current user ID from localStorage for double safety
+                    const currentUserId = localStorage.getItem("user_id")
+                      ? parseInt(localStorage.getItem("user_id")!)
+                      : currentUser?.id;
+
+                    // Skip if this is the current user (extra safety check)
+                    if (user.id === currentUserId) return null;
+
+                    return (
+                      <Grid item xs={12} sm={6} md={4} key={user.id}>
+                        <Card>
+                          <CardContent>
+                            <Box
+                              sx={{
+                                display: "flex",
+                                alignItems: "center",
+                                mb: 2,
+                              }}
+                            >
+                              <Avatar
+                                src={user.profileImage || undefined}
+                                alt={user.name}
+                                onClick={() => handleProfileClick(user.id)}
                                 sx={{
-                                  display: "flex",
-                                  alignItems: "center",
-                                  mb: 2,
+                                  cursor: "pointer",
+                                  width: 60,
+                                  height: 60,
                                 }}
-                              >
-                                <Avatar
-                                  src={user.profileImage || undefined}
-                                  alt={user.name}
-                                  onClick={() => handleProfileClick(user.id)}
-                                  sx={{
-                                    cursor: "pointer",
-                                    width: 60,
-                                    height: 60,
-                                  }}
-                                />
-                                <Box sx={{ ml: 2 }}>
-                                  <Typography variant="h6">
-                                    {user.name}
-                                  </Typography>
-                                  <Typography
-                                    variant="body2"
-                                    color="text.secondary"
-                                  >
-                                    @{user.username}
-                                  </Typography>
-                                </Box>
+                              />
+                              <Box sx={{ ml: 2 }}>
+                                <Typography variant="h6">
+                                  {user.name}
+                                </Typography>
+                                <Typography
+                                  variant="body2"
+                                  color="text.secondary"
+                                >
+                                  @{user.username}
+                                </Typography>
                               </Box>
-                            </CardContent>
-                            <CardActions>
+                            </Box>
+                          </CardContent>
+                          <CardActions>
+                            <Button
+                              startIcon={<PersonIcon />}
+                              variant="outlined"
+                              onClick={() => handleProfileClick(user.id)}
+                            >
+                              Profile
+                            </Button>
+
+                            {relationship?.isFriend ? (
                               <Button
                                 startIcon={<PersonIcon />}
-                                variant="outlined"
-                                onClick={() => handleProfileClick(user.id)}
+                                variant="contained"
+                                color="success"
+                                disabled
                               >
-                                Profile
+                                Friends
                               </Button>
+                            ) : relationship?.isPending ? (
+                              <Button
+                                startIcon={<PersonAddIcon />}
+                                variant="outlined"
+                                color="primary"
+                                disabled
+                              >
+                                Request Sent
+                              </Button>
+                            ) : relationship?.isBlocked ? (
+                              <Button
+                                startIcon={<CloseIcon />}
+                                variant="outlined"
+                                color="error"
+                                disabled
+                              >
+                                Blocked
+                              </Button>
+                            ) : (
+                              <Button
+                                startIcon={<PersonAddIcon />}
+                                variant="contained"
+                                color="primary"
+                                onClick={() => handleSendFriendRequest(user.id)}
+                              >
+                                Add Friend
+                              </Button>
+                            )}
 
-                              {relationship?.isFriend ? (
-                                <Button
-                                  startIcon={<PersonIcon />}
-                                  variant="contained"
-                                  color="success"
-                                  disabled
-                                >
-                                  Friends
-                                </Button>
-                              ) : relationship?.isPending ? (
+                            {!relationship?.isFriend &&
+                              !relationship?.isFollowing &&
+                              !relationship?.isBlocked && (
                                 <Button
                                   startIcon={<PersonAddIcon />}
                                   variant="outlined"
-                                  color="primary"
-                                  disabled
+                                  onClick={() => handleFollowUser(user.id)}
                                 >
-                                  Request Sent
-                                </Button>
-                              ) : relationship?.isBlocked ? (
-                                <Button
-                                  startIcon={<CloseIcon />}
-                                  variant="outlined"
-                                  color="error"
-                                  disabled
-                                >
-                                  Blocked
-                                </Button>
-                              ) : (
-                                <Button
-                                  startIcon={<PersonAddIcon />}
-                                  variant="contained"
-                                  color="primary"
-                                  onClick={() =>
-                                    handleSendFriendRequest(user.id)
-                                  }
-                                >
-                                  Add Friend
+                                  Follow
                                 </Button>
                               )}
-
-                              {!relationship?.isFriend &&
-                                !relationship?.isFollowing &&
-                                !relationship?.isBlocked && (
-                                  <Button
-                                    startIcon={<PersonAddIcon />}
-                                    variant="outlined"
-                                    onClick={() => handleFollowUser(user.id)}
-                                  >
-                                    Follow
-                                  </Button>
-                                )}
-                            </CardActions>
-                          </Card>
-                        </Grid>
-                      );
-                    })}
+                          </CardActions>
+                        </Card>
+                      </Grid>
+                    );
+                  })}
                 </Grid>
               )}
             </>

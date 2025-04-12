@@ -160,6 +160,29 @@ export class FriendshipController {
     }
   }
 
+  static async getSentRequests(req: Request, res: Response): Promise<void> {
+    try {
+      const userId = req.user?.id;
+      if (!userId) {
+        logWarn("Friendship getSentRequests ---- Unauthorized access attempt");
+        res.status(401).json({ message: "Unauthorized" });
+        return;
+      }
+
+      const sentRequests = await FriendshipService.getSentRequests(
+        Number(userId)
+      );
+
+      logInfo(
+        "Friendship getSentRequests ---- Retrieved sent friendship requests"
+      );
+      res.json(sentRequests);
+    } catch (error) {
+      logWarn("Friendship getSentRequests ---- Error retrieving sent requests");
+      res.status(500).json({ message: "Internal server error" });
+    }
+  }
+
   static async followUser(req: Request, res: Response): Promise<void> {
     try {
       const userId = req.user?.id;

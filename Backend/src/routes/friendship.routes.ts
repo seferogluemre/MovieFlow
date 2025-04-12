@@ -8,6 +8,7 @@ router.use(authenticate);
 
 router.post("/", FriendshipController.create);
 router.get("/pending", FriendshipController.getPendingRequests);
+router.get("/sent", FriendshipController.getSentRequests);
 router.get("/", FriendshipController.getAll);
 router.get("/:id", FriendshipController.getById);
 router.patch("/:id", FriendshipController.update);

@@ -199,8 +199,22 @@ export class FriendshipService {
     return this.enhanceFriendships(friendships);
   }
 
+  static async getSentRequests(userId: number) {
+    const friendships = await prisma.friendship.findMany({
+      where: {
+        userId: userId,
+        status: FriendshipStatus.PENDING,
+      },
+      include: {
+        user: true,
+        friend: true,
+      },
+    });
+    await prisma.$disconnect();
+    return this.enhanceFriendships(friendships);
+  }
+
   static async followUser(userId: number, targetUserId: number) {
-    // Check if a friendship already exists
     const existingFriendship = await this.getByUserAndFriend(
       userId,
       targetUserId
@@ -258,7 +272,6 @@ export class FriendshipService {
   }
 
   static async unfollowUser(userId: number, targetUserId: number) {
-    // Find the friendship
     const friendship = await prisma.friendship.findFirst({
       where: {
         userId,
