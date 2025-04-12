@@ -1,5 +1,5 @@
-import { FC, useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { FC, useEffect, useState, useRef } from "react";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 import {
   Box,
   Typography,
@@ -33,6 +33,7 @@ import {
 import api, { processApiError } from "../utils/api";
 import { useAuth } from "../context/AuthContext";
 import { tr } from "date-fns/locale";
+import { formatDistanceToNow } from "date-fns";
 
 interface MovieDetails {
   id: number;
@@ -71,14 +72,32 @@ interface MovieDetails {
   }[];
 }
 
+interface Review {
+  id: number;
+  content: string;
+  createdAt: string;
+  updatedAt: string;
+  user: {
+    id: number;
+    name: string;
+    username: string;
+    profileImage: string | null;
+  };
+}
+
 const MovieDetails: FC = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
+  const location = useLocation();
   const { isAuthenticated, checkAuthStatus } = useAuth();
   const [movie, setMovie] = useState<MovieDetails | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
+  const [reviews, setReviews] = useState<Review[]>([]);
+  const [loadingReviews, setLoadingReviews] = useState<boolean>(false);
+  const [reviewError, setReviewError] = useState<string | null>(null);
+  const highlightedReviewRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const init = async () => {
@@ -92,6 +111,7 @@ const MovieDetails: FC = () => {
           }
         }
         fetchMovieDetails(parseInt(id));
+        fetchMovieReviews(parseInt(id));
       }
     };
 
@@ -115,6 +135,37 @@ const MovieDetails: FC = () => {
       );
     } finally {
       setLoading(false);
+    }
+  };
+
+  const fetchMovieReviews = async (movieId: number) => {
+    try {
+      setLoadingReviews(true);
+      const response = await api.get(`/reviews/movie/${movieId}`);
+      setReviews(response.data.data || []);
+      setReviewError(null);
+
+      // URL'den reviewId parametresini al
+      const searchParams = new URLSearchParams(location.search);
+      const reviewId = searchParams.get("reviewId");
+
+      // reviewId varsa, bir sonraki render'da o yoruma kaydır
+      if (reviewId) {
+        setTimeout(() => {
+          const reviewElement = document.getElementById(`review-${reviewId}`);
+          if (reviewElement) {
+            reviewElement.scrollIntoView({
+              behavior: "smooth",
+              block: "center",
+            });
+          }
+        }, 100);
+      }
+    } catch (err) {
+      console.error("Error fetching movie reviews:", err);
+      setReviewError("Film yorumları yüklenirken bir hata oluştu.");
+    } finally {
+      setLoadingReviews(false);
     }
   };
 
@@ -196,6 +247,17 @@ const MovieDetails: FC = () => {
         return "18+";
       default:
         return rating;
+    }
+  };
+
+  const formatDate = (dateString: string) => {
+    try {
+      return formatDistanceToNow(new Date(dateString), {
+        addSuffix: true,
+        locale: tr,
+      });
+    } catch (e) {
+      return "Geçersiz tarih";
     }
   };
 
@@ -427,6 +489,77 @@ const MovieDetails: FC = () => {
           )}
         </Grid>
       </Grid>
+
+      {/* Reviews Section */}
+      <Box sx={{ mt: 6, mb: 4 }}>
+        <Typography variant="h5" fontWeight="bold" gutterBottom>
+          Kullanıcı Yorumları
+        </Typography>
+        <Divider sx={{ mb: 3 }} />
+
+        {loadingReviews ? (
+          <Box sx={{ display: "flex", justifyContent: "center", my: 4 }}>
+            <CircularProgress />
+          </Box>
+        ) : reviewError ? (
+          <Alert severity="error" sx={{ mb: 2 }}>
+            {reviewError}
+          </Alert>
+        ) : reviews.length === 0 ? (
+          <Alert severity="info">
+            Bu film için henüz yorum yapılmamış. İlk yorumu sen yap!
+          </Alert>
+        ) : (
+          <Grid container spacing={3}>
+            {reviews.map((review) => {
+              // URL'den reviewId parametresini al
+              const searchParams = new URLSearchParams(location.search);
+              const reviewId = searchParams.get("reviewId");
+              const isHighlighted =
+                reviewId && parseInt(reviewId) === review.id;
+
+              return (
+                <Grid item xs={12} key={review.id}>
+                  <Paper
+                    id={`review-${review.id}`}
+                    ref={isHighlighted ? highlightedReviewRef : null}
+                    elevation={isHighlighted ? 6 : 2}
+                    sx={{
+                      p: 3,
+                      transition: "all 0.3s ease",
+                      transform: isHighlighted ? "scale(1.02)" : "scale(1)",
+                      borderLeft: isHighlighted ? "4px solid #2196f3" : "none",
+                      bgcolor: isHighlighted
+                        ? "rgba(33, 150, 243, 0.05)"
+                        : "inherit",
+                    }}
+                  >
+                    <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
+                      <Avatar
+                        src={review.user.profileImage || undefined}
+                        alt={review.user.name}
+                        sx={{ mr: 2 }}
+                      />
+                      <Box>
+                        <Typography variant="subtitle1" fontWeight="bold">
+                          {review.user.name}
+                        </Typography>
+                        <Typography variant="body2" color="text.secondary">
+                          @{review.user.username} •{" "}
+                          {formatDate(review.createdAt)}
+                        </Typography>
+                      </Box>
+                    </Box>
+                    <Typography variant="body1" paragraph>
+                      {review.content}
+                    </Typography>
+                  </Paper>
+                </Grid>
+              );
+            })}
+          </Grid>
+        )}
+      </Box>
     </Container>
   );
 };

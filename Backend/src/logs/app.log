@@ -373,3 +373,234 @@
 [INFO] 2025-04-10T18:52:24.434Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
 [INFO] 2025-04-10T18:52:25.980Z - Friendship getFollowers ---- Retrieved followers successfully
 [INFO] 2025-04-10T18:52:26.807Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-12T02:43:44.090Z - Login User --- Login successful 🚀
+[INFO] 2025-04-12T02:43:55.867Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
+[WARN] 2025-04-12T02:44:01.783Z - LibraryController.getById ---- Library entry not found with id 4
+[WARN] 2025-04-12T02:44:08.095Z - LibraryController.getById ---- Library entry not found with id 4
+[INFO] 2025-04-12T02:47:48.695Z - LibraryController.update ---- Updated library entry ${id}
+[INFO] 2025-04-12T03:02:22.987Z - Login User - Logout Successfully
+[INFO] 2025-04-12T03:03:20.437Z - Login User --- Login successful 🚀
+[INFO] 2025-04-12T03:03:20.497Z - Get User --- Request Received
+[INFO] 2025-04-12T03:03:20.572Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-12T03:03:20.603Z - Get User --- Request Received
+[INFO] 2025-04-12T03:03:20.634Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-12T03:03:20.666Z - Get User --- Request Received
+[INFO] 2025-04-12T03:03:20.728Z - Get User --- Request Received
+[INFO] 2025-04-12T03:03:20.899Z - Get User --- Request Received
+[INFO] 2025-04-12T03:03:21.069Z - Get User --- Request Received
+[INFO] 2025-04-12T03:03:21.130Z - Get User --- Request Received
+[INFO] 2025-04-12T03:03:27.072Z - Get User --- Request Received
+[INFO] 2025-04-12T03:03:27.243Z - Get User --- Request Received
+[INFO] 2025-04-12T03:03:29.097Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-12T03:03:30.911Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-12T03:03:31.456Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-12T03:03:31.815Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-12T03:03:31.877Z - Get User --- Request Received
+[INFO] 2025-04-12T03:03:31.940Z - Get User --- Request Received
+[INFO] 2025-04-12T03:03:32.843Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-12T03:03:33.532Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-12T03:03:37.545Z - Get User --- Request Received
+[INFO] 2025-04-12T03:03:37.607Z - Get User --- Request Received
+[INFO] 2025-04-12T03:03:37.669Z - Get User --- Request Received
+[INFO] 2025-04-12T03:03:37.730Z - Get User --- Request Received
+[INFO] 2025-04-12T03:03:37.778Z - Get User --- Request Received
+[INFO] 2025-04-12T03:03:37.934Z - Get User --- Request Received
+[INFO] 2025-04-12T03:03:56.884Z - Get User --- Request Received
+[INFO] 2025-04-12T03:03:56.946Z - Get User --- Request Received
+[INFO] 2025-04-12T03:03:57.008Z - Get User --- Request Received
+[INFO] 2025-04-12T03:03:57.178Z - Get User --- Request Received
+[INFO] 2025-04-12T03:03:57.240Z - Get User --- Request Received
+[INFO] 2025-04-12T03:03:57.302Z - Get User --- Request Received
+[INFO] 2025-04-12T03:04:00.013Z - Notification markAsRead ---- Notification marked as read
+[INFO] 2025-04-12T03:04:00.075Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-12T03:04:00.106Z - Get User --- Request Received
+[INFO] 2025-04-12T03:04:00.159Z - Friendship getRelationshipStatus ---- Retrieved relationship status successfully
+[INFO] 2025-04-12T03:04:00.169Z - Get User --- Request Received
+[INFO] 2025-04-12T03:04:00.215Z - Friendship getRelationshipStatus ---- Retrieved relationship status successfully
+[INFO] 2025-04-12T03:04:02.982Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-12T03:04:05.181Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-12T03:04:05.648Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-12T03:04:05.710Z - Get User --- Request Received
+[INFO] 2025-04-12T03:04:05.771Z - Get User --- Request Received
+[INFO] 2025-04-12T03:04:09.353Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-12T03:04:10.455Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-12T03:04:11.027Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-12T03:04:12.087Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-12T03:05:42.937Z - Get User --- Request Received
+[INFO] 2025-04-12T03:05:43.107Z - Get User --- Request Received
+[INFO] 2025-04-12T03:05:43.279Z - Get User --- Request Received
+[INFO] 2025-04-12T03:05:43.436Z - Get User --- Request Received
+[INFO] 2025-04-12T03:05:43.499Z - Get User --- Request Received
+[INFO] 2025-04-12T03:05:43.546Z - Get User --- Request Received
+[INFO] 2025-04-12T03:05:44.294Z - Get User --- Request Received
+[INFO] 2025-04-12T03:05:44.341Z - Get User --- Request Received
+[INFO] 2025-04-12T03:05:57.531Z - Get User --- Request Received
+[INFO] 2025-04-12T03:05:57.594Z - Get User --- Request Received
+[INFO] 2025-04-12T03:05:57.656Z - Get User --- Request Received
+[INFO] 2025-04-12T03:05:57.704Z - Get User --- Request Received
+[INFO] 2025-04-12T03:05:57.877Z - Get User --- Request Received
+[INFO] 2025-04-12T03:05:57.939Z - Get User --- Request Received
+[INFO] 2025-04-12T03:06:01.575Z - List movies --- Request Received
+[INFO] 2025-04-12T03:06:01.582Z - List movies --- Request Received
+[WARN] 2025-04-12T03:06:04.881Z - LibraryController.create ---- Error creating library entry: ${error}
+[INFO] 2025-04-12T03:06:08.655Z - Get User --- Request Received
+[INFO] 2025-04-12T03:06:08.718Z - Get User --- Request Received
+[INFO] 2025-04-12T03:06:08.778Z - Get User --- Request Received
+[INFO] 2025-04-12T03:06:08.840Z - Get User --- Request Received
+[INFO] 2025-04-12T03:06:08.902Z - Get User --- Request Received
+[INFO] 2025-04-12T03:06:08.950Z - Get User --- Request Received
+[INFO] 2025-04-12T03:06:12.551Z - Get User --- Request Received
+[INFO] 2025-04-12T03:06:12.614Z - Get User --- Request Received
+[INFO] 2025-04-12T03:06:13.655Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-12T03:06:14.472Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-12T03:06:14.911Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-12T03:06:15.802Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-12T03:06:15.975Z - Get User --- Request Received
+[INFO] 2025-04-12T03:06:16.984Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-12T03:06:27.580Z - Get User --- Request Received
+[INFO] 2025-04-12T03:06:27.641Z - Get User --- Request Received
+[INFO] 2025-04-12T03:06:27.703Z - Get User --- Request Received
+[INFO] 2025-04-12T03:06:27.766Z - Get User --- Request Received
+[INFO] 2025-04-12T03:06:27.828Z - Get User --- Request Received
+[INFO] 2025-04-12T03:06:27.892Z - Get User --- Request Received
+[INFO] 2025-04-12T03:06:44.063Z - Get User --- Request Received
+[INFO] 2025-04-12T03:06:44.125Z - Get User --- Request Received
+[INFO] 2025-04-12T03:06:44.173Z - Get User --- Request Received
+[INFO] 2025-04-12T03:06:44.235Z - Get User --- Request Received
+[INFO] 2025-04-12T03:06:46.512Z - List movies --- Request Received
+[INFO] 2025-04-12T03:06:46.516Z - List movies --- Request Received
+[INFO] 2025-04-12T03:06:53.843Z - Get User --- Request Received
+[INFO] 2025-04-12T03:06:53.906Z - Get User --- Request Received
+[INFO] 2025-04-12T03:06:53.954Z - Get User --- Request Received
+[INFO] 2025-04-12T03:06:54.001Z - Get User --- Request Received
+[INFO] 2025-04-12T03:06:54.048Z - Get User --- Request Received
+[INFO] 2025-04-12T03:06:54.111Z - Get User --- Request Received
+[INFO] 2025-04-12T03:08:00.353Z - Get User --- Request Received
+[INFO] 2025-04-12T03:08:00.416Z - Get User --- Request Received
+[INFO] 2025-04-12T03:08:00.478Z - Get User --- Request Received
+[INFO] 2025-04-12T03:08:00.527Z - Get User --- Request Received
+[INFO] 2025-04-12T03:08:00.589Z - Get User --- Request Received
+[INFO] 2025-04-12T03:08:00.651Z - Get User --- Request Received
+[INFO] 2025-04-12T03:10:09.179Z - Get User --- Request Received
+[INFO] 2025-04-12T03:10:09.243Z - Get User --- Request Received
+[INFO] 2025-04-12T03:10:09.305Z - Get User --- Request Received
+[INFO] 2025-04-12T03:10:09.368Z - Get User --- Request Received
+[INFO] 2025-04-12T03:10:09.538Z - Get User --- Request Received
+[INFO] 2025-04-12T03:10:09.600Z - Get User --- Request Received
+[INFO] 2025-04-12T03:17:44.156Z - Get User --- Request Received
+[INFO] 2025-04-12T03:17:44.234Z - Get User --- Request Received
+[INFO] 2025-04-12T03:17:44.298Z - Get User --- Request Received
+[INFO] 2025-04-12T03:17:44.328Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-12T03:17:44.374Z - Get User --- Request Received
+[INFO] 2025-04-12T03:17:44.436Z - Get User --- Request Received
+[INFO] 2025-04-12T03:17:44.497Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-12T03:17:44.498Z - Get User --- Request Received
+[INFO] 2025-04-12T03:17:45.146Z - Login User - Logout Successfully
+[INFO] 2025-04-12T03:20:22.781Z - Login User --- Login successful 🚀
+[INFO] 2025-04-12T03:20:22.838Z - Get User --- Request Received
+[INFO] 2025-04-12T03:20:22.901Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-12T03:20:22.947Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-12T03:20:23.055Z - Get User --- Request Received
+[INFO] 2025-04-12T03:20:23.117Z - Get User --- Request Received
+[INFO] 2025-04-12T03:20:23.178Z - Get User --- Request Received
+[INFO] 2025-04-12T03:20:23.240Z - Get User --- Request Received
+[INFO] 2025-04-12T03:20:23.303Z - Get User --- Request Received
+[INFO] 2025-04-12T03:20:23.366Z - Get User --- Request Received
+[INFO] 2025-04-12T03:27:18.319Z - Get User --- Request Received
+[INFO] 2025-04-12T03:27:18.381Z - Get User --- Request Received
+[INFO] 2025-04-12T03:27:25.466Z - Get User --- Request Received
+[INFO] 2025-04-12T03:27:25.543Z - Get User --- Request Received
+[INFO] 2025-04-12T03:27:38.914Z - Login User --- Login successful 🚀
+[INFO] 2025-04-12T03:27:39.079Z - Get User --- Request Received
+[INFO] 2025-04-12T03:27:39.174Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-12T03:27:39.205Z - Get User --- Request Received
+[INFO] 2025-04-12T03:27:39.235Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-12T03:27:39.282Z - Get User --- Request Received
+[INFO] 2025-04-12T03:27:39.345Z - Get User --- Request Received
+[INFO] 2025-04-12T03:27:39.405Z - Get User --- Request Received
+[INFO] 2025-04-12T03:27:39.467Z - Get User --- Request Received
+[INFO] 2025-04-12T03:27:39.529Z - Get User --- Request Received
+[INFO] 2025-04-12T03:27:42.578Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
+[INFO] 2025-04-12T03:27:42.581Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
+[INFO] 2025-04-12T03:28:03.506Z - Create Review --- Created Review [object Object]
+[INFO] 2025-04-12T03:31:45.103Z - Get User --- Request Received
+[INFO] 2025-04-12T03:31:45.176Z - Get User --- Request Received
+[INFO] 2025-04-12T03:31:45.232Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-12T03:31:45.241Z - Get User --- Request Received
+[INFO] 2025-04-12T03:31:45.303Z - Get User --- Request Received
+[INFO] 2025-04-12T03:31:45.366Z - Get User --- Request Received
+[INFO] 2025-04-12T03:31:45.428Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-12T03:31:45.429Z - Get User --- Request Received
+[INFO] 2025-04-12T03:31:53.314Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
+[INFO] 2025-04-12T03:31:53.317Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
+[INFO] 2025-04-12T03:32:00.959Z - Get User --- Request Received
+[INFO] 2025-04-12T03:32:01.022Z - Get User --- Request Received
+[INFO] 2025-04-12T03:32:01.098Z - Get User --- Request Received
+[INFO] 2025-04-12T03:32:01.128Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-12T03:32:01.160Z - Get User --- Request Received
+[INFO] 2025-04-12T03:32:01.221Z - Get User --- Request Received
+[INFO] 2025-04-12T03:32:01.282Z - Get User --- Request Received
+[INFO] 2025-04-12T03:32:01.392Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-12T03:32:24.905Z - Get User --- Request Received
+[INFO] 2025-04-12T03:34:27.378Z - Get User --- Request Received
+[INFO] 2025-04-12T03:34:27.455Z - Get User --- Request Received
+[INFO] 2025-04-12T03:34:40.374Z - Get User --- Request Received
+[INFO] 2025-04-12T03:34:42.376Z - Get User --- Request Received
+[INFO] 2025-04-12T03:35:45.075Z - Get User --- Request Received
+[INFO] 2025-04-12T03:35:45.137Z - Get User --- Request Received
+[INFO] 2025-04-12T03:35:53.765Z - Update Review - Updated Review [object Object]
+[INFO] 2025-04-12T03:35:59.532Z - Get User --- Request Received
+[INFO] 2025-04-12T03:35:59.544Z - Get User --- Request Received
+[INFO] 2025-04-12T03:35:59.704Z - Get User --- Request Received
+[INFO] 2025-04-12T03:35:59.757Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-12T03:35:59.765Z - Get User --- Request Received
+[INFO] 2025-04-12T03:35:59.828Z - Get User --- Request Received
+[INFO] 2025-04-12T03:35:59.833Z - Get User --- Request Received
+[INFO] 2025-04-12T03:35:59.996Z - Get User --- Request Received
+[INFO] 2025-04-12T03:36:00.058Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-12T03:36:00.059Z - Get User --- Request Received
+[INFO] 2025-04-12T03:36:00.120Z - Get User --- Request Received
+[INFO] 2025-04-12T03:36:09.112Z - Get User --- Request Received
+[INFO] 2025-04-12T03:36:09.283Z - Get User --- Request Received
+[INFO] 2025-04-12T03:36:09.344Z - Get User --- Request Received
+[INFO] 2025-04-12T03:36:09.406Z - Get User --- Request Received
+[INFO] 2025-04-12T03:36:09.469Z - Get User --- Request Received
+[INFO] 2025-04-12T03:36:09.532Z - Get User --- Request Received
+[INFO] 2025-04-12T03:36:19.464Z - Get User --- Request Received
+[INFO] 2025-04-12T03:36:19.527Z - Get User --- Request Received
+[INFO] 2025-04-12T03:36:28.086Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
+[INFO] 2025-04-12T03:36:28.089Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
+[INFO] 2025-04-12T03:36:57.138Z - Get User --- Request Received
+[INFO] 2025-04-12T03:36:57.311Z - Get User --- Request Received
+[INFO] 2025-04-12T03:36:59.462Z - Get User --- Request Received
+[INFO] 2025-04-12T03:36:59.523Z - Get User --- Request Received
+[INFO] 2025-04-12T03:36:59.586Z - Get User --- Request Received
+[INFO] 2025-04-12T03:36:59.649Z - Get User --- Request Received
+[INFO] 2025-04-12T03:36:59.711Z - Get User --- Request Received
+[INFO] 2025-04-12T03:36:59.773Z - Get User --- Request Received
+[INFO] 2025-04-12T03:37:02.487Z - Get User --- Request Received
+[INFO] 2025-04-12T03:37:02.549Z - Get User --- Request Received
+[INFO] 2025-04-12T03:37:03.794Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-12T03:37:04.756Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-12T03:37:05.175Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-12T03:37:05.873Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-12T03:37:06.038Z - Get User --- Request Received
+[INFO] 2025-04-12T03:37:07.142Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-12T03:37:07.912Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-12T03:38:55.296Z - Get User --- Request Received
+[INFO] 2025-04-12T03:38:55.360Z - Get User --- Request Received
+[INFO] 2025-04-12T03:38:55.422Z - Get User --- Request Received
+[INFO] 2025-04-12T03:38:55.485Z - Get User --- Request Received
+[INFO] 2025-04-12T03:38:55.547Z - Get User --- Request Received
+[INFO] 2025-04-12T03:38:55.608Z - Get User --- Request Received
+[INFO] 2025-04-12T03:38:59.708Z - Get User --- Request Received
+[INFO] 2025-04-12T03:38:59.771Z - Get User --- Request Received
+[INFO] 2025-04-12T03:38:59.848Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-12T03:38:59.942Z - Get User --- Request Received
+[INFO] 2025-04-12T03:39:00.004Z - Get User --- Request Received
+[INFO] 2025-04-12T03:39:00.067Z - Get User --- Request Received
+[INFO] 2025-04-12T03:39:00.131Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-12T03:39:00.146Z - Get User --- Request Received
+[INFO] 2025-04-12T03:40:30.557Z - Get Movie Reviews - Retrieved reviews for Movie 1
+[INFO] 2025-04-12T03:41:27.804Z - Get User --- Request Received
+[INFO] 2025-04-12T03:41:27.867Z - Get User --- Request Received
