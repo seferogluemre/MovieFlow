@@ -24,6 +24,9 @@ import {
   Tabs,
   Tab,
   Badge,
+  Modal,
+  Backdrop,
+  Fade,
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import {
@@ -38,12 +41,15 @@ import {
   People as PeopleIcon,
   PersonOutlined as PersonOutlinedIcon,
   PersonAddOutlined as PersonAddOutlinedIcon,
+  Visibility as VisibilityIcon,
+  VisibilityOff as VisibilityOffIcon,
 } from "@mui/icons-material";
 import { userService, friendshipService } from "../utils/api";
 import { User, Friendship } from "../utils/types";
 import { useAuth } from "../context/AuthContext";
 import { formatDistanceToNow } from "date-fns";
 import { tr } from "date-fns/locale";
+import api from "../utils/api";
 
 // Büyük avatar
 const ProfileAvatar = styled(Avatar)(({ theme }) => ({
@@ -51,6 +57,26 @@ const ProfileAvatar = styled(Avatar)(({ theme }) => ({
   height: 150,
   marginBottom: theme.spacing(2),
   border: `4px solid ${theme.palette.primary.main}`,
+  cursor: "pointer",
+}));
+
+// Avatar modal için stil
+const ModalAvatarContainer = styled(Box)(({ theme }) => ({
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  outline: "none",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+}));
+
+const ModalAvatar = styled(Avatar)(({ theme }) => ({
+  width: 300,
+  height: 300,
+  border: `4px solid ${theme.palette.common.white}`,
+  boxShadow: theme.shadows[10],
 }));
 
 const StyledListItem = styled(ListItem)(({ theme }) => ({
@@ -95,6 +121,20 @@ type RelationshipStatus =
   | "blocked"
   | "blockedByOther";
 
+// Define a proper interface for Reviews
+interface Review {
+  id: number;
+  content: string;
+  createdAt: string;
+  updatedAt: string;
+  userId?: number;
+  movieId?: number;
+  movie?: {
+    id?: number;
+    title?: string;
+  };
+}
+
 const ProfileDetail: FC = () => {
   const { id } = useParams<{ id: string }>();
   const { user: currentUser } = useAuth();
@@ -116,6 +156,21 @@ const ProfileDetail: FC = () => {
   const [following, setFollowing] = useState<Friendship[]>([]);
   const [mutualFriends, setMutualFriends] = useState<Friendship[]>([]);
   const [loadingRelationships, setLoadingRelationships] = useState(false);
+  const [userReviews, setUserReviews] = useState<Review[]>([]);
+  const [loadingReviews, setLoadingReviews] = useState(false);
+
+  // Profil resmi modalı için state
+  const [avatarModalOpen, setAvatarModalOpen] = useState(false);
+
+  // Profil resmi tıklandığında
+  const handleAvatarClick = () => {
+    setAvatarModalOpen(true);
+  };
+
+  // Modal kapatıldığında
+  const handleCloseAvatarModal = () => {
+    setAvatarModalOpen(false);
+  };
 
   // Load user data and relationship status
   useEffect(() => {
@@ -143,6 +198,9 @@ const ProfileDetail: FC = () => {
             setRelationshipStatus("none");
           }
         }
+
+        // Kullanıcı yorumlarını yükle
+        await fetchUserReviews(parseInt(id));
       } catch (err: any) {
         console.error("Error loading user profile:", err);
         setError(
@@ -155,6 +213,119 @@ const ProfileDetail: FC = () => {
 
     fetchUserData();
   }, [id, currentUser]);
+
+  // Kullanıcı yorumlarını getir
+  const fetchUserReviews = async (userId: number) => {
+    // Profil gizli mi ve bu kullanıcı ile arkadaşlık var mı kontrol et
+    const canViewDetailedProfile =
+      // Kullanıcı kendisi mi?
+      (currentUser && currentUser.id === userId) ||
+      // Profil açık mı?
+      (user && !user.isPrivate) ||
+      // Arkadaşlık ilişkisi var mı?
+      ["friends", "following", "follower", "mutualFollow"].includes(
+        relationshipStatus
+      );
+
+    // Eğer kullanıcının yorumlarını görüntüleme yetkisi yoksa, işlemi atla
+    if (!canViewDetailedProfile) {
+      setUserReviews([]);
+      return;
+    }
+
+    try {
+      setLoadingReviews(true);
+
+      // If user is viewing their own profile, use the authenticated endpoint
+      if (currentUser && currentUser.id === userId) {
+        try {
+          const response = await api.get(`/reviews/user/reviews`, {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+            },
+          });
+
+          if (response.data) {
+            const reviewsArray = Array.isArray(response.data)
+              ? response.data
+              : response.data.data || [];
+            setUserReviews(reviewsArray);
+            return;
+          }
+        } catch (error) {
+          console.error("Error fetching from /reviews/user/reviews:", error);
+          // Continue to fallback approach
+        }
+      }
+
+      // Try getting user data which might include reviews
+      try {
+        const response = await api.get(`/users/${userId}`);
+
+        if (response.data && response.data.reviews) {
+          setUserReviews(
+            Array.isArray(response.data.reviews) ? response.data.reviews : []
+          );
+          return;
+        }
+      } catch (error) {
+        console.error(`Error fetching from /users/${userId}:`, error);
+        // Continue to fallback approach
+      }
+
+      // Fallback approach - try the direct reviews by userId endpoint
+      try {
+        const response = await fetch(
+          `http://localhost:3000/api/reviews?userId=${userId}`,
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+            },
+          }
+        );
+
+        if (response.ok) {
+          const responseData = await response.json();
+          const reviewsArray = responseData.data || responseData.results || [];
+          setUserReviews(Array.isArray(reviewsArray) ? reviewsArray : []);
+        } else {
+          console.error("Error fetching user reviews from direct endpoint");
+          setUserReviews([]);
+        }
+      } catch (error) {
+        console.error("Error fetching user reviews:", error);
+        setUserReviews([]);
+      }
+    } catch (error) {
+      console.error("Error in fetchUserReviews:", error);
+      setUserReviews([]);
+    } finally {
+      setLoadingReviews(false);
+    }
+  };
+
+  // Kullanıcı ilişkisi değiştiğinde, yorumları yeniden kontrol et
+  useEffect(() => {
+    if (user && id) {
+      fetchUserReviews(parseInt(id));
+    }
+  }, [relationshipStatus, user]);
+
+  // Profil görüntüleme izni kontrol et
+  const canViewDetailedProfile = () => {
+    if (!user) return false;
+
+    // Kullanıcı kendisi mi?
+    if (currentUser && currentUser.id === user.id) return true;
+
+    // Profil açık mı?
+    if (!user.isPrivate) return true;
+
+    // Arkadaşlık ilişkisi var mı?
+    return ["friends", "following", "follower", "mutualFollow"].includes(
+      relationshipStatus
+    );
+  };
 
   // Handle follow user
   const handleFollowUser = async () => {
@@ -438,6 +609,7 @@ const ProfileDetail: FC = () => {
           <ProfileAvatar
             src={getProfileImageUrl(user.profileImage)}
             alt={user.username}
+            onClick={handleAvatarClick}
           >
             {!user.profileImage && getInitials(user.username)}
           </ProfileAvatar>
@@ -448,6 +620,12 @@ const ProfileDetail: FC = () => {
 
           <Typography variant="body1" color="text.secondary" gutterBottom>
             @{user.username}
+            {user.isPrivate && (
+              <VisibilityOffIcon
+                fontSize="small"
+                sx={{ ml: 1, verticalAlign: "middle", color: "text.secondary" }}
+              />
+            )}
           </Typography>
 
           {/* Email bilgisi */}
@@ -671,6 +849,63 @@ const ProfileDetail: FC = () => {
           )}
         </CardContent>
       </Card>
+
+      {/* Yorumlar kısmı - Kullanıcı gizli profil ise ve arkadaş değilse gösterilmez */}
+      {canViewDetailedProfile() && (
+        <Card sx={{ mb: 4 }}>
+          <CardContent>
+            <Typography variant="h6" fontWeight="bold" gutterBottom>
+              Kullanıcının Yorumları
+            </Typography>
+
+            {loadingReviews ? (
+              <Box sx={{ display: "flex", justifyContent: "center", my: 2 }}>
+                <CircularProgress size={24} />
+              </Box>
+            ) : !Array.isArray(userReviews) || userReviews.length === 0 ? (
+              <Alert severity="info">Kullanıcı henüz yorum yapmamış.</Alert>
+            ) : (
+              <List>
+                {userReviews.map((review) => (
+                  <Box key={review.id}>
+                    <ListItem alignItems="flex-start">
+                      <ListItemText
+                        primary={
+                          <Typography fontWeight="medium">
+                            {review.movie?.title || "Film"}
+                          </Typography>
+                        }
+                        secondary={
+                          <>
+                            <Typography
+                              component="span"
+                              variant="body2"
+                              color="text.primary"
+                            >
+                              {review.content.length > 150
+                                ? `${review.content.substring(0, 150)}...`
+                                : review.content}
+                            </Typography>
+                            <br />
+                            <Typography
+                              component="span"
+                              variant="body2"
+                              color="text.secondary"
+                            >
+                              {formatCreationTime(review.createdAt)}
+                            </Typography>
+                          </>
+                        }
+                      />
+                    </ListItem>
+                    <Divider variant="inset" component="li" />
+                  </Box>
+                ))}
+              </List>
+            )}
+          </CardContent>
+        </Card>
+      )}
 
       {/* Connections stats */}
       <Paper
@@ -1070,6 +1305,32 @@ const ProfileDetail: FC = () => {
           )}
         </DialogContent>
       </Dialog>
+
+      {/* Profil resmi modalı */}
+      <Modal
+        open={avatarModalOpen}
+        onClose={handleCloseAvatarModal}
+        closeAfterTransition
+        slots={{ backdrop: Backdrop }}
+        slotProps={{
+          backdrop: {
+            timeout: 500,
+            sx: { backgroundColor: "rgba(0, 0, 0, 0.8)" },
+          },
+        }}
+      >
+        <Fade in={avatarModalOpen}>
+          <ModalAvatarContainer onClick={handleCloseAvatarModal}>
+            <ModalAvatar
+              src={getProfileImageUrl(user.profileImage)}
+              alt={user.username}
+              onClick={(e) => e.stopPropagation()}
+            >
+              {!user.profileImage && getInitials(user.username)}
+            </ModalAvatar>
+          </ModalAvatarContainer>
+        </Fade>
+      </Modal>
     </Box>
   );
 };

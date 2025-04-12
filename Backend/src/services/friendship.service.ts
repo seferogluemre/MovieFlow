@@ -2,22 +2,55 @@ import {
   PrismaClient,
   FriendshipStatus,
   NotificationType,
+  Friendship,
 } from "@prisma/client";
 import {
   CreateFriendshipType,
   UpdateFriendshipType,
 } from "../validators/friendship.validation";
+import {
+  RelationshipType,
+  RelationshipStatus,
+  FriendshipWithUsers,
+  EnhancedFriendship,
+} from "../types/friendship.types";
 import { getFullProfileImageUrl } from "src/utils/url/url.helper";
 import { NotificationService } from "./notification.service";
 import prisma from "src/config/database";
 
 export class FriendshipService {
+  // Helper method to enhance friendship with processed profile images
+  private static enhanceFriendship(
+    friendship: FriendshipWithUsers | null
+  ): EnhancedFriendship | null {
+    if (!friendship) return null;
+
+    return {
+      ...friendship,
+      user: {
+        ...friendship.user,
+        profileImage: getFullProfileImageUrl(friendship.user.profileImage),
+      },
+      friend: {
+        ...friendship.friend,
+        profileImage: getFullProfileImageUrl(friendship.friend.profileImage),
+      },
+    };
+  }
+
+  // Helper method to enhance multiple friendships with processed profile images
+  private static enhanceFriendships(
+    friendships: FriendshipWithUsers[]
+  ): (EnhancedFriendship | null)[] {
+    return friendships.map((friendship) => this.enhanceFriendship(friendship));
+  }
+
   static async create(userId: number, data: CreateFriendshipType) {
     const friendship = await prisma.friendship.create({
       data: {
         userId,
         friendId: data.friendId,
-        status: "PENDING",
+        status: FriendshipStatus.PENDING,
       },
       include: {
         user: true,
@@ -34,17 +67,7 @@ export class FriendshipService {
     );
 
     await prisma.$disconnect();
-    return {
-      ...friendship,
-      user: {
-        ...friendship.user,
-        profileImage: getFullProfileImageUrl(friendship.user.profileImage),
-      },
-      friend: {
-        ...friendship.friend,
-        profileImage: getFullProfileImageUrl(friendship.friend.profileImage),
-      },
-    };
+    return this.enhanceFriendship(friendship);
   }
 
   static async getAll(userId: number) {
@@ -58,17 +81,7 @@ export class FriendshipService {
       },
     });
     await prisma.$disconnect();
-    return friendships.map((friendship) => ({
-      ...friendship,
-      user: {
-        ...friendship.user,
-        profileImage: getFullProfileImageUrl(friendship.user.profileImage),
-      },
-      friend: {
-        ...friendship.friend,
-        profileImage: getFullProfileImageUrl(friendship.friend.profileImage),
-      },
-    }));
+    return this.enhanceFriendships(friendships);
   }
 
   static async getById(id: number) {
@@ -80,25 +93,14 @@ export class FriendshipService {
       },
     });
     await prisma.$disconnect();
-    if (!friendship) return null;
-    return {
-      ...friendship,
-      user: {
-        ...friendship.user,
-        profileImage: getFullProfileImageUrl(friendship.user.profileImage),
-      },
-      friend: {
-        ...friendship.friend,
-        profileImage: getFullProfileImageUrl(friendship.friend.profileImage),
-      },
-    };
+    return this.enhanceFriendship(friendship);
   }
 
   static async update(id: number, data: UpdateFriendshipType) {
     const friendship = await prisma.friendship.update({
       where: { id },
       data: {
-        status: data.status,
+        status: data.status as FriendshipStatus,
       },
       include: {
         user: true,
@@ -106,7 +108,7 @@ export class FriendshipService {
       },
     });
 
-    if (data.status === "ACCEPTED") {
+    if (data.status === FriendshipStatus.ACCEPTED) {
       await NotificationService.create(
         friendship.userId,
         friendship.friendId,
@@ -114,7 +116,7 @@ export class FriendshipService {
         `${friendship.friend.username} arkadaşlık isteğinizi kabul etti.`,
         { friendshipId: friendship.id }
       );
-    } else if (data.status === "BLOCKED") {
+    } else if (data.status === FriendshipStatus.BLOCKED) {
       await NotificationService.create(
         friendship.userId,
         friendship.friendId,
@@ -125,17 +127,7 @@ export class FriendshipService {
     }
 
     await prisma.$disconnect();
-    return {
-      ...friendship,
-      user: {
-        ...friendship.user,
-        profileImage: getFullProfileImageUrl(friendship.user.profileImage),
-      },
-      friend: {
-        ...friendship.friend,
-        profileImage: getFullProfileImageUrl(friendship.friend.profileImage),
-      },
-    };
+    return this.enhanceFriendship(friendship);
   }
 
   static async delete(id: number) {
@@ -147,17 +139,7 @@ export class FriendshipService {
       },
     });
     await prisma.$disconnect();
-    return {
-      ...friendship,
-      user: {
-        ...friendship.user,
-        profileImage: getFullProfileImageUrl(friendship.user.profileImage),
-      },
-      friend: {
-        ...friendship.friend,
-        profileImage: getFullProfileImageUrl(friendship.friend.profileImage),
-      },
-    };
+    return this.enhanceFriendship(friendship);
   }
 
   static async getByUserAndFriend(userId: number, friendId: number) {
@@ -174,25 +156,14 @@ export class FriendshipService {
       },
     });
     await prisma.$disconnect();
-    if (!friendship) return null;
-    return {
-      ...friendship,
-      user: {
-        ...friendship.user,
-        profileImage: getFullProfileImageUrl(friendship.user.profileImage),
-      },
-      friend: {
-        ...friendship.friend,
-        profileImage: getFullProfileImageUrl(friendship.friend.profileImage),
-      },
-    };
+    return this.enhanceFriendship(friendship);
   }
 
   static async getPendingRequests(userId: number) {
     const friendships = await prisma.friendship.findMany({
       where: {
         friendId: userId,
-        status: "PENDING",
+        status: FriendshipStatus.PENDING,
       },
       include: {
         user: true,
@@ -200,17 +171,7 @@ export class FriendshipService {
       },
     });
     await prisma.$disconnect();
-    return friendships.map((friendship) => ({
-      ...friendship,
-      user: {
-        ...friendship.user,
-        profileImage: getFullProfileImageUrl(friendship.user.profileImage),
-      },
-      friend: {
-        ...friendship.friend,
-        profileImage: getFullProfileImageUrl(friendship.friend.profileImage),
-      },
-    }));
+    return this.enhanceFriendships(friendships);
   }
 
   static async followUser(userId: number, targetUserId: number) {
@@ -222,22 +183,24 @@ export class FriendshipService {
 
     if (existingFriendship) {
       // If it's blocked, don't allow following
-      if (existingFriendship.status === "BLOCKED") {
+      if (existingFriendship.status === FriendshipStatus.BLOCKED) {
         throw new Error("Cannot follow a blocked user");
       }
 
       // If it's a pending request from the other user, accept it
       if (
-        existingFriendship.status === "PENDING" &&
+        existingFriendship.status === FriendshipStatus.PENDING &&
         existingFriendship.friendId === userId
       ) {
-        return this.update(existingFriendship.id, { status: "ACCEPTED" });
+        return this.update(existingFriendship.id, {
+          status: FriendshipStatus.ACCEPTED,
+        });
       }
 
       // If it's already FOLLOWING or ACCEPTED, just return the existing
       if (
-        existingFriendship.status === FriendshipStatus.FOLLOWING ||
-        existingFriendship.status === "ACCEPTED"
+        existingFriendship.status === ("FOLLOWING" as FriendshipStatus) ||
+        existingFriendship.status === FriendshipStatus.ACCEPTED
       ) {
         return existingFriendship;
       }
@@ -248,7 +211,7 @@ export class FriendshipService {
       data: {
         userId,
         friendId: targetUserId,
-        status: FriendshipStatus.FOLLOWING,
+        status: "FOLLOWING" as FriendshipStatus,
       },
       include: {
         user: true,
@@ -266,17 +229,7 @@ export class FriendshipService {
     );
 
     await prisma.$disconnect();
-    return {
-      ...friendship,
-      user: {
-        ...friendship.user,
-        profileImage: getFullProfileImageUrl(friendship.user.profileImage),
-      },
-      friend: {
-        ...friendship.friend,
-        profileImage: getFullProfileImageUrl(friendship.friend.profileImage),
-      },
-    };
+    return this.enhanceFriendship(friendship);
   }
 
   static async unfollowUser(userId: number, targetUserId: number) {
@@ -297,7 +250,7 @@ export class FriendshipService {
     }
 
     // If it's ACCEPTED (mutual following), downgrade to FOLLOWING for the other user
-    if (friendship.status === "ACCEPTED") {
+    if (friendship.status === FriendshipStatus.ACCEPTED) {
       // Check if there's a reverse relationship
       const reverseRelationship = await prisma.friendship.findFirst({
         where: {
@@ -310,7 +263,7 @@ export class FriendshipService {
         // Update the reverse relationship to FOLLOWING
         await prisma.friendship.update({
           where: { id: reverseRelationship.id },
-          data: { status: FriendshipStatus.FOLLOWING },
+          data: { status: "FOLLOWING" as FriendshipStatus },
         });
       }
     }
@@ -337,8 +290,8 @@ export class FriendshipService {
     const mutualFriendships = await prisma.friendship.findMany({
       where: {
         OR: [
-          { userId, status: "ACCEPTED" },
-          { friendId: userId, status: "ACCEPTED" },
+          { userId, status: FriendshipStatus.ACCEPTED },
+          { friendId: userId, status: FriendshipStatus.ACCEPTED },
         ],
       },
       include: {
@@ -348,24 +301,17 @@ export class FriendshipService {
     });
 
     await prisma.$disconnect();
-    return mutualFriendships.map((friendship) => ({
-      ...friendship,
-      user: {
-        ...friendship.user,
-        profileImage: getFullProfileImageUrl(friendship.user.profileImage),
-      },
-      friend: {
-        ...friendship.friend,
-        profileImage: getFullProfileImageUrl(friendship.friend.profileImage),
-      },
-    }));
+    return this.enhanceFriendships(mutualFriendships);
   }
 
   static async getFollowers(userId: number) {
     const followers = await prisma.friendship.findMany({
       where: {
         friendId: userId,
-        OR: [{ status: FriendshipStatus.FOLLOWING }, { status: "ACCEPTED" }],
+        OR: [
+          { status: "FOLLOWING" as FriendshipStatus },
+          { status: FriendshipStatus.ACCEPTED },
+        ],
       },
       include: {
         user: true,
@@ -374,24 +320,17 @@ export class FriendshipService {
     });
 
     await prisma.$disconnect();
-    return followers.map((friendship) => ({
-      ...friendship,
-      user: {
-        ...friendship.user,
-        profileImage: getFullProfileImageUrl(friendship.user.profileImage),
-      },
-      friend: {
-        ...friendship.friend,
-        profileImage: getFullProfileImageUrl(friendship.friend.profileImage),
-      },
-    }));
+    return this.enhanceFriendships(followers);
   }
 
   static async getFollowing(userId: number) {
     const following = await prisma.friendship.findMany({
       where: {
         userId,
-        OR: [{ status: FriendshipStatus.FOLLOWING }, { status: "ACCEPTED" }],
+        OR: [
+          { status: "FOLLOWING" as FriendshipStatus },
+          { status: FriendshipStatus.ACCEPTED },
+        ],
       },
       include: {
         user: true,
@@ -400,20 +339,83 @@ export class FriendshipService {
     });
 
     await prisma.$disconnect();
-    return following.map((friendship) => ({
-      ...friendship,
-      user: {
-        ...friendship.user,
-        profileImage: getFullProfileImageUrl(friendship.user.profileImage),
-      },
-      friend: {
-        ...friendship.friend,
-        profileImage: getFullProfileImageUrl(friendship.friend.profileImage),
-      },
-    }));
+    return this.enhanceFriendships(following);
   }
 
-  static async getRelationshipStatus(userId: number, targetUserId: number) {
+  // Helper method to determine relationship type based on status
+  private static determineRelationshipType(
+    outgoing: Friendship | null,
+    incoming: Friendship | null
+  ): RelationshipStatus {
+    // Default values
+    let relationType = RelationshipType.NONE;
+    let relationshipId = null;
+
+    if (outgoing && incoming) {
+      // Check for mutual friendship (ACCEPTED on both sides)
+      if (
+        outgoing.status === FriendshipStatus.ACCEPTED &&
+        incoming.status === FriendshipStatus.ACCEPTED
+      ) {
+        relationType = RelationshipType.FRIENDS;
+        relationshipId = outgoing.id;
+      }
+      // Check for mutual follow
+      else if (
+        outgoing.status === ("FOLLOWING" as FriendshipStatus) &&
+        incoming.status === ("FOLLOWING" as FriendshipStatus)
+      ) {
+        relationType = RelationshipType.MUTUAL_FOLLOW;
+        relationshipId = outgoing.id;
+      } else if (outgoing.status === ("FOLLOWING" as FriendshipStatus)) {
+        relationType = RelationshipType.FOLLOWING;
+        relationshipId = outgoing.id;
+      } else if (incoming.status === ("FOLLOWING" as FriendshipStatus)) {
+        relationType = RelationshipType.FOLLOWER;
+        relationshipId = incoming.id;
+      }
+      // Handle pending requests
+      else if (outgoing.status === FriendshipStatus.PENDING) {
+        relationType = RelationshipType.PENDING;
+        relationshipId = outgoing.id;
+      } else if (incoming.status === FriendshipStatus.PENDING) {
+        relationType = RelationshipType.PENDING_INCOMING;
+        relationshipId = incoming.id;
+      }
+    }
+    // Only outgoing relationship exists
+    else if (outgoing) {
+      if (outgoing.status === ("FOLLOWING" as FriendshipStatus)) {
+        relationType = RelationshipType.FOLLOWING;
+      } else if (outgoing.status === FriendshipStatus.PENDING) {
+        relationType = RelationshipType.PENDING;
+      } else if (outgoing.status === FriendshipStatus.BLOCKED) {
+        relationType = RelationshipType.BLOCKED;
+      }
+      relationshipId = outgoing.id;
+    }
+    // Only incoming relationship exists
+    else if (incoming) {
+      if (incoming.status === ("FOLLOWING" as FriendshipStatus)) {
+        relationType = RelationshipType.FOLLOWER;
+      } else if (incoming.status === FriendshipStatus.PENDING) {
+        relationType = RelationshipType.PENDING_INCOMING;
+      } else if (incoming.status === FriendshipStatus.BLOCKED) {
+        relationType = RelationshipType.BLOCKED_BY_OTHER;
+      }
+      relationshipId = incoming.id;
+    }
+
+    return {
+      type: relationType,
+      id: relationshipId,
+    };
+  }
+
+  static async getRelationshipStatus(
+    userId: number,
+    targetUserId: number
+  ): Promise<RelationshipStatus> {
     const outgoingRelationship = await prisma.friendship.findFirst({
       where: {
         userId,
@@ -421,6 +423,7 @@ export class FriendshipService {
       },
     });
 
+    // Get incoming relationship (target to user)
     const incomingRelationship = await prisma.friendship.findFirst({
       where: {
         userId: targetUserId,
@@ -430,63 +433,10 @@ export class FriendshipService {
 
     await prisma.$disconnect();
 
-    // Determine relationship type
-    let relationshipType = "none";
-    let relationshipId = null;
-
-    if (outgoingRelationship && incomingRelationship) {
-      if (
-        outgoingRelationship.status === "ACCEPTED" &&
-        incomingRelationship.status === "ACCEPTED"
-      ) {
-        relationshipType = "friends";
-        relationshipId = outgoingRelationship.id;
-      } else if (
-        outgoingRelationship.status === FriendshipStatus.FOLLOWING &&
-        incomingRelationship.status === FriendshipStatus.FOLLOWING
-      ) {
-        relationshipType = "mutualFollow";
-        relationshipId = outgoingRelationship.id;
-      } else if (outgoingRelationship.status === FriendshipStatus.FOLLOWING) {
-        relationshipType = "following";
-        relationshipId = outgoingRelationship.id;
-      } else if (incomingRelationship.status === FriendshipStatus.FOLLOWING) {
-        relationshipType = "follower";
-        relationshipId = incomingRelationship.id;
-      } else if (outgoingRelationship.status === "PENDING") {
-        relationshipType = "pending";
-        relationshipId = outgoingRelationship.id;
-      } else if (incomingRelationship.status === "PENDING") {
-        relationshipType = "pendingIncoming";
-        relationshipId = incomingRelationship.id;
-      }
-    } else if (outgoingRelationship) {
-      if (outgoingRelationship.status === FriendshipStatus.FOLLOWING) {
-        relationshipType = "following";
-        relationshipId = outgoingRelationship.id;
-      } else if (outgoingRelationship.status === "PENDING") {
-        relationshipType = "pending";
-        relationshipId = outgoingRelationship.id;
-      } else if (outgoingRelationship.status === "BLOCKED") {
-        relationshipType = "blocked";
-        relationshipId = outgoingRelationship.id;
-      }
-    } else if (incomingRelationship) {
-      if (incomingRelationship.status === FriendshipStatus.FOLLOWING) {
-        relationshipType = "follower";
-        relationshipId = incomingRelationship.id;
-      } else if (incomingRelationship.status === "PENDING") {
-        relationshipType = "pendingIncoming";
-        relationshipId = incomingRelationship.id;
-      } else if (incomingRelationship.status === "BLOCKED") {
-        relationshipType = "blockedByOther";
-        relationshipId = incomingRelationship.id;
-      }
-    }
-
-    return {
-      type: relationshipType,
-      id: relationshipId,
-    };
+    // Use helper method to determine relationship type
+    return this.determineRelationshipType(
+      outgoingRelationship,
+      incomingRelationship
+    );
   }
 }

@@ -27,6 +27,7 @@ interface AuthContextType {
   login: (email: string, password: string) => Promise<void>;
   logout: () => Promise<void>;
   register: (name: string, email: string, password: string) => Promise<User>;
+  refreshUser: () => Promise<void>;
   error: string | null;
   checkAuthStatus: () => Promise<boolean>;
 }
@@ -44,6 +45,7 @@ const AuthContext = createContext<AuthContextType>({
     createdAt: "",
     updatedAt: "",
   }),
+  refreshUser: async () => {},
   error: null,
   checkAuthStatus: async () => false,
 });
@@ -266,6 +268,19 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     }
   };
 
+  const refreshUser = async () => {
+    try {
+      console.log("Refreshing user data...");
+      const userData = await userService.getCurrentUser();
+      console.log("User data refreshed:", userData.id);
+      setUser(userData);
+      return userData;
+    } catch (err) {
+      console.error("Failed to refresh user data:", err);
+      throw err;
+    }
+  };
+
   const contextValue = {
     user,
     isAuthenticated: !!user,
@@ -273,6 +288,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     login,
     logout,
     register,
+    refreshUser,
     error,
     checkAuthStatus: checkAuth,
   };

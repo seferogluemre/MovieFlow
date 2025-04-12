@@ -40,6 +40,7 @@ model User {
   name         String?
   profileImage String?
   isAdmin      Boolean  @default(false)
+  isPrivate    Boolean  @default(false)
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
 

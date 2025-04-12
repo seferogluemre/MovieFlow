@@ -61,20 +61,19 @@ const Sidebar: FC = () => {
     { name: "Library", icon: <LibraryIcon />, path: "/library" },
     { name: "My Reviews", icon: <ReviewsIcon />, path: "/reviews" },
     { name: "Friends", icon: <FriendsIcon />, path: "/friends" },
-    { name: "Settings", icon: <SettingsIcon />, path: "/settings" },
   ];
 
   const handleLogout = async () => {
     try {
       await authService.logout();
-      navigate('/login');
+      navigate("/login");
     } catch (error) {
-      console.error('Logout error:', error);
+      console.error("Logout error:", error);
       // Hata olsa bile token'ları temizleyerek login sayfasına yönlendir
-      localStorage.removeItem('accessToken');
-      localStorage.removeItem('refreshToken');
-      localStorage.removeItem('userId');
-      navigate('/login');
+      localStorage.removeItem("accessToken");
+      localStorage.removeItem("refreshToken");
+      localStorage.removeItem("userId");
+      navigate("/login");
     }
   };
 
@@ -129,8 +128,10 @@ const Sidebar: FC = () => {
         ))}
       </List>
 
-      <Divider sx={{ mx: 2, my: 1, backgroundColor: 'rgba(255, 255, 255, 0.1)' }} />
-      
+      <Divider
+        sx={{ mx: 2, my: 1, backgroundColor: "rgba(255, 255, 255, 0.1)" }}
+      />
+
       <Box sx={{ p: 2 }}>
         <Button
           variant="outlined"
@@ -138,10 +139,10 @@ const Sidebar: FC = () => {
           startIcon={<LogoutIcon />}
           fullWidth
           onClick={handleLogout}
-          sx={{ 
-            justifyContent: 'flex-start',
-            textTransform: 'none',
-            py: 1 
+          sx={{
+            justifyContent: "flex-start",
+            textTransform: "none",
+            py: 1,
           }}
         >
           Logout
