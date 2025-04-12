@@ -142,7 +142,7 @@ const MovieDetails: FC = () => {
     try {
       setLoadingReviews(true);
       const response = await api.get(`/reviews/movie/${movieId}`);
-      setReviews(response.data.data || []);
+      setReviews(response.data || []);
       setReviewError(null);
 
       // URL'den reviewId parametresini al

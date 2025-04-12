@@ -604,3 +604,46 @@
 [INFO] 2025-04-12T03:40:30.557Z - Get Movie Reviews - Retrieved reviews for Movie 1
 [INFO] 2025-04-12T03:41:27.804Z - Get User --- Request Received
 [INFO] 2025-04-12T03:41:27.867Z - Get User --- Request Received
+[INFO] 2025-04-12T03:44:44.454Z - Get User --- Request Received
+[INFO] 2025-04-12T03:44:44.517Z - Get User --- Request Received
+[INFO] 2025-04-12T03:44:46.524Z - Get Movie Reviews - Retrieved reviews for Movie 1
+[INFO] 2025-04-12T03:44:46.527Z - Get Movie Reviews - Retrieved reviews for Movie 1
+[INFO] 2025-04-12T03:45:12.608Z - Get User --- Request Received
+[INFO] 2025-04-12T03:45:12.624Z - Get Movie Reviews - Retrieved reviews for Movie 1
+[INFO] 2025-04-12T03:45:12.654Z - Get Movie Reviews - Retrieved reviews for Movie 1
+[INFO] 2025-04-12T03:45:12.781Z - Get User --- Request Received
+[INFO] 2025-04-12T03:45:12.818Z - Get Movie Reviews - Retrieved reviews for Movie 1
+[INFO] 2025-04-12T03:45:12.839Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-12T03:45:12.844Z - Get User --- Request Received
+[INFO] 2025-04-12T03:45:12.891Z - Get Movie Reviews - Retrieved reviews for Movie 1
+[INFO] 2025-04-12T03:45:12.908Z - Get User --- Request Received
+[INFO] 2025-04-12T03:45:12.916Z - Get Movie Reviews - Retrieved reviews for Movie 1
+[INFO] 2025-04-12T03:45:12.935Z - Get Movie Reviews - Retrieved reviews for Movie 1
+[INFO] 2025-04-12T03:45:12.970Z - Get User --- Request Received
+[INFO] 2025-04-12T03:45:13.000Z - Get Movie Reviews - Retrieved reviews for Movie 1
+[INFO] 2025-04-12T03:45:13.027Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-12T03:45:13.032Z - Get User --- Request Received
+[INFO] 2025-04-12T03:45:13.073Z - Get Movie Reviews - Retrieved reviews for Movie 1
+[INFO] 2025-04-12T03:46:52.325Z - Get Movie Reviews - Retrieved reviews for Movie 1
+[INFO] 2025-04-12T03:48:10.809Z - Update User - Updated User {"id":3,"email":"emre@mail.com","username":"seferogluemre","password":"$2b$10$QSA2xO8T.tRYIAWXDNOp4eRaoyCdJqhIuUmFpWwrJRHKjNEpzDJ4.","name":"Yunka","profileImage":"http://localhost:3000/uploads/1744429690716.jpg","isAdmin":false,"createdAt":"2025-04-10T04:11:15.116Z","updatedAt":"2025-04-12T03:48:10.793Z"}
+[INFO] 2025-04-12T03:48:14.996Z - Get User --- Request Received
+[INFO] 2025-04-12T03:48:15.009Z - Get Movie Reviews - Retrieved reviews for Movie 1
+[INFO] 2025-04-12T03:48:15.050Z - Get Movie Reviews - Retrieved reviews for Movie 1
+[INFO] 2025-04-12T03:48:15.057Z - Get User --- Request Received
+[INFO] 2025-04-12T03:48:15.093Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-12T03:48:15.120Z - Get User --- Request Received
+[INFO] 2025-04-12T03:48:15.127Z - Get Movie Reviews - Retrieved reviews for Movie 1
+[INFO] 2025-04-12T03:48:15.146Z - Get Movie Reviews - Retrieved reviews for Movie 1
+[INFO] 2025-04-12T03:48:15.293Z - Get User --- Request Received
+[INFO] 2025-04-12T03:48:15.301Z - Get Movie Reviews - Retrieved reviews for Movie 1
+[INFO] 2025-04-12T03:48:15.317Z - Get Movie Reviews - Retrieved reviews for Movie 1
+[INFO] 2025-04-12T03:48:15.356Z - Get User --- Request Received
+[INFO] 2025-04-12T03:48:15.386Z - Get Movie Reviews - Retrieved reviews for Movie 1
+[INFO] 2025-04-12T03:48:15.409Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-12T03:48:15.418Z - Get User --- Request Received
+[INFO] 2025-04-12T03:48:15.445Z - Get Movie Reviews - Retrieved reviews for Movie 1
+[INFO] 2025-04-12T03:49:04.863Z - Get User --- Request Received
+[INFO] 2025-04-12T03:49:04.925Z - Get User --- Request Received
+[INFO] 2025-04-12T03:49:11.731Z - Get Movie Reviews - Retrieved reviews for Movie 1
+[INFO] 2025-04-12T03:49:11.733Z - Get Movie Reviews - Retrieved reviews for Movie 1
+[WARN] 2025-04-12T03:50:07.058Z - LibraryController.create ---- Error creating library entry: ${error}
