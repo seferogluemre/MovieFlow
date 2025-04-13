@@ -1,41 +1,40 @@
-import { FC, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import {
-  Box,
-  Typography,
-  Tabs,
-  Tab,
+  Check as CheckIcon,
+  Close as CloseIcon,
+  MoreVert as MoreVertIcon,
+  PersonAdd as PersonAddIcon,
+  Person as PersonIcon,
+  Search as SearchIcon,
+} from "@mui/icons-material";
+import {
+  Alert,
   Avatar,
+  Box,
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  CircularProgress,
+  Divider,
+  Grid,
+  IconButton,
+  InputAdornment,
   List,
   ListItem,
   ListItemAvatar,
   ListItemText,
-  Divider,
   Paper,
-  IconButton,
-  Button,
-  CircularProgress,
-  Alert,
+  Tab,
+  Tabs,
   TextField,
-  InputAdornment,
-  Grid,
-  Card,
-  CardContent,
-  CardActions,
+  Typography,
 } from "@mui/material";
-import {
-  Search as SearchIcon,
-  MoreVert as MoreVertIcon,
-  Person as PersonIcon,
-  PersonAdd as PersonAddIcon,
-  PersonRemove as PersonRemoveIcon,
-  Check as CheckIcon,
-  Close as CloseIcon,
-} from "@mui/icons-material";
 import { formatDistanceToNow } from "date-fns";
 import { tr } from "date-fns/locale";
-import api, { processApiError, userService } from "../utils/api";
+import { FC, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import api, { processApiError, userService } from "../utils/api";
 
 interface User {
   id: number;
@@ -132,6 +131,11 @@ const Friends: FC = () => {
           friendship.userId === currentUserId &&
           friendship.friendId === currentUserId
         ) {
+          return;
+        }
+
+        // Only consider ACCEPTED friendships for My Friends tab
+        if (friendship.status !== "ACCEPTED") {
           return;
         }
 
@@ -266,6 +270,11 @@ const Friends: FC = () => {
           return;
         }
 
+        // Only consider ACCEPTED friendships for My Friends tab
+        if (friendship.status !== "ACCEPTED") {
+          return;
+        }
+
         // Get the other user in the friendship
         const otherUserId =
           friendship.userId === currentUserId
@@ -348,6 +357,11 @@ const Friends: FC = () => {
           return;
         }
 
+        // Only consider ACCEPTED friendships for My Friends tab
+        if (friendship.status !== "ACCEPTED") {
+          return;
+        }
+
         // Determine which user in this friendship is NOT the current user
         const otherUserId =
           friendship.userId === currentUserId
@@ -406,7 +420,6 @@ const Friends: FC = () => {
 
       setSuccessMessage("Arkadaşlık isteği kabul edildi.");
 
-      // Refresh data
       fetchData();
 
       setTimeout(() => {
@@ -430,7 +443,6 @@ const Friends: FC = () => {
 
       setSuccessMessage("Arkadaşlık isteği reddedildi.");
 
-      // Refresh data
       fetchData();
 
       setTimeout(() => {
@@ -455,7 +467,6 @@ const Friends: FC = () => {
 
       setSuccessMessage("Arkadaşlık isteği gönderildi.");
 
-      // Update the relationship for this user
       setUserRelationships((prev) => ({
         ...prev,
         [userId]: {
@@ -483,7 +494,6 @@ const Friends: FC = () => {
 
       setSuccessMessage("Kullanıcı takip edilmeye başlandı.");
 
-      // Update the relationship for this user
       setUserRelationships((prev) => ({
         ...prev,
         [userId]: {
@@ -741,7 +751,8 @@ const Friends: FC = () => {
                             </Box>
                           </Box>
                           <Typography variant="body2" color="text.secondary">
-                            Requested {formatDate(request.createdAt)}
+                            {formatDate(request.createdAt)} Arkadaşlık istegi
+                            gönderdi
                           </Typography>
                         </CardContent>
                         <CardActions>

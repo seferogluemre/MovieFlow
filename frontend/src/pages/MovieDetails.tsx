@@ -1,39 +1,37 @@
-import { FC, useEffect, useState, useRef } from "react";
-import { useParams, useNavigate, useLocation } from "react-router-dom";
 import {
-  Box,
-  Typography,
-  Grid,
-  Chip,
-  Paper,
-  Button,
-  Divider,
+  AccessTime as AccessTimeIcon,
+  ArrowBack as ArrowBackIcon,
+  BookmarkAdd as BookmarkAddIcon,
+  CalendarToday as CalendarTodayIcon,
+  Person as PersonIcon,
+  PlaylistAdd as PlaylistAddIcon,
+  Star as StarIcon,
+} from "@mui/icons-material";
+import {
+  Alert,
   Avatar,
+  Box,
+  Button,
+  Card,
+  CardMedia,
+  Chip,
+  CircularProgress,
+  Container,
+  Divider,
+  Grid,
   List,
   ListItem,
   ListItemAvatar,
   ListItemText,
-  CircularProgress,
-  Alert,
-  IconButton,
-  Container,
-  Card,
-  CardMedia,
+  Paper,
+  Typography,
 } from "@mui/material";
-import {
-  Star as StarIcon,
-  AccessTime as AccessTimeIcon,
-  CalendarToday as CalendarTodayIcon,
-  Person as PersonIcon,
-  Movie as MovieIcon,
-  ArrowBack as ArrowBackIcon,
-  BookmarkAdd as BookmarkAddIcon,
-  PlaylistAdd as PlaylistAddIcon,
-} from "@mui/icons-material";
-import api, { processApiError } from "../utils/api";
-import { useAuth } from "../context/AuthContext";
-import { tr } from "date-fns/locale";
 import { formatDistanceToNow } from "date-fns";
+import { tr } from "date-fns/locale";
+import { FC, useEffect, useRef, useState } from "react";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
+import api, { processApiError } from "../utils/api";
 
 interface MovieDetails {
   id: number;
@@ -643,10 +641,7 @@ const MovieDetails: FC = () => {
                             Rol: {actorEntry.role}
                           </Typography>
                           <br />
-                          <Typography component="span" variant="body2">
-                            Doğum Yılı: {actorEntry.actor.birthYear}
-                          </Typography>
-                          <br />
+
                           <Typography component="span" variant="body2">
                             Uyruk: {actorEntry.actor.nationality}
                           </Typography>
@@ -682,52 +677,76 @@ const MovieDetails: FC = () => {
           </Alert>
         ) : (
           <Grid container spacing={3}>
-            {reviews.map((review) => {
+            {(() => {
               // URL'den reviewId parametresini al
               const searchParams = new URLSearchParams(location.search);
               const reviewId = searchParams.get("reviewId");
-              const isHighlighted =
-                reviewId && parseInt(reviewId) === review.id;
 
-              return (
-                <Grid item xs={12} key={review.id}>
-                  <Paper
-                    id={`review-${review.id}`}
-                    ref={isHighlighted ? highlightedReviewRef : null}
-                    elevation={isHighlighted ? 6 : 2}
-                    sx={{
-                      p: 3,
-                      transition: "all 0.3s ease",
-                      transform: isHighlighted ? "scale(1.02)" : "scale(1)",
-                      borderLeft: isHighlighted ? "4px solid #2196f3" : "none",
-                      bgcolor: isHighlighted
-                        ? "rgba(33, 150, 243, 0.05)"
-                        : "inherit",
-                    }}
-                  >
-                    <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
-                      <Avatar
-                        src={review.user.profileImage || undefined}
-                        alt={review.user.name}
-                        sx={{ mr: 2 }}
-                      />
-                      <Box>
-                        <Typography variant="subtitle1" fontWeight="bold">
-                          {review.user.name}
-                        </Typography>
-                        <Typography variant="body2" color="text.secondary">
-                          @{review.user.username} •{" "}
-                          {formatDate(review.createdAt)}
-                        </Typography>
+              // Yorumları düzenleme: Eğer bir reviewId varsa, o yorumu en üste getir
+              let sortedReviews = [...reviews];
+              if (reviewId) {
+                const highlightedReviewIndex = sortedReviews.findIndex(
+                  (review) => review.id === parseInt(reviewId)
+                );
+
+                if (highlightedReviewIndex !== -1) {
+                  // Vurgulanan yorumu diziden çıkar ve başa ekle
+                  const highlightedReview = sortedReviews.splice(
+                    highlightedReviewIndex,
+                    1
+                  )[0];
+                  sortedReviews = [highlightedReview, ...sortedReviews];
+                }
+              }
+
+              return sortedReviews.map((review) => {
+                const isHighlighted =
+                  reviewId && parseInt(reviewId) === review.id;
+
+                return (
+                  <Grid item xs={12} key={review.id}>
+                    <Paper
+                      id={`review-${review.id}`}
+                      ref={isHighlighted ? highlightedReviewRef : null}
+                      elevation={isHighlighted ? 6 : 2}
+                      sx={{
+                        p: 3,
+                        transition: "all 0.3s ease",
+                        transform: isHighlighted ? "scale(1.02)" : "scale(1)",
+                        borderLeft: isHighlighted
+                          ? "4px solid #2196f3"
+                          : "none",
+                        bgcolor: isHighlighted
+                          ? "rgba(33, 150, 243, 0.05)"
+                          : "inherit",
+                      }}
+                    >
+                      <Box
+                        sx={{ display: "flex", alignItems: "center", mb: 2 }}
+                      >
+                        <Avatar
+                          src={review.user.profileImage || undefined}
+                          alt={review.user.name}
+                          sx={{ mr: 2 }}
+                        />
+                        <Box>
+                          <Typography variant="subtitle1" fontWeight="bold">
+                            {review.user.name}
+                          </Typography>
+                          <Typography variant="body2" color="text.secondary">
+                            @{review.user.username} •{" "}
+                            {formatDate(review.createdAt)}
+                          </Typography>
+                        </Box>
                       </Box>
-                    </Box>
-                    <Typography variant="body1" paragraph>
-                      {review.content}
-                    </Typography>
-                  </Paper>
-                </Grid>
-              );
-            })}
+                      <Typography variant="body1" paragraph>
+                        {review.content}
+                      </Typography>
+                    </Paper>
+                  </Grid>
+                );
+              });
+            })()}
           </Grid>
         )}
       </Box>

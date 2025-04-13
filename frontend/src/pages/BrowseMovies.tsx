@@ -270,7 +270,6 @@ const BrowseMovies: FC = () => {
     movie.title.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-  // Helper function to get age rating color
   const getAgeRatingColor = (rating: string) => {
     switch (rating) {
       case "GENERAL":
@@ -360,14 +359,10 @@ const BrowseMovies: FC = () => {
                     <CardMedia
                       component="img"
                       height="300"
-                      image={
-                        movie.posterImage ||
-                        "https://via.placeholder.com/300x450?text=No+Image"
-                      }
+                      image={movie.posterImage}
                       alt={movie.title}
                     />
 
-                    {/* Hover overlay with action buttons */}
                     {hoveredMovie === movie.id && (
                       <Box
                         sx={{

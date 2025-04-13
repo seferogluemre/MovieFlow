@@ -1,4 +1,5 @@
-import multer from "multer";
+import { GetObjectCommand } from "@aws-sdk/client-s3";
+import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 import multerS3 from "multer-s3";
 import path from "path";
 import s3 from "./aws.config";
@@ -10,7 +11,6 @@ import s3 from "./aws.config";
 export const s3Storage = multerS3({
   s3: s3,
   bucket: process.env.AWS_BUCKET_NAME || "",
-  acl: "public-read",
   metadata: function (req, file, cb) {
     cb(null, { fieldName: file.fieldname });
   },
@@ -26,7 +26,6 @@ export const s3Storage = multerS3({
 export const profileS3Storage = multerS3({
   s3: s3,
   bucket: process.env.AWS_BUCKET_NAME || "",
-  acl: "public-read",
   metadata: function (req, file, cb) {
     cb(null, { fieldName: file.fieldname });
   },
@@ -42,7 +41,6 @@ export const profileS3Storage = multerS3({
 export const postersS3Storage = multerS3({
   s3: s3,
   bucket: process.env.AWS_BUCKET_NAME || "",
-  acl: "public-read",
   metadata: function (req, file, cb) {
     cb(null, { fieldName: file.fieldname });
   },
@@ -58,7 +56,6 @@ export const postersS3Storage = multerS3({
 export const actorsS3Storage = multerS3({
   s3: s3,
   bucket: process.env.AWS_BUCKET_NAME || "",
-  acl: "public-read",
   metadata: function (req, file, cb) {
     cb(null, { fieldName: file.fieldname });
   },
@@ -70,7 +67,14 @@ export const actorsS3Storage = multerS3({
   },
 });
 
-// Helper function to get file URL from S3
-export const getS3FileUrl = (key: string): string => {
-  return `https://${process.env.AWS_BUCKET_NAME}.s3.${process.env.AWS_REGION}.amazonaws.com/${key}`;
+// Helper function to get file URL from S3 with longer expiration (1 week - 7 days)
+export const getS3FileUrl = async (key: string): Promise<string> => {
+  const command = new GetObjectCommand({
+    Bucket: process.env.AWS_BUCKET_NAME || "",
+    Key: key,
+  });
+
+  // Create a presigned URL with 7-day expiration (604800 seconds)
+  const url = await getSignedUrl(s3, command, { expiresIn: 604800 });
+  return url;
 };

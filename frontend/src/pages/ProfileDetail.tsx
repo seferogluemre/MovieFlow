@@ -910,26 +910,12 @@ const ProfileDetail: FC = () => {
             }}
           >
             <Button
-              variant="outlined"
-              color="primary"
+              variant="contained"
+              color="success"
               startIcon={<CheckIcon />}
               disabled
             >
               Arkadaşsınız
-            </Button>
-            <Button
-              variant="outlined"
-              color="error"
-              size="small"
-              startIcon={<PersonRemoveIcon />}
-              onClick={handleUnfollowUser}
-              disabled={isActionInProgress}
-            >
-              {isActionInProgress ? (
-                <CircularProgress size={16} />
-              ) : (
-                "Takibi Bırak"
-              )}
             </Button>
           </Box>
         );

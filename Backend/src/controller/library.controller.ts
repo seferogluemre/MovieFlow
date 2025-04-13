@@ -12,9 +12,17 @@ export class LibraryController {
         res.status(401).json({ message: "Unauthorized" });
         return;
       }
+
+      const data = req.body;
+      const library = await LibraryService.create(Number(userId), data);
+
+      logInfo(
+        `LibraryController.create ---- Library entry created for user ${userId} and movie ${data.movieId}`
+      );
+      res.status(201).json(library);
     } catch (error) {
       logWarn(
-        "LibraryController.create ---- Error creating library entry: ${error}"
+        `LibraryController.create ---- Error creating library entry: ${error}`
       );
       res.status(500).json({ message: "Internal server error" });
     }

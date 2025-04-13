@@ -64,6 +64,7 @@ export class FriendshipService {
   }
 
   static async getAll(userId: number) {
+    // Tüm ilişkileri getir
     const friendships = await prisma.friendship.findMany({
       where: {
         OR: [{ userId }, { friendId: userId }],
@@ -73,8 +74,47 @@ export class FriendshipService {
         friend: true,
       },
     });
+
+    // İlişkileri normalize et
+    // İki yönlü ACCEPTED ilişkileri için tek kayıt dönmesini sağla
+    const uniqueFriendshipMap = new Map();
+
+    friendships.forEach((friendship) => {
+      // İlişkideki diğer kullanıcıyı bul
+      const otherUserId =
+        friendship.userId === userId ? friendship.friendId : friendship.userId;
+
+      // Eğer bu kullanıcı için bir ilişki zaten kaydedilmişse, kontrol et
+      if (uniqueFriendshipMap.has(otherUserId)) {
+        const existingFriendship = uniqueFriendshipMap.get(otherUserId);
+
+        // Eğer mevcut ilişki ACCEPTED değilse ve yeni ilişki ACCEPTED ise, yenisiyle değiştir
+        if (
+          existingFriendship.status !== FriendshipStatus.ACCEPTED &&
+          friendship.status === FriendshipStatus.ACCEPTED
+        ) {
+          uniqueFriendshipMap.set(otherUserId, friendship);
+        }
+        // İki ilişki de aynı statüde ise, daha yeni olanı al
+        else if (existingFriendship.status === friendship.status) {
+          if (
+            new Date(friendship.createdAt) >
+            new Date(existingFriendship.createdAt)
+          ) {
+            uniqueFriendshipMap.set(otherUserId, friendship);
+          }
+        }
+      } else {
+        // Bu kullanıcı için ilk kayıt
+        uniqueFriendshipMap.set(otherUserId, friendship);
+      }
+    });
+
+    // Map'ten değerleri geri array'e çevir
+    const normalizedFriendships = Array.from(uniqueFriendshipMap.values());
+
     await prisma.$disconnect();
-    return this.enhanceFriendships(friendships);
+    return this.enhanceFriendships(normalizedFriendships);
   }
 
   static async getById(id: number) {
@@ -90,6 +130,20 @@ export class FriendshipService {
   }
 
   static async update(id: number, data: UpdateFriendshipType) {
+    // Önce ilgili arkadaşlık kaydını al
+    const existingFriendship = await prisma.friendship.findUnique({
+      where: { id },
+      include: {
+        user: true,
+        friend: true,
+      },
+    });
+
+    if (!existingFriendship) {
+      throw new Error("Friendship not found");
+    }
+
+    // Arkadaşlık kaydını güncelle
     const friendship = await prisma.friendship.update({
       where: { id },
       data: {
@@ -101,7 +155,37 @@ export class FriendshipService {
       },
     });
 
+    // Eğer arkadaşlık kabul edildiyse, ters ilişkiyi de oluştur veya güncelle
     if (data.status === FriendshipStatus.ACCEPTED) {
+      // Ters ilişkiyi kontrol et
+      const reverseRelation = await prisma.friendship.findFirst({
+        where: {
+          userId: friendship.friendId,
+          friendId: friendship.userId,
+        },
+      });
+
+      if (reverseRelation) {
+        // Varsa güncelle
+        await prisma.friendship.update({
+          where: { id: reverseRelation.id },
+          data: {
+            status: FriendshipStatus.ACCEPTED,
+          },
+        });
+      } else {
+        // Yoksa oluştur
+        await prisma.friendship.create({
+          data: {
+            userId: friendship.friendId,
+            friendId: friendship.userId,
+            status: FriendshipStatus.ACCEPTED,
+            // İki kayıt arasında tutarlılık sağlamak için aynı createdAt değerini kullan
+            createdAt: friendship.createdAt,
+          },
+        });
+      }
+
       await NotificationService.create(
         friendship.userId,
         friendship.friendId,
@@ -110,6 +194,23 @@ export class FriendshipService {
         { friendshipId: friendship.id }
       );
     } else if (data.status === FriendshipStatus.BLOCKED) {
+      // Engelleme durumunda karşılıklı ilişkiyi de güncelle
+      const reverseRelation = await prisma.friendship.findFirst({
+        where: {
+          userId: friendship.friendId,
+          friendId: friendship.userId,
+        },
+      });
+
+      if (reverseRelation) {
+        await prisma.friendship.update({
+          where: { id: reverseRelation.id },
+          data: {
+            status: FriendshipStatus.BLOCKED,
+          },
+        });
+      }
+
       await NotificationService.create(
         friendship.userId,
         friendship.friendId,
@@ -224,6 +325,8 @@ export class FriendshipService {
         existingFriendship.status === FriendshipStatus.PENDING &&
         existingFriendship.friendId === userId
       ) {
+        // Bu durumda update metodumuz artık karşılıklı ilişkiyi de güncellediği için
+        // doğrudan update'i çağırabiliriz
         return this.update(existingFriendship.id, {
           status: FriendshipStatus.ACCEPTED,
         });

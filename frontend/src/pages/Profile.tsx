@@ -1,30 +1,28 @@
-import { FC, useState, useEffect, ChangeEvent } from "react";
-import {
-  Box,
-  Typography,
-  TextField,
-  Button,
-  Avatar,
-  Card,
-  CardContent,
-  Modal,
-  IconButton,
-  CircularProgress,
-  Alert,
-  Paper,
-  Stack,
-} from "@mui/material";
-import { styled } from "@mui/material/styles";
 import {
   Edit as EditIcon,
   Settings as SettingsIcon,
-  Visibility as VisibilityIcon,
   VisibilityOff as VisibilityOffIcon,
 } from "@mui/icons-material";
-import { useAuth } from "../context/AuthContext";
-import api, { userService } from "../utils/api";
-import { User } from "../utils/types";
+import {
+  Alert,
+  Avatar,
+  Box,
+  Button,
+  Card,
+  CardContent,
+  CircularProgress,
+  IconButton,
+  Modal,
+  Paper,
+  Stack,
+  TextField,
+  Typography,
+} from "@mui/material";
+import { styled } from "@mui/material/styles";
+import { ChangeEvent, FC, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
+import { userService } from "../utils/api";
 
 const ProfileAvatar = styled(Avatar)(({ theme }) => ({
   width: 120,
@@ -89,10 +87,8 @@ const Profile: FC = () => {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
 
-  // Form başlangıç değerlerini doldur
   useEffect(() => {
     if (user) {
-      // name özelliği için güvenli kontrol
       if (user && typeof user === "object" && "name" in user) {
         setName((user.name as string) || "");
       } else {
@@ -102,9 +98,7 @@ const Profile: FC = () => {
       setUsername(user.username || "");
       setEmail(user.email || "");
 
-      // Profil fotoğrafı URL'si
       if (user.profileImage) {
-        // Tam URL kontrolü
         if (user.profileImage.startsWith("http")) {
           setPreviewUrl(user.profileImage);
         } else {
@@ -267,7 +261,6 @@ const Profile: FC = () => {
       const updatedUser = await checkAuthStatus();
       console.log("Güncellenmiş kullanıcı verisi:", updatedUser);
 
-      // previewUrl'i güncelle (doğrudan güncellenen kullanıcı nesnesinden)
       if (user?.profileImage) {
         const imageUrl = user.profileImage.startsWith("http")
           ? user.profileImage
