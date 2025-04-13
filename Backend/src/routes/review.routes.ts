@@ -1,8 +1,12 @@
 import { Router } from "express";
-import { ReviewController } from "src/controller/review.controller";
 import { authenticate } from "src/middlewares/auth.middleware";
+import { ReviewController } from "../controller/review.controller";
+import { reviewLimiter } from "../middlewares/rate-limit.middleware";
 
 const router = Router();
+
+// Apply review-specific rate limiter
+router.use(reviewLimiter);
 
 // Public routes
 router.get("/", ReviewController.index);

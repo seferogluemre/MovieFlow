@@ -1,35 +1,24 @@
-import express from "express";
-import rateLimit from "express-rate-limit";
 import cors from "cors";
-import helmet from "helmet";
 import dotenv from "dotenv";
-import user_routes from "./routes/user.routes";
-import actor_routes from "./routes/actor.routes";
-import movie_routes from "./routes/movie.routes";
-import auth_routes from "./routes/auth.routes";
-import genre_routes from "./routes/genre.routes";
-import review_routes from "./routes/review.routes";
-import rating_routes from "./routes/rating.routes";
+import express from "express";
+import helmet from "helmet";
 import path from "path";
+import { errorHandler } from "./middlewares/error.middleware";
+import { defaultLimiter } from "./middlewares/rate-limit.middleware";
+import actor_routes from "./routes/actor.routes";
+import auth_routes from "./routes/auth.routes";
+import friendshipRoutes from "./routes/friendship.routes";
+import genre_routes from "./routes/genre.routes";
+import libraryRoutes from "./routes/library.routes";
+import movieActorRoutes from "./routes/movie-actor.routes";
+import movieGenreRoutes from "./routes/movie-genre.routes";
+import movie_routes from "./routes/movie.routes";
+import notificationRoutes from "./routes/notification.routes";
+import rating_routes from "./routes/rating.routes";
+import review_routes from "./routes/review.routes";
+import user_routes from "./routes/user.routes";
 import watchList_routes from "./routes/watchlist.routes";
 import wishList_routes from "./routes/wishlist.routes";
-import libraryRoutes from "./routes/library.routes";
-import friendshipRoutes from "./routes/friendship.routes";
-import movieGenreRoutes from "./routes/movie-genre.routes";
-import movieActorRoutes from "./routes/movie-actor.routes";
-import notificationRoutes from "./routes/notification.routes";
-import { errorHandler } from "./middlewares/error.middleware";
-
-const globalLimiter = rateLimit({
-  windowMs: 1 * 60 * 1000,
-  max: 100,
-  message: {
-    error: "Çok fazla istek yaptınız, lütfen daha sonra tekrar deneyin.",
-  },
-  headers: true,
-  standardHeaders: true,
-  legacyHeaders: false,
-});
 
 const corsOptions = {
   origin: ["http://localhost:5173", "http://127.0.0.1:5173"],
@@ -53,7 +42,8 @@ app.use(
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(globalLimiter);
+// Apply default rate limiter only as a fallback
+app.use(defaultLimiter);
 app.use(cors(corsOptions));
 
 app.use(
@@ -74,6 +64,7 @@ app.use(
   express.static(path.join(__dirname, "../", "public", "posters"))
 );
 
+// Routes will have their own rate limiters applied within the route files
 app.use("/api/watchlist", watchList_routes);
 app.use("/api/wishlist", wishList_routes);
 app.use("/api/users", user_routes);
@@ -82,7 +73,6 @@ app.use("/api/movies", movie_routes);
 app.use("/api/auth", auth_routes);
 app.use("/api/genres", genre_routes);
 app.use("/api/reviews", review_routes);
-
 app.use("/api/ratings", rating_routes);
 app.use("/api/library", libraryRoutes);
 app.use("/api/friendships", friendshipRoutes);

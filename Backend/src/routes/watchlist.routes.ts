@@ -1,10 +1,14 @@
 import { Router } from "express";
-import { authenticate } from "../middlewares/auth.middleware";
 import { WatchListController } from "src/controller/watchlist.controller";
+import { authenticate } from "../middlewares/auth.middleware";
+import { listLimiter } from "../middlewares/rate-limit.middleware";
 
 const router = Router();
 
 router.use(authenticate);
+
+// Apply list-specific rate limiter
+router.use(listLimiter);
 
 router.post("/", WatchListController.create);
 router.get("/", WatchListController.getAll);
