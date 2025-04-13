@@ -92,7 +92,6 @@ export const errorHandler = (
     return;
   }
 
-  // Genel hatalar
   const statusCode = res.statusCode !== 200 ? res.statusCode : 500;
 
   res.status(statusCode).json({

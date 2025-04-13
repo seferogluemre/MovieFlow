@@ -1,41 +1,33 @@
-import { FC, useEffect, useState } from "react";
 import {
-  Box,
-  Typography,
-  Grid,
-  Card,
-  CardMedia,
-  CardContent,
-  Chip,
-  Button,
-  IconButton,
-  TextField,
-  InputAdornment,
-  CircularProgress,
+  Add as AddIcon,
+  Delete as DeleteIcon,
+  PlaylistAdd as PlaylistAddIcon,
+  RemoveCircleOutline as RemoveIcon,
+  Search as SearchIcon,
+  Star as StarIcon,
+} from "@mui/icons-material";
+import {
   Alert,
+  Box,
+  Button,
+  Card,
+  CardContent,
+  CardMedia,
+  Chip,
+  CircularProgress,
   Dialog,
   DialogActions,
   DialogContent,
   DialogContentText,
   DialogTitle,
-  MenuItem,
-  Select,
-  FormControl,
-  InputLabel,
-  Tooltip,
+  Grid,
+  InputAdornment,
+  TextField,
+  Typography,
 } from "@mui/material";
-import {
-  Search as SearchIcon,
-  Star as StarIcon,
-  PlaylistAdd as PlaylistAddIcon,
-  Add as AddIcon,
-  FilterList as FilterListIcon,
-  Bookmark as BookmarkIcon,
-  RemoveCircleOutline as RemoveIcon,
-  Delete as DeleteIcon,
-} from "@mui/icons-material";
-import api, { processApiError } from "../utils/api";
+import { FC, useEffect, useState } from "react";
 import { useAuth } from "../context/AuthContext";
+import api, { processApiError } from "../utils/api";
 
 interface Movie {
   id: number;

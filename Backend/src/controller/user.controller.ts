@@ -11,9 +11,7 @@ import prisma from "src/config/database";
 import path from "path";
 import fs from "fs";
 import multer from "multer";
-import { storage } from "src/config/multer";
-
-const upload = multer({ storage }).single("profileImage");
+import { upload, uploadToS3, getS3Url } from "src/utils/s3-upload.util";
 
 export class UserController {
   static async index(req: Request, res: Response): Promise<void> {
@@ -42,7 +40,7 @@ export class UserController {
 
   static async create(req: Request, res: Response): Promise<void> {
     try {
-      upload(req, res, async (err: any) => {
+      upload.single("profileImage")(req, res, async (err: any) => {
         if (err) {
           return res.status(500).json({
             message: "File upload error",
@@ -54,7 +52,18 @@ export class UserController {
         const { file } = req;
 
         if (file) {
-          user.profileImage = file.filename;
+          try {
+            const s3Key = await uploadToS3(file, "profiles");
+            const imageUrl = getS3Url(s3Key);
+            if (imageUrl) {
+              user.profileImage = imageUrl;
+            }
+          } catch (error) {
+            return res.status(500).json({
+              message: "S3 upload error",
+              error: (error as Error).message,
+            });
+          }
         }
 
         const createdUser = await UserService.create(user);
@@ -117,7 +126,7 @@ export class UserController {
 
   static async update(req: Request, res: Response): Promise<void> {
     try {
-      upload(req, res, async (err: any) => {
+      upload.single("profileImage")(req, res, async (err: any) => {
         if (err) {
           console.error("Dosya yükleme hatası:", err);
           return res.status(500).json({
@@ -134,7 +143,6 @@ export class UserController {
         console.log("Yüklenen dosya:", file);
 
         try {
-          // Form verileri doğru şekilde parse edilmiş mi kontrol et
           const user = updateUserSchema.parse(req.body as UpdateUserProps);
           console.log("Doğrulanmış kullanıcı verisi:", user);
 
@@ -147,29 +155,20 @@ export class UserController {
           }
 
           if (file) {
-            console.log("Dosya yüklendi:", file.filename);
-            const existingUser = await prisma.user.findUnique({
-              where: { id: Number(id) },
-              select: { profileImage: true },
-            });
-
-            if (existingUser?.profileImage) {
-              const oldImagePath = path.join(
-                __dirname,
-                "..",
-                "..",
-                "public",
-                "uploads",
-                existingUser.profileImage
-              );
-              if (fs.existsSync(oldImagePath)) {
-                fs.unlinkSync(oldImagePath);
-                console.log("Eski profil resmi silindi:", oldImagePath);
+            try {
+              console.log("Dosya yükleniyor...");
+              const s3Key = await uploadToS3(file, "profiles");
+              const imageUrl = getS3Url(s3Key);
+              if (imageUrl) {
+                user.profileImage = imageUrl;
               }
+              console.log("Profil resmi güncellendi:", user.profileImage);
+            } catch (error) {
+              return res.status(500).json({
+                message: "S3 upload error",
+                error: (error as Error).message,
+              });
             }
-
-            user.profileImage = file.filename;
-            console.log("Profil resmi güncellendi:", file.filename);
           } else if (user.profileImage === null) {
             console.log("Profil resmi siliniyor - null değeri alındı");
           }
@@ -247,27 +246,54 @@ export class UserController {
 
   static async upload(req: Request, res: Response): Promise<void> {
     const { id } = req.params;
-    const { file } = req;
 
-    if (!file) {
-      logWarn(`User Upload Image --- No file uploaded`);
-      res.status(400).send("No file uploaded");
-    }
+    upload.single("profileImage")(req, res, async (err: any) => {
+      if (err) {
+        return res.status(500).json({
+          message: "File upload error",
+          error: err.message,
+        });
+      }
 
-    try {
-      const updatedUser = await prisma.user.update({
-        where: { id: parseInt(id) },
-        data: { profileImage: file?.filename },
-      });
+      const { file } = req;
 
-      logInfo(`User Upload Image - Request Received`);
+      if (!file) {
+        logWarn(`User Upload Image --- No file uploaded`);
+        res.status(400).send("No file uploaded");
+        return;
+      }
 
-      res
-        .status(200)
-        .send(`Profile image updated for user ${updatedUser.username}`);
-    } catch (error) {
-      console.error(error);
-      res.status(500).send("Error updating user profile image");
-    }
+      try {
+        const s3Key = await uploadToS3(file, "profiles");
+        const imageUrl = getS3Url(s3Key);
+
+        if (!imageUrl) {
+          return res.status(500).json({
+            message: "S3 URL generation failed",
+          });
+        }
+
+        const updatedUser = await prisma.user.update({
+          where: { id: parseInt(id) },
+          data: {
+            profileImage: imageUrl,
+          },
+        });
+
+        logInfo(`User Upload Image - Request Received`);
+
+        res.status(200).json({
+          message: `Profile image updated for user ${updatedUser.username}`,
+          data: updatedUser,
+        });
+      } catch (error) {
+        console.error(error);
+        res
+          .status(500)
+          .send(
+            `Error updating user profile image: ${(error as Error).message}`
+          );
+      }
+    });
   }
 }

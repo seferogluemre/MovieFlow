@@ -59,7 +59,6 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
-  // Auto-login when the component mounts if token exists
   useEffect(() => {
     const accessToken = localStorage.getItem("accessToken");
     const userId = localStorage.getItem("userId");
@@ -140,7 +139,6 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     try {
       console.log("Login initiated for email:", email);
 
-      // Login işlemi öncesi varsa önceki token'ları temizle
       localStorage.removeItem("accessToken");
       localStorage.removeItem("refreshToken");
       localStorage.removeItem("userId");
@@ -152,7 +150,6 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         throw new Error("Invalid response from server - missing tokens");
       }
 
-      // Token'ları ve kullanıcı ID'sini kaydet
       localStorage.setItem("accessToken", response.accessToken);
       localStorage.setItem("refreshToken", response.refreshToken);
       localStorage.setItem("userId", response.session.userId.toString());
@@ -175,7 +172,6 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       setUser(basicUserData);
 
       try {
-        // Try to get full user data
         console.log("Fetching full user data...");
         const userData = await userService.getCurrentUser();
         console.log("Full user data received:", userData);

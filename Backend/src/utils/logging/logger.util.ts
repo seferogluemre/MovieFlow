@@ -22,4 +22,4 @@ const writeLog = (level: LogLevel, message: string, error?: Error) => {
 export const logInfo = (message: string) => writeLog(LogLevel.INFO, message);
 export const logError = (message: string, error?: Error) =>
   writeLog(LogLevel.ERROR, message, error);
-export const logWarn = (message: string) => writeLog(LogLevel.WARN, message); 
+export const logWarn = (message: string) => writeLog(LogLevel.WARN, message);

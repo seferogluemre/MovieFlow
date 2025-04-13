@@ -1,5 +1,5 @@
 import multer from "multer";
-import { storage } from "src/config/multer";
+import { upload, uploadToS3, getS3Url } from "src/utils/s3-upload.util";
 import { z } from "zod";
 import { Request, Response } from "express";
 import { createActorSchema } from "src/validators/actor.validation";
@@ -9,8 +9,6 @@ import { CreateActorProps } from "src/types/types";
 import prisma from "src/config/database";
 import path from "path";
 import fs from "fs";
-
-const upload = multer({ storage }).single("actorImage");
 
 export class ActorController {
   static async index(req: Request, res: Response): Promise<void> {
@@ -69,7 +67,7 @@ export class ActorController {
 
   static async create(req: Request, res: Response): Promise<void> {
     try {
-      upload(req, res, async (err: any) => {
+      upload.single("actorImage")(req, res, async (err: any) => {
         if (err) {
           return res.status(500).json({
             message: "File upload error",
@@ -81,7 +79,18 @@ export class ActorController {
         const { file } = req;
 
         if (file) {
-          actor.photo = file.filename;
+          try {
+            const s3Key = await uploadToS3(file, "actors");
+            const imageUrl = getS3Url(s3Key);
+            if (imageUrl) {
+              actor.photo = imageUrl;
+            }
+          } catch (error) {
+            return res.status(500).json({
+              message: "S3 upload error",
+              error: (error as Error).message,
+            });
+          }
         }
 
         const createdActor = await ActorService.create(actor);
@@ -115,7 +124,7 @@ export class ActorController {
 
   static async update(req: Request, res: Response): Promise<void> {
     try {
-      upload(req, res, async (err: any) => {
+      upload.single("actorImage")(req, res, async (err: any) => {
         if (err) {
           return res.status(500).json({
             message: "File upload error",
@@ -136,26 +145,18 @@ export class ActorController {
         }
 
         if (file) {
-          const existingActor = await prisma.actor.findUnique({
-            where: { id: Number(id) },
-            select: { photo: true },
-          });
-
-          if (existingActor?.photo) {
-            const oldImagePath = path.join(
-              __dirname,
-              "..",
-              "..",
-              "public",
-              "uploads",
-              existingActor.photo
-            );
-            if (fs.existsSync(oldImagePath)) {
-              fs.unlinkSync(oldImagePath);
+          try {
+            const s3Key = await uploadToS3(file, "actors");
+            const imageUrl = getS3Url(s3Key);
+            if (imageUrl) {
+              actor.photo = imageUrl;
             }
+          } catch (error) {
+            return res.status(500).json({
+              message: "S3 upload error",
+              error: (error as Error).message,
+            });
           }
-
-          actor.photo = file.filename;
         }
 
         const updatedActor = await ActorService.update(Number(id), actor);

@@ -57,10 +57,10 @@ pnpm install
 Create a `.env` file with the following configurations:
 ```
 PORT=3000
-DATABASE_URL="postgresql://postgres:postgres@localhost:5432/movie?schema=public"
-JWT_SECRET=my_super_secret_key
-JWT_EXPIRES_IN=3d
-REFRESH_SECRET=mySuperSecretKey
+DATABASE_URL="random://postgres:random@localhost:5432/random?schema=public"
+JWT_SECRET=random
+JWT_EXPIRES_IN=5d
+REFRESH_SECRET=random
 ```
 
 4. Setup the database:

@@ -29,4 +29,4 @@ export const verifyToken = (token: string): TokenPayload => {
     }
     throw error;
   }
-}; 
+};

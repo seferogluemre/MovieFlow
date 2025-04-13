@@ -1,29 +1,28 @@
-import { FC } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import {
+  Dashboard as DashboardIcon,
+  Movie as FilmIcon,
+  People as FriendsIcon,
+  VideoLibrary as LibraryIcon,
+  ExitToApp as LogoutIcon,
+  Slideshow as MoviesIcon,
+  Person as ProfileIcon,
+  StarRate as ReviewsIcon,
+  Visibility as WatchlistIcon,
+  Favorite as WishlistIcon,
+} from "@mui/icons-material";
 import {
   Box,
+  Button,
+  Divider,
   List,
   ListItem,
   ListItemIcon,
   ListItemText,
   Typography,
   styled,
-  Button,
-  Divider,
 } from "@mui/material";
-import {
-  Dashboard as DashboardIcon,
-  Person as ProfileIcon,
-  Slideshow as MoviesIcon,
-  Visibility as WatchlistIcon,
-  Favorite as WishlistIcon,
-  VideoLibrary as LibraryIcon,
-  StarRate as ReviewsIcon,
-  People as FriendsIcon,
-  Settings as SettingsIcon,
-  Movie as FilmIcon,
-  ExitToApp as LogoutIcon,
-} from "@mui/icons-material";
+import { FC } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { authService } from "../utils/api";
 
 // Create a styled component for the logo

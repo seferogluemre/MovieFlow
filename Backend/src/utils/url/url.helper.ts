@@ -1,19 +1,37 @@
-export const getFullPosterUrl = (posterImage: string | null): string | null => {
-  if (!posterImage) return null;
-  if (posterImage.startsWith("http")) return posterImage;
-  return `http://localhost:3000/posters/${posterImage}`;
-};
+/**
+ * URL yardımcı fonksiyonları
+ */
+import { getImageUrl } from "../image-url.util";
 
+export const BASE_URL = process.env.BASE_URL || "http://localhost:3000";
+
+/**
+ * Profil resmi URL'si oluşturur
+ * @param profileImage Profil resmi dosya adı veya yolu
+ * @returns Tam profil resmi URL'si
+ */
 export const getFullProfileImageUrl = (
   profileImage: string | null
 ): string | null => {
-  if (!profileImage) return null;
-  if (profileImage.startsWith("http")) return profileImage;
-  return `http://localhost:3000/uploads/${profileImage}`;
+  // Yeni S3 fonksiyonunu kullanıyoruz
+  return getImageUrl(profileImage);
 };
 
+/**
+ *
+ * @param posterImage Film posteri dosya adı veya yolu
+ * @returns Tam poster URL'si
+ */
+export const getFullPosterUrl = (posterImage: string | null): string | null => {
+  return getImageUrl(posterImage);
+};
+
+/**
+ *
+ * @param photo Aktör fotoğrafı dosya adı veya yolu
+ * @returns Tam fotoğraf URL'si
+ */
 export const getFullActorPhotoUrl = (photo: string | null): string | null => {
-  if (!photo) return null;
-  if (photo.startsWith("http")) return photo;
-  return `http://localhost:3000/uploads/${photo}`;
-}; 
+  // Yeni S3 fonksiyonunu kullanıyoruz
+  return getImageUrl(photo);
+};

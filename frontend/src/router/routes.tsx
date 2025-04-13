@@ -1,17 +1,17 @@
 import { createBrowserRouter, Navigate } from "react-router-dom";
 import MainLayout from "../layouts/MainLayout";
+import BrowseMovies from "../pages/BrowseMovies";
 import Dashboard from "../pages/Dashboard";
+import Friends from "../pages/Friends";
+import Library from "../pages/Library";
 import Login from "../pages/Login";
 import MovieDetails from "../pages/MovieDetails";
+import MyReviews from "../pages/MyReviews";
 import Profile from "../pages/Profile";
 import ProfileDetail from "../pages/ProfileDetail";
-import BrowseMovies from "../pages/BrowseMovies";
+import Settings from "../pages/Settings";
 import Watchlist from "../pages/Watchlist";
 import Wishlist from "../pages/Wishlist";
-import Library from "../pages/Library";
-import MyReviews from "../pages/MyReviews";
-import Friends from "../pages/Friends";
-import Settings from "../pages/Settings";
 
 // Auth guard for protected routes
 const isAuthenticated = () => {

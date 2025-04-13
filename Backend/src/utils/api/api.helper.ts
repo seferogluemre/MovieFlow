@@ -1,10 +1,13 @@
-import { ApiResponse, ApiError } from '../../types/api.types';
+import { ApiResponse, ApiError } from "../../types/api.types";
 
-export const createSuccessResponse = <T>(data: T, message: string = 'Success'): ApiResponse<T> => {
+export const createSuccessResponse = <T>(
+  data: T,
+  message: string = "Success"
+): ApiResponse<T> => {
   return {
     success: true,
     message,
-    data
+    data,
   };
 };
 
@@ -12,7 +15,7 @@ export const createErrorResponse = (error: ApiError): ApiResponse => {
   return {
     success: false,
     message: error.message,
-    error
+    error,
   };
 };
 
@@ -21,10 +24,10 @@ export const createPaginatedResponse = <T>(
   total: number,
   page: number,
   limit: number,
-  message: string = 'Success'
+  message: string = "Success"
 ): ApiResponse<T[]> => {
   const totalPages = Math.ceil(total / limit);
-  
+
   return {
     success: true,
     message,
@@ -33,7 +36,7 @@ export const createPaginatedResponse = <T>(
       total,
       page,
       limit,
-      totalPages
-    }
+      totalPages,
+    },
   };
-}; 
+};

@@ -21,8 +21,8 @@ import notificationRoutes from "./routes/notification.routes";
 import { errorHandler } from "./middlewares/error.middleware";
 
 const globalLimiter = rateLimit({
-  windowMs: 1 * 60 * 2000,
-  max: 150,
+  windowMs: 1 * 60 * 1000,
+  max: 100,
   message: {
     error: "Çok fazla istek yaptınız, lütfen daha sonra tekrar deneyin.",
   },
@@ -82,8 +82,8 @@ app.use("/api/movies", movie_routes);
 app.use("/api/auth", auth_routes);
 app.use("/api/genres", genre_routes);
 app.use("/api/reviews", review_routes);
-app.use("/api/ratings", rating_routes);
 
+app.use("/api/ratings", rating_routes);
 app.use("/api/library", libraryRoutes);
 app.use("/api/friendships", friendshipRoutes);
 app.use("/api/movie-genres", movieGenreRoutes);

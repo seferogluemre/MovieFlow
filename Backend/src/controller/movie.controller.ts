@@ -2,14 +2,11 @@ import { z } from "zod";
 import { Request, Response } from "express";
 import multer from "multer";
 import { MovieService } from "src/services/movie.service";
-import { storage, postersStorage } from "src/config/multer";
+import { upload, uploadToS3, getS3Url } from "src/utils/s3-upload.util";
 import { logInfo, logWarn } from "src/utils/logging/logger.util";
 import prisma from "src/config/database";
 import path from "path";
 import fs from "fs";
-
-const uploadGeneral = multer({ storage }).single("file");
-const uploadPoster = multer({ storage: postersStorage }).single("poster");
 
 export class MovieController {
   static async index(req: Request, res: Response): Promise<void> {
@@ -37,9 +34,7 @@ export class MovieController {
 
   static async create(req: Request, res: Response): Promise<void> {
     try {
-      const upload = req.file ? uploadGeneral : uploadPoster;
-
-      upload(req, res, async (err: any) => {
+      upload.single("poster")(req, res, async (err: any) => {
         if (err) {
           logWarn(`Create Movie - File upload error`);
           return res.status(500).json({
@@ -51,7 +46,19 @@ export class MovieController {
         const { file } = req;
         const body = req.body;
 
-        const posterImage = file ? file.filename : null;
+        let posterImage = null;
+
+        if (file) {
+          try {
+            const s3Key = await uploadToS3(file, "posters");
+            posterImage = getS3Url(s3Key);
+          } catch (error) {
+            return res.status(500).json({
+              message: "S3 upload error",
+              error: (error as Error).message,
+            });
+          }
+        }
 
         const movieData = {
           ...body,
@@ -124,7 +131,7 @@ export class MovieController {
 
   static async getPicture(req: Request, res: Response): Promise<void> {
     try {
-      const { id } = req.params; // id parametresini almak
+      const { id } = req.params;
       const user = await prisma.user.findUnique({
         where: { id: parseInt(id) },
       });
@@ -135,7 +142,7 @@ export class MovieController {
         return;
       }
 
-      const imageUrl = `http://localhost:3000/uploads/posters/${user.profileImage}`;
+      const imageUrl = getS3Url(user.profileImage);
       logInfo(`User Get Profile Image - Request Received`);
 
       res.json({ imageUrl });
@@ -175,10 +182,7 @@ export class MovieController {
 
   static async update(req: Request, res: Response): Promise<void> {
     try {
-      const { id } = req.params;
-      const upload = req.file ? uploadGeneral : uploadPoster;
-
-      upload(req, res, async (err: any) => {
+      upload.single("poster")(req, res, async (err: any) => {
         if (err) {
           logWarn(`Update Movie - File upload error`);
           return res.status(500).json({
@@ -187,6 +191,7 @@ export class MovieController {
           });
         }
 
+        const { id } = req.params;
         const { file } = req;
         const body = req.body;
 
@@ -198,26 +203,15 @@ export class MovieController {
         }
 
         if (file) {
-          const existingMovie = await prisma.movie.findUnique({
-            where: { id: Number(id) },
-            select: { posterImage: true },
-          });
-
-          if (existingMovie?.posterImage) {
-            const oldImagePath = path.join(
-              __dirname,
-              "..",
-              "..",
-              "public",
-              "posters",
-              existingMovie.posterImage
-            );
-            if (fs.existsSync(oldImagePath)) {
-              fs.unlinkSync(oldImagePath);
-            }
+          try {
+            const s3Key = await uploadToS3(file, "posters");
+            body.posterImage = getS3Url(s3Key);
+          } catch (error) {
+            return res.status(500).json({
+              message: "S3 upload error",
+              error: (error as Error).message,
+            });
           }
-
-          body.posterImage = file.filename;
         }
 
         const updatedMovie = await MovieService.update(Number(id), body);

@@ -1,16 +1,16 @@
-import { FC, useState, FormEvent } from "react";
-import { useNavigate } from "react-router-dom";
+import { Movie as MovieIcon } from "@mui/icons-material";
 import {
+  Alert,
   Box,
-  Typography,
-  TextField,
   Button,
   Card,
   CardContent,
   CircularProgress,
-  Alert,
+  TextField,
+  Typography,
 } from "@mui/material";
-import { Movie as MovieIcon } from "@mui/icons-material";
+import { FC, FormEvent, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
 const Login: FC = () => {
@@ -28,11 +28,9 @@ const Login: FC = () => {
       setLoading(true);
       setError(null);
 
-      // Use the login method from AuthContext instead of the direct API call
       await login(email, password);
       console.log("Login successful, redirecting to home page");
 
-      // Navigate to the dashboard after successful login
       navigate("/", { replace: true });
     } catch (err) {
       console.error("Login error:", err);

@@ -1,46 +1,39 @@
-import { FC, useState, useEffect } from "react";
-import { Outlet, useNavigate, Link } from "react-router-dom";
 import {
-  Box,
+  DarkMode as DarkModeIcon,
+  LightMode as LightModeIcon,
+  Notifications as NotificationsIcon,
+  Person as PersonIcon,
+  PlaylistAdd as PlaylistAddIcon,
+  Search as SearchIcon,
+  ThumbUp as ThumbUpIcon,
+} from "@mui/icons-material";
+import {
   AppBar,
-  Toolbar,
-  IconButton,
   Avatar,
-  InputBase,
   Badge,
-  styled,
-  Menu,
-  MenuItem,
-  Typography,
-  Divider,
-  ListItemIcon,
-  ListItemText,
-  Paper,
-  Popover,
+  Box,
+  Button,
+  CircularProgress,
+  IconButton,
+  InputBase,
   List,
   ListItem,
   ListItemAvatar,
-  CircularProgress,
-  Button,
+  ListItemText,
+  Popover,
+  styled,
+  Toolbar,
   Tooltip,
+  Typography,
 } from "@mui/material";
-import {
-  Search as SearchIcon,
-  Notifications as NotificationsIcon,
-  DarkMode as DarkModeIcon,
-  LightMode as LightModeIcon,
-  Person as PersonIcon,
-  PlaylistAdd as PlaylistAddIcon,
-  ThumbUp as ThumbUpIcon,
-  Close as CloseIcon,
-} from "@mui/icons-material";
-import Sidebar from "../components/Sidebar";
-import api, { userService, friendshipService } from "../utils/api";
-import { User, Notification } from "../utils/types";
 import { formatDistanceToNow } from "date-fns";
+import { FC, useEffect, useState } from "react";
+import { Outlet, useNavigate } from "react-router-dom";
+import Sidebar from "../components/Sidebar";
 import { useAuth } from "../context/AuthContext";
 import { useTheme } from "../context/ThemeContext";
 import { notificationService } from "../services/NotificationService";
+import { Notification } from "../utils/types";
 
 const SearchBar = styled("div")(({ theme }) => ({
   position: "relative",
@@ -112,10 +105,8 @@ const MainLayout: FC = () => {
         return;
       }
 
-      // Oturum açık değilse, kontrol etmeyi dene
       const isAuth = await checkAuthStatus();
 
-      // Oturum açma başarılı ise bildirimleri getir
       if (isAuth) {
         fetchNotifications();
       }
@@ -224,7 +215,6 @@ const MainLayout: FC = () => {
     return username.substring(0, 2).toUpperCase();
   };
 
-  // Bildirim içeriğine göre icon seç
   const getNotificationIcon = (type: string) => {
     switch (type) {
       case "FRIEND_REQUEST":
