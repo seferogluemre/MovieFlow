@@ -59,4 +59,11 @@ export class NotificationService {
     });
     await prisma.$disconnect();
   }
+
+  static async deleteNotification(notificationId: number) {
+    await prisma.notification.delete({
+      where: { id: notificationId },
+    });
+    await prisma.$disconnect();
+  }
 }

@@ -11,7 +11,6 @@ router.use(genreLimiter);
 router.get("/", GenreController.index);
 router.get("/:id", GenreController.get);
 router.post("/", GenreController.create);
-router.get("/slug/:slug", GenreController.getBySlug);
 router.patch("/:id", GenreController.update);
 router.delete("/:id", GenreController.delete);
 

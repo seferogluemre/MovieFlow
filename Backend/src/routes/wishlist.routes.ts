@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { WishListController } from "../controller/wishlist.controller";
+import { WishlistController } from "src/controller/wishlist.controller";
 import { listLimiter } from "../middlewares/rate-limit.middleware";
 
 const router = Router();
@@ -7,10 +7,10 @@ const router = Router();
 // Apply list-specific rate limiter
 router.use(listLimiter);
 
-router.get("/", WishListController.index);
-router.post("/", WishListController.create);
-router.get("/:id", WishListController.get);
-router.get("/user/:userId", WishListController.getByUserId);
-router.delete("/:id", WishListController.delete);
+router.get("/", WishlistController.getAll);
+router.post("/", WishlistController.create);
+router.get("/:id", WishlistController.getById);
+router.get("/user/:userId", WishlistController.getById);
+router.delete("/:id", WishlistController.delete);
 
 export default router;

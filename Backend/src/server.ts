@@ -64,7 +64,6 @@ app.use(
   express.static(path.join(__dirname, "../", "public", "posters"))
 );
 
-// Routes will have their own rate limiters applied within the route files
 app.use("/api/watchlist", watchList_routes);
 app.use("/api/wishlist", wishList_routes);
 app.use("/api/users", user_routes);

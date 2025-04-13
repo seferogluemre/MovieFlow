@@ -1,0 +1,36 @@
+[INFO] 2025-04-13T19:02:00.688Z - Login User --- Login successful 🚀
+[INFO] 2025-04-13T19:02:00.770Z - Get User --- Request Received
+[INFO] 2025-04-13T19:02:00.894Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-13T19:02:00.957Z - Get User --- Request Received
+[INFO] 2025-04-13T19:02:01.035Z - Get User --- Request Received
+[INFO] 2025-04-13T19:02:01.057Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-13T19:02:01.126Z - Get User --- Request Received
+[INFO] 2025-04-13T19:02:01.189Z - Get User --- Request Received
+[INFO] 2025-04-13T19:02:07.052Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-13T19:02:07.129Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-13T19:02:07.129Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-13T19:02:07.207Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-13T19:02:07.208Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-13T19:02:07.253Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-13T19:02:17.944Z - Get User --- Request Received
+[INFO] 2025-04-13T19:02:18.006Z - Get User --- Request Received
+[INFO] 2025-04-13T19:02:18.068Z - Get User --- Request Received
+[INFO] 2025-04-13T19:02:18.239Z - Get User --- Request Received
+[INFO] 2025-04-13T19:02:21.052Z - Update User - Updated User {"id":1,"email":"ismet@mail.com","username":"ismetterzioglu","password":"$2b$10$c.RIb/IopXhGgPVHzZfoJuQl8ZhNcjKxYOEt.pDcGLYM4ouwycyeC","name":"İsmet Terzioglu","profileImage":null,"isAdmin":false,"isPrivate":true,"createdAt":"2025-04-10T04:08:29.579Z","updatedAt":"2025-04-13T19:02:21.042Z"}
+[INFO] 2025-04-13T19:02:21.113Z - Get User --- Request Received
+[INFO] 2025-04-13T19:04:46.803Z - List movies --- Request Received
+[INFO] 2025-04-13T19:04:46.809Z - List movies --- Request Received
+[INFO] 2025-04-13T19:04:46.866Z - Get User --- Request Received
+[INFO] 2025-04-13T19:04:46.928Z - Get User --- Request Received
+[INFO] 2025-04-13T19:04:46.979Z - List movies --- Request Received
+[INFO] 2025-04-13T19:04:46.988Z - List movies --- Request Received
+[INFO] 2025-04-13T19:04:46.993Z - Get User --- Request Received
+[INFO] 2025-04-13T19:04:46.999Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-13T19:04:47.041Z - List movies --- Request Received
+[INFO] 2025-04-13T19:04:47.069Z - Get User --- Request Received
+[INFO] 2025-04-13T19:04:47.102Z - List movies --- Request Received
+[INFO] 2025-04-13T19:04:47.241Z - Get User --- Request Received
+[INFO] 2025-04-13T19:04:47.277Z - List movies --- Request Received
+[INFO] 2025-04-13T19:04:47.303Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-13T19:04:47.305Z - Get User --- Request Received
+[INFO] 2025-04-13T19:04:47.345Z - List movies --- Request Received
