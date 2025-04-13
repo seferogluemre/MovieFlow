@@ -4,7 +4,6 @@ import express from "express";
 import helmet from "helmet";
 import path from "path";
 import { errorHandler } from "./middlewares/error.middleware";
-import { defaultLimiter } from "./middlewares/rate-limit.middleware";
 import actor_routes from "./routes/actor.routes";
 import auth_routes from "./routes/auth.routes";
 import friendshipRoutes from "./routes/friendship.routes";
@@ -43,7 +42,6 @@ app.use(
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 // Apply default rate limiter only as a fallback
-app.use(defaultLimiter);
 app.use(cors(corsOptions));
 
 app.use(

@@ -1,4 +1,4 @@
-import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from "axios";
+import axios, { AxiosError, AxiosRequestConfig } from "axios";
 
 // Backend API URL'i
 // Not: Backend API URL'ini backend'in çalıştığı port'a göre ayarlayın
@@ -624,6 +624,33 @@ export const processApiError = (error: any): string => {
 
   // Hata detayları varsa
   if (error.response?.data) {
+    // Validation errors handling
+    if (
+      error.response.data.message === "Validation Failed" &&
+      Array.isArray(error.response.data.errors)
+    ) {
+      const validationErrors = error.response.data.errors;
+
+      // Özel hata mesajları için kontrol
+      for (const err of validationErrors as {
+        field: string;
+        errors: string;
+      }[]) {
+        // Review içeriği için minimum karakter hatası
+        if (
+          err.field === "content" &&
+          err.errors.includes("must be at least 10 characters")
+        ) {
+          return "Yorum içeriği en az 10 karakter olmalıdır.";
+        }
+      }
+
+      // Genel validation hatası
+      return validationErrors
+        .map((err: { errors: string }) => err.errors)
+        .join(", ");
+    }
+
     // Backend direkt olarak message dönüyorsa
     if (typeof error.response.data.message === "string") {
       errorMessage = error.response.data.message;
@@ -688,6 +715,11 @@ export const processApiError = (error: any): string => {
         return "This email address is already registered.";
       } else if (errorMessage.toLowerCase().includes("username")) {
         return "This username is already taken.";
+      } else if (
+        errorMessage.toLowerCase().includes("(`userid`,`movieid`)") &&
+        errorMessage.toLowerCase().includes("review")
+      ) {
+        return "Her film için sadece bir yorum oluşturabilirsiniz.";
       }
       // Genel unique constraint mesajı
       return "This item already exists.";

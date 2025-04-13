@@ -1,11 +1,7 @@
 import { Router } from "express";
 import { GenreController } from "../controller/genre.controller";
-import { genreLimiter } from "../middlewares/rate-limit.middleware";
 
 const router = Router();
-
-// Apply genre-specific rate limiter
-router.use(genreLimiter);
 
 // Genre CRUD routes
 router.get("/", GenreController.index);

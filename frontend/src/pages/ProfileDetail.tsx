@@ -1,53 +1,49 @@
-import { FC, useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
 import {
-  Box,
-  Typography,
+  Check as CheckIcon,
+  Close as CloseIcon,
+  Email as EmailIcon,
+  People as PeopleIcon,
+  PersonAdd as PersonAddIcon,
+  PersonAddOutlined as PersonAddOutlinedIcon,
+  PersonOutlined as PersonOutlinedIcon,
+  PersonRemove as PersonRemoveIcon,
+  ThumbDown as ThumbDownIcon,
+  ThumbUp as ThumbUpIcon,
+} from "@mui/icons-material";
+import {
+  Alert,
   Avatar,
+  Backdrop,
+  Box,
+  Button,
   Card,
   CardContent,
   CircularProgress,
-  Alert,
-  Button,
-  Paper,
   Dialog,
-  DialogTitle,
   DialogContent,
+  DialogTitle,
+  Divider,
+  Fade,
+  IconButton,
   List,
   ListItem,
   ListItemAvatar,
   ListItemText,
-  Divider,
-  IconButton,
-  Stack,
-  Tabs,
-  Tab,
   Modal,
-  Backdrop,
-  Fade,
+  Paper,
+  Stack,
+  Tab,
+  Tabs,
+  Typography,
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import {
-  PersonAdd as PersonAddIcon,
-  PersonRemove as PersonRemoveIcon,
-  Check as CheckIcon,
-  Email as EmailIcon,
-  Person as PersonIcon,
-  Close as CloseIcon,
-  ThumbUp as ThumbUpIcon,
-  ThumbDown as ThumbDownIcon,
-  People as PeopleIcon,
-  PersonOutlined as PersonOutlinedIcon,
-  PersonAddOutlined as PersonAddOutlinedIcon,
-  Visibility as VisibilityIcon,
-  VisibilityOff as VisibilityOffIcon,
-} from "@mui/icons-material";
-import { userService, friendshipService } from "../utils/api";
-import { User, Friendship } from "../utils/types";
-import { useAuth } from "../context/AuthContext";
 import { formatDistanceToNow } from "date-fns";
 import { tr } from "date-fns/locale";
-import api from "../utils/api";
+import { FC, useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
+import api, { friendshipService, userService } from "../utils/api";
+import { Friendship, User } from "../utils/types";
 
 // Büyük avatar
 const ProfileAvatar = styled(Avatar)(({ theme }) => ({
@@ -932,7 +928,7 @@ const ProfileDetail: FC = () => {
               {isActionInProgress ? (
                 <CircularProgress size={16} />
               ) : (
-                "Arkadaşlıktan Çıkar"
+                "Takibi Bırak"
               )}
             </Button>
           </Box>

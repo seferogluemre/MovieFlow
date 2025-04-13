@@ -397,17 +397,19 @@ const BrowseMovies: FC = () => {
                             Remove from Watchlist
                           </Button>
                         ) : (
-                          <Button
-                            variant="contained"
-                            color="primary"
-                            startIcon={<PlaylistAddIcon />}
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              handleAddToWatchlist(movie.id);
-                            }}
-                          >
-                            Add to Watchlist
-                          </Button>
+                          !inWatchlist && (
+                            <Button
+                              variant="contained"
+                              color="primary"
+                              startIcon={<PlaylistAddIcon />}
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                handleAddToWatchlist(movie.id);
+                              }}
+                            >
+                              Add to Watchlist
+                            </Button>
+                          )
                         )}
 
                         {inLibrary && libraryItemId ? (
@@ -423,17 +425,19 @@ const BrowseMovies: FC = () => {
                             Remove from Library
                           </Button>
                         ) : (
-                          <Button
-                            variant="outlined"
-                            color="primary"
-                            startIcon={<AddIcon />}
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              handleAddToLibrary(movie.id);
-                            }}
-                          >
-                            Add to Library
-                          </Button>
+                          !inLibrary && (
+                            <Button
+                              variant="outlined"
+                              color="primary"
+                              startIcon={<AddIcon />}
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                handleAddToLibrary(movie.id);
+                              }}
+                            >
+                              Add to Library
+                            </Button>
+                          )
                         )}
                       </Box>
                     )}

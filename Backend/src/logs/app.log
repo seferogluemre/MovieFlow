@@ -34,3 +34,1591 @@
 [INFO] 2025-04-13T19:04:47.303Z - Notification getUserNotifications ---- Retrieved user notifications
 [INFO] 2025-04-13T19:04:47.305Z - Get User --- Request Received
 [INFO] 2025-04-13T19:04:47.345Z - List movies --- Request Received
+[INFO] 2025-04-13T19:05:52.575Z - Get User --- Request Received
+[INFO] 2025-04-13T19:06:53.753Z - Get Movie Reviews - Retrieved reviews for Movie 1
+[INFO] 2025-04-13T19:06:53.761Z - Get Movie Reviews - Retrieved reviews for Movie 1
+[INFO] 2025-04-13T19:06:53.772Z - Get User --- Request Received
+[INFO] 2025-04-13T19:06:53.850Z - Get User --- Request Received
+[INFO] 2025-04-13T19:07:24.194Z - LibraryController.create ---- Library entry created for user ${userId} and movie ${data.movieId}
+[INFO] 2025-04-13T19:07:29.415Z - Get User --- Request Received
+[INFO] 2025-04-13T19:07:29.476Z - Get User --- Request Received
+[INFO] 2025-04-13T19:07:29.537Z - Get User --- Request Received
+[INFO] 2025-04-13T19:07:29.553Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-13T19:07:29.601Z - Get User --- Request Received
+[INFO] 2025-04-13T19:07:29.662Z - Get User --- Request Received
+[INFO] 2025-04-13T19:07:29.724Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-13T19:07:29.725Z - Get User --- Request Received
+[INFO] 2025-04-13T19:07:34.021Z - Get User --- Request Received
+[INFO] 2025-04-13T19:12:20.573Z - Get User --- Request Received
+[INFO] 2025-04-13T19:12:20.650Z - Get User --- Request Received
+[INFO] 2025-04-13T19:12:20.712Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-13T19:12:20.714Z - Get User --- Request Received
+[INFO] 2025-04-13T19:12:20.775Z - Get User --- Request Received
+[INFO] 2025-04-13T19:12:20.837Z - Get User --- Request Received
+[INFO] 2025-04-13T19:12:20.899Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-13T19:12:21.010Z - Get User --- Request Received
+[INFO] 2025-04-13T19:15:03.390Z - Get User --- Request Received
+[INFO] 2025-04-13T19:15:03.468Z - Get User --- Request Received
+[INFO] 2025-04-13T19:15:03.531Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-13T19:15:03.532Z - Get User --- Request Received
+[INFO] 2025-04-13T19:15:03.702Z - Get User --- Request Received
+[INFO] 2025-04-13T19:15:03.764Z - Get User --- Request Received
+[INFO] 2025-04-13T19:15:03.818Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-13T19:15:03.827Z - Get User --- Request Received
+[INFO] 2025-04-13T19:15:05.136Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
+[INFO] 2025-04-13T19:15:05.139Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
+[INFO] 2025-04-13T19:15:13.376Z - LibraryController.update ---- Updated library entry ${id}
+[INFO] 2025-04-13T19:23:27.594Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-13T19:23:27.668Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-13T19:23:27.669Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-13T19:23:27.744Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-13T19:23:27.745Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-13T19:23:27.796Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-13T19:23:27.965Z - Get User --- Request Received
+[INFO] 2025-04-13T19:23:28.029Z - Get User --- Request Received
+[INFO] 2025-04-13T19:23:35.306Z - Update Review - Updated Review [object Object]
+[INFO] 2025-04-13T19:23:37.989Z - Delete Review - Deleted Review [object Object]
+[INFO] 2025-04-13T19:23:42.227Z - List movies --- Request Received
+[INFO] 2025-04-13T19:23:42.234Z - List movies --- Request Received
+[WARN] 2025-04-13T19:23:42.851Z - LibraryController.create ---- Error creating library entry: ${error}
+[INFO] 2025-04-13T19:23:50.410Z - Get Movie Reviews - Retrieved reviews for Movie 1
+[INFO] 2025-04-13T19:23:50.414Z - Get Movie Reviews - Retrieved reviews for Movie 1
+[INFO] 2025-04-13T19:23:50.470Z - Get User --- Request Received
+[INFO] 2025-04-13T19:23:50.533Z - Get User --- Request Received
+[INFO] 2025-04-13T19:23:56.166Z - Get User --- Request Received
+[INFO] 2025-04-13T19:24:47.052Z - Get User --- Request Received
+[INFO] 2025-04-13T19:24:47.129Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-13T19:24:47.130Z - Get User --- Request Received
+[INFO] 2025-04-13T19:24:47.206Z - Get User --- Request Received
+[INFO] 2025-04-13T19:24:47.236Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-13T19:24:47.237Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-13T19:24:47.279Z - Get User --- Request Received
+[INFO] 2025-04-13T19:24:47.292Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-13T19:24:47.345Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-13T19:24:47.347Z - Get User --- Request Received
+[INFO] 2025-04-13T19:24:47.425Z - Get User --- Request Received
+[INFO] 2025-04-13T19:24:47.454Z - Get User Reviews - Retrieved reviews for User 1
+[INFO] 2025-04-13T19:24:47.500Z - Get User --- Request Received
+[INFO] 2025-04-13T19:24:47.564Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-13T19:24:47.565Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-13T19:24:47.574Z - Get User --- Request Received
+[INFO] 2025-04-13T19:24:47.641Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-13T19:24:47.656Z - Get User --- Request Received
+[INFO] 2025-04-13T19:24:47.667Z - Get User Reviews - Retrieved reviews for User 1
+[INFO] 2025-04-13T19:24:47.691Z - Get User Reviews - Retrieved reviews for User 1
+[INFO] 2025-04-13T19:24:47.732Z - Get User --- Request Received
+[INFO] 2025-04-13T19:24:47.744Z - Get User Reviews - Retrieved reviews for User 1
+[INFO] 2025-04-13T19:24:47.749Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-13T19:24:47.771Z - Get User Reviews - Retrieved reviews for User 1
+[INFO] 2025-04-13T19:24:47.807Z - Get User --- Request Received
+[INFO] 2025-04-13T19:24:47.864Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-13T19:24:47.865Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-13T19:24:47.886Z - Get User --- Request Received
+[INFO] 2025-04-13T19:24:47.894Z - Get User Reviews - Retrieved reviews for User 1
+[INFO] 2025-04-13T19:24:47.920Z - Get User Reviews - Retrieved reviews for User 1
+[INFO] 2025-04-13T19:24:47.963Z - Get User --- Request Received
+[INFO] 2025-04-13T19:24:47.974Z - Get User Reviews - Retrieved reviews for User 1
+[INFO] 2025-04-13T19:24:47.993Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-13T19:24:47.994Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-13T19:24:47.996Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-13T19:24:47.997Z - Get User Reviews - Retrieved reviews for User 1
+[INFO] 2025-04-13T19:24:48.210Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-13T19:24:48.211Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-13T19:24:48.211Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-13T19:24:48.303Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-13T19:24:48.304Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-13T19:24:48.366Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-13T19:24:59.483Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-13T19:24:59.549Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-13T19:24:59.555Z - Get User --- Request Received
+[INFO] 2025-04-13T19:24:59.556Z - Get User --- Request Received
+[INFO] 2025-04-13T19:24:59.607Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-13T19:24:59.614Z - Get User --- Request Received
+[INFO] 2025-04-13T19:24:59.669Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-13T19:25:00.363Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-13T19:25:00.947Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-13T19:25:02.799Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-13T19:25:02.800Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-13T19:25:02.968Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-13T19:25:03.015Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-13T19:25:03.310Z - Get User --- Request Received
+[INFO] 2025-04-13T19:25:03.373Z - Get User --- Request Received
+[INFO] 2025-04-13T19:25:03.393Z - Friendship getRelationshipStatus ---- Retrieved relationship status successfully
+[INFO] 2025-04-13T19:25:03.394Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-13T19:25:03.451Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-13T19:25:03.457Z - Get User --- Request Received
+[INFO] 2025-04-13T19:25:03.507Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-13T19:25:03.514Z - Get User --- Request Received
+[INFO] 2025-04-13T19:25:05.083Z - Friendship unfollowUser ---- User unfollowed successfully
+[INFO] 2025-04-13T19:25:05.129Z - Friendship getRelationshipStatus ---- Retrieved relationship status successfully
+[INFO] 2025-04-13T19:25:05.186Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-13T19:25:05.207Z - Get User --- Request Received
+[INFO] 2025-04-13T19:25:23.633Z - Get User --- Request Received
+[INFO] 2025-04-13T19:25:23.638Z - Get User --- Request Received
+[INFO] 2025-04-13T19:25:23.710Z - Get User --- Request Received
+[INFO] 2025-04-13T19:25:23.712Z - Get User --- Request Received
+[INFO] 2025-04-13T19:25:23.736Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-13T19:25:23.737Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-13T19:25:23.789Z - Get User --- Request Received
+[INFO] 2025-04-13T19:25:23.790Z - Get User --- Request Received
+[INFO] 2025-04-13T19:25:23.867Z - Get User --- Request Received
+[INFO] 2025-04-13T19:25:23.869Z - Get User --- Request Received
+[INFO] 2025-04-13T19:25:23.927Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-13T19:25:23.927Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-13T19:25:23.928Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-13T19:25:23.932Z - Get User --- Request Received
+[INFO] 2025-04-13T19:25:23.991Z - Get User --- Request Received
+[INFO] 2025-04-13T19:25:24.021Z - Friendship getRelationshipStatus ---- Retrieved relationship status successfully
+[INFO] 2025-04-13T19:25:24.022Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-13T19:25:24.023Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-13T19:25:24.023Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-13T19:25:24.114Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-13T19:25:24.115Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-13T19:25:24.160Z - Get User --- Request Received
+[INFO] 2025-04-13T19:25:24.161Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-13T19:25:24.221Z - Get User --- Request Received
+[INFO] 2025-04-13T19:25:24.276Z - Friendship getRelationshipStatus ---- Retrieved relationship status successfully
+[INFO] 2025-04-13T19:25:24.284Z - Get User --- Request Received
+[INFO] 2025-04-13T19:25:47.656Z - Get User --- Request Received
+[INFO] 2025-04-13T19:25:47.660Z - Get User --- Request Received
+[INFO] 2025-04-13T19:25:47.734Z - Get User --- Request Received
+[INFO] 2025-04-13T19:25:47.739Z - Get User --- Request Received
+[INFO] 2025-04-13T19:25:47.780Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-13T19:25:47.780Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-13T19:25:47.808Z - Get User --- Request Received
+[INFO] 2025-04-13T19:25:47.809Z - Get User --- Request Received
+[INFO] 2025-04-13T19:25:47.889Z - Get User --- Request Received
+[INFO] 2025-04-13T19:25:47.891Z - Get User --- Request Received
+[INFO] 2025-04-13T19:25:47.984Z - Get User --- Request Received
+[INFO] 2025-04-13T19:25:48.011Z - Friendship getRelationshipStatus ---- Retrieved relationship status successfully
+[INFO] 2025-04-13T19:25:48.012Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-13T19:25:48.012Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-13T19:25:48.013Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-13T19:25:48.055Z - Get User --- Request Received
+[INFO] 2025-04-13T19:25:48.116Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-13T19:25:48.117Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-13T19:25:48.117Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-13T19:25:48.135Z - Get User --- Request Received
+[INFO] 2025-04-13T19:25:48.200Z - Get User --- Request Received
+[INFO] 2025-04-13T19:25:48.212Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-13T19:25:48.213Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-13T19:25:48.262Z - Get User --- Request Received
+[INFO] 2025-04-13T19:25:48.294Z - Friendship getRelationshipStatus ---- Retrieved relationship status successfully
+[INFO] 2025-04-13T19:25:48.295Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-13T19:26:03.843Z - Get User --- Request Received
+[INFO] 2025-04-13T19:26:03.848Z - Get User --- Request Received
+[INFO] 2025-04-13T19:26:03.920Z - Get User --- Request Received
+[INFO] 2025-04-13T19:26:03.977Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-13T19:26:03.977Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-13T19:26:03.995Z - Get User --- Request Received
+[INFO] 2025-04-13T19:26:04.024Z - Get User --- Request Received
+[INFO] 2025-04-13T19:26:04.073Z - Get User --- Request Received
+[INFO] 2025-04-13T19:26:04.075Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-13T19:26:04.076Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-13T19:26:04.077Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-13T19:26:04.100Z - Get User --- Request Received
+[INFO] 2025-04-13T19:26:04.167Z - Get User --- Request Received
+[INFO] 2025-04-13T19:26:04.297Z - Friendship getRelationshipStatus ---- Retrieved relationship status successfully
+[INFO] 2025-04-13T19:26:04.298Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-13T19:26:04.299Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-13T19:26:04.300Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-13T19:26:04.354Z - Get User --- Request Received
+[INFO] 2025-04-13T19:26:04.422Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-13T19:26:04.423Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-13T19:26:04.434Z - Get User --- Request Received
+[INFO] 2025-04-13T19:26:04.512Z - Get User --- Request Received
+[INFO] 2025-04-13T19:26:04.585Z - Get User --- Request Received
+[INFO] 2025-04-13T19:26:04.647Z - Friendship getRelationshipStatus ---- Retrieved relationship status successfully
+[INFO] 2025-04-13T19:26:04.648Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-13T19:26:04.649Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-13T19:26:04.681Z - Get User --- Request Received
+[INFO] 2025-04-13T19:27:28.526Z - Login User --- Login successful 🚀
+[INFO] 2025-04-13T19:27:28.586Z - Get User --- Request Received
+[INFO] 2025-04-13T19:27:28.664Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-13T19:27:28.705Z - Get User --- Request Received
+[INFO] 2025-04-13T19:27:28.726Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-13T19:27:28.773Z - Get User --- Request Received
+[INFO] 2025-04-13T19:27:28.945Z - Get User --- Request Received
+[INFO] 2025-04-13T19:27:29.006Z - Get User --- Request Received
+[INFO] 2025-04-13T19:27:29.068Z - Get User --- Request Received
+[INFO] 2025-04-13T19:27:29.131Z - Get User --- Request Received
+[INFO] 2025-04-13T19:27:31.954Z - Get Movie Reviews - Retrieved reviews for Movie 1
+[INFO] 2025-04-13T19:27:31.958Z - Get Movie Reviews - Retrieved reviews for Movie 1
+[INFO] 2025-04-13T19:27:31.984Z - Get User --- Request Received
+[INFO] 2025-04-13T19:27:32.047Z - Get User --- Request Received
+[INFO] 2025-04-13T19:30:20.073Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-13T19:30:20.261Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-13T19:30:20.262Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-13T19:30:20.450Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-13T19:30:20.450Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-13T19:30:20.511Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-13T19:31:18.094Z - List Users --- Request Received
+[WARN] 2025-04-13T19:31:27.072Z - Friendship create ---- Error sending friendship request
+[WARN] 2025-04-13T19:31:31.621Z - Friendship create ---- Error sending friendship request
+[WARN] 2025-04-13T19:31:57.425Z - Friendship create ---- Error sending friendship request
+[INFO] 2025-04-13T19:32:45.293Z - Get User --- Request Received
+[INFO] 2025-04-13T19:32:45.325Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-13T19:32:45.350Z - Get User Reviews - Retrieved reviews for User 3
+[INFO] 2025-04-13T19:32:45.354Z - Get User Reviews - Retrieved reviews for User 3
+[INFO] 2025-04-13T19:32:45.368Z - Get User --- Request Received
+[INFO] 2025-04-13T19:32:45.382Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-13T19:32:45.384Z - Get User Reviews - Retrieved reviews for User 3
+[INFO] 2025-04-13T19:32:45.410Z - Get User Reviews - Retrieved reviews for User 3
+[INFO] 2025-04-13T19:32:45.574Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-13T19:32:45.575Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-13T19:32:45.637Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-13T19:32:45.698Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-13T19:32:46.351Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-13T19:32:46.406Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-13T19:32:46.412Z - Get User --- Request Received
+[INFO] 2025-04-13T19:32:46.461Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-13T19:32:46.523Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-13T19:32:49.275Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-13T19:32:51.243Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-13T19:32:51.306Z - Get User --- Request Received
+[INFO] 2025-04-13T19:32:51.308Z - Get User --- Request Received
+[INFO] 2025-04-13T19:32:59.457Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-13T19:33:00.096Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-13T19:33:00.705Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-13T19:33:01.606Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-13T19:33:02.209Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-13T19:33:04.214Z - Get User --- Request Received
+[INFO] 2025-04-13T19:33:04.276Z - Get User --- Request Received
+[INFO] 2025-04-13T19:33:04.290Z - Friendship getRelationshipStatus ---- Retrieved relationship status successfully
+[INFO] 2025-04-13T19:33:04.291Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-13T19:36:03.797Z - Get User --- Request Received
+[INFO] 2025-04-13T19:36:03.860Z - Get User --- Request Received
+[INFO] 2025-04-13T19:36:04.033Z - Get User --- Request Received
+[INFO] 2025-04-13T19:36:04.094Z - Get User --- Request Received
+[INFO] 2025-04-13T19:36:04.155Z - Get User --- Request Received
+[INFO] 2025-04-13T19:36:04.218Z - Get User --- Request Received
+[INFO] 2025-04-13T19:37:01.148Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-13T19:37:01.241Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-13T19:37:01.242Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-13T19:37:01.352Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-13T19:37:01.353Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-13T19:37:01.429Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-13T19:37:02.297Z - Get User --- Request Received
+[INFO] 2025-04-13T19:37:02.375Z - Get User --- Request Received
+[INFO] 2025-04-13T19:37:02.395Z - Friendship getRelationshipStatus ---- Retrieved relationship status successfully
+[INFO] 2025-04-13T19:37:02.396Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-13T19:37:02.451Z - Get User --- Request Received
+[INFO] 2025-04-13T19:37:02.500Z - Friendship getRelationshipStatus ---- Retrieved relationship status successfully
+[INFO] 2025-04-13T19:37:02.501Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-13T19:37:02.502Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-13T19:37:02.529Z - Get User --- Request Received
+[INFO] 2025-04-13T19:37:02.590Z - Get User --- Request Received
+[INFO] 2025-04-13T19:37:02.653Z - Get User --- Request Received
+[INFO] 2025-04-13T19:37:02.707Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-13T19:37:02.708Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-13T19:37:02.713Z - Get User --- Request Received
+[INFO] 2025-04-13T19:37:05.509Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-13T19:37:05.601Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-13T19:37:05.602Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-13T19:37:05.679Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-13T19:37:05.680Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-13T19:37:05.758Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-13T19:37:06.707Z - Get User --- Request Received
+[INFO] 2025-04-13T19:37:06.716Z - Get User Reviews - Retrieved reviews for User 3
+[INFO] 2025-04-13T19:37:06.723Z - Get User Reviews - Retrieved reviews for User 3
+[INFO] 2025-04-13T19:37:06.785Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-13T19:37:06.793Z - Get User --- Request Received
+[INFO] 2025-04-13T19:37:06.804Z - Get User Reviews - Retrieved reviews for User 3
+[INFO] 2025-04-13T19:37:06.818Z - Get User Reviews - Retrieved reviews for User 3
+[INFO] 2025-04-13T19:37:06.988Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-13T19:37:06.989Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-13T19:37:07.082Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-13T19:37:07.083Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-13T19:37:07.145Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-13T19:37:08.033Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-13T19:37:08.096Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-13T19:37:08.112Z - Get User --- Request Received
+[INFO] 2025-04-13T19:37:08.268Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-13T19:37:08.330Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-13T19:37:09.000Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-13T19:37:59.049Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-13T19:37:59.126Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-13T19:37:59.127Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-13T19:37:59.207Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-13T19:37:59.208Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-13T19:37:59.282Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-13T19:38:00.598Z - Get User --- Request Received
+[INFO] 2025-04-13T19:38:00.676Z - Get User --- Request Received
+[INFO] 2025-04-13T19:38:00.695Z - Friendship getRelationshipStatus ---- Retrieved relationship status successfully
+[INFO] 2025-04-13T19:38:00.696Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-13T19:38:00.755Z - Get User --- Request Received
+[INFO] 2025-04-13T19:38:00.816Z - Get User --- Request Received
+[INFO] 2025-04-13T19:38:00.890Z - Friendship getRelationshipStatus ---- Retrieved relationship status successfully
+[INFO] 2025-04-13T19:38:00.892Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-13T19:38:00.892Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-13T19:38:01.001Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-13T19:38:01.002Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-13T19:38:01.006Z - Get User --- Request Received
+[INFO] 2025-04-13T19:38:01.091Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-13T19:38:01.097Z - Get User --- Request Received
+[INFO] 2025-04-13T19:38:01.159Z - Get User --- Request Received
+[INFO] 2025-04-13T19:38:03.607Z - Get User --- Request Received
+[INFO] 2025-04-13T19:38:03.657Z - Get User Reviews - Retrieved reviews for User 3
+[INFO] 2025-04-13T19:38:03.662Z - Get User Reviews - Retrieved reviews for User 3
+[INFO] 2025-04-13T19:38:03.778Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-13T19:38:03.841Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-13T19:38:03.903Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-13T19:38:04.416Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-13T19:38:04.478Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-13T19:38:04.588Z - Get User --- Request Received
+[INFO] 2025-04-13T19:41:47.182Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-13T19:41:47.186Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-13T19:41:47.238Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-13T19:41:47.257Z - Get User --- Request Received
+[INFO] 2025-04-13T19:41:47.258Z - Get User --- Request Received
+[INFO] 2025-04-13T19:41:47.412Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-13T19:41:48.620Z - Get User --- Request Received
+[INFO] 2025-04-13T19:41:48.683Z - Get User --- Request Received
+[INFO] 2025-04-13T19:41:48.702Z - Friendship getRelationshipStatus ---- Retrieved relationship status successfully
+[INFO] 2025-04-13T19:41:48.703Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-13T19:41:48.756Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-13T19:41:48.762Z - Get User --- Request Received
+[INFO] 2025-04-13T19:41:48.823Z - Get User --- Request Received
+[INFO] 2025-04-13T19:41:48.901Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-13T19:41:49.464Z - Friendship unfollowUser ---- User unfollowed successfully
+[INFO] 2025-04-13T19:41:49.511Z - Friendship getRelationshipStatus ---- Retrieved relationship status successfully
+[INFO] 2025-04-13T19:41:49.558Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-13T19:41:49.590Z - Get User --- Request Received
+[INFO] 2025-04-13T19:41:49.606Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-13T19:41:49.654Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-13T19:41:53.082Z - Friendship followUser ---- User followed successfully
+[INFO] 2025-04-13T19:41:53.128Z - Friendship getRelationshipStatus ---- Retrieved relationship status successfully
+[INFO] 2025-04-13T19:41:53.190Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-13T19:41:53.207Z - Get User --- Request Received
+[INFO] 2025-04-13T19:41:53.237Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-13T19:42:34.578Z - Get User --- Request Received
+[INFO] 2025-04-13T19:42:34.602Z - Get User --- Request Received
+[INFO] 2025-04-13T19:42:34.648Z - Get User --- Request Received
+[INFO] 2025-04-13T19:42:34.679Z - Get User --- Request Received
+[INFO] 2025-04-13T19:42:34.696Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-13T19:42:34.698Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-13T19:42:34.717Z - Get User --- Request Received
+[INFO] 2025-04-13T19:42:34.756Z - Get User --- Request Received
+[INFO] 2025-04-13T19:42:34.794Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-13T19:42:34.795Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-13T19:42:34.796Z - Get User --- Request Received
+[INFO] 2025-04-13T19:42:34.827Z - Get User --- Request Received
+[INFO] 2025-04-13T19:42:34.865Z - Get User --- Request Received
+[INFO] 2025-04-13T19:42:34.924Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-13T19:42:34.925Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-13T19:42:34.925Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-13T19:42:34.926Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-13T19:42:34.926Z - Friendship getRelationshipStatus ---- Retrieved relationship status successfully
+[INFO] 2025-04-13T19:42:34.943Z - Get User --- Request Received
+[INFO] 2025-04-13T19:42:35.023Z - Get User --- Request Received
+[INFO] 2025-04-13T19:42:35.046Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-13T19:42:35.047Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-13T19:42:35.084Z - Get User --- Request Received
+[INFO] 2025-04-13T19:42:35.136Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-13T19:42:35.137Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-13T19:42:35.162Z - Get User --- Request Received
+[INFO] 2025-04-13T19:42:35.224Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-13T19:42:35.225Z - Friendship getRelationshipStatus ---- Retrieved relationship status successfully
+[INFO] 2025-04-13T19:42:35.227Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-13T19:42:35.250Z - Get User --- Request Received
+[INFO] 2025-04-13T19:42:35.315Z - Get User --- Request Received
+[INFO] 2025-04-13T19:42:35.377Z - Get User --- Request Received
+[INFO] 2025-04-13T19:42:35.426Z - Friendship getRelationshipStatus ---- Retrieved relationship status successfully
+[INFO] 2025-04-13T19:42:35.427Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-13T19:42:35.427Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-13T19:42:35.428Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-13T19:42:35.441Z - Get User --- Request Received
+[INFO] 2025-04-13T19:42:35.518Z - Get User --- Request Received
+[INFO] 2025-04-13T19:42:35.528Z - Friendship getRelationshipStatus ---- Retrieved relationship status successfully
+[INFO] 2025-04-13T19:42:35.529Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-13T19:42:35.530Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-13T19:42:35.596Z - Get User --- Request Received
+[INFO] 2025-04-13T19:42:35.598Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-13T19:42:35.769Z - Get User --- Request Received
+[INFO] 2025-04-13T19:42:35.832Z - Get User --- Request Received
+[INFO] 2025-04-13T19:42:35.894Z - Get User --- Request Received
+[INFO] 2025-04-13T19:42:35.956Z - Get User --- Request Received
+[INFO] 2025-04-13T19:42:42.244Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-13T19:42:42.289Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-13T19:42:42.353Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-13T19:42:42.401Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-13T19:42:42.899Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-13T19:44:44.528Z - Get User --- Request Received
+[INFO] 2025-04-13T19:44:44.559Z - Get User --- Request Received
+[INFO] 2025-04-13T19:44:44.606Z - Get User --- Request Received
+[INFO] 2025-04-13T19:44:44.636Z - Get User --- Request Received
+[INFO] 2025-04-13T19:44:44.646Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-13T19:44:44.647Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-13T19:44:44.681Z - Get User --- Request Received
+[INFO] 2025-04-13T19:44:44.714Z - Get User --- Request Received
+[INFO] 2025-04-13T19:44:44.746Z - Get User --- Request Received
+[INFO] 2025-04-13T19:44:44.778Z - Get User --- Request Received
+[INFO] 2025-04-13T19:44:44.810Z - Get User --- Request Received
+[INFO] 2025-04-13T19:44:44.856Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-13T19:44:44.857Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-13T19:44:44.950Z - Friendship getRelationshipStatus ---- Retrieved relationship status successfully
+[INFO] 2025-04-13T19:44:44.951Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-13T19:44:44.953Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-13T19:44:44.954Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-13T19:44:44.954Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-13T19:44:44.999Z - Get User --- Request Received
+[INFO] 2025-04-13T19:44:45.060Z - Get User --- Request Received
+[INFO] 2025-04-13T19:44:45.122Z - Get User --- Request Received
+[INFO] 2025-04-13T19:44:45.154Z - Friendship getRelationshipStatus ---- Retrieved relationship status successfully
+[INFO] 2025-04-13T19:44:45.154Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-13T19:44:45.155Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-13T19:44:45.184Z - Get User --- Request Received
+[INFO] 2025-04-13T19:44:45.257Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-13T19:44:45.258Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-13T19:44:45.265Z - Get User --- Request Received
+[INFO] 2025-04-13T19:44:45.324Z - Get User --- Request Received
+[INFO] 2025-04-13T19:44:45.387Z - Get User --- Request Received
+[INFO] 2025-04-13T19:44:45.450Z - Friendship getRelationshipStatus ---- Retrieved relationship status successfully
+[INFO] 2025-04-13T19:44:45.450Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-13T19:44:45.451Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-13T19:44:45.452Z - Get User --- Request Received
+[INFO] 2025-04-13T19:44:45.511Z - Get User --- Request Received
+[INFO] 2025-04-13T19:44:45.573Z - Get User --- Request Received
+[INFO] 2025-04-13T19:44:45.635Z - Get User --- Request Received
+[INFO] 2025-04-13T19:44:45.653Z - Friendship getRelationshipStatus ---- Retrieved relationship status successfully
+[INFO] 2025-04-13T19:44:45.655Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-13T19:44:45.655Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-13T19:44:45.656Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-13T19:44:45.710Z - Get User --- Request Received
+[INFO] 2025-04-13T19:44:45.756Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-13T19:44:45.757Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-13T19:44:45.790Z - Get User --- Request Received
+[INFO] 2025-04-13T19:44:45.807Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-13T19:44:45.853Z - Get User --- Request Received
+[INFO] 2025-04-13T19:44:50.742Z - Friendship unfollowUser ---- User unfollowed successfully
+[INFO] 2025-04-13T19:44:50.788Z - Friendship getRelationshipStatus ---- Retrieved relationship status successfully
+[INFO] 2025-04-13T19:44:50.835Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-13T19:44:50.866Z - Get User --- Request Received
+[INFO] 2025-04-13T19:44:50.898Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-13T19:44:50.944Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-13T19:44:52.094Z - Friendship followUser ---- User followed successfully
+[INFO] 2025-04-13T19:44:52.139Z - Friendship getRelationshipStatus ---- Retrieved relationship status successfully
+[INFO] 2025-04-13T19:44:52.185Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-13T19:44:52.217Z - Get User --- Request Received
+[INFO] 2025-04-13T19:44:52.357Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-13T19:44:53.788Z - Get User --- Request Received
+[INFO] 2025-04-13T19:44:53.835Z - Get User Reviews - Retrieved reviews for User 3
+[INFO] 2025-04-13T19:44:53.838Z - Get User Reviews - Retrieved reviews for User 3
+[INFO] 2025-04-13T19:44:53.850Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-13T19:44:53.913Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-13T19:44:53.960Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-13T19:44:54.396Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-13T19:44:54.458Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-13T19:44:54.520Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-13T19:44:54.568Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-13T19:44:54.569Z - Get User --- Request Received
+[INFO] 2025-04-13T19:44:55.223Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-13T19:44:55.300Z - Get User --- Request Received
+[INFO] 2025-04-13T19:44:55.301Z - Get User --- Request Received
+[INFO] 2025-04-13T19:45:02.005Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-13T19:45:02.881Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-13T19:45:03.750Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-13T19:45:04.343Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-13T19:45:05.734Z - Get User --- Request Received
+[INFO] 2025-04-13T19:45:05.798Z - Get User --- Request Received
+[INFO] 2025-04-13T19:45:05.810Z - Friendship getRelationshipStatus ---- Retrieved relationship status successfully
+[INFO] 2025-04-13T19:45:05.811Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-13T19:45:05.876Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-13T19:45:05.877Z - Get User --- Request Received
+[INFO] 2025-04-13T19:45:06.046Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-13T19:45:07.758Z - Friendship unfollowUser ---- User unfollowed successfully
+[INFO] 2025-04-13T19:45:07.805Z - Friendship getRelationshipStatus ---- Retrieved relationship status successfully
+[INFO] 2025-04-13T19:45:07.861Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-13T19:45:07.882Z - Get User --- Request Received
+[INFO] 2025-04-13T19:45:07.913Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-13T19:45:08.083Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-13T19:45:09.129Z - Friendship create ---- Friendship request sent successfully
+[INFO] 2025-04-13T19:45:09.176Z - Friendship getRelationshipStatus ---- Retrieved relationship status successfully
+[INFO] 2025-04-13T19:45:09.254Z - Get User --- Request Received
+[INFO] 2025-04-13T19:45:11.396Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-13T19:45:11.582Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-13T19:45:11.583Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-13T19:45:11.654Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-13T19:45:11.655Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-13T19:45:11.723Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-13T19:45:32.267Z - Get User --- Request Received
+[INFO] 2025-04-13T19:45:32.340Z - Friendship getRelationshipStatus ---- Retrieved relationship status successfully
+[INFO] 2025-04-13T19:45:32.341Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-13T19:45:32.392Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-13T19:45:32.440Z - Get User --- Request Received
+[INFO] 2025-04-13T19:45:32.441Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-13T19:45:32.503Z - Get User --- Request Received
+[INFO] 2025-04-13T19:45:32.516Z - Friendship getRelationshipStatus ---- Retrieved relationship status successfully
+[INFO] 2025-04-13T19:45:32.517Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-13T19:45:32.566Z - Get User --- Request Received
+[INFO] 2025-04-13T19:45:32.627Z - Get User --- Request Received
+[INFO] 2025-04-13T19:45:32.689Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-13T19:45:32.690Z - Get User --- Request Received
+[INFO] 2025-04-13T19:45:32.751Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-13T19:45:32.752Z - Get User --- Request Received
+[INFO] 2025-04-13T19:45:33.171Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-13T19:45:33.241Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-13T19:45:33.241Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-13T19:45:33.326Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-13T19:45:33.327Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-13T19:45:33.374Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-13T19:45:33.858Z - List Users --- Request Received
+[WARN] 2025-04-13T19:45:38.538Z - Friendship followUser ---- Error: 
+Invalid `prisma.friendship.create()` invocation in
+C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\friendship.service.ts:242:48
+
+  239 }
+  240 
+  241 // Create a new following relationship
+→ 242 const friendship = await prisma.friendship.create(
+Unique constraint failed on the fields: (`userId`,`friendId`)
+[INFO] 2025-04-13T19:45:44.392Z - Get User --- Request Received
+[INFO] 2025-04-13T19:45:44.434Z - Friendship getRelationshipStatus ---- Retrieved relationship status successfully
+[INFO] 2025-04-13T19:45:44.435Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-13T19:45:44.564Z - Get User --- Request Received
+[INFO] 2025-04-13T19:45:44.617Z - Friendship getRelationshipStatus ---- Retrieved relationship status successfully
+[INFO] 2025-04-13T19:45:44.618Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-13T19:45:44.619Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-13T19:45:44.642Z - Get User --- Request Received
+[INFO] 2025-04-13T19:45:44.704Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-13T19:45:44.705Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-13T19:45:44.706Z - Get User --- Request Received
+[INFO] 2025-04-13T19:45:44.767Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-13T19:45:44.768Z - Get User --- Request Received
+[INFO] 2025-04-13T19:45:44.830Z - Get User --- Request Received
+[INFO] 2025-04-13T19:45:45.003Z - Get User --- Request Received
+[INFO] 2025-04-13T19:45:46.526Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-13T19:45:46.587Z - Get User --- Request Received
+[INFO] 2025-04-13T19:45:46.696Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-13T19:45:46.743Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-13T19:45:46.789Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-13T19:45:47.351Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-13T19:45:47.772Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-13T19:45:50.452Z - Login User - Logout Successfully
+[INFO] 2025-04-13T19:45:56.997Z - Login User --- Login successful 🚀
+[INFO] 2025-04-13T19:45:57.062Z - Get User --- Request Received
+[INFO] 2025-04-13T19:45:57.125Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-13T19:45:57.156Z - Get User --- Request Received
+[INFO] 2025-04-13T19:45:57.172Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-13T19:45:57.219Z - Get User --- Request Received
+[INFO] 2025-04-13T19:45:57.282Z - Get User --- Request Received
+[INFO] 2025-04-13T19:45:57.345Z - Get User --- Request Received
+[INFO] 2025-04-13T19:45:57.393Z - Get User --- Request Received
+[INFO] 2025-04-13T19:45:57.441Z - Get User --- Request Received
+[INFO] 2025-04-13T19:46:00.340Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-13T19:46:00.541Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-13T19:46:00.542Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-13T19:46:00.610Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-13T19:46:00.610Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-13T19:46:00.666Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-13T19:46:09.015Z - Friendship update ---- Friendship status updated successfully
+[INFO] 2025-04-13T19:46:09.063Z - Notification markAsRead ---- Notification marked as read
+[INFO] 2025-04-13T19:46:09.110Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-13T19:46:15.737Z - Get User --- Request Received
+[INFO] 2025-04-13T19:46:15.815Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-13T19:46:15.816Z - Get User --- Request Received
+[INFO] 2025-04-13T19:46:15.875Z - Get User --- Request Received
+[INFO] 2025-04-13T19:46:15.899Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-13T19:46:15.900Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-13T19:46:15.900Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-13T19:46:15.934Z - Get User --- Request Received
+[INFO] 2025-04-13T19:46:15.983Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-13T19:46:15.984Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-13T19:46:15.985Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-13T19:46:16.000Z - Get User --- Request Received
+[INFO] 2025-04-13T19:46:16.060Z - Get User --- Request Received
+[INFO] 2025-04-13T19:46:16.077Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-13T19:46:16.078Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-13T19:46:16.078Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-13T19:46:16.078Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-13T19:46:16.171Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-13T19:46:16.171Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-13T19:46:16.172Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-13T19:46:16.264Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-13T19:46:16.265Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-13T19:46:16.266Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-13T19:46:16.358Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-13T19:46:16.359Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-13T19:46:16.360Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-13T19:46:16.433Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-13T19:46:16.433Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-13T19:46:16.434Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-13T19:46:16.506Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-13T19:46:16.507Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-13T19:46:16.561Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-13T19:46:18.293Z - List Users --- Request Received
+[INFO] 2025-04-13T19:46:26.040Z - Get User --- Request Received
+[INFO] 2025-04-13T19:46:26.102Z - Get User --- Request Received
+[INFO] 2025-04-13T19:46:26.788Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
+[INFO] 2025-04-13T19:46:26.792Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
+[INFO] 2025-04-13T19:46:29.958Z - List movies --- Request Received
+[INFO] 2025-04-13T19:46:29.968Z - List movies --- Request Received
+[INFO] 2025-04-13T19:46:32.511Z - List movies --- Request Received
+[INFO] 2025-04-13T19:46:32.518Z - List movies --- Request Received
+[INFO] 2025-04-13T19:47:58.860Z - Get User --- Request Received
+[INFO] 2025-04-13T19:47:58.908Z - Get User --- Request Received
+[INFO] 2025-04-13T19:49:10.657Z - List movies --- Request Received
+[INFO] 2025-04-13T19:49:10.666Z - List movies --- Request Received
+[INFO] 2025-04-13T19:49:16.820Z - List movies --- Request Received
+[INFO] 2025-04-13T19:49:16.824Z - List movies --- Request Received
+[INFO] 2025-04-13T19:49:16.881Z - Get User --- Request Received
+[INFO] 2025-04-13T19:49:16.943Z - Get User --- Request Received
+[INFO] 2025-04-13T19:49:16.978Z - List movies --- Request Received
+[INFO] 2025-04-13T19:49:16.987Z - List movies --- Request Received
+[INFO] 2025-04-13T19:49:17.005Z - Get User --- Request Received
+[INFO] 2025-04-13T19:49:17.031Z - List movies --- Request Received
+[INFO] 2025-04-13T19:49:17.067Z - Get User --- Request Received
+[INFO] 2025-04-13T19:49:17.099Z - List movies --- Request Received
+[INFO] 2025-04-13T19:49:17.114Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-13T19:49:17.130Z - Get User --- Request Received
+[INFO] 2025-04-13T19:49:17.164Z - List movies --- Request Received
+[INFO] 2025-04-13T19:49:17.191Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-13T19:49:17.299Z - Get User --- Request Received
+[INFO] 2025-04-13T19:49:17.327Z - List movies --- Request Received
+[INFO] 2025-04-13T19:49:19.594Z - Get User --- Request Received
+[INFO] 2025-04-13T19:49:19.765Z - Get User --- Request Received
+[INFO] 2025-04-13T19:49:19.826Z - Get User --- Request Received
+[INFO] 2025-04-13T19:49:19.889Z - Get User --- Request Received
+[INFO] 2025-04-13T19:49:19.950Z - Get User --- Request Received
+[INFO] 2025-04-13T19:49:20.013Z - Get User --- Request Received
+[INFO] 2025-04-13T19:49:21.225Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
+[INFO] 2025-04-13T19:49:21.228Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
+[INFO] 2025-04-13T19:49:21.648Z - Get User --- Request Received
+[INFO] 2025-04-13T19:49:21.710Z - Get User --- Request Received
+[INFO] 2025-04-13T19:49:22.878Z - List movies --- Request Received
+[INFO] 2025-04-13T19:49:22.885Z - List movies --- Request Received
+[WARN] 2025-04-13T19:49:27.021Z - LibraryController.create ---- Error creating library entry: ${error}
+[WARN] 2025-04-13T19:49:28.965Z - LibraryController.create ---- Error creating library entry: ${error}
+[WARN] 2025-04-13T19:49:30.620Z - LibraryController.create ---- Error creating library entry: ${error}
+[WARN] 2025-04-13T19:49:36.533Z - LibraryController.create ---- Error creating library entry: ${error}
+[WARN] 2025-04-13T19:50:01.732Z - LibraryController.create ---- Error creating library entry: ${error}
+[INFO] 2025-04-13T19:51:15.248Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
+[INFO] 2025-04-13T19:51:15.253Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
+[INFO] 2025-04-13T19:52:47.640Z - Get User --- Request Received
+[INFO] 2025-04-13T19:52:47.719Z - Get User --- Request Received
+[INFO] 2025-04-13T19:52:47.780Z - Get User --- Request Received
+[INFO] 2025-04-13T19:52:47.843Z - Get User --- Request Received
+[INFO] 2025-04-13T19:52:48.014Z - Get User --- Request Received
+[INFO] 2025-04-13T19:52:48.078Z - Get User --- Request Received
+[INFO] 2025-04-13T19:55:46.099Z - List movies --- Request Received
+[INFO] 2025-04-13T19:55:46.103Z - List movies --- Request Received
+[ERROR] 2025-04-13T19:55:46.136Z - Error in LibraryController.getAllByUserId | Error: 
+Invalid `prisma.library.findMany()` invocation in
+C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
+
+  108 }
+  109 
+  110 public static async getAllByUserId(userId: string) {
+→ 111   const libraries = await prisma.library.findMany({
+          where: {
+            userId: "1"
+                    ~~~
+          },
+          include: {
+            movie: true,
+            user: {
+              select: {
+                id: true,
+                name: true,
+                email: true,
+                username: true,
+                profileImage: true
+              }
+            }
+          },
+          orderBy: {
+            updatedAt: "desc"
+          }
+        })
+
+Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String. | Stack: PrismaClientValidationError: 
+Invalid `prisma.library.findMany()` invocation in
+C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
+
+  108 }
+  109 
+  110 public static async getAllByUserId(userId: string) {
+→ 111   const libraries = await prisma.library.findMany({
+          where: {
+            userId: "1"
+                    ~~~
+          },
+          include: {
+            movie: true,
+            user: {
+              select: {
+                id: true,
+                name: true,
+                email: true,
+                username: true,
+                profileImage: true
+              }
+            }
+          },
+          orderBy: {
+            updatedAt: "desc"
+          }
+        })
+
+Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String.
+    at Cn (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:29:1363)
+    at Wn.handleRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:7177)
+    at Wn.handleAndLogRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6858)
+    at Wn.request (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6565)
+    at async l (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:130:10067)
+    at Function.getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:23)
+    at getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\controller\library.controller.ts:197:25)
+[ERROR] 2025-04-13T19:55:46.142Z - Error in LibraryController.getAllByUserId | Error: 
+Invalid `prisma.library.findMany()` invocation in
+C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
+
+  108 }
+  109 
+  110 public static async getAllByUserId(userId: string) {
+→ 111   const libraries = await prisma.library.findMany({
+          where: {
+            userId: "1"
+                    ~~~
+          },
+          include: {
+            movie: true,
+            user: {
+              select: {
+                id: true,
+                name: true,
+                email: true,
+                username: true,
+                profileImage: true
+              }
+            }
+          },
+          orderBy: {
+            updatedAt: "desc"
+          }
+        })
+
+Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String. | Stack: PrismaClientValidationError: 
+Invalid `prisma.library.findMany()` invocation in
+C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
+
+  108 }
+  109 
+  110 public static async getAllByUserId(userId: string) {
+→ 111   const libraries = await prisma.library.findMany({
+          where: {
+            userId: "1"
+                    ~~~
+          },
+          include: {
+            movie: true,
+            user: {
+              select: {
+                id: true,
+                name: true,
+                email: true,
+                username: true,
+                profileImage: true
+              }
+            }
+          },
+          orderBy: {
+            updatedAt: "desc"
+          }
+        })
+
+Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String.
+    at Cn (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:29:1363)
+    at Wn.handleRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:7177)
+    at Wn.handleAndLogRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6858)
+    at Wn.request (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6565)
+    at async l (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:130:10067)
+    at Function.getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:23)
+    at getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\controller\library.controller.ts:197:25)
+[WARN] 2025-04-13T19:55:47.231Z - LibraryController.create ---- Error creating library entry: ${error}
+[WARN] 2025-04-13T19:55:55.446Z - LibraryController.create ---- Error creating library entry: ${error}
+[WARN] 2025-04-13T19:56:21.258Z - LibraryController.create ---- Error creating library entry: ${error}
+[INFO] 2025-04-13T20:00:02.126Z - List movies --- Request Received
+[INFO] 2025-04-13T20:00:02.131Z - List movies --- Request Received
+[INFO] 2025-04-13T20:00:02.148Z - Get User --- Request Received
+[INFO] 2025-04-13T20:00:02.209Z - Get User --- Request Received
+[INFO] 2025-04-13T20:00:02.241Z - List movies --- Request Received
+[ERROR] 2025-04-13T20:00:02.293Z - Error in LibraryController.getAllByUserId | Error: 
+Invalid `prisma.library.findMany()` invocation in
+C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
+
+  108 }
+  109 
+  110 public static async getAllByUserId(userId: string) {
+→ 111   const libraries = await prisma.library.findMany({
+          where: {
+            userId: "1"
+                    ~~~
+          },
+          include: {
+            movie: true,
+            user: {
+              select: {
+                id: true,
+                name: true,
+                email: true,
+                username: true,
+                profileImage: true
+              }
+            }
+          },
+          orderBy: {
+            updatedAt: "desc"
+          }
+        })
+
+Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String. | Stack: PrismaClientValidationError: 
+Invalid `prisma.library.findMany()` invocation in
+C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
+
+  108 }
+  109 
+  110 public static async getAllByUserId(userId: string) {
+→ 111   const libraries = await prisma.library.findMany({
+          where: {
+            userId: "1"
+                    ~~~
+          },
+          include: {
+            movie: true,
+            user: {
+              select: {
+                id: true,
+                name: true,
+                email: true,
+                username: true,
+                profileImage: true
+              }
+            }
+          },
+          orderBy: {
+            updatedAt: "desc"
+          }
+        })
+
+Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String.
+    at Cn (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:29:1363)
+    at Wn.handleRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:7177)
+    at Wn.handleAndLogRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6858)
+    at Wn.request (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6565)
+    at async l (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:130:10067)
+    at Function.getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:23)
+    at getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\controller\library.controller.ts:186:25)
+[INFO] 2025-04-13T20:00:02.295Z - List movies --- Request Received
+[ERROR] 2025-04-13T20:00:02.300Z - Error in LibraryController.getAllByUserId | Error: 
+Invalid `prisma.library.findMany()` invocation in
+C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
+
+  108 }
+  109 
+  110 public static async getAllByUserId(userId: string) {
+→ 111   const libraries = await prisma.library.findMany({
+          where: {
+            userId: "1"
+                    ~~~
+          },
+          include: {
+            movie: true,
+            user: {
+              select: {
+                id: true,
+                name: true,
+                email: true,
+                username: true,
+                profileImage: true
+              }
+            }
+          },
+          orderBy: {
+            updatedAt: "desc"
+          }
+        })
+
+Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String. | Stack: PrismaClientValidationError: 
+Invalid `prisma.library.findMany()` invocation in
+C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
+
+  108 }
+  109 
+  110 public static async getAllByUserId(userId: string) {
+→ 111   const libraries = await prisma.library.findMany({
+          where: {
+            userId: "1"
+                    ~~~
+          },
+          include: {
+            movie: true,
+            user: {
+              select: {
+                id: true,
+                name: true,
+                email: true,
+                username: true,
+                profileImage: true
+              }
+            }
+          },
+          orderBy: {
+            updatedAt: "desc"
+          }
+        })
+
+Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String.
+    at Cn (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:29:1363)
+    at Wn.handleRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:7177)
+    at Wn.handleAndLogRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6858)
+    at Wn.request (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6565)
+    at async l (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:130:10067)
+    at Function.getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:23)
+    at getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\controller\library.controller.ts:186:25)
+[INFO] 2025-04-13T20:00:02.320Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-13T20:00:02.381Z - Get User --- Request Received
+[INFO] 2025-04-13T20:00:02.426Z - List movies --- Request Received
+[ERROR] 2025-04-13T20:00:02.429Z - Error in LibraryController.getAllByUserId | Error: 
+Invalid `prisma.library.findMany()` invocation in
+C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
+
+  108 }
+  109 
+  110 public static async getAllByUserId(userId: string) {
+→ 111   const libraries = await prisma.library.findMany({
+          where: {
+            userId: "1"
+                    ~~~
+          },
+          include: {
+            movie: true,
+            user: {
+              select: {
+                id: true,
+                name: true,
+                email: true,
+                username: true,
+                profileImage: true
+              }
+            }
+          },
+          orderBy: {
+            updatedAt: "desc"
+          }
+        })
+
+Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String. | Stack: PrismaClientValidationError: 
+Invalid `prisma.library.findMany()` invocation in
+C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
+
+  108 }
+  109 
+  110 public static async getAllByUserId(userId: string) {
+→ 111   const libraries = await prisma.library.findMany({
+          where: {
+            userId: "1"
+                    ~~~
+          },
+          include: {
+            movie: true,
+            user: {
+              select: {
+                id: true,
+                name: true,
+                email: true,
+                username: true,
+                profileImage: true
+              }
+            }
+          },
+          orderBy: {
+            updatedAt: "desc"
+          }
+        })
+
+Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String.
+    at Cn (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:29:1363)
+    at Wn.handleRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:7177)
+    at Wn.handleAndLogRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6858)
+    at Wn.request (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6565)
+    at async l (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:130:10067)
+    at Function.getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:23)
+    at getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\controller\library.controller.ts:186:25)
+[INFO] 2025-04-13T20:00:02.550Z - Get User --- Request Received
+[ERROR] 2025-04-13T20:00:02.593Z - Error in LibraryController.getAllByUserId | Error: 
+Invalid `prisma.library.findMany()` invocation in
+C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
+
+  108 }
+  109 
+  110 public static async getAllByUserId(userId: string) {
+→ 111   const libraries = await prisma.library.findMany({
+          where: {
+            userId: "1"
+                    ~~~
+          },
+          include: {
+            movie: true,
+            user: {
+              select: {
+                id: true,
+                name: true,
+                email: true,
+                username: true,
+                profileImage: true
+              }
+            }
+          },
+          orderBy: {
+            updatedAt: "desc"
+          }
+        })
+
+Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String. | Stack: PrismaClientValidationError: 
+Invalid `prisma.library.findMany()` invocation in
+C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
+
+  108 }
+  109 
+  110 public static async getAllByUserId(userId: string) {
+→ 111   const libraries = await prisma.library.findMany({
+          where: {
+            userId: "1"
+                    ~~~
+          },
+          include: {
+            movie: true,
+            user: {
+              select: {
+                id: true,
+                name: true,
+                email: true,
+                username: true,
+                profileImage: true
+              }
+            }
+          },
+          orderBy: {
+            updatedAt: "desc"
+          }
+        })
+
+Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String.
+    at Cn (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:29:1363)
+    at Wn.handleRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:7177)
+    at Wn.handleAndLogRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6858)
+    at Wn.request (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6565)
+    at async l (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:130:10067)
+    at Function.getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:23)
+    at getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\controller\library.controller.ts:186:25)
+[INFO] 2025-04-13T20:00:02.594Z - List movies --- Request Received
+[INFO] 2025-04-13T20:00:02.630Z - Get User --- Request Received
+[INFO] 2025-04-13T20:00:02.674Z - List movies --- Request Received
+[ERROR] 2025-04-13T20:00:02.677Z - Error in LibraryController.getAllByUserId | Error: 
+Invalid `prisma.library.findMany()` invocation in
+C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
+
+  108 }
+  109 
+  110 public static async getAllByUserId(userId: string) {
+→ 111   const libraries = await prisma.library.findMany({
+          where: {
+            userId: "1"
+                    ~~~
+          },
+          include: {
+            movie: true,
+            user: {
+              select: {
+                id: true,
+                name: true,
+                email: true,
+                username: true,
+                profileImage: true
+              }
+            }
+          },
+          orderBy: {
+            updatedAt: "desc"
+          }
+        })
+
+Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String. | Stack: PrismaClientValidationError: 
+Invalid `prisma.library.findMany()` invocation in
+C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
+
+  108 }
+  109 
+  110 public static async getAllByUserId(userId: string) {
+→ 111   const libraries = await prisma.library.findMany({
+          where: {
+            userId: "1"
+                    ~~~
+          },
+          include: {
+            movie: true,
+            user: {
+              select: {
+                id: true,
+                name: true,
+                email: true,
+                username: true,
+                profileImage: true
+              }
+            }
+          },
+          orderBy: {
+            updatedAt: "desc"
+          }
+        })
+
+Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String.
+    at Cn (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:29:1363)
+    at Wn.handleRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:7177)
+    at Wn.handleAndLogRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6858)
+    at Wn.request (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6565)
+    at async l (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:130:10067)
+    at Function.getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:23)
+    at getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\controller\library.controller.ts:186:25)
+[INFO] 2025-04-13T20:00:02.701Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-13T20:00:02.708Z - Get User --- Request Received
+[INFO] 2025-04-13T20:00:02.757Z - List movies --- Request Received
+[ERROR] 2025-04-13T20:00:02.759Z - Error in LibraryController.getAllByUserId | Error: 
+Invalid `prisma.library.findMany()` invocation in
+C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
+
+  108 }
+  109 
+  110 public static async getAllByUserId(userId: string) {
+→ 111   const libraries = await prisma.library.findMany({
+          where: {
+            userId: "1"
+                    ~~~
+          },
+          include: {
+            movie: true,
+            user: {
+              select: {
+                id: true,
+                name: true,
+                email: true,
+                username: true,
+                profileImage: true
+              }
+            }
+          },
+          orderBy: {
+            updatedAt: "desc"
+          }
+        })
+
+Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String. | Stack: PrismaClientValidationError: 
+Invalid `prisma.library.findMany()` invocation in
+C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
+
+  108 }
+  109 
+  110 public static async getAllByUserId(userId: string) {
+→ 111   const libraries = await prisma.library.findMany({
+          where: {
+            userId: "1"
+                    ~~~
+          },
+          include: {
+            movie: true,
+            user: {
+              select: {
+                id: true,
+                name: true,
+                email: true,
+                username: true,
+                profileImage: true
+              }
+            }
+          },
+          orderBy: {
+            updatedAt: "desc"
+          }
+        })
+
+Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String.
+    at Cn (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:29:1363)
+    at Wn.handleRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:7177)
+    at Wn.handleAndLogRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6858)
+    at Wn.request (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6565)
+    at async l (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:130:10067)
+    at Function.getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:23)
+    at getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\controller\library.controller.ts:186:25)
+[INFO] 2025-04-13T20:00:04.396Z - Get User --- Request Received
+[INFO] 2025-04-13T20:00:04.458Z - Get User --- Request Received
+[INFO] 2025-04-13T20:00:05.952Z - Get User --- Request Received
+[INFO] 2025-04-13T20:00:06.001Z - Get User Reviews - Retrieved reviews for User 1
+[INFO] 2025-04-13T20:00:06.004Z - Get User Reviews - Retrieved reviews for User 1
+[INFO] 2025-04-13T20:00:06.012Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-13T20:00:06.024Z - Get User --- Request Received
+[INFO] 2025-04-13T20:00:06.030Z - Get User Reviews - Retrieved reviews for User 1
+[INFO] 2025-04-13T20:00:06.045Z - Get User Reviews - Retrieved reviews for User 1
+[INFO] 2025-04-13T20:00:06.091Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-13T20:00:06.092Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-13T20:00:06.169Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-13T20:00:06.170Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-13T20:00:06.215Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-13T20:00:08.055Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
+[INFO] 2025-04-13T20:00:08.060Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
+[INFO] 2025-04-13T20:00:26.575Z - Get User --- Request Received
+[INFO] 2025-04-13T20:00:26.745Z - Get User --- Request Received
+[INFO] 2025-04-13T20:04:05.952Z - Get User --- Request Received
+[INFO] 2025-04-13T20:04:06.005Z - Get User --- Request Received
+[INFO] 2025-04-13T20:04:06.014Z - Get User --- Request Received
+[INFO] 2025-04-13T20:04:06.091Z - Get User --- Request Received
+[INFO] 2025-04-13T20:04:06.123Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-13T20:04:06.154Z - Get User --- Request Received
+[INFO] 2025-04-13T20:04:06.160Z - Get User --- Request Received
+[INFO] 2025-04-13T20:04:06.216Z - Get User --- Request Received
+[INFO] 2025-04-13T20:04:06.270Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-13T20:04:06.277Z - Get User --- Request Received
+[INFO] 2025-04-13T20:04:06.338Z - Get User --- Request Received
+[INFO] 2025-04-13T20:04:39.030Z - Create Review --- Created Review [object Object]
+[INFO] 2025-04-13T20:04:54.216Z - Get User --- Request Received
+[INFO] 2025-04-13T20:04:54.244Z - Get User --- Request Received
+[INFO] 2025-04-13T20:04:54.295Z - Get User --- Request Received
+[INFO] 2025-04-13T20:04:54.366Z - Get User --- Request Received
+[INFO] 2025-04-13T20:04:54.388Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-13T20:04:54.435Z - Get User --- Request Received
+[INFO] 2025-04-13T20:04:54.441Z - Get User --- Request Received
+[INFO] 2025-04-13T20:04:54.497Z - Get User --- Request Received
+[INFO] 2025-04-13T20:04:54.560Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-13T20:04:54.669Z - Get User --- Request Received
+[INFO] 2025-04-13T20:04:54.731Z - Get User --- Request Received
+[INFO] 2025-04-13T20:05:03.788Z - Get User --- Request Received
+[INFO] 2025-04-13T20:05:03.797Z - Get User Reviews - Retrieved reviews for User 1
+[INFO] 2025-04-13T20:05:03.802Z - Get User Reviews - Retrieved reviews for User 1
+[INFO] 2025-04-13T20:05:03.851Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-13T20:05:03.852Z - Get User --- Request Received
+[INFO] 2025-04-13T20:05:03.868Z - Get User Reviews - Retrieved reviews for User 1
+[INFO] 2025-04-13T20:05:03.887Z - Get User Reviews - Retrieved reviews for User 1
+[INFO] 2025-04-13T20:05:03.945Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-13T20:05:03.946Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-13T20:05:04.145Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-13T20:05:04.146Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-13T20:05:04.207Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-13T20:05:15.207Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-13T20:05:15.284Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-13T20:05:15.285Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-13T20:05:15.361Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-13T20:05:15.362Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-13T20:05:15.423Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[ERROR] 2025-04-13T20:05:16.651Z - Error in LibraryController.getAllByUserId | Error: 
+Invalid `prisma.library.findMany()` invocation in
+C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
+
+  108 }
+  109 
+  110 public static async getAllByUserId(userId: string) {
+→ 111   const libraries = await prisma.library.findMany({
+          where: {
+            userId: "1"
+                    ~~~
+          },
+          include: {
+            movie: true,
+            user: {
+              select: {
+                id: true,
+                name: true,
+                email: true,
+                username: true,
+                profileImage: true
+              }
+            }
+          },
+          orderBy: {
+            updatedAt: "desc"
+          }
+        })
+
+Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String. | Stack: PrismaClientValidationError: 
+Invalid `prisma.library.findMany()` invocation in
+C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
+
+  108 }
+  109 
+  110 public static async getAllByUserId(userId: string) {
+→ 111   const libraries = await prisma.library.findMany({
+          where: {
+            userId: "1"
+                    ~~~
+          },
+          include: {
+            movie: true,
+            user: {
+              select: {
+                id: true,
+                name: true,
+                email: true,
+                username: true,
+                profileImage: true
+              }
+            }
+          },
+          orderBy: {
+            updatedAt: "desc"
+          }
+        })
+
+Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String.
+    at Cn (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:29:1363)
+    at Wn.handleRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:7177)
+    at Wn.handleAndLogRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6858)
+    at Wn.request (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6565)
+    at async l (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:130:10067)
+    at Function.getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:23)
+    at getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\controller\library.controller.ts:186:25)
+[INFO] 2025-04-13T20:05:16.652Z - List movies --- Request Received
+[ERROR] 2025-04-13T20:05:16.655Z - Error in LibraryController.getAllByUserId | Error: 
+Invalid `prisma.library.findMany()` invocation in
+C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
+
+  108 }
+  109 
+  110 public static async getAllByUserId(userId: string) {
+→ 111   const libraries = await prisma.library.findMany({
+          where: {
+            userId: "1"
+                    ~~~
+          },
+          include: {
+            movie: true,
+            user: {
+              select: {
+                id: true,
+                name: true,
+                email: true,
+                username: true,
+                profileImage: true
+              }
+            }
+          },
+          orderBy: {
+            updatedAt: "desc"
+          }
+        })
+
+Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String. | Stack: PrismaClientValidationError: 
+Invalid `prisma.library.findMany()` invocation in
+C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
+
+  108 }
+  109 
+  110 public static async getAllByUserId(userId: string) {
+→ 111   const libraries = await prisma.library.findMany({
+          where: {
+            userId: "1"
+                    ~~~
+          },
+          include: {
+            movie: true,
+            user: {
+              select: {
+                id: true,
+                name: true,
+                email: true,
+                username: true,
+                profileImage: true
+              }
+            }
+          },
+          orderBy: {
+            updatedAt: "desc"
+          }
+        })
+
+Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String.
+    at Cn (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:29:1363)
+    at Wn.handleRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:7177)
+    at Wn.handleAndLogRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6858)
+    at Wn.request (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6565)
+    at async l (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:130:10067)
+    at Function.getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:23)
+    at getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\controller\library.controller.ts:186:25)
+[INFO] 2025-04-13T20:05:16.656Z - List movies --- Request Received
+[INFO] 2025-04-13T20:05:17.897Z - List movies --- Request Received
+[ERROR] 2025-04-13T20:05:17.899Z - Error in LibraryController.getAllByUserId | Error: 
+Invalid `prisma.library.findMany()` invocation in
+C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
+
+  108 }
+  109 
+  110 public static async getAllByUserId(userId: string) {
+→ 111   const libraries = await prisma.library.findMany({
+          where: {
+            userId: "1"
+                    ~~~
+          },
+          include: {
+            movie: true,
+            user: {
+              select: {
+                id: true,
+                name: true,
+                email: true,
+                username: true,
+                profileImage: true
+              }
+            }
+          },
+          orderBy: {
+            updatedAt: "desc"
+          }
+        })
+
+Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String. | Stack: PrismaClientValidationError: 
+Invalid `prisma.library.findMany()` invocation in
+C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
+
+  108 }
+  109 
+  110 public static async getAllByUserId(userId: string) {
+→ 111   const libraries = await prisma.library.findMany({
+          where: {
+            userId: "1"
+                    ~~~
+          },
+          include: {
+            movie: true,
+            user: {
+              select: {
+                id: true,
+                name: true,
+                email: true,
+                username: true,
+                profileImage: true
+              }
+            }
+          },
+          orderBy: {
+            updatedAt: "desc"
+          }
+        })
+
+Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String.
+    at Cn (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:29:1363)
+    at Wn.handleRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:7177)
+    at Wn.handleAndLogRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6858)
+    at Wn.request (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6565)
+    at async l (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:130:10067)
+    at Function.getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:23)
+    at getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\controller\library.controller.ts:186:25)
+[INFO] 2025-04-13T20:05:17.902Z - List movies --- Request Received
+[ERROR] 2025-04-13T20:05:17.904Z - Error in LibraryController.getAllByUserId | Error: 
+Invalid `prisma.library.findMany()` invocation in
+C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
+
+  108 }
+  109 
+  110 public static async getAllByUserId(userId: string) {
+→ 111   const libraries = await prisma.library.findMany({
+          where: {
+            userId: "1"
+                    ~~~
+          },
+          include: {
+            movie: true,
+            user: {
+              select: {
+                id: true,
+                name: true,
+                email: true,
+                username: true,
+                profileImage: true
+              }
+            }
+          },
+          orderBy: {
+            updatedAt: "desc"
+          }
+        })
+
+Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String. | Stack: PrismaClientValidationError: 
+Invalid `prisma.library.findMany()` invocation in
+C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
+
+  108 }
+  109 
+  110 public static async getAllByUserId(userId: string) {
+→ 111   const libraries = await prisma.library.findMany({
+          where: {
+            userId: "1"
+                    ~~~
+          },
+          include: {
+            movie: true,
+            user: {
+              select: {
+                id: true,
+                name: true,
+                email: true,
+                username: true,
+                profileImage: true
+              }
+            }
+          },
+          orderBy: {
+            updatedAt: "desc"
+          }
+        })
+
+Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String.
+    at Cn (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:29:1363)
+    at Wn.handleRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:7177)
+    at Wn.handleAndLogRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6858)
+    at Wn.request (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6565)
+    at async l (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:130:10067)
+    at Function.getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:23)
+    at getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\controller\library.controller.ts:186:25)
+[INFO] 2025-04-13T20:05:23.581Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
+[INFO] 2025-04-13T20:05:23.586Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
+[INFO] 2025-04-13T20:06:45.603Z - Create Review --- Created Review [object Object]
+[INFO] 2025-04-13T20:07:54.438Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
+[INFO] 2025-04-13T20:07:54.447Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
+[INFO] 2025-04-13T20:07:54.450Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-13T20:07:54.455Z - Get User --- Request Received
+[INFO] 2025-04-13T20:07:54.514Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-13T20:07:59.357Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
+[INFO] 2025-04-13T20:07:59.364Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
+[INFO] 2025-04-13T20:07:59.416Z - Get User --- Request Received
+[INFO] 2025-04-13T20:07:59.509Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-13T20:07:59.570Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-13T20:08:00.331Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
+[INFO] 2025-04-13T20:10:10.416Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
+[INFO] 2025-04-13T20:10:10.427Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
+[INFO] 2025-04-13T20:10:10.487Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-13T20:10:10.493Z - Get User --- Request Received
+[INFO] 2025-04-13T20:10:10.556Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-13T20:10:11.327Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
+[INFO] 2025-04-13T20:10:19.402Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
+[INFO] 2025-04-13T20:10:19.407Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
+[INFO] 2025-04-13T20:10:19.574Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-13T20:10:19.582Z - Get User --- Request Received
+[INFO] 2025-04-13T20:10:19.630Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-13T20:10:22.372Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
+[INFO] 2025-04-13T20:10:22.377Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
+[INFO] 2025-04-13T20:10:22.441Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-13T20:10:22.442Z - Get User --- Request Received
+[INFO] 2025-04-13T20:10:22.489Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-13T20:12:08.443Z - Get User --- Request Received
+[INFO] 2025-04-13T20:12:08.505Z - Get User --- Request Received
+[INFO] 2025-04-13T20:12:15.772Z - Update Review - Updated Review [object Object]
+[INFO] 2025-04-13T20:12:18.286Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-13T20:12:18.363Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-13T20:12:18.364Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-13T20:12:18.434Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-13T20:12:18.434Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-13T20:12:18.504Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-13T20:12:19.455Z - List Users --- Request Received
+[INFO] 2025-04-13T20:12:20.714Z - Get User --- Request Received
+[INFO] 2025-04-13T20:12:20.887Z - Get User --- Request Received
+[INFO] 2025-04-13T20:12:20.950Z - Get User --- Request Received
+[INFO] 2025-04-13T20:12:21.108Z - Get User --- Request Received
+[INFO] 2025-04-13T20:12:21.170Z - Get User --- Request Received
+[INFO] 2025-04-13T20:12:21.232Z - Get User --- Request Received

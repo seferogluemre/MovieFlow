@@ -1,10 +1,7 @@
 import { Request, Response } from "express";
-import { Logger, logInfo, logWarn } from "src/utils/logging/logger.util";
+import { logError, logInfo, logWarn } from "src/utils/logging/logger.util";
 import { LibraryService } from "../services/library.service";
-import {
-  CreateLibraryType,
-  UpdateLibraryType,
-} from "../validators/library.validation";
+import { UpdateLibraryType } from "../validators/library.validation";
 
 export class LibraryController {
   static async create(req: Request, res: Response): Promise<void> {
@@ -13,15 +10,8 @@ export class LibraryController {
       if (!userId) {
         logWarn("LibraryController.create ---- Unauthorized access attempt");
         res.status(401).json({ message: "Unauthorized" });
+        return;
       }
-
-      const data = req.body as CreateLibraryType;
-      const library = await LibraryService.create(Number(userId), data);
-
-      logInfo(
-        "LibraryController.create ---- Library entry created for user ${userId} and movie ${data.movieId}"
-      );
-      res.status(201).json(library);
     } catch (error) {
       logWarn(
         "LibraryController.create ---- Error creating library entry: ${error}"
@@ -36,6 +26,7 @@ export class LibraryController {
       if (!userId) {
         logWarn("LibraryController.getAll ---- Unauthorized access attempt");
         res.status(401).json({ message: "Unauthorized" });
+        return;
       }
 
       const libraries = await LibraryService.getAll(Number(userId));
@@ -96,6 +87,7 @@ export class LibraryController {
       if (!userId) {
         logWarn("LibraryController.update ---- Unauthorized access attempt");
         res.status(401).json({ message: "Unauthorized" });
+        return;
       }
       // TODO: Check if the user is the owner of the library entry
       const { id } = req.params;
@@ -107,6 +99,7 @@ export class LibraryController {
           "LibraryController.update ---- Library entry not found with id ${id}"
         );
         res.status(404).json({ message: "Library entry not found" });
+        return;
       }
 
       if (library?.userId !== userId) {
@@ -114,6 +107,7 @@ export class LibraryController {
           "LibraryController.update ---- Unauthorized access to library entry ${id}"
         );
         res.status(403).json({ message: "Forbidden" });
+        return;
       }
 
       const updatedLibrary = await LibraryService.update(Number(id), data);
@@ -134,6 +128,7 @@ export class LibraryController {
       if (!userId) {
         logWarn("LibraryController.delete ---- Unauthorized access attempt");
         res.status(401).json({ message: "Unauthorized" });
+        return;
       }
       // TODO: Check if the user is the owner of the library entry
       const { id } = req.params;
@@ -144,6 +139,7 @@ export class LibraryController {
           "LibraryController.delete ---- Library entry not found with id ${id}"
         );
         res.status(404).json({ message: "Library entry not found" });
+        return;
       }
 
       if (library?.userId !== userId) {
@@ -151,6 +147,7 @@ export class LibraryController {
           "LibraryController.delete ---- Unauthorized access to library entry ${id}"
         );
         res.status(403).json({ message: "Forbidden" });
+        return;
       }
 
       await LibraryService.delete(Number(id));
@@ -174,11 +171,16 @@ export class LibraryController {
 
       // Check if userId matches current user or user is admin
       const currentUser = req.user;
-      if (currentUser.id !== userId && currentUser.role !== "ADMIN") {
+      if (
+        currentUser &&
+        Number(currentUser.id) !== Number(userId) &&
+        !currentUser.isAdmin
+      ) {
         res.status(403).json({
           success: false,
           message: "You are not authorized to access this library",
         });
+        return;
       }
 
       const libraries = await LibraryService.getAllByUserId(userId);
@@ -188,7 +190,7 @@ export class LibraryController {
         data: libraries,
       });
     } catch (error) {
-      Logger.error("Error in LibraryController.getAllByUserId", error);
+      logError("Error in LibraryController.getAllByUserId", error as Error);
       res.status(500).json({
         success: false,
         message: "Failed to retrieve libraries",

@@ -1,46 +1,45 @@
-import { FC, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import {
+  Bookmark as BookmarkIcon,
+  Check as CheckIcon,
+  Delete as DeleteIcon,
+  MoreVert as MoreVertIcon,
+  Search as SearchIcon,
+  Star as StarIcon,
+  Visibility as VisibilityIcon,
+} from "@mui/icons-material";
+import {
+  Alert,
   Box,
-  Typography,
+  Button,
+  Chip,
+  CircularProgress,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+  IconButton,
+  InputAdornment,
+  ListItemIcon,
+  ListItemText,
+  Menu,
+  MenuItem,
+  Paper,
   Table,
   TableBody,
   TableCell,
   TableContainer,
   TableHead,
   TableRow,
-  Paper,
-  IconButton,
-  Chip,
   TextField,
-  InputAdornment,
-  Menu,
-  MenuItem,
-  ListItemIcon,
-  ListItemText,
-  CircularProgress,
-  Alert,
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  DialogContentText,
-  DialogActions,
-  Button,
+  Typography,
 } from "@mui/material";
-import {
-  Search as SearchIcon,
-  MoreVert as MoreVertIcon,
-  Visibility as VisibilityIcon,
-  Bookmark as BookmarkIcon,
-  PlaylistAdd as PlaylistAddIcon,
-  Delete as DeleteIcon,
-  Check as CheckIcon,
-  Star as StarIcon,
-} from "@mui/icons-material";
-import api, { processApiError } from "../utils/api";
 import { formatDistanceToNow } from "date-fns";
 import { tr } from "date-fns/locale";
+import { FC, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import api, { processApiError } from "../utils/api";
 
 interface WatchlistItem {
   id: number;
@@ -154,7 +153,6 @@ const Watchlist: FC = () => {
   };
 
   const handleMarkAsWatched = () => {
-    // Bu özellik şimdilik dummy olarak kalacak
     handleMenuClose();
   };
 

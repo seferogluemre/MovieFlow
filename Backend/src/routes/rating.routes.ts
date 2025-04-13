@@ -1,12 +1,8 @@
 import { Router } from "express";
 import { authenticate } from "src/middlewares/auth.middleware";
 import { RatingController } from "../controller/rating.controller";
-import { ratingLimiter } from "../middlewares/rate-limit.middleware";
 
 const router = Router();
-
-// Apply rating-specific rate limiter
-router.use(ratingLimiter);
 
 // Public routes
 router.get("/", RatingController.index);

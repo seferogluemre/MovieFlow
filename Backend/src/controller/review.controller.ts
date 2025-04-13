@@ -1,11 +1,11 @@
-import { z } from "zod";
 import { Request, Response } from "express";
+import { ReviewService } from "src/services/review.service";
+import { logInfo, logWarn } from "src/utils/logging/logger.util";
 import {
   createReviewSchema,
   updateReviewSchema,
 } from "src/validators/review.validation";
-import { ReviewService } from "src/services/review.service";
-import { logInfo, logWarn } from "src/utils/logging/logger.util";
+import { z } from "zod";
 
 export class ReviewController {
   static async index(req: Request, res: Response): Promise<void> {
@@ -93,7 +93,23 @@ export class ReviewController {
           message: "Validation Failed",
           errors: formattedErrors,
         });
+        return;
       }
+
+      // Check for Prisma unique constraint error
+      const errorMessage = (error as Error).message;
+      if (
+        errorMessage.includes(
+          "Unique constraint failed on the fields: (`userId`,`movieId`)"
+        )
+      ) {
+        res.status(400).json({
+          success: false,
+          message: "Her film için sadece bir yorum oluşturabilirsiniz.",
+        });
+        return;
+      }
+
       res.status(500).json({
         message: "Internal server error",
         error: (error as Error).message,

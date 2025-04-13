@@ -9,6 +9,11 @@ export class WishlistController {
   static async create(req: Request, res: Response): Promise<void> {
     try {
       const userId = req.user?.id;
+      if (!userId) {
+        res.status(401).json({ error: "Unauthorized - User ID is required" });
+        return;
+      }
+
       const validatedData = createWishlistSchema.parse(req.body);
 
       const wishlist = await WishlistService.create(
@@ -24,6 +29,11 @@ export class WishlistController {
   static async getAll(req: Request, res: Response): Promise<void> {
     try {
       const userId = req.user?.id;
+      if (!userId) {
+        res.status(401).json({ error: "Unauthorized - User ID is required" });
+        return;
+      }
+
       const wishlists = await WishlistService.getAll(Number(userId));
       res.json(wishlists);
     } catch (error) {
@@ -34,11 +44,17 @@ export class WishlistController {
   static async getById(req: Request, res: Response): Promise<void> {
     try {
       const userId = req.user?.id;
+      if (!userId) {
+        res.status(401).json({ error: "Unauthorized - User ID is required" });
+        return;
+      }
+
       const id = parseInt(req.params.id);
 
       const wishlist = await WishlistService.getById(Number(userId), id);
       if (!wishlist) {
         res.status(404).json({ error: "Wishlist not found" });
+        return;
       }
 
       res.json(wishlist);
@@ -50,6 +66,11 @@ export class WishlistController {
   static async update(req: Request, res: Response): Promise<void> {
     try {
       const userId = req.user?.id;
+      if (!userId) {
+        res.status(401).json({ error: "Unauthorized - User ID is required" });
+        return;
+      }
+
       const id = parseInt(req.params.id);
       const validatedData = updateWishlistSchema.parse(req.body);
 
@@ -60,6 +81,7 @@ export class WishlistController {
       );
       if (!wishlist) {
         res.status(404).json({ error: "Wishlist not found" });
+        return;
       }
 
       res.json(wishlist);
@@ -71,6 +93,11 @@ export class WishlistController {
   static async delete(req: Request, res: Response): Promise<void> {
     try {
       const userId = req.user?.id;
+      if (!userId) {
+        res.status(401).json({ error: "Unauthorized - User ID is required" });
+        return;
+      }
+
       const id = parseInt(req.params.id);
 
       await WishlistService.delete(Number(userId), id);

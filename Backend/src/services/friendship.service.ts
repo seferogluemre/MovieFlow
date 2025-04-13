@@ -1,26 +1,20 @@
+import { Friendship, FriendshipStatus, NotificationType } from "@prisma/client";
+import prisma from "src/config/database";
+import { getFullProfileImageUrl } from "src/utils/url/url.helper";
 import {
-  PrismaClient,
-  FriendshipStatus,
-  NotificationType,
-  Friendship,
-} from "@prisma/client";
+  EnhancedFriendship,
+  FriendshipWithUsers,
+  RelationshipStatus,
+  RelationshipType,
+} from "../types/friendship.types";
 import {
   CreateFriendshipType,
   UpdateFriendshipType,
 } from "../validators/friendship.validation";
-import {
-  RelationshipType,
-  RelationshipStatus,
-  FriendshipWithUsers,
-  EnhancedFriendship,
-} from "../types/friendship.types";
-import { getFullProfileImageUrl } from "src/utils/url/url.helper";
 import { NotificationService } from "./notification.service";
-import prisma from "src/config/database";
 
 export class FriendshipService {
-  // Helper method to enhance friendship with processed profile images
-  private static enhanceFriendship(
+  static enhanceFriendship(
     friendship: FriendshipWithUsers | null
   ): EnhancedFriendship | null {
     if (!friendship) return null;
@@ -38,8 +32,7 @@ export class FriendshipService {
     };
   }
 
-  // Helper method to enhance multiple friendships with processed profile images
-  private static enhanceFriendships(
+  static enhanceFriendships(
     friendships: FriendshipWithUsers[]
   ): (EnhancedFriendship | null)[] {
     return friendships.map((friendship) => this.enhanceFriendship(friendship));
