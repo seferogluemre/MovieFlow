@@ -1,8 +1,7 @@
 import AWS from "aws-sdk";
-import { Request } from "express";
+import fs from "fs";
 import multer from "multer";
 import path from "path";
-import fs from "fs";
 import { v4 as uuidv4 } from "uuid";
 import { logInfo, logWarn } from "./logging/logger.util";
 
@@ -82,11 +81,11 @@ export const getS3Url = (key: string): string | null => {
   }
 
   try {
-    // Pre-signed URL oluştur (1 saat geçerli)
+    
     const params = {
       Bucket: process.env.AWS_BUCKET_NAME || "",
       Key: key,
-      Expires: 3600, // 1 saat
+      Expires: 604800,
     };
 
     return s3.getSignedUrl("getObject", params);

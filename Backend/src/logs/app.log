@@ -17115,3 +17115,2705 @@ Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided S
 [INFO] 2025-04-13T22:47:57.502Z - Friendship getFollowers ---- Retrieved followers successfully
 [INFO] 2025-04-13T22:47:57.549Z - Friendship getFollowing ---- Retrieved following users successfully
 [INFO] 2025-04-13T22:47:57.612Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-13T22:48:46.326Z - Get User --- Request Received
+[INFO] 2025-04-13T22:48:46.419Z - Get User --- Request Received
+[INFO] 2025-04-13T22:48:46.449Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-13T22:48:46.450Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-13T22:48:46.492Z - Get User --- Request Received
+[INFO] 2025-04-13T22:48:46.512Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-13T22:48:46.561Z - Get User --- Request Received
+[INFO] 2025-04-13T22:48:46.565Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-13T22:48:46.573Z - Get User Reviews - Retrieved reviews for User 5
+[INFO] 2025-04-13T22:48:46.622Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-13T22:48:46.629Z - Get User --- Request Received
+[INFO] 2025-04-13T22:48:46.697Z - Get User --- Request Received
+[INFO] 2025-04-13T22:48:46.728Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-13T22:48:46.729Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-13T22:48:46.774Z - Get User --- Request Received
+[INFO] 2025-04-13T22:48:46.836Z - Get User --- Request Received
+[INFO] 2025-04-13T22:48:46.897Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-13T22:48:46.912Z - Get User --- Request Received
+[INFO] 2025-04-13T22:48:46.924Z - Get User Reviews - Retrieved reviews for User 5
+[INFO] 2025-04-13T22:48:46.937Z - Get User Reviews - Retrieved reviews for User 5
+[INFO] 2025-04-13T22:48:46.990Z - Get User --- Request Received
+[INFO] 2025-04-13T22:48:46.991Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-13T22:48:46.997Z - Get User Reviews - Retrieved reviews for User 5
+[INFO] 2025-04-13T22:48:47.014Z - Get User Reviews - Retrieved reviews for User 5
+[INFO] 2025-04-13T22:48:47.052Z - Get User --- Request Received
+[INFO] 2025-04-13T22:48:47.078Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-13T22:48:47.078Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-13T22:48:47.113Z - Get User --- Request Received
+[INFO] 2025-04-13T22:48:47.123Z - Get User Reviews - Retrieved reviews for User 5
+[INFO] 2025-04-13T22:48:47.135Z - Get User Reviews - Retrieved reviews for User 5
+[INFO] 2025-04-13T22:48:47.171Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-13T22:48:47.171Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-13T22:48:47.172Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-13T22:48:47.182Z - Get User --- Request Received
+[INFO] 2025-04-13T22:48:47.192Z - Get User Reviews - Retrieved reviews for User 5
+[INFO] 2025-04-13T22:48:47.200Z - Get User Reviews - Retrieved reviews for User 5
+[INFO] 2025-04-13T22:48:47.257Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-13T22:48:47.258Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-13T22:48:47.259Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-13T22:48:47.333Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-13T22:48:47.333Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-13T22:48:47.498Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-13T22:48:55.700Z - Get User --- Request Received
+[INFO] 2025-04-13T22:48:55.760Z - Get User --- Request Received
+[INFO] 2025-04-13T22:48:55.824Z - Get User --- Request Received
+[INFO] 2025-04-13T22:48:55.886Z - Get User --- Request Received
+[INFO] 2025-04-13T22:48:55.899Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-13T22:48:55.899Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-13T22:48:55.900Z - Get User Reviews - Retrieved reviews for User 5
+[INFO] 2025-04-13T22:48:55.963Z - Get User --- Request Received
+[INFO] 2025-04-13T22:48:55.986Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-13T22:48:55.987Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-13T22:48:55.987Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-13T22:48:56.042Z - Get User --- Request Received
+[INFO] 2025-04-13T22:48:56.110Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-13T22:48:56.111Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-13T22:48:56.115Z - Get User --- Request Received
+[INFO] 2025-04-13T22:48:56.167Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-13T22:48:56.182Z - Get User --- Request Received
+[INFO] 2025-04-13T22:48:56.246Z - Get User --- Request Received
+[INFO] 2025-04-13T22:48:56.255Z - Get User Reviews - Retrieved reviews for User 5
+[INFO] 2025-04-13T22:48:56.272Z - Get User Reviews - Retrieved reviews for User 5
+[INFO] 2025-04-13T22:48:56.311Z - Get User --- Request Received
+[INFO] 2025-04-13T22:48:56.318Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-13T22:48:56.319Z - Get User Reviews - Retrieved reviews for User 5
+[INFO] 2025-04-13T22:48:56.338Z - Get User Reviews - Retrieved reviews for User 5
+[INFO] 2025-04-13T22:48:56.388Z - Get User --- Request Received
+[INFO] 2025-04-13T22:48:56.419Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-13T22:48:56.419Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-13T22:48:56.450Z - Get User --- Request Received
+[INFO] 2025-04-13T22:48:56.456Z - Get User Reviews - Retrieved reviews for User 5
+[INFO] 2025-04-13T22:48:56.464Z - Get User Reviews - Retrieved reviews for User 5
+[INFO] 2025-04-13T22:48:56.501Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-13T22:48:56.502Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-13T22:48:56.503Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-13T22:48:56.517Z - Get User --- Request Received
+[INFO] 2025-04-13T22:48:56.523Z - Get User Reviews - Retrieved reviews for User 5
+[INFO] 2025-04-13T22:48:56.535Z - Get User Reviews - Retrieved reviews for User 5
+[INFO] 2025-04-13T22:48:56.603Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-13T22:48:56.604Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-13T22:48:56.604Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-13T22:48:56.675Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-13T22:48:56.676Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-13T22:48:56.728Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-13T22:48:58.207Z - Get User --- Request Received
+[INFO] 2025-04-13T22:48:58.283Z - Get User --- Request Received
+[INFO] 2025-04-13T22:48:58.361Z - Get User --- Request Received
+[INFO] 2025-04-13T22:48:58.423Z - Get User --- Request Received
+[INFO] 2025-04-13T22:48:58.484Z - Get User --- Request Received
+[INFO] 2025-04-13T22:48:58.547Z - Get User --- Request Received
+[ERROR] 2025-04-13T22:49:00.043Z - Error in LibraryController.getAllByUserId | Error: 
+Invalid `prisma.library.findMany()` invocation in
+C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
+
+  108 }
+  109 
+  110 public static async getAllByUserId(userId: string) {
+→ 111   const libraries = await prisma.library.findMany({
+          where: {
+            userId: "5"
+                    ~~~
+          },
+          include: {
+            movie: true,
+            user: {
+              select: {
+                id: true,
+                name: true,
+                email: true,
+                username: true,
+                profileImage: true
+              }
+            }
+          },
+          orderBy: {
+            updatedAt: "desc"
+          }
+        })
+
+Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String. | Stack: PrismaClientValidationError: 
+Invalid `prisma.library.findMany()` invocation in
+C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
+
+  108 }
+  109 
+  110 public static async getAllByUserId(userId: string) {
+→ 111   const libraries = await prisma.library.findMany({
+          where: {
+            userId: "5"
+                    ~~~
+          },
+          include: {
+            movie: true,
+            user: {
+              select: {
+                id: true,
+                name: true,
+                email: true,
+                username: true,
+                profileImage: true
+              }
+            }
+          },
+          orderBy: {
+            updatedAt: "desc"
+          }
+        })
+
+Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String.
+    at Cn (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:29:1363)
+    at Wn.handleRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:7177)
+    at Wn.handleAndLogRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6858)
+    at Wn.request (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6565)
+    at async l (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:130:10067)
+    at Function.getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:23)
+    at getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\controller\library.controller.ts:194:25)
+[INFO] 2025-04-13T22:49:00.044Z - List movies --- Request Received
+[ERROR] 2025-04-13T22:49:00.048Z - Error in LibraryController.getAllByUserId | Error: 
+Invalid `prisma.library.findMany()` invocation in
+C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
+
+  108 }
+  109 
+  110 public static async getAllByUserId(userId: string) {
+→ 111   const libraries = await prisma.library.findMany({
+          where: {
+            userId: "5"
+                    ~~~
+          },
+          include: {
+            movie: true,
+            user: {
+              select: {
+                id: true,
+                name: true,
+                email: true,
+                username: true,
+                profileImage: true
+              }
+            }
+          },
+          orderBy: {
+            updatedAt: "desc"
+          }
+        })
+
+Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String. | Stack: PrismaClientValidationError: 
+Invalid `prisma.library.findMany()` invocation in
+C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
+
+  108 }
+  109 
+  110 public static async getAllByUserId(userId: string) {
+→ 111   const libraries = await prisma.library.findMany({
+          where: {
+            userId: "5"
+                    ~~~
+          },
+          include: {
+            movie: true,
+            user: {
+              select: {
+                id: true,
+                name: true,
+                email: true,
+                username: true,
+                profileImage: true
+              }
+            }
+          },
+          orderBy: {
+            updatedAt: "desc"
+          }
+        })
+
+Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String.
+    at Cn (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:29:1363)
+    at Wn.handleRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:7177)
+    at Wn.handleAndLogRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6858)
+    at Wn.request (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6565)
+    at async l (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:130:10067)
+    at Function.getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:23)
+    at getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\controller\library.controller.ts:194:25)
+[INFO] 2025-04-13T22:49:00.049Z - List movies --- Request Received
+[INFO] 2025-04-13T22:49:00.639Z - Get User --- Request Received
+[INFO] 2025-04-13T22:49:00.701Z - Get User --- Request Received
+[INFO] 2025-04-13T22:49:00.763Z - Get User --- Request Received
+[INFO] 2025-04-13T22:49:00.825Z - Get User --- Request Received
+[INFO] 2025-04-13T22:49:01.014Z - Get User --- Request Received
+[INFO] 2025-04-13T22:49:01.075Z - Get User --- Request Received
+[INFO] 2025-04-13T22:49:01.387Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-13T22:49:01.462Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-13T22:49:01.463Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-13T22:49:01.557Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-13T22:49:01.557Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-13T22:49:01.619Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-13T22:49:03.725Z - Get User --- Request Received
+[INFO] 2025-04-13T22:49:03.732Z - Get User Reviews - Retrieved reviews for User 5
+[INFO] 2025-04-13T22:49:03.736Z - Get User Reviews - Retrieved reviews for User 5
+[INFO] 2025-04-13T22:49:03.797Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-13T22:49:03.804Z - Get User --- Request Received
+[INFO] 2025-04-13T22:49:03.821Z - Get User Reviews - Retrieved reviews for User 5
+[INFO] 2025-04-13T22:49:03.833Z - Get User Reviews - Retrieved reviews for User 5
+[INFO] 2025-04-13T22:49:03.897Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-13T22:49:03.898Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-13T22:49:03.990Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-13T22:49:03.991Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-13T22:49:04.052Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-13T22:49:22.521Z - File uploaded to S3: profiles/5a734814-cfdf-476c-88be-c3fddabb9a83.jpg
+[INFO] 2025-04-13T22:49:22.584Z - Update User - Updated User {"id":5,"email":"berat@mail.com","username":"beratgdlk","password":"$2b$10$wfKHjojihJWc91JyxewjWu4KTKJSkxZxLfXMEAavGBmQ/KvvFM.V2","name":"Berat Güdelek","profileImage":"https://seferogluemremovieproject.s3.amazonaws.com/profiles/5a734814-cfdf-476c-88be-c3fddabb9a83.jpg?AWSAccessKeyId=AKIAQSOI4UYIUUJJSRF4&Expires=1744588162&Signature=n8VbRyaSrjF%2FRWiY4TbjtZ%2BfkEo%3D","isAdmin":false,"isPrivate":false,"createdAt":"2025-04-13T21:18:17.832Z","updatedAt":"2025-04-13T22:49:22.566Z"}
+[INFO] 2025-04-13T22:49:22.645Z - Get User --- Request Received
+[INFO] 2025-04-13T22:49:24.397Z - Get User --- Request Received
+[INFO] 2025-04-13T22:49:24.569Z - Get User --- Request Received
+[INFO] 2025-04-13T22:49:24.631Z - Get User --- Request Received
+[INFO] 2025-04-13T22:49:24.805Z - Get User --- Request Received
+[INFO] 2025-04-13T22:49:24.866Z - Get User --- Request Received
+[INFO] 2025-04-13T22:49:24.929Z - Get User --- Request Received
+[INFO] 2025-04-13T22:49:26.002Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-13T22:49:26.096Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-13T22:49:26.096Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-13T22:49:26.175Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-13T22:49:26.176Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-13T22:49:26.237Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-13T22:49:27.865Z - List Users --- Request Received
+[INFO] 2025-04-13T22:49:37.086Z - Get User --- Request Received
+[INFO] 2025-04-13T22:49:37.149Z - Get User --- Request Received
+[INFO] 2025-04-13T22:49:37.211Z - Get User --- Request Received
+[INFO] 2025-04-13T22:49:37.274Z - Get User --- Request Received
+[INFO] 2025-04-13T22:49:37.336Z - Get User --- Request Received
+[INFO] 2025-04-13T22:49:37.397Z - Get User --- Request Received
+[INFO] 2025-04-13T22:49:37.933Z - Login User - Logout Successfully
+[INFO] 2025-04-13T22:49:43.722Z - Login User --- Login successful 🚀
+[INFO] 2025-04-13T22:49:43.780Z - Get User --- Request Received
+[INFO] 2025-04-13T22:49:43.843Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-13T22:49:43.889Z - Get User --- Request Received
+[INFO] 2025-04-13T22:49:44.013Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-13T22:49:44.059Z - Get User --- Request Received
+[INFO] 2025-04-13T22:49:44.122Z - Get User --- Request Received
+[INFO] 2025-04-13T22:49:44.293Z - Get User --- Request Received
+[INFO] 2025-04-13T22:49:44.356Z - Get User --- Request Received
+[INFO] 2025-04-13T22:49:44.419Z - Get User --- Request Received
+[INFO] 2025-04-13T22:49:45.965Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-13T22:49:46.154Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-13T22:49:46.154Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-13T22:49:46.226Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-13T22:49:46.227Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-13T22:49:46.276Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-13T22:49:49.018Z - Get User --- Request Received
+[INFO] 2025-04-13T22:49:49.097Z - Get User --- Request Received
+[INFO] 2025-04-13T22:49:49.110Z - Friendship getRelationshipStatus ---- Retrieved relationship status successfully
+[INFO] 2025-04-13T22:49:49.111Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-13T22:49:49.159Z - Get User --- Request Received
+[INFO] 2025-04-13T22:49:49.191Z - Friendship getRelationshipStatus ---- Retrieved relationship status successfully
+[INFO] 2025-04-13T22:49:49.192Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-13T22:49:49.193Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-13T22:49:49.222Z - Get User --- Request Received
+[INFO] 2025-04-13T22:49:49.302Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-13T22:49:49.304Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-13T22:49:49.305Z - Get User --- Request Received
+[INFO] 2025-04-13T22:49:49.369Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-13T22:49:49.378Z - Get User --- Request Received
+[INFO] 2025-04-13T22:49:49.441Z - Get User --- Request Received
+[INFO] 2025-04-13T22:49:52.235Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-13T22:49:52.297Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-13T22:49:52.313Z - Get User --- Request Received
+[INFO] 2025-04-13T22:49:52.358Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-13T22:49:52.391Z - Get User --- Request Received
+[INFO] 2025-04-13T22:49:52.422Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-13T22:49:52.794Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-13T22:49:53.030Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-13T22:49:54.323Z - Get User --- Request Received
+[INFO] 2025-04-13T22:49:54.384Z - Get User --- Request Received
+[INFO] 2025-04-13T22:49:54.447Z - Get User --- Request Received
+[INFO] 2025-04-13T22:49:54.511Z - Get User --- Request Received
+[INFO] 2025-04-13T22:49:54.573Z - Get User --- Request Received
+[INFO] 2025-04-13T22:49:54.637Z - Get User --- Request Received
+[INFO] 2025-04-13T22:49:56.974Z - List movies --- Request Received
+[INFO] 2025-04-13T22:49:56.982Z - List movies --- Request Received
+[ERROR] 2025-04-13T22:49:57.018Z - Error in LibraryController.getAllByUserId | Error: 
+Invalid `prisma.library.findMany()` invocation in
+C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
+
+  108 }
+  109 
+  110 public static async getAllByUserId(userId: string) {
+→ 111   const libraries = await prisma.library.findMany({
+          where: {
+            userId: "3"
+                    ~~~
+          },
+          include: {
+            movie: true,
+            user: {
+              select: {
+                id: true,
+                name: true,
+                email: true,
+                username: true,
+                profileImage: true
+              }
+            }
+          },
+          orderBy: {
+            updatedAt: "desc"
+          }
+        })
+
+Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String. | Stack: PrismaClientValidationError: 
+Invalid `prisma.library.findMany()` invocation in
+C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
+
+  108 }
+  109 
+  110 public static async getAllByUserId(userId: string) {
+→ 111   const libraries = await prisma.library.findMany({
+          where: {
+            userId: "3"
+                    ~~~
+          },
+          include: {
+            movie: true,
+            user: {
+              select: {
+                id: true,
+                name: true,
+                email: true,
+                username: true,
+                profileImage: true
+              }
+            }
+          },
+          orderBy: {
+            updatedAt: "desc"
+          }
+        })
+
+Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String.
+    at Cn (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:29:1363)
+    at Wn.handleRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:7177)
+    at Wn.handleAndLogRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6858)
+    at Wn.request (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6565)
+    at async l (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:130:10067)
+    at Function.getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:23)
+    at getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\controller\library.controller.ts:194:25)
+[ERROR] 2025-04-13T22:49:57.023Z - Error in LibraryController.getAllByUserId | Error: 
+Invalid `prisma.library.findMany()` invocation in
+C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
+
+  108 }
+  109 
+  110 public static async getAllByUserId(userId: string) {
+→ 111   const libraries = await prisma.library.findMany({
+          where: {
+            userId: "3"
+                    ~~~
+          },
+          include: {
+            movie: true,
+            user: {
+              select: {
+                id: true,
+                name: true,
+                email: true,
+                username: true,
+                profileImage: true
+              }
+            }
+          },
+          orderBy: {
+            updatedAt: "desc"
+          }
+        })
+
+Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String. | Stack: PrismaClientValidationError: 
+Invalid `prisma.library.findMany()` invocation in
+C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
+
+  108 }
+  109 
+  110 public static async getAllByUserId(userId: string) {
+→ 111   const libraries = await prisma.library.findMany({
+          where: {
+            userId: "3"
+                    ~~~
+          },
+          include: {
+            movie: true,
+            user: {
+              select: {
+                id: true,
+                name: true,
+                email: true,
+                username: true,
+                profileImage: true
+              }
+            }
+          },
+          orderBy: {
+            updatedAt: "desc"
+          }
+        })
+
+Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String.
+    at Cn (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:29:1363)
+    at Wn.handleRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:7177)
+    at Wn.handleAndLogRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6858)
+    at Wn.request (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6565)
+    at async l (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:130:10067)
+    at Function.getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:23)
+    at getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\controller\library.controller.ts:194:25)
+[INFO] 2025-04-13T22:49:59.724Z - Get User --- Request Received
+[INFO] 2025-04-13T22:49:59.787Z - Get User Reviews - Retrieved reviews for User 3
+[INFO] 2025-04-13T22:49:59.792Z - Get User Reviews - Retrieved reviews for User 3
+[INFO] 2025-04-13T22:49:59.805Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-13T22:49:59.806Z - Get User --- Request Received
+[INFO] 2025-04-13T22:49:59.818Z - Get User Reviews - Retrieved reviews for User 3
+[INFO] 2025-04-13T22:49:59.828Z - Get User Reviews - Retrieved reviews for User 3
+[INFO] 2025-04-13T22:49:59.912Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-13T22:49:59.914Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-13T22:50:00.101Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-13T22:50:00.102Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-13T22:50:00.163Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-13T22:50:00.470Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
+[INFO] 2025-04-13T22:50:00.475Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
+[INFO] 2025-04-13T22:50:04.103Z - Get Movie Reviews - Retrieved reviews for Movie 1
+[INFO] 2025-04-13T22:50:04.107Z - Get Movie Reviews - Retrieved reviews for Movie 1
+[INFO] 2025-04-13T22:50:04.263Z - Get User --- Request Received
+[INFO] 2025-04-13T22:50:04.325Z - Get User --- Request Received
+[INFO] 2025-04-14T10:40:36.957Z - Get User --- Request Received
+[INFO] 2025-04-14T10:40:37.034Z - Get User --- Request Received
+[INFO] 2025-04-14T10:40:37.113Z - Get User --- Request Received
+[INFO] 2025-04-14T10:40:37.144Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-14T10:40:37.175Z - Get User --- Request Received
+[INFO] 2025-04-14T10:40:37.238Z - Get User --- Request Received
+[INFO] 2025-04-14T10:40:37.301Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-14T10:40:37.302Z - Get User --- Request Received
+[INFO] 2025-04-14T10:40:37.363Z - Get User --- Request Received
+[INFO] 2025-04-14T10:40:37.534Z - Get User --- Request Received
+[INFO] 2025-04-14T10:40:37.596Z - Get User --- Request Received
+[INFO] 2025-04-14T10:40:37.660Z - Get User --- Request Received
+[INFO] 2025-04-14T10:40:38.458Z - Login User - Logout Successfully
+[INFO] 2025-04-14T10:40:51.789Z - Login User --- Login successful 🚀
+[INFO] 2025-04-14T10:40:51.850Z - Get User --- Request Received
+[INFO] 2025-04-14T10:40:51.913Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-14T10:40:51.943Z - Get User --- Request Received
+[INFO] 2025-04-14T10:40:51.959Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-14T10:40:52.113Z - Get User --- Request Received
+[INFO] 2025-04-14T10:40:52.176Z - Get User --- Request Received
+[INFO] 2025-04-14T10:40:52.348Z - Get User --- Request Received
+[INFO] 2025-04-14T10:40:52.411Z - Get User --- Request Received
+[INFO] 2025-04-14T10:40:52.473Z - Get User --- Request Received
+[INFO] 2025-04-14T10:40:55.676Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-14T10:40:55.743Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-14T10:40:55.744Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-14T10:40:55.927Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-14T10:40:55.928Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-14T10:40:55.975Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-14T10:40:57.721Z - Get User --- Request Received
+[INFO] 2025-04-14T10:40:57.772Z - Get User Reviews - Retrieved reviews for User 5
+[INFO] 2025-04-14T10:40:57.776Z - Get User Reviews - Retrieved reviews for User 5
+[INFO] 2025-04-14T10:40:57.783Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-14T10:40:57.784Z - Get User --- Request Received
+[INFO] 2025-04-14T10:40:57.798Z - Get User Reviews - Retrieved reviews for User 5
+[INFO] 2025-04-14T10:40:57.809Z - Get User Reviews - Retrieved reviews for User 5
+[INFO] 2025-04-14T10:40:57.893Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-14T10:40:57.893Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-14T10:40:57.970Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-14T10:40:57.971Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-14T10:40:58.018Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-14T10:44:36.073Z - File uploaded to S3: profiles/f7277396-f989-4ec7-84d6-5e9e5dc36966.jpg
+[INFO] 2025-04-14T10:44:36.140Z - Update User - Updated User {"id":5,"email":"berat@mail.com","username":"beratgdlk","password":"$2b$10$wfKHjojihJWc91JyxewjWu4KTKJSkxZxLfXMEAavGBmQ/KvvFM.V2","name":"Berat Güdelek","profileImage":"https://seferogluemremovieproject.s3.us-east-1.amazonaws.com/profiles/f7277396-f989-4ec7-84d6-5e9e5dc36966.jpg","isAdmin":false,"isPrivate":false,"createdAt":"2025-04-13T21:18:17.832Z","updatedAt":"2025-04-14T10:44:36.119Z"}
+[INFO] 2025-04-14T10:44:36.204Z - Get User --- Request Received
+[INFO] 2025-04-14T10:44:40.877Z - Get User --- Request Received
+[INFO] 2025-04-14T10:44:40.937Z - Get User --- Request Received
+[INFO] 2025-04-14T10:44:40.956Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-14T10:44:41.003Z - Get User --- Request Received
+[INFO] 2025-04-14T10:44:41.066Z - Get User --- Request Received
+[INFO] 2025-04-14T10:44:41.067Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-14T10:45:38.695Z - Get User --- Request Received
+[INFO] 2025-04-14T10:45:38.751Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-14T10:45:38.757Z - Get User --- Request Received
+[INFO] 2025-04-14T10:45:38.820Z - Get User --- Request Received
+[INFO] 2025-04-14T10:45:38.883Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-14T10:45:38.884Z - Get User --- Request Received
+[INFO] 2025-04-14T10:45:52.746Z - Get User --- Request Received
+[INFO] 2025-04-14T10:45:52.808Z - Get User --- Request Received
+[INFO] 2025-04-14T10:45:52.981Z - Get User --- Request Received
+[INFO] 2025-04-14T10:45:53.152Z - Get User --- Request Received
+[INFO] 2025-04-14T10:45:53.214Z - Get User --- Request Received
+[INFO] 2025-04-14T10:45:53.276Z - Get User --- Request Received
+[INFO] 2025-04-14T10:47:02.885Z - Get User --- Request Received
+[INFO] 2025-04-14T10:47:02.964Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-14T10:47:02.980Z - Get User --- Request Received
+[INFO] 2025-04-14T10:47:03.151Z - Get User --- Request Received
+[INFO] 2025-04-14T10:47:03.214Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-14T10:47:03.215Z - Get User --- Request Received
+[INFO] 2025-04-14T10:47:04.935Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-14T10:47:05.028Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-14T10:47:05.029Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-14T10:47:05.233Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-14T10:47:05.234Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-14T10:47:05.280Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-14T10:47:08.440Z - List movies --- Request Received
+[INFO] 2025-04-14T10:47:08.444Z - List movies --- Request Received
+[ERROR] 2025-04-14T10:47:08.584Z - Error in LibraryController.getAllByUserId | Error: 
+Invalid `prisma.library.findMany()` invocation in
+C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
+
+  108 }
+  109 
+  110 public static async getAllByUserId(userId: string) {
+→ 111   const libraries = await prisma.library.findMany({
+          where: {
+            userId: "5"
+                    ~~~
+          },
+          include: {
+            movie: true,
+            user: {
+              select: {
+                id: true,
+                name: true,
+                email: true,
+                username: true,
+                profileImage: true
+              }
+            }
+          },
+          orderBy: {
+            updatedAt: "desc"
+          }
+        })
+
+Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String. | Stack: PrismaClientValidationError: 
+Invalid `prisma.library.findMany()` invocation in
+C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
+
+  108 }
+  109 
+  110 public static async getAllByUserId(userId: string) {
+→ 111   const libraries = await prisma.library.findMany({
+          where: {
+            userId: "5"
+                    ~~~
+          },
+          include: {
+            movie: true,
+            user: {
+              select: {
+                id: true,
+                name: true,
+                email: true,
+                username: true,
+                profileImage: true
+              }
+            }
+          },
+          orderBy: {
+            updatedAt: "desc"
+          }
+        })
+
+Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String.
+    at Cn (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:29:1363)
+    at Wn.handleRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:7177)
+    at Wn.handleAndLogRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6858)
+    at Wn.request (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6565)
+    at async l (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:130:10067)
+    at Function.getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:23)
+    at getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\controller\library.controller.ts:194:25)
+[ERROR] 2025-04-14T10:47:08.589Z - Error in LibraryController.getAllByUserId | Error: 
+Invalid `prisma.library.findMany()` invocation in
+C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
+
+  108 }
+  109 
+  110 public static async getAllByUserId(userId: string) {
+→ 111   const libraries = await prisma.library.findMany({
+          where: {
+            userId: "5"
+                    ~~~
+          },
+          include: {
+            movie: true,
+            user: {
+              select: {
+                id: true,
+                name: true,
+                email: true,
+                username: true,
+                profileImage: true
+              }
+            }
+          },
+          orderBy: {
+            updatedAt: "desc"
+          }
+        })
+
+Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String. | Stack: PrismaClientValidationError: 
+Invalid `prisma.library.findMany()` invocation in
+C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
+
+  108 }
+  109 
+  110 public static async getAllByUserId(userId: string) {
+→ 111   const libraries = await prisma.library.findMany({
+          where: {
+            userId: "5"
+                    ~~~
+          },
+          include: {
+            movie: true,
+            user: {
+              select: {
+                id: true,
+                name: true,
+                email: true,
+                username: true,
+                profileImage: true
+              }
+            }
+          },
+          orderBy: {
+            updatedAt: "desc"
+          }
+        })
+
+Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String.
+    at Cn (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:29:1363)
+    at Wn.handleRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:7177)
+    at Wn.handleAndLogRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6858)
+    at Wn.request (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6565)
+    at async l (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:130:10067)
+    at Function.getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:23)
+    at getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\controller\library.controller.ts:194:25)
+[INFO] 2025-04-14T10:48:39.397Z - Get User --- Request Received
+[INFO] 2025-04-14T10:48:39.450Z - Get User Reviews - Retrieved reviews for User 5
+[INFO] 2025-04-14T10:48:39.453Z - Get User Reviews - Retrieved reviews for User 5
+[INFO] 2025-04-14T10:48:39.460Z - Get User --- Request Received
+[INFO] 2025-04-14T10:48:39.461Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-14T10:48:39.470Z - Get User Reviews - Retrieved reviews for User 5
+[INFO] 2025-04-14T10:48:39.487Z - Get User Reviews - Retrieved reviews for User 5
+[INFO] 2025-04-14T10:48:39.555Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-14T10:48:39.556Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-14T10:48:39.634Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-14T10:48:39.635Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-14T10:48:39.698Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[ERROR] 2025-04-14T10:48:41.784Z - Error in LibraryController.getAllByUserId | Error: 
+Invalid `prisma.library.findMany()` invocation in
+C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
+
+  108 }
+  109 
+  110 public static async getAllByUserId(userId: string) {
+→ 111   const libraries = await prisma.library.findMany({
+          where: {
+            userId: "5"
+                    ~~~
+          },
+          include: {
+            movie: true,
+            user: {
+              select: {
+                id: true,
+                name: true,
+                email: true,
+                username: true,
+                profileImage: true
+              }
+            }
+          },
+          orderBy: {
+            updatedAt: "desc"
+          }
+        })
+
+Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String. | Stack: PrismaClientValidationError: 
+Invalid `prisma.library.findMany()` invocation in
+C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
+
+  108 }
+  109 
+  110 public static async getAllByUserId(userId: string) {
+→ 111   const libraries = await prisma.library.findMany({
+          where: {
+            userId: "5"
+                    ~~~
+          },
+          include: {
+            movie: true,
+            user: {
+              select: {
+                id: true,
+                name: true,
+                email: true,
+                username: true,
+                profileImage: true
+              }
+            }
+          },
+          orderBy: {
+            updatedAt: "desc"
+          }
+        })
+
+Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String.
+    at Cn (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:29:1363)
+    at Wn.handleRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:7177)
+    at Wn.handleAndLogRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6858)
+    at Wn.request (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6565)
+    at async l (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:130:10067)
+    at Function.getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:23)
+    at getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\controller\library.controller.ts:194:25)
+[INFO] 2025-04-14T10:48:41.786Z - List movies --- Request Received
+[ERROR] 2025-04-14T10:48:41.789Z - Error in LibraryController.getAllByUserId | Error: 
+Invalid `prisma.library.findMany()` invocation in
+C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
+
+  108 }
+  109 
+  110 public static async getAllByUserId(userId: string) {
+→ 111   const libraries = await prisma.library.findMany({
+          where: {
+            userId: "5"
+                    ~~~
+          },
+          include: {
+            movie: true,
+            user: {
+              select: {
+                id: true,
+                name: true,
+                email: true,
+                username: true,
+                profileImage: true
+              }
+            }
+          },
+          orderBy: {
+            updatedAt: "desc"
+          }
+        })
+
+Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String. | Stack: PrismaClientValidationError: 
+Invalid `prisma.library.findMany()` invocation in
+C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
+
+  108 }
+  109 
+  110 public static async getAllByUserId(userId: string) {
+→ 111   const libraries = await prisma.library.findMany({
+          where: {
+            userId: "5"
+                    ~~~
+          },
+          include: {
+            movie: true,
+            user: {
+              select: {
+                id: true,
+                name: true,
+                email: true,
+                username: true,
+                profileImage: true
+              }
+            }
+          },
+          orderBy: {
+            updatedAt: "desc"
+          }
+        })
+
+Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String.
+    at Cn (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:29:1363)
+    at Wn.handleRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:7177)
+    at Wn.handleAndLogRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6858)
+    at Wn.request (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6565)
+    at async l (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:130:10067)
+    at Function.getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:23)
+    at getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\controller\library.controller.ts:194:25)
+[INFO] 2025-04-14T10:48:41.791Z - List movies --- Request Received
+[INFO] 2025-04-14T10:48:44.090Z - Update User - Updated User {"id":5,"email":"berat@mail.com","username":"beratgdlk","password":"$2b$10$wfKHjojihJWc91JyxewjWu4KTKJSkxZxLfXMEAavGBmQ/KvvFM.V2","name":"Berat Güdelek","profileImage":null,"isAdmin":false,"isPrivate":false,"createdAt":"2025-04-13T21:18:17.832Z","updatedAt":"2025-04-14T10:48:44.080Z"}
+[INFO] 2025-04-14T10:48:44.262Z - Get User --- Request Received
+[INFO] 2025-04-14T10:48:49.853Z - File uploaded to S3: profiles/7bb9d68b-f1c7-4e8c-b5e7-70fb69550aea.jpg
+[INFO] 2025-04-14T10:48:49.909Z - Update User - Updated User {"id":5,"email":"berat@mail.com","username":"beratgdlk","password":"$2b$10$wfKHjojihJWc91JyxewjWu4KTKJSkxZxLfXMEAavGBmQ/KvvFM.V2","name":"Berat Güdelek","profileImage":"https://seferogluemremovieproject.s3.amazonaws.com/profiles/7bb9d68b-f1c7-4e8c-b5e7-70fb69550aea.jpg?AWSAccessKeyId=AKIAQSOI4UYIUUJJSRF4&Expires=1745232529&Signature=IsYjBEEL4tGYaFfXfmPf5PMbSRc%3D","isAdmin":false,"isPrivate":false,"createdAt":"2025-04-13T21:18:17.832Z","updatedAt":"2025-04-14T10:48:49.897Z"}
+[INFO] 2025-04-14T10:48:49.971Z - Get User --- Request Received
+[INFO] 2025-04-14T10:48:53.162Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
+[INFO] 2025-04-14T10:48:53.168Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
+[INFO] 2025-04-14T10:48:53.850Z - Get User --- Request Received
+[INFO] 2025-04-14T10:48:53.914Z - Get User --- Request Received
+[ERROR] 2025-04-14T10:48:55.084Z - Error in LibraryController.getAllByUserId | Error: 
+Invalid `prisma.library.findMany()` invocation in
+C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
+
+  108 }
+  109 
+  110 public static async getAllByUserId(userId: string) {
+→ 111   const libraries = await prisma.library.findMany({
+          where: {
+            userId: "5"
+                    ~~~
+          },
+          include: {
+            movie: true,
+            user: {
+              select: {
+                id: true,
+                name: true,
+                email: true,
+                username: true,
+                profileImage: true
+              }
+            }
+          },
+          orderBy: {
+            updatedAt: "desc"
+          }
+        })
+
+Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String. | Stack: PrismaClientValidationError: 
+Invalid `prisma.library.findMany()` invocation in
+C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
+
+  108 }
+  109 
+  110 public static async getAllByUserId(userId: string) {
+→ 111   const libraries = await prisma.library.findMany({
+          where: {
+            userId: "5"
+                    ~~~
+          },
+          include: {
+            movie: true,
+            user: {
+              select: {
+                id: true,
+                name: true,
+                email: true,
+                username: true,
+                profileImage: true
+              }
+            }
+          },
+          orderBy: {
+            updatedAt: "desc"
+          }
+        })
+
+Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String.
+    at Cn (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:29:1363)
+    at Wn.handleRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:7177)
+    at Wn.handleAndLogRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6858)
+    at Wn.request (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6565)
+    at async l (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:130:10067)
+    at Function.getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:23)
+    at getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\controller\library.controller.ts:194:25)
+[INFO] 2025-04-14T10:48:55.085Z - List movies --- Request Received
+[ERROR] 2025-04-14T10:48:55.090Z - Error in LibraryController.getAllByUserId | Error: 
+Invalid `prisma.library.findMany()` invocation in
+C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
+
+  108 }
+  109 
+  110 public static async getAllByUserId(userId: string) {
+→ 111   const libraries = await prisma.library.findMany({
+          where: {
+            userId: "5"
+                    ~~~
+          },
+          include: {
+            movie: true,
+            user: {
+              select: {
+                id: true,
+                name: true,
+                email: true,
+                username: true,
+                profileImage: true
+              }
+            }
+          },
+          orderBy: {
+            updatedAt: "desc"
+          }
+        })
+
+Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String. | Stack: PrismaClientValidationError: 
+Invalid `prisma.library.findMany()` invocation in
+C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
+
+  108 }
+  109 
+  110 public static async getAllByUserId(userId: string) {
+→ 111   const libraries = await prisma.library.findMany({
+          where: {
+            userId: "5"
+                    ~~~
+          },
+          include: {
+            movie: true,
+            user: {
+              select: {
+                id: true,
+                name: true,
+                email: true,
+                username: true,
+                profileImage: true
+              }
+            }
+          },
+          orderBy: {
+            updatedAt: "desc"
+          }
+        })
+
+Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String.
+    at Cn (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:29:1363)
+    at Wn.handleRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:7177)
+    at Wn.handleAndLogRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6858)
+    at Wn.request (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6565)
+    at async l (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:130:10067)
+    at Function.getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:23)
+    at getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\controller\library.controller.ts:194:25)
+[INFO] 2025-04-14T10:48:55.090Z - List movies --- Request Received
+[INFO] 2025-04-14T10:48:55.844Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
+[INFO] 2025-04-14T10:48:55.847Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
+[INFO] 2025-04-14T10:49:00.363Z - Get User --- Request Received
+[INFO] 2025-04-14T10:49:00.425Z - Get User --- Request Received
+[INFO] 2025-04-14T10:49:00.568Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-14T10:49:00.647Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-14T10:49:00.648Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-14T10:49:00.716Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-14T10:49:00.717Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-14T10:49:00.881Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-14T10:49:01.878Z - Get User --- Request Received
+[INFO] 2025-04-14T10:49:01.942Z - Get User --- Request Received
+[INFO] 2025-04-14T10:49:01.955Z - Friendship getRelationshipStatus ---- Retrieved relationship status successfully
+[INFO] 2025-04-14T10:49:01.955Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-14T10:49:02.003Z - Get User --- Request Received
+[INFO] 2025-04-14T10:49:02.066Z - Get User --- Request Received
+[INFO] 2025-04-14T10:49:02.132Z - Friendship getRelationshipStatus ---- Retrieved relationship status successfully
+[INFO] 2025-04-14T10:49:02.132Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-14T10:49:02.133Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-14T10:49:02.213Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-14T10:49:02.214Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-14T10:49:02.218Z - Get User --- Request Received
+[INFO] 2025-04-14T10:49:02.270Z - Get User --- Request Received
+[INFO] 2025-04-14T10:49:02.333Z - Get User --- Request Received
+[INFO] 2025-04-14T10:49:02.380Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-14T10:49:03.994Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-14T10:49:04.073Z - Get User --- Request Received
+[INFO] 2025-04-14T10:49:04.075Z - Get User --- Request Received
+[INFO] 2025-04-14T10:49:04.075Z - Get User --- Request Received
+[INFO] 2025-04-14T10:49:04.129Z - Get User --- Request Received
+[INFO] 2025-04-14T10:49:04.152Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-14T10:49:04.199Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-14T10:49:04.357Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-14T10:49:05.762Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-14T10:49:06.525Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-14T10:49:06.585Z - Get User --- Request Received
+[INFO] 2025-04-14T10:49:07.936Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-14T10:49:07.937Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-14T10:49:07.991Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-14T10:49:08.036Z - Friendship getFollowing ---- Retrieved following users successfully
+[ERROR] 2025-04-14T10:49:51.373Z - Error in LibraryController.getAllByUserId | Error: 
+Invalid `prisma.library.findMany()` invocation in
+C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
+
+  108 }
+  109 
+  110 public static async getAllByUserId(userId: string) {
+→ 111   const libraries = await prisma.library.findMany({
+          where: {
+            userId: "5"
+                    ~~~
+          },
+          include: {
+            movie: true,
+            user: {
+              select: {
+                id: true,
+                name: true,
+                email: true,
+                username: true,
+                profileImage: true
+              }
+            }
+          },
+          orderBy: {
+            updatedAt: "desc"
+          }
+        })
+
+Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String. | Stack: PrismaClientValidationError: 
+Invalid `prisma.library.findMany()` invocation in
+C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
+
+  108 }
+  109 
+  110 public static async getAllByUserId(userId: string) {
+→ 111   const libraries = await prisma.library.findMany({
+          where: {
+            userId: "5"
+                    ~~~
+          },
+          include: {
+            movie: true,
+            user: {
+              select: {
+                id: true,
+                name: true,
+                email: true,
+                username: true,
+                profileImage: true
+              }
+            }
+          },
+          orderBy: {
+            updatedAt: "desc"
+          }
+        })
+
+Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String.
+    at Cn (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:29:1363)
+    at Wn.handleRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:7177)
+    at Wn.handleAndLogRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6858)
+    at Wn.request (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6565)
+    at async l (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:130:10067)
+    at Function.getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:23)
+    at getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\controller\library.controller.ts:194:25)
+[INFO] 2025-04-14T10:49:51.374Z - List movies --- Request Received
+[ERROR] 2025-04-14T10:49:51.378Z - Error in LibraryController.getAllByUserId | Error: 
+Invalid `prisma.library.findMany()` invocation in
+C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
+
+  108 }
+  109 
+  110 public static async getAllByUserId(userId: string) {
+→ 111   const libraries = await prisma.library.findMany({
+          where: {
+            userId: "5"
+                    ~~~
+          },
+          include: {
+            movie: true,
+            user: {
+              select: {
+                id: true,
+                name: true,
+                email: true,
+                username: true,
+                profileImage: true
+              }
+            }
+          },
+          orderBy: {
+            updatedAt: "desc"
+          }
+        })
+
+Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String. | Stack: PrismaClientValidationError: 
+Invalid `prisma.library.findMany()` invocation in
+C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
+
+  108 }
+  109 
+  110 public static async getAllByUserId(userId: string) {
+→ 111   const libraries = await prisma.library.findMany({
+          where: {
+            userId: "5"
+                    ~~~
+          },
+          include: {
+            movie: true,
+            user: {
+              select: {
+                id: true,
+                name: true,
+                email: true,
+                username: true,
+                profileImage: true
+              }
+            }
+          },
+          orderBy: {
+            updatedAt: "desc"
+          }
+        })
+
+Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String.
+    at Cn (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:29:1363)
+    at Wn.handleRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:7177)
+    at Wn.handleAndLogRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6858)
+    at Wn.request (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6565)
+    at async l (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:130:10067)
+    at Function.getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:23)
+    at getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\controller\library.controller.ts:194:25)
+[INFO] 2025-04-14T10:49:51.379Z - List movies --- Request Received
+[INFO] 2025-04-14T10:49:53.662Z - Get Movie Reviews - Retrieved reviews for Movie 1
+[INFO] 2025-04-14T10:49:53.665Z - Get Movie Reviews - Retrieved reviews for Movie 1
+[INFO] 2025-04-14T10:49:53.709Z - Get User --- Request Received
+[INFO] 2025-04-14T10:49:53.757Z - Get User --- Request Received
+[INFO] 2025-04-14T10:50:02.373Z - Get User --- Request Received
+[INFO] 2025-04-14T10:50:02.436Z - Get User --- Request Received
+[INFO] 2025-04-14T10:50:04.133Z - Get Movie Reviews - Retrieved reviews for Movie 1
+[INFO] 2025-04-14T10:50:04.135Z - Get Movie Reviews - Retrieved reviews for Movie 1
+[INFO] 2025-04-14T10:50:04.194Z - Get User --- Request Received
+[INFO] 2025-04-14T10:50:04.255Z - Get User --- Request Received
+[INFO] 2025-04-14T10:50:07.795Z - List movies --- Request Received
+[ERROR] 2025-04-14T10:50:07.797Z - Error in LibraryController.getAllByUserId | Error: 
+Invalid `prisma.library.findMany()` invocation in
+C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
+
+  108 }
+  109 
+  110 public static async getAllByUserId(userId: string) {
+→ 111   const libraries = await prisma.library.findMany({
+          where: {
+            userId: "5"
+                    ~~~
+          },
+          include: {
+            movie: true,
+            user: {
+              select: {
+                id: true,
+                name: true,
+                email: true,
+                username: true,
+                profileImage: true
+              }
+            }
+          },
+          orderBy: {
+            updatedAt: "desc"
+          }
+        })
+
+Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String. | Stack: PrismaClientValidationError: 
+Invalid `prisma.library.findMany()` invocation in
+C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
+
+  108 }
+  109 
+  110 public static async getAllByUserId(userId: string) {
+→ 111   const libraries = await prisma.library.findMany({
+          where: {
+            userId: "5"
+                    ~~~
+          },
+          include: {
+            movie: true,
+            user: {
+              select: {
+                id: true,
+                name: true,
+                email: true,
+                username: true,
+                profileImage: true
+              }
+            }
+          },
+          orderBy: {
+            updatedAt: "desc"
+          }
+        })
+
+Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String.
+    at Cn (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:29:1363)
+    at Wn.handleRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:7177)
+    at Wn.handleAndLogRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6858)
+    at Wn.request (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6565)
+    at async l (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:130:10067)
+    at Function.getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:23)
+    at getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\controller\library.controller.ts:194:25)
+[INFO] 2025-04-14T10:50:07.801Z - List movies --- Request Received
+[ERROR] 2025-04-14T10:50:07.802Z - Error in LibraryController.getAllByUserId | Error: 
+Invalid `prisma.library.findMany()` invocation in
+C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
+
+  108 }
+  109 
+  110 public static async getAllByUserId(userId: string) {
+→ 111   const libraries = await prisma.library.findMany({
+          where: {
+            userId: "5"
+                    ~~~
+          },
+          include: {
+            movie: true,
+            user: {
+              select: {
+                id: true,
+                name: true,
+                email: true,
+                username: true,
+                profileImage: true
+              }
+            }
+          },
+          orderBy: {
+            updatedAt: "desc"
+          }
+        })
+
+Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String. | Stack: PrismaClientValidationError: 
+Invalid `prisma.library.findMany()` invocation in
+C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
+
+  108 }
+  109 
+  110 public static async getAllByUserId(userId: string) {
+→ 111   const libraries = await prisma.library.findMany({
+          where: {
+            userId: "5"
+                    ~~~
+          },
+          include: {
+            movie: true,
+            user: {
+              select: {
+                id: true,
+                name: true,
+                email: true,
+                username: true,
+                profileImage: true
+              }
+            }
+          },
+          orderBy: {
+            updatedAt: "desc"
+          }
+        })
+
+Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String.
+    at Cn (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:29:1363)
+    at Wn.handleRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:7177)
+    at Wn.handleAndLogRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6858)
+    at Wn.request (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6565)
+    at async l (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:130:10067)
+    at Function.getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:23)
+    at getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\controller\library.controller.ts:194:25)
+[INFO] 2025-04-14T10:50:08.405Z - Get User --- Request Received
+[INFO] 2025-04-14T10:50:08.467Z - Get User --- Request Received
+[INFO] 2025-04-14T10:50:08.531Z - Get User --- Request Received
+[INFO] 2025-04-14T10:50:08.593Z - Get User --- Request Received
+[INFO] 2025-04-14T10:50:08.656Z - Get User --- Request Received
+[INFO] 2025-04-14T10:50:08.719Z - Get User --- Request Received
+[INFO] 2025-04-14T10:50:09.755Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
+[INFO] 2025-04-14T10:50:09.758Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
+[INFO] 2025-04-14T10:50:11.025Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-14T10:50:11.196Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-14T10:50:11.197Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-14T10:50:11.275Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-14T10:50:11.276Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-14T10:50:11.320Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-14T10:50:11.997Z - List Users --- Request Received
+[INFO] 2025-04-14T10:50:12.935Z - Friendship create ---- Friendship request sent successfully
+[INFO] 2025-04-14T10:50:13.744Z - Friendship create ---- Friendship request sent successfully
+[INFO] 2025-04-14T10:50:14.338Z - Friendship create ---- Friendship request sent successfully
+[INFO] 2025-04-14T10:50:17.522Z - Get User --- Request Received
+[INFO] 2025-04-14T10:50:17.585Z - Get User --- Request Received
+[INFO] 2025-04-14T10:50:17.596Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-14T10:50:17.646Z - Get User --- Request Received
+[INFO] 2025-04-14T10:50:17.681Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-14T10:50:17.682Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-14T10:50:17.682Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-14T10:50:17.705Z - Get User --- Request Received
+[INFO] 2025-04-14T10:50:17.769Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-14T10:50:17.770Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-14T10:50:17.771Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-14T10:50:17.771Z - Get User --- Request Received
+[INFO] 2025-04-14T10:50:17.831Z - Get User --- Request Received
+[INFO] 2025-04-14T10:50:17.862Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-14T10:50:17.863Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-14T10:50:17.864Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-14T10:50:17.864Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-14T10:50:17.936Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-14T10:50:17.936Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-14T10:50:17.937Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-14T10:50:18.119Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-14T10:50:18.119Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-14T10:50:18.120Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-14T10:50:18.194Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-14T10:50:18.195Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-14T10:50:18.196Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-14T10:50:18.288Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-14T10:50:18.289Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-14T10:50:18.290Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-14T10:50:18.364Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-14T10:50:18.365Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-14T10:50:18.428Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-14T10:50:20.578Z - Get User --- Request Received
+[INFO] 2025-04-14T10:50:20.641Z - Get User --- Request Received
+[INFO] 2025-04-14T10:50:20.661Z - Friendship getRelationshipStatus ---- Retrieved relationship status successfully
+[INFO] 2025-04-14T10:50:20.662Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-14T10:50:20.689Z - Get User --- Request Received
+[INFO] 2025-04-14T10:50:20.752Z - Get User --- Request Received
+[INFO] 2025-04-14T10:50:20.842Z - Friendship getRelationshipStatus ---- Retrieved relationship status successfully
+[INFO] 2025-04-14T10:50:20.843Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-14T10:50:20.843Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-14T10:50:20.913Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-14T10:50:20.914Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-14T10:50:20.924Z - Get User --- Request Received
+[INFO] 2025-04-14T10:50:20.960Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-14T10:50:20.987Z - Get User --- Request Received
+[INFO] 2025-04-14T10:50:21.035Z - Get User --- Request Received
+[INFO] 2025-04-14T10:50:22.325Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-14T10:50:22.392Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-14T10:50:22.392Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-14T10:50:22.459Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-14T10:50:22.459Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-14T10:50:22.622Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-14T10:50:26.625Z - Get User --- Request Received
+[INFO] 2025-04-14T10:50:26.632Z - Get User Reviews - Retrieved reviews for User 5
+[INFO] 2025-04-14T10:50:26.636Z - Get User Reviews - Retrieved reviews for User 5
+[INFO] 2025-04-14T10:50:26.672Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-14T10:50:26.720Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-14T10:50:26.767Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-14T10:50:26.783Z - Get User --- Request Received
+[INFO] 2025-04-14T10:50:26.788Z - Get User Reviews - Retrieved reviews for User 5
+[INFO] 2025-04-14T10:50:26.793Z - Get User Reviews - Retrieved reviews for User 5
+[INFO] 2025-04-14T10:50:26.846Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-14T10:50:26.894Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-14T10:50:26.941Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-14T10:50:27.267Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-14T10:50:27.318Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-14T10:50:27.330Z - Get User --- Request Received
+[INFO] 2025-04-14T10:50:27.366Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-14T10:50:27.394Z - Get User --- Request Received
+[INFO] 2025-04-14T10:50:27.425Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-14T10:50:27.989Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-14T10:50:28.378Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-14T10:50:31.680Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-14T10:50:31.761Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-14T10:50:31.761Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-14T10:50:32.073Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-14T10:50:32.074Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-14T10:50:32.119Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-14T10:50:36.233Z - Login User - Logout Successfully
+[INFO] 2025-04-14T10:50:42.483Z - Login User --- Login successful 🚀
+[INFO] 2025-04-14T10:50:42.549Z - Get User --- Request Received
+[INFO] 2025-04-14T10:50:42.597Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-14T10:50:42.643Z - Get User --- Request Received
+[INFO] 2025-04-14T10:50:42.644Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-14T10:50:42.706Z - Get User --- Request Received
+[INFO] 2025-04-14T10:50:42.768Z - Get User --- Request Received
+[INFO] 2025-04-14T10:50:42.830Z - Get User --- Request Received
+[INFO] 2025-04-14T10:50:42.893Z - Get User --- Request Received
+[INFO] 2025-04-14T10:50:42.941Z - Get User --- Request Received
+[INFO] 2025-04-14T10:50:43.004Z - Get User --- Request Received
+[INFO] 2025-04-14T10:50:43.066Z - Get User --- Request Received
+[INFO] 2025-04-14T10:50:43.129Z - Get User --- Request Received
+[INFO] 2025-04-14T10:50:43.302Z - Get User --- Request Received
+[INFO] 2025-04-14T10:50:43.363Z - Get User --- Request Received
+[INFO] 2025-04-14T10:50:43.424Z - Get User --- Request Received
+[INFO] 2025-04-14T10:50:43.595Z - Get User --- Request Received
+[INFO] 2025-04-14T10:50:43.643Z - Get User --- Request Received
+[INFO] 2025-04-14T10:50:43.690Z - Get User --- Request Received
+[INFO] 2025-04-14T10:50:43.752Z - Get User --- Request Received
+[INFO] 2025-04-14T10:50:43.813Z - Get User --- Request Received
+[INFO] 2025-04-14T10:50:43.874Z - Get User --- Request Received
+[INFO] 2025-04-14T10:50:46.121Z - Friendship update ---- Friendship status updated successfully
+[INFO] 2025-04-14T10:50:46.168Z - Notification markAsRead ---- Notification marked as read
+[INFO] 2025-04-14T10:50:46.214Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-14T10:50:47.889Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-14T10:50:47.969Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-14T10:50:47.970Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-14T10:50:48.048Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-14T10:50:48.049Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-14T10:50:48.096Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-14T10:50:49.434Z - Get User --- Request Received
+[INFO] 2025-04-14T10:50:49.497Z - Get User --- Request Received
+[INFO] 2025-04-14T10:50:49.510Z - Friendship getRelationshipStatus ---- Retrieved relationship status successfully
+[INFO] 2025-04-14T10:50:49.510Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-14T10:50:49.560Z - Get User --- Request Received
+[INFO] 2025-04-14T10:50:49.586Z - Friendship getRelationshipStatus ---- Retrieved relationship status successfully
+[INFO] 2025-04-14T10:50:49.586Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-14T10:50:49.587Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-14T10:50:49.623Z - Get User --- Request Received
+[INFO] 2025-04-14T10:50:49.686Z - Get User --- Request Received
+[INFO] 2025-04-14T10:50:49.733Z - Get User --- Request Received
+[INFO] 2025-04-14T10:50:49.769Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-14T10:50:49.769Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-14T10:50:49.795Z - Get User --- Request Received
+[INFO] 2025-04-14T10:50:49.827Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-14T10:50:51.383Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-14T10:50:51.441Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-14T10:50:51.445Z - Get User --- Request Received
+[INFO] 2025-04-14T10:50:51.447Z - Get User --- Request Received
+[INFO] 2025-04-14T10:50:51.499Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-14T10:50:51.504Z - Get User --- Request Received
+[INFO] 2025-04-14T10:50:51.505Z - Get User --- Request Received
+[INFO] 2025-04-14T10:50:51.555Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-14T10:50:52.904Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-14T10:50:53.838Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-14T10:50:55.029Z - Login User - Logout Successfully
+[INFO] 2025-04-14T10:51:00.229Z - Login User --- Login successful 🚀
+[INFO] 2025-04-14T10:51:00.398Z - Get User --- Request Received
+[INFO] 2025-04-14T10:51:00.461Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-14T10:51:00.493Z - Get User --- Request Received
+[INFO] 2025-04-14T10:51:00.523Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-14T10:51:00.554Z - Get User --- Request Received
+[INFO] 2025-04-14T10:51:00.617Z - Get User --- Request Received
+[INFO] 2025-04-14T10:51:00.665Z - Get User --- Request Received
+[INFO] 2025-04-14T10:51:00.837Z - Get User --- Request Received
+[INFO] 2025-04-14T10:51:00.899Z - Get User --- Request Received
+[INFO] 2025-04-14T10:52:05.023Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-14T10:52:05.103Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-14T10:52:05.104Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-14T10:52:05.173Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-14T10:52:05.173Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-14T10:52:05.228Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-14T10:52:08.258Z - List Users --- Request Received
+[WARN] 2025-04-14T10:52:34.679Z - Friendship followUser ---- Error: 
+Invalid `prisma.friendship.create()` invocation in
+C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\friendship.service.ts:345:48
+
+  342 }
+  343 
+  344 // Create a new following relationship
+→ 345 const friendship = await prisma.friendship.create(
+Unique constraint failed on the fields: (`userId`,`friendId`)
+[INFO] 2025-04-14T10:52:38.250Z - Get User --- Request Received
+[INFO] 2025-04-14T10:52:38.307Z - Friendship getRelationshipStatus ---- Retrieved relationship status successfully
+[INFO] 2025-04-14T10:52:38.308Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-14T10:52:38.314Z - Get User --- Request Received
+[INFO] 2025-04-14T10:52:38.374Z - Get User --- Request Received
+[INFO] 2025-04-14T10:52:38.394Z - Friendship getRelationshipStatus ---- Retrieved relationship status successfully
+[INFO] 2025-04-14T10:52:38.395Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-14T10:52:38.395Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-14T10:52:38.431Z - Get User --- Request Received
+[INFO] 2025-04-14T10:52:38.477Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-14T10:52:38.478Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-14T10:52:38.485Z - Get User --- Request Received
+[INFO] 2025-04-14T10:52:38.523Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-14T10:52:38.548Z - Get User --- Request Received
+[INFO] 2025-04-14T10:52:38.596Z - Get User --- Request Received
+[INFO] 2025-04-14T10:52:39.925Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-14T10:52:40.095Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-14T10:52:40.096Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-14T10:52:40.175Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-14T10:52:40.176Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-14T10:52:40.221Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-14T10:52:41.982Z - List Users --- Request Received
+[WARN] 2025-04-14T10:52:43.940Z - Friendship followUser ---- Error: 
+Invalid `prisma.friendship.create()` invocation in
+C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\friendship.service.ts:345:48
+
+  342 }
+  343 
+  344 // Create a new following relationship
+→ 345 const friendship = await prisma.friendship.create(
+Unique constraint failed on the fields: (`userId`,`friendId`)
+[INFO] 2025-04-14T10:52:46.822Z - Get User --- Request Received
+[INFO] 2025-04-14T10:52:46.868Z - Friendship getRelationshipStatus ---- Retrieved relationship status successfully
+[INFO] 2025-04-14T10:52:46.868Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-14T10:52:46.883Z - Get User --- Request Received
+[INFO] 2025-04-14T10:52:46.943Z - Get User --- Request Received
+[INFO] 2025-04-14T10:52:46.945Z - Friendship getRelationshipStatus ---- Retrieved relationship status successfully
+[INFO] 2025-04-14T10:52:46.945Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-14T10:52:46.946Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-14T10:52:47.013Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-14T10:52:47.014Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-14T10:52:47.071Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-14T10:52:47.102Z - Get User --- Request Received
+[INFO] 2025-04-14T10:52:47.165Z - Get User --- Request Received
+[INFO] 2025-04-14T10:52:47.228Z - Get User --- Request Received
+[INFO] 2025-04-14T10:52:47.288Z - Get User --- Request Received
+[INFO] 2025-04-14T10:52:49.207Z - Login User - Logout Successfully
+[INFO] 2025-04-14T10:52:57.594Z - Login User --- Login successful 🚀
+[INFO] 2025-04-14T10:52:57.658Z - Get User --- Request Received
+[INFO] 2025-04-14T10:52:57.706Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-14T10:52:57.744Z - Get User --- Request Received
+[INFO] 2025-04-14T10:52:57.754Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-14T10:52:57.800Z - Get User --- Request Received
+[INFO] 2025-04-14T10:52:59.949Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-14T10:53:00.013Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-14T10:53:00.014Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-14T10:53:00.081Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-14T10:53:00.082Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-14T10:53:00.139Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-14T10:53:01.919Z - Friendship update ---- Friendship status updated successfully
+[INFO] 2025-04-14T10:53:01.967Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-14T10:53:02.137Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-14T10:53:02.183Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-14T10:53:04.354Z - Get User --- Request Received
+[INFO] 2025-04-14T10:53:04.416Z - Get User --- Request Received
+[INFO] 2025-04-14T10:53:04.635Z - Get User --- Request Received
+[INFO] 2025-04-14T10:53:04.642Z - Get User Reviews - Retrieved reviews for User 4
+[INFO] 2025-04-14T10:53:04.646Z - Get User Reviews - Retrieved reviews for User 4
+[INFO] 2025-04-14T10:53:04.697Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-14T10:53:04.698Z - Get User --- Request Received
+[INFO] 2025-04-14T10:53:04.704Z - Get User Reviews - Retrieved reviews for User 4
+[INFO] 2025-04-14T10:53:04.709Z - Get User Reviews - Retrieved reviews for User 4
+[INFO] 2025-04-14T10:53:04.902Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-14T10:53:04.903Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-14T10:53:04.979Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-14T10:53:04.979Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-14T10:53:05.024Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-14T10:53:08.263Z - Login User - Logout Successfully
+[INFO] 2025-04-14T10:54:14.301Z - Login User --- Login successful 🚀
+[INFO] 2025-04-14T10:54:14.360Z - Get User --- Request Received
+[INFO] 2025-04-14T10:54:14.407Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-14T10:54:14.453Z - Get User --- Request Received
+[INFO] 2025-04-14T10:54:14.454Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-14T10:54:14.517Z - Get User --- Request Received
+[INFO] 2025-04-14T10:54:14.579Z - Get User --- Request Received
+[INFO] 2025-04-14T10:54:14.626Z - Get User --- Request Received
+[INFO] 2025-04-14T10:54:14.673Z - Get User --- Request Received
+[INFO] 2025-04-14T10:54:14.736Z - Get User --- Request Received
+[INFO] 2025-04-14T10:54:16.481Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-14T10:54:16.649Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-14T10:54:16.650Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-14T10:54:16.732Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-14T10:54:16.733Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-14T10:54:16.887Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-14T10:55:06.985Z - Get User --- Request Received
+[INFO] 2025-04-14T10:55:07.049Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-14T10:55:07.056Z - Get User --- Request Received
+[INFO] 2025-04-14T10:55:07.126Z - Get User --- Request Received
+[INFO] 2025-04-14T10:55:07.142Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-14T10:55:07.142Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-14T10:55:07.143Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-14T10:55:07.189Z - Get User --- Request Received
+[INFO] 2025-04-14T10:55:07.251Z - Get User --- Request Received
+[INFO] 2025-04-14T10:55:07.299Z - Get User --- Request Received
+[INFO] 2025-04-14T10:55:07.325Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-14T10:55:07.326Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-14T10:55:07.326Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-14T10:55:07.409Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-14T10:55:07.410Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-14T10:55:07.410Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-14T10:55:07.411Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-14T10:55:07.485Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-14T10:55:07.485Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-14T10:55:07.486Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-14T10:55:07.566Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-14T10:55:07.567Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-14T10:55:07.568Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-14T10:55:07.660Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-14T10:55:07.661Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-14T10:55:07.662Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-14T10:55:07.740Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-14T10:55:07.741Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-14T10:55:07.741Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-14T10:55:07.817Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-14T10:55:07.817Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-14T10:55:07.879Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-14T10:55:10.021Z - List movies --- Request Received
+[INFO] 2025-04-14T10:55:10.026Z - List movies --- Request Received
+[ERROR] 2025-04-14T10:55:10.056Z - Error in LibraryController.getAllByUserId | Error: 
+Invalid `prisma.library.findMany()` invocation in
+C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
+
+  108 }
+  109 
+  110 public static async getAllByUserId(userId: string) {
+→ 111   const libraries = await prisma.library.findMany({
+          where: {
+            userId: "3"
+                    ~~~
+          },
+          include: {
+            movie: true,
+            user: {
+              select: {
+                id: true,
+                name: true,
+                email: true,
+                username: true,
+                profileImage: true
+              }
+            }
+          },
+          orderBy: {
+            updatedAt: "desc"
+          }
+        })
+
+Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String. | Stack: PrismaClientValidationError: 
+Invalid `prisma.library.findMany()` invocation in
+C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
+
+  108 }
+  109 
+  110 public static async getAllByUserId(userId: string) {
+→ 111   const libraries = await prisma.library.findMany({
+          where: {
+            userId: "3"
+                    ~~~
+          },
+          include: {
+            movie: true,
+            user: {
+              select: {
+                id: true,
+                name: true,
+                email: true,
+                username: true,
+                profileImage: true
+              }
+            }
+          },
+          orderBy: {
+            updatedAt: "desc"
+          }
+        })
+
+Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String.
+    at Cn (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:29:1363)
+    at Wn.handleRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:7177)
+    at Wn.handleAndLogRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6858)
+    at Wn.request (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6565)
+    at async l (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:130:10067)
+    at Function.getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:23)
+    at getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\controller\library.controller.ts:194:25)
+[ERROR] 2025-04-14T10:55:10.060Z - Error in LibraryController.getAllByUserId | Error: 
+Invalid `prisma.library.findMany()` invocation in
+C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
+
+  108 }
+  109 
+  110 public static async getAllByUserId(userId: string) {
+→ 111   const libraries = await prisma.library.findMany({
+          where: {
+            userId: "3"
+                    ~~~
+          },
+          include: {
+            movie: true,
+            user: {
+              select: {
+                id: true,
+                name: true,
+                email: true,
+                username: true,
+                profileImage: true
+              }
+            }
+          },
+          orderBy: {
+            updatedAt: "desc"
+          }
+        })
+
+Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String. | Stack: PrismaClientValidationError: 
+Invalid `prisma.library.findMany()` invocation in
+C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
+
+  108 }
+  109 
+  110 public static async getAllByUserId(userId: string) {
+→ 111   const libraries = await prisma.library.findMany({
+          where: {
+            userId: "3"
+                    ~~~
+          },
+          include: {
+            movie: true,
+            user: {
+              select: {
+                id: true,
+                name: true,
+                email: true,
+                username: true,
+                profileImage: true
+              }
+            }
+          },
+          orderBy: {
+            updatedAt: "desc"
+          }
+        })
+
+Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String.
+    at Cn (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:29:1363)
+    at Wn.handleRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:7177)
+    at Wn.handleAndLogRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6858)
+    at Wn.request (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6565)
+    at async l (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:130:10067)
+    at Function.getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:23)
+    at getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\controller\library.controller.ts:194:25)
+[INFO] 2025-04-14T10:55:33.613Z - File uploaded to S3: profiles/0e1c95d2-1044-4103-9722-2b14294ac8e8.jpg
+[INFO] 2025-04-14T10:55:33.661Z - Update User - Updated User {"id":3,"email":"emre@mail.com","username":"seferogluemre","password":"$2b$10$QSA2xO8T.tRYIAWXDNOp4eRaoyCdJqhIuUmFpWwrJRHKjNEpzDJ4.","name":"Yunka","profileImage":"https://seferogluemremovieproject.s3.amazonaws.com/profiles/0e1c95d2-1044-4103-9722-2b14294ac8e8.jpg?AWSAccessKeyId=AKIAQSOI4UYIUUJJSRF4&Expires=1745232933&Signature=Q02UsRGa3ricGYZ8hLihOEFirMA%3D","isAdmin":false,"isPrivate":false,"createdAt":"2025-04-10T04:11:15.116Z","updatedAt":"2025-04-14T10:55:33.656Z"}
+[INFO] 2025-04-14T10:55:33.723Z - Get User --- Request Received
+[INFO] 2025-04-14T10:55:35.271Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
+[INFO] 2025-04-14T10:55:35.275Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
+[INFO] 2025-04-14T10:55:36.676Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-14T10:55:36.756Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-14T10:55:36.757Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-14T10:55:36.829Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-14T10:55:36.829Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-14T10:55:36.882Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-14T10:55:38.081Z - List Users --- Request Received
+[INFO] 2025-04-14T10:55:40.559Z - Get User --- Request Received
+[INFO] 2025-04-14T10:55:40.620Z - Get User --- Request Received
+[INFO] 2025-04-14T10:55:40.633Z - Friendship getRelationshipStatus ---- Retrieved relationship status successfully
+[INFO] 2025-04-14T10:55:40.634Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-14T10:55:40.682Z - Get User --- Request Received
+[INFO] 2025-04-14T10:55:40.729Z - Get User --- Request Received
+[INFO] 2025-04-14T10:55:40.792Z - Get User --- Request Received
+[INFO] 2025-04-14T10:55:40.814Z - Friendship getRelationshipStatus ---- Retrieved relationship status successfully
+[INFO] 2025-04-14T10:55:40.814Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-14T10:55:40.815Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-14T10:55:40.885Z - Get User --- Request Received
+[INFO] 2025-04-14T10:55:40.901Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-14T10:55:40.902Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-14T10:55:40.948Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-14T10:55:43.430Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-14T10:55:43.494Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-14T10:55:43.495Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-14T10:55:43.680Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-14T10:55:43.681Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-14T10:55:43.742Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-14T10:55:44.288Z - Get User --- Request Received
+[INFO] 2025-04-14T10:55:44.349Z - Get User --- Request Received
+[INFO] 2025-04-14T10:55:44.411Z - Get User --- Request Received
+[INFO] 2025-04-14T10:55:44.475Z - Get User --- Request Received
+[INFO] 2025-04-14T10:55:44.536Z - Get User --- Request Received
+[INFO] 2025-04-14T10:55:44.598Z - Get User --- Request Received
+[INFO] 2025-04-14T10:55:44.750Z - Get Movie Reviews - Retrieved reviews for Movie 1
+[INFO] 2025-04-14T10:55:44.753Z - Get Movie Reviews - Retrieved reviews for Movie 1
+[INFO] 2025-04-14T10:55:44.770Z - Get User --- Request Received
+[INFO] 2025-04-14T10:55:44.832Z - Get User --- Request Received
+[ERROR] 2025-04-14T10:55:45.814Z - Error in LibraryController.getAllByUserId | Error: 
+Invalid `prisma.library.findMany()` invocation in
+C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
+
+  108 }
+  109 
+  110 public static async getAllByUserId(userId: string) {
+→ 111   const libraries = await prisma.library.findMany({
+          where: {
+            userId: "3"
+                    ~~~
+          },
+          include: {
+            movie: true,
+            user: {
+              select: {
+                id: true,
+                name: true,
+                email: true,
+                username: true,
+                profileImage: true
+              }
+            }
+          },
+          orderBy: {
+            updatedAt: "desc"
+          }
+        })
+
+Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String. | Stack: PrismaClientValidationError: 
+Invalid `prisma.library.findMany()` invocation in
+C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
+
+  108 }
+  109 
+  110 public static async getAllByUserId(userId: string) {
+→ 111   const libraries = await prisma.library.findMany({
+          where: {
+            userId: "3"
+                    ~~~
+          },
+          include: {
+            movie: true,
+            user: {
+              select: {
+                id: true,
+                name: true,
+                email: true,
+                username: true,
+                profileImage: true
+              }
+            }
+          },
+          orderBy: {
+            updatedAt: "desc"
+          }
+        })
+
+Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String.
+    at Cn (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:29:1363)
+    at Wn.handleRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:7177)
+    at Wn.handleAndLogRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6858)
+    at Wn.request (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6565)
+    at async l (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:130:10067)
+    at Function.getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:23)
+    at getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\controller\library.controller.ts:194:25)
+[INFO] 2025-04-14T10:55:45.815Z - List movies --- Request Received
+[ERROR] 2025-04-14T10:55:45.819Z - Error in LibraryController.getAllByUserId | Error: 
+Invalid `prisma.library.findMany()` invocation in
+C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
+
+  108 }
+  109 
+  110 public static async getAllByUserId(userId: string) {
+→ 111   const libraries = await prisma.library.findMany({
+          where: {
+            userId: "3"
+                    ~~~
+          },
+          include: {
+            movie: true,
+            user: {
+              select: {
+                id: true,
+                name: true,
+                email: true,
+                username: true,
+                profileImage: true
+              }
+            }
+          },
+          orderBy: {
+            updatedAt: "desc"
+          }
+        })
+
+Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String. | Stack: PrismaClientValidationError: 
+Invalid `prisma.library.findMany()` invocation in
+C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
+
+  108 }
+  109 
+  110 public static async getAllByUserId(userId: string) {
+→ 111   const libraries = await prisma.library.findMany({
+          where: {
+            userId: "3"
+                    ~~~
+          },
+          include: {
+            movie: true,
+            user: {
+              select: {
+                id: true,
+                name: true,
+                email: true,
+                username: true,
+                profileImage: true
+              }
+            }
+          },
+          orderBy: {
+            updatedAt: "desc"
+          }
+        })
+
+Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String.
+    at Cn (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:29:1363)
+    at Wn.handleRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:7177)
+    at Wn.handleAndLogRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6858)
+    at Wn.request (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6565)
+    at async l (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:130:10067)
+    at Function.getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:23)
+    at getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\controller\library.controller.ts:194:25)
+[INFO] 2025-04-14T10:55:45.820Z - List movies --- Request Received
+[INFO] 2025-04-14T10:57:13.083Z - Get User --- Request Received
+[INFO] 2025-04-14T10:57:13.255Z - Get User --- Request Received
+[INFO] 2025-04-14T10:57:13.317Z - Get User --- Request Received
+[INFO] 2025-04-14T10:57:13.381Z - Get User --- Request Received
+[INFO] 2025-04-14T10:57:13.444Z - Get User --- Request Received
+[INFO] 2025-04-14T10:57:13.507Z - Get User --- Request Received
+[INFO] 2025-04-14T11:03:08.364Z - Get User --- Request Received
+[INFO] 2025-04-14T11:03:08.426Z - Get User --- Request Received
+[INFO] 2025-04-14T11:03:08.486Z - Get User --- Request Received
+[INFO] 2025-04-14T11:03:08.548Z - Get User --- Request Received
+[INFO] 2025-04-14T11:03:08.608Z - Get User --- Request Received
+[INFO] 2025-04-14T11:03:08.779Z - Get User --- Request Received
+[INFO] 2025-04-14T11:03:17.731Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
+[INFO] 2025-04-14T11:03:17.735Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
+[INFO] 2025-04-14T11:03:21.644Z - Get User --- Request Received
+[INFO] 2025-04-14T11:03:21.706Z - Get User --- Request Received
+[INFO] 2025-04-14T11:03:22.020Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-14T11:03:22.096Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-14T11:03:22.097Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-14T11:03:22.174Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-14T11:03:22.175Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-14T11:03:22.234Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-14T11:03:23.566Z - List Users --- Request Received
+[INFO] 2025-04-14T11:03:24.995Z - Get User --- Request Received
+[INFO] 2025-04-14T11:03:25.056Z - Get User --- Request Received
+[INFO] 2025-04-14T11:03:25.072Z - Friendship getRelationshipStatus ---- Retrieved relationship status successfully
+[INFO] 2025-04-14T11:03:25.072Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-14T11:03:25.117Z - Get User --- Request Received
+[INFO] 2025-04-14T11:03:25.179Z - Get User --- Request Received
+[INFO] 2025-04-14T11:03:25.242Z - Get User --- Request Received
+[INFO] 2025-04-14T11:03:25.264Z - Friendship getRelationshipStatus ---- Retrieved relationship status successfully
+[INFO] 2025-04-14T11:03:25.265Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-14T11:03:25.265Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-14T11:03:25.334Z - Get User --- Request Received
+[INFO] 2025-04-14T11:03:25.366Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-14T11:03:25.366Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-14T11:03:25.427Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-14T11:03:29.336Z - Friendship create ---- Friendship request sent successfully
+[INFO] 2025-04-14T11:03:29.397Z - Friendship getRelationshipStatus ---- Retrieved relationship status successfully
+[INFO] 2025-04-14T11:03:29.474Z - Get User --- Request Received
+[INFO] 2025-04-14T11:03:30.225Z - Login User - Logout Successfully
+[INFO] 2025-04-14T11:03:37.679Z - Login User --- Login successful 🚀
+[INFO] 2025-04-14T11:03:37.738Z - Get User --- Request Received
+[INFO] 2025-04-14T11:03:37.799Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-14T11:03:37.841Z - Get User --- Request Received
+[INFO] 2025-04-14T11:03:37.853Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-14T11:03:37.921Z - Get User --- Request Received
+[INFO] 2025-04-14T11:03:37.984Z - Get User --- Request Received
+[INFO] 2025-04-14T11:03:38.157Z - Get User --- Request Received
+[INFO] 2025-04-14T11:03:38.219Z - Get User --- Request Received
+[INFO] 2025-04-14T11:03:38.281Z - Get User --- Request Received
+[INFO] 2025-04-14T11:03:43.765Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-14T11:03:43.837Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-14T11:03:43.838Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-14T11:03:44.032Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-14T11:03:44.033Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-14T11:03:44.094Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-14T11:03:46.009Z - Friendship update ---- Friendship status updated successfully
+[INFO] 2025-04-14T11:03:46.180Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-14T11:03:46.228Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-14T11:03:46.291Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-14T11:03:47.686Z - Get User --- Request Received
+[INFO] 2025-04-14T11:03:47.738Z - Get User Reviews - Retrieved reviews for User 5
+[INFO] 2025-04-14T11:03:47.743Z - Get User Reviews - Retrieved reviews for User 5
+[INFO] 2025-04-14T11:03:47.762Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-14T11:03:47.763Z - Get User --- Request Received
+[INFO] 2025-04-14T11:03:47.771Z - Get User Reviews - Retrieved reviews for User 5
+[INFO] 2025-04-14T11:03:47.776Z - Get User Reviews - Retrieved reviews for User 5
+[INFO] 2025-04-14T11:03:47.948Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-14T11:03:47.948Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-14T11:03:48.028Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-14T11:03:48.029Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-14T11:03:48.075Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-14T11:03:50.230Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-14T11:03:50.277Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-14T11:03:50.324Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-14T11:03:50.370Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-14T11:03:50.402Z - Get User --- Request Received
+[INFO] 2025-04-14T11:03:50.572Z - Get User --- Request Received
+[INFO] 2025-04-14T11:03:50.807Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-14T11:03:51.068Z - Friendship getFollowing ---- Retrieved following users successfully
+[ERROR] 2025-04-14T11:03:51.904Z - Error in LibraryController.getAllByUserId | Error: 
+Invalid `prisma.library.findMany()` invocation in
+C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
+
+  108 }
+  109 
+  110 public static async getAllByUserId(userId: string) {
+→ 111   const libraries = await prisma.library.findMany({
+          where: {
+            userId: "5"
+                    ~~~
+          },
+          include: {
+            movie: true,
+            user: {
+              select: {
+                id: true,
+                name: true,
+                email: true,
+                username: true,
+                profileImage: true
+              }
+            }
+          },
+          orderBy: {
+            updatedAt: "desc"
+          }
+        })
+
+Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String. | Stack: PrismaClientValidationError: 
+Invalid `prisma.library.findMany()` invocation in
+C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
+
+  108 }
+  109 
+  110 public static async getAllByUserId(userId: string) {
+→ 111   const libraries = await prisma.library.findMany({
+          where: {
+            userId: "5"
+                    ~~~
+          },
+          include: {
+            movie: true,
+            user: {
+              select: {
+                id: true,
+                name: true,
+                email: true,
+                username: true,
+                profileImage: true
+              }
+            }
+          },
+          orderBy: {
+            updatedAt: "desc"
+          }
+        })
+
+Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String.
+    at Cn (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:29:1363)
+    at Wn.handleRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:7177)
+    at Wn.handleAndLogRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6858)
+    at Wn.request (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6565)
+    at async l (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:130:10067)
+    at Function.getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:23)
+    at getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\controller\library.controller.ts:194:25)
+[INFO] 2025-04-14T11:03:51.906Z - List movies --- Request Received
+[ERROR] 2025-04-14T11:03:51.910Z - Error in LibraryController.getAllByUserId | Error: 
+Invalid `prisma.library.findMany()` invocation in
+C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
+
+  108 }
+  109 
+  110 public static async getAllByUserId(userId: string) {
+→ 111   const libraries = await prisma.library.findMany({
+          where: {
+            userId: "5"
+                    ~~~
+          },
+          include: {
+            movie: true,
+            user: {
+              select: {
+                id: true,
+                name: true,
+                email: true,
+                username: true,
+                profileImage: true
+              }
+            }
+          },
+          orderBy: {
+            updatedAt: "desc"
+          }
+        })
+
+Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String. | Stack: PrismaClientValidationError: 
+Invalid `prisma.library.findMany()` invocation in
+C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
+
+  108 }
+  109 
+  110 public static async getAllByUserId(userId: string) {
+→ 111   const libraries = await prisma.library.findMany({
+          where: {
+            userId: "5"
+                    ~~~
+          },
+          include: {
+            movie: true,
+            user: {
+              select: {
+                id: true,
+                name: true,
+                email: true,
+                username: true,
+                profileImage: true
+              }
+            }
+          },
+          orderBy: {
+            updatedAt: "desc"
+          }
+        })
+
+Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String.
+    at Cn (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:29:1363)
+    at Wn.handleRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:7177)
+    at Wn.handleAndLogRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6858)
+    at Wn.request (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6565)
+    at async l (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:130:10067)
+    at Function.getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:23)
+    at getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\controller\library.controller.ts:194:25)
+[INFO] 2025-04-14T11:03:51.911Z - List movies --- Request Received
+[ERROR] 2025-04-14T11:03:52.800Z - Error in LibraryController.getAllByUserId | Error: 
+Invalid `prisma.library.findMany()` invocation in
+C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
+
+  108 }
+  109 
+  110 public static async getAllByUserId(userId: string) {
+→ 111   const libraries = await prisma.library.findMany({
+          where: {
+            userId: "5"
+                    ~~~
+          },
+          include: {
+            movie: true,
+            user: {
+              select: {
+                id: true,
+                name: true,
+                email: true,
+                username: true,
+                profileImage: true
+              }
+            }
+          },
+          orderBy: {
+            updatedAt: "desc"
+          }
+        })
+
+Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String. | Stack: PrismaClientValidationError: 
+Invalid `prisma.library.findMany()` invocation in
+C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
+
+  108 }
+  109 
+  110 public static async getAllByUserId(userId: string) {
+→ 111   const libraries = await prisma.library.findMany({
+          where: {
+            userId: "5"
+                    ~~~
+          },
+          include: {
+            movie: true,
+            user: {
+              select: {
+                id: true,
+                name: true,
+                email: true,
+                username: true,
+                profileImage: true
+              }
+            }
+          },
+          orderBy: {
+            updatedAt: "desc"
+          }
+        })
+
+Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String.
+    at Cn (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:29:1363)
+    at Wn.handleRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:7177)
+    at Wn.handleAndLogRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6858)
+    at Wn.request (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6565)
+    at async l (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:130:10067)
+    at Function.getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:23)
+    at getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\controller\library.controller.ts:194:25)
+[INFO] 2025-04-14T11:03:52.801Z - List movies --- Request Received
+[ERROR] 2025-04-14T11:03:52.806Z - Error in LibraryController.getAllByUserId | Error: 
+Invalid `prisma.library.findMany()` invocation in
+C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
+
+  108 }
+  109 
+  110 public static async getAllByUserId(userId: string) {
+→ 111   const libraries = await prisma.library.findMany({
+          where: {
+            userId: "5"
+                    ~~~
+          },
+          include: {
+            movie: true,
+            user: {
+              select: {
+                id: true,
+                name: true,
+                email: true,
+                username: true,
+                profileImage: true
+              }
+            }
+          },
+          orderBy: {
+            updatedAt: "desc"
+          }
+        })
+
+Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String. | Stack: PrismaClientValidationError: 
+Invalid `prisma.library.findMany()` invocation in
+C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
+
+  108 }
+  109 
+  110 public static async getAllByUserId(userId: string) {
+→ 111   const libraries = await prisma.library.findMany({
+          where: {
+            userId: "5"
+                    ~~~
+          },
+          include: {
+            movie: true,
+            user: {
+              select: {
+                id: true,
+                name: true,
+                email: true,
+                username: true,
+                profileImage: true
+              }
+            }
+          },
+          orderBy: {
+            updatedAt: "desc"
+          }
+        })
+
+Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String.
+    at Cn (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:29:1363)
+    at Wn.handleRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:7177)
+    at Wn.handleAndLogRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6858)
+    at Wn.request (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6565)
+    at async l (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:130:10067)
+    at Function.getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:23)
+    at getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\controller\library.controller.ts:194:25)
+[INFO] 2025-04-14T11:03:52.806Z - List movies --- Request Received
+[INFO] 2025-04-14T11:03:57.322Z - Get User --- Request Received
+[INFO] 2025-04-14T11:03:57.492Z - Get User --- Request Received
+[INFO] 2025-04-14T11:04:06.211Z - Get Movie Reviews - Retrieved reviews for Movie 1
+[INFO] 2025-04-14T11:04:06.214Z - Get Movie Reviews - Retrieved reviews for Movie 1
+[INFO] 2025-04-14T11:04:06.261Z - Get User --- Request Received
+[INFO] 2025-04-14T11:04:06.322Z - Get User --- Request Received
+[INFO] 2025-04-14T11:04:15.415Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
+[INFO] 2025-04-14T11:04:15.419Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
+[INFO] 2025-04-14T11:04:17.092Z - List movies --- Request Received
+[ERROR] 2025-04-14T11:04:17.094Z - Error in LibraryController.getAllByUserId | Error: 
+Invalid `prisma.library.findMany()` invocation in
+C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
+
+  108 }
+  109 
+  110 public static async getAllByUserId(userId: string) {
+→ 111   const libraries = await prisma.library.findMany({
+          where: {
+            userId: "5"
+                    ~~~
+          },
+          include: {
+            movie: true,
+            user: {
+              select: {
+                id: true,
+                name: true,
+                email: true,
+                username: true,
+                profileImage: true
+              }
+            }
+          },
+          orderBy: {
+            updatedAt: "desc"
+          }
+        })
+
+Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String. | Stack: PrismaClientValidationError: 
+Invalid `prisma.library.findMany()` invocation in
+C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
+
+  108 }
+  109 
+  110 public static async getAllByUserId(userId: string) {
+→ 111   const libraries = await prisma.library.findMany({
+          where: {
+            userId: "5"
+                    ~~~
+          },
+          include: {
+            movie: true,
+            user: {
+              select: {
+                id: true,
+                name: true,
+                email: true,
+                username: true,
+                profileImage: true
+              }
+            }
+          },
+          orderBy: {
+            updatedAt: "desc"
+          }
+        })
+
+Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String.
+    at Cn (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:29:1363)
+    at Wn.handleRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:7177)
+    at Wn.handleAndLogRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6858)
+    at Wn.request (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6565)
+    at async l (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:130:10067)
+    at Function.getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:23)
+    at getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\controller\library.controller.ts:194:25)
+[ERROR] 2025-04-14T11:04:17.100Z - Error in LibraryController.getAllByUserId | Error: 
+Invalid `prisma.library.findMany()` invocation in
+C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
+
+  108 }
+  109 
+  110 public static async getAllByUserId(userId: string) {
+→ 111   const libraries = await prisma.library.findMany({
+          where: {
+            userId: "5"
+                    ~~~
+          },
+          include: {
+            movie: true,
+            user: {
+              select: {
+                id: true,
+                name: true,
+                email: true,
+                username: true,
+                profileImage: true
+              }
+            }
+          },
+          orderBy: {
+            updatedAt: "desc"
+          }
+        })
+
+Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String. | Stack: PrismaClientValidationError: 
+Invalid `prisma.library.findMany()` invocation in
+C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
+
+  108 }
+  109 
+  110 public static async getAllByUserId(userId: string) {
+→ 111   const libraries = await prisma.library.findMany({
+          where: {
+            userId: "5"
+                    ~~~
+          },
+          include: {
+            movie: true,
+            user: {
+              select: {
+                id: true,
+                name: true,
+                email: true,
+                username: true,
+                profileImage: true
+              }
+            }
+          },
+          orderBy: {
+            updatedAt: "desc"
+          }
+        })
+
+Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String.
+    at Cn (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:29:1363)
+    at Wn.handleRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:7177)
+    at Wn.handleAndLogRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6858)
+    at Wn.request (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6565)
+    at async l (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:130:10067)
+    at Function.getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:23)
+    at getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\controller\library.controller.ts:194:25)
+[INFO] 2025-04-14T11:04:17.101Z - List movies --- Request Received
+[INFO] 2025-04-14T11:04:18.233Z - LibraryController.create ---- Library entry created for user 5 and movie 2
+[ERROR] 2025-04-14T11:04:18.238Z - Error in LibraryController.getAllByUserId | Error: 
+Invalid `prisma.library.findMany()` invocation in
+C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
+
+  108 }
+  109 
+  110 public static async getAllByUserId(userId: string) {
+→ 111   const libraries = await prisma.library.findMany({
+          where: {
+            userId: "5"
+                    ~~~
+          },
+          include: {
+            movie: true,
+            user: {
+              select: {
+                id: true,
+                name: true,
+                email: true,
+                username: true,
+                profileImage: true
+              }
+            }
+          },
+          orderBy: {
+            updatedAt: "desc"
+          }
+        })
+
+Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String. | Stack: PrismaClientValidationError: 
+Invalid `prisma.library.findMany()` invocation in
+C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
+
+  108 }
+  109 
+  110 public static async getAllByUserId(userId: string) {
+→ 111   const libraries = await prisma.library.findMany({
+          where: {
+            userId: "5"
+                    ~~~
+          },
+          include: {
+            movie: true,
+            user: {
+              select: {
+                id: true,
+                name: true,
+                email: true,
+                username: true,
+                profileImage: true
+              }
+            }
+          },
+          orderBy: {
+            updatedAt: "desc"
+          }
+        })
+
+Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String.
+    at Cn (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:29:1363)
+    at Wn.handleRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:7177)
+    at Wn.handleAndLogRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6858)
+    at Wn.request (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6565)
+    at async l (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:130:10067)
+    at Function.getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:23)
+    at getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\controller\library.controller.ts:194:25)
+[INFO] 2025-04-14T11:04:20.111Z - LibraryController.create ---- Library entry created for user 5 and movie 3
+[ERROR] 2025-04-14T11:04:20.116Z - Error in LibraryController.getAllByUserId | Error: 
+Invalid `prisma.library.findMany()` invocation in
+C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
+
+  108 }
+  109 
+  110 public static async getAllByUserId(userId: string) {
+→ 111   const libraries = await prisma.library.findMany({
+          where: {
+            userId: "5"
+                    ~~~
+          },
+          include: {
+            movie: true,
+            user: {
+              select: {
+                id: true,
+                name: true,
+                email: true,
+                username: true,
+                profileImage: true
+              }
+            }
+          },
+          orderBy: {
+            updatedAt: "desc"
+          }
+        })
+
+Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String. | Stack: PrismaClientValidationError: 
+Invalid `prisma.library.findMany()` invocation in
+C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
+
+  108 }
+  109 
+  110 public static async getAllByUserId(userId: string) {
+→ 111   const libraries = await prisma.library.findMany({
+          where: {
+            userId: "5"
+                    ~~~
+          },
+          include: {
+            movie: true,
+            user: {
+              select: {
+                id: true,
+                name: true,
+                email: true,
+                username: true,
+                profileImage: true
+              }
+            }
+          },
+          orderBy: {
+            updatedAt: "desc"
+          }
+        })
+
+Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String.
+    at Cn (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:29:1363)
+    at Wn.handleRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:7177)
+    at Wn.handleAndLogRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6858)
+    at Wn.request (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6565)
+    at async l (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:130:10067)
+    at Function.getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:23)
+    at getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\controller\library.controller.ts:194:25)
+[INFO] 2025-04-14T11:04:22.711Z - Get Movie Reviews - Retrieved reviews for Movie 2
+[INFO] 2025-04-14T11:04:22.713Z - Get Movie Reviews - Retrieved reviews for Movie 2
+[INFO] 2025-04-14T11:04:22.768Z - Get User --- Request Received
+[INFO] 2025-04-14T11:04:22.830Z - Get User --- Request Received
+[INFO] 2025-04-14T11:04:26.939Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
+[INFO] 2025-04-14T11:04:26.943Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
+[INFO] 2025-04-14T11:04:29.273Z - Get Movie Reviews - Retrieved reviews for Movie 3
+[INFO] 2025-04-14T11:04:29.276Z - Get Movie Reviews - Retrieved reviews for Movie 3
+[INFO] 2025-04-14T11:04:29.332Z - Get User --- Request Received
+[INFO] 2025-04-14T11:04:29.395Z - Get User --- Request Received
+[INFO] 2025-04-14T11:04:32.377Z - LibraryController.delete ---- Deleted library entry ${id}
+[INFO] 2025-04-14T11:06:18.013Z - Create Movie - Created Movie[object Object]
+[INFO] 2025-04-14T11:06:21.029Z - List movies --- Request Received
+[INFO] 2025-04-14T11:06:21.035Z - List movies --- Request Received
+[ERROR] 2025-04-14T11:06:21.078Z - Error in LibraryController.getAllByUserId | Error: 
+Invalid `prisma.library.findMany()` invocation in
+C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
+
+  108 }
+  109 
+  110 public static async getAllByUserId(userId: string) {
+→ 111   const libraries = await prisma.library.findMany({
+          where: {
+            userId: "5"
+                    ~~~
+          },
+          include: {
+            movie: true,
+            user: {
+              select: {
+                id: true,
+                name: true,
+                email: true,
+                username: true,
+                profileImage: true
+              }
+            }
+          },
+          orderBy: {
+            updatedAt: "desc"
+          }
+        })
+
+Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String. | Stack: PrismaClientValidationError: 
+Invalid `prisma.library.findMany()` invocation in
+C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
+
+  108 }
+  109 
+  110 public static async getAllByUserId(userId: string) {
+→ 111   const libraries = await prisma.library.findMany({
+          where: {
+            userId: "5"
+                    ~~~
+          },
+          include: {
+            movie: true,
+            user: {
+              select: {
+                id: true,
+                name: true,
+                email: true,
+                username: true,
+                profileImage: true
+              }
+            }
+          },
+          orderBy: {
+            updatedAt: "desc"
+          }
+        })
+
+Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String.
+    at Cn (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:29:1363)
+    at Wn.handleRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:7177)
+    at Wn.handleAndLogRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6858)
+    at Wn.request (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6565)
+    at async l (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:130:10067)
+    at Function.getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:23)
+    at getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\controller\library.controller.ts:194:25)
+[ERROR] 2025-04-14T11:06:21.084Z - Error in LibraryController.getAllByUserId | Error: 
+Invalid `prisma.library.findMany()` invocation in
+C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
+
+  108 }
+  109 
+  110 public static async getAllByUserId(userId: string) {
+→ 111   const libraries = await prisma.library.findMany({
+          where: {
+            userId: "5"
+                    ~~~
+          },
+          include: {
+            movie: true,
+            user: {
+              select: {
+                id: true,
+                name: true,
+                email: true,
+                username: true,
+                profileImage: true
+              }
+            }
+          },
+          orderBy: {
+            updatedAt: "desc"
+          }
+        })
+
+Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String. | Stack: PrismaClientValidationError: 
+Invalid `prisma.library.findMany()` invocation in
+C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
+
+  108 }
+  109 
+  110 public static async getAllByUserId(userId: string) {
+→ 111   const libraries = await prisma.library.findMany({
+          where: {
+            userId: "5"
+                    ~~~
+          },
+          include: {
+            movie: true,
+            user: {
+              select: {
+                id: true,
+                name: true,
+                email: true,
+                username: true,
+                profileImage: true
+              }
+            }
+          },
+          orderBy: {
+            updatedAt: "desc"
+          }
+        })
+
+Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String.
+    at Cn (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:29:1363)
+    at Wn.handleRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:7177)
+    at Wn.handleAndLogRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6858)
+    at Wn.request (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6565)
+    at async l (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:130:10067)
+    at Function.getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:23)
+    at getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\controller\library.controller.ts:194:25)
+[INFO] 2025-04-14T11:07:43.852Z - Get User --- Request Received
+[INFO] 2025-04-14T11:07:43.913Z - Get User --- Request Received
+[INFO] 2025-04-14T11:07:44.161Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-14T11:07:44.239Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-14T11:07:44.240Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-14T11:07:44.308Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-14T11:07:44.309Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-14T11:07:44.364Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-14T11:07:46.595Z - List Users --- Request Received
+[INFO] 2025-04-14T11:07:48.286Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
+[INFO] 2025-04-14T11:07:48.289Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
+[INFO] 2025-04-14T11:07:53.296Z - Get User --- Request Received
+[INFO] 2025-04-14T11:07:53.358Z - Get User --- Request Received
+[INFO] 2025-04-14T11:07:54.071Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-14T11:07:54.149Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-14T11:07:54.150Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-14T11:07:54.227Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-14T11:07:54.228Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-14T11:07:54.273Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-14T11:07:55.610Z - List Users --- Request Received
+[INFO] 2025-04-14T11:11:01.269Z - Get User --- Request Received
+[INFO] 2025-04-14T11:11:01.331Z - Get User --- Request Received
+[INFO] 2025-04-14T11:11:01.393Z - Get User --- Request Received
+[INFO] 2025-04-14T11:11:01.563Z - Get User --- Request Received
+[INFO] 2025-04-14T11:11:01.626Z - Get User --- Request Received
+[INFO] 2025-04-14T11:11:01.688Z - Get User --- Request Received
+[INFO] 2025-04-14T11:11:01.750Z - Get User --- Request Received
+[INFO] 2025-04-14T11:11:01.920Z - Get User --- Request Received
+[INFO] 2025-04-14T11:11:02.092Z - Get User --- Request Received
+[INFO] 2025-04-14T11:11:02.155Z - Get User --- Request Received
+[INFO] 2025-04-14T11:11:02.217Z - Get User --- Request Received
