@@ -1,50 +1,47 @@
-import { FC, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import {
+  AccessTime as AccessTimeIcon,
+  Delete as DeleteIcon,
+  MoreVert as MoreVertIcon,
+  RateReview as RateReviewIcon,
+  Search as SearchIcon,
+  Star as StarIcon,
+  Visibility as VisibilityIcon,
+} from "@mui/icons-material";
+import {
+  Alert,
   Box,
-  Typography,
+  Button,
+  Chip,
+  CircularProgress,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+  IconButton,
+  InputAdornment,
+  ListItemIcon,
+  ListItemText,
+  Menu,
+  MenuItem,
+  Paper,
   Table,
   TableBody,
   TableCell,
   TableContainer,
   TableHead,
   TableRow,
-  Paper,
-  IconButton,
-  Chip,
-  TextField,
-  InputAdornment,
-  Menu,
-  MenuItem,
-  ListItemIcon,
-  ListItemText,
-  CircularProgress,
-  Alert,
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  DialogContentText,
-  DialogActions,
-  Button,
-  Rating,
   TextareaAutosize,
+  TextField,
+  Typography,
 } from "@mui/material";
-import {
-  Search as SearchIcon,
-  MoreVert as MoreVertIcon,
-  Visibility as VisibilityIcon,
-  AccessTime as AccessTimeIcon,
-  RateReview as RateReviewIcon,
-  Delete as DeleteIcon,
-  Star as StarIcon,
-} from "@mui/icons-material";
-import { format } from "date-fns";
+import { format, formatDistanceToNow } from "date-fns";
 import { tr } from "date-fns/locale";
-import api, { processApiError } from "../utils/api";
-import { formatDistanceToNow } from "date-fns";
+import { FC, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import api, { processApiError } from "../utils/api";
 import { LibraryItem } from "../utils/types";
-
 
 const Library: FC = () => {
   const navigate = useNavigate();
@@ -557,6 +554,7 @@ const Library: FC = () => {
             placeholder="Bu film hakkında ne düşünüyorsunuz?"
             style={{
               width: "100%",
+              backgroundColor: "white",
               padding: "8px",
               borderRadius: "4px",
               borderColor: "#ccc",

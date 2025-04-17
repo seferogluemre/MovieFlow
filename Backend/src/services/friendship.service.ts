@@ -237,6 +237,9 @@ export class FriendshipService {
       throw new Error("Friendship not found");
     }
 
+    const userId = friendship.userId;
+    const friendId = friendship.friendId;
+
     // Delete any related notifications that have this friendship ID in their metadata
     await prisma.notification.deleteMany({
       where: {
@@ -256,6 +259,37 @@ export class FriendshipService {
     await prisma.friendship.delete({
       where: { id },
     });
+
+    // Check for and delete the reciprocal friendship (if it exists)
+    // This ensures both users have the relationship removed from their lists
+    const reciprocalFriendship = await prisma.friendship.findFirst({
+      where: {
+        userId: friendId,
+        friendId: userId,
+      },
+    });
+
+    if (reciprocalFriendship) {
+      // Delete any related notifications for the reciprocal friendship
+      await prisma.notification.deleteMany({
+        where: {
+          AND: [
+            { type: "FRIEND_REQUEST" as NotificationType },
+            {
+              metadata: {
+                path: ["friendshipId"],
+                equals: reciprocalFriendship.id,
+              },
+            },
+          ],
+        },
+      });
+
+      // Delete the reciprocal friendship
+      await prisma.friendship.delete({
+        where: { id: reciprocalFriendship.id },
+      });
+    }
 
     await prisma.$disconnect();
     return this.enhanceFriendship(friendship);

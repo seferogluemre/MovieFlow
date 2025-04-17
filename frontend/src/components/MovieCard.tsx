@@ -12,15 +12,15 @@ const MovieCard: FC<MovieCardProps> = ({ movie, watchedDate, addedDate }) => {
     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 
     if (diffDays === 1) {
-      return "1 day ago";
+      return "1 gün önce";
     } else if (diffDays < 7) {
-      return `${diffDays} days ago`;
+      return `${diffDays} gün önce`;
     } else if (diffDays < 30) {
       const weeks = Math.floor(diffDays / 7);
-      return `${weeks} ${weeks === 1 ? "week" : "weeks"} ago`;
+      return `${weeks} ${weeks === 1 ? "hafta" : "hafta"} önce`;
     } else {
       const months = Math.floor(diffDays / 30);
-      return `${months} ${months === 1 ? "month" : "months"} ago`;
+      return `${months} ${months === 1 ? "ay" : "ay"} önce`;
     }
   };
 
@@ -106,12 +106,12 @@ const MovieCard: FC<MovieCardProps> = ({ movie, watchedDate, addedDate }) => {
           )}
           {watchedDate && (
             <Typography variant="caption" color="text.secondary" sx={{ mt: 1 }}>
-              Watched {formatRelativeTime(watchedDate)}
+              İzlendi {formatRelativeTime(watchedDate)}
             </Typography>
           )}
           {addedDate && (
             <Typography variant="caption" color="text.secondary" sx={{ mt: 1 }}>
-              Added {formatRelativeTime(addedDate)}
+              Eklendi {formatRelativeTime(addedDate)}
             </Typography>
           )}
         </Box>

@@ -34,7 +34,9 @@ const Login: FC = () => {
       navigate("/", { replace: true });
     } catch (err) {
       console.error("Login error:", err);
-      setError("Login failed. Please check your credentials and try again.");
+      setError(
+        "Giriş başarısız. Lütfen bilgilerinizi kontrol edip tekrar deneyin."
+      );
     } finally {
       setLoading(false);
     }
@@ -62,15 +64,15 @@ const Login: FC = () => {
           >
             <MovieIcon sx={{ fontSize: 32, mr: 1, color: "primary.main" }} />
             <Typography variant="h4" component="div" fontWeight="bold">
-              FilmPortal
+              Film Portalı
             </Typography>
           </Box>
 
           <Typography variant="h5" fontWeight="bold" gutterBottom>
-            Sign In
+            Giriş Yap
           </Typography>
           <Typography variant="body2" color="text.secondary" mb={3}>
-            Enter your credentials to access your account
+            Hesabınıza erişmek için bilgilerinizi girin
           </Typography>
 
           {(error || authError) && (
@@ -81,7 +83,7 @@ const Login: FC = () => {
 
           <form onSubmit={handleSubmit}>
             <TextField
-              label="Email"
+              label="E-posta"
               variant="outlined"
               fullWidth
               margin="normal"
@@ -91,7 +93,7 @@ const Login: FC = () => {
               type="email"
             />
             <TextField
-              label="Password"
+              label="Şifre"
               variant="outlined"
               fullWidth
               margin="normal"
@@ -110,7 +112,7 @@ const Login: FC = () => {
               disabled={loading}
               sx={{ py: 1.5 }}
             >
-              {loading ? <CircularProgress size={24} /> : "Sign In"}
+              {loading ? <CircularProgress size={24} /> : "Giriş Yap"}
             </Button>
           </form>
         </CardContent>

@@ -1,6 +1,7 @@
 import {
   Check as CheckIcon,
   Close as CloseIcon,
+  Delete as DeleteIcon,
   MoreVert as MoreVertIcon,
   PersonAdd as PersonAddIcon,
   Person as PersonIcon,
@@ -23,7 +24,10 @@ import {
   ListItem,
   ListItemAvatar,
   ListItemText,
+  Menu,
+  MenuItem,
   Paper,
+  Snackbar,
   Tab,
   Tabs,
   TextField,
@@ -36,7 +40,6 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import api, { processApiError, userService } from "../utils/api";
 import { Friendship, User, UserRelationship } from "../utils/types";
-
 
 const Friends: FC = () => {
   const navigate = useNavigate();
@@ -62,6 +65,12 @@ const Friends: FC = () => {
   const [error, setError] = useState<string | null>(null);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const [selectedFriendshipId, setSelectedFriendshipId] = useState<
+    number | null
+  >(null);
+  const [toastOpen, setToastOpen] = useState(false);
+  const [toastMessage, setToastMessage] = useState("");
 
   useEffect(() => {
     const init = async () => {
@@ -130,7 +139,7 @@ const Friends: FC = () => {
         if (
           !uniqueFriendships.has(otherUserId) ||
           new Date(friendship.createdAt) >
-          new Date(uniqueFriendships.get(otherUserId).createdAt)
+            new Date(uniqueFriendships.get(otherUserId).createdAt)
         ) {
           uniqueFriendships.set(otherUserId, friendship);
         }
@@ -175,7 +184,9 @@ const Friends: FC = () => {
         : currentUser?.id;
 
       // Filter out the current user from the list of all users
-      const filteredUsers = users.filter((user: User) => user.id !== currentUserId);
+      const filteredUsers = users.filter(
+        (user: User) => user.id !== currentUserId
+      );
 
       setAllUsers(filteredUsers);
       setFilteredUsers(filteredUsers);
@@ -276,7 +287,7 @@ const Friends: FC = () => {
           if (
             !uniqueFriendships.has(otherUserId) ||
             new Date(friendship.createdAt) >
-            new Date(uniqueFriendships.get(otherUserId).createdAt)
+              new Date(uniqueFriendships.get(otherUserId).createdAt)
           ) {
             uniqueFriendships.set(otherUserId, friendship);
           }
@@ -348,7 +359,7 @@ const Friends: FC = () => {
         if (
           !uniqueFriendships.has(otherUserId) ||
           new Date(friendship.createdAt) >
-          new Date(uniqueFriendships.get(otherUserId).createdAt)
+            new Date(uniqueFriendships.get(otherUserId).createdAt)
         ) {
           uniqueFriendships.set(otherUserId, friendship);
         }
@@ -523,54 +534,91 @@ const Friends: FC = () => {
     }
   };
 
+  const handleCloseToast = () => {
+    setToastOpen(false);
+  };
+
+  const showToast = (message: string) => {
+    setToastMessage(message);
+    setToastOpen(true);
+  };
+
+  const handleDeleteFriend = async (friendshipId: number) => {
+    try {
+      // We don't need to manually add the Authorization header because
+      // the api instance already has an interceptor that adds it
+      await api.delete(`/friendships/${friendshipId}`);
+
+      showToast("Arkadaş başarıyla silindi.");
+
+      // Refresh all friendship data instead of manual filtering
+      // This ensures both sides of the relationship are properly refreshed
+      fetchData();
+    } catch (err) {
+      console.error("Error deleting friendship:", err);
+      showToast("Arkadaşlık silinirken bir hata oluştu.");
+    } finally {
+      handleMenuClose();
+    }
+  };
+
+  const handleMenuClick = (
+    event: React.MouseEvent<HTMLButtonElement>,
+    friendshipId: number
+  ) => {
+    event.stopPropagation();
+    setAnchorEl(event.currentTarget);
+    setSelectedFriendshipId(friendshipId);
+  };
+
+  const handleMenuClose = () => {
+    setAnchorEl(null);
+    setSelectedFriendshipId(null);
+  };
+
   return (
-    <Box>
-      <Typography variant="h4" fontWeight="bold">
-        Friends
-      </Typography>
-      <Typography variant="subtitle1" color="text.secondary" mb={4}>
-        Manage your friends and friend requests.
+    <Box sx={{ p: 3 }}>
+      <Typography variant="h4" gutterBottom>
+        Arkadaşlarım
       </Typography>
 
-      <Box sx={{ borderBottom: 1, borderColor: "divider", mb: 3 }}>
-        <Tabs value={activeTab} onChange={handleTabChange}>
-          <Tab label="My Friends" />
-          <Tab label="Friend Requests" />
-          <Tab label="Sent Requests" />
-          <Tab label="All Users" />
-        </Tabs>
-      </Box>
-
-      <Box sx={{ mb: 3 }}>
-        <TextField
-          fullWidth
-          placeholder={
-            activeTab === 0
-              ? "Search friends..."
-              : activeTab === 1
-                ? "Search friend requests..."
-                : activeTab === 2
-                  ? "Search sent requests..."
-                  : "Search users..."
-          }
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <SearchIcon />
-              </InputAdornment>
-            ),
-          }}
-          size="small"
+      {/* Tab Navigation */}
+      <Tabs
+        value={activeTab}
+        onChange={handleTabChange}
+        sx={{ mb: 3 }}
+        variant="scrollable"
+        scrollButtons="auto"
+      >
+        <Tab label="Arkadaşlarım" />
+        <Tab
+          label={`İstekler ${
+            pendingRequests.length > 0 ? `(${pendingRequests.length})` : ""
+          }`}
         />
-      </Box>
+        <Tab
+          label={`Gönderilen ${
+            sentRequests.length > 0 ? `(${sentRequests.length})` : ""
+          }`}
+        />
+        <Tab label="Tüm Kullanıcılar" />
+      </Tabs>
 
-      {successMessage && (
-        <Alert severity="success" sx={{ mb: 3 }}>
-          {successMessage}
-        </Alert>
-      )}
+      {/* Search Box */}
+      <TextField
+        fullWidth
+        placeholder="Arkadaşlarını ara..."
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
+        sx={{ mb: 3 }}
+        InputProps={{
+          startAdornment: (
+            <InputAdornment position="start">
+              <SearchIcon />
+            </InputAdornment>
+          ),
+        }}
+      />
 
       {error && (
         <Alert severity="error" sx={{ mb: 3 }}>
@@ -578,389 +626,405 @@ const Friends: FC = () => {
         </Alert>
       )}
 
-      {loading ? (
-        <Box sx={{ display: "flex", justifyContent: "center", my: 4 }}>
-          <CircularProgress />
-        </Box>
-      ) : (
-        <>
-          {/* Friends Tab */}
-          {activeTab === 0 && (
-            <>
-              {filteredFriendships.length === 0 ? (
-                <Alert severity="info">
-                  {searchQuery
-                    ? "Arama kriterlerinize uygun arkadaş bulunamadı."
-                    : "Henüz bir arkadaşınız yok."}
-                </Alert>
-              ) : (
-                <Paper>
-                  <List>
-                    {filteredFriendships.map((friendship, index) => {
-                      const currentUserId = localStorage.getItem("userId")
-                        ? parseInt(localStorage.getItem("userId")!)
-                        : currentUser?.id;
-
-                      const otherUserId =
-                        friendship.userId === currentUserId
-                          ? friendship.friendId
-                          : friendship.userId;
-
-                      const otherUser =
-                        friendship.userId === currentUserId
-                          ? friendship.friend
-                          : friendship.user;
-
-                      // Double-check that we're not displaying the current user
-                      if (otherUserId === currentUserId) return null;
-
-                      return (
-                        <Box key={friendship.id}>
-                          <ListItem
-                            secondaryAction={
-                              <IconButton
-                                edge="end"
-                                onClick={() => handleProfileClick(otherUserId)}
-                              >
-                                <MoreVertIcon />
-                              </IconButton>
-                            }
-                          >
-                            <ListItemAvatar>
-                              <Avatar
-                                src={otherUser.profileImage || undefined}
-                                alt={otherUser.name}
-                                onClick={() => handleProfileClick(otherUserId)}
-                                sx={{
-                                  cursor: "pointer",
-                                  width: 50,
-                                  height: 50,
-                                }}
-                              />
-                            </ListItemAvatar>
-                            <ListItemText
-                              primary={
-                                <Typography
-                                  variant="subtitle1"
-                                  component="span"
-                                  fontWeight="bold"
-                                >
-                                  {otherUser.name}
-                                </Typography>
-                              }
-                              secondary={
-                                <>
-                                  <Typography
-                                    component="span"
-                                    variant="body2"
-                                    color="text.secondary"
-                                  >
-                                    @{otherUser.username}
-                                  </Typography>
-                                  <br />
-                                  <Typography
-                                    component="span"
-                                    variant="body2"
-                                    color="text.secondary"
-                                  >
-                                    Arkadaş oldu:{" "}
-                                    {formatDate(friendship.createdAt)}
-                                  </Typography>
-                                </>
-                              }
-                              sx={{ ml: 2 }}
-                            />
-                          </ListItem>
-                          {index < filteredFriendships.length - 1 && (
-                            <Divider />
-                          )}
-                        </Box>
-                      );
-                    })}
-                  </List>
-                </Paper>
-              )}
-            </>
-          )}
-
-          {/* Friend Requests Tab */}
-          {activeTab === 1 && (
-            <>
-              {filteredRequests.length === 0 ? (
-                <Alert severity="info">
-                  {searchQuery
-                    ? "Arama kriterlerinize uygun arkadaşlık isteği bulunamadı."
-                    : "Bekleyen arkadaşlık isteği yok."}
-                </Alert>
-              ) : (
-                <Grid container spacing={3}>
-                  {filteredRequests.map((request) => (
-                    <Grid item xs={12} md={4} key={request.id}>
-                      <Card>
-                        <CardContent>
-                          <Box
-                            sx={{
-                              display: "flex",
-                              alignItems: "center",
-                              mb: 2,
-                            }}
-                          >
-                            <Avatar
-                              src={request.user.profileImage || undefined}
-                              alt={request.user.name}
-                              onClick={() =>
-                                handleProfileClick(request.user.id)
-                              }
-                              sx={{ cursor: "pointer", width: 60, height: 60 }}
-                            />
-                            <Box sx={{ ml: 2 }}>
-                              <Typography variant="h6">
-                                {request.user.name}
-                              </Typography>
-                              <Typography
-                                variant="body2"
-                                color="text.secondary"
-                              >
-                                @{request.user.username}
-                              </Typography>
-                            </Box>
-                          </Box>
-                          <Typography variant="body2" color="text.secondary">
-                            {formatDate(request.createdAt)} Arkadaşlık istegi
-                            gönderdi
-                          </Typography>
-                        </CardContent>
-                        <CardActions>
-                          <Button
-                            startIcon={<CheckIcon />}
-                            variant="contained"
-                            color="primary"
-                            onClick={() => handleAcceptRequest(request.id)}
-                            fullWidth
-                          >
-                            Accept
-                          </Button>
-                          <Button
-                            startIcon={<CloseIcon />}
-                            variant="outlined"
-                            color="error"
-                            onClick={() => handleRejectRequest(request.id)}
-                            fullWidth
-                          >
-                            Decline
-                          </Button>
-                        </CardActions>
-                      </Card>
-                    </Grid>
-                  ))}
-                </Grid>
-              )}
-            </>
-          )}
-
-          {/* Sent Requests Tab */}
-          {activeTab === 2 && (
-            <>
-              {filteredSentRequests.length === 0 ? (
-                <Alert severity="info">
-                  {searchQuery
-                    ? "Arama kriterlerinize uygun gönderilen istek bulunamadı."
-                    : "Gönderilen arkadaşlık isteği yok."}
-                </Alert>
-              ) : (
-                <Grid container spacing={3}>
-                  {filteredSentRequests.map((request) => (
-                    <Grid item xs={12} md={4} key={request.id}>
-                      <Card>
-                        <CardContent>
-                          <Box
-                            sx={{
-                              display: "flex",
-                              alignItems: "center",
-                              mb: 2,
-                            }}
-                          >
-                            <Avatar
-                              src={request.friend.profileImage || undefined}
-                              alt={request.friend.name}
-                              onClick={() =>
-                                handleProfileClick(request.friend.id)
-                              }
-                              sx={{ cursor: "pointer", width: 60, height: 60 }}
-                            />
-                            <Box sx={{ ml: 2 }}>
-                              <Typography variant="h6">
-                                {request.friend.name}
-                              </Typography>
-                              <Typography
-                                variant="body2"
-                                color="text.secondary"
-                              >
-                                @{request.friend.username}
-                              </Typography>
-                            </Box>
-                          </Box>
-                          <Typography variant="body2" color="text.secondary">
-                            Sent {formatDate(request.createdAt)}
-                          </Typography>
-                        </CardContent>
-                        <CardActions>
-                          <Button
-                            startIcon={<CloseIcon />}
-                            variant="outlined"
-                            color="error"
-                            onClick={() => handleCancelRequest(request.id)}
-                            fullWidth
-                          >
-                            Cancel Request
-                          </Button>
-                          <Button
-                            startIcon={<PersonIcon />}
-                            variant="outlined"
-                            onClick={() =>
-                              handleProfileClick(request.friend.id)
-                            }
-                            fullWidth
-                          >
-                            View Profile
-                          </Button>
-                        </CardActions>
-                      </Card>
-                    </Grid>
-                  ))}
-                </Grid>
-              )}
-            </>
-          )}
-
-          {/* All Users Tab */}
-          {activeTab === 3 && (
-            <>
-              {loadingUsers ? (
-                <Box sx={{ display: "flex", justifyContent: "center", my: 4 }}>
-                  <CircularProgress />
-                </Box>
-              ) : filteredUsers.length === 0 ? (
-                <Alert severity="info">
-                  {searchQuery
-                    ? "Arama kriterlerinize uygun kullanıcı bulunamadı."
-                    : "Sistemde henüz kullanıcı yok."}
-                </Alert>
-              ) : (
-                <Grid container spacing={3}>
-                  {filteredUsers.map((user) => {
-                    const relationship = userRelationships[user.id];
-                    // Get current user ID from localStorage for double safety
+      {/* Friends Tab */}
+      <Box>
+        {activeTab === 0 && (
+          <>
+            {loading ? (
+              <Box sx={{ display: "flex", justifyContent: "center", my: 4 }}>
+                <CircularProgress />
+              </Box>
+            ) : filteredFriendships.length === 0 ? (
+              <Alert severity="info">
+                {searchQuery
+                  ? "Arama kriterlerinize uygun arkadaş bulunamadı."
+                  : "Henüz arkadaşınız yok."}
+              </Alert>
+            ) : (
+              <Paper elevation={3}>
+                <List>
+                  {filteredFriendships.map((friendship, index) => {
+                    // Determine which user in the friendship is not the current user
                     const currentUserId = localStorage.getItem("user_id")
                       ? parseInt(localStorage.getItem("user_id")!)
                       : currentUser?.id;
 
-                    // Skip if this is the current user (extra safety check)
-                    if (user.id === currentUserId) return null;
+                    const otherUserId =
+                      friendship.userId === currentUserId
+                        ? friendship.friendId
+                        : friendship.userId;
+
+                    const otherUser =
+                      friendship.userId === currentUserId
+                        ? friendship.friend
+                        : friendship.user;
 
                     return (
-                      <Grid item xs={12} sm={6} md={4} key={user.id}>
-                        <Card>
-                          <CardContent>
-                            <Box
-                              sx={{
-                                display: "flex",
-                                alignItems: "center",
-                                mb: 2,
-                              }}
+                      <Box key={friendship.id}>
+                        <ListItem
+                          alignItems="flex-start"
+                          sx={{
+                            cursor: "pointer",
+                            "&:hover": {
+                              backgroundColor: "rgba(0, 0, 0, 0.04)",
+                            },
+                            py: 2,
+                          }}
+                          onClick={() => handleProfileClick(otherUserId)}
+                          secondaryAction={
+                            <IconButton
+                              edge="end"
+                              onClick={(event) =>
+                                handleMenuClick(event, friendship.id)
+                              }
                             >
-                              <Avatar
-                                src={user.profileImage || undefined}
-                                alt={user.name}
-                                onClick={() => handleProfileClick(user.id)}
-                                sx={{
-                                  cursor: "pointer",
-                                  width: 60,
-                                  height: 60,
-                                }}
-                              />
-                              <Box sx={{ ml: 2 }}>
-                                <Typography variant="h6">
-                                  {user.name}
-                                </Typography>
+                              <MoreVertIcon />
+                            </IconButton>
+                          }
+                        >
+                          <ListItemAvatar>
+                            <Avatar
+                              src={otherUser.profileImage || undefined}
+                              alt={otherUser.name}
+                              sx={{ width: 50, height: 50 }}
+                            />
+                          </ListItemAvatar>
+                          <ListItemText
+                            primary={
+                              <Typography variant="h6">
+                                {otherUser.name}
+                              </Typography>
+                            }
+                            secondary={
+                              <>
                                 <Typography
+                                  component="span"
                                   variant="body2"
                                   color="text.secondary"
                                 >
-                                  @{user.username}
+                                  @{otherUser.username}
                                 </Typography>
-                              </Box>
-                            </Box>
-                          </CardContent>
-                          <CardActions>
-                            <Button
-                              startIcon={<PersonIcon />}
-                              variant="outlined"
-                              onClick={() => handleProfileClick(user.id)}
-                            >
-                              Profile
-                            </Button>
-
-                            {relationship?.isFriend ? (
-                              <Button
-                                startIcon={<PersonIcon />}
-                                variant="contained"
-                                color="success"
-                                disabled
-                              >
-                                Friends
-                              </Button>
-                            ) : relationship?.isPending ? (
-                              <Button
-                                startIcon={<PersonAddIcon />}
-                                variant="outlined"
-                                color="primary"
-                                disabled
-                              >
-                                Request Sent
-                              </Button>
-                            ) : relationship?.isBlocked ? (
-                              <Button
-                                startIcon={<CloseIcon />}
-                                variant="outlined"
-                                color="error"
-                                disabled
-                              >
-                                Blocked
-                              </Button>
-                            ) : (
-                              <Button
-                                startIcon={<PersonAddIcon />}
-                                variant="contained"
-                                color="primary"
-                                onClick={() => handleSendFriendRequest(user.id)}
-                              >
-                                Add Friend
-                              </Button>
-                            )}
-
-                            {!relationship?.isFriend &&
-                              !relationship?.isFollowing &&
-                              !relationship?.isBlocked && (
-                                <Button
-                                  startIcon={<PersonAddIcon />}
-                                  variant="outlined"
-                                  onClick={() => handleFollowUser(user.id)}
+                                <br />
+                                <Typography
+                                  component="span"
+                                  variant="body2"
+                                  color="text.secondary"
                                 >
-                                  Follow
-                                </Button>
-                              )}
-                          </CardActions>
-                        </Card>
-                      </Grid>
+                                  Arkadaş oldu:{" "}
+                                  {formatDate(friendship.createdAt)}
+                                </Typography>
+                              </>
+                            }
+                            sx={{ ml: 2 }}
+                          />
+                        </ListItem>
+                        {index < filteredFriendships.length - 1 && <Divider />}
+                      </Box>
                     );
                   })}
-                </Grid>
-              )}
-            </>
-          )}
-        </>
-      )}
+                </List>
+              </Paper>
+            )}
+          </>
+        )}
+
+        {/* Friend Requests Tab */}
+        {activeTab === 1 && (
+          <>
+            {filteredRequests.length === 0 ? (
+              <Alert severity="info">
+                {searchQuery
+                  ? "Arama kriterlerinize uygun arkadaşlık isteği bulunamadı."
+                  : "Bekleyen arkadaşlık isteği yok."}
+              </Alert>
+            ) : (
+              <Grid container spacing={3}>
+                {filteredRequests.map((request) => (
+                  <Grid item xs={12} md={4} key={request.id}>
+                    <Card>
+                      <CardContent>
+                        <Box
+                          sx={{
+                            display: "flex",
+                            alignItems: "center",
+                            mb: 2,
+                          }}
+                        >
+                          <Avatar
+                            src={request.user.profileImage || undefined}
+                            alt={request.user.name}
+                            onClick={() => handleProfileClick(request.user.id)}
+                            sx={{ cursor: "pointer", width: 60, height: 60 }}
+                          />
+                          <Box sx={{ ml: 2 }}>
+                            <Typography variant="h6">
+                              {request.user.name}
+                            </Typography>
+                            <Typography variant="body2" color="text.secondary">
+                              @{request.user.username}
+                            </Typography>
+                          </Box>
+                        </Box>
+                        <Typography variant="body2" color="text.secondary">
+                          {formatDate(request.createdAt)} arkadaşlık isteği
+                          gönderdi
+                        </Typography>
+                      </CardContent>
+                      <CardActions>
+                        <Button
+                          startIcon={<CheckIcon />}
+                          variant="contained"
+                          color="primary"
+                          onClick={() => handleAcceptRequest(request.id)}
+                          fullWidth
+                        >
+                          Kabul Et
+                        </Button>
+                        <Button
+                          startIcon={<CloseIcon />}
+                          variant="outlined"
+                          color="error"
+                          onClick={() => handleRejectRequest(request.id)}
+                          fullWidth
+                        >
+                          Reddet
+                        </Button>
+                      </CardActions>
+                    </Card>
+                  </Grid>
+                ))}
+              </Grid>
+            )}
+          </>
+        )}
+
+        {/* Sent Requests Tab */}
+        {activeTab === 2 && (
+          <>
+            {filteredSentRequests.length === 0 ? (
+              <Alert severity="info">
+                {searchQuery
+                  ? "Arama kriterlerinize uygun gönderilen istek bulunamadı."
+                  : "Gönderilen arkadaşlık isteği yok."}
+              </Alert>
+            ) : (
+              <Grid container spacing={3}>
+                {filteredSentRequests.map((request) => (
+                  <Grid item xs={12} md={4} key={request.id}>
+                    <Card>
+                      <CardContent>
+                        <Box
+                          sx={{
+                            display: "flex",
+                            alignItems: "center",
+                            mb: 2,
+                          }}
+                        >
+                          <Avatar
+                            src={request.friend.profileImage || undefined}
+                            alt={request.friend.name}
+                            onClick={() =>
+                              handleProfileClick(request.friend.id)
+                            }
+                            sx={{ cursor: "pointer", width: 60, height: 60 }}
+                          />
+                          <Box sx={{ ml: 2 }}>
+                            <Typography variant="h6">
+                              {request.friend.name}
+                            </Typography>
+                            <Typography variant="body2" color="text.secondary">
+                              @{request.friend.username}
+                            </Typography>
+                          </Box>
+                        </Box>
+                        <Typography variant="body2" color="text.secondary">
+                          Gönderildi: {formatDate(request.createdAt)}
+                        </Typography>
+                      </CardContent>
+                      <CardActions>
+                        <Button
+                          startIcon={<CloseIcon />}
+                          variant="outlined"
+                          color="error"
+                          onClick={() => handleCancelRequest(request.id)}
+                          fullWidth
+                        >
+                          İsteği İptal Et
+                        </Button>
+                        <Button
+                          startIcon={<PersonIcon />}
+                          variant="outlined"
+                          onClick={() => handleProfileClick(request.friend.id)}
+                          fullWidth
+                        >
+                          Profili Görüntüle
+                        </Button>
+                      </CardActions>
+                    </Card>
+                  </Grid>
+                ))}
+              </Grid>
+            )}
+          </>
+        )}
+
+        {/* All Users Tab */}
+        {activeTab === 3 && (
+          <>
+            {loadingUsers ? (
+              <Box sx={{ display: "flex", justifyContent: "center", my: 4 }}>
+                <CircularProgress />
+              </Box>
+            ) : filteredUsers.length === 0 ? (
+              <Alert severity="info">
+                {searchQuery
+                  ? "Arama kriterlerinize uygun kullanıcı bulunamadı."
+                  : "Sistemde henüz kullanıcı yok."}
+              </Alert>
+            ) : (
+              <Grid container spacing={3}>
+                {filteredUsers.map((user) => {
+                  const relationship = userRelationships[user.id];
+                  // Get current user ID from localStorage for double safety
+                  const currentUserId = localStorage.getItem("user_id")
+                    ? parseInt(localStorage.getItem("user_id")!)
+                    : currentUser?.id;
+
+                  // Skip if this is the current user (extra safety check)
+                  if (user.id === currentUserId) return null;
+
+                  return (
+                    <Grid item xs={12} sm={6} md={4} key={user.id}>
+                      <Card>
+                        <CardContent>
+                          <Box
+                            sx={{
+                              display: "flex",
+                              alignItems: "center",
+                              mb: 2,
+                            }}
+                          >
+                            <Avatar
+                              src={user.profileImage || undefined}
+                              alt={user.name}
+                              onClick={() => handleProfileClick(user.id)}
+                              sx={{
+                                cursor: "pointer",
+                                width: 60,
+                                height: 60,
+                              }}
+                            />
+                            <Box sx={{ ml: 2 }}>
+                              <Typography variant="h6">{user.name}</Typography>
+                              <Typography
+                                variant="body2"
+                                color="text.secondary"
+                              >
+                                @{user.username}
+                              </Typography>
+                            </Box>
+                          </Box>
+                        </CardContent>
+                        <CardActions>
+                          <Button
+                            startIcon={<PersonIcon />}
+                            variant="outlined"
+                            onClick={() => handleProfileClick(user.id)}
+                          >
+                            Profil
+                          </Button>
+
+                          {relationship?.isFriend ? (
+                            <Button
+                              startIcon={<PersonIcon />}
+                              variant="contained"
+                              color="success"
+                              disabled
+                            >
+                              Arkadaş
+                            </Button>
+                          ) : relationship?.isPending ? (
+                            <Button
+                              startIcon={<PersonAddIcon />}
+                              variant="outlined"
+                              color="primary"
+                              disabled
+                            >
+                              İstek Gönderildi
+                            </Button>
+                          ) : relationship?.isBlocked ? (
+                            <Button
+                              startIcon={<CloseIcon />}
+                              variant="outlined"
+                              color="error"
+                              disabled
+                            >
+                              Engellendi
+                            </Button>
+                          ) : (
+                            <Button
+                              startIcon={<PersonAddIcon />}
+                              variant="contained"
+                              color="primary"
+                              onClick={() => handleSendFriendRequest(user.id)}
+                            >
+                              Arkadaş Ekle
+                            </Button>
+                          )}
+
+                          {!relationship?.isFriend &&
+                            !relationship?.isFollowing &&
+                            !relationship?.isBlocked && (
+                              <Button
+                                startIcon={<PersonAddIcon />}
+                                variant="outlined"
+                                onClick={() => handleFollowUser(user.id)}
+                              >
+                                Takip Et
+                              </Button>
+                            )}
+                        </CardActions>
+                      </Card>
+                    </Grid>
+                  );
+                })}
+              </Grid>
+            )}
+          </>
+        )}
+      </Box>
+
+      {/* Menu for friend options */}
+      <Menu
+        anchorEl={anchorEl}
+        open={Boolean(anchorEl)}
+        onClose={handleMenuClose}
+      >
+        <MenuItem
+          onClick={() =>
+            selectedFriendshipId && handleDeleteFriend(selectedFriendshipId)
+          }
+        >
+          <DeleteIcon fontSize="small" sx={{ mr: 1 }} />
+          Arkadaşı Sil
+        </MenuItem>
+      </Menu>
+
+      {/* Toast Notification */}
+      <Snackbar
+        open={toastOpen}
+        autoHideDuration={6000}
+        onClose={handleCloseToast}
+        anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+      >
+        <Alert
+          onClose={handleCloseToast}
+          severity="success"
+          sx={{ width: "100%" }}
+        >
+          {toastMessage}
+        </Alert>
+      </Snackbar>
     </Box>
   );
 };

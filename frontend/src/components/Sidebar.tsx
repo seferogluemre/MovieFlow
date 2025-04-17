@@ -52,14 +52,14 @@ const Sidebar: FC = () => {
 
   // Navigation items data
   const navigationItems = [
-    { name: "Dashboard", icon: <DashboardIcon />, path: "/" },
-    { name: "Profile", icon: <ProfileIcon />, path: "/profile" },
-    { name: "Browse Movies", icon: <MoviesIcon />, path: "/browse" },
-    { name: "Watchlist", icon: <WatchlistIcon />, path: "/watchlist" },
-    { name: "Wishlist", icon: <WishlistIcon />, path: "/wishlist" },
-    { name: "Library", icon: <LibraryIcon />, path: "/library" },
-    { name: "My Reviews", icon: <ReviewsIcon />, path: "/reviews" },
-    { name: "Friends", icon: <FriendsIcon />, path: "/friends" },
+    { name: "Ana Sayfa", icon: <DashboardIcon />, path: "/" },
+    { name: "Profil", icon: <ProfileIcon />, path: "/profile" },
+    { name: "Filmlere Göz At", icon: <MoviesIcon />, path: "/browse" },
+    { name: "İzleme Listesi", icon: <WatchlistIcon />, path: "/watchlist" },
+    { name: "İstek Listesi", icon: <WishlistIcon />, path: "/wishlist" },
+    { name: "Kütüphane", icon: <LibraryIcon />, path: "/library" },
+    { name: "Değerlendirmelerim", icon: <ReviewsIcon />, path: "/reviews" },
+    { name: "Arkadaşlar", icon: <FriendsIcon />, path: "/friends" },
   ];
 
   const handleLogout = async () => {
@@ -88,7 +88,7 @@ const Sidebar: FC = () => {
       <Logo>
         <FilmIcon sx={{ fontSize: 28, mr: 1 }} />
         <Typography variant="h6" component="div" fontWeight="bold">
-          FilmPortal
+          Film Portalı
         </Typography>
       </Logo>
 
@@ -142,7 +142,7 @@ const Sidebar: FC = () => {
             py: 1,
           }}
         >
-          Logout
+          Çıkış Yap
         </Button>
       </Box>
     </Box>

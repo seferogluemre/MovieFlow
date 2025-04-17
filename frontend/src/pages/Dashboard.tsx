@@ -1,101 +1,25 @@
-import { FC, useEffect, useState, useCallback } from "react";
-import { Box, Grid, Typography, CircularProgress, Alert } from "@mui/material";
 import {
-  MovieOutlined,
-  RateReview,
-  People,
   AccessTime,
+  MovieOutlined,
+  People,
+  RateReview,
 } from "@mui/icons-material";
-import StatCard from "../components/StatCard";
+import { Alert, Box, CircularProgress, Grid, Typography } from "@mui/material";
+import { FC, useCallback, useEffect, useState } from "react";
 import MovieCard from "../components/MovieCard";
 import SectionHeader from "../components/SectionHeader";
+import StatCard from "../components/StatCard";
+import { demoMovies, demoWatchlist } from "../data/mockData";
+import { checkApiHealth, userIdKey, userService } from "../utils/api";
 import {
-  userService,
-  checkApiHealth,
-  userIdKey,
-} from "../utils/api";
-import { Movie, Library, Watchlist, UserStats, User, LibraryItem, WatchlistItem } from "../utils/types";
-
-
-
-// Demo verileri - API bağlantısı başarısız olduğunda gösterilecek
-const demoMovies = [
-  {
-    id: 1,
-    title: "The Shawshank Redemption",
-    description:
-      "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
-    releaseYear: 1994,
-    duration: 142,
-    posterImage: "https://via.placeholder.com/300x450?text=Shawshank",
-    director: "Frank Darabont",
-    rating: 4.9,
-    ageRating: "MATURE",
-  },
-  {
-    id: 2,
-    title: "The Godfather",
-    description:
-      "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.",
-    releaseYear: 1972,
-    duration: 175,
-    posterImage: "https://via.placeholder.com/300x450?text=Godfather",
-    director: "Francis Ford Coppola",
-    rating: 4.8,
-    ageRating: "MATURE",
-  },
-  {
-    id: 3,
-    title: "The Dark Knight",
-    description:
-      "When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.",
-    releaseYear: 2008,
-    duration: 152,
-    posterImage: "https://via.placeholder.com/300x450?text=Dark+Knight",
-    director: "Christopher Nolan",
-    rating: 4.7,
-    ageRating: "TEEN",
-  },
-];
-
-const demoWatchlist = [
-  {
-    id: 1,
-    title: "Dune",
-    description:
-      "Feature adaptation of Frank Herbert's science fiction novel, about the son of a noble family entrusted with the protection of the most valuable asset and most vital element in the galaxy.",
-    releaseYear: 2021,
-    duration: 155,
-    posterImage: "https://via.placeholder.com/300x450?text=Dune",
-    director: "Denis Villeneuve",
-    rating: 4.7,
-    ageRating: "TEEN",
-  },
-  {
-    id: 2,
-    title: "Blade Runner 2049",
-    description:
-      "Young Blade Runner K's discovery of a long-buried secret leads him to track down former Blade Runner Rick Deckard, who's been missing for thirty years.",
-    releaseYear: 2017,
-    duration: 164,
-    posterImage: "https://via.placeholder.com/300x450?text=Blade+Runner",
-    director: "Denis Villeneuve",
-    rating: 4.5,
-    ageRating: "MATURE",
-  },
-  {
-    id: 3,
-    title: "The Lord of the Rings: The Fellowship of the Ring",
-    description:
-      "A meek Hobbit from the Shire and eight companions set out on a journey to destroy the powerful One Ring and save Middle-earth from the Dark Lord Sauron.",
-    releaseYear: 2001,
-    duration: 178,
-    posterImage: "https://via.placeholder.com/300x450?text=LOTR",
-    director: "Peter Jackson",
-    rating: 4.9,
-    ageRating: "TEEN",
-  },
-];
+  Library,
+  LibraryItem,
+  Movie,
+  User,
+  UserStats,
+  Watchlist,
+  WatchlistItem,
+} from "../utils/types";
 
 const Dashboard: FC = () => {
   const [loading, setLoading] = useState(true);
@@ -143,7 +67,6 @@ const Dashboard: FC = () => {
             (m) => m.id === movieId
           );
           if (demoMovie) {
-
             // Önbelleğe ekle
             setMovieCache((prev) => ({
               ...prev,
@@ -181,7 +104,6 @@ const Dashboard: FC = () => {
 
         return movie;
       } catch (error) {
-
         const demoMovie = [...demoMovies, ...demoWatchlist].find(
           (m) => m.id === movieId
         );
@@ -375,7 +297,7 @@ const Dashboard: FC = () => {
       )}
 
       <Typography variant="h4" fontWeight="bold" mb={4}>
-        Welcome back, {user?.name || user?.username || "User"}!
+        Hoş geldin, {user?.name || user?.username || "Kullanıcı"}!
       </Typography>
 
       {/* Stats Row */}
@@ -384,9 +306,9 @@ const Dashboard: FC = () => {
           sx={{ gridColumn: { xs: "span 12", sm: "span 6", md: "span 3" } }}
         >
           <StatCard
-            title="Movies Watched"
+            title="İzlenen Filmler"
             value={userStats.moviesWatched}
-            subtitle={`+3 from last month`}
+            subtitle={`Geçen aydan +3`}
             icon={<MovieOutlined fontSize="large" />}
             iconColor="primary.main"
           />
@@ -395,9 +317,9 @@ const Dashboard: FC = () => {
           sx={{ gridColumn: { xs: "span 12", sm: "span 6", md: "span 3" } }}
         >
           <StatCard
-            title="Reviews Written"
+            title="Yazılan Değerlendirmeler"
             value={userStats.reviewsCount}
-            subtitle={`+2 from last month`}
+            subtitle={`Geçen aydan +2`}
             icon={<RateReview fontSize="large" />}
             iconColor="secondary.main"
           />
@@ -406,9 +328,9 @@ const Dashboard: FC = () => {
           sx={{ gridColumn: { xs: "span 12", sm: "span 6", md: "span 3" } }}
         >
           <StatCard
-            title="Watch Time"
-            value={`${userStats.watchTime}h`}
-            subtitle={`+12h from last month`}
+            title="İzleme Süresi"
+            value={`${userStats.watchTime}s`}
+            subtitle={`Geçen aydan +12s`}
             icon={<AccessTime fontSize="large" />}
             iconColor="warning.main"
           />
@@ -417,9 +339,9 @@ const Dashboard: FC = () => {
           sx={{ gridColumn: { xs: "span 12", sm: "span 6", md: "span 3" } }}
         >
           <StatCard
-            title="Friends"
+            title="Arkadaşlar"
             value={userStats.friendsCount}
-            subtitle={`+2 new friends`}
+            subtitle={`+2 yeni arkadaş`}
             icon={<People fontSize="large" />}
             iconColor="success.main"
           />
@@ -429,8 +351,8 @@ const Dashboard: FC = () => {
       {/* Recently Watched Section */}
       <Box mb={5}>
         <SectionHeader
-          title="Recently Watched"
-          subtitle="Movies you've watched recently."
+          title="Son İzlenenler"
+          subtitle="Son zamanlarda izlediğiniz filmler."
           viewAllLink="/library"
         />
         <Box>
@@ -444,7 +366,7 @@ const Dashboard: FC = () => {
             ))
           ) : (
             <Typography variant="body2" color="text.secondary">
-              You haven't watched any movies yet.
+              Henüz hiç film izlemediniz.
             </Typography>
           )}
         </Box>
@@ -453,8 +375,8 @@ const Dashboard: FC = () => {
       {/* Watchlist Section */}
       <Box mb={5}>
         <SectionHeader
-          title="Watchlist"
-          subtitle="Movies you want to watch."
+          title="İzleme Listesi"
+          subtitle="İzlemek istediğiniz filmler."
           viewAllLink="/watchlist"
         />
         <Box>
@@ -468,7 +390,7 @@ const Dashboard: FC = () => {
             ))
           ) : (
             <Typography variant="body2" color="text.secondary">
-              Your watchlist is empty.
+              İzleme listeniz boş.
             </Typography>
           )}
         </Box>

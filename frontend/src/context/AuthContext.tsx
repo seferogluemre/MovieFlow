@@ -1,20 +1,20 @@
+import axios from "axios";
 import React, {
   createContext,
-  useContext,
-  useState,
-  useEffect,
   ReactNode,
+  useContext,
+  useEffect,
+  useState,
 } from "react";
 import { authService, userService } from "../utils/api";
-import axios from "axios";
 import { AuthContextType, User } from "../utils/types";
 
 const AuthContext = createContext<AuthContextType>({
   user: null,
   isAuthenticated: false,
   isLoading: true,
-  login: async () => { },
-  logout: async () => { },
+  login: async () => {},
+  logout: async () => {},
   register: async () => ({
     id: 0,
     username: "",
@@ -22,7 +22,7 @@ const AuthContext = createContext<AuthContextType>({
     createdAt: "",
     updatedAt: "",
   }),
-  refreshUser: async () => { },
+  refreshUser: async () => {},
   error: null,
   checkAuthStatus: async () => false,
 });
@@ -77,7 +77,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
           email: "user@example.com",
           createdAt: new Date().toISOString(),
           updatedAt: new Date().toISOString(),
-          isAdmin: false
+          isAdmin: false,
         };
 
         setUser(basicUserData);
@@ -119,7 +119,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         email: email,
         createdAt: new Date().toISOString(),
         updatedAt: new Date().toISOString(),
-        isAdmin: false
+        isAdmin: false,
       };
 
       setUser(basicUserData);
@@ -133,11 +133,10 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
           fetchErr
         );
       }
-
     } catch (err: any) {
       const errorMessage =
         err.response?.data?.message ||
-        "Login failed. Please check your credentials.";
+        "Giriş başarısız. Lütfen bilgilerinizi kontrol edin.";
       setError(errorMessage);
       throw err;
     } finally {
@@ -171,7 +170,8 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
     try {
       const response = await fetch(
-        `${process.env.BACKEND_URL || "http://localhost:3000"
+        `${
+          process.env.BACKEND_URL || "http://localhost:3000"
         }/api/auth/register`,
         {
           method: "POST",
@@ -201,7 +201,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       const errorMessage =
         err instanceof Error
           ? err.message
-          : "Registration failed. Please try again.";
+          : "Kayıt başarısız. Lütfen tekrar deneyin.";
       setError(errorMessage);
       throw err;
     } finally {
