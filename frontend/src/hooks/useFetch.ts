@@ -1,10 +1,6 @@
 import { useState, useEffect } from "react";
+import { FetchState } from "../utils/types";
 
-interface FetchState<T> {
-  data: T | null;
-  loading: boolean;
-  error: Error | null;
-}
 
 type FetchFunction<T> = () => Promise<T>;
 

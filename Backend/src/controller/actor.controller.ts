@@ -1,14 +1,10 @@
-import multer from "multer";
-import { upload, uploadToS3, getS3Url } from "src/utils/s3-upload.util";
-import { z } from "zod";
 import { Request, Response } from "express";
-import { createActorSchema } from "src/validators/actor.validation";
 import { ActorService } from "src/services/actor.service";
-import { logInfo, logWarn } from "src/utils/logging/logger.util";
 import { CreateActorProps } from "src/types/types";
-import prisma from "src/config/database";
-import path from "path";
-import fs from "fs";
+import { logInfo, logWarn } from "src/utils/logging/logger.util";
+import { getS3Url, upload, uploadToS3 } from "src/utils/s3-upload.util";
+import { createActorSchema } from "src/validators/actor.validation";
+import { z } from "zod";
 
 export class ActorController {
   static async index(req: Request, res: Response): Promise<void> {

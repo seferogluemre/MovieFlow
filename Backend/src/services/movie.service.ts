@@ -159,13 +159,52 @@ export class MovieService {
       }
     }
 
-    return await prisma.movie.delete({
-      where: { id },
-      select: {
-        id: true,
-        title: true,
-        description: true,
-      },
+    // Implement cascading delete - first delete all dependent records
+    await prisma.$transaction(async (tx) => {
+      // Delete all movie-genre relationships
+      await tx.movieGenre.deleteMany({
+        where: { movieId: id },
+      });
+
+      // Delete all movie-actor relationships
+      await tx.movieActor.deleteMany({
+        where: { movieId: id },
+      });
+
+      // Delete all reviews for this movie
+      await tx.review.deleteMany({
+        where: { movieId: id },
+      });
+
+      // Delete all ratings for this movie
+      await tx.rating.deleteMany({
+        where: { movieId: id },
+      });
+
+      // Delete all watchlist entries for this movie
+      await tx.watchlist.deleteMany({
+        where: { movieId: id },
+      });
+
+      // Delete all wishlist entries for this movie
+      await tx.wishlist.deleteMany({
+        where: { movieId: id },
+      });
+
+      // Delete all library entries for this movie
+      await tx.library.deleteMany({
+        where: { movieId: id },
+      });
+
+      // Finally delete the movie itself
+      await tx.movie.delete({
+        where: { id },
+      });
     });
+
+    return {
+      id,
+      message: "Movie and all related records successfully deleted",
+    };
   }
 }

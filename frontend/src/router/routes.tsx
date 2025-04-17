@@ -12,10 +12,10 @@ import ProfileDetail from "../pages/ProfileDetail";
 import Settings from "../pages/Settings";
 import Watchlist from "../pages/Watchlist";
 import Wishlist from "../pages/Wishlist";
+import { accessKey } from "../utils/api";
 
-// Auth guard for protected routes
 const isAuthenticated = () => {
-  return !!localStorage.getItem("accessToken");
+  return !!localStorage.getItem(accessKey);
 };
 
 const AuthGuard = ({ element }: { element: React.ReactNode }) => {

@@ -1,17 +1,10 @@
+import { Star as StarIcon } from "@mui/icons-material";
+import { Box, Card, CardMedia, Chip, Typography } from "@mui/material";
 import { FC } from "react";
 import { Link } from "react-router-dom";
-import { Box, Card, CardMedia, Typography, Chip, Stack } from "@mui/material";
-import { Star as StarIcon } from "@mui/icons-material";
-import { Movie } from "../utils/types";
-
-interface MovieCardProps {
-  movie: Movie;
-  watchedDate?: string;
-  addedDate?: string;
-}
+import { MovieCardProps } from "../utils/types";
 
 const MovieCard: FC<MovieCardProps> = ({ movie, watchedDate, addedDate }) => {
-  // Format relative time
   const formatRelativeTime = (dateString: string) => {
     const date = new Date(dateString);
     const now = new Date();

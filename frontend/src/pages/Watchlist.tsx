@@ -25,6 +25,7 @@ import {
   Menu,
   MenuItem,
   Paper,
+  Snackbar,
   Table,
   TableBody,
   TableCell,
@@ -40,26 +41,7 @@ import { FC, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import api, { processApiError } from "../utils/api";
-
-interface WatchlistItem {
-  id: number;
-  addedAt: string;
-  userId: number;
-  movieId: number;
-  movie: {
-    id: number;
-    title: string;
-    description: string;
-    releaseYear: number;
-    duration: number;
-    posterImage: string;
-    director: string;
-    rating: number;
-    ageRating: string;
-    createdAt: string;
-    updatedAt: string;
-  };
-}
+import { WatchlistItem } from "../utils/types";
 
 const Watchlist: FC = () => {
   const navigate = useNavigate();
@@ -81,6 +63,15 @@ const Watchlist: FC = () => {
     open: false,
     itemId: null,
     action: null,
+  });
+  const [snackbar, setSnackbar] = useState<{
+    open: boolean;
+    message: string;
+    severity: "success" | "error" | "info" | "warning";
+  }>({
+    open: false,
+    message: "",
+    severity: "success",
   });
 
   useEffect(() => {
@@ -109,7 +100,6 @@ const Watchlist: FC = () => {
       setFilteredWatchlist(response.data || []);
       setError(null);
     } catch (err) {
-      console.error("Error fetching watchlist:", err);
       setError(
         "İzleme listeniz yüklenirken bir hata oluştu. Lütfen daha sonra tekrar deneyin."
       );
@@ -188,16 +178,33 @@ const Watchlist: FC = () => {
             prevWatchlist.filter((item) => item.id !== confirmDialog.itemId)
           );
           setError(null);
+          // Başarılı bildirim göster
+          setSnackbar({
+            open: true,
+            message: "Film izleme listenizden kaldırıldı.",
+            severity: "success",
+          });
         } else if (confirmDialog.action === "wishlist" && selectedItem) {
           // İstek listesine ekleme işlemi
           await api.post("/wishlist", { movieId: selectedItem.movie.id });
           setError(null);
+          // Başarılı bildirim göster
+          setSnackbar({
+            open: true,
+            message: "Film istek listenize eklendi.",
+            severity: "success",
+          });
         }
       }
     } catch (err) {
-      console.error("Error with watchlist action:", err);
       const errorMessage = processApiError(err);
       setError(errorMessage);
+      // Hata bildirimi göster
+      setSnackbar({
+        open: true,
+        message: errorMessage,
+        severity: "error",
+      });
     } finally {
       setConfirmDialog({
         open: false,
@@ -212,6 +219,13 @@ const Watchlist: FC = () => {
       open: false,
       itemId: null,
       action: null,
+    });
+  };
+
+  const handleCloseSnackbar = () => {
+    setSnackbar({
+      ...snackbar,
+      open: false,
     });
   };
 
@@ -462,6 +476,22 @@ const Watchlist: FC = () => {
           </Button>
         </DialogActions>
       </Dialog>
+
+      {/* Snackbar toast notification */}
+      <Snackbar
+        open={snackbar.open}
+        autoHideDuration={5000}
+        onClose={handleCloseSnackbar}
+        anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+      >
+        <Alert
+          onClose={handleCloseSnackbar}
+          severity={snackbar.severity}
+          sx={{ width: "100%" }}
+        >
+          {snackbar.message}
+        </Alert>
+      </Snackbar>
     </Box>
   );
 };

@@ -38,3 +38,8 @@ export interface CreateActorProps {
   nationality?: string;
   actorImage?: string | null;
 }
+
+export interface UserWhereConditionProps {
+  username?: string;
+  isAdmin?: boolean;
+}

@@ -67,8 +67,6 @@ const Sidebar: FC = () => {
       await authService.logout();
       navigate("/login");
     } catch (error) {
-      console.error("Logout error:", error);
-      // Hata olsa bile token'ları temizleyerek login sayfasına yönlendir
       localStorage.removeItem("accessToken");
       localStorage.removeItem("refreshToken");
       localStorage.removeItem("userId");

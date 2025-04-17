@@ -32,8 +32,8 @@ import { Outlet, useNavigate } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
 import { useAuth } from "../context/AuthContext";
 import { useTheme } from "../context/ThemeContext";
-import { notificationService } from "../services/NotificationService";
-import { Notification } from "../utils/types";
+import { Notification, NotificationType } from "../utils/types";
+import { notificationService } from "../utils/api";
 
 const SearchBar = styled("div")(({ theme }) => ({
   position: "relative",
@@ -76,11 +76,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-enum NotificationType {
-  FRIEND_REQUEST = "FRIEND_REQUEST",
-  FRIEND_REQUEST_ACCEPTED = "FRIEND_REQUEST_ACCEPTED",
-  FRIEND_REQUEST_REJECTED = "FRIEND_REQUEST_REJECTED",
-}
+
 
 const MainLayout: FC = () => {
   const navigate = useNavigate();
@@ -159,12 +155,8 @@ const MainLayout: FC = () => {
         case "accept":
           if (notification.type === NotificationType.FRIEND_REQUEST) {
             if (friendshipId) {
-              console.log(`Accepting friendship ID: ${friendshipId}`);
               await notificationService.acceptFriendRequest(friendshipId);
-              console.log("Friendship accepted successfully");
               await notificationService.markAsRead(notificationId);
-            } else {
-              console.error("Missing friendshipId in notification metadata");
             }
           }
           break;
@@ -176,8 +168,6 @@ const MainLayout: FC = () => {
               await notificationService.rejectFriendRequest(friendshipId);
               console.log("Friendship rejected successfully");
               await notificationService.markAsRead(notificationId);
-            } else {
-              console.error("Missing friendshipId in notification metadata");
             }
           }
           break;
@@ -187,11 +177,8 @@ const MainLayout: FC = () => {
           break;
 
         case "viewProfile":
-          // Bildirimi okundu olarak işaretle
           await notificationService.markAsRead(notificationId);
-          // Notification popover'ı kapat
           handleNotificationClose();
-          // Profil sayfasına yönlendir
           navigate(`/profile/${notification.fromUserId}`);
           break;
       }
@@ -203,7 +190,6 @@ const MainLayout: FC = () => {
     }
   };
 
-  // Bildirimi okundu olarak işaretleme yardımcı fonksiyonu
   const markNotificationAsRead = async (notificationId: number) => {
     await notificationService.markAsRead(notificationId);
   };
@@ -228,7 +214,6 @@ const MainLayout: FC = () => {
     }
   };
 
-  // Bildirim tarihi formatla
   const formatNotificationDate = (dateString: string) => {
     try {
       return formatDistanceToNow(new Date(dateString), { addSuffix: true });
@@ -246,7 +231,7 @@ const MainLayout: FC = () => {
     <Box
       sx={{
         display: "flex",
-        width: "100vw", // Viewport genişliği
+        width: "100vw",
         maxWidth: "100%", // Maksimum genişlik
         height: "100vh", // Tam ekran yüksekliği
         overflow: "hidden", // Dış taşmaları engelle
@@ -426,8 +411,8 @@ const MainLayout: FC = () => {
                       src={
                         notification.fromUser?.profileImage
                           ? notification.fromUser.profileImage.startsWith(
-                              "http"
-                            )
+                            "http"
+                          )
                             ? notification.fromUser.profileImage
                             : `http://localhost:3000/uploads/${notification.fromUser.profileImage}`
                           : undefined

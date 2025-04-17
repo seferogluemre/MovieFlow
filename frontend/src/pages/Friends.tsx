@@ -35,32 +35,8 @@ import { FC, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import api, { processApiError, userService } from "../utils/api";
+import { Friendship, User, UserRelationship } from "../utils/types";
 
-interface User {
-  id: number;
-  name: string;
-  username: string;
-  email: string;
-  profileImage: string | null;
-}
-
-interface Friendship {
-  id: number;
-  userId: number;
-  friendId: number;
-  status: string;
-  createdAt: string;
-  user: User;
-  friend: User;
-}
-
-interface UserRelationship {
-  userId: number;
-  isFriend: boolean;
-  isPending: boolean;
-  isFollowing: boolean;
-  isBlocked: boolean;
-}
 
 const Friends: FC = () => {
   const navigate = useNavigate();
@@ -154,7 +130,7 @@ const Friends: FC = () => {
         if (
           !uniqueFriendships.has(otherUserId) ||
           new Date(friendship.createdAt) >
-            new Date(uniqueFriendships.get(otherUserId).createdAt)
+          new Date(uniqueFriendships.get(otherUserId).createdAt)
         ) {
           uniqueFriendships.set(otherUserId, friendship);
         }
@@ -199,7 +175,7 @@ const Friends: FC = () => {
         : currentUser?.id;
 
       // Filter out the current user from the list of all users
-      const filteredUsers = users.filter((user) => user.id !== currentUserId);
+      const filteredUsers = users.filter((user: User) => user.id !== currentUserId);
 
       setAllUsers(filteredUsers);
       setFilteredUsers(filteredUsers);
@@ -291,9 +267,8 @@ const Friends: FC = () => {
             ? friendship.friend
             : friendship.user;
 
-        // Check if the other user matches the search query
         if (
-          otherUser.name.toLowerCase().includes(query) ||
+          otherUser.name?.toLowerCase().includes(query) ||
           otherUser.username.toLowerCase().includes(query)
         ) {
           // If this is the first time we've seen this user, or this friendship is more recent
@@ -301,7 +276,7 @@ const Friends: FC = () => {
           if (
             !uniqueFriendships.has(otherUserId) ||
             new Date(friendship.createdAt) >
-              new Date(uniqueFriendships.get(otherUserId).createdAt)
+            new Date(uniqueFriendships.get(otherUserId).createdAt)
           ) {
             uniqueFriendships.set(otherUserId, friendship);
           }
@@ -316,7 +291,7 @@ const Friends: FC = () => {
       const filteredPending = pendingRequests.filter((request) => {
         const user = request.user;
         return (
-          user.name.toLowerCase().includes(query) ||
+          user.name?.toLowerCase().includes(query) ||
           user.username.toLowerCase().includes(query)
         );
       });
@@ -326,7 +301,7 @@ const Friends: FC = () => {
       const filteredSent = sentRequests.filter((request) => {
         const user = request.friend;
         return (
-          user.name.toLowerCase().includes(query) ||
+          user.name?.toLowerCase().includes(query) ||
           user.username.toLowerCase().includes(query)
         );
       });
@@ -337,7 +312,7 @@ const Friends: FC = () => {
         .filter((user) => user.id !== currentUser?.id) // Filter out current user
         .filter((user) => {
           return (
-            user.name.toLowerCase().includes(query) ||
+            user.name?.toLowerCase().includes(query) ||
             user.username.toLowerCase().includes(query)
           );
         });
@@ -373,7 +348,7 @@ const Friends: FC = () => {
         if (
           !uniqueFriendships.has(otherUserId) ||
           new Date(friendship.createdAt) >
-            new Date(uniqueFriendships.get(otherUserId).createdAt)
+          new Date(uniqueFriendships.get(otherUserId).createdAt)
         ) {
           uniqueFriendships.set(otherUserId, friendship);
         }
@@ -573,10 +548,10 @@ const Friends: FC = () => {
             activeTab === 0
               ? "Search friends..."
               : activeTab === 1
-              ? "Search friend requests..."
-              : activeTab === 2
-              ? "Search sent requests..."
-              : "Search users..."
+                ? "Search friend requests..."
+                : activeTab === 2
+                  ? "Search sent requests..."
+                  : "Search users..."
           }
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}

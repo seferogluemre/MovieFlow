@@ -2,7 +2,6 @@ import React, {
   createContext,
   useContext,
   useState,
-  useEffect,
   ReactNode,
 } from "react";
 import {
@@ -10,23 +9,16 @@ import {
   createTheme,
 } from "@mui/material/styles";
 import { CssBaseline } from "@mui/material";
+import { ThemeContextType, ThemeMode } from "../utils/types";
 
-// Tema tercihi tipi
-type ThemeMode = "light" | "dark";
 
-// Context değer tipi
-interface ThemeContextType {
-  mode: ThemeMode;
-  toggleTheme: () => void;
+export interface ThemeProviderProps {
+  children: ReactNode;
 }
-
-// Varsayılan değerler
 const defaultContext: ThemeContextType = {
   mode: "dark",
-  toggleTheme: () => {},
+  toggleTheme: () => { },
 };
-
-// Context oluşturma
 const ThemeContext = createContext<ThemeContextType>(defaultContext);
 
 // Koyu tema
@@ -131,9 +123,7 @@ const lightTheme = createTheme({
   },
 });
 
-interface ThemeProviderProps {
-  children: ReactNode;
-}
+
 
 // ThemeProvider bileşeni
 export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
@@ -152,7 +142,6 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
     });
   };
 
-  // Seçilen temayı belirle
   const theme = mode === "dark" ? darkTheme : lightTheme;
 
   return (

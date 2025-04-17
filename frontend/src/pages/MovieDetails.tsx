@@ -32,86 +32,15 @@ import { FC, useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import api, { processApiError } from "../utils/api";
+import { LibraryItem, MovieDetailsType, Review, WatchlistItem, WishlistItem } from "../utils/types";
 
-interface MovieDetails {
-  id: number;
-  title: string;
-  description: string;
-  releaseYear: number;
-  duration: number;
-  posterImage: string;
-  director: string;
-  rating: number;
-  ageRating: string;
-  createdAt: string;
-  updatedAt: string;
-  genres: {
-    movieId: number;
-    genreId: number;
-    genre: {
-      id: number;
-      name: string;
-    };
-  }[];
-  actors: {
-    movieId: number;
-    actorId: number;
-    role: string;
-    actor: {
-      id: number;
-      name: string;
-      biography: string;
-      birthYear: number;
-      nationality: string;
-      photo: string;
-      createdAt: string;
-      updatedAt: string;
-    };
-  }[];
-}
-
-interface Review {
-  id: number;
-  content: string;
-  createdAt: string;
-  updatedAt: string;
-  user: {
-    id: number;
-    name: string;
-    username: string;
-    profileImage: string | null;
-  };
-}
-
-// Koleksiyon öğelerini tanımlayan arayüzler
-interface WatchlistItem {
-  id: number;
-  addedAt: string;
-  userId: number;
-  movieId: number;
-}
-
-interface LibraryItem {
-  id: number;
-  userId: number;
-  movieId: number;
-  addedAt: string;
-  lastWatched: string | null;
-}
-
-interface WishlistItem {
-  id: number;
-  addedAt: string;
-  userId: number;
-  movieId: number;
-}
 
 const MovieDetails: FC = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const location = useLocation();
   const { isAuthenticated, checkAuthStatus, user } = useAuth();
-  const [movie, setMovie] = useState<MovieDetails | null>(null);
+  const [movie, setMovie] = useState<MovieDetailsType | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
@@ -159,7 +88,6 @@ const MovieDetails: FC = () => {
       setMovie(movieData);
       setError(null);
     } catch (err) {
-      console.error("Error fetching movie details:", err);
       setError(
         "Film detayları yüklenirken bir hata oluştu. Lütfen daha sonra tekrar deneyin."
       );
@@ -192,7 +120,6 @@ const MovieDetails: FC = () => {
         }, 100);
       }
     } catch (err) {
-      console.error("Error fetching movie reviews:", err);
       setReviewError("Film yorumları yüklenirken bir hata oluştu.");
     } finally {
       setLoadingReviews(false);
@@ -243,7 +170,6 @@ const MovieDetails: FC = () => {
         setWishlistItemId(null);
       }
     } catch (err) {
-      console.error("Error checking movie collections:", err);
     }
   };
 
@@ -256,7 +182,6 @@ const MovieDetails: FC = () => {
       setIsInWatchlist(true);
       setTimeout(() => setSuccessMessage(null), 3000);
     } catch (err) {
-      console.error("Error adding movie to watchlist:", err);
       const errorMessage = processApiError(err);
       setError(errorMessage);
       setTimeout(() => setError(null), 3000);
@@ -273,7 +198,6 @@ const MovieDetails: FC = () => {
       setWatchlistItemId(null);
       setTimeout(() => setSuccessMessage(null), 3000);
     } catch (err) {
-      console.error("Error removing movie from watchlist:", err);
       const errorMessage = processApiError(err);
       setError(errorMessage);
       setTimeout(() => setError(null), 3000);
@@ -289,7 +213,6 @@ const MovieDetails: FC = () => {
       setIsInLibrary(true);
       setTimeout(() => setSuccessMessage(null), 3000);
     } catch (err) {
-      console.error("Error adding movie to library:", err);
       const errorMessage = processApiError(err);
       setError(errorMessage);
       setTimeout(() => setError(null), 3000);
@@ -306,7 +229,6 @@ const MovieDetails: FC = () => {
       setLibraryItemId(null);
       setTimeout(() => setSuccessMessage(null), 3000);
     } catch (err) {
-      console.error("Error removing movie from library:", err);
       const errorMessage = processApiError(err);
       setError(errorMessage);
       setTimeout(() => setError(null), 3000);
@@ -322,7 +244,6 @@ const MovieDetails: FC = () => {
       setIsInWishlist(true);
       setTimeout(() => setSuccessMessage(null), 3000);
     } catch (err) {
-      console.error("Error adding movie to wishlist:", err);
       const errorMessage = processApiError(err);
       setError(errorMessage);
       setTimeout(() => setError(null), 3000);
@@ -339,7 +260,6 @@ const MovieDetails: FC = () => {
       setWishlistItemId(null);
       setTimeout(() => setSuccessMessage(null), 3000);
     } catch (err) {
-      console.error("Error removing movie from wishlist:", err);
       const errorMessage = processApiError(err);
       setError(errorMessage);
       setTimeout(() => setError(null), 3000);

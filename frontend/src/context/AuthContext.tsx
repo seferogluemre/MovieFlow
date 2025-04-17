@@ -7,37 +7,14 @@ import React, {
 } from "react";
 import { authService, userService } from "../utils/api";
 import axios from "axios";
-
-interface User {
-  id: number;
-  username: string;
-  email: string;
-  profileImage?: string;
-  firstName?: string;
-  lastName?: string;
-  bio?: string;
-  createdAt: string;
-  updatedAt: string;
-}
-
-interface AuthContextType {
-  user: User | null;
-  isAuthenticated: boolean;
-  isLoading: boolean;
-  login: (email: string, password: string) => Promise<void>;
-  logout: () => Promise<void>;
-  register: (name: string, email: string, password: string) => Promise<User>;
-  refreshUser: () => Promise<void>;
-  error: string | null;
-  checkAuthStatus: () => Promise<boolean>;
-}
+import { AuthContextType, User } from "../utils/types";
 
 const AuthContext = createContext<AuthContextType>({
   user: null,
   isAuthenticated: false,
   isLoading: true,
-  login: async () => {},
-  logout: async () => {},
+  login: async () => { },
+  logout: async () => { },
   register: async () => ({
     id: 0,
     username: "",
@@ -45,7 +22,7 @@ const AuthContext = createContext<AuthContextType>({
     createdAt: "",
     updatedAt: "",
   }),
-  refreshUser: async () => {},
+  refreshUser: async () => { },
   error: null,
   checkAuthStatus: async () => false,
 });
@@ -78,41 +55,29 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       const userId = localStorage.getItem("userId");
 
       if (!accessToken || !userId) {
-        console.log("Token veya userId bulunamadı, oturum kapatılıyor");
         setUser(null);
         setLoading(false);
         return false;
       }
 
       try {
-        console.log("User verisi çekiliyor...");
         const userData = await userService.getCurrentUser();
-        console.log("User verisi başarıyla alındı:", userData.id);
         setUser(userData);
         setLoading(false);
         return true;
       } catch (err: unknown) {
-        console.error("Kullanıcı verisi alınamadı:", err);
-
         // API hatası, token geçersiz olabilir ama hemen silmiyoruz
         if (axios.isAxiosError(err) && err.response?.status === 401) {
-          console.warn("Yetkilendirme hatası, token geçersiz olabilir");
-          // Token sorunu ama hemen temizlemiyoruz, refresh token ile yeniden deneyin
           return false;
         }
 
-        // Network hatası veya diğer hatalar
-        console.log(
-          "Geçici bir hata oluştu, varsayılan kullanıcı verisi kullanılıyor"
-        );
-
-        // Basit bir kullanıcı nesnesi oluştur
         const basicUserData: User = {
           id: parseInt(userId),
-          username: "User", // API'den alamadığımız için varsayılan değer
-          email: "user@example.com", // API'den alamadığımız için varsayılan değer
+          username: "User",
+          email: "user@example.com",
           createdAt: new Date().toISOString(),
           updatedAt: new Date().toISOString(),
+          isAdmin: false
         };
 
         setUser(basicUserData);
@@ -120,8 +85,6 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         return true;
       }
     } catch (err) {
-      console.error("CheckAuth genel hatası:", err);
-      // Sadece ciddi bir hata durumunda token'ları temizliyoruz
       localStorage.removeItem("accessToken");
       localStorage.removeItem("refreshToken");
       localStorage.removeItem("userId");
@@ -137,15 +100,11 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     setError(null);
 
     try {
-      console.log("Login initiated for email:", email);
-
       localStorage.removeItem("accessToken");
       localStorage.removeItem("refreshToken");
       localStorage.removeItem("userId");
 
       const response = await authService.login(email, password);
-      console.log("Login response received:", response);
-
       if (!response.accessToken || !response.refreshToken) {
         throw new Error("Invalid response from server - missing tokens");
       }
@@ -154,40 +113,28 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       localStorage.setItem("refreshToken", response.refreshToken);
       localStorage.setItem("userId", response.session.userId.toString());
 
-      console.log(
-        "Login successful, tokens stored. User ID:",
-        response.session.userId
-      );
-
-      // Create basic user data immediately to update UI state
-      // This ensures the user is marked as authenticated right away
       const basicUserData: User = {
         id: response.session.userId,
         username: "User", // Will be updated with real data
         email: email,
         createdAt: new Date().toISOString(),
         updatedAt: new Date().toISOString(),
+        isAdmin: false
       };
 
       setUser(basicUserData);
 
       try {
-        console.log("Fetching full user data...");
         const userData = await userService.getCurrentUser();
-        console.log("Full user data received:", userData);
         setUser(userData);
       } catch (fetchErr) {
         console.warn(
           "Could not fetch full user details, using basic data:",
           fetchErr
         );
-        // We already set the basic user data, so we can continue
       }
 
-      console.log("Login process complete, user authenticated");
     } catch (err: any) {
-      console.error("Login error:", err);
-      // Daha detaylı hata mesajı
       const errorMessage =
         err.response?.data?.message ||
         "Login failed. Please check your credentials.";
@@ -223,10 +170,8 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     setError(null);
 
     try {
-      // Since there's no userService.register, redirect to the backend directly
       const response = await fetch(
-        `${
-          process.env.BACKEND_URL || "http://localhost:3000"
+        `${process.env.BACKEND_URL || "http://localhost:3000"
         }/api/auth/register`,
         {
           method: "POST",
@@ -266,9 +211,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
   const refreshUser = async () => {
     try {
-      console.log("Refreshing user data...");
       const userData = await userService.getCurrentUser();
-      console.log("User data refreshed:", userData.id);
       setUser(userData);
       return userData;
     } catch (err) {

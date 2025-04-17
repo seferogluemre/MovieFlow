@@ -236,7 +236,6 @@ model Session {
   @@map("sessions")
 }
 
-// Bildirim modeli
 model Notification {
   id         Int              @id @default(autoincrement())
   type       NotificationType

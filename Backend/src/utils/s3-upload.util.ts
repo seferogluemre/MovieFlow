@@ -81,7 +81,6 @@ export const getS3Url = (key: string): string | null => {
   }
 
   try {
-    
     const params = {
       Bucket: process.env.AWS_BUCKET_NAME || "",
       Key: key,

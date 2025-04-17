@@ -43,27 +43,8 @@ import { tr } from "date-fns/locale";
 import api, { processApiError } from "../utils/api";
 import { formatDistanceToNow } from "date-fns";
 import { useAuth } from "../context/AuthContext";
+import { LibraryItem } from "../utils/types";
 
-interface LibraryItem {
-  id: number;
-  addedAt: string;
-  lastWatched: string | null;
-  userId: number;
-  movieId: number;
-  movie: {
-    id: number;
-    title: string;
-    description: string;
-    releaseYear: number;
-    duration: number;
-    posterImage: string;
-    director: string;
-    rating: number;
-    ageRating: string;
-    createdAt: string;
-    updatedAt: string;
-  };
-}
 
 const Library: FC = () => {
   const navigate = useNavigate();
@@ -123,7 +104,6 @@ const Library: FC = () => {
       setFilteredLibrary(response.data || []);
       setError(null);
     } catch (err) {
-      console.error("Error fetching library:", err);
       setError(
         "Kütüphaneniz yüklenirken bir hata oluştu. Lütfen daha sonra tekrar deneyin."
       );
@@ -224,7 +204,6 @@ const Library: FC = () => {
       setTimeout(() => setSuccessMessage(null), 3000);
       handleCloseWatchedDialog();
     } catch (err) {
-      console.error("Error updating last watched date:", err);
       const errorMessage = processApiError(err);
       setError(errorMessage);
       setTimeout(() => setError(null), 3000);
@@ -263,7 +242,6 @@ const Library: FC = () => {
       setTimeout(() => setSuccessMessage(null), 3000);
       handleCloseReviewDialog();
     } catch (err) {
-      console.error("Error submitting review:", err);
       const errorMessage = processApiError(err);
       setError(errorMessage);
       setTimeout(() => setError(null), 3000);
@@ -290,7 +268,6 @@ const Library: FC = () => {
       setTimeout(() => setSuccessMessage(null), 3000);
       handleCloseDeleteDialog();
     } catch (err) {
-      console.error("Error removing from library:", err);
       const errorMessage = processApiError(err);
       setError(errorMessage);
       setTimeout(() => setError(null), 3000);

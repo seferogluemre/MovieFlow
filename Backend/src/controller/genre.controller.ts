@@ -1,11 +1,11 @@
-import { z } from "zod";
 import { Request, Response } from "express";
+import { GenreService } from "src/services/genre.service";
+import { logInfo, logWarn } from "src/utils/logging/logger.util";
 import {
   createGenreSchema,
   updateGenreSchema,
 } from "src/validators/genre.validation";
-import { GenreService } from "src/services/genre.service";
-import { logInfo, logWarn } from "src/utils/logging/logger.util";
+import { z } from "zod";
 export class GenreController {
   static async index(req: Request, res: Response): Promise<void> {
     try {

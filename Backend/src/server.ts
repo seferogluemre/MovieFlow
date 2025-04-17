@@ -41,7 +41,6 @@ app.use(
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-// Apply default rate limiter only as a fallback
 app.use(cors(corsOptions));
 
 app.use(
@@ -69,6 +68,7 @@ app.use("/api/actors", actor_routes);
 app.use("/api/movies", movie_routes);
 app.use("/api/auth", auth_routes);
 app.use("/api/genres", genre_routes);
+
 app.use("/api/reviews", review_routes);
 app.use("/api/ratings", rating_routes);
 app.use("/api/library", libraryRoutes);

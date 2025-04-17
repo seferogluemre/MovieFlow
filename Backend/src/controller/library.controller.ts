@@ -14,6 +14,24 @@ export class LibraryController {
       }
 
       const data = req.body;
+
+      // Check if movie already exists in user's library
+      const existingLibraryEntry = await LibraryService.getByUserAndMovie(
+        Number(userId),
+        Number(data.movieId)
+      );
+
+      if (existingLibraryEntry) {
+        logWarn(
+          `LibraryController.create ---- Movie ${data.movieId} already exists in library for user ${userId}`
+        );
+        res.status(409).json({
+          message: "Bu film zaten kütüphanenizde bulunuyor.",
+          success: false,
+        });
+        return;
+      }
+
       const library = await LibraryService.create(Number(userId), data);
 
       logInfo(

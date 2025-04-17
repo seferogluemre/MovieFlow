@@ -6,14 +6,21 @@
     "allowJs": true,
     "removeComments": true,
     "resolveJsonModule": true,
-    "typeRoots": [
-      "./node_modules/@types"
-    ],
+    "typeRoots": ["./node_modules/@types"],
     "noImplicitAny": true,
     "sourceMap": true,
     "outDir": "dist",
     "strict": true,
     "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+      "@utils/*": ["src/utils/*"],
+      "@middlewares/*": ["src/middlewares/*"],
+      "@validators/*": ["src/validators/*"],
+      "@services/*": ["src/services/*"],
+      "@controllers/*": ["src/controllers/*"],
+      "@routes/*": ["src/routes/*"],
+    },
     "forceConsistentCasingInFileNames": true,
     "esModuleInterop": true,
     "experimentalDecorators": true,
@@ -33,10 +40,6 @@
       "outDir": "./dist"
     }
   },
-  "include": [
-    "src/**/*"
-  ],
-  "exclude": [
-    "node_modules"
-  ],
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"]
 }

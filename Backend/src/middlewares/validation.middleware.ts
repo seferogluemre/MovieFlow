@@ -1,4 +1,4 @@
-import { Request, Response, NextFunction } from "express";
+import { NextFunction, Request, Response } from "express";
 import { ValidationError, validationResult } from "express-validator";
 import { AppError } from "./error.middleware";
 

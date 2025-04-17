@@ -1,7 +1,4 @@
-export interface UserWhereConditionProps {
-  username?: string;
-  isAdmin?: boolean;
-}
+import { UserWhereConditionProps } from "@/types/types";
 
 export const USER_WHERE_CLAUSE = (
   query: Record<string, any>
@@ -17,12 +14,8 @@ export const USER_WHERE_CLAUSE = (
   }
 
   if (isAdmin !== undefined) {
-    console.log("isAdmin Değeri:", isAdmin);
-
     whereClause.isAdmin = isAdmin === "true";
   }
-
-  console.log("Kullanıcı filtresi:", whereClause);
 
   return whereClause;
 };

@@ -39,38 +39,7 @@ import { formatDistanceToNow } from "date-fns";
 import { tr } from "date-fns/locale";
 import api, { processApiError } from "../utils/api";
 import { useAuth } from "../context/AuthContext";
-
-interface Movie {
-  id: number;
-  title: string;
-  description: string;
-  releaseYear: number;
-  duration: number;
-  posterImage: string;
-  director: string;
-  rating: number;
-  ageRating: string;
-}
-
-interface Review {
-  id: number;
-  content: string;
-  createdAt: string;
-  updatedAt: string;
-  userId: number;
-  movieId: number;
-  movie?: Movie;
-}
-
-interface User {
-  id: number;
-  name: string;
-  username: string;
-  email: string;
-  profileImage: string | null;
-  reviews: Review[];
-  // Diğer kullanıcı alanları...
-}
+import { Review } from "../utils/types";
 
 const MyReviews: FC = () => {
   const navigate = useNavigate();
@@ -246,10 +215,10 @@ const MyReviews: FC = () => {
         prevReviews.map((review) =>
           review.id === editReviewDialog.reviewId
             ? {
-                ...review,
-                content: editReviewDialog.content,
-                updatedAt: new Date().toISOString(),
-              }
+              ...review,
+              content: editReviewDialog.content,
+              updatedAt: new Date().toISOString(),
+            }
             : review
         )
       );
@@ -400,7 +369,7 @@ const MyReviews: FC = () => {
                         size="small"
                         variant="outlined"
                       />
-                      {review.movie?.rating > 0 && (
+                      {review.movie?.rating ? (
                         <Box sx={{ display: "flex", alignItems: "center" }}>
                           <StarIcon
                             sx={{ color: "warning.main", fontSize: 16 }}
@@ -409,12 +378,11 @@ const MyReviews: FC = () => {
                             {review.movie?.rating.toFixed(1)}
                           </Typography>
                         </Box>
-                      )}
+                      ) : ""}
                     </Box>
                   }
-                  subheader={`Yönetmen: ${
-                    review.movie?.director
-                  } | Yazıldığı tarih: ${formatDate(review.createdAt)}`}
+                  subheader={`Yönetmen: ${review.movie?.director
+                    } | Yazıldığı tarih: ${formatDate(review.createdAt)}`}
                 />
                 <Divider />
                 <CardContent>

@@ -1,24 +1,19 @@
-import { FC, ReactNode } from 'react';
+import { FC } from 'react';
 import { Box, Typography, Button } from '@mui/material';
 import { Link } from 'react-router-dom';
+import { SectionHeaderProps } from '../utils/types';
 
-interface SectionHeaderProps {
-  title: string;
-  subtitle?: string;
-  viewAllLink?: string;
-  action?: ReactNode;
-}
 
-const SectionHeader: FC<SectionHeaderProps> = ({ 
+const SectionHeader: FC<SectionHeaderProps> = ({
   title,
   subtitle,
   viewAllLink,
   action
 }) => {
   return (
-    <Box sx={{ 
-      display: 'flex', 
-      justifyContent: 'space-between', 
+    <Box sx={{
+      display: 'flex',
+      justifyContent: 'space-between',
       alignItems: 'flex-start',
       mb: 2
     }}>

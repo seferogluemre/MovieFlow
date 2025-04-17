@@ -11,31 +11,12 @@ import MovieCard from "../components/MovieCard";
 import SectionHeader from "../components/SectionHeader";
 import {
   userService,
-  libraryService,
-  watchlistService,
-  reviewService,
-  friendshipService,
   checkApiHealth,
+  userIdKey,
 } from "../utils/api";
-import { Movie, Library, Watchlist, UserStats, User } from "../utils/types";
+import { Movie, Library, Watchlist, UserStats, User, LibraryItem, WatchlistItem } from "../utils/types";
 
-// API'den dönen film öğesinin tiplerini tanımlama
-interface LibraryItem {
-  id: number;
-  userId: number;
-  movieId: number;
-  addedAt: string;
-  lastWatched: string | null;
-  movie?: Movie;
-}
 
-interface WatchlistItem {
-  id: number;
-  userId: number;
-  movieId: number;
-  addedAt: string;
-  movie?: Movie;
-}
 
 // Demo verileri - API bağlantısı başarısız olduğunda gösterilecek
 const demoMovies = [
@@ -132,23 +113,14 @@ const Dashboard: FC = () => {
   const [useDemo, setUseDemo] = useState(false);
   const [movieCache, setMovieCache] = useState<Record<number, Movie>>({});
 
-  // Get user ID from local storage
-  const userId = parseInt(localStorage.getItem("userId") || "1");
+  const userId = parseInt(localStorage.getItem(userIdKey) || "1");
 
-  // API sağlık kontrolü
   const checkApiAvailability = useCallback(async () => {
     try {
-      console.log("🔍 API sağlık kontrolü başlatıldı...");
       const isAvailable = await checkApiHealth();
-      console.log(
-        `✅ API sağlık kontrolü tamamlandı: ${
-          isAvailable ? "Erişilebilir" : "Erişilemiyor"
-        }`
-      );
       setApiAvailable(isAvailable);
       return isAvailable;
     } catch (error) {
-      console.error("❌ API sağlık kontrolü hatası:", error);
       setApiAvailable(false);
       return false;
     }
@@ -157,27 +129,20 @@ const Dashboard: FC = () => {
   // Get movie details for library and watchlist items
   const fetchMovieDetails = useCallback(
     async (movieId: number): Promise<Movie | null> => {
-      // Önbellekte varsa, oradan getir
       if (movieCache[movieId]) {
         return movieCache[movieId];
       }
 
       try {
-        // API'ye istek gönder
         const response = await fetch(
           `http://localhost:3000/api/movies/${movieId}`
         );
 
         if (!response.ok) {
-          console.error(
-            `❌ Film ID=${movieId} alınamadı: ${response.status} ${response.statusText}`
-          );
-          // Hata durumunda demo verilerden bulalım
           const demoMovie = [...demoMovies, ...demoWatchlist].find(
             (m) => m.id === movieId
           );
           if (demoMovie) {
-            console.log(`✅ Demo film kullanılıyor: ${demoMovie.title}`);
 
             // Önbelleğe ekle
             setMovieCache((prev) => ({
@@ -202,21 +167,13 @@ const Dashboard: FC = () => {
           // Direkt film objesi
           movie = rawData as Movie;
         } else {
-          console.error(
-            `❌ Film ID=${movieId} için geçersiz veri yapısı:`,
-            rawData
-          );
           return null;
         }
 
         if (!movie) {
-          console.error(
-            `❌ Film ID=${movieId} için geçerli film verisi alınamadı`
-          );
           return null;
         }
 
-        // Önbelleğe ekle
         setMovieCache((prev) => ({
           ...prev,
           [movieId]: movie!,
@@ -224,14 +181,11 @@ const Dashboard: FC = () => {
 
         return movie;
       } catch (error) {
-        console.error(`❌ Film ID=${movieId} alınamadı:`, error);
 
-        // Hata durumunda demo verilerden bulalım
         const demoMovie = [...demoMovies, ...demoWatchlist].find(
           (m) => m.id === movieId
         );
         if (demoMovie) {
-          console.log(`✅ Demo film kullanılıyor: ${demoMovie.title}`);
           return demoMovie as Movie;
         }
 
@@ -245,40 +199,15 @@ const Dashboard: FC = () => {
   const fetchUserData = useCallback(async () => {
     try {
       setLoading(true);
-      console.log("🔍 Kullanıcı verileri yükleniyor...");
 
       try {
-        // Kullanıcı bilgilerini çek
-        console.log(`👤 Kullanıcı verisi çekiliyor: ID=${userId}`);
         const userData = await userService.getCurrentUser();
-        console.log(
-          "✅ Kullanıcı verisi alındı:",
-          userData ? "Başarılı" : "Bulunamadı"
-        );
 
         if (!userData) {
           throw new Error("Kullanıcı verileri alınamadı");
         }
 
         setUser(userData);
-        console.log("👤 Kullanıcı:", userData.name || userData.username);
-
-        // Verileri doğrudan API yanıtından al
-        console.log("📝 Kullanıcı detayları işleniyor...");
-
-        // userData içindeki verileri konsola logla
-        console.log(
-          "📚 Library:",
-          userData.library ? `${userData.library.length} öğe` : "Yok"
-        );
-        console.log(
-          "📋 Watchlist:",
-          userData.watchlist ? `${userData.watchlist.length} öğe` : "Yok"
-        );
-        console.log(
-          "✍️ Reviews:",
-          userData.reviews ? `${userData.reviews.length} değerlendirme` : "Yok"
-        );
 
         const {
           library = [],
@@ -292,37 +221,20 @@ const Dashboard: FC = () => {
         const allFriends = [...friendsOf, ...friends].filter(
           (f) => f.status === "ACCEPTED"
         );
-        console.log(`👥 Toplam arkadaş sayısı: ${allFriends.length}`);
 
-        // Library için film bilgilerini alalım
-        console.log("🎬 Kütüphane filmleri detayları alınıyor...");
         const libraryWithMovies = await Promise.all(
           library.map(async (item: LibraryItem) => {
-            console.log(`  🎬 Film ID=${item.movieId} detayları alınıyor...`);
             const movie = await fetchMovieDetails(item.movieId);
             return { ...item, movie };
           })
         );
-        console.log(
-          "✅ Kütüphane filmleri tamamlandı:",
-          libraryWithMovies.length
-        );
 
-        // Watchlist için film bilgilerini alalım
-        console.log("🎬 İzleme listesi filmleri detayları alınıyor...");
         const watchlistWithMovies = await Promise.all(
           watchlist.map(async (item: WatchlistItem) => {
-            console.log(`  🎬 Film ID=${item.movieId} detayları alınıyor...`);
             const movie = await fetchMovieDetails(item.movieId);
             return { ...item, movie };
           })
         );
-        console.log(
-          "✅ İzleme listesi filmleri tamamlandı:",
-          watchlistWithMovies.length
-        );
-
-        // İzleme süresini hesapla
         const watchTimeHours = libraryWithMovies.reduce(
           (total: number, item: LibraryItem) => {
             const duration = item.movie?.duration || 120;
@@ -330,18 +242,13 @@ const Dashboard: FC = () => {
           },
           0
         );
-        console.log(
-          `⏱️ Toplam izleme süresi: ${Math.round(watchTimeHours)} saat`
-        );
 
-        // İstatistikleri güncelle
         const newStats = {
           moviesWatched: library.length,
           reviewsCount: reviews.length,
           friendsCount: allFriends.length,
           watchTime: Math.round(watchTimeHours),
         };
-        console.log("📊 Hesaplanan istatistikler:", newStats);
         setUserStats(newStats);
 
         // Son izlenen filmleri sırala
@@ -360,13 +267,8 @@ const Dashboard: FC = () => {
         setWatchlist(watchlistWithMovies.slice(0, 3));
         setUseDemo(false);
         setApiAvailable(true);
-        console.log("✅ Dashboard verileri başarıyla yüklendi");
       } catch (apiError) {
-        console.error("❌ API veri çekme hatası:", apiError);
         setUseDemo(true);
-        console.warn("⚠️ Demo verilere geçiliyor...");
-
-        // Demo verilerini kullan
         setUserStats({
           moviesWatched: 42,
           reviewsCount: 18,
@@ -374,7 +276,6 @@ const Dashboard: FC = () => {
           watchTime: 86,
         });
 
-        // Demo film verilerine çevirelim
         const demoLibrary = demoMovies.map((movie, index) => ({
           id: index + 1,
           userId: userId,
@@ -394,12 +295,10 @@ const Dashboard: FC = () => {
 
         setRecentlyWatched(demoLibrary);
         setWatchlist(demoWatchlistItems);
-        console.log("✅ Demo veriler ayarlandı");
       }
 
       setLoading(false);
     } catch (err) {
-      console.error("Error fetching data:", err);
       setError("Veriler yüklenemedi. Lütfen daha sonra tekrar deneyin.");
       setLoading(false);
       setUseDemo(true);

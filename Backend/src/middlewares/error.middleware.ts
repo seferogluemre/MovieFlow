@@ -1,7 +1,5 @@
-import { Request, Response, NextFunction } from "express";
-import { ApiError, ApiResponse } from "../types/api.types";
-import { createErrorResponse } from "../utils/api/api.helper";
-import { logError } from "../utils/logging/logger.util";
+import { NextFunction, Request, Response } from "express";
+import { ApiError } from "../types/api.types";
 
 export class AppError extends Error {
   constructor(public statusCode: number, public error: ApiError) {
@@ -27,7 +25,6 @@ export const errorHandler = (
 ): void => {
   console.error("Error caught in middleware:", err);
 
-  // Prisma hatalarını kontrol et
   const prismaError = err as PrismaError;
 
   if (prismaError.code) {
@@ -41,7 +38,7 @@ export const errorHandler = (
         });
         return;
 
-      case "P2003": // Foreign key constraint failed
+      case "P2003":
         res.status(409).json({
           message: "This operation references a record that doesn't exist.",
           code: prismaError.code,

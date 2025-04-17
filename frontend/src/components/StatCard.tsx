@@ -1,26 +1,19 @@
-import { FC, ReactNode } from 'react';
-import { Card, Box, Typography, SvgIconProps } from '@mui/material';
+import { FC } from 'react';
+import { Card, Box, Typography } from '@mui/material';
+import { StatCardProps } from '../utils/types';
 
-interface StatCardProps {
-  title: string;
-  value: string | number;
-  subtitle?: string;
-  icon: ReactNode;
-  iconColor?: string;
-}
-
-const StatCard: FC<StatCardProps> = ({ 
-  title, 
-  value, 
-  subtitle, 
-  icon, 
+const StatCard: FC<StatCardProps> = ({
+  title,
+  value,
+  subtitle,
+  icon,
   iconColor = 'primary.main'
 }) => {
   return (
-    <Card 
-      sx={{ 
-        p: 3, 
-        display: 'flex', 
+    <Card
+      sx={{
+        p: 3,
+        display: 'flex',
         flexDirection: 'column',
         backgroundColor: 'background.paper',
         height: '100%',
@@ -37,9 +30,9 @@ const StatCard: FC<StatCardProps> = ({
             </Typography>
           )}
         </Box>
-        <Box sx={{ 
-          display: 'flex', 
-          alignItems: 'center', 
+        <Box sx={{
+          display: 'flex',
+          alignItems: 'center',
           justifyContent: 'center',
           color: iconColor
         }}>

@@ -43,9 +43,8 @@ import { FC, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import api, { friendshipService, userService } from "../utils/api";
-import { Friendship, User } from "../utils/types";
+import { Friendship, TabPanelProps, User } from "../utils/types";
 
-// Büyük avatar
 const ProfileAvatar = styled(Avatar)(({ theme }) => ({
   width: 150,
   height: 150,
@@ -80,12 +79,6 @@ const StyledListItem = styled(ListItem)(({ theme }) => ({
     cursor: "pointer",
   },
 }));
-
-interface TabPanelProps {
-  children?: React.ReactNode;
-  index: number;
-  value: number;
-}
 
 function TabPanel(props: TabPanelProps) {
   const { children, value, index, ...other } = props;
@@ -196,7 +189,6 @@ const ProfileDetail: FC = () => {
             setRelationshipStatus(status.type as RelationshipStatus);
             setRelationshipId(status.id);
           } catch (e) {
-            console.error("Error checking relationship status:", e);
             setRelationshipStatus("none");
           }
         }
@@ -204,7 +196,6 @@ const ProfileDetail: FC = () => {
         // Kullanıcı yorumlarını yükle
         await fetchUserReviews(parseInt(id));
       } catch (err: any) {
-        console.error("Error loading user profile:", err);
         setError(
           err.message || "Kullanıcı profili yüklenirken bir hata oluştu."
         );
@@ -257,8 +248,6 @@ const ProfileDetail: FC = () => {
             return;
           }
         } catch (error) {
-          console.error("Error fetching from /reviews/user/reviews:", error);
-          // Continue to fallback approach
         }
       }
 
@@ -278,8 +267,6 @@ const ProfileDetail: FC = () => {
           return;
         }
       } catch (error) {
-        console.error(`Error fetching from /users/${userId}:`, error);
-        // Continue to fallback approach
       }
 
       // Fallback approach - try the direct reviews by userId endpoint
@@ -302,15 +289,12 @@ const ProfileDetail: FC = () => {
           );
           setUserReviews(enhancedReviews);
         } else {
-          console.error("Error fetching user reviews from direct endpoint");
           setUserReviews([]);
         }
       } catch (error) {
-        console.error("Error fetching user reviews:", error);
         setUserReviews([]);
       }
     } catch (error) {
-      console.error("Error in fetchUserReviews:", error);
       setUserReviews([]);
     } finally {
       setLoadingReviews(false);
@@ -352,10 +336,6 @@ const ProfileDetail: FC = () => {
               };
             }
           } catch (err) {
-            console.error(
-              `Error fetching movie data for review ${review.id}:`,
-              err
-            );
           }
           return review;
         })
@@ -363,7 +343,6 @@ const ProfileDetail: FC = () => {
 
       return enhancedReviews;
     } catch (err) {
-      console.error("Error enhancing reviews with movie data:", err);
       return reviews;
     }
   };
@@ -430,7 +409,6 @@ const ProfileDetail: FC = () => {
       setSuccessMessage("Kullanıcı başarıyla takip edildi");
       setTimeout(() => setSuccessMessage(null), 3000);
     } catch (err: any) {
-      console.error("Error following user:", err);
       setError("Kullanıcıyı takip ederken bir hata oluştu.");
     } finally {
       setIsActionInProgress(false);
@@ -474,7 +452,6 @@ const ProfileDetail: FC = () => {
       setSuccessMessage("Kullanıcıyı takip etmeyi bıraktınız");
       setTimeout(() => setSuccessMessage(null), 3000);
     } catch (err: any) {
-      console.error("Error unfollowing user:", err);
       setError("Kullanıcıyı takipten çıkarken bir hata oluştu.");
     } finally {
       setIsActionInProgress(false);
@@ -489,7 +466,6 @@ const ProfileDetail: FC = () => {
     const userId = targetUserId || (user ? user.id : null);
 
     if (!userId) {
-      console.error("No target user ID available for friend request");
       return;
     }
 
@@ -507,7 +483,6 @@ const ProfileDetail: FC = () => {
         setRelationshipId(status.id);
       }
     } catch (err: any) {
-      console.error("Error sending friend request:", err);
       setError("Arkadaşlık isteği gönderilirken bir hata oluştu.");
     } finally {
       setIsActionInProgress(false);
@@ -534,7 +509,6 @@ const ProfileDetail: FC = () => {
       setRelationshipStatus(status.type as RelationshipStatus);
       setRelationshipId(status.id);
     } catch (err: any) {
-      console.error("Error accepting friend request:", err);
       setError("Arkadaşlık isteğini kabul ederken bir hata oluştu.");
     } finally {
       setIsActionInProgress(false);
@@ -556,7 +530,6 @@ const ProfileDetail: FC = () => {
       setRelationshipStatus(status.type as RelationshipStatus);
       setRelationshipId(status.id);
     } catch (err: any) {
-      console.error("Error rejecting friend request:", err);
       setError("Arkadaşlık isteğini reddetken bir hata oluştu.");
     } finally {
       setIsActionInProgress(false);
@@ -609,17 +582,12 @@ const ProfileDetail: FC = () => {
           if (Object.keys(initialLoadingState).length > 0) {
             setLoadingFriends((prev) => ({ ...prev, ...initialLoadingState }));
 
-            // Load each user's data
             userIds.forEach(async (userId) => {
               if (!friendsData[userId]) {
                 try {
                   const data = await userService.getUserStats(userId);
                   setFriendsData((prev) => ({ ...prev, [userId]: data }));
                 } catch (err) {
-                  console.error(
-                    `Error loading user data for ID ${userId}:`,
-                    err
-                  );
                 } finally {
                   setLoadingFriends((prev) => ({ ...prev, [userId]: false }));
                 }
@@ -627,7 +595,6 @@ const ProfileDetail: FC = () => {
             });
           }
         } catch (error) {
-          console.error("Error loading relationships:", error);
         } finally {
           setLoadingRelationships(false);
         }
@@ -646,7 +613,6 @@ const ProfileDetail: FC = () => {
           const users = await userService.getAllUsers();
           setAllUsers(users);
         } catch (error) {
-          console.error("Error fetching all users:", error);
         } finally {
           setLoadingAllUsers(false);
         }
@@ -664,10 +630,6 @@ const ProfileDetail: FC = () => {
       const status = await friendshipService.getRelationshipStatus(otherUserId);
       return status.type;
     } catch (error) {
-      console.error(
-        `Error checking friendship status with user ${otherUserId}:`,
-        error
-      );
       return "none";
     }
   };
@@ -752,7 +714,6 @@ const ProfileDetail: FC = () => {
       setSuccessMessage("Arkadaşlık isteği iptal edildi.");
       setTimeout(() => setSuccessMessage(null), 3000);
     } catch (err: any) {
-      console.error("Error cancelling friend request:", err);
       setError("Arkadaşlık isteğini iptal ederken bir hata oluştu.");
       setTimeout(() => setError(null), 3000);
     } finally {
@@ -787,7 +748,6 @@ const ProfileDetail: FC = () => {
             setFollowing(followingData);
           }
         } catch (error) {
-          console.error("Error refreshing relationship data:", error);
         }
       };
 
@@ -815,7 +775,6 @@ const ProfileDetail: FC = () => {
           const mutualData = await friendshipService.getMutualFriends(user.id);
           setMutualFriends(mutualData);
         } catch (error) {
-          console.error("Error loading profile stats:", error);
         }
       };
 
@@ -1441,8 +1400,8 @@ const ProfileDetail: FC = () => {
                               borderLeft: isFriend
                                 ? "4px solid #4caf50"
                                 : isMutualFollow
-                                ? "4px solid #2196f3"
-                                : "none",
+                                  ? "4px solid #2196f3"
+                                  : "none",
                             }}
                           >
                             <ListItemAvatar>

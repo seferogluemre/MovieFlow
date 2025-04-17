@@ -1,17 +1,14 @@
+import { Request, Response } from "express";
+import prisma from "src/config/database";
+import { UserService } from "src/services/user.service";
+import { CreateUserProps, UpdateUserProps } from "src/types/types";
+import { logInfo, logWarn } from "src/utils/logging/logger.util";
+import { getS3Url, upload, uploadToS3 } from "src/utils/s3-upload.util";
 import {
   createUserSchema,
   updateUserSchema,
 } from "src/validators/user.validation";
-import { Request, Response } from "express";
 import { z } from "zod";
-import { UserService } from "src/services/user.service";
-import { CreateUserProps, UpdateUserProps } from "src/types/types";
-import { logInfo, logWarn } from "src/utils/logging/logger.util";
-import prisma from "src/config/database";
-import path from "path";
-import fs from "fs";
-import multer from "multer";
-import { upload, uploadToS3, getS3Url } from "src/utils/s3-upload.util";
 
 export class UserController {
   static async index(req: Request, res: Response): Promise<void> {

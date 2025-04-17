@@ -12,7 +12,6 @@ import {
   Divider,
   Container,
   Paper,
-  Snackbar,
 } from "@mui/material";
 import { VisibilityOff as VisibilityOffIcon } from "@mui/icons-material";
 import { useAuth } from "../context/AuthContext";
@@ -32,20 +31,13 @@ const Settings: FC = () => {
 
       setLoading(true);
       try {
-        console.log(`Fetching user settings for user ID: ${user.id}`);
         const response = await api.get(`/users/${user.id}`);
-
-        console.log(`User settings response:`, response.data);
 
         if (response && response.data) {
           // Set the initial isPrivate value from the user data
           setIsPrivate(!!response.data.isPrivate);
-          console.log(
-            `Initial isPrivate value set to: ${!!response.data.isPrivate}`
-          );
         }
       } catch (err) {
-        console.error("Error fetching user settings:", err);
         setError("Kullanıcı ayarları yüklenirken bir hata oluştu.");
       } finally {
         setLoading(false);
@@ -63,27 +55,16 @@ const Settings: FC = () => {
     setError(null);
 
     try {
-      console.log(`Saving privacy settings for user ID: ${user.id}`);
-      console.log(`Setting isPrivate to: ${isPrivate}`);
-
-      // Make PATCH request to update the user's privacy setting
       const response = await api.patch(`/users/${user.id}`, {
         isPrivate: isPrivate,
       });
-
-      console.log(`Privacy settings update response:`, response.data);
-
       setSuccess(true);
 
-      // Refresh user data in context to update the UI
       if (refreshUser) {
         await refreshUser();
-        console.log("User data refreshed after privacy setting update");
       }
     } catch (err: any) {
-      console.error("Error saving privacy settings:", err);
 
-      // Provide more detailed error messages based on the response
       if (err.response?.data?.message) {
         setError(err.response.data.message);
       } else if (err.response?.data?.error) {
@@ -100,7 +81,6 @@ const Settings: FC = () => {
 
   const handleTogglePrivacy = (event: React.ChangeEvent<HTMLInputElement>) => {
     setIsPrivate(event.target.checked);
-    console.log(`Privacy toggle changed to: ${event.target.checked}`);
   };
 
   if (!user) {
