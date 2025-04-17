@@ -555,6 +555,7 @@ const Library: FC = () => {
             style={{
               width: "100%",
               backgroundColor: "white",
+              color: "black",
               padding: "8px",
               borderRadius: "4px",
               borderColor: "#ccc",

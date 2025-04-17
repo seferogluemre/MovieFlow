@@ -171,63 +171,38 @@ const Profile: FC = () => {
     try {
       console.log("Profil fotoğrafını kaldırma işlemi başlatılıyor...");
 
-      // API isteği yapmadan önce değerleri kontrol et
-      console.log("Kullanıcı ID:", user.id);
-      console.log("Gönderilecek veri:", { profileImage: null });
-
-      // Set profile image to null instead of empty string
-      const response = await userService.updateProfile(user.id, {
+      // Profil fotoğrafını null olarak ayarla
+      const userId = user.id;
+      await userService.updateProfile(userId, {
         profileImage: null,
       });
-      console.log("API yanıtı:", response);
 
-      // Update local state
+      // Lokal state'i güncelle
       setPreviewUrl(null);
 
-      // Close modal
+      // Modal'ı kapat
       setOpenModal(false);
 
-      // Refresh user data to update user object
+      // Kullanıcı verilerini yenile
       await checkAuthStatus();
 
       setSuccess(true);
       setTimeout(() => setSuccess(false), 3000);
     } catch (err: any) {
-      console.error("Error removing profile image:", err);
+      console.error("Profil fotoğrafı kaldırma hatası:", err);
 
-      // Log detaylı hata bilgisi
-      if (err.response) {
-        console.error("Hata yanıtı:", err.response);
-        console.error("Hata durum kodu:", err.response.status);
-        console.error("Hata verileri:", err.response.data);
-      }
+      // Hata mesajını belirle
+      let errorMessage =
+        "Profil fotoğrafı kaldırılamadı. Lütfen tekrar deneyin.";
 
-      // More detailed error messages
-      if (err.response && err.response.data) {
-        // Show the error message returned by the backend
-        if (err.response.data.message) {
-          setError(err.response.data.message);
-        } else if (err.response.data.error) {
-          setError(err.response.data.error);
-        } else if (err.response.data.issues) {
-          // Could be a Zod validation error
-          setError(
-            `Validasyon hatası: ${JSON.stringify(err.response.data.issues)}`
-          );
-        } else {
-          setError(`Hata: ${JSON.stringify(err.response.data)}`);
-        }
-      } else if (err.message && err.message.includes("Network Error")) {
-        setError(
-          "Sunucuya bağlanılamadı. Lütfen internet bağlantınızı kontrol edin."
-        );
+      if (err.response?.data?.message) {
+        errorMessage = err.response.data.message;
       } else if (err.message) {
-        setError(err.message);
-      } else {
-        setError("Profil fotoğrafı kaldırılamadı. Lütfen tekrar deneyin.");
+        errorMessage = err.message;
       }
 
-      setTimeout(() => setError(null), 5000); // Longer display time
+      setError(errorMessage);
+      setTimeout(() => setError(null), 5000);
     } finally {
       setLoading(false);
     }

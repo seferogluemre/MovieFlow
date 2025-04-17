@@ -42,7 +42,6 @@ import { useAuth } from "../context/AuthContext";
 import api, { processApiError } from "../utils/api";
 import { WishlistItem } from "../utils/types";
 
-
 const Wishlist: FC = () => {
   const navigate = useNavigate();
   const { isAuthenticated, checkAuthStatus } = useAuth();

@@ -2,7 +2,7 @@ import axios, { AxiosError, AxiosRequestConfig } from "axios";
 
 export const accessKey = "accessToken";
 export const refreshKey = "refreshToken";
-export const userIdKey = "userId"
+export const userIdKey = "userId";
 
 const API_URL = "http://localhost:3000/api";
 
@@ -201,12 +201,7 @@ export const userService = {
     }
   ) => {
     try {
-      const requestData = { ...userData };
-      if (userData.profileImage === null) {
-        return;
-      }
-
-      const response = await api.patch(`/users/${userId}`, requestData);
+      const response = await api.patch(`/users/${userId}`, userData);
       return response.data;
     } catch (error) {
       throw error;
@@ -503,8 +498,7 @@ export const processApiError = (error: any): string => {
     // Backend direkt olarak message dönüyorsa
     if (typeof error.response.data.message === "string") {
       errorMessage = error.response.data.message;
-    }
-    else if (error.response.data.error) {
+    } else if (error.response.data.error) {
       errorMessage =
         typeof error.response.data.error === "string"
           ? error.response.data.error

@@ -408,3 +408,126 @@ Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided S
 [INFO] 2025-04-17T17:33:09.941Z - Get User --- Request Received
 [INFO] 2025-04-17T17:33:15.658Z - LibraryController.delete ---- Deleted library entry ${id}
 [INFO] 2025-04-17T17:33:17.144Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
+[INFO] 2025-04-17T17:34:10.731Z - LibraryController.update ---- Updated library entry ${id}
+[INFO] 2025-04-17T17:34:18.729Z - Get Movie Reviews - Retrieved reviews for Movie 5
+[INFO] 2025-04-17T17:34:18.755Z - Get User --- Request Received
+[INFO] 2025-04-17T17:34:23.215Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
+[INFO] 2025-04-17T17:34:24.227Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
+[INFO] 2025-04-17T17:35:27.956Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
+[INFO] 2025-04-17T17:35:42.349Z - Create Review --- Created Review [object Object]
+[INFO] 2025-04-17T17:36:19.677Z - Get User --- Request Received
+[INFO] 2025-04-17T17:36:27.427Z - Update Review - Updated Review [object Object]
+[INFO] 2025-04-17T17:36:29.485Z - Get Movie Reviews - Retrieved reviews for Movie 5
+[INFO] 2025-04-17T17:36:29.542Z - Get User --- Request Received
+[INFO] 2025-04-17T17:36:31.427Z - Get User --- Request Received
+[INFO] 2025-04-17T17:36:33.092Z - Get Movie Reviews - Retrieved reviews for Movie 2
+[INFO] 2025-04-17T17:36:33.150Z - Get User --- Request Received
+[INFO] 2025-04-17T17:36:37.928Z - LibraryController.create ---- Library entry created for user 1 and movie 2
+[INFO] 2025-04-17T17:36:39.979Z - Get User --- Request Received
+[INFO] 2025-04-17T17:36:41.023Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
+[INFO] 2025-04-17T17:36:45.007Z - List movies --- Request Received
+[ERROR] 2025-04-17T17:36:45.013Z - Error in LibraryController.getAllByUserId | Error: 
+Invalid `prisma.library.findMany()` invocation in
+C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
+
+  108 }
+  109 
+  110 public static async getAllByUserId(userId: string) {
+→ 111   const libraries = await prisma.library.findMany({
+          where: {
+            userId: "1"
+                    ~~~
+          },
+          include: {
+            movie: true,
+            user: {
+              select: {
+                id: true,
+                name: true,
+                email: true,
+                username: true,
+                profileImage: true
+              }
+            }
+          },
+          orderBy: {
+            updatedAt: "desc"
+          }
+        })
+
+Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String. | Stack: PrismaClientValidationError: 
+Invalid `prisma.library.findMany()` invocation in
+C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
+
+  108 }
+  109 
+  110 public static async getAllByUserId(userId: string) {
+→ 111   const libraries = await prisma.library.findMany({
+          where: {
+            userId: "1"
+                    ~~~
+          },
+          include: {
+            movie: true,
+            user: {
+              select: {
+                id: true,
+                name: true,
+                email: true,
+                username: true,
+                profileImage: true
+              }
+            }
+          },
+          orderBy: {
+            updatedAt: "desc"
+          }
+        })
+
+Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String.
+    at Cn (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:29:1363)
+    at Wn.handleRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:7177)
+    at Wn.handleAndLogRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6858)
+    at Wn.request (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6565)
+    at async l (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:130:10067)
+    at Function.getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:23)
+    at getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\controller\library.controller.ts:212:25)
+[INFO] 2025-04-17T17:37:04.206Z - File uploaded to S3: profiles/dd93e548-a7a5-4623-9c69-9f55d1047cc7.png
+[INFO] 2025-04-17T17:37:04.271Z - Update User - Updated User {"id":1,"email":"ismet@mail.com","username":"ismetterzioglu","password":"$2b$10$c.RIb/IopXhGgPVHzZfoJuQl8ZhNcjKxYOEt.pDcGLYM4ouwycyeC","name":"İsmet Terzioglu","profileImage":"https://seferogluemremovieproject.s3.amazonaws.com/profiles/dd93e548-a7a5-4623-9c69-9f55d1047cc7.png?AWSAccessKeyId=AKIAQSOI4UYIUUJJSRF4&Expires=1745516224&Signature=Vq469zcaCoWVxR1YZ9kcgernOh4%3D","isAdmin":false,"isPrivate":true,"createdAt":"2025-04-10T04:08:29.579Z","updatedAt":"2025-04-17T17:37:04.249Z"}
+[INFO] 2025-04-17T17:37:04.332Z - Get User --- Request Received
+[INFO] 2025-04-17T17:37:08.368Z - Get User --- Request Received
+[INFO] 2025-04-17T17:37:09.718Z - Get Movie Reviews - Retrieved reviews for Movie 2
+[INFO] 2025-04-17T17:37:09.772Z - Get User --- Request Received
+[INFO] 2025-04-17T17:37:20.839Z - Get User --- Request Received
+[INFO] 2025-04-17T17:37:20.846Z - Get User Reviews - Retrieved reviews for User 1
+[INFO] 2025-04-17T17:37:20.850Z - Get User Reviews - Retrieved reviews for User 1
+[INFO] 2025-04-17T17:37:20.995Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-17T17:37:21.042Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-17T17:37:21.088Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-17T17:37:25.292Z - Get User --- Request Received
+[INFO] 2025-04-17T17:37:27.643Z - Get User --- Request Received
+[INFO] 2025-04-17T17:37:27.698Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-17T17:37:27.703Z - Get User --- Request Received
+[INFO] 2025-04-17T17:37:30.361Z - Get User --- Request Received
+[INFO] 2025-04-17T17:40:48.415Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-17T17:40:48.420Z - Get User --- Request Received
+[INFO] 2025-04-17T17:40:49.141Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-17T17:40:49.152Z - Get User --- Request Received
+[INFO] 2025-04-17T17:41:01.347Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-17T17:41:01.362Z - Get User --- Request Received
+[INFO] 2025-04-17T17:41:02.398Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-17T17:41:02.409Z - Get User --- Request Received
+[INFO] 2025-04-17T17:41:15.365Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-17T17:41:15.376Z - Get User --- Request Received
+[INFO] 2025-04-17T17:42:29.446Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-17T17:42:29.476Z - Get User --- Request Received
+[INFO] 2025-04-17T17:42:30.350Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-17T17:42:30.459Z - Get User --- Request Received
+[INFO] 2025-04-17T17:45:11.337Z - Update User - Updated User {"id":1,"email":"ismet@mail.com","username":"ismetterzioglu","password":"$2b$10$c.RIb/IopXhGgPVHzZfoJuQl8ZhNcjKxYOEt.pDcGLYM4ouwycyeC","name":"İsmet Terzioglu","profileImage":null,"isAdmin":false,"isPrivate":true,"createdAt":"2025-04-10T04:08:29.579Z","updatedAt":"2025-04-17T17:45:11.321Z"}
+[INFO] 2025-04-17T17:45:11.401Z - Get User --- Request Received
+[INFO] 2025-04-17T17:47:53.418Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
+[INFO] 2025-04-17T17:47:53.530Z - Get User --- Request Received
+[INFO] 2025-04-17T17:47:53.714Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-17T17:47:53.885Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-17T17:47:53.948Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-17T17:48:18.737Z - Login User - Logout Successfully

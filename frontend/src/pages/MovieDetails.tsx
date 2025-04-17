@@ -32,8 +32,13 @@ import { FC, useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import api, { processApiError } from "../utils/api";
-import { LibraryItem, MovieDetailsType, Review, WatchlistItem, WishlistItem } from "../utils/types";
-
+import {
+  LibraryItem,
+  MovieDetailsType,
+  Review,
+  WatchlistItem,
+  WishlistItem,
+} from "../utils/types";
 
 const MovieDetails: FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -169,8 +174,7 @@ const MovieDetails: FC = () => {
         setIsInWishlist(false);
         setWishlistItemId(null);
       }
-    } catch (err) {
-    }
+    } catch (err) {}
   };
 
   const handleAddToWatchlist = async () => {
