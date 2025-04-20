@@ -1,5 +1,6 @@
 import {
   AccessTime as AccessTimeIcon,
+  DateRange,
   Delete as DeleteIcon,
   MoreVert as MoreVertIcon,
   RateReview as RateReviewIcon,
@@ -525,6 +526,13 @@ const Library: FC = () => {
             sx={{ width: "100%", mt: 2 }}
             InputLabelProps={{
               shrink: true,
+            }}
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="end">
+                  <DateRange sx={{ color: "red" }} />{" "}
+                </InputAdornment>
+              ),
             }}
           />
         </DialogContent>
