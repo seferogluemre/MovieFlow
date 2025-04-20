@@ -74,6 +74,31 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+@keyframes shake {
+  0% {
+    transform: rotate(0deg);
+  }
+  20% {
+    transform: rotate(17deg);
+  }
+  40% {
+    transform: rotate(-17deg);
+  }
+  60% {
+    transform: rotate(11deg);
+  }
+  80% {
+    transform: rotate(-11deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.shake {
+  animation: shake 0.4s ease-in;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;

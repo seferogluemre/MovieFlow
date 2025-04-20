@@ -2,10 +2,7 @@ import {
   DarkMode as DarkModeIcon,
   LightMode as LightModeIcon,
   Notifications as NotificationsIcon,
-  Person as PersonIcon,
-  PlaylistAdd as PlaylistAddIcon,
   Search as SearchIcon,
-  ThumbUp as ThumbUpIcon,
 } from "@mui/icons-material";
 import {
   AppBar,
@@ -29,11 +26,12 @@ import {
 import { formatDistanceToNow } from "date-fns";
 import { FC, useEffect, useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
+import ChatWidget from "../components/ChatWidget";
 import Sidebar from "../components/Sidebar";
 import { useAuth } from "../context/AuthContext";
+import { useFriendship } from "../context/FriendshipContext";
 import { useTheme } from "../context/ThemeContext";
-import { Notification, NotificationType } from "../utils/types";
-import { notificationService } from "../utils/api";
+import { NotificationType } from "../utils/types";
 
 const SearchBar = styled("div")(({ theme }) => ({
   position: "relative",
@@ -76,27 +74,30 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-
-
 const MainLayout: FC = () => {
   const navigate = useNavigate();
   const { user, isAuthenticated, isLoading, checkAuthStatus } = useAuth();
   const { mode, toggleTheme } = useTheme();
-  const [notifications, setNotifications] = useState<Notification[]>([]);
-  const [loadingNotifications, setLoadingNotifications] =
-    useState<boolean>(false);
-  const [notificationError, setNotificationError] = useState<string | null>(
-    null
-  );
+  const {
+    notifications,
+    loadingNotifications,
+    error: notificationError,
+    updateNotificationsList: fetchNotifications,
+    acceptFriendRequest,
+    rejectFriendRequest,
+    markNotificationAsRead,
+  } = useFriendship();
+
+  const [shouldShake, setShouldShake] = useState(false);
   const [notificationAnchorEl, setNotificationAnchorEl] =
     useState<null | HTMLElement>(null);
 
   useEffect(() => {
-    // Kimlik doğrulama kontrolü fonksiyonu
+    // Authentication check function
     const checkAuthAndLoadData = async () => {
-      // Kullanıcının oturumu var mı kontrol et
+      // Check if user is already authenticated
       if (isAuthenticated && user) {
-        // Kullanıcı zaten oturum açmış, sadece bildirimleri getir
+        // User is already logged in, just fetch notifications
         fetchNotifications();
         return;
       }
@@ -106,31 +107,17 @@ const MainLayout: FC = () => {
       if (isAuth) {
         fetchNotifications();
       }
-      // Eğer oturum açma başarısız ve yükleme tamamlandıysa login'e yönlendir
+      // If login failed and loading is complete, redirect to login
       else if (!isLoading) {
         navigate("/login", { replace: true });
       }
     };
 
-    // Komponent mount olduğunda çalıştır
+    // Run when component mounts
     checkAuthAndLoadData();
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  const fetchNotifications = async () => {
-    try {
-      setLoadingNotifications(true);
-      const notifications = await notificationService.getNotifications();
-      setNotifications(notifications || []);
-      setNotificationError(null);
-    } catch (err) {
-      console.error("Error fetching notifications:", err);
-      setNotificationError("Failed to load notifications");
-    } finally {
-      setLoadingNotifications(false);
-    }
-  };
 
   const handleNotificationClick = (event: React.MouseEvent<HTMLElement>) => {
     setNotificationAnchorEl(event.currentTarget);
@@ -155,8 +142,8 @@ const MainLayout: FC = () => {
         case "accept":
           if (notification.type === NotificationType.FRIEND_REQUEST) {
             if (friendshipId) {
-              await notificationService.acceptFriendRequest(friendshipId);
-              await notificationService.markAsRead(notificationId);
+              await acceptFriendRequest(friendshipId);
+              await markNotificationAsRead(notificationId);
             }
           }
           break;
@@ -165,33 +152,26 @@ const MainLayout: FC = () => {
           if (notification.type === NotificationType.FRIEND_REQUEST) {
             if (friendshipId) {
               console.log(`Rejecting friendship ID: ${friendshipId}`);
-              await notificationService.rejectFriendRequest(friendshipId);
+              await rejectFriendRequest(friendshipId);
               console.log("Friendship rejected successfully");
-              await notificationService.markAsRead(notificationId);
+              await markNotificationAsRead(notificationId);
             }
           }
           break;
 
         case "markAsRead":
-          await notificationService.markAsRead(notificationId);
+          await markNotificationAsRead(notificationId);
           break;
 
         case "viewProfile":
-          await notificationService.markAsRead(notificationId);
+          await markNotificationAsRead(notificationId);
           handleNotificationClose();
           navigate(`/profile/${notification.fromUserId}`);
           break;
       }
-
-      // İşlem tamamlandıktan sonra bildirimleri yenile
-      fetchNotifications();
     } catch (error) {
       console.error(`Error handling notification action ${action}:`, error);
     }
-  };
-
-  const markNotificationAsRead = async (notificationId: number) => {
-    await notificationService.markAsRead(notificationId);
   };
 
   const getInitials = (username?: string): string => {
@@ -199,19 +179,6 @@ const MainLayout: FC = () => {
 
     // Kullanıcı adının ilk 2 harfini büyük harfle al
     return username.substring(0, 2).toUpperCase();
-  };
-
-  const getNotificationIcon = (type: string) => {
-    switch (type) {
-      case "FRIEND_REQUEST":
-        return <PersonIcon />;
-      case "MOVIE_ADDED":
-        return <PlaylistAddIcon />;
-      case "REVIEW_LIKED":
-        return <ThumbUpIcon />;
-      default:
-        return <NotificationsIcon />;
-    }
   };
 
   const formatNotificationDate = (dateString: string) => {
@@ -223,9 +190,21 @@ const MainLayout: FC = () => {
   };
 
   const notificationsOpen = Boolean(notificationAnchorEl);
-  const unreadCount = notifications.filter(
-    (notification) => !notification.isRead
-  ).length;
+
+  useEffect(() => {
+    if (notifications.filter((n) => !n.isRead).length === 0) return;
+
+    const interval = setInterval(() => {
+      setShouldShake(true);
+
+      // Titreme bittikten sonra class'ı kaldır
+      setTimeout(() => {
+        setShouldShake(false);
+      }, 400); // bu süre CSS animasyon süresi ile aynı olmalı (0.4s)
+    }, 3000); // her 4 saniyede bir tekrar titre
+
+    return () => clearInterval(interval);
+  }, [notifications.filter((n) => !n.isRead).length]);
 
   return (
     <Box
@@ -271,10 +250,13 @@ const MainLayout: FC = () => {
               />
             </SearchBar>
             <Box sx={{ flexGrow: 1 }} />
-            <Box sx={{ display: "flex" }}>
+            <Box sx={{ display: "flex", justifyContent: "center" }}>
               <IconButton color="inherit" onClick={handleNotificationClick}>
-                <Badge badgeContent={unreadCount} color="error">
-                  <NotificationsIcon />
+                <Badge
+                  badgeContent={notifications.filter((n) => !n.isRead).length}
+                  color="error"
+                >
+                  <NotificationsIcon className={shouldShake ? "shake" : ""} />
                 </Badge>
               </IconButton>
               <Tooltip title={mode === "dark" ? "Light mode" : "Dark mode"}>
@@ -353,17 +335,18 @@ const MainLayout: FC = () => {
             }}
           >
             <Typography variant="h6" sx={{ fontWeight: "bold" }}>
-              Bildirimler {unreadCount > 0 && `(${unreadCount})`}
+              Bildirimler{" "}
+              {notifications.filter((n) => !n.isRead).length > 0 &&
+                `(${notifications.filter((n) => !n.isRead).length})`}
             </Typography>
 
-            {unreadCount > 0 && (
+            {notifications.filter((n) => !n.isRead).length > 0 && (
               <Button
                 size="small"
                 variant="text"
                 onClick={async () => {
                   try {
-                    await notificationService.markAllAsRead();
-                    fetchNotifications();
+                    await fetchNotifications();
                   } catch (error) {
                     console.error(
                       "Error marking all notifications as read:",
@@ -411,8 +394,8 @@ const MainLayout: FC = () => {
                       src={
                         notification.fromUser?.profileImage
                           ? notification.fromUser.profileImage.startsWith(
-                            "http"
-                          )
+                              "http"
+                            )
                             ? notification.fromUser.profileImage
                             : `http://localhost:3000/uploads/${notification.fromUser.profileImage}`
                           : undefined
@@ -515,6 +498,9 @@ const MainLayout: FC = () => {
           )}
         </Popover>
       </Box>
+
+      {/* Add the ChatWidget component */}
+      <ChatWidget />
     </Box>
   );
 };

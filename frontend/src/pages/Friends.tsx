@@ -38,16 +38,26 @@ import { tr } from "date-fns/locale";
 import { FC, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import { useFriendship } from "../context/FriendshipContext";
 import api, { processApiError, userService } from "../utils/api";
 import { Friendship, User, UserRelationship } from "../utils/types";
 
 const Friends: FC = () => {
   const navigate = useNavigate();
   const { isAuthenticated, checkAuthStatus, currentUser } = useAuth();
+  const {
+    friendships,
+    pendingRequests,
+    sentRequests,
+    loadingFriendships,
+    updateFriendshipsList,
+    acceptFriendRequest: acceptRequest,
+    rejectFriendRequest: rejectRequest,
+    cancelFriendRequest: cancelRequest,
+    sendFriendRequest: sendRequest,
+  } = useFriendship();
+
   const [activeTab, setActiveTab] = useState(0);
-  const [friendships, setFriendships] = useState<Friendship[]>([]);
-  const [pendingRequests, setPendingRequests] = useState<Friendship[]>([]);
-  const [sentRequests, setSentRequests] = useState<Friendship[]>([]);
   const [allUsers, setAllUsers] = useState<User[]>([]);
   const [userRelationships, setUserRelationships] = useState<
     Record<number, UserRelationship>
@@ -89,75 +99,116 @@ const Friends: FC = () => {
     init();
   }, [isAuthenticated, navigate, checkAuthStatus]);
 
+  // Sync local filtered states with global state
+  useEffect(() => {
+    if (friendships.length > 0) {
+      processFilteredFriendships();
+    }
+  }, [friendships, searchQuery]);
+
+  useEffect(() => {
+    setFilteredRequests(
+      searchQuery
+        ? pendingRequests.filter(
+            (req) =>
+              req.user.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+              req.user.username
+                .toLowerCase()
+                .includes(searchQuery.toLowerCase())
+          )
+        : pendingRequests
+    );
+  }, [pendingRequests, searchQuery]);
+
+  useEffect(() => {
+    setFilteredSentRequests(
+      searchQuery
+        ? sentRequests.filter(
+            (req) =>
+              req.friend.name
+                .toLowerCase()
+                .includes(searchQuery.toLowerCase()) ||
+              req.friend.username
+                .toLowerCase()
+                .includes(searchQuery.toLowerCase())
+          )
+        : sentRequests
+    );
+  }, [sentRequests, searchQuery]);
+
+  const processFilteredFriendships = () => {
+    // Get current user ID from localStorage for direct comparison
+    const currentUserId = localStorage.getItem("user_id")
+      ? parseInt(localStorage.getItem("user_id")!)
+      : currentUser?.id;
+
+    // This Map will track the most recent friendship for each unique user
+    const uniqueFriendships = new Map();
+
+    // Process each friendship to find the most recent one for each user
+    friendships.forEach((friendship) => {
+      // Skip self-relationships
+      if (
+        friendship.userId === currentUserId &&
+        friendship.friendId === currentUserId
+      ) {
+        return;
+      }
+
+      // Only consider ACCEPTED friendships for My Friends tab
+      if (friendship.status !== "ACCEPTED") {
+        return;
+      }
+
+      // Determine which user in this friendship is NOT the current user
+      const otherUserId =
+        friendship.userId === currentUserId
+          ? friendship.friendId
+          : friendship.userId;
+
+      // Skip if the other user is somehow the current user (extra safety)
+      if (otherUserId === currentUserId) {
+        return;
+      }
+
+      if (searchQuery) {
+        const query = searchQuery.toLowerCase();
+        const otherUser =
+          friendship.userId === currentUserId
+            ? friendship.friend
+            : friendship.user;
+
+        if (
+          !otherUser.name.toLowerCase().includes(query) &&
+          !otherUser.username.toLowerCase().includes(query)
+        ) {
+          return;
+        }
+      }
+
+      // If we don't have this user yet, or this friendship is more recent
+      // than the one we've already tracked, update the map
+      if (
+        !uniqueFriendships.has(otherUserId) ||
+        new Date(friendship.createdAt) >
+          new Date(uniqueFriendships.get(otherUserId).createdAt)
+      ) {
+        uniqueFriendships.set(otherUserId, friendship);
+      }
+    });
+
+    // Convert the Map values back to an array
+    const filtered = Array.from(uniqueFriendships.values());
+    setFilteredFriendships(filtered);
+  };
+
   const fetchData = async () => {
     try {
       setLoading(true);
       setError(null);
 
-      // Fetch friendships
-      const friendshipsResponse = await api.get("/friendships");
-      const fetchedFriendships = friendshipsResponse.data || [];
-
-      // Get current user ID from localStorage for direct comparison
-      const currentUserId = localStorage.getItem("user_id")
-        ? parseInt(localStorage.getItem("user_id")!)
-        : currentUser?.id;
-
-      setFriendships(fetchedFriendships);
-
-      // Filter out current user properly from displayed friendships
-      // This Map will track the most recent friendship for each unique user
-      const uniqueFriendships = new Map();
-
-      // Process each friendship to find the most recent one for each user
-      fetchedFriendships.forEach((friendship) => {
-        // Skip self-relationships and any friendship where the current user is one of the parties
-        if (
-          friendship.userId === currentUserId &&
-          friendship.friendId === currentUserId
-        ) {
-          return;
-        }
-
-        // Only consider ACCEPTED friendships for My Friends tab
-        if (friendship.status !== "ACCEPTED") {
-          return;
-        }
-
-        // Determine which user in this friendship is NOT the current user
-        const otherUserId =
-          friendship.userId === currentUserId
-            ? friendship.friendId
-            : friendship.userId;
-
-        // Skip if the other user is somehow the current user (extra safety)
-        if (otherUserId === currentUserId) {
-          return;
-        }
-
-        // than the one we've already tracked, update the map
-        if (
-          !uniqueFriendships.has(otherUserId) ||
-          new Date(friendship.createdAt) >
-            new Date(uniqueFriendships.get(otherUserId).createdAt)
-        ) {
-          uniqueFriendships.set(otherUserId, friendship);
-        }
-      });
-
-      // Convert the Map values back to an array
-      const filtered = Array.from(uniqueFriendships.values());
-      setFilteredFriendships(filtered);
-
-      // Fetch received friend requests
-      const pendingResponse = await api.get("/friendships/pending");
-      setPendingRequests(pendingResponse.data || []);
-      setFilteredRequests(pendingResponse.data || []);
-
-      // Fetch sent friend requests
-      const sentResponse = await api.get("/friendships/sent");
-      setSentRequests(sentResponse.data || []);
-      setFilteredSentRequests(sentResponse.data || []);
+      // Use the global state manager to update friendship data
+      await updateFriendshipsList();
 
       // When on All Users tab, fetch all users
       if (activeTab === 3) {
@@ -235,157 +286,6 @@ const Friends: FC = () => {
     }
   };
 
-  useEffect(() => {
-    // Get current user ID from localStorage for direct comparison
-    const currentUserId = localStorage.getItem("user_id")
-      ? parseInt(localStorage.getItem("user_id")!)
-      : currentUser?.id;
-
-    if (searchQuery) {
-      const query = searchQuery.toLowerCase();
-
-      // This Map will track the most recent friendship for each unique user
-      const uniqueFriendships = new Map();
-
-      // Process each friendship to find the most recent one for each user that matches search
-      friendships.forEach((friendship) => {
-        // Skip self-relationships
-        if (
-          friendship.userId === currentUserId &&
-          friendship.friendId === currentUserId
-        ) {
-          return;
-        }
-
-        // Only consider ACCEPTED friendships for My Friends tab
-        if (friendship.status !== "ACCEPTED") {
-          return;
-        }
-
-        // Get the other user in the friendship
-        const otherUserId =
-          friendship.userId === currentUserId
-            ? friendship.friendId
-            : friendship.userId;
-
-        // Skip if the other user is somehow the current user (extra safety)
-        if (otherUserId === currentUserId) {
-          return;
-        }
-
-        const otherUser =
-          friendship.userId === currentUserId
-            ? friendship.friend
-            : friendship.user;
-
-        if (
-          otherUser.name?.toLowerCase().includes(query) ||
-          otherUser.username.toLowerCase().includes(query)
-        ) {
-          // If this is the first time we've seen this user, or this friendship is more recent
-          // than the one we've already tracked, update the map
-          if (
-            !uniqueFriendships.has(otherUserId) ||
-            new Date(friendship.createdAt) >
-              new Date(uniqueFriendships.get(otherUserId).createdAt)
-          ) {
-            uniqueFriendships.set(otherUserId, friendship);
-          }
-        }
-      });
-
-      // Convert the Map values back to an array
-      const filtered = Array.from(uniqueFriendships.values());
-      setFilteredFriendships(filtered);
-
-      // Filter received friend requests
-      const filteredPending = pendingRequests.filter((request) => {
-        const user = request.user;
-        return (
-          user.name?.toLowerCase().includes(query) ||
-          user.username.toLowerCase().includes(query)
-        );
-      });
-      setFilteredRequests(filteredPending);
-
-      // Filter sent friend requests
-      const filteredSent = sentRequests.filter((request) => {
-        const user = request.friend;
-        return (
-          user.name?.toLowerCase().includes(query) ||
-          user.username.toLowerCase().includes(query)
-        );
-      });
-      setFilteredSentRequests(filteredSent);
-
-      // Filter all users
-      const filteredAllUsers = allUsers
-        .filter((user) => user.id !== currentUser?.id) // Filter out current user
-        .filter((user) => {
-          return (
-            user.name?.toLowerCase().includes(query) ||
-            user.username.toLowerCase().includes(query)
-          );
-        });
-      setFilteredUsers(filteredAllUsers);
-    } else {
-      // When no search query, filter out friendships that only involve the current user
-      // This Map will track the most recent friendship for each unique user
-      const uniqueFriendships = new Map();
-
-      // Process each friendship to find the most recent one for each user
-      friendships.forEach((friendship) => {
-        // Skip friendships where both user and friend are the current user
-        if (
-          friendship.userId === currentUserId &&
-          friendship.friendId === currentUserId
-        ) {
-          return;
-        }
-
-        // Only consider ACCEPTED friendships for My Friends tab
-        if (friendship.status !== "ACCEPTED") {
-          return;
-        }
-
-        // Determine which user in this friendship is NOT the current user
-        const otherUserId =
-          friendship.userId === currentUserId
-            ? friendship.friendId
-            : friendship.userId;
-
-        // If this is the first time we've seen this user, or this friendship is more recent
-        // than the one we've already tracked, update the map
-        if (
-          !uniqueFriendships.has(otherUserId) ||
-          new Date(friendship.createdAt) >
-            new Date(uniqueFriendships.get(otherUserId).createdAt)
-        ) {
-          uniqueFriendships.set(otherUserId, friendship);
-        }
-      });
-
-      // Convert the Map values back to an array
-      const filteredFriends = Array.from(uniqueFriendships.values());
-      setFilteredFriendships(filteredFriends);
-      setFilteredRequests(pendingRequests);
-      setFilteredSentRequests(sentRequests);
-
-      // Filter out current user from all users
-      const filteredUsers = allUsers.filter(
-        (user) => user.id !== currentUser?.id
-      );
-      setFilteredUsers(filteredUsers);
-    }
-  }, [
-    searchQuery,
-    friendships,
-    pendingRequests,
-    sentRequests,
-    allUsers,
-    currentUser,
-  ]);
-
   const handleTabChange = (_event: React.SyntheticEvent, newValue: number) => {
     setActiveTab(newValue);
     // Fetch all users when switching to the All Users tab
@@ -400,13 +300,8 @@ const Friends: FC = () => {
 
   const handleAcceptRequest = async (friendshipId: number) => {
     try {
-      await api.patch(`/friendships/${friendshipId}`, {
-        status: "ACCEPTED",
-      });
-
+      await acceptRequest(friendshipId);
       setSuccessMessage("Arkadaşlık isteği kabul edildi.");
-
-      fetchData();
 
       setTimeout(() => {
         setSuccessMessage(null);
@@ -423,13 +318,8 @@ const Friends: FC = () => {
 
   const handleRejectRequest = async (friendshipId: number) => {
     try {
-      await api.patch(`/friendships/${friendshipId}`, {
-        status: "BLOCKED",
-      });
-
+      await rejectRequest(friendshipId);
       setSuccessMessage("Arkadaşlık isteği reddedildi.");
-
-      fetchData();
 
       setTimeout(() => {
         setSuccessMessage(null);
@@ -446,11 +336,7 @@ const Friends: FC = () => {
 
   const handleSendFriendRequest = async (userId: number) => {
     try {
-      await api.post(`/friendships`, {
-        friendId: userId,
-        status: "PENDING",
-      });
-
+      await sendRequest(userId);
       setSuccessMessage("Arkadaşlık isteği gönderildi.");
 
       setUserRelationships((prev) => ({
@@ -474,41 +360,10 @@ const Friends: FC = () => {
     }
   };
 
-  const handleFollowUser = async (userId: number) => {
-    try {
-      await api.post(`/friendships/follow/${userId}`);
-
-      setSuccessMessage("Kullanıcı takip edilmeye başlandı.");
-
-      setUserRelationships((prev) => ({
-        ...prev,
-        [userId]: {
-          ...prev[userId],
-          isFollowing: true,
-        },
-      }));
-
-      setTimeout(() => {
-        setSuccessMessage(null);
-      }, 3000);
-    } catch (err) {
-      console.error("Error following user:", err);
-      setError(processApiError(err));
-
-      setTimeout(() => {
-        setError(null);
-      }, 3000);
-    }
-  };
-
   const handleCancelRequest = async (friendshipId: number) => {
     try {
-      await api.delete(`/friendships/${friendshipId}`);
-
+      await cancelRequest(friendshipId);
       setSuccessMessage("Arkadaşlık isteği iptal edildi.");
-
-      // Refresh data
-      fetchData();
 
       setTimeout(() => {
         setSuccessMessage(null);
@@ -978,7 +833,7 @@ const Friends: FC = () => {
                               <Button
                                 startIcon={<PersonAddIcon />}
                                 variant="outlined"
-                                onClick={() => handleFollowUser(user.id)}
+                                onClick={() => handleSendFriendRequest(user.id)}
                               >
                                 Takip Et
                               </Button>

@@ -54,7 +54,7 @@ export const errorHandler = (
         });
         return;
 
-      case "P2000": // Input value is too long
+      case "P2000":
         res.status(400).json({
           message: "One of the input values is too long.",
           code: prismaError.code,
