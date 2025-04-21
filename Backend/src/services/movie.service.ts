@@ -5,6 +5,7 @@ import path from "path";
 import {
   getFullActorPhotoUrl,
   getFullPosterUrl,
+  getFullProfileImageUrl,
 } from "src/utils/url/url.helper";
 import {
   CreateMovieType,
@@ -100,9 +101,121 @@ export class MovieService {
           photo: getFullActorPhotoUrl(movieActor.actor.photo),
         },
       }));
+
+      // Add ratings for the movie
+      const ratings = await prisma.rating.findMany({
+        where: { movieId: id },
+        include: {
+          user: {
+            select: {
+              id: true,
+              name: true,
+              username: true,
+              profileImage: true,
+            },
+          },
+        },
+        orderBy: {
+          createdAt: "desc",
+        },
+      });
+
+      // Process the ratings
+      const processedRatings = ratings.map((rating) => ({
+        ...rating,
+        user: rating.user
+          ? {
+              ...rating.user,
+              profileImage: getFullProfileImageUrl(rating.user.profileImage),
+            }
+          : null,
+      }));
+
+      // Add the ratings to the movie object
+      (movie as any).ratings = processedRatings;
     }
 
     return movie;
+  }
+
+  static async getSimilarMovies(movieId: number, limit: number = 5) {
+    // Get the movie's genres
+    const movie = await prisma.movie.findUnique({
+      where: { id: movieId },
+      include: {
+        genres: {
+          include: {
+            genre: true,
+          },
+        },
+      },
+    });
+
+    if (!movie || !movie.genres.length) {
+      return [];
+    }
+
+    // Get the genre IDs
+    const genreIds = movie.genres.map((mg) => mg.genreId);
+
+    // Find movies that share at least one genre with this movie
+    const similarMovies = await prisma.movie.findMany({
+      where: {
+        id: { not: movieId }, // Exclude the current movie
+        genres: {
+          some: {
+            genreId: { in: genreIds },
+          },
+        },
+      },
+      include: {
+        genres: {
+          include: {
+            genre: true,
+          },
+        },
+      },
+      orderBy: [
+        // Movies with more matching genres should appear first
+        {
+          rating: "desc",
+        },
+      ],
+      take: limit,
+    });
+
+    // Process the movies (add full URL to poster images)
+    const processedMovies = await Promise.all(
+      similarMovies.map(async (movie) => {
+        // Get average rating for each similar movie
+        const ratingData = await this.getMovieAverageRating(movie.id);
+
+        return {
+          ...movie,
+          posterImage: getFullPosterUrl(movie.posterImage),
+          rating: ratingData.average,
+        };
+      })
+    );
+
+    return processedMovies;
+  }
+
+  static async getMovieAverageRating(movieId: number) {
+    const result = await prisma.rating.aggregate({
+      where: { movieId },
+      _avg: {
+        score: true,
+      },
+      _count: {
+        score: true,
+      },
+    });
+
+    return {
+      average: result._avg.score || 0,
+      count: result._count.score,
+    };
   }
 
   static async update(id: number, data: UpdateMovieType) {

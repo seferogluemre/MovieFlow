@@ -312,6 +312,58 @@ export const libraryService = {
   },
 };
 
+export const ratingService = {
+  getUserRatings: async (): Promise<any> => {
+    try {
+      const response = await api.get("/ratings/user/ratings");
+      return response;
+    } catch (error) {
+      throw error;
+    }
+  },
+
+  createRating: async (movieId: number, score: number): Promise<any> => {
+    try {
+      const response = await api.post("/ratings", {
+        movieId,
+        score,
+      });
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  },
+
+  updateRating: async (ratingId: number, score: number): Promise<any> => {
+    try {
+      const response = await api.patch(`/ratings/${ratingId}`, {
+        score,
+      });
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  },
+
+  deleteRating: async (ratingId: number): Promise<any> => {
+    try {
+      const response = await api.delete(`/ratings/${ratingId}`);
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  },
+
+  getMovieRating: async (movieId: number): Promise<any> => {
+    try {
+      const response = await api.get(`/ratings/movie/${movieId}`);
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  },
+};
+
 export const watchlistService = {
   getUserWatchlist: async (userId: number) => {
     try {

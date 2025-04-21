@@ -13,6 +13,7 @@ import {
   Box,
   Button,
   Card,
+  CardContent,
   CardMedia,
   Chip,
   CircularProgress,
@@ -35,6 +36,7 @@ import api, { processApiError } from "../utils/api";
 import {
   LibraryItem,
   MovieDetailsType,
+  Rating,
   Review,
   WatchlistItem,
   WishlistItem,
@@ -317,6 +319,13 @@ const MovieDetails: FC = () => {
     }
   };
 
+  const getStarColor = (score: number) => {
+    if (score >= 4) return "success.main";
+    if (score >= 3) return "warning.main";
+    if (score >= 2) return "info.main";
+    return "error.main";
+  };
+
   if (loading) {
     return (
       <Box sx={{ display: "flex", justifyContent: "center", my: 4 }}>
@@ -536,68 +545,141 @@ const MovieDetails: FC = () => {
               {movie.description}
             </Typography>
           </Box>
-
-          {/* Cast */}
-          {movie.actors && movie.actors.length > 0 && (
-            <Box>
-              <Typography variant="h6" fontWeight="bold" gutterBottom>
-                Oyuncular
-              </Typography>
-              <Divider sx={{ mb: 2 }} />
-
-              <List>
-                {movie.actors.map((actorEntry) => (
-                  <ListItem key={actorEntry.actorId} alignItems="flex-start">
-                    <ListItemAvatar>
-                      <Avatar
-                        src={
-                          actorEntry.actor.photo ||
-                          "https://via.placeholder.com/100?text=Foto+Yok"
-                        }
-                        alt={actorEntry.actor.name}
-                      />
-                    </ListItemAvatar>
-                    <ListItemText
-                      primary={actorEntry.actor.name}
-                      secondary={
-                        <>
-                          <Typography component="span" variant="body2">
-                            Rol: {actorEntry.role}
-                          </Typography>
-                          <br />
-
-                          <Typography component="span" variant="body2">
-                            Uyruk: {actorEntry.actor.nationality}
-                          </Typography>
-                        </>
-                      }
-                    />
-                  </ListItem>
-                ))}
-              </List>
-            </Box>
-          )}
         </Grid>
       </Grid>
 
-      {/* Reviews Section */}
-      <Box sx={{ mt: 6, mb: 4 }}>
+      {/* Actors Section */}
+      <Box sx={{ mt: 5 }}>
         <Typography variant="h5" fontWeight="bold" gutterBottom>
-          Kullanıcı Yorumları
+          Oyuncular
+        </Typography>
+        <Divider sx={{ mb: 3 }} />
+
+        {movie.actors && movie.actors.length > 0 ? (
+          <List>
+            {movie.actors.map((actorEntry) => (
+              <ListItem key={actorEntry.actorId} alignItems="flex-start">
+                <ListItemAvatar>
+                  <Avatar
+                    src={
+                      actorEntry.actor.photo ||
+                      "https://via.placeholder.com/100?text=Foto+Yok"
+                    }
+                    alt={actorEntry.actor.name}
+                  />
+                </ListItemAvatar>
+                <ListItemText
+                  primary={actorEntry.actor.name}
+                  secondary={
+                    <>
+                      <Typography component="span" variant="body2">
+                        Rol: {actorEntry.role}
+                      </Typography>
+                      <br />
+
+                      <Typography component="span" variant="body2">
+                        Uyruk: {actorEntry.actor.nationality}
+                      </Typography>
+                    </>
+                  }
+                />
+              </ListItem>
+            ))}
+          </List>
+        ) : (
+          <Alert severity="info">Bu film için listelenmiş oyuncu yok.</Alert>
+        )}
+      </Box>
+
+      {/* Ratings Section */}
+      <Box sx={{ mt: 5 }}>
+        <Typography variant="h5" fontWeight="bold" gutterBottom>
+          Değerlendirmeler
+        </Typography>
+        <Divider sx={{ mb: 3 }} />
+
+        {movie.ratings && movie.ratings.length > 0 ? (
+          <Grid container spacing={2}>
+            {movie.ratings.map((rating: Rating) => (
+              <Grid item xs={12} sm={6} md={4} key={rating.id}>
+                <Card
+                  elevation={2}
+                  sx={{
+                    height: "100%",
+                    transition: "transform 0.2s ease-in-out",
+                    "&:hover": {
+                      transform: "translateY(-4px)",
+                      boxShadow: 4,
+                    },
+                  }}
+                >
+                  <CardContent>
+                    <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
+                      <Avatar
+                        src={rating.user?.profileImage || undefined}
+                        alt={rating.user?.name}
+                        sx={{ mr: 1.5 }}
+                      />
+                      <Box>
+                        <Typography variant="subtitle1" fontWeight="bold">
+                          {rating.user?.name || "Kullanıcı"}
+                        </Typography>
+                        <Typography variant="body2" color="text.secondary">
+                          @{rating.user?.username} •{" "}
+                          {formatDate(rating.createdAt)}
+                        </Typography>
+                      </Box>
+                    </Box>
+
+                    <Box
+                      sx={{
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        py: 1,
+                        bgcolor:
+                          rating.score >= 4
+                            ? "success.light"
+                            : rating.score >= 3
+                            ? "warning.light"
+                            : rating.score >= 2
+                            ? "info.light"
+                            : "error.light",
+                        color: "white",
+                        borderRadius: 1,
+                      }}
+                    >
+                      <StarIcon sx={{ fontSize: 28, mr: 1 }} />
+                      <Typography variant="h5" fontWeight="bold">
+                        {rating.score}/5
+                      </Typography>
+                    </Box>
+                  </CardContent>
+                </Card>
+              </Grid>
+            ))}
+          </Grid>
+        ) : (
+          <Alert severity="info">Bu film için henüz değerlendirme yok.</Alert>
+        )}
+      </Box>
+
+      {/* Reviews Section */}
+      <Box sx={{ mt: 5 }}>
+        <Typography variant="h5" fontWeight="bold" gutterBottom>
+          İncelemeler
         </Typography>
         <Divider sx={{ mb: 3 }} />
 
         {loadingReviews ? (
-          <Box sx={{ display: "flex", justifyContent: "center", my: 4 }}>
+          <Box sx={{ display: "flex", justifyContent: "center", p: 4 }}>
             <CircularProgress />
           </Box>
         ) : reviewError ? (
-          <Alert severity="error" sx={{ mb: 2 }}>
-            {reviewError}
-          </Alert>
+          <Alert severity="error">{reviewError}</Alert>
         ) : reviews.length === 0 ? (
           <Alert severity="info">
-            Bu film için henüz yorum yapılmamış. İlk yorumu sen yap!
+            Bu filme henüz inceleme yapılmamış. İlk inceleyen siz olun!
           </Alert>
         ) : (
           <Grid container spacing={3}>
@@ -606,44 +688,30 @@ const MovieDetails: FC = () => {
               const searchParams = new URLSearchParams(location.search);
               const reviewId = searchParams.get("reviewId");
 
-              // Yorumları düzenleme: Eğer bir reviewId varsa, o yorumu en üste getir
-              let sortedReviews = [...reviews];
-              if (reviewId) {
-                const highlightedReviewIndex = sortedReviews.findIndex(
-                  (review) => review.id === parseInt(reviewId)
-                );
-
-                if (highlightedReviewIndex !== -1) {
-                  // Vurgulanan yorumu diziden çıkar ve başa ekle
-                  const highlightedReview = sortedReviews.splice(
-                    highlightedReviewIndex,
-                    1
-                  )[0];
-                  sortedReviews = [highlightedReview, ...sortedReviews];
-                }
-              }
+              // İncelemeleri en yakın tarihe göre sırala
+              const sortedReviews = [...reviews].sort(
+                (a, b) =>
+                  new Date(b.createdAt).getTime() -
+                  new Date(a.createdAt).getTime()
+              );
 
               return sortedReviews.map((review) => {
                 const isHighlighted =
-                  reviewId && parseInt(reviewId) === review.id;
+                  reviewId && review.id === Number(reviewId);
 
                 return (
                   <Grid item xs={12} key={review.id}>
                     <Paper
-                      id={`review-${review.id}`}
-                      ref={isHighlighted ? highlightedReviewRef : null}
-                      elevation={isHighlighted ? 6 : 2}
+                      elevation={isHighlighted ? 8 : 1}
                       sx={{
                         p: 3,
-                        transition: "all 0.3s ease",
-                        transform: isHighlighted ? "scale(1.02)" : "scale(1)",
-                        borderLeft: isHighlighted
-                          ? "4px solid #2196f3"
-                          : "none",
+                        border: isHighlighted ? "2px solid #f50057" : "none",
                         bgcolor: isHighlighted
-                          ? "rgba(33, 150, 243, 0.05)"
-                          : "inherit",
+                          ? "rgba(245, 0, 87, 0.05)"
+                          : "background.paper",
                       }}
+                      id={`review-${review.id}`}
+                      ref={isHighlighted ? highlightedReviewRef : null}
                     >
                       <Box
                         sx={{ display: "flex", alignItems: "center", mb: 2 }}
@@ -674,6 +742,104 @@ const MovieDetails: FC = () => {
           </Grid>
         )}
       </Box>
+
+      {/* Similar Movies Section */}
+      {movie?.similarMovies && movie.similarMovies.length > 0 && (
+        <Box sx={{ mt: 5 }}>
+          <Typography variant="h5" fontWeight="bold" gutterBottom>
+            Benzer Filmler
+          </Typography>
+          <Divider sx={{ mb: 3 }} />
+
+          <Grid container spacing={2}>
+            {movie.similarMovies.map((similarMovie) => (
+              <Grid item xs={12} sm={6} md={4} lg={3} key={similarMovie.id}>
+                <Card
+                  sx={{
+                    height: "100%",
+                    display: "flex",
+                    flexDirection: "column",
+                    transition: "transform 0.2s, box-shadow 0.2s",
+                    "&:hover": {
+                      transform: "scale(1.03)",
+                      boxShadow: 6,
+                      cursor: "pointer",
+                    },
+                  }}
+                  onClick={() => navigate(`/movie/${similarMovie.id}`)}
+                >
+                  <CardMedia
+                    component="img"
+                    image={
+                      similarMovie.posterImage ||
+                      "https://via.placeholder.com/300x450?text=Afiş+Yok"
+                    }
+                    alt={similarMovie.title}
+                    sx={{ height: 240, objectFit: "cover" }}
+                  />
+                  <CardContent sx={{ flexGrow: 1 }}>
+                    <Typography
+                      variant="subtitle1"
+                      fontWeight="bold"
+                      gutterBottom
+                    >
+                      {similarMovie.title}
+                    </Typography>
+                    <Box
+                      sx={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "space-between",
+                      }}
+                    >
+                      <Typography variant="body2" color="text.secondary">
+                        {similarMovie.releaseYear}
+                      </Typography>
+                      {similarMovie.rating > 0 && (
+                        <Box sx={{ display: "flex", alignItems: "center" }}>
+                          <StarIcon
+                            sx={{
+                              color: getStarColor(similarMovie.rating),
+                              fontSize: 16,
+                              mr: 0.5,
+                            }}
+                          />
+                          <Typography variant="body2" fontWeight="bold">
+                            {similarMovie.rating.toFixed(1)}
+                          </Typography>
+                        </Box>
+                      )}
+                    </Box>
+
+                    {/* Show movie genres */}
+                    {similarMovie.genres && similarMovie.genres.length > 0 && (
+                      <Box
+                        sx={{
+                          mt: 1,
+                          display: "flex",
+                          flexWrap: "wrap",
+                          gap: 0.5,
+                        }}
+                      >
+                        {similarMovie.genres.slice(0, 2).map((genreEntry) => (
+                          <Chip
+                            key={genreEntry.genreId}
+                            label={genreEntry.genre.name}
+                            size="small"
+                            variant="outlined"
+                            color="primary"
+                            sx={{ fontSize: "0.7rem" }}
+                          />
+                        ))}
+                      </Box>
+                    )}
+                  </CardContent>
+                </Card>
+              </Grid>
+            ))}
+          </Grid>
+        </Box>
+      )}
     </Container>
   );
 };

@@ -7,6 +7,7 @@ import {
   Slideshow as MoviesIcon,
   Person as ProfileIcon,
   StarRate as ReviewsIcon,
+  StarRate as StarRateIcon,
   Visibility as WatchlistIcon,
   Favorite as WishlistIcon,
 } from "@mui/icons-material";
@@ -59,6 +60,11 @@ const Sidebar: FC = () => {
     { name: "İstek Listesi", icon: <WishlistIcon />, path: "/wishlist" },
     { name: "Kütüphane", icon: <LibraryIcon />, path: "/library" },
     { name: "Değerlendirmelerim", icon: <ReviewsIcon />, path: "/reviews" },
+    {
+      name: "Film Puanlarım",
+      icon: <StarRateIcon />,
+      path: "/ratings",
+    },
     { name: "Arkadaşlar", icon: <FriendsIcon />, path: "/friends" },
   ];
 

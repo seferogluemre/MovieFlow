@@ -1,12 +1,9 @@
-import { z } from "zod";
 import { Request, Response } from "express";
-import multer from "multer";
-import { MovieService } from "src/services/movie.service";
-import { upload, uploadToS3, getS3Url } from "src/utils/s3-upload.util";
-import { logInfo, logWarn } from "src/utils/logging/logger.util";
 import prisma from "src/config/database";
-import path from "path";
-import fs from "fs";
+import { MovieService } from "src/services/movie.service";
+import { logInfo, logWarn } from "src/utils/logging/logger.util";
+import { getS3Url, upload, uploadToS3 } from "src/utils/s3-upload.util";
+import { z } from "zod";
 
 export class MovieController {
   static async index(req: Request, res: Response): Promise<void> {
@@ -115,9 +112,13 @@ export class MovieController {
         return;
       }
 
+      // Get similar movies based on genres
+      const similarMovies = await MovieService.getSimilarMovies(Number(id));
+
       res.status(200).json({
         data: {
           ...movie,
+          similarMovies,
         },
       });
     } catch (error) {

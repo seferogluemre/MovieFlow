@@ -9,6 +9,7 @@ import MovieDetails from "../pages/MovieDetails";
 import MyReviews from "../pages/MyReviews";
 import Profile from "../pages/Profile";
 import ProfileDetail from "../pages/ProfileDetail";
+import Ratings from "../pages/Ratings";
 import Settings from "../pages/Settings";
 import Watchlist from "../pages/Watchlist";
 import Wishlist from "../pages/Wishlist";
@@ -58,6 +59,10 @@ const routes = createBrowserRouter([
       {
         path: "reviews",
         element: <MyReviews />,
+      },
+      {
+        path: "ratings",
+        element: <Ratings />,
       },
       {
         path: "friends",

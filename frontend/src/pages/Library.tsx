@@ -1,6 +1,5 @@
 import {
   AccessTime as AccessTimeIcon,
-  DateRange,
   Delete as DeleteIcon,
   MoreVert as MoreVertIcon,
   RateReview as RateReviewIcon,
@@ -40,9 +39,10 @@ import { format, formatDistanceToNow } from "date-fns";
 import { tr } from "date-fns/locale";
 import { FC, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import RatingModal from "../components/RatingModal";
 import { useAuth } from "../context/AuthContext";
-import api, { processApiError } from "../utils/api";
-import { LibraryItem } from "../utils/types";
+import api, { processApiError, ratingService } from "../utils/api";
+import { LibraryItem, Rating } from "../utils/types";
 
 const Library: FC = () => {
   const navigate = useNavigate();
@@ -58,6 +58,14 @@ const Library: FC = () => {
   const [selectedDateTime, setSelectedDateTime] = useState<Date | null>(
     new Date()
   );
+
+  const [userRatings, setUserRatings] = useState<{ [key: number]: Rating }>({});
+  const [loadingRatings, setLoadingRatings] = useState<boolean>(false);
+  const [ratingModalOpen, setRatingModalOpen] = useState<boolean>(false);
+  const [selectedMovie, setSelectedMovie] = useState<{
+    id: number;
+    title: string;
+  } | null>(null);
 
   const [reviewDialog, setReviewDialog] = useState({
     open: false,
@@ -80,11 +88,12 @@ const Library: FC = () => {
     const init = async () => {
       if (isAuthenticated) {
         fetchLibrary();
+        fetchUserRatings();
       } else {
-        // Auth durumunu kontrol et, belki sayfa yenilendi
         const isAuth = await checkAuthStatus();
         if (isAuth) {
           fetchLibrary();
+          fetchUserRatings();
         } else {
           navigate("/login");
         }
@@ -107,6 +116,28 @@ const Library: FC = () => {
       );
     } finally {
       setLoading(false);
+    }
+  };
+
+  const fetchUserRatings = async () => {
+    try {
+      setLoadingRatings(true);
+      const response = await ratingService.getUserRatings();
+
+      const ratingsMap: { [key: number]: Rating } = {};
+      if (response.data && Array.isArray(response.data)) {
+        response.data.forEach((rating: Rating) => {
+          if (rating.movieId) {
+            ratingsMap[rating.movieId] = rating;
+          }
+        });
+      }
+
+      setUserRatings(ratingsMap);
+    } catch (error) {
+      console.error("Error fetching user ratings:", error);
+    } finally {
+      setLoadingRatings(false);
     }
   };
 
@@ -165,6 +196,73 @@ const Library: FC = () => {
     handleMenuClose();
   };
 
+  const handleRateMovie = () => {
+    const selectedItem = library.find((item) => item.id === selectedItemId);
+    if (!selectedItem) return;
+
+    setSelectedMovie({
+      id: selectedItem.movie.id,
+      title: selectedItem.movie.title,
+    });
+    setRatingModalOpen(true);
+    handleMenuClose();
+  };
+
+  const handleSubmitRating = async (score: number) => {
+    if (!selectedMovie) return;
+
+    try {
+      const movieId = selectedMovie.id;
+      const existingRating = userRatings[movieId];
+
+      let result;
+      if (existingRating) {
+        result = await ratingService.updateRating(existingRating.id, score);
+      } else {
+        result = await ratingService.createRating(movieId, score);
+      }
+
+      if (result && result.data) {
+        setUserRatings((prev) => ({
+          ...prev,
+          [movieId]: result.data,
+        }));
+
+        const action = existingRating ? "güncellendi" : "eklendi";
+        setSuccessMessage(`Film puanınız başarıyla ${action}.`);
+        setTimeout(() => setSuccessMessage(null), 3000);
+      }
+    } catch (error) {
+      const errorMessage = processApiError(error);
+      setError(errorMessage);
+      setTimeout(() => setError(null), 3000);
+    }
+  };
+
+  const handleDeleteRating = async () => {
+    if (!selectedMovie) return;
+
+    const movieId = selectedMovie.id;
+    const existingRating = userRatings[movieId];
+
+    if (!existingRating) return;
+
+    try {
+      await ratingService.deleteRating(existingRating.id);
+
+      const updatedRatings = { ...userRatings };
+      delete updatedRatings[movieId];
+      setUserRatings(updatedRatings);
+
+      setSuccessMessage("Film puanınız başarıyla silindi.");
+      setTimeout(() => setSuccessMessage(null), 3000);
+    } catch (error) {
+      const errorMessage = processApiError(error);
+      setError(errorMessage);
+      setTimeout(() => setError(null), 3000);
+    }
+  };
+
   const handleRemoveClick = () => {
     setConfirmDeleteDialog({
       open: true,
@@ -173,42 +271,6 @@ const Library: FC = () => {
     handleMenuClose();
   };
 
-  // Last watched dialog handling
-  const handleCloseWatchedDialog = () => {
-    setWatchedDialog({
-      open: false,
-      itemId: null,
-    });
-  };
-
-  const handleSaveLastWatched = async () => {
-    if (!watchedDialog.itemId || !selectedDateTime) return;
-
-    try {
-      await api.patch(`/library/${watchedDialog.itemId}`, {
-        lastWatched: selectedDateTime.toISOString(),
-      });
-
-      // Update state to reflect the change
-      setLibrary((prevLibrary) =>
-        prevLibrary.map((item) =>
-          item.id === watchedDialog.itemId
-            ? { ...item, lastWatched: selectedDateTime.toISOString() }
-            : item
-        )
-      );
-
-      setSuccessMessage("Son izleme tarihi başarıyla güncellendi");
-      setTimeout(() => setSuccessMessage(null), 3000);
-      handleCloseWatchedDialog();
-    } catch (err) {
-      const errorMessage = processApiError(err);
-      setError(errorMessage);
-      setTimeout(() => setError(null), 3000);
-    }
-  };
-
-  // Review dialog handling
   const handleCloseReviewDialog = () => {
     setReviewDialog({
       open: false,
@@ -219,25 +281,25 @@ const Library: FC = () => {
   };
 
   const handleReviewContentChange = (
-    e: React.ChangeEvent<HTMLTextAreaElement>
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    setReviewDialog({
-      ...reviewDialog,
-      content: e.target.value,
-    });
+    setReviewDialog((prev) => ({ ...prev, content: event.target.value }));
   };
 
   const handleSubmitReview = async () => {
-    if (!reviewDialog.movieId || !reviewDialog.content.trim()) return;
+    if (!reviewDialog.movieId || !reviewDialog.content) return;
 
     try {
-      await api.post("/reviews", {
-        content: reviewDialog.content,
+      const response = await api.post("/reviews", {
         movieId: reviewDialog.movieId,
+        content: reviewDialog.content,
       });
 
-      setSuccessMessage("İncelemeniz başarıyla gönderildi");
-      setTimeout(() => setSuccessMessage(null), 3000);
+      if (response.status === 201) {
+        setSuccessMessage("İncelemeniz başarıyla eklendi.");
+        setTimeout(() => setSuccessMessage(null), 3000);
+      }
+
       handleCloseReviewDialog();
     } catch (err) {
       const errorMessage = processApiError(err);
@@ -246,7 +308,59 @@ const Library: FC = () => {
     }
   };
 
-  // Delete dialog handling
+  const handleCloseWatchedDialog = () => {
+    setWatchedDialog({
+      open: false,
+      itemId: null,
+    });
+    setSelectedDateTime(new Date());
+  };
+
+  const handleDateTimeChange = (
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setSelectedDateTime(
+      event.target.value ? new Date(event.target.value) : null
+    );
+  };
+
+  const handleSubmitWatchedDate = async () => {
+    if (!watchedDialog.itemId || !selectedDateTime) return;
+
+    try {
+      const response = await api.patch(`/library/${watchedDialog.itemId}`, {
+        lastWatched: selectedDateTime.toISOString(),
+      });
+
+      if (response.status === 200) {
+        const updatedLibrary = library.map((item) =>
+          item.id === watchedDialog.itemId
+            ? { ...item, lastWatched: selectedDateTime.toISOString() }
+            : item
+        );
+        setLibrary(updatedLibrary);
+        setFilteredLibrary(
+          searchQuery
+            ? filteredLibrary.map((item) =>
+                item.id === watchedDialog.itemId
+                  ? { ...item, lastWatched: selectedDateTime.toISOString() }
+                  : item
+              )
+            : updatedLibrary
+        );
+
+        setSuccessMessage("Son izleme tarihi başarıyla güncellendi.");
+        setTimeout(() => setSuccessMessage(null), 3000);
+      }
+
+      handleCloseWatchedDialog();
+    } catch (err) {
+      const errorMessage = processApiError(err);
+      setError(errorMessage);
+      setTimeout(() => setError(null), 3000);
+    }
+  };
+
   const handleCloseDeleteDialog = () => {
     setConfirmDeleteDialog({
       open: false,
@@ -284,7 +398,6 @@ const Library: FC = () => {
     }
   };
 
-  // Helper function to get age rating color
   const getAgeRatingColor = (rating: string) => {
     switch (rating) {
       case "GENERAL":
@@ -301,7 +414,6 @@ const Library: FC = () => {
     }
   };
 
-  // Yaş sınırı etiketlerini Türkçe karşılıklarına çevir
   const translateAgeRating = (rating: string) => {
     switch (rating) {
       case "GENERAL":
@@ -317,6 +429,10 @@ const Library: FC = () => {
       default:
         return rating;
     }
+  };
+
+  const getUserRatingForMovie = (movieId: number) => {
+    return userRatings[movieId] || null;
   };
 
   return (
@@ -384,84 +500,107 @@ const Library: FC = () => {
                 <TableCell>Film</TableCell>
                 <TableCell>Yönetmen</TableCell>
                 <TableCell>Yıl</TableCell>
-                <TableCell>Puan</TableCell>
+                <TableCell>Kullanıcı Puanı</TableCell>
+                <TableCell>Genel Puan</TableCell>
                 <TableCell>Yaş Sınırı</TableCell>
                 <TableCell>Son İzlenme</TableCell>
                 <TableCell align="right">İşlemler</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {filteredLibrary.map((item) => (
-                <TableRow
-                  key={item.id}
-                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-                >
-                  <TableCell component="th" scope="row">
-                    <Box sx={{ display: "flex", alignItems: "center" }}>
-                      <Box
-                        component="img"
-                        sx={{
-                          width: 60,
-                          height: 80,
-                          objectFit: "cover",
-                          borderRadius: 1,
-                          mr: 2,
-                        }}
-                        src={
-                          item.movie.posterImage ||
-                          "https://via.placeholder.com/60x80?text=Resim+Yok"
-                        }
-                        alt={item.movie.title}
-                      />
-                      <Typography fontWeight="bold">
-                        {item.movie.title}
-                      </Typography>
-                    </Box>
-                  </TableCell>
-                  <TableCell>{item.movie.director}</TableCell>
-                  <TableCell>{item.movie.releaseYear}</TableCell>
-                  <TableCell>
-                    {item.movie.rating > 0 ? (
+              {filteredLibrary.map((item) => {
+                const userRating = getUserRatingForMovie(item.movie.id);
+
+                return (
+                  <TableRow
+                    key={item.id}
+                    sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                  >
+                    <TableCell component="th" scope="row">
                       <Box sx={{ display: "flex", alignItems: "center" }}>
-                        <StarIcon
-                          sx={{ color: "warning.main", fontSize: 16, mr: 0.5 }}
+                        <Box
+                          component="img"
+                          sx={{
+                            width: 60,
+                            height: 80,
+                            objectFit: "cover",
+                            borderRadius: 1,
+                            mr: 2,
+                          }}
+                          src={
+                            item.movie.posterImage ||
+                            "https://via.placeholder.com/60x80?text=Resim+Yok"
+                          }
+                          alt={item.movie.title}
                         />
-                        <Typography variant="body2" fontWeight="bold">
-                          {item.movie.rating.toFixed(1)}
+                        <Typography fontWeight="bold">
+                          {item.movie.title}
                         </Typography>
                       </Box>
-                    ) : (
-                      "Puanlanmamış"
-                    )}
-                  </TableCell>
-                  <TableCell>
-                    <Chip
-                      label={
-                        item.movie.ageRating
-                          ? translateAgeRating(item.movie.ageRating)
-                          : "GENEL"
-                      }
-                      size="small"
-                      color={getAgeRatingColor(item.movie.ageRating)}
-                    />
-                  </TableCell>
-                  <TableCell>{formatDate(item.lastWatched)}</TableCell>
-                  <TableCell align="right">
-                    <IconButton
-                      aria-label="işlemler"
-                      onClick={(e) => handleMenuOpen(e, item.id)}
-                    >
-                      <MoreVertIcon />
-                    </IconButton>
-                  </TableCell>
-                </TableRow>
-              ))}
+                    </TableCell>
+                    <TableCell>{item.movie.director}</TableCell>
+                    <TableCell>{item.movie.releaseYear}</TableCell>
+                    <TableCell>
+                      {userRating ? (
+                        <Box sx={{ display: "flex", alignItems: "center" }}>
+                          <StarIcon
+                            sx={{
+                              color: "warning.main",
+                              fontSize: 16,
+                              mr: 0.5,
+                            }}
+                          />
+                          <Typography variant="body2" fontWeight="bold">
+                            {userRating.score}
+                          </Typography>
+                        </Box>
+                      ) : (
+                        "Puanlanmamış"
+                      )}
+                    </TableCell>
+                    <TableCell>
+                      {item.movie.rating > 0 ? (
+                        <Box sx={{ display: "flex", alignItems: "center" }}>
+                          <StarIcon
+                            sx={{
+                              color: "warning.main",
+                              fontSize: 16,
+                              mr: 0.5,
+                            }}
+                          />
+                          <Typography variant="body2" fontWeight="bold">
+                            {item.movie.rating.toFixed(1)}
+                          </Typography>
+                        </Box>
+                      ) : (
+                        "Puanlanmamış"
+                      )}
+                    </TableCell>
+                    <TableCell>
+                      <Chip
+                        label={translateAgeRating(item.movie.ageRating)}
+                        color={getAgeRatingColor(item.movie.ageRating) as any}
+                        size="small"
+                      />
+                    </TableCell>
+                    <TableCell>{formatDate(item.lastWatched)}</TableCell>
+                    <TableCell align="right">
+                      <IconButton
+                        edge="end"
+                        aria-label="actions"
+                        onClick={(e) => handleMenuOpen(e, item.id)}
+                      >
+                        <MoreVertIcon />
+                      </IconButton>
+                    </TableCell>
+                  </TableRow>
+                );
+              })}
             </TableBody>
           </Table>
         </TableContainer>
       )}
 
-      {/* Actions Menu */}
       <Menu
         anchorEl={anchorEl}
         open={Boolean(anchorEl)}
@@ -489,6 +628,13 @@ const Library: FC = () => {
           <ListItemText>Son İzleme Tarihini Güncelle</ListItemText>
         </MenuItem>
 
+        <MenuItem onClick={handleRateMovie}>
+          <ListItemIcon>
+            <StarIcon fontSize="small" color="warning" />
+          </ListItemIcon>
+          <ListItemText>Puanla</ListItemText>
+        </MenuItem>
+
         <MenuItem onClick={handleWriteReview}>
           <ListItemIcon>
             <RateReviewIcon fontSize="small" />
@@ -504,72 +650,60 @@ const Library: FC = () => {
         </MenuItem>
       </Menu>
 
-      {/* Last Watched Dialog */}
       <Dialog open={watchedDialog.open} onClose={handleCloseWatchedDialog}>
         <DialogTitle>Son İzleme Tarihini Güncelle</DialogTitle>
         <DialogContent>
-          <DialogContentText sx={{ mb: 2 }}>
-            Bu film için son izleme tarihinizi seçin:
+          <DialogContentText>
+            Bu filmi en son ne zaman izlediğinizi seçin.
           </DialogContentText>
           <TextField
-            label="Son İzleme Tarihi"
+            label="İzleme Zamanı"
             type="datetime-local"
             value={
               selectedDateTime
                 ? format(selectedDateTime, "yyyy-MM-dd'T'HH:mm")
                 : ""
             }
-            onChange={(e) => {
-              const newDate = e.target.value ? new Date(e.target.value) : null;
-              setSelectedDateTime(newDate);
-            }}
-            sx={{ width: "100%", mt: 2 }}
+            onChange={handleDateTimeChange}
+            fullWidth
+            margin="normal"
             InputLabelProps={{
               shrink: true,
-            }}
-            InputProps={{
-              endAdornment: (
-                <InputAdornment position="end">
-                  <DateRange sx={{ color: "red" }} />{" "}
-                </InputAdornment>
-              ),
             }}
           />
         </DialogContent>
         <DialogActions>
           <Button onClick={handleCloseWatchedDialog}>İptal</Button>
-          <Button onClick={handleSaveLastWatched} color="primary">
-            Kaydet
+          <Button
+            onClick={handleSubmitWatchedDate}
+            color="primary"
+            disabled={!selectedDateTime}
+          >
+            Güncelle
           </Button>
         </DialogActions>
       </Dialog>
 
-      {/* Review Dialog */}
-      <Dialog
-        open={reviewDialog.open}
-        onClose={handleCloseReviewDialog}
-        fullWidth
-        maxWidth="sm"
-      >
-        <DialogTitle>Film İncelemesi Yaz</DialogTitle>
+      <Dialog open={reviewDialog.open} onClose={handleCloseReviewDialog}>
+        <DialogTitle>İnceleme Yaz</DialogTitle>
         <DialogContent>
-          <DialogContentText sx={{ mb: 2 }}>
-            Bu film hakkındaki düşüncelerinizi paylaşın:
+          <DialogContentText>
+            Bu film hakkındaki düşüncelerinizi paylaşın.
           </DialogContentText>
           <TextareaAutosize
-            aria-label="Film incelemesi"
             minRows={5}
-            placeholder="Bu film hakkında ne düşünüyorsunuz?"
-            style={{
-              width: "100%",
-              backgroundColor: "white",
-              color: "black",
-              padding: "8px",
-              borderRadius: "4px",
-              borderColor: "#ccc",
-            }}
+            placeholder="Film hakkında yorumunuzu buraya yazın..."
             value={reviewDialog.content}
             onChange={handleReviewContentChange}
+            style={{
+              width: "100%",
+              padding: "12px",
+              borderRadius: "4px",
+              border: "1px solid #ddd",
+              marginTop: "16px",
+              fontSize: "16px",
+              fontFamily: "inherit",
+            }}
           />
         </DialogContent>
         <DialogActions>
@@ -577,19 +711,18 @@ const Library: FC = () => {
           <Button
             onClick={handleSubmitReview}
             color="primary"
-            disabled={!reviewDialog.content.trim()}
+            disabled={!reviewDialog.content}
           >
             Gönder
           </Button>
         </DialogActions>
       </Dialog>
 
-      {/* Delete Confirmation Dialog */}
       <Dialog open={confirmDeleteDialog.open} onClose={handleCloseDeleteDialog}>
-        <DialogTitle>Kaldırmayı Onayla</DialogTitle>
+        <DialogTitle>Kütüphaneden Kaldır</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            Bu filmi kütüphanenizden kaldırmak istediğinizden emin misiniz?
+            Bu filmi kütüphanenizden kaldırmak istediğinize emin misiniz?
           </DialogContentText>
         </DialogContent>
         <DialogActions>
@@ -599,6 +732,20 @@ const Library: FC = () => {
           </Button>
         </DialogActions>
       </Dialog>
+
+      {selectedMovie && (
+        <RatingModal
+          open={ratingModalOpen}
+          onClose={() => setRatingModalOpen(false)}
+          onSubmit={handleSubmitRating}
+          onDelete={
+            userRatings[selectedMovie.id] ? handleDeleteRating : undefined
+          }
+          movieTitle={selectedMovie.title}
+          initialRating={userRatings[selectedMovie.id]?.score || 0}
+          existingRatingId={userRatings[selectedMovie.id]?.id}
+        />
+      )}
     </Box>
   );
 };

@@ -1,12 +1,11 @@
 import { PrismaClient } from "@prisma/client";
-import { CreateUserType, UpdateUserType } from "../validators/user.validation";
+import bcrypt from "bcryptjs";
 import { USER_WHERE_CLAUSE } from "src/constants/user.constant";
 import { UserQueryProps } from "src/types/types";
 import { getFullProfileImageUrl } from "src/utils/url/url.helper";
-import bcrypt from "bcryptjs";
+import { CreateUserType, UpdateUserType } from "../validators/user.validation";
 
 export const BASE_URL = process.env.BASE_URL || "http://localhost:3000";
-
 export class UserService {
   static async index(query: UserQueryProps) {
     const prisma = new PrismaClient();
@@ -18,6 +17,7 @@ export class UserService {
         name: true,
         username: true,
         isAdmin: true,
+        isVerified: true,
         profileImage: true,
         createdAt: true,
       },
@@ -66,6 +66,7 @@ export class UserService {
         email: true,
         profileImage: true,
         isAdmin: true,
+        isVerified: true,
         friends: true,
         friendsOf: true,
         library: true,
@@ -102,6 +103,7 @@ export class UserService {
         email: true,
         profileImage: true,
         password: true,
+        isVerified: true,
         isAdmin: true,
         friends: true,
         friendsOf: true,
