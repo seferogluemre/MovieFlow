@@ -9,6 +9,7 @@ import auth_routes from "./routes/auth.routes";
 import friendshipRoutes from "./routes/friendship.routes";
 import genre_routes from "./routes/genre.routes";
 import libraryRoutes from "./routes/library.routes";
+import mail_routes from "./routes/mail.routes";
 import movieActorRoutes from "./routes/movie-actor.routes";
 import movieGenreRoutes from "./routes/movie-genre.routes";
 import movie_routes from "./routes/movie.routes";
@@ -76,6 +77,7 @@ app.use("/api/friendships", friendshipRoutes);
 app.use("/api/movie-genres", movieGenreRoutes);
 app.use("/api/movie-actors", movieActorRoutes);
 app.use("/api/notifications", notificationRoutes);
+app.use("/api/mail", mail_routes);
 
 app.use(errorHandler);
 
