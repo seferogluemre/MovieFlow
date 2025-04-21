@@ -33,16 +33,21 @@ enum NotificationType {
 
 // Kullanıcı modeli
 model User {
-  id           Int      @id @default(autoincrement())
-  email        String   @unique
-  username     String   @unique
-  password     String
-  name         String?
-  profileImage String?
-  isAdmin      Boolean  @default(false)
-  isPrivate    Boolean  @default(false)
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
+  id                        Int       @id @default(autoincrement())
+  email                     String    @unique
+  username                  String    @unique
+  password                  String
+  name                      String?
+  profileImage              String?
+  isAdmin                   Boolean   @default(false)
+  isPrivate                 Boolean   @default(false)
+  createdAt                 DateTime  @default(now())
+  updatedAt                 DateTime  @updatedAt
+  isVerified                Boolean   @default(false)
+  verificationCode          String?
+  verificationCodeExpiresAt DateTime?
+  verificationCodeSentAt    DateTime?
+  verificationCodeUsed      Boolean   @default(false)
 
   // İlişkiler
   reviews           Review[]

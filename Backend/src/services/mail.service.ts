@@ -1,7 +1,15 @@
 import { mailTransporter, verifyMailConnection } from "@/config/mail.config";
-import { generateVerificationCode } from "@/utils/mail";
+import {
+  createVerificationData,
+  generateVerificationCode,
+  isValidVerificationCode,
+} from "@/utils/mail";
+import { PrismaClient } from "@prisma/client";
 import fs from "fs";
 import path from "path";
+
+// Prisma instance oluşturma
+const prisma = new PrismaClient();
 
 export class EmailService {
   // Use the transporter from config
@@ -12,6 +20,175 @@ export class EmailService {
 
   // Use the verifyConnection function from config
   static verifyConnection = verifyMailConnection;
+
+  /**
+   * Kullanıcıya e-posta doğrulama kodu gönderir ve veritabanını günceller
+   * @param email - Kullanıcının e-posta adresi
+   * @returns Promise<{success: boolean, message: string, email?: string}>
+   */
+  static async sendVerificationEmailToUser(
+    email: string
+  ): Promise<{ success: boolean; message: string; email?: string }> {
+    try {
+      // E-posta ile kullanıcıyı bul
+      const user = await prisma.user.findUnique({
+        where: { email },
+      });
+
+      if (!user) {
+        return {
+          success: false,
+          message: "Bu e-posta adresiyle kayıtlı kullanıcı bulunamadı",
+        };
+      }
+
+      // Doğrulama kodu oluştur
+      const verificationCode = generateVerificationCode();
+      console.log(
+        `${email} için doğrulama kodu oluşturuldu: ${verificationCode}`
+      );
+
+      // Doğrulama verilerini oluştur (kod ve son kullanma tarihi)
+      const verificationData = createVerificationData(verificationCode);
+
+      // Kullanıcı bilgilerini güncelle
+      await prisma.user.update({
+        where: { email },
+        data: {
+          verificationCode,
+          verificationCodeExpiresAt: verificationData.expires,
+          verificationCodeSentAt: new Date(),
+          verificationCodeUsed: false,
+        },
+      });
+
+      // E-posta içeriğini oluştur
+      const htmlContent = this.generateVerificationEmail(
+        user.username,
+        verificationCode
+      );
+
+      // E-postayı gönder
+      const result = await this.sendEmailWithDynamicFrom(
+        email,
+        "E-posta Adresinizi Doğrulayın - MovieFlow",
+        htmlContent,
+        "MovieFlow",
+        process.env.SMTP_USER || "noreply@movieflow.com"
+      );
+
+      if (result) {
+        return {
+          success: true,
+          message: "Doğrulama e-postası başarıyla gönderildi",
+          email,
+        };
+      } else {
+        return {
+          success: false,
+          message: "Doğrulama e-postası gönderilemedi",
+        };
+      }
+    } catch (error) {
+      console.error("sendVerificationEmailToUser hata:", error);
+      return {
+        success: false,
+        message: "Bir hata oluştu",
+      };
+    }
+  }
+
+  /**
+   * Kullanıcının e-posta doğrulama kodunu kontrol eder
+   * @param email - Kullanıcının e-posta adresi
+   * @param code - Doğrulama kodu
+   * @returns Promise<{success: boolean, message: string, email?: string}>
+   */
+  static async verifyUserEmail(
+    email: string,
+    code: string
+  ): Promise<{ success: boolean; message: string; email?: string }> {
+    try {
+      // Kod formatını kontrol et
+      if (!isValidVerificationCode(code)) {
+        return {
+          success: false,
+          message: "Geçersiz doğrulama kodu formatı",
+        };
+      }
+
+      // E-posta ile kullanıcıyı bul
+      const user = await prisma.user.findUnique({
+        where: { email },
+      });
+
+      if (!user) {
+        return {
+          success: false,
+          message: "Bu e-posta adresiyle kayıtlı kullanıcı bulunamadı",
+        };
+      }
+
+      // Doğrulama kodu varlığını kontrol et
+      if (!user.verificationCode) {
+        return {
+          success: false,
+          message:
+            "Bu e-posta için doğrulama kodu bulunamadı. Lütfen yeni bir kod talep edin.",
+        };
+      }
+
+      // Kodun daha önce kullanılıp kullanılmadığını kontrol et
+      if (user.verificationCodeUsed) {
+        return {
+          success: false,
+          message: "Bu doğrulama kodu daha önce kullanılmış",
+        };
+      }
+
+      // Kodun süresinin dolup dolmadığını kontrol et
+      const now = new Date();
+      if (
+        user.verificationCodeExpiresAt &&
+        now > user.verificationCodeExpiresAt
+      ) {
+        return {
+          success: false,
+          message:
+            "Doğrulama kodunun süresi dolmuş. Lütfen yeni bir kod talep edin.",
+        };
+      }
+
+      // Kodun eşleşip eşleşmediğini kontrol et
+      if (user.verificationCode !== code) {
+        return {
+          success: false,
+          message: "Geçersiz doğrulama kodu",
+        };
+      }
+
+      // Kullanıcı doğrulama durumunu güncelle
+      await prisma.user.update({
+        where: { email },
+        data: {
+          isVerified: true,
+          verificationCodeUsed: true,
+        },
+      });
+
+      return {
+        success: true,
+        message: "E-posta başarıyla doğrulandı",
+        email,
+      };
+    } catch (error) {
+      console.error("verifyUserEmail hata:", error);
+      return {
+        success: false,
+        message: "Bir hata oluştu",
+      };
+    }
+  }
 
   static async sendEmailWithDynamicFrom(
     to: string,
@@ -132,26 +309,27 @@ export class EmailService {
         <div class="header">
           <div class="logo">
            <img src=${logoPath} 
-      alt="OnlyJS MOVIE PLATFORM" 
+      alt="MovieFlow" 
       style="width: 100%; height: 100%; object-fit: cover;" />
           </div>
-          <div class="header-text">OnlyJS MOVIE PLATFORM</div>
+          <div class="header-text">MovieFlow</div>
         </div>
 
         <div class="content">
-          <h1>Welcome to Our OnlyJS Movie Platform!</h1>
-          <p>Hi ${username},</p>
-          <p>Thank you for joining our platform. We're excited to have you here!</p>
-          <p>To verify your email address, please use the verification code below:</p>
+          <h1>E-posta Adresinizi Doğrulayın</h1>
+          <p>Merhaba ${username},</p>
+          <p>Hesabınızı tamamlamak için lütfen e-posta adresinizi doğrulayın.</p>
+          <p>Doğrulama kodunuz:</p>
           
           <div class="verification-code">${verificationCode}</div>
           
-          <p>Enter this code on the verification page to complete your registration.</p>
-          <p>This code will expire in 12 hours.</p>
+          <p>İşlemi tamamlamak için bu kodu doğrulama sayfasına girin.</p>
+          <p>Bu kod 12 saat içinde geçerliliğini yitirecektir.</p>
+          <p>Eğer bu doğrulama talebini siz yapmadıysanız, lütfen bu e-postayı dikkate almayın.</p>
         </div>
 
         <div class="footer">
-          <p>© 2025 OnlyJS Movie Platform. All rights reserved.</p>
+          <p>© ${new Date().getFullYear()} MovieFlow. Tüm hakları saklıdır.</p>
         </div>
       </div>
     </body>
