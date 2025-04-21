@@ -1,8 +1,8 @@
+import { getS3Url, upload, uploadToS3 } from "@/utils/services/s3-upload.util";
 import { Request, Response } from "express";
 import { ActorService } from "src/services/actor.service";
 import { CreateActorProps } from "src/types/types";
 import { logInfo, logWarn } from "src/utils/logging/logger.util";
-import { getS3Url, upload, uploadToS3 } from "src/utils/s3-upload.util";
 import { createActorSchema } from "src/validators/actor.validation";
 import { z } from "zod";
 

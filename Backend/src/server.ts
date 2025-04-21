@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import express from "express";
 import helmet from "helmet";
 import path from "path";
+import { fileURLToPath } from "url";
 import { errorHandler } from "./middlewares/error.middleware";
 import actor_routes from "./routes/actor.routes";
 import auth_routes from "./routes/auth.routes";
@@ -19,6 +20,7 @@ import review_routes from "./routes/review.routes";
 import user_routes from "./routes/user.routes";
 import watchList_routes from "./routes/watchlist.routes";
 import wishList_routes from "./routes/wishlist.routes";
+import "./workers/index";
 
 const corsOptions = {
   origin: ["http://localhost:5173", "http://127.0.0.1:5173"],
@@ -33,6 +35,9 @@ dotenv.config();
 
 const app = express();
 const port = process.env.PORT || 3000;
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 app.use(
   helmet({

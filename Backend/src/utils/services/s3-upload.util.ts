@@ -2,8 +2,12 @@ import AWS from "aws-sdk";
 import fs from "fs";
 import multer from "multer";
 import path from "path";
+import { fileURLToPath } from "url";
 import { v4 as uuidv4 } from "uuid";
-import { logInfo, logWarn } from "./logging/logger.util";
+import { logInfo, logWarn } from "../logging/logger.util";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -81,18 +85,27 @@ export const getS3Url = (key: string): string | null => {
   }
 
   try {
+    // Pre-signed URL sorunları yaşadığımız için doğrudan public URL döndürüyoruz
+    return `https://${process.env.AWS_BUCKET_NAME}.s3.${
+      process.env.AWS_REGION || "eu-central-1"
+    }.amazonaws.com/${key}`;
+
+    /*
+    // Şu an imza sorunları yaşadığımız için kapatıldı
     const params = {
       Bucket: process.env.AWS_BUCKET_NAME || "",
       Key: key,
-      Expires: 604800,
+      Expires: 31536000, // 1 yıl (60 * 60 * 24 * 365 saniye)
     };
 
     return s3.getSignedUrl("getObject", params);
+    */
   } catch (error) {
-    console.error("Pre-signed URL oluşturma hatası:", error);
-
+    console.error("URL oluşturma hatası:", error);
     // Fallback olarak normal URL'yi döndür
-    return `https://${process.env.AWS_BUCKET_NAME}.s3.${process.env.AWS_REGION}.amazonaws.com/${key}`;
+    return `https://${process.env.AWS_BUCKET_NAME}.s3.${
+      process.env.AWS_REGION || "eu-central-1"
+    }.amazonaws.com/${key}`;
   }
 };
 

@@ -1,7 +1,7 @@
 /**
  * URL yardımcı fonksiyonları
  */
-import { getImageUrl } from "../image-url.util";
+import { getImageUrl } from "../services/image-url.util";
 
 export const BASE_URL = process.env.BASE_URL || "http://localhost:3000";
 

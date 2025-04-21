@@ -86,6 +86,14 @@ export interface Movie {
   director: string;
   rating: number;
   ageRating: string;
+  genres?: {
+    movieId: number;
+    genreId: number;
+    genre: {
+      id: number;
+      name: string;
+    };
+  }[];
 }
 
 export interface Review {
@@ -149,17 +157,6 @@ export interface MovieCardProps {
   addedDate?: string;
 }
 
-export interface Movie {
-  id: number;
-  title: string;
-  description: string;
-  releaseYear: number;
-  duration: number;
-  posterImage: string;
-  director: string;
-  rating: number;
-  ageRating: string;
-}
 export interface MovieDetailsType {
   id: number;
   title: string;

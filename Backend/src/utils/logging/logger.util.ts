@@ -1,10 +1,20 @@
 import fs from "fs";
 import path from "path";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 enum LogLevel {
   INFO = "INFO",
   ERROR = "ERROR",
   WARN = "WARN",
+}
+
+// Logs klasörünün varlığını kontrol et ve yoksa oluştur
+const logsDir = path.join(__dirname, "../../logs");
+if (!fs.existsSync(logsDir)) {
+  fs.mkdirSync(logsDir, { recursive: true });
 }
 
 const logFilePath = path.join(__dirname, "../../logs/app.log");

@@ -1,9 +1,9 @@
+import { getS3Url, upload, uploadToS3 } from "@/utils/services/s3-upload.util";
 import { Request, Response } from "express";
 import prisma from "src/config/database";
 import { UserService } from "src/services/user.service";
 import { CreateUserProps, UpdateUserProps } from "src/types/types";
 import { logInfo, logWarn } from "src/utils/logging/logger.util";
-import { getS3Url, upload, uploadToS3 } from "src/utils/s3-upload.util";
 import {
   createUserSchema,
   updateUserSchema,

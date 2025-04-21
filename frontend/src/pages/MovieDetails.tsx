@@ -743,14 +743,14 @@ const MovieDetails: FC = () => {
         )}
       </Box>
 
-      {/* Similar Movies Section */}
-      {movie?.recommendedMovies && movie.recommendedMovies.length > 0 && (
-        <Box sx={{ mt: 5 }}>
-          <Typography variant="h5" fontWeight="bold" gutterBottom>
-            Önerilen Filmler
-          </Typography>
-          <Divider sx={{ mb: 3 }} />
+      {/* Recommended Movies Section */}
+      <Box sx={{ mt: 5 }}>
+        <Typography variant="h5" fontWeight="bold" gutterBottom>
+          Önerilen Filmler
+        </Typography>
+        <Divider sx={{ mb: 3 }} />
 
+        {movie?.recommendedMovies && movie.recommendedMovies.length > 0 ? (
           <Grid container spacing={2}>
             {movie.recommendedMovies.map((similarMovie) => (
               <Grid item xs={12} sm={6} md={4} lg={3} key={similarMovie.id}>
@@ -821,16 +821,18 @@ const MovieDetails: FC = () => {
                           gap: 0.5,
                         }}
                       >
-                        {similarMovie.genres.slice(0, 2).map((genreEntry) => (
-                          <Chip
-                            key={genreEntry.genreId}
-                            label={genreEntry.genre.name}
-                            size="small"
-                            variant="outlined"
-                            color="primary"
-                            sx={{ fontSize: "0.7rem" }}
-                          />
-                        ))}
+                        {similarMovie.genres
+                          .slice(0, 2)
+                          .map((genreEntry: any) => (
+                            <Chip
+                              key={genreEntry.genreId}
+                              label={genreEntry.genre.name}
+                              size="small"
+                              variant="outlined"
+                              color="primary"
+                              sx={{ fontSize: "0.7rem" }}
+                            />
+                          ))}
                       </Box>
                     )}
                   </CardContent>
@@ -838,8 +840,14 @@ const MovieDetails: FC = () => {
               </Grid>
             ))}
           </Grid>
-        </Box>
-      )}
+        ) : (
+          <Alert severity="info" sx={{ mt: 2 }}>
+            Şu anda bu film için önerilen benzer film bulunmamaktadır. Daha
+            fazla film ekleyip kategorileri düzenledikçe öneriler burada
+            görünecektir.
+          </Alert>
+        )}
+      </Box>
     </Container>
   );
 };
