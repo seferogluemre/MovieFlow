@@ -1,40 +1,17 @@
-import dotenv from "dotenv";
+import { mailTransporter, verifyMailConnection } from "@/config/mail.config";
+import { generateVerificationCode } from "@/utils/mail";
 import fs from "fs";
-import nodemailer from "nodemailer";
 import path from "path";
 
-dotenv.config();
-
 export class EmailService {
-  static transporter = nodemailer.createTransport({
-    host: process.env.SMTP_HOST,
-    port: parseInt(process.env.SMTP_PORT || "587"),
-    secure: false,
-    auth: {
-      user: process.env.SMTP_USER,
-      pass: process.env.SMTP_PASS,
-    },
-    tls: {
-      rejectUnauthorized: true,
-    },
-    debug: true,
-    logger: true,
-  });
+  // Use the transporter from config
+  static transporter = mailTransporter;
 
-  static generateVerificationCode(): string {
-    return Math.floor(100000 + Math.random() * 900000).toString();
-  }
+  // Use the generateVerificationCode from utils
+  static generateVerificationCode = generateVerificationCode;
 
-  static async verifyConnection() {
-    try {
-      const verification = await this.transporter.verify();
-      console.log("SMTP connection verified successfully:", verification);
-      return true;
-    } catch (error) {
-      console.error("SMTP connection verification failed:", error);
-      return false;
-    }
-  }
+  // Use the verifyConnection function from config
+  static verifyConnection = verifyMailConnection;
 
   static async sendEmailWithDynamicFrom(
     to: string,
@@ -105,7 +82,7 @@ export class EmailService {
           padding: 20px;
         }
         .header {
-          background-color: #1a1a1a;
+          background-color: transparent;
           padding: 10px 0;
           display: flex;
           align-items: center;

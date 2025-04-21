@@ -20,3 +20,8 @@ export const config = {
     url: process.env.DATABASE_URL,
   },
 };
+
+// Export mail configuration
+export * from "./mail.config";
+
+// Add other configurations exports here as needed

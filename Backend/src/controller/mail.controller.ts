@@ -1,4 +1,9 @@
 import { EmailService } from "@/services/mail.service";
+import {
+  createVerificationData,
+  generateVerificationCode,
+  isValidVerificationCode,
+} from "@/utils/mail";
 import { Request, Response } from "express";
 
 // In-memory store of verification codes (in a real app, this would be in a database)
@@ -19,35 +24,27 @@ export const sendVerificationEmail = async (
   }
 
   try {
-    // Generate a random verification code
-    const verificationCode = EmailService.generateVerificationCode();
+    const verificationCode = generateVerificationCode();
     console.log(`Generated verification code ${verificationCode} for ${email}`);
 
-    // Store the verification code with expiration (12 hours from now)
-    const expirationTime = new Date();
-    expirationTime.setHours(expirationTime.getHours() + 12);
-    verificationCodes.set(email, {
-      code: verificationCode,
-      expires: expirationTime,
-    });
+    // Use the utility function to create verification data
+    const verificationData = createVerificationData(verificationCode);
+    verificationCodes.set(email, verificationData);
+
     console.log(
       `Stored code in memory. Current codes: ${verificationCodes.size}`
     );
-
-    // Log all stored codes
     verificationCodes.forEach((value, key) => {
       console.log(
         `Stored: Email: ${key}, Code: ${value.code}, Expires: ${value.expires}`
       );
     });
 
-    // Generate HTML email template
     const htmlContent = EmailService.generateVerificationEmail(
       username,
       verificationCode
     );
 
-    // Send email
     const result = await EmailService.sendEmailWithDynamicFrom(
       email,
       "Welcome to Our OnlyJS Movie Platform!",
@@ -57,7 +54,6 @@ export const sendVerificationEmail = async (
     );
 
     if (result) {
-      // Double check that code is still stored
       const storedCode = verificationCodes.get(email);
       console.log(
         `After email sent, code for ${email}: ${
@@ -68,7 +64,7 @@ export const sendVerificationEmail = async (
       res.status(200).json({
         message: "Email sent successfully",
         email,
-        code: verificationCode, // Return the code in development for testing
+        code: verificationCode,
       });
     } else {
       res.status(500).json({ message: "Failed to send email" });
@@ -79,7 +75,6 @@ export const sendVerificationEmail = async (
   }
 };
 
-// Verify email with code
 export const verifyEmail = async (
   req: Request,
   res: Response
@@ -93,15 +88,18 @@ export const verifyEmail = async (
     return;
   }
 
-  // Print all verification codes for debugging
-  console.log("All stored verification codes:");
+  // Validate code format first
+  if (!isValidVerificationCode(code)) {
+    res.status(400).json({ message: "Invalid verification code format" });
+    return;
+  }
+
   verificationCodes.forEach((value, key) => {
     console.log(
       `Email: ${key}, Code: ${value.code}, Expires: ${value.expires}`
     );
   });
 
-  // Get stored verification data
   const verificationData = verificationCodes.get(email);
 
   if (!verificationData) {
@@ -113,25 +111,20 @@ export const verifyEmail = async (
     return;
   }
 
-  // Check if code has expired
   const now = new Date();
   if (now > verificationData.expires) {
-    // Remove expired code
     verificationCodes.delete(email);
     res.status(400).json({ message: "Verification code has expired" });
     return;
   }
 
-  // Check if code matches
   if (verificationData.code !== code) {
     res.status(400).json({ message: "Invalid verification code" });
     return;
   }
 
-  // Code is valid - remove it from storage after successful verification
   verificationCodes.delete(email);
 
-  // Return success (in a real app, you would update user status in database)
   res.status(200).json({
     message: "Email verified successfully",
     email,
