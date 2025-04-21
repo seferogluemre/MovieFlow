@@ -8,7 +8,6 @@ import path from "path";
 const prisma = new PrismaClient();
 
 export class EmailService {
-  // Use the transporter from config
   static transporter = mailTransporter;
 
   // Use the generateVerificationCode from utils

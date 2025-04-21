@@ -1,6 +1,6 @@
+import { ReviewController } from "@controllers/review.controller";
+import { authenticate } from "@middlewares/auth.middleware";
 import { Router } from "express";
-import { authenticate } from "src/middlewares/auth.middleware";
-import { ReviewController } from "../controller/review.controller";
 
 const router = Router();
 

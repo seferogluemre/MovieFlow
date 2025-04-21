@@ -1,10 +1,10 @@
+import { AuthService } from "@services/auth.service";
+import { UserService } from "@services/user.service";
+import { logInfo, logWarn } from "@utils/logging/logger.util";
 import bcrypt from "bcryptjs";
 import dotenv from "dotenv";
 import { Request, Response } from "express";
 import jwt, { JwtPayload } from "jsonwebtoken";
-import { AuthService } from "src/services/auth.service";
-import { UserService } from "src/services/user.service";
-import { logInfo, logWarn } from "src/utils/logging/logger.util";
 
 dotenv.config();
 const JWT_SECRET = process.env.JWT_SECRET || "supersecret";

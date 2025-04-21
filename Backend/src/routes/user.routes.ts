@@ -1,7 +1,7 @@
+import { UserController } from "@controllers/user.controller";
 import { Router } from "express";
 import multer from "multer";
 import { storage } from "../config/multer";
-import { UserController } from "../controller/user.controller";
 
 const upload = multer({ storage });
 const router = Router();

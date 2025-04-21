@@ -1,10 +1,10 @@
-import { Request, Response } from "express";
-import { logInfo, logWarn } from "src/utils/logging/logger.util";
-import { FriendshipService } from "../services/friendship.service";
+import { FriendshipService } from "@services/friendship.service";
+import { logInfo, logWarn } from "@utils/logging/logger.util";
 import {
   CreateFriendshipType,
   UpdateFriendshipType,
-} from "../validators/friendship.validation";
+} from "@validators/friendship.validation";
+import { Request, Response } from "express";
 
 export class FriendshipController {
   static async create(req: Request, res: Response): Promise<void> {
@@ -90,7 +90,7 @@ export class FriendshipController {
         res.status(404).json({ message: "Friendship not found" });
       }
 
-      if (friendship.friendId !== userId) {
+      if (friendship?.friendId !== userId) {
         logWarn("Friendship update ---- Unauthorized access attempt");
         res.status(403).json({ message: "Forbidden" });
       }

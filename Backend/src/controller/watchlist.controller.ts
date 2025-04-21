@@ -1,9 +1,9 @@
-import { Request, Response } from "express";
-import { WatchlistService } from "../services/watchlist.service";
+import { WatchlistService } from "@services/watchlist.service";
 import {
   createWatchlistSchema,
   updateWatchlistSchema,
-} from "../validators/watchlist.validator";
+} from "@validators/watchlist.validator";
+import { Request, Response } from "express";
 
 export class WatchListController {
   static async create(req: Request, res: Response): Promise<void> {

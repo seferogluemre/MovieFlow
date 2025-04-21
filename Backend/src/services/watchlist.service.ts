@@ -1,9 +1,9 @@
 import { PrismaClient } from "@prisma/client";
+import { getFullPosterUrl } from "@utils/url/url.helper";
 import {
   CreateWatchlistInput,
   UpdateWatchlistInput,
-} from "../validators/watchlist.validator";
-import { getFullPosterUrl } from "src/utils/url/url.helper";
+} from "@validators/watchlist.validator";
 
 const prisma = new PrismaClient();
 

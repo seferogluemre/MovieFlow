@@ -1,12 +1,12 @@
 import { PrismaClient } from "@prisma/client";
 import {
-  CreateRatingType,
-  UpdateRatingType,
-} from "src/validators/rating.validation";
-import {
   getFullPosterUrl,
   getFullProfileImageUrl,
-} from "src/utils/url/url.helper";
+} from "@utils/url/url.helper";
+import {
+  CreateRatingType,
+  UpdateRatingType,
+} from "@validators/rating.validation";
 
 const prisma = new PrismaClient();
 

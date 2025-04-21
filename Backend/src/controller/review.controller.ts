@@ -1,10 +1,10 @@
-import { Request, Response } from "express";
-import { ReviewService } from "src/services/review.service";
-import { logInfo, logWarn } from "src/utils/logging/logger.util";
+import { ReviewService } from "@services/review.service";
+import { logInfo, logWarn } from "@utils/logging/logger.util";
 import {
   createReviewSchema,
   updateReviewSchema,
-} from "src/validators/review.validation";
+} from "@validators/review.validation";
+import { Request, Response } from "express";
 import { z } from "zod";
 
 export class ReviewController {

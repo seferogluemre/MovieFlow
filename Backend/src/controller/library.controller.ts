@@ -1,7 +1,7 @@
+import { UpdateLibraryType } from "@validators/library.validation";
 import { Request, Response } from "express";
 import { logError, logInfo, logWarn } from "src/utils/logging/logger.util";
 import { LibraryService } from "../services/library.service";
-import { UpdateLibraryType } from "../validators/library.validation";
 
 export class LibraryController {
   static async create(req: Request, res: Response): Promise<void> {
@@ -15,7 +15,6 @@ export class LibraryController {
 
       const data = req.body;
 
-      // Check if movie already exists in user's library
       const existingLibraryEntry = await LibraryService.getByUserAndMovie(
         Number(userId),
         Number(data.movieId)

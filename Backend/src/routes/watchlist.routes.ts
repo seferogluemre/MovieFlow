@@ -1,6 +1,6 @@
+import { WatchListController } from "@controllers/watchlist.controller";
+import { authenticate } from "@middlewares/auth.middleware";
 import { Router } from "express";
-import { WatchListController } from "src/controller/watchlist.controller";
-import { authenticate } from "../middlewares/auth.middleware";
 
 const router = Router();
 

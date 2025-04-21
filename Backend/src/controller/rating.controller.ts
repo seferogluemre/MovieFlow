@@ -1,11 +1,11 @@
-import { z } from "zod";
-import { Request, Response } from "express";
+import { RatingService } from "@services/rating.service";
+import { logInfo, logWarn } from "@utils/logging/logger.util";
 import {
   createRatingSchema,
   updateRatingSchema,
-} from "src/validators/rating.validation";
-import { RatingService } from "src/services/rating.service";
-import { logInfo, logWarn } from "src/utils/logging/logger.util";
+} from "@validators/rating.validation";
+import { Request, Response } from "express";
+import { z } from "zod";
 
 export class RatingController {
   static async index(req: Request, res: Response): Promise<void> {

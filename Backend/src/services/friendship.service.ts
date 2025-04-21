@@ -1,16 +1,16 @@
+import prisma from "@config/database";
 import { Friendship, FriendshipStatus, NotificationType } from "@prisma/client";
-import prisma from "src/config/database";
-import { getFullProfileImageUrl } from "src/utils/url/url.helper";
+import { getFullProfileImageUrl } from "@utils/url/url.helper";
+import {
+  CreateFriendshipType,
+  UpdateFriendshipType,
+} from "@validators/friendship.validation";
 import {
   EnhancedFriendship,
   FriendshipWithUsers,
   RelationshipStatus,
   RelationshipType,
-} from "../types/friendship.types";
-import {
-  CreateFriendshipType,
-  UpdateFriendshipType,
-} from "../validators/friendship.validation";
+} from "src/types/types";
 import { NotificationService } from "./notification.service";
 
 export class FriendshipService {

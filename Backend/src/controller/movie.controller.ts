@@ -1,8 +1,8 @@
 import { getS3Url, upload, uploadToS3 } from "@/utils/services/s3-upload.util";
+import prisma from "@config/database";
+import { MovieService } from "@services/movie.service";
+import { logInfo, logWarn } from "@utils/logging/logger.util";
 import { Request, Response } from "express";
-import prisma from "src/config/database";
-import { MovieService } from "src/services/movie.service";
-import { logInfo, logWarn } from "src/utils/logging/logger.util";
 import { z } from "zod";
 
 export class MovieController {

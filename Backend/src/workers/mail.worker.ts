@@ -1,6 +1,6 @@
-import prisma from "../config/database";
-import mailQueue from "../queues/mail.queue";
-import { sendRecommendationEmail } from "../utils/mail/sendMail.util";
+import prisma from "@config/database";
+import mailQueue from "@queues/mail.queue";
+import { sendRecommendationEmail } from "@utils/mail/sendMail.util";
 
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 

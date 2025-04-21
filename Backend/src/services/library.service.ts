@@ -2,11 +2,11 @@ import { PrismaClient } from "@prisma/client";
 import {
   getFullPosterUrl,
   getFullProfileImageUrl,
-} from "src/utils/url/url.helper";
+} from "@utils/url/url.helper";
 import {
   CreateLibraryType,
   UpdateLibraryType,
-} from "../validators/library.validation";
+} from "@validators/library.validation";
 
 const prisma = new PrismaClient();
 

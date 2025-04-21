@@ -1,10 +1,10 @@
-import { Request, Response } from "express";
-import { logInfo, logWarn } from "src/utils/logging/logger.util";
-import { MovieActorService } from "../services/movie-actor.service";
+import { MovieActorService } from "@services/movie-actor.service";
+import { logInfo, logWarn } from "@utils/logging/logger.util";
 import {
   CreateMovieActorType,
   UpdateMovieActorType,
-} from "../validators/movie-actor.validation";
+} from "@validators/movie-actor.validation";
+import { Request, Response } from "express";
 
 export class MovieActorController {
   static async create(req: Request, res: Response): Promise<void> {

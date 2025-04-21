@@ -1,16 +1,13 @@
 import { PrismaClient } from "@prisma/client";
-import dotenv from "dotenv";
-import fs from "fs";
-import path from "path";
 import {
   getFullActorPhotoUrl,
   getFullPosterUrl,
   getFullProfileImageUrl,
-} from "src/utils/url/url.helper";
-import {
-  CreateMovieType,
-  UpdateMovieType,
-} from "../validators/movie.validation";
+} from "@utils/url/url.helper";
+import { CreateMovieType, UpdateMovieType } from "@validators/movie.validation";
+import dotenv from "dotenv";
+import fs from "fs";
+import path from "path";
 
 dotenv.config();
 

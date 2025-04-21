@@ -1,5 +1,5 @@
+import { getS3Url } from "@utils/services/s3-upload.util";
 import nodemailer from "nodemailer";
-import { getS3Url } from "../services/s3-upload.util";
 
 export async function sendRecommendationEmail(
   email: string,

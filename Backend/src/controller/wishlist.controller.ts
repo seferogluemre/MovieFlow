@@ -1,9 +1,9 @@
-import { Request, Response } from "express";
-import { WishlistService } from "../services/wishlist.service";
+import { WishlistService } from "@services/wishlist.service";
 import {
   createWishlistSchema,
   updateWishlistSchema,
-} from "../validators/wishlist.validator";
+} from "@validators/wishlist.validator";
+import { Request, Response } from "express";
 
 export class WishlistController {
   static async create(req: Request, res: Response): Promise<void> {

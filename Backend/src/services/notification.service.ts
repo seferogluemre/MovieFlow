@@ -1,5 +1,5 @@
+import prisma from "@config/database";
 import { NotificationType } from "@prisma/client";
-import prisma from "src/config/database";
 
 export class NotificationService {
   static async create(

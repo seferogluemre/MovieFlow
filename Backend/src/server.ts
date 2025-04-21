@@ -1,26 +1,26 @@
+import { errorHandler } from "@middlewares/error.middleware";
+import actor_routes from "@routes/actor.routes";
+import auth_routes from "@routes/auth.routes";
+import friendshipRoutes from "@routes/friendship.routes";
+import genre_routes from "@routes/genre.routes";
+import libraryRoutes from "@routes/library.routes";
+import mail_routes from "@routes/mail.routes";
+import movieActorRoutes from "@routes/movie-actor.routes";
+import movieGenreRoutes from "@routes/movie-genre.routes";
+import movie_routes from "@routes/movie.routes";
+import notificationRoutes from "@routes/notification.routes";
+import rating_routes from "@routes/rating.routes";
+import review_routes from "@routes/review.routes";
+import user_routes from "@routes/user.routes";
+import watchList_routes from "@routes/watchlist.routes";
+import wishList_routes from "@routes/wishlist.routes";
+import "@workers/index";
 import cors from "cors";
 import dotenv from "dotenv";
 import express from "express";
 import helmet from "helmet";
 import path from "path";
 import { fileURLToPath } from "url";
-import { errorHandler } from "./middlewares/error.middleware";
-import actor_routes from "./routes/actor.routes";
-import auth_routes from "./routes/auth.routes";
-import friendshipRoutes from "./routes/friendship.routes";
-import genre_routes from "./routes/genre.routes";
-import libraryRoutes from "./routes/library.routes";
-import mail_routes from "./routes/mail.routes";
-import movieActorRoutes from "./routes/movie-actor.routes";
-import movieGenreRoutes from "./routes/movie-genre.routes";
-import movie_routes from "./routes/movie.routes";
-import notificationRoutes from "./routes/notification.routes";
-import rating_routes from "./routes/rating.routes";
-import review_routes from "./routes/review.routes";
-import user_routes from "./routes/user.routes";
-import watchList_routes from "./routes/watchlist.routes";
-import wishList_routes from "./routes/wishlist.routes";
-import "./workers/index";
 
 const corsOptions = {
   origin: ["http://localhost:5173", "http://127.0.0.1:5173"],

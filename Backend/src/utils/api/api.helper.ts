@@ -1,4 +1,4 @@
-import { ApiResponse, ApiError } from "../../types/api.types";
+import { ApiError, ApiResponse } from "src/types/api.types";
 
 export const createSuccessResponse = <T>(
   data: T,

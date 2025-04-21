@@ -1,9 +1,6 @@
 import { PrismaClient } from "@prisma/client";
-import {
-  CreateGenreType,
-  UpdateGenreType,
-} from "../validators/genre.validation";
-import { getFullPosterUrl } from "src/utils/url/url.helper";
+import { getFullPosterUrl } from "@utils/url/url.helper";
+import { CreateGenreType, UpdateGenreType } from "@validators/genre.validation";
 
 const prisma = new PrismaClient();
 

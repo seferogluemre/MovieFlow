@@ -1,9 +1,9 @@
-import { PrismaClient, Movie } from "@prisma/client";
+import { PrismaClient } from "@prisma/client";
+import { getFullActorPhotoUrl, getFullPosterUrl } from "@utils/url/url.helper";
 import {
   CreateActorType,
   UpdateActorType,
 } from "../validators/actor.validation";
-import { getFullPosterUrl, getFullActorPhotoUrl } from "src/utils/url/url.helper";
 
 const prisma = new PrismaClient();
 

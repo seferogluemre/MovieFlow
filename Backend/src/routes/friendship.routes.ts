@@ -1,6 +1,6 @@
+import { FriendshipController } from "@controllers/friendship.controller";
+import { authenticate } from "@middlewares/auth.middleware";
 import { Router } from "express";
-import { authenticate } from "src/middlewares/auth.middleware";
-import { FriendshipController } from "../controller/friendship.controller";
 
 const router = Router();
 

@@ -1,6 +1,6 @@
+import { WishlistController } from "@controllers/wishlist.controller";
+import { authenticate } from "@middlewares/auth.middleware";
 import { Router } from "express";
-import { WishlistController } from "src/controller/wishlist.controller";
-import { authenticate } from "src/middlewares/auth.middleware";
 
 const router = Router();
 

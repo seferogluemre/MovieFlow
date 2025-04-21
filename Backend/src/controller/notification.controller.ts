@@ -1,6 +1,6 @@
+import { NotificationService } from "@services/notification.service";
+import { logInfo, logWarn } from "@utils/logging/logger.util";
 import { Request, Response } from "express";
-import { logInfo, logWarn } from "src/utils/logging/logger.util";
-import { NotificationService } from "../services/notification.service";
 
 export class NotificationController {
   static async getUserNotifications(

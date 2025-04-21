@@ -1,6 +1,6 @@
+import { RatingController } from "@controllers/rating.controller";
+import { authenticate } from "@middlewares/auth.middleware";
 import { Router } from "express";
-import { authenticate } from "src/middlewares/auth.middleware";
-import { RatingController } from "../controller/rating.controller";
 
 const router = Router();
 

@@ -1,13 +1,13 @@
 import { getS3Url, upload, uploadToS3 } from "@/utils/services/s3-upload.util";
-import { Request, Response } from "express";
-import prisma from "src/config/database";
-import { UserService } from "src/services/user.service";
-import { CreateUserProps, UpdateUserProps } from "src/types/types";
-import { logInfo, logWarn } from "src/utils/logging/logger.util";
+import prisma from "@config/database";
+import { UserService } from "@services/user.service";
+import { logInfo, logWarn } from "@utils/logging/logger.util";
 import {
   createUserSchema,
   updateUserSchema,
-} from "src/validators/user.validation";
+} from "@validators/user.validation";
+import { Request, Response } from "express";
+import { CreateUserProps, UpdateUserProps } from "src/types/types";
 import { z } from "zod";
 
 export class UserController {

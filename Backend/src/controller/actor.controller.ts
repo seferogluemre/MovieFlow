@@ -1,9 +1,9 @@
 import { getS3Url, upload, uploadToS3 } from "@/utils/services/s3-upload.util";
+import { ActorService } from "@services/actor.service";
+import { logInfo, logWarn } from "@utils/logging/logger.util";
+import { createActorSchema } from "@validators/actor.validation";
 import { Request, Response } from "express";
-import { ActorService } from "src/services/actor.service";
 import { CreateActorProps } from "src/types/types";
-import { logInfo, logWarn } from "src/utils/logging/logger.util";
-import { createActorSchema } from "src/validators/actor.validation";
 import { z } from "zod";
 
 export class ActorController {

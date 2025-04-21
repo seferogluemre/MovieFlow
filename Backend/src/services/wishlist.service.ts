@@ -1,9 +1,9 @@
 import { PrismaClient } from "@prisma/client";
+import { getFullPosterUrl } from "@utils/url/url.helper";
 import {
   CreateWishlistInput,
   UpdateWishlistInput,
-} from "../validators/wishlist.validator";
-import { getFullPosterUrl } from "src/utils/url/url.helper";
+} from "@validators/wishlist.validator";
 
 const prisma = new PrismaClient();
 

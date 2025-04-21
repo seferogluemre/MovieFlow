@@ -1,9 +1,9 @@
 import { PrismaClient } from "@prisma/client";
+import { getFullActorPhotoUrl, getFullPosterUrl } from "@utils/url/url.helper";
 import {
   CreateMovieActorType,
   UpdateMovieActorType,
-} from "../validators/movie-actor.validation";
-import { getFullPosterUrl, getFullActorPhotoUrl } from "src/utils/url/url.helper";
+} from "@validators/movie-actor.validation";
 
 export class MovieActorService {
   static async create(data: CreateMovieActorType) {
