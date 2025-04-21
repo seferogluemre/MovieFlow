@@ -9,6 +9,7 @@ export interface User {
   bio: string;
   isAdmin: boolean;
   isPrivate: boolean;
+  isVerified: boolean;
   createdAt: string;
   updatedAt: string;
   friends?: Friendship[];
@@ -23,6 +24,7 @@ export interface User {
   firstName?: string;
   lastName?: string;
   bio?: string;
+  isVerified?: boolean;
   createdAt: string;
   updatedAt: string;
 }
@@ -230,6 +232,7 @@ export interface User {
   username: string;
   email: string;
   profileImage: string;
+  isVerified?: boolean;
 }
 
 export interface Friendship {

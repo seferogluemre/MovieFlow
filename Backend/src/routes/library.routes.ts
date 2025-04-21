@@ -6,7 +6,7 @@ const router = Router();
 
 router.use(authenticate);
 
-// Library routes
+
 router.post("/", LibraryController.create);
 router.get("/", LibraryController.getAll);
 router.get("/user/:userId", LibraryController.getAllByUserId);

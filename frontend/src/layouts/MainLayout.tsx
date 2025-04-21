@@ -86,6 +86,7 @@ const MainLayout: FC = () => {
     acceptFriendRequest,
     rejectFriendRequest,
     markNotificationAsRead,
+    markAllNotificationsAsRead,
   } = useFriendship();
 
   const [shouldShake, setShouldShake] = useState(false);
@@ -255,6 +256,9 @@ const MainLayout: FC = () => {
                 <Badge
                   badgeContent={notifications.filter((n) => !n.isRead).length}
                   color="error"
+                  invisible={
+                    notifications.filter((n) => !n.isRead).length === 0
+                  }
                 >
                   <NotificationsIcon className={shouldShake ? "shake" : ""} />
                 </Badge>
@@ -346,7 +350,7 @@ const MainLayout: FC = () => {
                 variant="text"
                 onClick={async () => {
                   try {
-                    await fetchNotifications();
+                    await markAllNotificationsAsRead();
                   } catch (error) {
                     console.error(
                       "Error marking all notifications as read:",

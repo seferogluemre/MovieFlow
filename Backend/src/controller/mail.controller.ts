@@ -1,5 +1,10 @@
 import { EmailService } from "@/services/mail.service";
+import {
+  sendVerificationEmailSchema,
+  verifyEmailSchema,
+} from "@/validators/mail.validation";
 import { Request, Response } from "express";
+import { ZodError } from "zod";
 
 /**
  * Kullanıcıya e-posta doğrulama kodu gönderir
@@ -10,15 +15,11 @@ export const sendVerificationEmail = async (
   req: Request,
   res: Response
 ): Promise<void> => {
-  const { email } = req.body;
-
-  if (!email) {
-    res.status(400).json({ message: "E-posta adresi gereklidir" });
-    return;
-  }
-
   try {
-    // EmailService'i çağırarak işlemi gerçekleştir
+    // Zod ile gelen verileri doğrula
+    const validatedData = sendVerificationEmailSchema.parse(req.body);
+    const { email } = validatedData;
+
     const result = await EmailService.sendVerificationEmailToUser(email);
 
     if (result.success) {
@@ -27,11 +28,22 @@ export const sendVerificationEmail = async (
         email: result.email,
       });
     } else {
-      // Başarısız olma durumundaki hata kodunu belirle
       const statusCode = result.message.includes("bulunamadı") ? 404 : 500;
       res.status(statusCode).json({ message: result.message });
     }
   } catch (error) {
+    // Zod validasyon hatası kontrolü
+    if (error instanceof ZodError) {
+      res.status(400).json({
+        message: "Validasyon hatası",
+        errors: error.errors.map((err) => ({
+          field: err.path.join("."),
+          message: err.message,
+        })),
+      });
+      return;
+    }
+
     console.error("Error in sendVerificationEmail controller:", error);
     res.status(500).json({ message: "Bir hata oluştu", error });
   }
@@ -46,17 +58,10 @@ export const verifyEmail = async (
   req: Request,
   res: Response
 ): Promise<void> => {
-  const { email, code } = req.body;
-
-  if (!email || !code) {
-    res
-      .status(400)
-      .json({ message: "E-posta adresi ve doğrulama kodu gereklidir" });
-    return;
-  }
-
   try {
-    // EmailService'i çağırarak doğrulama işlemini gerçekleştir
+    const validatedData = verifyEmailSchema.parse(req.body);
+    const { email, code } = validatedData;
+
     const result = await EmailService.verifyUserEmail(email, code);
 
     if (result.success) {
@@ -65,7 +70,6 @@ export const verifyEmail = async (
         email: result.email,
       });
     } else {
-      // Hata mesajına göre uygun HTTP durum kodunu belirle
       let statusCode = 400;
       if (result.message.includes("bulunamadı")) {
         statusCode = 404;
@@ -74,6 +78,18 @@ export const verifyEmail = async (
       res.status(statusCode).json({ message: result.message });
     }
   } catch (error) {
+    // Zod validasyon hatası kontrolü
+    if (error instanceof ZodError) {
+      res.status(400).json({
+        message: "Validasyon hatası",
+        errors: error.errors.map((err) => ({
+          field: err.path.join("."),
+          message: err.message,
+        })),
+      });
+      return;
+    }
+
     console.error("Error in verifyEmail controller:", error);
     res.status(500).json({ message: "Bir hata oluştu", error });
   }

@@ -1,6 +1,7 @@
 import {
   Edit as EditIcon,
   Settings as SettingsIcon,
+  VerifiedUser as VerifiedUserIcon,
   VisibilityOff as VisibilityOffIcon,
 } from "@mui/icons-material";
 import {
@@ -22,7 +23,7 @@ import { styled } from "@mui/material/styles";
 import { ChangeEvent, FC, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
-import { userService } from "../utils/api";
+import { mailService, userService } from "../utils/api";
 
 const ProfileAvatar = styled(Avatar)(({ theme }) => ({
   width: 120,
@@ -87,6 +88,16 @@ const Profile: FC = () => {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
 
+  // E-posta doğrulama için yeni stateler
+  const [verificationModalOpen, setVerificationModalOpen] = useState(false);
+  const [verificationCode, setVerificationCode] = useState("");
+  const [verificationLoading, setVerificationLoading] = useState(false);
+  const [verificationSuccess, setVerificationSuccess] = useState(false);
+  const [verificationError, setVerificationError] = useState<string | null>(
+    null
+  );
+  const [codeSent, setCodeSent] = useState(false);
+
   useEffect(() => {
     if (user) {
       if (user && typeof user === "object" && "name" in user) {
@@ -97,6 +108,15 @@ const Profile: FC = () => {
 
       setUsername(user.username || "");
       setEmail(user.email || "");
+
+      // localStorage'da userVerified varsa ve henüz user.isVerified false ise
+      // user.isVerified'i manuel olarak true yap
+      const isVerifiedInStorage =
+        localStorage.getItem("userVerified") === "true";
+      if (isVerifiedInStorage && user && !user.isVerified) {
+        console.log("Applying isVerified=true from localStorage");
+        user.isVerified = true;
+      }
 
       if (user.profileImage) {
         if (user.profileImage.startsWith("http")) {
@@ -343,6 +363,92 @@ const Profile: FC = () => {
     }
   };
 
+  // E-posta doğrulama kodu gönder
+  const handleSendVerificationCode = async () => {
+    if (!user?.email) return;
+
+    setVerificationLoading(true);
+    setVerificationError(null);
+
+    try {
+      await mailService.sendVerificationEmail(user.email);
+      setCodeSent(true);
+      setVerificationModalOpen(true);
+      setVerificationSuccess(false);
+    } catch (err: any) {
+      console.error("Doğrulama kodu gönderme hatası:", err);
+      let errorMessage = "Doğrulama kodu gönderilemedi. Lütfen tekrar deneyin.";
+
+      if (err.response?.data?.message) {
+        errorMessage = err.response.data.message;
+      } else if (err.message) {
+        errorMessage = err.message;
+      }
+
+      setVerificationError(errorMessage);
+    } finally {
+      setVerificationLoading(false);
+    }
+  };
+
+  // E-posta doğrulama modalını kapat
+  const handleVerificationModalClose = () => {
+    setVerificationModalOpen(false);
+    setVerificationCode("");
+    setVerificationError(null);
+  };
+
+  // Doğrulama kodunu kontrol et
+  const handleVerifyEmail = async () => {
+    if (!user?.email || !verificationCode) return;
+
+    setVerificationLoading(true);
+    setVerificationError(null);
+
+    try {
+      const result = await mailService.verifyEmail(
+        user.email,
+        verificationCode
+      );
+      console.log("Email verification result:", result);
+      setVerificationSuccess(true);
+
+      // Kullanıcı bilgilerini tam olarak güncelle
+      const updatedUser = await checkAuthStatus();
+      console.log("User data after verification:", updatedUser);
+
+      // Yerel state içinde isVerified'i güncelle
+      if (user) {
+        user.isVerified = true;
+      }
+
+      // Güncellenen kullanıcı verilerini lokalde hatırla
+      localStorage.setItem("userVerified", "true");
+
+      // 2 saniye sonra modalı kapat ve gerekirse sayfayı yenile
+      setTimeout(() => {
+        handleVerificationModalClose();
+        // Eğer güncellenmiş kullanıcı verisi alamadıysak sayfayı yenileme yapalım
+        if (!updatedUser || !(updatedUser as any).isVerified) {
+          window.location.reload();
+        }
+      }, 2000);
+    } catch (err: any) {
+      console.error("E-posta doğrulama hatası:", err);
+      let errorMessage = "E-posta doğrulanamadı. Lütfen tekrar deneyin.";
+
+      if (err.response?.data?.message) {
+        errorMessage = err.response.data.message;
+      } else if (err.message) {
+        errorMessage = err.message;
+      }
+
+      setVerificationError(errorMessage);
+    } finally {
+      setVerificationLoading(false);
+    }
+  };
+
   return (
     <Box
       sx={{
@@ -422,6 +528,64 @@ const Profile: FC = () => {
               Fotoğraf Değiştir
             </Button>
           </ProfileImageContainer>
+
+          {/* E-posta doğrulama durumu ve butonu */}
+          <Box
+            sx={{
+              mb: 4,
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
+          >
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                backgroundColor: user?.isVerified
+                  ? "success.light"
+                  : "warning.light",
+                px: 2,
+                py: 1,
+                borderRadius: 1,
+                mb: 2,
+              }}
+            >
+              <VerifiedUserIcon
+                color={user?.isVerified ? "success" : "disabled"}
+                sx={{ mr: 1 }}
+              />
+              <Typography variant="body2">
+                {user?.isVerified
+                  ? "E-posta adresiniz doğrulanmış."
+                  : "E-posta adresiniz henüz doğrulanmamış."}
+              </Typography>
+            </Box>
+
+            {!user?.isVerified && (
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={handleSendVerificationCode}
+                disabled={verificationLoading}
+                startIcon={
+                  verificationLoading ? (
+                    <CircularProgress size={20} />
+                  ) : (
+                    <VerifiedUserIcon />
+                  )
+                }
+              >
+                {verificationLoading ? "Gönderiliyor..." : "E-posta Doğrula"}
+              </Button>
+            )}
+
+            {verificationError && (
+              <Alert severity="error" sx={{ mt: 2 }}>
+                {verificationError}
+              </Alert>
+            )}
+          </Box>
 
           <Box sx={{ display: "flex", flexDirection: "column", gap: 3 }}>
             <TextField
@@ -528,6 +692,75 @@ const Profile: FC = () => {
               Kapat
             </Button>
           </Box>
+        </ModalContent>
+      </Modal>
+
+      {/* E-posta doğrulama modalı */}
+      <Modal
+        open={verificationModalOpen}
+        onClose={handleVerificationModalClose}
+      >
+        <ModalContent>
+          <Typography variant="h6" mb={2}>
+            E-posta Doğrulama
+          </Typography>
+
+          {verificationSuccess ? (
+            <Alert severity="success" sx={{ mb: 2 }}>
+              E-posta adresiniz başarıyla doğrulandı!
+            </Alert>
+          ) : (
+            <>
+              <Typography variant="body2" mb={3}>
+                {user?.email} adresine bir doğrulama kodu gönderdik. Lütfen
+                e-postanızı kontrol edip, aşağıya 6 haneli doğrulama kodunu
+                girin.
+              </Typography>
+
+              <TextField
+                label="Doğrulama Kodu"
+                value={verificationCode}
+                onChange={(e) => setVerificationCode(e.target.value)}
+                fullWidth
+                margin="normal"
+                placeholder="123456"
+                disabled={verificationLoading}
+                inputProps={{ maxLength: 6 }}
+              />
+
+              {verificationError && (
+                <Alert severity="error" sx={{ my: 2 }}>
+                  {verificationError}
+                </Alert>
+              )}
+
+              <Box
+                sx={{ mt: 3, display: "flex", justifyContent: "space-between" }}
+              >
+                <Button
+                  variant="outlined"
+                  onClick={handleVerificationModalClose}
+                  disabled={verificationLoading}
+                >
+                  İptal
+                </Button>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={handleVerifyEmail}
+                  disabled={
+                    verificationCode.length !== 6 || verificationLoading
+                  }
+                  sx={{ ml: 2 }}
+                  startIcon={
+                    verificationLoading ? <CircularProgress size={20} /> : null
+                  }
+                >
+                  {verificationLoading ? "Doğrulanıyor..." : "Doğrula"}
+                </Button>
+              </Box>
+            </>
+          )}
         </ModalContent>
       </Modal>
     </Box>

@@ -68,6 +68,8 @@ interface ChatMessage {
   sender: "user" | "ai";
   timestamp: Date;
   movies?: Movie[]; // Optional movies to display with the message
+  isStreaming?: boolean; // Flag for streaming messages
+  partialText?: string; // For storing partial text during streaming
 }
 
 // Style for animated message appearance
@@ -88,6 +90,9 @@ const ChatWidget: React.FC = () => {
   const [inputValue, setInputValue] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [allMovies, setAllMovies] = useState<Movie[]>([]);
+  const [streamingTimer, setStreamingTimer] = useState<NodeJS.Timeout | null>(
+    null
+  );
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   // Fetch all movies when component mounts
@@ -375,7 +380,122 @@ const ChatWidget: React.FC = () => {
     navigate(`/movie/${movieId}`);
   };
 
-  // Filter movies based on user query
+  // Improved actor search
+  const findActorMovies = (
+    query: string
+  ): { movies: Movie[]; actorName: string } => {
+    const normalizedQuery = query.toLowerCase().trim();
+
+    // Extract actor name using regex
+    const actorRegex =
+      /(?:oyuncu|aktör|aktris|actor|oynayan|rol alan|başrol|filmler(?:i)?|movies?|neler).*?([a-zçğıöşüA-ZÇĞİÖŞÜ\s']+)(?:\s*(?:oyuncu|aktör|aktris|actor|oynayan|rol alan|başrol|filmler(?:i)?|movies?))?/i;
+    const match = normalizedQuery.match(actorRegex);
+    let actorName = "";
+
+    if (match && match[1]) {
+      actorName = match[1].trim();
+    } else {
+      // Remove common words and get what remains
+      actorName = normalizedQuery
+        .replace(
+          /filmleri|filmler|film|movies|movie|neler|oyuncu|aktör|aktris|actor|oynayan|rol alan|başrol/g,
+          ""
+        )
+        .trim();
+    }
+
+    console.log("Searching for actor:", actorName);
+
+    if (actorName.length < 2) return { movies: [], actorName: "" };
+
+    // Find movies with this actor
+    const actorMovies = allMovies.filter((movie) => {
+      if (!movie.actors || movie.actors.length === 0) return false;
+
+      return movie.actors.some((actorData) => {
+        const actorFullName = actorData.actor.name.toLowerCase();
+        // Check both full name and parts of the name
+        return (
+          actorFullName.includes(actorName) ||
+          actorName.includes(actorFullName) ||
+          actorFullName
+            .split(" ")
+            .some(
+              (namePart) => actorName.includes(namePart) && namePart.length > 2
+            )
+        );
+      });
+    });
+
+    return { movies: actorMovies, actorName };
+  };
+
+  // Function to stream text word by word or character by character
+  const streamText = (
+    text: string,
+    messageId: string,
+    finalMovies?: Movie[]
+  ) => {
+    let index = 0;
+    const words = text.split(" ");
+
+    // Clear any existing timer
+    if (streamingTimer) {
+      clearInterval(streamingTimer);
+    }
+
+    // Create empty streaming message
+    const streamingMessage: ChatMessage = {
+      id: messageId,
+      text: "",
+      partialText: "",
+      sender: "ai",
+      timestamp: new Date(),
+      isStreaming: true,
+    };
+
+    // Add initial empty message
+    setMessages((prev) => [...prev, streamingMessage]);
+
+    // Set timer to add words one by one
+    const timer = setInterval(() => {
+      if (index < words.length) {
+        setMessages((prev) =>
+          prev.map((msg) =>
+            msg.id === messageId
+              ? {
+                  ...msg,
+                  partialText: [...words.slice(0, index + 1)].join(" "),
+                }
+              : msg
+          )
+        );
+        index++;
+      } else {
+        // Streaming complete
+        clearInterval(timer);
+        setStreamingTimer(null);
+
+        // Finalize message
+        setMessages((prev) =>
+          prev.map((msg) =>
+            msg.id === messageId
+              ? {
+                  ...msg,
+                  text: text,
+                  partialText: undefined,
+                  isStreaming: false,
+                  movies: finalMovies,
+                }
+              : msg
+          )
+        );
+      }
+    }, 50); // Adjust speed of streaming
+
+    setStreamingTimer(timer);
+  };
+
   const filterMovies = (query: string): Movie[] => {
     const normalizedQuery = query.toLowerCase().trim();
 
@@ -500,14 +620,7 @@ const ChatWidget: React.FC = () => {
     try {
       // Get user query in lowercase for easier matching
       const userQuery = inputValue.toLowerCase();
-
-      // Filter movies based on the user query
-      const matchedMovies = filterMovies(userQuery);
-
-      // Limit to 3 movies for display
-      const moviesToShow = matchedMovies.slice(0, 3);
-
-      let aiResponse = "";
+      const messageId = (Date.now() + 1).toString(); // Unique ID for AI message
 
       // Check if query is about actors
       const actorKeywords = [
@@ -518,65 +631,89 @@ const ChatWidget: React.FC = () => {
         "oynayan",
         "rol alan",
         "başrol",
+        "filmler",
       ];
       const isActorQuery = actorKeywords.some((keyword) =>
         userQuery.includes(keyword)
       );
 
-      if (moviesToShow.length > 0) {
-        if (isActorQuery) {
-          // Extract the actor name from the query
-          const actorName = userQuery
-            .replace(/oyuncu|aktör|aktris|actor|oynayan|rol alan|başrol/g, "")
-            .replace(/filmleri|filmler|film|movies|movie/g, "")
-            .trim();
+      // Process differently based on query type
+      if (isActorQuery) {
+        // Find actor movies with improved function
+        const { movies: actorMovies, actorName } = findActorMovies(userQuery);
 
-          // Find the actor in the first movie
-          const actorInfo = moviesToShow[0].actors?.find((a) =>
+        // Prepare actor-specific response
+        if (actorMovies.length > 0) {
+          const actorInfo = actorMovies[0].actors?.find((a) =>
             a.actor.name.toLowerCase().includes(actorName)
           );
 
+          let aiResponse = "";
           if (actorInfo) {
             aiResponse = `"${actorInfo.actor.name}" adlı oyuncunun rol aldığı şu filmleri önerebilirim:\n\n`;
+            // Add movie names to response
+            actorMovies.forEach((movie, index) => {
+              aiResponse += `${index + 1}. ${movie.title} (${
+                movie.releaseYear
+              })\n`;
+            });
+            aiResponse +=
+              "\nBu filmlerden birini seçmek için kart üzerine tıklayabilirsiniz.";
           } else {
-            aiResponse = `Bu oyuncunun rol aldığı şu filmleri sistemimizde buldum:\n\n`;
+            aiResponse = `"${actorName}" adlı oyuncunun rol aldığı şu filmleri sistemimizde buldum:\n\n`;
+            // Add movie names to response
+            actorMovies.forEach((movie, index) => {
+              aiResponse += `${index + 1}. ${movie.title} (${
+                movie.releaseYear
+              })\n`;
+            });
+            aiResponse +=
+              "\nBu filmlerden birini seçmek için kart üzerine tıklayabilirsiniz.";
           }
+
+          // Stream the response
+          await new Promise((resolve) => setTimeout(resolve, 1000)); // Thinking time
+          streamText(aiResponse, messageId, actorMovies.slice(0, 3));
         } else {
-          aiResponse = `Size sistemimizde bulunan şu filmleri önerebilirim:\n\n`;
+          const aiResponse = `Üzgünüm, "${actorName}" adlı oyuncunun rol aldığı filmleri sistemimizde bulamadım. Lütfen başka bir oyuncu adı ile tekrar deneyin.`;
+          await new Promise((resolve) => setTimeout(resolve, 1000)); // Thinking time
+          streamText(aiResponse, messageId);
         }
       } else {
-        if (isActorQuery) {
-          aiResponse =
-            "Üzgünüm, aradığınız oyuncunun rol aldığı filmleri sistemimizde bulamadım. Lütfen başka bir oyuncu adı ile tekrar deneyin.";
+        // Existing genre/movie filtering logic
+        const matchedMovies = filterMovies(userQuery);
+        const moviesToShow = matchedMovies.slice(0, 3);
+
+        let aiResponse = "";
+        if (moviesToShow.length > 0) {
+          aiResponse = `Size sistemimizde bulunan şu filmleri önerebilirim:\n\n`;
+          // Add movie names to response
+          moviesToShow.forEach((movie, index) => {
+            aiResponse += `${index + 1}. ${movie.title} (${
+              movie.releaseYear
+            })\n`;
+          });
+          aiResponse +=
+            "\nBu filmlerden birini seçmek için kart üzerine tıklayabilirsiniz.";
         } else {
           aiResponse =
             "Üzgünüm, aradığınız kriterlere uygun film sistemde bulamadım. Lütfen farklı bir tür, yönetmen veya yıl belirterek tekrar deneyin. Örneğin: 'Aksiyon filmi öner' veya 'Al Pacino'nun oynadığı filmler neler?'";
         }
+
+        // Stream the response
+        await new Promise((resolve) => setTimeout(resolve, 1000)); // Thinking time
+        streamText(
+          aiResponse,
+          messageId,
+          moviesToShow.length > 0 ? moviesToShow : undefined
+        );
       }
-
-      // Simulate AI thinking delay
-      await new Promise((resolve) => setTimeout(resolve, 1500));
-
-      const aiMessage: ChatMessage = {
-        id: Date.now().toString(),
-        text: aiResponse,
-        sender: "ai",
-        timestamp: new Date(),
-        movies: moviesToShow.length > 0 ? moviesToShow : undefined,
-      };
-
-      setMessages((prev) => [...prev, aiMessage]);
     } catch (error) {
       console.error("Error generating AI response:", error);
-
-      const errorMessage: ChatMessage = {
-        id: Date.now().toString(),
-        text: "Üzgünüm, isteğinizi işlerken bir hata oluştu. Lütfen daha sonra tekrar deneyin.",
-        sender: "ai",
-        timestamp: new Date(),
-      };
-
-      setMessages((prev) => [...prev, errorMessage]);
+      const errorId = (Date.now() + 1).toString();
+      const errorMessage =
+        "Üzgünüm, isteğinizi işlerken bir hata oluştu. Lütfen daha sonra tekrar deneyin.";
+      streamText(errorMessage, errorId);
     } finally {
       setIsLoading(false);
     }
@@ -593,6 +730,16 @@ const ChatWidget: React.FC = () => {
     setMessages([]);
     localStorage.removeItem("chatHistory");
   };
+
+  // Component cleanup
+  useEffect(() => {
+    return () => {
+      // Clear timer on unmount
+      if (streamingTimer) {
+        clearInterval(streamingTimer);
+      }
+    };
+  }, [streamingTimer]);
 
   return (
     <>
@@ -739,108 +886,126 @@ const ChatWidget: React.FC = () => {
                           <SmartToyIcon />
                         )}
                       </Avatar>
+
                       <Paper
                         sx={{
-                          p: 1.5,
-                          maxWidth: "80%",
+                          p: 2,
+                          maxWidth: "85%",
+                          borderRadius: 2,
                           bgcolor:
                             message.sender === "user"
                               ? "primary.light"
                               : "background.paper",
                           color:
                             message.sender === "user"
-                              ? "white"
+                              ? "primary.contrastText"
                               : "text.primary",
-                          borderRadius: 2,
-                          boxShadow: 1,
                         }}
                       >
-                        <Typography
-                          variant="body1"
-                          sx={{
-                            whiteSpace: "pre-line",
-                            wordBreak: "break-word",
-                          }}
-                        >
-                          {message.text}
+                        <Typography variant="body1" component="div">
+                          {message.isStreaming && message.partialText
+                            ? message.partialText
+                            : message.text.split("\n").map((line, i) => (
+                                <React.Fragment key={i}>
+                                  {line}
+                                  <br />
+                                </React.Fragment>
+                              ))}
+                          {message.isStreaming && (
+                            <Box
+                              component="span"
+                              sx={{
+                                display: "inline-block",
+                                width: "0.5em",
+                                height: "1em",
+                                bgcolor: "text.primary",
+                                ml: 0.5,
+                                animation: "blink 1s step-end infinite",
+                                "@keyframes blink": {
+                                  "0%": { opacity: 1 },
+                                  "50%": { opacity: 0 },
+                                  "100%": { opacity: 1 },
+                                },
+                              }}
+                            />
+                          )}
                         </Typography>
+                      </Paper>
+                    </Box>
 
-                        {/* Show movie cards if this is an AI message with movie suggestions */}
-                        {message.sender === "ai" &&
-                          message.movies &&
-                          message.movies.length > 0 && (
-                            <Grid container spacing={1} sx={{ mt: 1 }}>
-                              {message.movies.map((movie) => (
-                                <Grid item xs={12} key={movie.id}>
-                                  <Card sx={{ mb: 1 }}>
-                                    <CardActionArea
-                                      onClick={() => handleMovieClick(movie.id)}
-                                    >
-                                      <Box
-                                        sx={{ display: "flex", height: 120 }}
+                    {/* Show movies only after streaming is complete */}
+                    {!message.isStreaming &&
+                      message.movies &&
+                      message.movies.length > 0 && (
+                        <Grid container spacing={1} sx={{ mt: 1 }}>
+                          {message.movies.map((movie) => (
+                            <Grid item xs={12} key={movie.id}>
+                              <Card sx={{ mb: 1 }}>
+                                <CardActionArea
+                                  onClick={() => handleMovieClick(movie.id)}
+                                >
+                                  <Box sx={{ display: "flex", height: 120 }}>
+                                    <CardMedia
+                                      component="img"
+                                      sx={{ width: 80, objectFit: "cover" }}
+                                      image={movie.posterImage}
+                                      alt={movie.title}
+                                    />
+                                    <Box sx={{ p: 1, overflow: "hidden" }}>
+                                      <Typography
+                                        variant="subtitle1"
+                                        fontWeight="bold"
+                                        noWrap
                                       >
-                                        <CardMedia
-                                          component="img"
-                                          sx={{ width: 80, objectFit: "cover" }}
-                                          image={movie.posterImage}
-                                          alt={movie.title}
-                                        />
-                                        <Box sx={{ p: 1, overflow: "hidden" }}>
-                                          <Typography
-                                            variant="subtitle1"
-                                            fontWeight="bold"
-                                            noWrap
-                                          >
-                                            {movie.title} ({movie.releaseYear})
-                                          </Typography>
+                                        {movie.title} ({movie.releaseYear})
+                                      </Typography>
+                                      <Typography
+                                        variant="body2"
+                                        color="text.secondary"
+                                        noWrap
+                                      >
+                                        {movie.director}
+                                      </Typography>
+                                      <Typography
+                                        variant="body2"
+                                        sx={{
+                                          overflow: "hidden",
+                                          textOverflow: "ellipsis",
+                                          display: "-webkit-box",
+                                          WebkitLineClamp: 2,
+                                          WebkitBoxOrient: "vertical",
+                                        }}
+                                      >
+                                        {movie.description}
+                                      </Typography>
+
+                                      {/* Show actors if available */}
+                                      {movie.actors &&
+                                        movie.actors.length > 0 && (
                                           <Typography
                                             variant="body2"
                                             color="text.secondary"
-                                            noWrap
+                                            sx={{ mt: 0.5 }}
                                           >
-                                            {movie.director}
+                                            Oyuncular:{" "}
+                                            {movie.actors
+                                              .slice(0, 2)
+                                              .map((a) => a.actor.name)
+                                              .join(", ")}
+                                            {movie.actors.length > 2
+                                              ? " vb."
+                                              : ""}
                                           </Typography>
-                                          <Typography
-                                            variant="body2"
-                                            sx={{
-                                              overflow: "hidden",
-                                              textOverflow: "ellipsis",
-                                              display: "-webkit-box",
-                                              WebkitLineClamp: 2,
-                                              WebkitBoxOrient: "vertical",
-                                            }}
-                                          >
-                                            {movie.description}
-                                          </Typography>
-
-                                          {/* Show actors if available */}
-                                          {movie.actors &&
-                                            movie.actors.length > 0 && (
-                                              <Typography
-                                                variant="body2"
-                                                color="text.secondary"
-                                                sx={{ mt: 0.5 }}
-                                              >
-                                                Oyuncular:{" "}
-                                                {movie.actors
-                                                  .slice(0, 2)
-                                                  .map((a) => a.actor.name)
-                                                  .join(", ")}
-                                                {movie.actors.length > 2
-                                                  ? " vb."
-                                                  : ""}
-                                              </Typography>
-                                            )}
-                                        </Box>
-                                      </Box>
-                                    </CardActionArea>
-                                  </Card>
-                                </Grid>
-                              ))}
+                                        )}
+                                    </Box>
+                                  </Box>
+                                </CardActionArea>
+                              </Card>
                             </Grid>
-                          )}
-                      </Paper>
-                    </Box>
+                          ))}
+                        </Grid>
+                      )}
+
                     <Typography
                       variant="caption"
                       sx={{

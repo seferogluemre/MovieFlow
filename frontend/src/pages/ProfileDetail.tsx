@@ -9,6 +9,7 @@ import {
   PersonRemove as PersonRemoveIcon,
   ThumbDown as ThumbDownIcon,
   ThumbUp as ThumbUpIcon,
+  VerifiedUser as VerifiedUserIcon,
 } from "@mui/icons-material";
 import {
   Alert,
@@ -122,6 +123,23 @@ interface Review {
     posterImage?: string;
   };
 }
+
+// Doğrulanma durumu için badge bileşeni
+const VerificationBadge = styled(Box)(
+  ({ theme, isVerified }: { theme: any; isVerified: boolean }) => ({
+    display: "inline-flex",
+    alignItems: "center",
+    marginLeft: theme.spacing(1),
+    padding: theme.spacing(0.5, 1),
+    borderRadius: theme.shape.borderRadius,
+    backgroundColor: isVerified
+      ? theme.palette.success.main
+      : theme.palette.warning.light,
+    color: isVerified ? theme.palette.common.white : theme.palette.text.primary,
+    fontSize: "0.75rem",
+    fontWeight: "bold",
+  })
+);
 
 const ProfileDetail: FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -247,8 +265,7 @@ const ProfileDetail: FC = () => {
             setUserReviews(enhancedReviews);
             return;
           }
-        } catch (error) {
-        }
+        } catch (error) {}
       }
 
       // Try getting user data which might include reviews
@@ -266,8 +283,7 @@ const ProfileDetail: FC = () => {
           setUserReviews(enhancedReviews);
           return;
         }
-      } catch (error) {
-      }
+      } catch (error) {}
 
       // Fallback approach - try the direct reviews by userId endpoint
       try {
@@ -335,8 +351,7 @@ const ProfileDetail: FC = () => {
                 movie: movieResponse.data,
               };
             }
-          } catch (err) {
-          }
+          } catch (err) {}
           return review;
         })
       );
@@ -747,8 +762,7 @@ const ProfileDetail: FC = () => {
             );
             setFollowing(followingData);
           }
-        } catch (error) {
-        }
+        } catch (error) {}
       };
 
       refreshRelationshipData();
@@ -774,8 +788,7 @@ const ProfileDetail: FC = () => {
 
           const mutualData = await friendshipService.getMutualFriends(user.id);
           setMutualFriends(mutualData);
-        } catch (error) {
-        }
+        } catch (error) {}
       };
 
       loadProfileStats();
@@ -1024,9 +1037,26 @@ const ProfileDetail: FC = () => {
             {user.name || user.username}
           </Typography>
 
-          <Typography variant="body1" color="text.secondary" gutterBottom>
-            @{user.username}
-          </Typography>
+          <Box sx={{ display: "flex", alignItems: "center", mb: 1 }}>
+            <Typography variant="body1" color="text.secondary">
+              @{user.username}
+            </Typography>
+            <VerificationBadge isVerified={user.isVerified || false}>
+              {user.isVerified ? (
+                <>
+                  <VerifiedUserIcon sx={{ fontSize: 16, mr: 0.5 }} />
+                  Doğrulanmış
+                </>
+              ) : (
+                <>
+                  <VerifiedUserIcon
+                    sx={{ fontSize: 16, mr: 0.5, color: "text.disabled" }}
+                  />
+                  Doğrulanmamış
+                </>
+              )}
+            </VerificationBadge>
+          </Box>
 
           {/* Email bilgisi */}
           <Box
@@ -1400,8 +1430,8 @@ const ProfileDetail: FC = () => {
                               borderLeft: isFriend
                                 ? "4px solid #4caf50"
                                 : isMutualFollow
-                                  ? "4px solid #2196f3"
-                                  : "none",
+                                ? "4px solid #2196f3"
+                                : "none",
                             }}
                           >
                             <ListItemAvatar>

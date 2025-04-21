@@ -1,9 +1,5 @@
 import { mailTransporter, verifyMailConnection } from "@/config/mail.config";
-import {
-  createVerificationData,
-  generateVerificationCode,
-  isValidVerificationCode,
-} from "@/utils/mail";
+import { createVerificationData, generateVerificationCode } from "@/utils/mail";
 import { PrismaClient } from "@prisma/client";
 import fs from "fs";
 import path from "path";
@@ -109,14 +105,6 @@ export class EmailService {
     code: string
   ): Promise<{ success: boolean; message: string; email?: string }> {
     try {
-      // Kod formatını kontrol et
-      if (!isValidVerificationCode(code)) {
-        return {
-          success: false,
-          message: "Geçersiz doğrulama kodu formatı",
-        };
-      }
-
       // E-posta ile kullanıcıyı bul
       const user = await prisma.user.findUnique({
         where: { email },

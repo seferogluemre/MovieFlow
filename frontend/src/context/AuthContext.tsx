@@ -210,13 +210,35 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   };
 
   const refreshUser = async () => {
+    setLoading(true);
+    setError(null);
     try {
+      console.log("Refreshing user data...");
       const userData = await userService.getCurrentUser();
+      console.log("Updated user data:", userData);
       setUser(userData);
       return userData;
     } catch (err) {
-      console.error("Failed to refresh user data:", err);
-      throw err;
+      console.error("Error refreshing user data:", err);
+      return user;
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const checkAuthStatus = async (): Promise<boolean | User> => {
+    setLoading(true);
+    setError(null);
+    try {
+      const userData = await userService.getCurrentUser();
+      console.log("Current user data:", userData);
+      setUser(userData);
+      setLoading(false);
+      return userData;
+    } catch (err) {
+      console.error("Error checking auth status:", err);
+      setLoading(false);
+      return false;
     }
   };
 
@@ -229,7 +251,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     register,
     refreshUser,
     error,
-    checkAuthStatus: checkAuth,
+    checkAuthStatus: checkAuthStatus,
   };
 
   return (

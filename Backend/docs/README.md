@@ -875,3 +875,79 @@ For validation errors:
     "fieldName": ["Error description"]
   }
 }
+
+
+// Email Verification
+# E-posta Doğrulama Sistemi
+
+Bu dokümantasyon, MovieFlow uygulamasının e-posta doğrulama sistemini ve API kullanımını açıklar.
+
+## Sistemin Genel Yapısı
+
+E-posta doğrulama sistemi üç ana bileşenden oluşmaktadır:
+
+1. **Validasyon Şemaları**: Gelen isteklerin doğru formatta olduğunu kontrol eder
+2. **Controller**: HTTP isteklerini karşılar ve gerekli servis metotlarını çağırır
+3. **Service**: İş mantığını yürütür ve veritabanı işlemlerini gerçekleştirir
+
+## API Kullanımı
+
+### 1. Doğrulama E-postası Gönderme
+
+**Endpoint**: `POST /mail/send`
+
+**İstek (Request) Formatı**:
+```json
+{
+  "email": "kullanici@ornek.com"
+}
+```
+
+**Başarılı Yanıt (200 OK)**:
+```json
+{
+  "message": "Doğrulama e-postası başarıyla gönderildi",
+  "email": "kullanici@ornek.com"
+}
+```
+
+**Hata Yanıtları**:
+- `400 Bad Request`: Validasyon hatası (geçersiz e-posta formatı)
+- `404 Not Found`: Kullanıcı bulunamadı
+- `500 Internal Server Error`: Sunucu hatası
+
+### 2. E-posta Doğrulama
+
+**Endpoint**: `POST /mail/verify-email`
+
+**İstek (Request) Formatı**:
+```json
+{
+  "email": "kullanici@ornek.com",
+  "code": "123456"
+}
+```
+
+**Başarılı Yanıt (200 OK)**:
+```json
+{
+  "message": "E-posta başarıyla doğrulandı",
+  "email": "kullanici@ornek.com"
+}
+```
+
+**Hata Yanıtları**:
+- `400 Bad Request`: Validasyon hatası, geçersiz kod veya süresi dolmuş kod
+- `404 Not Found`: Kullanıcı bulunamadı
+- `500 Internal Server Error`: Sunucu hatası
+
+## Validasyon Kuralları
+
+### E-posta Validasyonu
+- Boş olamaz
+- Geçerli bir e-posta formatında olmalıdır (example@domain.com)
+
+### Doğrulama Kodu Validasyonu
+- Tam olarak 6 karakter uzunluğunda olmalıdır
+- Sadece rakamlardan oluşmalıdır (0-9)
+

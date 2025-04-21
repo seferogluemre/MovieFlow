@@ -466,6 +466,28 @@ export const friendshipService = {
   },
 };
 
+export const mailService = {
+  sendVerificationEmail: async (email: string) => {
+    try {
+      const response = await api.post("/mail/send", { email });
+      return response.data;
+    } catch (error) {
+      console.error("Mail doğrulama gönderimi hatası:", error);
+      throw error;
+    }
+  },
+
+  verifyEmail: async (email: string, code: string) => {
+    try {
+      const response = await api.post("/mail/verify-email", { email, code });
+      return response.data;
+    } catch (error) {
+      console.error("Mail doğrulama hatası:", error);
+      throw error;
+    }
+  },
+};
+
 export const processApiError = (error: any): string => {
   let errorMessage = "An error occurred. Please try again.";
 
