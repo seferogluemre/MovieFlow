@@ -112,13 +112,13 @@ export class MovieController {
         return;
       }
 
-      // Get similar movies based on genres
-      const similarMovies = await MovieService.getSimilarMovies(Number(id));
+      // Get similar movies based on genres (or popular movies if no genres)
+      const recommendedMovies = await MovieService.getSimilarMovies(Number(id));
 
       res.status(200).json({
         data: {
           ...movie,
-          similarMovies,
+          recommendedMovies,
         },
       });
     } catch (error) {

@@ -744,15 +744,15 @@ const MovieDetails: FC = () => {
       </Box>
 
       {/* Similar Movies Section */}
-      {movie?.similarMovies && movie.similarMovies.length > 0 && (
+      {movie?.recommendedMovies && movie.recommendedMovies.length > 0 && (
         <Box sx={{ mt: 5 }}>
           <Typography variant="h5" fontWeight="bold" gutterBottom>
-            Benzer Filmler
+            Önerilen Filmler
           </Typography>
           <Divider sx={{ mb: 3 }} />
 
           <Grid container spacing={2}>
-            {movie.similarMovies.map((similarMovie) => (
+            {movie.recommendedMovies.map((similarMovie) => (
               <Grid item xs={12} sm={6} md={4} lg={3} key={similarMovie.id}>
                 <Card
                   sx={{

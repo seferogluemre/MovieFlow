@@ -1,248 +1,167 @@
-[INFO] 2025-04-21T11:25:48.248Z - Login User - Logout Successfully
-[INFO] 2025-04-21T11:26:21.981Z - Login User --- Login successful 🚀
-[INFO] 2025-04-21T11:26:22.047Z - Get User --- Request Received
-[INFO] 2025-04-21T11:26:22.049Z - Friendship getAll ---- Retrieved all friendships
-[INFO] 2025-04-21T11:26:22.050Z - Notification getUserNotifications ---- Retrieved user notifications
-[INFO] 2025-04-21T11:26:22.109Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
-[INFO] 2025-04-21T11:26:22.217Z - Get User --- Request Received
-[INFO] 2025-04-21T11:26:22.231Z - Notification getUserNotifications ---- Retrieved user notifications
-[INFO] 2025-04-21T11:26:22.233Z - Friendship getSentRequests ---- Retrieved sent friendship requests
-[INFO] 2025-04-21T11:26:22.297Z - List movies --- Request Received
-[INFO] 2025-04-21T11:26:22.402Z - Get User --- Request Received
-[INFO] 2025-04-21T11:26:22.462Z - Get User --- Request Received
-[INFO] 2025-04-21T11:26:22.524Z - Get User --- Request Received
-[INFO] 2025-04-21T11:26:22.586Z - Get User --- Request Received
-[INFO] 2025-04-21T11:26:22.647Z - Get User --- Request Received
-[INFO] 2025-04-21T11:26:22.708Z - Get User --- Request Received
-[INFO] 2025-04-21T11:26:30.160Z - Friendship getAll ---- Retrieved all friendships
-[INFO] 2025-04-21T11:26:30.208Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
-[INFO] 2025-04-21T11:26:30.256Z - Friendship getSentRequests ---- Retrieved sent friendship requests
-[INFO] 2025-04-21T11:26:30.851Z - List Users --- Request Received
-[INFO] 2025-04-21T11:26:32.635Z - Get User --- Request Received
-[INFO] 2025-04-21T11:26:32.698Z - Get User --- Request Received
-[INFO] 2025-04-21T11:26:32.713Z - Friendship getRelationshipStatus ---- Retrieved relationship status successfully
-[INFO] 2025-04-21T11:26:32.714Z - Friendship getFollowers ---- Retrieved followers successfully
-[INFO] 2025-04-21T11:26:32.768Z - Friendship getFollowing ---- Retrieved following users successfully
-[INFO] 2025-04-21T11:26:32.774Z - Get User --- Request Received
-[INFO] 2025-04-21T11:26:32.824Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
-[INFO] 2025-04-21T11:26:51.695Z - Get User --- Request Received
-[INFO] 2025-04-21T11:26:51.749Z - Get User Reviews - Retrieved reviews for User 3
-[INFO] 2025-04-21T11:26:51.753Z - Get User Reviews - Retrieved reviews for User 3
-[INFO] 2025-04-21T11:26:51.758Z - Friendship getFollowers ---- Retrieved followers successfully
-[INFO] 2025-04-21T11:26:51.821Z - Friendship getFollowing ---- Retrieved following users successfully
-[INFO] 2025-04-21T11:26:51.867Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
-[INFO] 2025-04-21T11:27:16.002Z - Update User - Updated User {"id":3,"email":"yunusemre5331@icloud.com","username":"seferogluemre","password":"$2b$10$QSA2xO8T.tRYIAWXDNOp4eRaoyCdJqhIuUmFpWwrJRHKjNEpzDJ4.","name":"Yunka","profileImage":"https://seferogluemremovieproject.s3.amazonaws.com/profiles/0e1c95d2-1044-4103-9722-2b14294ac8e8.jpg?AWSAccessKeyId=AKIAQSOI4UYIUUJJSRF4&Expires=1745232933&Signature=Q02UsRGa3ricGYZ8hLihOEFirMA%3D","isAdmin":false,"isPrivate":false,"createdAt":"2025-04-10T04:11:15.116Z","updatedAt":"2025-04-21T11:27:15.982Z","isVerified":false,"verificationCode":"453153","verificationCodeExpiresAt":"2025-04-21T23:26:57.310Z","verificationCodeSentAt":"2025-04-21T11:26:57.310Z","verificationCodeUsed":false}
-[INFO] 2025-04-21T11:27:16.063Z - Get User --- Request Received
-[INFO] 2025-04-21T11:27:18.527Z - List movies --- Request Received
-[INFO] 2025-04-21T11:27:18.544Z - Get User --- Request Received
-[INFO] 2025-04-21T11:27:18.608Z - Get User --- Request Received
-[INFO] 2025-04-21T11:27:18.794Z - Friendship getAll ---- Retrieved all friendships
-[INFO] 2025-04-21T11:27:18.794Z - Notification getUserNotifications ---- Retrieved user notifications
-[INFO] 2025-04-21T11:27:18.857Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
-[INFO] 2025-04-21T11:27:18.904Z - Friendship getSentRequests ---- Retrieved sent friendship requests
-[INFO] 2025-04-21T11:28:09.860Z - Get User --- Request Received
-[INFO] 2025-04-21T11:28:14.442Z - List movies --- Request Received
-[INFO] 2025-04-21T11:28:14.601Z - Get User --- Request Received
-[INFO] 2025-04-21T11:28:14.662Z - Get User --- Request Received
-[INFO] 2025-04-21T11:28:14.710Z - Friendship getAll ---- Retrieved all friendships
-[INFO] 2025-04-21T11:28:14.711Z - Notification getUserNotifications ---- Retrieved user notifications
-[INFO] 2025-04-21T11:28:14.757Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
-[INFO] 2025-04-21T11:28:14.818Z - Friendship getSentRequests ---- Retrieved sent friendship requests
-[INFO] 2025-04-21T11:28:24.426Z - List movies --- Request Received
-[INFO] 2025-04-21T11:28:24.587Z - Get User --- Request Received
-[INFO] 2025-04-21T11:28:24.697Z - Notification getUserNotifications ---- Retrieved user notifications
-[INFO] 2025-04-21T11:28:24.698Z - Friendship getAll ---- Retrieved all friendships
-[INFO] 2025-04-21T11:28:24.760Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
-[INFO] 2025-04-21T11:28:24.761Z - Get User --- Request Received
-[INFO] 2025-04-21T11:28:24.807Z - Friendship getSentRequests ---- Retrieved sent friendship requests
-[INFO] 2025-04-21T11:35:32.132Z - Notification getUserNotifications ---- Retrieved user notifications
-[INFO] 2025-04-21T11:40:29.486Z - Get User --- Request Received
-[INFO] 2025-04-21T11:40:30.440Z - Friendship getAll ---- Retrieved all friendships
-[INFO] 2025-04-21T11:40:30.486Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
-[INFO] 2025-04-21T11:40:30.658Z - Friendship getSentRequests ---- Retrieved sent friendship requests
-[INFO] 2025-04-21T11:40:31.408Z - List Users --- Request Received
-[INFO] 2025-04-21T11:40:59.086Z - Login User - Logout Successfully
-[INFO] 2025-04-21T11:47:56.501Z - Login User --- Login successful 🚀
-[INFO] 2025-04-21T11:47:56.565Z - Get User --- Request Received
-[INFO] 2025-04-21T11:47:56.626Z - Notification getUserNotifications ---- Retrieved user notifications
-[INFO] 2025-04-21T11:47:56.646Z - List movies --- Request Received
-[INFO] 2025-04-21T11:47:56.766Z - Get User --- Request Received
-[INFO] 2025-04-21T11:47:56.829Z - Get User --- Request Received
-[INFO] 2025-04-21T11:47:56.892Z - Get User --- Request Received
-[INFO] 2025-04-21T11:47:56.956Z - Get User --- Request Received
-[INFO] 2025-04-21T11:47:57.018Z - Get User --- Request Received
-[INFO] 2025-04-21T11:47:57.080Z - Get User --- Request Received
-[INFO] 2025-04-21T11:47:57.142Z - Get User --- Request Received
-[INFO] 2025-04-21T11:47:57.205Z - Get User --- Request Received
-[INFO] 2025-04-21T11:47:57.267Z - Get User --- Request Received
-[INFO] 2025-04-21T11:47:57.314Z - Get User --- Request Received
-[INFO] 2025-04-21T11:47:57.376Z - Get User --- Request Received
-[INFO] 2025-04-21T11:47:57.439Z - Get User --- Request Received
-[INFO] 2025-04-21T11:47:57.501Z - Get User --- Request Received
-[INFO] 2025-04-21T11:48:49.383Z - Friendship getAll ---- Retrieved all friendships
-[INFO] 2025-04-21T11:48:49.554Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
-[INFO] 2025-04-21T11:48:49.601Z - Friendship getSentRequests ---- Retrieved sent friendship requests
-[INFO] 2025-04-21T11:48:50.917Z - List Users --- Request Received
-[INFO] 2025-04-21T11:48:53.859Z - Get User --- Request Received
-[INFO] 2025-04-21T11:48:53.922Z - Get User --- Request Received
-[INFO] 2025-04-21T11:48:53.934Z - Friendship getRelationshipStatus ---- Retrieved relationship status successfully
-[INFO] 2025-04-21T11:48:53.934Z - Friendship getFollowers ---- Retrieved followers successfully
-[INFO] 2025-04-21T11:48:53.986Z - Friendship getFollowing ---- Retrieved following users successfully
-[INFO] 2025-04-21T11:48:53.991Z - Get User --- Request Received
-[INFO] 2025-04-21T11:48:54.030Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
-[INFO] 2025-04-21T11:48:57.367Z - Friendship getAll ---- Retrieved all friendships
-[INFO] 2025-04-21T11:48:57.414Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
-[INFO] 2025-04-21T11:48:57.461Z - Friendship getSentRequests ---- Retrieved sent friendship requests
-[INFO] 2025-04-21T11:48:58.365Z - List Users --- Request Received
-[INFO] 2025-04-21T11:48:59.377Z - Get User --- Request Received
-[INFO] 2025-04-21T11:48:59.451Z - Friendship getRelationshipStatus ---- Retrieved relationship status successfully
-[INFO] 2025-04-21T11:48:59.452Z - Friendship getFollowers ---- Retrieved followers successfully
-[INFO] 2025-04-21T11:48:59.470Z - Get User --- Request Received
-[INFO] 2025-04-21T11:48:59.503Z - Friendship getFollowing ---- Retrieved following users successfully
-[INFO] 2025-04-21T11:48:59.519Z - Get User --- Request Received
-[INFO] 2025-04-21T11:48:59.550Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
-[INFO] 2025-04-21T11:49:02.951Z - Friendship getAll ---- Retrieved all friendships
-[INFO] 2025-04-21T11:49:02.997Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
-[INFO] 2025-04-21T11:49:03.044Z - Friendship getSentRequests ---- Retrieved sent friendship requests
-[INFO] 2025-04-21T11:49:04.556Z - List Users --- Request Received
-[INFO] 2025-04-21T11:49:05.415Z - Friendship create ---- Friendship request sent successfully
-[INFO] 2025-04-21T11:49:05.461Z - Friendship getAll ---- Retrieved all friendships
-[INFO] 2025-04-21T11:49:05.617Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
-[INFO] 2025-04-21T11:49:05.664Z - Friendship getSentRequests ---- Retrieved sent friendship requests
-[INFO] 2025-04-21T11:49:09.242Z - Get User --- Request Received
-[INFO] 2025-04-21T11:49:09.285Z - Get User Reviews - Retrieved reviews for User 5
-[INFO] 2025-04-21T11:49:09.289Z - Get User Reviews - Retrieved reviews for User 5
-[INFO] 2025-04-21T11:49:09.290Z - Friendship getFollowers ---- Retrieved followers successfully
-[INFO] 2025-04-21T11:49:09.336Z - Friendship getFollowing ---- Retrieved following users successfully
-[INFO] 2025-04-21T11:49:09.382Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
-[INFO] 2025-04-21T11:49:36.823Z - Notification getUserNotifications ---- Retrieved user notifications
-[INFO] 2025-04-21T11:49:38.569Z - Notification getUserNotifications ---- Retrieved user notifications
-[INFO] 2025-04-21T11:49:38.616Z - Notification getUserNotifications ---- Retrieved user notifications
-[INFO] 2025-04-21T11:49:38.756Z - Notification getUserNotifications ---- Retrieved user notifications
-[INFO] 2025-04-21T11:49:38.911Z - Notification getUserNotifications ---- Retrieved user notifications
-[INFO] 2025-04-21T11:49:39.049Z - Notification getUserNotifications ---- Retrieved user notifications
-[INFO] 2025-04-21T11:49:39.222Z - Notification getUserNotifications ---- Retrieved user notifications
-[INFO] 2025-04-21T11:49:39.395Z - Notification getUserNotifications ---- Retrieved user notifications
-[INFO] 2025-04-21T11:49:40.780Z - Login User - Logout Successfully
-[WARN] 2025-04-21T11:49:47.518Z - Login User --- Invalid email or password 
-[WARN] 2025-04-21T11:49:53.769Z - Login User --- Invalid email or password 
-[WARN] 2025-04-21T11:50:06.470Z - Login User --- Invalid email or password 
-[WARN] 2025-04-21T11:50:44.098Z - Login User --- Invalid email or password 
-[WARN] 2025-04-21T11:52:40.635Z - Login User --- Invalid email or password 
-[WARN] 2025-04-21T11:52:47.296Z - Login User --- Invalid email or password 
-[INFO] 2025-04-21T11:53:17.585Z - Login User --- Login successful 🚀
-[INFO] 2025-04-21T11:53:17.662Z - Friendship getAll ---- Retrieved all friendships
-[INFO] 2025-04-21T11:53:17.663Z - Notification getUserNotifications ---- Retrieved user notifications
-[INFO] 2025-04-21T11:53:17.664Z - Get User --- Request Received
-[INFO] 2025-04-21T11:53:17.724Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
-[INFO] 2025-04-21T11:53:17.806Z - List movies --- Request Received
-[INFO] 2025-04-21T11:53:17.818Z - Get User --- Request Received
-[INFO] 2025-04-21T11:53:17.913Z - Get User --- Request Received
-[INFO] 2025-04-21T11:53:17.952Z - Friendship getSentRequests ---- Retrieved sent friendship requests
-[INFO] 2025-04-21T11:53:17.954Z - Notification getUserNotifications ---- Retrieved user notifications
-[INFO] 2025-04-21T11:53:17.992Z - Get User --- Request Received
-[INFO] 2025-04-21T11:53:18.162Z - Get User --- Request Received
-[INFO] 2025-04-21T11:53:18.223Z - Get User --- Request Received
-[INFO] 2025-04-21T11:53:18.286Z - Get User --- Request Received
-[INFO] 2025-04-21T11:53:18.348Z - Get User --- Request Received
-[INFO] 2025-04-21T11:53:48.196Z - Get Movie Reviews - Retrieved reviews for Movie 3
-[INFO] 2025-04-21T11:53:48.212Z - Get User --- Request Received
-[INFO] 2025-04-21T11:54:23.604Z - Get Movie Reviews - Retrieved reviews for Movie 2
-[INFO] 2025-04-21T11:54:23.657Z - Get User --- Request Received
-[INFO] 2025-04-21T11:54:24.280Z - Get Movie Reviews - Retrieved reviews for Movie 3
-[INFO] 2025-04-21T11:54:24.449Z - Get User --- Request Received
-[INFO] 2025-04-21T11:54:29.762Z - Notification getUserNotifications ---- Retrieved user notifications
-[INFO] 2025-04-21T11:54:32.103Z - Notification getUserNotifications ---- Retrieved user notifications
-[INFO] 2025-04-21T11:54:32.258Z - Notification getUserNotifications ---- Retrieved user notifications
-[INFO] 2025-04-21T11:54:32.398Z - Notification getUserNotifications ---- Retrieved user notifications
-[INFO] 2025-04-21T11:54:32.553Z - Notification getUserNotifications ---- Retrieved user notifications
-[INFO] 2025-04-21T11:54:32.836Z - Notification getUserNotifications ---- Retrieved user notifications
-[INFO] 2025-04-21T11:54:40.430Z - Friendship getAll ---- Retrieved all friendships
-[INFO] 2025-04-21T11:54:40.477Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
-[INFO] 2025-04-21T11:54:40.522Z - Friendship getSentRequests ---- Retrieved sent friendship requests
-[INFO] 2025-04-21T11:54:41.315Z - List Users --- Request Received
-[INFO] 2025-04-21T11:54:43.185Z - Get User --- Request Received
-[INFO] 2025-04-21T11:54:43.194Z - Get User Reviews - Retrieved reviews for User 3
-[INFO] 2025-04-21T11:54:43.197Z - Get User Reviews - Retrieved reviews for User 3
-[INFO] 2025-04-21T11:54:43.356Z - Friendship getFollowers ---- Retrieved followers successfully
-[INFO] 2025-04-21T11:54:43.402Z - Friendship getFollowing ---- Retrieved following users successfully
-[INFO] 2025-04-21T11:54:43.572Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
-[INFO] 2025-04-21T11:54:45.382Z - Friendship getAll ---- Retrieved all friendships
-[INFO] 2025-04-21T11:54:45.429Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
-[INFO] 2025-04-21T11:54:45.476Z - Friendship getSentRequests ---- Retrieved sent friendship requests
-[INFO] 2025-04-21T11:54:45.895Z - List Users --- Request Received
-[INFO] 2025-04-21T11:54:47.220Z - Get User --- Request Received
-[INFO] 2025-04-21T11:54:47.288Z - Friendship getRelationshipStatus ---- Retrieved relationship status successfully
-[INFO] 2025-04-21T11:54:47.288Z - Friendship getFollowers ---- Retrieved followers successfully
-[INFO] 2025-04-21T11:54:47.344Z - Friendship getFollowing ---- Retrieved following users successfully
-[INFO] 2025-04-21T11:54:47.389Z - Get User --- Request Received
-[INFO] 2025-04-21T11:54:47.390Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
-[INFO] 2025-04-21T11:54:47.452Z - Get User --- Request Received
-[INFO] 2025-04-21T11:54:48.246Z - Friendship getAll ---- Retrieved all friendships
-[INFO] 2025-04-21T11:54:48.308Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
-[INFO] 2025-04-21T11:54:48.463Z - Friendship getSentRequests ---- Retrieved sent friendship requests
-[INFO] 2025-04-21T11:57:39.367Z - List movies --- Request Received
-[INFO] 2025-04-21T11:57:39.432Z - Notification getUserNotifications ---- Retrieved user notifications
-[INFO] 2025-04-21T11:57:39.433Z - Friendship getAll ---- Retrieved all friendships
-[INFO] 2025-04-21T11:57:39.499Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
-[INFO] 2025-04-21T11:57:39.545Z - Friendship getSentRequests ---- Retrieved sent friendship requests
-[INFO] 2025-04-21T11:57:46.334Z - Notification getUserNotifications ---- Retrieved user notifications
-[INFO] 2025-04-21T11:57:47.764Z - Notification markAllAsRead ---- All notifications marked as read
-[INFO] 2025-04-21T11:57:47.810Z - Notification getUserNotifications ---- Retrieved user notifications
-[INFO] 2025-04-21T11:57:55.267Z - Get User --- Request Received
-[INFO] 2025-04-21T11:57:55.825Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
-[INFO] 2025-04-21T11:57:57.399Z - Friendship getAll ---- Retrieved all friendships
-[INFO] 2025-04-21T11:57:57.446Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
-[INFO] 2025-04-21T11:57:57.618Z - Friendship getSentRequests ---- Retrieved sent friendship requests
-[INFO] 2025-04-21T11:57:57.788Z - List Users --- Request Received
-[INFO] 2025-04-21T11:57:59.076Z - Get User --- Request Received
-[INFO] 2025-04-21T11:57:59.139Z - Get User --- Request Received
-[INFO] 2025-04-21T11:57:59.147Z - Friendship getRelationshipStatus ---- Retrieved relationship status successfully
-[INFO] 2025-04-21T11:57:59.148Z - Friendship getFollowers ---- Retrieved followers successfully
-[INFO] 2025-04-21T11:57:59.199Z - Friendship getFollowing ---- Retrieved following users successfully
-[INFO] 2025-04-21T11:57:59.203Z - Get User --- Request Received
-[INFO] 2025-04-21T11:57:59.342Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
-[INFO] 2025-04-21T12:00:52.501Z - Friendship create ---- Friendship request sent successfully
-[INFO] 2025-04-21T12:00:52.548Z - Friendship getRelationshipStatus ---- Retrieved relationship status successfully
-[INFO] 2025-04-21T12:00:52.611Z - Get User --- Request Received
-[INFO] 2025-04-21T12:00:55.576Z - Login User - Logout Successfully
-[INFO] 2025-04-21T12:01:09.106Z - Login User --- Login successful 🚀
-[INFO] 2025-04-21T12:01:09.164Z - Get User --- Request Received
-[INFO] 2025-04-21T12:01:09.211Z - Notification getUserNotifications ---- Retrieved user notifications
-[INFO] 2025-04-21T12:01:09.242Z - List movies --- Request Received
-[INFO] 2025-04-21T12:01:09.257Z - Get User --- Request Received
-[INFO] 2025-04-21T12:01:12.825Z - Get User --- Request Received
-[INFO] 2025-04-21T12:01:13.556Z - Friendship getAll ---- Retrieved all friendships
-[INFO] 2025-04-21T12:01:13.602Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
-[INFO] 2025-04-21T12:01:13.649Z - Friendship getSentRequests ---- Retrieved sent friendship requests
-[INFO] 2025-04-21T12:01:17.479Z - Friendship update ---- Friendship status updated successfully
-[INFO] 2025-04-21T12:01:17.526Z - Friendship getAll ---- Retrieved all friendships
-[INFO] 2025-04-21T12:01:17.573Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
-[INFO] 2025-04-21T12:01:17.618Z - Friendship getSentRequests ---- Retrieved sent friendship requests
-[INFO] 2025-04-21T12:01:17.665Z - Notification getUserNotifications ---- Retrieved user notifications
-[INFO] 2025-04-21T12:01:17.837Z - Notification markAsRead ---- Notification marked as read
-[INFO] 2025-04-21T12:01:17.884Z - Notification getUserNotifications ---- Retrieved user notifications
-[INFO] 2025-04-21T12:01:19.018Z - List Users --- Request Received
-[INFO] 2025-04-21T12:01:20.329Z - Get User --- Request Received
-[INFO] 2025-04-21T12:01:20.372Z - Get User Reviews - Retrieved reviews for User 4
-[INFO] 2025-04-21T12:01:20.375Z - Get User Reviews - Retrieved reviews for User 4
-[INFO] 2025-04-21T12:01:20.391Z - Friendship getFollowers ---- Retrieved followers successfully
-[INFO] 2025-04-21T12:01:20.437Z - Friendship getFollowing ---- Retrieved following users successfully
-[INFO] 2025-04-21T12:01:20.484Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
-[INFO] 2025-04-21T12:01:35.627Z - Login User - Logout Successfully
-[INFO] 2025-04-21T12:01:54.653Z - Login User --- Login successful 🚀
-[INFO] 2025-04-21T12:01:54.709Z - Get User --- Request Received
-[INFO] 2025-04-21T12:01:54.748Z - List movies --- Request Received
-[INFO] 2025-04-21T12:01:54.771Z - Notification getUserNotifications ---- Retrieved user notifications
-[INFO] 2025-04-21T12:01:54.802Z - Get User --- Request Received
-[INFO] 2025-04-21T12:01:54.880Z - Get User --- Request Received
-[INFO] 2025-04-21T12:01:55.051Z - Get User --- Request Received
-[INFO] 2025-04-21T12:01:55.112Z - Get User --- Request Received
-[INFO] 2025-04-21T12:01:55.174Z - Get User --- Request Received
-[INFO] 2025-04-21T12:01:55.236Z - Get User --- Request Received
-[INFO] 2025-04-21T12:01:55.299Z - Get User --- Request Received
-[INFO] 2025-04-21T12:01:57.177Z - List movies --- Request Received
-[ERROR] 2025-04-21T12:01:57.185Z - Error in LibraryController.getAllByUserId | Error: 
+[INFO] 2025-04-21T13:46:50.533Z - Get User --- Request Received
+[INFO] 2025-04-21T13:46:50.659Z - Get User --- Request Received
+[INFO] 2025-04-21T13:46:50.830Z - Get User --- Request Received
+[INFO] 2025-04-21T13:46:50.894Z - Get User --- Request Received
+[INFO] 2025-04-21T13:46:50.956Z - Get User --- Request Received
+[INFO] 2025-04-21T13:46:51.019Z - Get User --- Request Received
+[INFO] 2025-04-21T13:46:51.192Z - Get User --- Request Received
+[INFO] 2025-04-21T13:46:51.256Z - Get User --- Request Received
+[INFO] 2025-04-21T13:46:51.318Z - Get User --- Request Received
+[INFO] 2025-04-21T13:46:51.381Z - Get User --- Request Received
+[INFO] 2025-04-21T13:46:51.444Z - Get User --- Request Received
+[INFO] 2025-04-21T13:46:51.505Z - Get User --- Request Received
+[INFO] 2025-04-21T13:46:51.566Z - Get User --- Request Received
+[INFO] 2025-04-21T13:46:55.287Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-21T13:46:55.333Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-21T13:46:55.381Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-21T13:46:56.337Z - List Users --- Request Received
+[INFO] 2025-04-21T13:47:01.265Z - Get User --- Request Received
+[INFO] 2025-04-21T13:47:01.328Z - Get User --- Request Received
+[INFO] 2025-04-21T13:47:01.339Z - Friendship getRelationshipStatus ---- Retrieved relationship status successfully
+[INFO] 2025-04-21T13:47:01.340Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-21T13:47:01.391Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-21T13:47:01.438Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-21T13:47:01.499Z - Get User --- Request Received
+[INFO] 2025-04-21T13:47:02.989Z - Friendship create ---- Friendship request sent successfully
+[INFO] 2025-04-21T13:47:03.035Z - Friendship getRelationshipStatus ---- Retrieved relationship status successfully
+[INFO] 2025-04-21T13:47:03.097Z - Get User --- Request Received
+[INFO] 2025-04-21T13:47:04.287Z - Login User - Logout Successfully
+[WARN] 2025-04-21T13:47:09.531Z - Login User --- Invalid email or password 
+[INFO] 2025-04-21T13:47:23.539Z - Login User --- Login successful 🚀
+[INFO] 2025-04-21T13:47:23.598Z - Get User --- Request Received
+[INFO] 2025-04-21T13:47:23.641Z - List movies --- Request Received
+[INFO] 2025-04-21T13:47:23.661Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-21T13:47:23.802Z - Get User --- Request Received
+[INFO] 2025-04-21T13:47:25.456Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-21T13:47:25.502Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-21T13:47:25.564Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-21T13:47:25.775Z - Get User Ratings - Retrieved ratings for User 4
+[INFO] 2025-04-21T13:47:26.264Z - Get User --- Request Received
+[INFO] 2025-04-21T13:47:27.659Z - List movies --- Request Received
+[ERROR] 2025-04-21T13:47:27.695Z - Error in LibraryController.getAllByUserId | Error: 
+Invalid `prisma.library.findMany()` invocation in
+C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
+
+  108 }
+  109 
+  110 public static async getAllByUserId(userId: string) {
+→ 111   const libraries = await prisma.library.findMany({
+          where: {
+            userId: "4"
+                    ~~~
+          },
+          include: {
+            movie: true,
+            user: {
+              select: {
+                id: true,
+                name: true,
+                email: true,
+                username: true,
+                profileImage: true
+              }
+            }
+          },
+          orderBy: {
+            updatedAt: "desc"
+          }
+        })
+
+Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String. | Stack: PrismaClientValidationError: 
+Invalid `prisma.library.findMany()` invocation in
+C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
+
+  108 }
+  109 
+  110 public static async getAllByUserId(userId: string) {
+→ 111   const libraries = await prisma.library.findMany({
+          where: {
+            userId: "4"
+                    ~~~
+          },
+          include: {
+            movie: true,
+            user: {
+              select: {
+                id: true,
+                name: true,
+                email: true,
+                username: true,
+                profileImage: true
+              }
+            }
+          },
+          orderBy: {
+            updatedAt: "desc"
+          }
+        })
+
+Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String.
+    at Cn (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:29:1363)
+    at Wn.handleRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:7177)
+    at Wn.handleAndLogRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6858)
+    at Wn.request (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6565)
+    at async l (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:130:10067)
+    at Function.getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:23)
+    at getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\controller\library.controller.ts:212:25)
+[INFO] 2025-04-21T13:47:57.278Z - File uploaded to S3: profiles/c8fd6eeb-6cc3-426b-846c-a9e7d0c87674.jpg
+[INFO] 2025-04-21T13:47:57.337Z - Update User - Updated User {"id":4,"email":"osman@mail.com","username":"osmanosmanoglu","password":"$2b$10$rDIF3YM7kRTs4q.qAFesheXgkVrZnVH0j5D22ZB0W0i8CgeVFEyQq","name":"Osman Osmanoglu","profileImage":"https://seferogluemremovieproject.s3.amazonaws.com/profiles/c8fd6eeb-6cc3-426b-846c-a9e7d0c87674.jpg?AWSAccessKeyId=AKIAQSOI4UYIUUJJSRF4&Expires=1745848077&Signature=FMxH1cbNtRy5NOZUv2v4XTrar5I%3D","isAdmin":false,"isPrivate":true,"createdAt":"2025-04-12T04:56:01.458Z","updatedAt":"2025-04-21T13:47:57.323Z","isVerified":false,"verificationCode":"118756","verificationCodeExpiresAt":"2025-04-22T00:01:24.038Z","verificationCodeSentAt":"2025-04-21T12:01:24.038Z","verificationCodeUsed":false}
+[INFO] 2025-04-21T13:47:57.399Z - Get User --- Request Received
+[INFO] 2025-04-21T13:47:59.802Z - Get User --- Request Received
+[INFO] 2025-04-21T13:48:02.090Z - Login User - Logout Successfully
+[INFO] 2025-04-21T13:48:08.288Z - Login User --- Login successful 🚀
+[INFO] 2025-04-21T13:48:08.458Z - Get User --- Request Received
+[INFO] 2025-04-21T13:48:08.494Z - List movies --- Request Received
+[INFO] 2025-04-21T13:48:08.504Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-21T13:48:08.660Z - Get User --- Request Received
+[INFO] 2025-04-21T13:48:08.722Z - Get User --- Request Received
+[INFO] 2025-04-21T13:48:08.784Z - Get User --- Request Received
+[INFO] 2025-04-21T13:48:08.956Z - Get User --- Request Received
+[INFO] 2025-04-21T13:48:09.018Z - Get User --- Request Received
+[INFO] 2025-04-21T13:48:09.081Z - Get User --- Request Received
+[INFO] 2025-04-21T13:48:09.144Z - Get User --- Request Received
+[INFO] 2025-04-21T13:48:09.207Z - Get User --- Request Received
+[INFO] 2025-04-21T13:48:09.269Z - Get User --- Request Received
+[INFO] 2025-04-21T13:48:09.331Z - Get User --- Request Received
+[INFO] 2025-04-21T13:48:09.394Z - Get User --- Request Received
+[INFO] 2025-04-21T13:48:09.565Z - Get User --- Request Received
+[INFO] 2025-04-21T13:48:45.640Z - Get Movie Reviews - Retrieved reviews for Movie 3
+[INFO] 2025-04-21T13:48:45.655Z - Get User --- Request Received
+[INFO] 2025-04-21T13:49:15.830Z - Login User - Logout Successfully
+[INFO] 2025-04-21T13:49:23.068Z - Login User --- Login successful 🚀
+[INFO] 2025-04-21T13:49:23.128Z - Get User --- Request Received
+[INFO] 2025-04-21T13:49:23.164Z - List movies --- Request Received
+[INFO] 2025-04-21T13:49:23.175Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-21T13:49:23.221Z - Get User --- Request Received
+[INFO] 2025-04-21T13:49:23.299Z - Get User --- Request Received
+[INFO] 2025-04-21T13:49:23.362Z - Get User --- Request Received
+[INFO] 2025-04-21T13:49:23.424Z - Get User --- Request Received
+[INFO] 2025-04-21T13:49:23.486Z - Get User --- Request Received
+[INFO] 2025-04-21T13:49:23.550Z - Get User --- Request Received
+[INFO] 2025-04-21T13:49:23.611Z - Get User --- Request Received
+[INFO] 2025-04-21T13:49:23.674Z - Get User --- Request Received
+[INFO] 2025-04-21T13:49:23.737Z - Get User --- Request Received
+[INFO] 2025-04-21T13:49:23.799Z - Get User --- Request Received
+[INFO] 2025-04-21T13:49:23.969Z - Get User --- Request Received
+[INFO] 2025-04-21T13:49:24.032Z - Get User --- Request Received
+[INFO] 2025-04-21T13:49:24.095Z - Get User --- Request Received
+[INFO] 2025-04-21T13:49:30.578Z - File uploaded to S3: profiles/697dbb78-d0d9-46a9-be15-f63c16522710.jpg
+[INFO] 2025-04-21T13:49:30.630Z - Update User - Updated User {"id":1,"email":"ismet@mail.com","username":"ismetterzioglu","password":"$2b$10$c.RIb/IopXhGgPVHzZfoJuQl8ZhNcjKxYOEt.pDcGLYM4ouwycyeC","name":"İsmet Terzioglu","profileImage":"https://seferogluemremovieproject.s3.amazonaws.com/profiles/697dbb78-d0d9-46a9-be15-f63c16522710.jpg?AWSAccessKeyId=AKIAQSOI4UYIUUJJSRF4&Expires=1745848170&Signature=ovb6riKtAfi5FXrzt2Gk8fPFZFs%3D","isAdmin":false,"isPrivate":true,"createdAt":"2025-04-10T04:08:29.579Z","updatedAt":"2025-04-21T13:49:30.618Z","isVerified":false,"verificationCode":null,"verificationCodeExpiresAt":null,"verificationCodeSentAt":null,"verificationCodeUsed":false}
+[INFO] 2025-04-21T13:49:30.693Z - Get User --- Request Received
+[INFO] 2025-04-21T13:49:39.884Z - Login User - Logout Successfully
+[WARN] 2025-04-21T13:49:47.346Z - Login User --- Invalid email or password 
+[INFO] 2025-04-21T13:49:53.144Z - Login User --- Login successful 🚀
+[INFO] 2025-04-21T13:49:53.204Z - Get User --- Request Received
+[INFO] 2025-04-21T13:49:53.245Z - List movies --- Request Received
+[INFO] 2025-04-21T13:49:53.265Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-21T13:49:53.297Z - Get User --- Request Received
+[INFO] 2025-04-21T13:49:53.360Z - Get User --- Request Received
+[INFO] 2025-04-21T13:49:53.423Z - Get User --- Request Received
+[INFO] 2025-04-21T13:49:56.427Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-21T13:49:56.474Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-21T13:49:56.536Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-21T13:51:03.504Z - List movies --- Request Received
+[ERROR] 2025-04-21T13:51:03.507Z - Error in LibraryController.getAllByUserId | Error: 
 Invalid `prisma.library.findMany()` invocation in
 C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
 
@@ -308,37 +227,166 @@ Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided S
     at async l (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:130:10067)
     at Function.getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:23)
     at getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\controller\library.controller.ts:212:25)
-[WARN] 2025-04-21T12:01:58.742Z - LibraryController.create ---- Movie 2 already exists in library for user 3
-[INFO] 2025-04-21T12:02:05.753Z - Notification markAllAsRead ---- All notifications marked as read
-[INFO] 2025-04-21T12:02:05.797Z - Notification getUserNotifications ---- Retrieved user notifications
-[INFO] 2025-04-21T12:02:06.842Z - Get User --- Request Received
-[INFO] 2025-04-21T12:02:06.850Z - Get User Reviews - Retrieved reviews for User 3
-[INFO] 2025-04-21T12:02:06.853Z - Get User Reviews - Retrieved reviews for User 3
-[INFO] 2025-04-21T12:02:06.904Z - Friendship getFollowers ---- Retrieved followers successfully
-[INFO] 2025-04-21T12:02:06.967Z - Friendship getFollowing ---- Retrieved following users successfully
-[INFO] 2025-04-21T12:02:07.012Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
-[INFO] 2025-04-21T12:02:08.155Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
-[INFO] 2025-04-21T12:02:08.207Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
-[INFO] 2025-04-21T12:02:08.216Z - Get User --- Request Received
-[INFO] 2025-04-21T12:02:08.263Z - Friendship getFollowers ---- Retrieved followers successfully
-[INFO] 2025-04-21T12:02:08.278Z - Get User --- Request Received
-[INFO] 2025-04-21T12:02:08.433Z - Friendship getFollowing ---- Retrieved following users successfully
-[INFO] 2025-04-21T12:02:09.256Z - Friendship getFollowers ---- Retrieved followers successfully
-[INFO] 2025-04-21T12:02:09.660Z - Friendship getFollowing ---- Retrieved following users successfully
-[INFO] 2025-04-21T12:02:10.766Z - Friendship getFollowers ---- Retrieved followers successfully
-[INFO] 2025-04-21T12:02:20.398Z - Get User --- Request Received
-[INFO] 2025-04-21T12:02:21.701Z - Get Movie Reviews - Retrieved reviews for Movie 2
-[INFO] 2025-04-21T12:02:21.745Z - Get User --- Request Received
-[INFO] 2025-04-21T12:02:33.243Z - Get Movie Reviews - Retrieved reviews for Movie 3
-[INFO] 2025-04-21T12:02:33.300Z - Get User --- Request Received
-[INFO] 2025-04-21T12:02:36.340Z - Get User --- Request Received
-[INFO] 2025-04-21T12:02:36.402Z - Get User --- Request Received
-[INFO] 2025-04-21T12:02:36.464Z - Get User --- Request Received
-[INFO] 2025-04-21T12:02:36.633Z - Get User --- Request Received
-[INFO] 2025-04-21T12:02:36.696Z - Get User --- Request Received
-[INFO] 2025-04-21T12:02:36.759Z - Get User --- Request Received
-[INFO] 2025-04-21T12:02:38.800Z - List movies --- Request Received
-[ERROR] 2025-04-21T12:02:38.802Z - Error in LibraryController.getAllByUserId | Error: 
+[INFO] 2025-04-21T13:51:06.572Z - Update User - Updated User {"id":3,"email":"yunusemre5331@icloud.com","username":"seferogluemre","password":"$2b$10$QSA2xO8T.tRYIAWXDNOp4eRaoyCdJqhIuUmFpWwrJRHKjNEpzDJ4.","name":"Yunka","profileImage":null,"isAdmin":false,"isPrivate":false,"createdAt":"2025-04-10T04:11:15.116Z","updatedAt":"2025-04-21T13:51:06.554Z","isVerified":true,"verificationCode":"662769","verificationCodeExpiresAt":"2025-04-22T00:12:36.181Z","verificationCodeSentAt":"2025-04-21T12:12:36.181Z","verificationCodeUsed":true}
+[INFO] 2025-04-21T13:51:06.634Z - Get User --- Request Received
+[INFO] 2025-04-21T13:51:11.701Z - File uploaded to S3: profiles/94016dfb-75bd-4db9-8340-3d43b663db01.jpg
+[INFO] 2025-04-21T13:51:11.764Z - Update User - Updated User {"id":3,"email":"yunusemre5331@icloud.com","username":"seferogluemre","password":"$2b$10$QSA2xO8T.tRYIAWXDNOp4eRaoyCdJqhIuUmFpWwrJRHKjNEpzDJ4.","name":"Yunka","profileImage":"https://seferogluemremovieproject.s3.amazonaws.com/profiles/94016dfb-75bd-4db9-8340-3d43b663db01.jpg?AWSAccessKeyId=AKIAQSOI4UYIUUJJSRF4&Expires=1745848271&Signature=JgryA%2B1Zd86Kc2eAmR7xa6%2FhJc4%3D","isAdmin":false,"isPrivate":false,"createdAt":"2025-04-10T04:11:15.116Z","updatedAt":"2025-04-21T13:51:11.742Z","isVerified":true,"verificationCode":"662769","verificationCodeExpiresAt":"2025-04-22T00:12:36.181Z","verificationCodeSentAt":"2025-04-21T12:12:36.181Z","verificationCodeUsed":true}
+[INFO] 2025-04-21T13:51:11.935Z - Get User --- Request Received
+[INFO] 2025-04-21T13:51:13.559Z - Login User - Logout Successfully
+[INFO] 2025-04-21T13:51:55.656Z - Login User --- Login successful 🚀
+[INFO] 2025-04-21T13:51:55.718Z - Get User --- Request Received
+[INFO] 2025-04-21T13:51:55.781Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-21T13:51:55.802Z - List movies --- Request Received
+[INFO] 2025-04-21T13:51:55.812Z - Get User --- Request Received
+[INFO] 2025-04-21T13:51:55.880Z - Get User --- Request Received
+[INFO] 2025-04-21T13:51:55.952Z - Get User --- Request Received
+[INFO] 2025-04-21T13:51:56.125Z - Get User --- Request Received
+[INFO] 2025-04-21T13:51:56.189Z - Get User --- Request Received
+[INFO] 2025-04-21T13:51:56.236Z - Get User --- Request Received
+[INFO] 2025-04-21T13:51:56.298Z - Get User --- Request Received
+[INFO] 2025-04-21T13:51:56.360Z - Get User --- Request Received
+[INFO] 2025-04-21T13:51:56.532Z - Get User --- Request Received
+[INFO] 2025-04-21T13:51:56.595Z - Get User --- Request Received
+[INFO] 2025-04-21T13:51:56.657Z - Get User --- Request Received
+[INFO] 2025-04-21T13:51:56.720Z - Get User --- Request Received
+[INFO] 2025-04-21T13:51:57.594Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-21T13:51:57.640Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-21T13:51:57.702Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-21T13:51:58.494Z - List Users --- Request Received
+[INFO] 2025-04-21T13:52:37.031Z - List movies --- Request Received
+[INFO] 2025-04-21T13:52:37.087Z - Get User --- Request Received
+[INFO] 2025-04-21T13:52:37.155Z - Get User --- Request Received
+[INFO] 2025-04-21T13:52:37.320Z - Get User --- Request Received
+[INFO] 2025-04-21T13:52:37.352Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-21T13:52:37.353Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-21T13:52:37.555Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-21T13:52:37.556Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-21T13:52:37.648Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-21T13:52:37.649Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-21T13:52:37.649Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-21T13:52:37.723Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-21T13:52:37.723Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-21T13:52:37.724Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-21T13:52:37.907Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-21T13:52:37.908Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-21T13:52:37.962Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-21T13:52:39.441Z - List Users --- Request Received
+[INFO] 2025-04-21T13:52:42.356Z - Get User --- Request Received
+[INFO] 2025-04-21T13:52:42.403Z - Get User Reviews - Retrieved reviews for User 1
+[INFO] 2025-04-21T13:52:42.406Z - Get User Reviews - Retrieved reviews for User 1
+[INFO] 2025-04-21T13:52:42.407Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-21T13:52:42.464Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-21T13:52:42.511Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-21T13:52:43.213Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-21T13:52:43.260Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-21T13:52:43.430Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-21T13:52:43.587Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-21T13:52:44.476Z - Get User Ratings - Retrieved ratings for User 1
+[INFO] 2025-04-21T13:52:44.880Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-21T13:52:45.052Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-21T13:52:45.099Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-21T13:52:45.418Z - Get User Ratings - Retrieved ratings for User 1
+[INFO] 2025-04-21T13:52:45.452Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
+[INFO] 2025-04-21T13:52:56.058Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
+[INFO] 2025-04-21T13:52:56.059Z - Get User Ratings - Retrieved ratings for User 1
+[INFO] 2025-04-21T13:53:11.952Z - LibraryController.update ---- Updated library entry ${id}
+[INFO] 2025-04-21T13:53:23.941Z - LibraryController.update ---- Updated library entry ${id}
+[INFO] 2025-04-21T13:53:30.408Z - Create Rating --- Created Rating [object Object]
+[INFO] 2025-04-21T13:53:33.025Z - Create Rating --- Created Rating [object Object]
+[INFO] 2025-04-21T13:53:34.751Z - List movies --- Request Received
+[INFO] 2025-04-21T13:53:34.803Z - Get User --- Request Received
+[INFO] 2025-04-21T13:53:34.834Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
+[INFO] 2025-04-21T13:53:34.835Z - Get User Ratings - Retrieved ratings for User 1
+[INFO] 2025-04-21T13:53:34.867Z - Get User --- Request Received
+[INFO] 2025-04-21T13:53:34.884Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
+[INFO] 2025-04-21T13:53:34.887Z - Get User Ratings - Retrieved ratings for User 1
+[INFO] 2025-04-21T13:53:34.928Z - Get User --- Request Received
+[INFO] 2025-04-21T13:53:34.952Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-21T13:53:34.952Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-21T13:53:35.007Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-21T13:53:35.054Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-21T13:53:39.723Z - Create Rating --- Created Rating [object Object]
+[INFO] 2025-04-21T13:53:40.865Z - Get User Ratings - Retrieved ratings for User 1
+[INFO] 2025-04-21T13:53:41.280Z - Get User --- Request Received
+[INFO] 2025-04-21T13:53:42.578Z - Get User Ratings - Retrieved ratings for User 1
+[INFO] 2025-04-21T13:53:44.408Z - Get Movie Reviews - Retrieved reviews for Movie 3
+[INFO] 2025-04-21T13:53:44.468Z - Get User --- Request Received
+[INFO] 2025-04-21T13:53:51.595Z - Get User Ratings - Retrieved ratings for User 1
+[INFO] 2025-04-21T13:53:53.127Z - Get Movie Reviews - Retrieved reviews for Movie 2
+[INFO] 2025-04-21T13:53:53.180Z - Get User --- Request Received
+[INFO] 2025-04-21T13:54:51.452Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
+[INFO] 2025-04-21T13:54:51.453Z - Get User Ratings - Retrieved ratings for User 1
+[INFO] 2025-04-21T13:54:52.979Z - Get User --- Request Received
+[INFO] 2025-04-21T13:54:54.368Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
+[INFO] 2025-04-21T13:54:54.369Z - Get User Ratings - Retrieved ratings for User 1
+[INFO] 2025-04-21T13:55:21.517Z - Create Review --- Created Review [object Object]
+[INFO] 2025-04-21T13:55:22.621Z - Get User --- Request Received
+[INFO] 2025-04-21T13:55:27.861Z - Get Movie Reviews - Retrieved reviews for Movie 3
+[INFO] 2025-04-21T13:55:27.920Z - Get User --- Request Received
+[INFO] 2025-04-21T13:55:39.683Z - MovieActor create ---- Movie-actor relationship created successfully
+[INFO] 2025-04-21T13:55:42.261Z - MovieActor create ---- Movie-actor relationship created successfully
+[INFO] 2025-04-21T13:55:44.229Z - List movies --- Request Received
+[INFO] 2025-04-21T13:55:44.384Z - Get User --- Request Received
+[INFO] 2025-04-21T13:55:44.392Z - Get Movie Reviews - Retrieved reviews for Movie 3
+[INFO] 2025-04-21T13:55:44.424Z - Get Movie Reviews - Retrieved reviews for Movie 3
+[INFO] 2025-04-21T13:55:44.447Z - Get User --- Request Received
+[INFO] 2025-04-21T13:55:44.494Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-21T13:55:44.495Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-21T13:55:44.503Z - Get Movie Reviews - Retrieved reviews for Movie 3
+[INFO] 2025-04-21T13:55:44.524Z - Get User --- Request Received
+[INFO] 2025-04-21T13:55:44.554Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-21T13:55:44.576Z - Get Movie Reviews - Retrieved reviews for Movie 3
+[INFO] 2025-04-21T13:55:44.580Z - Get User --- Request Received
+[INFO] 2025-04-21T13:55:44.616Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-21T13:55:44.633Z - Get User --- Request Received
+[INFO] 2025-04-21T13:55:44.694Z - Get User --- Request Received
+[INFO] 2025-04-21T13:55:54.223Z - List movies --- Request Received
+[INFO] 2025-04-21T13:55:54.276Z - Get User --- Request Received
+[INFO] 2025-04-21T13:55:54.285Z - Get Movie Reviews - Retrieved reviews for Movie 1
+[INFO] 2025-04-21T13:55:54.317Z - Get Movie Reviews - Retrieved reviews for Movie 1
+[INFO] 2025-04-21T13:55:54.339Z - Get User --- Request Received
+[INFO] 2025-04-21T13:55:54.363Z - Get Movie Reviews - Retrieved reviews for Movie 1
+[INFO] 2025-04-21T13:55:54.385Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-21T13:55:54.386Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-21T13:55:54.401Z - Get User --- Request Received
+[INFO] 2025-04-21T13:55:54.420Z - Get Movie Reviews - Retrieved reviews for Movie 1
+[INFO] 2025-04-21T13:55:54.432Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-21T13:55:54.463Z - Get User --- Request Received
+[INFO] 2025-04-21T13:55:54.479Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-21T13:55:54.525Z - Get User --- Request Received
+[INFO] 2025-04-21T13:55:54.588Z - Get User --- Request Received
+[INFO] 2025-04-21T13:55:57.959Z - List movies --- Request Received
+[INFO] 2025-04-21T13:55:58.024Z - Get User --- Request Received
+[INFO] 2025-04-21T13:55:58.033Z - Get Movie Reviews - Retrieved reviews for Movie 1
+[INFO] 2025-04-21T13:55:58.064Z - Get Movie Reviews - Retrieved reviews for Movie 1
+[INFO] 2025-04-21T13:55:58.085Z - Get User --- Request Received
+[INFO] 2025-04-21T13:55:58.108Z - Get Movie Reviews - Retrieved reviews for Movie 1
+[INFO] 2025-04-21T13:55:58.131Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-21T13:55:58.132Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-21T13:55:58.147Z - Get User --- Request Received
+[INFO] 2025-04-21T13:55:58.165Z - Get Movie Reviews - Retrieved reviews for Movie 1
+[INFO] 2025-04-21T13:55:58.179Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-21T13:55:58.224Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-21T13:55:58.320Z - Get User --- Request Received
+[INFO] 2025-04-21T13:55:58.383Z - Get User --- Request Received
+[INFO] 2025-04-21T13:55:58.445Z - Get User --- Request Received
+[INFO] 2025-04-21T13:55:59.419Z - List movies --- Request Received
+[INFO] 2025-04-21T13:55:59.479Z - Get User --- Request Received
+[INFO] 2025-04-21T13:55:59.486Z - Get Movie Reviews - Retrieved reviews for Movie 1
+[INFO] 2025-04-21T13:55:59.521Z - Get Movie Reviews - Retrieved reviews for Movie 1
+[INFO] 2025-04-21T13:55:59.542Z - Get User --- Request Received
+[INFO] 2025-04-21T13:55:59.561Z - Get Movie Reviews - Retrieved reviews for Movie 1
+[INFO] 2025-04-21T13:55:59.605Z - Get User --- Request Received
+[INFO] 2025-04-21T13:55:59.624Z - Get Movie Reviews - Retrieved reviews for Movie 1
+[INFO] 2025-04-21T13:55:59.661Z - Get User --- Request Received
+[INFO] 2025-04-21T13:55:59.715Z - Get User --- Request Received
+[INFO] 2025-04-21T13:55:59.763Z - Get User --- Request Received
+[INFO] 2025-04-21T13:55:59.810Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-21T13:55:59.810Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-21T13:55:59.952Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-21T13:56:00.000Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-21T13:56:02.901Z - List movies --- Request Received
+[ERROR] 2025-04-21T13:56:02.905Z - Error in LibraryController.getAllByUserId | Error: 
 Invalid `prisma.library.findMany()` invocation in
 C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
 
@@ -347,7 +395,7 @@ C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\l
   110 public static async getAllByUserId(userId: string) {
 → 111   const libraries = await prisma.library.findMany({
           where: {
-            userId: "3"
+            userId: "1"
                     ~~~
           },
           include: {
@@ -376,7 +424,7 @@ C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\l
   110 public static async getAllByUserId(userId: string) {
 → 111   const libraries = await prisma.library.findMany({
           where: {
-            userId: "3"
+            userId: "1"
                     ~~~
           },
           include: {
@@ -404,51 +452,61 @@ Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided S
     at async l (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:130:10067)
     at Function.getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:23)
     at getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\controller\library.controller.ts:212:25)
-[INFO] 2025-04-21T12:02:39.321Z - Friendship getAll ---- Retrieved all friendships
-[INFO] 2025-04-21T12:02:39.367Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
-[INFO] 2025-04-21T12:02:39.414Z - Friendship getSentRequests ---- Retrieved sent friendship requests
-[INFO] 2025-04-21T12:02:41.296Z - List Users --- Request Received
-[INFO] 2025-04-21T12:02:42.660Z - Friendship create ---- Friendship request sent successfully
-[INFO] 2025-04-21T12:02:42.707Z - Friendship getAll ---- Retrieved all friendships
-[INFO] 2025-04-21T12:02:42.753Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
-[INFO] 2025-04-21T12:02:42.800Z - Friendship getSentRequests ---- Retrieved sent friendship requests
-[INFO] 2025-04-21T12:02:43.798Z - Login User - Logout Successfully
-[WARN] 2025-04-21T12:02:50.726Z - Login User --- Invalid email or password 
-[INFO] 2025-04-21T12:02:51.466Z - Login User --- Login successful 🚀
-[INFO] 2025-04-21T12:02:51.525Z - Get User --- Request Received
-[INFO] 2025-04-21T12:02:51.563Z - List movies --- Request Received
-[INFO] 2025-04-21T12:02:51.586Z - Notification getUserNotifications ---- Retrieved user notifications
-[INFO] 2025-04-21T12:02:51.617Z - Get User --- Request Received
-[INFO] 2025-04-21T12:02:51.696Z - Get User --- Request Received
-[INFO] 2025-04-21T12:02:51.758Z - Get User --- Request Received
-[INFO] 2025-04-21T12:02:51.820Z - Get User --- Request Received
-[INFO] 2025-04-21T12:02:51.882Z - Get User --- Request Received
-[INFO] 2025-04-21T12:02:51.943Z - Get User --- Request Received
-[INFO] 2025-04-21T12:02:52.006Z - Get User --- Request Received
-[INFO] 2025-04-21T12:02:52.177Z - Get User --- Request Received
-[INFO] 2025-04-21T12:02:52.239Z - Get User --- Request Received
-[INFO] 2025-04-21T12:02:52.300Z - Get User --- Request Received
-[INFO] 2025-04-21T12:02:52.361Z - Get User --- Request Received
-[INFO] 2025-04-21T12:02:52.423Z - Get User --- Request Received
-[INFO] 2025-04-21T12:02:52.485Z - Get User --- Request Received
-[INFO] 2025-04-21T12:02:52.546Z - Get User --- Request Received
-[INFO] 2025-04-21T12:02:55.582Z - Friendship update ---- Friendship status updated successfully
-[INFO] 2025-04-21T12:02:55.629Z - Friendship getAll ---- Retrieved all friendships
-[INFO] 2025-04-21T12:02:55.675Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
-[INFO] 2025-04-21T12:02:55.737Z - Friendship getSentRequests ---- Retrieved sent friendship requests
-[INFO] 2025-04-21T12:02:55.783Z - Notification getUserNotifications ---- Retrieved user notifications
-[INFO] 2025-04-21T12:02:55.830Z - Notification markAsRead ---- Notification marked as read
-[INFO] 2025-04-21T12:02:55.876Z - Notification getUserNotifications ---- Retrieved user notifications
-[INFO] 2025-04-21T12:02:58.539Z - Notification markAllAsRead ---- All notifications marked as read
-[INFO] 2025-04-21T12:02:58.696Z - Notification getUserNotifications ---- Retrieved user notifications
-[INFO] 2025-04-21T12:02:59.662Z - Get User --- Request Received
-[INFO] 2025-04-21T12:02:59.667Z - Get User Reviews - Retrieved reviews for User 5
-[INFO] 2025-04-21T12:02:59.671Z - Get User Reviews - Retrieved reviews for User 5
-[INFO] 2025-04-21T12:02:59.724Z - Friendship getFollowers ---- Retrieved followers successfully
-[INFO] 2025-04-21T12:02:59.770Z - Friendship getFollowing ---- Retrieved following users successfully
-[INFO] 2025-04-21T12:02:59.816Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
-[INFO] 2025-04-21T12:03:01.701Z - List movies --- Request Received
-[ERROR] 2025-04-21T12:03:01.732Z - Error in LibraryController.getAllByUserId | Error: 
+[INFO] 2025-04-21T13:56:06.684Z - Get Movie Reviews - Retrieved reviews for Movie 5
+[INFO] 2025-04-21T13:56:06.738Z - Get User --- Request Received
+[INFO] 2025-04-21T13:56:20.410Z - MovieActor create ---- Movie-actor relationship created successfully
+[INFO] 2025-04-21T13:56:22.220Z - List movies --- Request Received
+[INFO] 2025-04-21T13:56:22.378Z - Get User --- Request Received
+[INFO] 2025-04-21T13:56:22.386Z - Get Movie Reviews - Retrieved reviews for Movie 5
+[INFO] 2025-04-21T13:56:22.419Z - Get Movie Reviews - Retrieved reviews for Movie 5
+[INFO] 2025-04-21T13:56:22.440Z - Get User --- Request Received
+[INFO] 2025-04-21T13:56:22.488Z - Get Movie Reviews - Retrieved reviews for Movie 5
+[INFO] 2025-04-21T13:56:22.502Z - Get User --- Request Received
+[INFO] 2025-04-21T13:56:22.534Z - Get Movie Reviews - Retrieved reviews for Movie 5
+[INFO] 2025-04-21T13:56:22.564Z - Get User --- Request Received
+[INFO] 2025-04-21T13:56:22.601Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-21T13:56:22.601Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-21T13:56:22.626Z - Get User --- Request Received
+[INFO] 2025-04-21T13:56:22.658Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-21T13:56:22.688Z - Get User --- Request Received
+[INFO] 2025-04-21T13:56:22.704Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-21T13:57:26.541Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-21T13:57:26.588Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-21T13:57:26.636Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-21T13:57:27.386Z - List Users --- Request Received
+[INFO] 2025-04-21T13:57:28.960Z - Friendship create ---- Friendship request sent successfully
+[INFO] 2025-04-21T13:57:29.006Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-21T13:57:29.054Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-21T13:57:29.224Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-21T13:57:30.973Z - Login User - Logout Successfully
+[INFO] 2025-04-21T13:57:38.133Z - Login User --- Login successful 🚀
+[INFO] 2025-04-21T13:57:38.192Z - Get User --- Request Received
+[INFO] 2025-04-21T13:57:38.240Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-21T13:57:38.275Z - List movies --- Request Received
+[INFO] 2025-04-21T13:57:38.287Z - Get User --- Request Received
+[INFO] 2025-04-21T13:57:38.360Z - Get User --- Request Received
+[INFO] 2025-04-21T13:57:38.425Z - Get User --- Request Received
+[INFO] 2025-04-21T13:57:38.488Z - Get User --- Request Received
+[INFO] 2025-04-21T13:57:38.550Z - Get User --- Request Received
+[INFO] 2025-04-21T13:57:38.612Z - Get User --- Request Received
+[INFO] 2025-04-21T13:57:38.676Z - Get User --- Request Received
+[INFO] 2025-04-21T13:57:38.738Z - Get User --- Request Received
+[INFO] 2025-04-21T13:57:38.801Z - Get User --- Request Received
+[INFO] 2025-04-21T13:57:38.970Z - Get User --- Request Received
+[INFO] 2025-04-21T13:57:39.033Z - Get User --- Request Received
+[INFO] 2025-04-21T13:57:39.096Z - Get User --- Request Received
+[INFO] 2025-04-21T13:57:39.160Z - Get User --- Request Received
+[INFO] 2025-04-21T13:57:39.222Z - Get User --- Request Received
+[INFO] 2025-04-21T13:57:39.285Z - Get User --- Request Received
+[INFO] 2025-04-21T13:57:39.348Z - Get User --- Request Received
+[INFO] 2025-04-21T13:57:39.409Z - Get User --- Request Received
+[INFO] 2025-04-21T13:57:39.470Z - Get User --- Request Received
+[INFO] 2025-04-21T13:57:39.547Z - Get User --- Request Received
+[INFO] 2025-04-21T13:57:39.920Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-21T13:57:39.966Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-21T13:57:40.138Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-21T13:57:40.347Z - Get User Ratings - Retrieved ratings for User 5
+[ERROR] 2025-04-21T13:57:41.931Z - Error in LibraryController.getAllByUserId | Error: 
 Invalid `prisma.library.findMany()` invocation in
 C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
 
@@ -514,190 +572,109 @@ Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided S
     at async l (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:130:10067)
     at Function.getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:23)
     at getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\controller\library.controller.ts:212:25)
-[INFO] 2025-04-21T12:03:30.474Z - File uploaded to S3: profiles/27303f73-a524-4b23-87e5-4dc634286876.jpg
-[INFO] 2025-04-21T12:03:30.529Z - Update User - Updated User {"id":5,"email":"berat@mail.com","username":"beratgudelek","password":"$2b$10$wfKHjojihJWc91JyxewjWu4KTKJSkxZxLfXMEAavGBmQ/KvvFM.V2","name":"Berat Güdelek","profileImage":"https://seferogluemremovieproject.s3.amazonaws.com/profiles/27303f73-a524-4b23-87e5-4dc634286876.jpg?AWSAccessKeyId=AKIAQSOI4UYIUUJJSRF4&Expires=1745841810&Signature=42UErRPyMFOFLlppqpvmzhTc50g%3D","isAdmin":false,"isPrivate":false,"createdAt":"2025-04-13T21:18:17.832Z","updatedAt":"2025-04-21T12:03:30.517Z","isVerified":false,"verificationCode":null,"verificationCodeExpiresAt":null,"verificationCodeSentAt":null,"verificationCodeUsed":false}
-[INFO] 2025-04-21T12:03:30.592Z - Get User --- Request Received
-[INFO] 2025-04-21T12:03:38.732Z - Friendship getAll ---- Retrieved all friendships
-[INFO] 2025-04-21T12:03:38.779Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
-[INFO] 2025-04-21T12:03:38.826Z - Friendship getSentRequests ---- Retrieved sent friendship requests
-[INFO] 2025-04-21T12:03:39.979Z - Get User --- Request Received
-[INFO] 2025-04-21T12:03:40.042Z - Get User --- Request Received
-[INFO] 2025-04-21T12:03:40.103Z - Get User --- Request Received
-[INFO] 2025-04-21T12:03:40.166Z - Get User --- Request Received
-[INFO] 2025-04-21T12:03:40.228Z - Get User --- Request Received
-[INFO] 2025-04-21T12:03:40.400Z - Get User --- Request Received
-[INFO] 2025-04-21T12:03:40.461Z - Get User --- Request Received
-[INFO] 2025-04-21T12:03:40.523Z - Get User --- Request Received
-[INFO] 2025-04-21T12:03:40.584Z - Get User --- Request Received
-[INFO] 2025-04-21T12:03:40.647Z - Get User --- Request Received
-[INFO] 2025-04-21T12:03:40.700Z - Get User --- Request Received
-[INFO] 2025-04-21T12:03:40.702Z - Login User - Logout Successfully
-[INFO] 2025-04-21T12:03:40.756Z - Get User --- Request Received
-[INFO] 2025-04-21T12:03:49.639Z - Login User --- Login successful 🚀
-[INFO] 2025-04-21T12:03:49.698Z - Get User --- Request Received
-[INFO] 2025-04-21T12:03:49.732Z - List movies --- Request Received
-[INFO] 2025-04-21T12:03:49.746Z - Notification getUserNotifications ---- Retrieved user notifications
-[INFO] 2025-04-21T12:03:49.793Z - Get User --- Request Received
-[INFO] 2025-04-21T12:03:49.855Z - Get User --- Request Received
-[INFO] 2025-04-21T12:03:49.917Z - Get User --- Request Received
-[INFO] 2025-04-21T12:03:50.088Z - Get User --- Request Received
-[INFO] 2025-04-21T12:03:50.149Z - Get User --- Request Received
-[INFO] 2025-04-21T12:03:50.211Z - Get User --- Request Received
-[INFO] 2025-04-21T12:03:50.273Z - Get User --- Request Received
-[INFO] 2025-04-21T12:04:26.059Z - File uploaded to S3: profiles/173ec8d8-c006-4320-ac24-8e9aaaa58b5c.png
-[INFO] 2025-04-21T12:04:26.110Z - Update User - Updated User {"id":3,"email":"yunusemre5331@icloud.com","username":"seferogluemre","password":"$2b$10$QSA2xO8T.tRYIAWXDNOp4eRaoyCdJqhIuUmFpWwrJRHKjNEpzDJ4.","name":"Yunka","profileImage":"https://seferogluemremovieproject.s3.amazonaws.com/profiles/173ec8d8-c006-4320-ac24-8e9aaaa58b5c.png?AWSAccessKeyId=AKIAQSOI4UYIUUJJSRF4&Expires=1745841866&Signature=28WcN2B%2BGGXof6LxwVyT0H8ejSY%3D","isAdmin":false,"isPrivate":false,"createdAt":"2025-04-10T04:11:15.116Z","updatedAt":"2025-04-21T12:04:26.100Z","isVerified":true,"verificationCode":"973065","verificationCodeExpiresAt":"2025-04-21T23:27:42.879Z","verificationCodeSentAt":"2025-04-21T11:27:42.879Z","verificationCodeUsed":true}
-[INFO] 2025-04-21T12:04:26.171Z - Get User --- Request Received
-[INFO] 2025-04-21T12:04:27.550Z - Login User - Logout Successfully
-[INFO] 2025-04-21T12:04:33.617Z - Login User --- Login successful 🚀
-[INFO] 2025-04-21T12:04:33.676Z - Get User --- Request Received
-[INFO] 2025-04-21T12:04:33.712Z - List movies --- Request Received
-[INFO] 2025-04-21T12:04:33.722Z - Notification getUserNotifications ---- Retrieved user notifications
-[INFO] 2025-04-21T12:04:33.768Z - Get User --- Request Received
-[INFO] 2025-04-21T12:04:33.831Z - Get User --- Request Received
-[INFO] 2025-04-21T12:04:33.892Z - Get User --- Request Received
-[INFO] 2025-04-21T12:04:34.063Z - Get User --- Request Received
-[INFO] 2025-04-21T12:04:34.125Z - Get User --- Request Received
-[INFO] 2025-04-21T12:04:34.187Z - Get User --- Request Received
-[INFO] 2025-04-21T12:04:34.248Z - Get User --- Request Received
-[INFO] 2025-04-21T12:04:34.312Z - Get User --- Request Received
-[INFO] 2025-04-21T12:04:34.374Z - Get User --- Request Received
-[INFO] 2025-04-21T12:04:34.437Z - Get User --- Request Received
-[INFO] 2025-04-21T12:04:34.499Z - Get User --- Request Received
-[INFO] 2025-04-21T12:04:34.561Z - Get User --- Request Received
-[INFO] 2025-04-21T12:04:35.545Z - Friendship getAll ---- Retrieved all friendships
-[INFO] 2025-04-21T12:04:35.591Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
-[INFO] 2025-04-21T12:04:35.638Z - Friendship getSentRequests ---- Retrieved sent friendship requests
-[INFO] 2025-04-21T12:04:36.343Z - List Users --- Request Received
-[INFO] 2025-04-21T12:04:39.822Z - Login User - Logout Successfully
-[INFO] 2025-04-21T12:04:49.665Z - Login User --- Login successful 🚀
-[INFO] 2025-04-21T12:04:49.724Z - Get User --- Request Received
-[INFO] 2025-04-21T12:04:49.761Z - List movies --- Request Received
-[INFO] 2025-04-21T12:04:49.771Z - Notification getUserNotifications ---- Retrieved user notifications
-[INFO] 2025-04-21T12:04:49.819Z - Get User --- Request Received
-[INFO] 2025-04-21T12:04:49.989Z - Get User --- Request Received
-[INFO] 2025-04-21T12:04:50.161Z - Get User --- Request Received
-[INFO] 2025-04-21T12:04:50.223Z - Get User --- Request Received
-[INFO] 2025-04-21T12:04:50.286Z - Get User --- Request Received
-[INFO] 2025-04-21T12:04:50.347Z - Get User --- Request Received
-[INFO] 2025-04-21T12:04:50.395Z - Get User --- Request Received
-[INFO] 2025-04-21T12:04:51.004Z - Friendship getAll ---- Retrieved all friendships
-[INFO] 2025-04-21T12:04:51.049Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
-[INFO] 2025-04-21T12:04:51.097Z - Friendship getSentRequests ---- Retrieved sent friendship requests
-[INFO] 2025-04-21T12:04:52.098Z - List Users --- Request Received
-[INFO] 2025-04-21T12:04:53.750Z - Get User --- Request Received
-[INFO] 2025-04-21T12:04:53.756Z - Get User Reviews - Retrieved reviews for User 3
-[INFO] 2025-04-21T12:04:53.759Z - Get User Reviews - Retrieved reviews for User 3
-[INFO] 2025-04-21T12:04:53.797Z - Friendship getFollowers ---- Retrieved followers successfully
-[INFO] 2025-04-21T12:04:53.843Z - Friendship getFollowing ---- Retrieved following users successfully
-[INFO] 2025-04-21T12:04:53.889Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
-[INFO] 2025-04-21T12:04:56.932Z - Friendship getAll ---- Retrieved all friendships
-[INFO] 2025-04-21T12:04:56.978Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
-[INFO] 2025-04-21T12:04:57.024Z - Friendship getSentRequests ---- Retrieved sent friendship requests
-[INFO] 2025-04-21T12:04:58.276Z - Get User --- Request Received
-[INFO] 2025-04-21T12:04:58.282Z - Get User Reviews - Retrieved reviews for User 3
-[INFO] 2025-04-21T12:04:58.284Z - Get User Reviews - Retrieved reviews for User 3
-[INFO] 2025-04-21T12:04:58.322Z - Friendship getFollowers ---- Retrieved followers successfully
-[INFO] 2025-04-21T12:04:58.369Z - Friendship getFollowing ---- Retrieved following users successfully
-[INFO] 2025-04-21T12:04:58.415Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
-[INFO] 2025-04-21T12:05:00.661Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
-[INFO] 2025-04-21T12:05:00.711Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
-[INFO] 2025-04-21T12:05:00.724Z - Get User --- Request Received
-[INFO] 2025-04-21T12:05:00.758Z - Friendship getFollowers ---- Retrieved followers successfully
-[INFO] 2025-04-21T12:05:00.784Z - Get User --- Request Received
-[INFO] 2025-04-21T12:05:00.815Z - Friendship getFollowing ---- Retrieved following users successfully
-[INFO] 2025-04-21T12:05:01.156Z - Friendship getFollowers ---- Retrieved followers successfully
-[INFO] 2025-04-21T12:05:01.667Z - Friendship getFollowing ---- Retrieved following users successfully
-[INFO] 2025-04-21T12:05:02.385Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
-[INFO] 2025-04-21T12:05:03.244Z - Friendship getAll ---- Retrieved all friendships
-[INFO] 2025-04-21T12:05:03.289Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
-[INFO] 2025-04-21T12:05:03.351Z - Friendship getSentRequests ---- Retrieved sent friendship requests
-[INFO] 2025-04-21T12:05:07.285Z - Login User - Logout Successfully
-[INFO] 2025-04-21T12:05:12.978Z - Login User --- Login successful 🚀
-[INFO] 2025-04-21T12:05:13.036Z - Get User --- Request Received
-[INFO] 2025-04-21T12:05:13.072Z - List movies --- Request Received
-[INFO] 2025-04-21T12:05:13.083Z - Notification getUserNotifications ---- Retrieved user notifications
-[INFO] 2025-04-21T12:05:13.240Z - Get User --- Request Received
-[INFO] 2025-04-21T12:05:13.301Z - Get User --- Request Received
-[INFO] 2025-04-21T12:05:13.364Z - Get User --- Request Received
-[INFO] 2025-04-21T12:05:13.425Z - Get User --- Request Received
-[INFO] 2025-04-21T12:05:13.487Z - Get User --- Request Received
-[INFO] 2025-04-21T12:05:13.549Z - Get User --- Request Received
-[INFO] 2025-04-21T12:05:13.610Z - Get User --- Request Received
-[INFO] 2025-04-21T12:05:13.673Z - Get User --- Request Received
-[INFO] 2025-04-21T12:05:13.735Z - Get User --- Request Received
-[INFO] 2025-04-21T12:05:13.797Z - Get User --- Request Received
-[INFO] 2025-04-21T12:05:16.927Z - Friendship getAll ---- Retrieved all friendships
-[INFO] 2025-04-21T12:05:16.974Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
-[INFO] 2025-04-21T12:05:17.021Z - Friendship getSentRequests ---- Retrieved sent friendship requests
-[INFO] 2025-04-21T12:05:20.165Z - Get User --- Request Received
-[INFO] 2025-04-21T12:05:20.227Z - Get User --- Request Received
-[INFO] 2025-04-21T12:05:20.242Z - Friendship getRelationshipStatus ---- Retrieved relationship status successfully
-[INFO] 2025-04-21T12:05:20.243Z - Friendship getFollowers ---- Retrieved followers successfully
-[INFO] 2025-04-21T12:05:20.304Z - Friendship getFollowing ---- Retrieved following users successfully
-[INFO] 2025-04-21T12:05:20.305Z - Get User --- Request Received
-[INFO] 2025-04-21T12:05:20.366Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
-[INFO] 2025-04-21T12:05:20.366Z - Get User --- Request Received
-[INFO] 2025-04-21T12:08:11.113Z - Friendship update ---- Friendship status updated successfully
-[INFO] 2025-04-21T12:08:11.160Z - Friendship getRelationshipStatus ---- Retrieved relationship status successfully
-[INFO] 2025-04-21T12:08:11.222Z - Get User --- Request Received
-[INFO] 2025-04-21T12:08:13.009Z - Get User --- Request Received
-[INFO] 2025-04-21T12:08:13.055Z - Friendship getFollowers ---- Retrieved followers successfully
-[INFO] 2025-04-21T12:08:13.118Z - Friendship getFollowing ---- Retrieved following users successfully
-[INFO] 2025-04-21T12:08:13.163Z - Get User Reviews - Retrieved reviews for User 5
-[INFO] 2025-04-21T12:08:13.166Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
-[INFO] 2025-04-21T12:08:13.168Z - Get User Reviews - Retrieved reviews for User 5
-[INFO] 2025-04-21T12:08:13.600Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
-[INFO] 2025-04-21T12:08:13.650Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
-[INFO] 2025-04-21T12:08:13.655Z - Get User --- Request Received
-[INFO] 2025-04-21T12:08:13.704Z - Friendship getFollowers ---- Retrieved followers successfully
-[INFO] 2025-04-21T12:08:13.709Z - Get User --- Request Received
-[INFO] 2025-04-21T12:08:13.757Z - Friendship getFollowing ---- Retrieved following users successfully
-[INFO] 2025-04-21T12:08:14.437Z - Friendship getFollowers ---- Retrieved followers successfully
-[INFO] 2025-04-21T12:08:15.015Z - Friendship getFollowing ---- Retrieved following users successfully
-[INFO] 2025-04-21T12:08:19.503Z - Login User - Logout Successfully
-[INFO] 2025-04-21T12:08:30.683Z - Login User --- Login successful 🚀
-[INFO] 2025-04-21T12:08:30.741Z - Get User --- Request Received
-[INFO] 2025-04-21T12:08:30.781Z - List movies --- Request Received
-[INFO] 2025-04-21T12:08:30.803Z - Notification getUserNotifications ---- Retrieved user notifications
-[INFO] 2025-04-21T12:08:30.836Z - Get User --- Request Received
-[INFO] 2025-04-21T12:08:30.911Z - Get User --- Request Received
-[INFO] 2025-04-21T12:08:30.973Z - Get User --- Request Received
-[INFO] 2025-04-21T12:08:31.146Z - Get User --- Request Received
-[INFO] 2025-04-21T12:08:31.318Z - Get User --- Request Received
-[INFO] 2025-04-21T12:08:31.379Z - Get User --- Request Received
-[INFO] 2025-04-21T12:08:33.951Z - Notification markAllAsRead ---- All notifications marked as read
-[INFO] 2025-04-21T12:08:33.996Z - Notification getUserNotifications ---- Retrieved user notifications
-[INFO] 2025-04-21T12:08:35.979Z - Get User --- Request Received
-[INFO] 2025-04-21T12:08:35.985Z - Get User Reviews - Retrieved reviews for User 3
-[INFO] 2025-04-21T12:08:35.988Z - Get User Reviews - Retrieved reviews for User 3
-[INFO] 2025-04-21T12:08:36.026Z - Friendship getFollowers ---- Retrieved followers successfully
-[INFO] 2025-04-21T12:08:36.072Z - Friendship getFollowing ---- Retrieved following users successfully
-[INFO] 2025-04-21T12:08:36.118Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
-[INFO] 2025-04-21T12:09:02.711Z - Get User --- Request Received
-[INFO] 2025-04-21T12:09:08.232Z - List movies --- Request Received
-[INFO] 2025-04-21T12:09:08.289Z - Get User --- Request Received
-[INFO] 2025-04-21T12:09:08.351Z - Get User --- Request Received
-[INFO] 2025-04-21T12:09:08.639Z - Notification getUserNotifications ---- Retrieved user notifications
-[INFO] 2025-04-21T12:09:08.640Z - Friendship getAll ---- Retrieved all friendships
-[INFO] 2025-04-21T12:09:08.705Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
-[INFO] 2025-04-21T12:09:08.751Z - Friendship getSentRequests ---- Retrieved sent friendship requests
-[INFO] 2025-04-21T12:09:18.476Z - Get User --- Request Received
-[INFO] 2025-04-21T12:09:18.482Z - Get User Reviews - Retrieved reviews for User 3
-[INFO] 2025-04-21T12:09:18.487Z - Get User Reviews - Retrieved reviews for User 3
-[INFO] 2025-04-21T12:09:18.538Z - Friendship getFollowers ---- Retrieved followers successfully
-[INFO] 2025-04-21T12:09:18.614Z - Friendship getFollowing ---- Retrieved following users successfully
-[INFO] 2025-04-21T12:09:18.661Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
-[INFO] 2025-04-21T12:10:04.706Z - Update User - Updated User {"id":3,"email":"xmert698@gmail.com","username":"seferogluemre","password":"$2b$10$QSA2xO8T.tRYIAWXDNOp4eRaoyCdJqhIuUmFpWwrJRHKjNEpzDJ4.","name":"Yunka","profileImage":"https://seferogluemremovieproject.s3.amazonaws.com/profiles/173ec8d8-c006-4320-ac24-8e9aaaa58b5c.png?AWSAccessKeyId=AKIAQSOI4UYIUUJJSRF4&Expires=1745841866&Signature=28WcN2B%2BGGXof6LxwVyT0H8ejSY%3D","isAdmin":false,"isPrivate":false,"createdAt":"2025-04-10T04:11:15.116Z","updatedAt":"2025-04-21T12:10:04.687Z","isVerified":true,"verificationCode":"810629","verificationCodeExpiresAt":"2025-04-22T00:08:43.575Z","verificationCodeSentAt":"2025-04-21T12:08:43.575Z","verificationCodeUsed":true}
-[INFO] 2025-04-21T12:10:04.767Z - Get User --- Request Received
-[INFO] 2025-04-21T12:10:10.203Z - List movies --- Request Received
-[INFO] 2025-04-21T12:10:10.265Z - Get User --- Request Received
-[INFO] 2025-04-21T12:10:10.327Z - Get User --- Request Received
-[INFO] 2025-04-21T12:10:10.382Z - Notification getUserNotifications ---- Retrieved user notifications
-[INFO] 2025-04-21T12:10:10.383Z - Friendship getAll ---- Retrieved all friendships
-[INFO] 2025-04-21T12:10:10.449Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
-[INFO] 2025-04-21T12:10:10.495Z - Friendship getSentRequests ---- Retrieved sent friendship requests
-[INFO] 2025-04-21T12:10:18.009Z - List movies --- Request Received
-[ERROR] 2025-04-21T12:10:18.044Z - Error in LibraryController.getAllByUserId | Error: 
+[INFO] 2025-04-21T13:57:41.932Z - List movies --- Request Received
+[INFO] 2025-04-21T13:57:44.843Z - Get Movie Reviews - Retrieved reviews for Movie 3
+[INFO] 2025-04-21T13:57:44.861Z - Get User --- Request Received
+[INFO] 2025-04-21T13:57:47.123Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-21T13:57:47.171Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-21T13:57:47.216Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-21T13:57:47.637Z - Get User Ratings - Retrieved ratings for User 5
+[INFO] 2025-04-21T13:57:49.640Z - Get Movie Reviews - Retrieved reviews for Movie 4
+[INFO] 2025-04-21T13:57:49.700Z - Get User --- Request Received
+[INFO] 2025-04-21T13:57:51.639Z - LibraryController.delete ---- Deleted library entry ${id}
+[INFO] 2025-04-21T13:57:54.744Z - Notification markAllAsRead ---- All notifications marked as read
+[INFO] 2025-04-21T13:57:54.791Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-21T13:57:57.513Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-21T13:57:57.560Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-21T13:57:57.607Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-21T13:58:01.941Z - Get User --- Request Received
+[INFO] 2025-04-21T13:58:01.950Z - Get User Reviews - Retrieved reviews for User 5
+[INFO] 2025-04-21T13:58:01.953Z - Get User Reviews - Retrieved reviews for User 5
+[INFO] 2025-04-21T13:58:02.004Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-21T13:58:02.175Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-21T13:58:02.222Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-21T13:58:04.419Z - Get User --- Request Received
+[INFO] 2025-04-21T13:58:04.482Z - Get User --- Request Received
+[INFO] 2025-04-21T13:58:04.545Z - Get User --- Request Received
+[INFO] 2025-04-21T13:58:04.607Z - Get User --- Request Received
+[INFO] 2025-04-21T13:58:04.671Z - Get User --- Request Received
+[INFO] 2025-04-21T13:58:04.733Z - Get User --- Request Received
+[INFO] 2025-04-21T13:58:04.796Z - Get User --- Request Received
+[INFO] 2025-04-21T13:58:04.860Z - Get User --- Request Received
+[INFO] 2025-04-21T13:58:04.922Z - Get User --- Request Received
+[INFO] 2025-04-21T13:58:04.985Z - Get User --- Request Received
+[INFO] 2025-04-21T13:58:05.049Z - Get User --- Request Received
+[INFO] 2025-04-21T13:58:05.111Z - Get User --- Request Received
+[INFO] 2025-04-21T13:58:05.173Z - Get User --- Request Received
+[INFO] 2025-04-21T13:58:34.890Z - Update User - Updated User {"id":5,"email":"beratgdlk@gmail.com","username":"beratgudelek","password":"$2b$10$wfKHjojihJWc91JyxewjWu4KTKJSkxZxLfXMEAavGBmQ/KvvFM.V2","name":"Berat Güdelek","profileImage":"https://seferogluemremovieproject.s3.amazonaws.com/profiles/27303f73-a524-4b23-87e5-4dc634286876.jpg?AWSAccessKeyId=AKIAQSOI4UYIUUJJSRF4&Expires=1745841810&Signature=42UErRPyMFOFLlppqpvmzhTc50g%3D","isAdmin":false,"isPrivate":false,"createdAt":"2025-04-13T21:18:17.832Z","updatedAt":"2025-04-21T13:58:34.874Z","isVerified":false,"verificationCode":null,"verificationCodeExpiresAt":null,"verificationCodeSentAt":null,"verificationCodeUsed":false}
+[INFO] 2025-04-21T13:58:34.951Z - Get User --- Request Received
+[INFO] 2025-04-21T13:58:47.794Z - Update User - Updated User {"id":5,"email":"beratgdlk@gmail.com","username":"beratgudelek","password":"$2b$10$wfKHjojihJWc91JyxewjWu4KTKJSkxZxLfXMEAavGBmQ/KvvFM.V2","name":"Berat Güdelek","profileImage":"https://seferogluemremovieproject.s3.amazonaws.com/profiles/27303f73-a524-4b23-87e5-4dc634286876.jpg?AWSAccessKeyId=AKIAQSOI4UYIUUJJSRF4&Expires=1745841810&Signature=42UErRPyMFOFLlppqpvmzhTc50g%3D","isAdmin":false,"isPrivate":false,"createdAt":"2025-04-13T21:18:17.832Z","updatedAt":"2025-04-21T13:58:47.778Z","isVerified":false,"verificationCode":null,"verificationCodeExpiresAt":null,"verificationCodeSentAt":null,"verificationCodeUsed":false}
+[INFO] 2025-04-21T13:58:47.854Z - Get User --- Request Received
+[INFO] 2025-04-21T13:58:50.959Z - List movies --- Request Received
+[INFO] 2025-04-21T13:58:51.015Z - Get User --- Request Received
+[INFO] 2025-04-21T13:58:51.092Z - Get User --- Request Received
+[INFO] 2025-04-21T13:58:51.138Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-21T13:58:51.139Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-21T13:58:51.200Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-21T13:58:51.248Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-21T13:59:49.553Z - List movies --- Request Received
+[INFO] 2025-04-21T13:59:49.601Z - Get User --- Request Received
+[INFO] 2025-04-21T13:59:49.664Z - Get User --- Request Received
+[INFO] 2025-04-21T13:59:49.727Z - Get User --- Request Received
+[INFO] 2025-04-21T13:59:49.806Z - Get User --- Request Received
+[INFO] 2025-04-21T13:59:49.814Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-21T13:59:49.815Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-21T13:59:49.867Z - Get User --- Request Received
+[INFO] 2025-04-21T13:59:49.930Z - Get User --- Request Received
+[INFO] 2025-04-21T13:59:49.992Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-21T13:59:49.993Z - Get User --- Request Received
+[INFO] 2025-04-21T13:59:50.039Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-21T13:59:50.954Z - Get User Ratings - Retrieved ratings for User 5
+[INFO] 2025-04-21T13:59:50.955Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
+[INFO] 2025-04-21T13:59:51.300Z - Get User --- Request Received
+[INFO] 2025-04-21T13:59:53.148Z - Get Movie Reviews - Retrieved reviews for Movie 2
+[INFO] 2025-04-21T13:59:53.201Z - Get User --- Request Received
+[INFO] 2025-04-21T14:01:00.636Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-21T14:01:00.684Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-21T14:01:00.731Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-21T14:01:01.212Z - Login User - Logout Successfully
+[INFO] 2025-04-21T14:01:35.865Z - Create User --- Created User [object Object]
+[WARN] 2025-04-21T14:01:49.611Z - Login User --- Invalid email or password 
+[INFO] 2025-04-21T14:01:54.791Z - Login User --- Login successful 🚀
+[INFO] 2025-04-21T14:01:54.851Z - Get User --- Request Received
+[INFO] 2025-04-21T14:01:54.891Z - List movies --- Request Received
+[INFO] 2025-04-21T14:01:54.912Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-21T14:01:54.943Z - Get User --- Request Received
+[INFO] 2025-04-21T14:01:56.173Z - Get User --- Request Received
+[INFO] 2025-04-21T14:01:56.178Z - Get User Reviews - Retrieved reviews for User 6
+[INFO] 2025-04-21T14:01:56.181Z - Get User Reviews - Retrieved reviews for User 6
+[INFO] 2025-04-21T14:01:56.220Z - Friendship getFollowers ---- Retrieved followers successfully
+[INFO] 2025-04-21T14:01:56.268Z - Friendship getFollowing ---- Retrieved following users successfully
+[INFO] 2025-04-21T14:01:56.314Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
+[INFO] 2025-04-21T14:02:01.544Z - List movies --- Request Received
+[INFO] 2025-04-21T14:02:01.601Z - Get User --- Request Received
+[INFO] 2025-04-21T14:02:01.719Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-21T14:02:01.720Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-21T14:02:01.771Z - Get User --- Request Received
+[INFO] 2025-04-21T14:02:01.896Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-21T14:02:01.943Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-21T14:04:49.830Z - List movies --- Request Received
+[INFO] 2025-04-21T14:04:49.844Z - Get User --- Request Received
+[INFO] 2025-04-21T14:04:49.906Z - Get User --- Request Received
+[INFO] 2025-04-21T14:04:49.952Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-21T14:04:49.953Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-21T14:04:50.000Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-21T14:04:50.047Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-21T14:05:45.698Z - List movies --- Request Received
+[INFO] 2025-04-21T14:05:45.769Z - Get User --- Request Received
+[INFO] 2025-04-21T14:05:45.830Z - Get User --- Request Received
+[INFO] 2025-04-21T14:05:45.864Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-21T14:05:45.864Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-21T14:05:45.911Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-21T14:05:45.959Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-21T14:06:15.208Z - Get User --- Request Received
+[INFO] 2025-04-21T14:07:42.009Z - List movies --- Request Received
+[ERROR] 2025-04-21T14:07:42.042Z - Error in LibraryController.getAllByUserId | Error: 
 Invalid `prisma.library.findMany()` invocation in
 C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
 
@@ -706,7 +683,7 @@ C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\l
   110 public static async getAllByUserId(userId: string) {
 → 111   const libraries = await prisma.library.findMany({
           where: {
-            userId: "3"
+            userId: "6"
                     ~~~
           },
           include: {
@@ -735,7 +712,7 @@ C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\l
   110 public static async getAllByUserId(userId: string) {
 → 111   const libraries = await prisma.library.findMany({
           where: {
-            userId: "3"
+            userId: "6"
                     ~~~
           },
           include: {
@@ -763,115 +740,10 @@ Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided S
     at async l (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:130:10067)
     at Function.getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:23)
     at getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\controller\library.controller.ts:212:25)
-[INFO] 2025-04-21T12:10:28.198Z - List movies --- Request Received
-[INFO] 2025-04-21T12:10:28.251Z - Get User --- Request Received
-[INFO] 2025-04-21T12:10:28.314Z - Get User --- Request Received
-[INFO] 2025-04-21T12:10:28.423Z - Friendship getAll ---- Retrieved all friendships
-[INFO] 2025-04-21T12:10:28.424Z - Notification getUserNotifications ---- Retrieved user notifications
-[INFO] 2025-04-21T12:10:28.499Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
-[INFO] 2025-04-21T12:10:28.545Z - Friendship getSentRequests ---- Retrieved sent friendship requests
-[INFO] 2025-04-21T12:11:18.410Z - List movies --- Request Received
-[INFO] 2025-04-21T12:11:18.438Z - Get User --- Request Received
-[INFO] 2025-04-21T12:11:18.521Z - Get User --- Request Received
-[INFO] 2025-04-21T12:11:18.595Z - Friendship getAll ---- Retrieved all friendships
-[INFO] 2025-04-21T12:11:18.596Z - Notification getUserNotifications ---- Retrieved user notifications
-[INFO] 2025-04-21T12:11:18.767Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
-[INFO] 2025-04-21T12:11:18.813Z - Friendship getSentRequests ---- Retrieved sent friendship requests
-[INFO] 2025-04-21T12:11:26.361Z - Get User --- Request Received
-[INFO] 2025-04-21T12:11:26.828Z - Friendship getAll ---- Retrieved all friendships
-[INFO] 2025-04-21T12:11:26.875Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
-[INFO] 2025-04-21T12:11:26.921Z - Friendship getSentRequests ---- Retrieved sent friendship requests
-[INFO] 2025-04-21T12:11:27.403Z - List Users --- Request Received
-[INFO] 2025-04-21T12:11:29.063Z - Get User --- Request Received
-[INFO] 2025-04-21T12:11:29.125Z - Get User --- Request Received
-[INFO] 2025-04-21T12:11:29.145Z - Friendship getRelationshipStatus ---- Retrieved relationship status successfully
-[INFO] 2025-04-21T12:11:29.146Z - Friendship getFollowers ---- Retrieved followers successfully
-[INFO] 2025-04-21T12:11:29.204Z - Friendship getFollowing ---- Retrieved following users successfully
-[INFO] 2025-04-21T12:11:29.205Z - Get User --- Request Received
-[INFO] 2025-04-21T12:11:29.265Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
-[INFO] 2025-04-21T12:11:29.266Z - Get User --- Request Received
-[INFO] 2025-04-21T12:11:30.589Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
-[INFO] 2025-04-21T12:11:30.641Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
-[INFO] 2025-04-21T12:11:30.652Z - Get User --- Request Received
-[INFO] 2025-04-21T12:11:30.698Z - Friendship getFollowers ---- Retrieved followers successfully
-[INFO] 2025-04-21T12:11:30.745Z - Friendship getFollowing ---- Retrieved following users successfully
-[INFO] 2025-04-21T12:11:30.822Z - Get User --- Request Received
-[INFO] 2025-04-21T12:11:49.561Z - Get User --- Request Received
-[INFO] 2025-04-21T12:11:49.607Z - Get User Reviews - Retrieved reviews for User 3
-[INFO] 2025-04-21T12:11:49.610Z - Get User Reviews - Retrieved reviews for User 3
-[INFO] 2025-04-21T12:11:49.622Z - Friendship getFollowers ---- Retrieved followers successfully
-[INFO] 2025-04-21T12:11:49.668Z - Friendship getFollowing ---- Retrieved following users successfully
-[INFO] 2025-04-21T12:11:49.838Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
-[INFO] 2025-04-21T12:11:51.716Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
-[INFO] 2025-04-21T12:11:51.793Z - Get User --- Request Received
-[INFO] 2025-04-21T12:11:51.794Z - Get User --- Request Received
-[INFO] 2025-04-21T12:11:51.856Z - Get User --- Request Received
-[INFO] 2025-04-21T12:11:51.857Z - Get User --- Request Received
-[INFO] 2025-04-21T12:11:51.886Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
-[INFO] 2025-04-21T12:11:52.057Z - Friendship getFollowers ---- Retrieved followers successfully
-[INFO] 2025-04-21T12:11:52.105Z - Friendship getFollowing ---- Retrieved following users successfully
-[INFO] 2025-04-21T12:11:52.277Z - Friendship getFollowing ---- Retrieved following users successfully
-[INFO] 2025-04-21T12:11:52.727Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
-[INFO] 2025-04-21T12:11:53.891Z - Friendship getFollowers ---- Retrieved followers successfully
-[INFO] 2025-04-21T12:11:54.890Z - Friendship getFollowing ---- Retrieved following users successfully
-[INFO] 2025-04-21T12:11:55.622Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
-[INFO] 2025-04-21T12:11:58.696Z - Get User --- Request Received
-[INFO] 2025-04-21T12:11:58.758Z - Get User --- Request Received
-[INFO] 2025-04-21T12:11:58.820Z - Get User --- Request Received
-[INFO] 2025-04-21T12:11:58.883Z - Get User --- Request Received
-[INFO] 2025-04-21T12:11:58.930Z - Get User --- Request Received
-[INFO] 2025-04-21T12:11:58.991Z - Get User --- Request Received
-[INFO] 2025-04-21T12:11:59.053Z - Get User --- Request Received
-[INFO] 2025-04-21T12:12:23.245Z - Update User - Updated User {"id":3,"email":"xmert698@gmail.com","username":"seferogluemre","password":"$2b$10$QSA2xO8T.tRYIAWXDNOp4eRaoyCdJqhIuUmFpWwrJRHKjNEpzDJ4.","name":"Yunka","profileImage":"https://seferogluemremovieproject.s3.amazonaws.com/profiles/173ec8d8-c006-4320-ac24-8e9aaaa58b5c.png?AWSAccessKeyId=AKIAQSOI4UYIUUJJSRF4&Expires=1745841866&Signature=28WcN2B%2BGGXof6LxwVyT0H8ejSY%3D","isAdmin":false,"isPrivate":false,"createdAt":"2025-04-10T04:11:15.116Z","updatedAt":"2025-04-21T12:12:23.234Z","isVerified":true,"verificationCode":"810629","verificationCodeExpiresAt":"2025-04-22T00:08:43.575Z","verificationCodeSentAt":"2025-04-21T12:08:43.575Z","verificationCodeUsed":true}
-[INFO] 2025-04-21T12:12:23.414Z - Get User --- Request Received
-[INFO] 2025-04-21T12:12:33.987Z - List movies --- Request Received
-[INFO] 2025-04-21T12:12:34.050Z - Get User --- Request Received
-[INFO] 2025-04-21T12:12:34.175Z - Notification getUserNotifications ---- Retrieved user notifications
-[INFO] 2025-04-21T12:12:34.176Z - Friendship getAll ---- Retrieved all friendships
-[INFO] 2025-04-21T12:12:34.220Z - Get User --- Request Received
-[INFO] 2025-04-21T12:12:34.236Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
-[INFO] 2025-04-21T12:12:34.298Z - Friendship getSentRequests ---- Retrieved sent friendship requests
-[INFO] 2025-04-21T12:13:25.477Z - Get User --- Request Received
-[INFO] 2025-04-21T12:13:42.904Z - Friendship getAll ---- Retrieved all friendships
-[INFO] 2025-04-21T12:13:42.980Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
-[INFO] 2025-04-21T12:13:43.027Z - Friendship getSentRequests ---- Retrieved sent friendship requests
-[INFO] 2025-04-21T12:13:43.850Z - List Users --- Request Received
-[INFO] 2025-04-21T12:13:56.360Z - Get User --- Request Received
-[INFO] 2025-04-21T12:13:56.368Z - Get User Reviews - Retrieved reviews for User 3
-[INFO] 2025-04-21T12:13:56.372Z - Get User Reviews - Retrieved reviews for User 3
-[INFO] 2025-04-21T12:13:56.422Z - Friendship getFollowers ---- Retrieved followers successfully
-[INFO] 2025-04-21T12:13:56.468Z - Friendship getFollowing ---- Retrieved following users successfully
-[INFO] 2025-04-21T12:13:56.515Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
-[INFO] 2025-04-21T12:14:07.329Z - Update User - Updated User {"id":3,"email":"yunusemre5331@icloud.com","username":"seferogluemre","password":"$2b$10$QSA2xO8T.tRYIAWXDNOp4eRaoyCdJqhIuUmFpWwrJRHKjNEpzDJ4.","name":"Yunka","profileImage":"https://seferogluemremovieproject.s3.amazonaws.com/profiles/173ec8d8-c006-4320-ac24-8e9aaaa58b5c.png?AWSAccessKeyId=AKIAQSOI4UYIUUJJSRF4&Expires=1745841866&Signature=28WcN2B%2BGGXof6LxwVyT0H8ejSY%3D","isAdmin":false,"isPrivate":false,"createdAt":"2025-04-10T04:11:15.116Z","updatedAt":"2025-04-21T12:14:07.307Z","isVerified":true,"verificationCode":"662769","verificationCodeExpiresAt":"2025-04-22T00:12:36.181Z","verificationCodeSentAt":"2025-04-21T12:12:36.181Z","verificationCodeUsed":true}
-[INFO] 2025-04-21T12:14:07.391Z - Get User --- Request Received
-[INFO] 2025-04-21T12:14:18.271Z - Friendship getAll ---- Retrieved all friendships
-[INFO] 2025-04-21T12:14:18.333Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
-[INFO] 2025-04-21T12:14:18.379Z - Friendship getSentRequests ---- Retrieved sent friendship requests
-[INFO] 2025-04-21T12:14:18.784Z - List Users --- Request Received
-[INFO] 2025-04-21T12:14:19.860Z - Get User --- Request Received
-[INFO] 2025-04-21T12:14:19.923Z - Get User --- Request Received
-[INFO] 2025-04-21T12:14:19.938Z - Friendship getRelationshipStatus ---- Retrieved relationship status successfully
-[INFO] 2025-04-21T12:14:19.939Z - Friendship getFollowers ---- Retrieved followers successfully
-[INFO] 2025-04-21T12:14:20.001Z - Friendship getFollowing ---- Retrieved following users successfully
-[INFO] 2025-04-21T12:14:20.002Z - Get User --- Request Received
-[INFO] 2025-04-21T12:14:20.064Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
-[INFO] 2025-04-21T12:14:20.065Z - Get User --- Request Received
-[INFO] 2025-04-21T12:14:20.766Z - Friendship getAll ---- Retrieved all friendships
-[INFO] 2025-04-21T12:14:20.935Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
-[INFO] 2025-04-21T12:14:20.982Z - Friendship getSentRequests ---- Retrieved sent friendship requests
-[INFO] 2025-04-21T12:14:21.778Z - List Users --- Request Received
-[INFO] 2025-04-21T12:14:22.545Z - Get User --- Request Received
-[INFO] 2025-04-21T12:14:22.623Z - Get User --- Request Received
-[INFO] 2025-04-21T12:14:22.625Z - Friendship getRelationshipStatus ---- Retrieved relationship status successfully
-[INFO] 2025-04-21T12:14:22.626Z - Friendship getFollowers ---- Retrieved followers successfully
-[INFO] 2025-04-21T12:14:22.681Z - Friendship getFollowing ---- Retrieved following users successfully
-[INFO] 2025-04-21T12:14:22.686Z - Get User --- Request Received
-[INFO] 2025-04-21T12:14:22.733Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
-[INFO] 2025-04-21T12:14:27.413Z - Get User --- Request Received
-[INFO] 2025-04-21T12:14:29.185Z - Get Movie Reviews - Retrieved reviews for Movie 2
-[INFO] 2025-04-21T12:14:29.205Z - Get User --- Request Received
-[INFO] 2025-04-21T12:14:59.959Z - List movies --- Request Received
-[ERROR] 2025-04-21T12:14:59.998Z - Error in LibraryController.getAllByUserId | Error: 
+[INFO] 2025-04-21T14:07:44.169Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
+[INFO] 2025-04-21T14:07:44.201Z - Get User Ratings - Retrieved ratings for User 6
+[INFO] 2025-04-21T14:07:44.818Z - Get User --- Request Received
+[ERROR] 2025-04-21T14:07:48.523Z - Error in LibraryController.getAllByUserId | Error: 
 Invalid `prisma.library.findMany()` invocation in
 C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
 
@@ -880,7 +752,7 @@ C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\l
   110 public static async getAllByUserId(userId: string) {
 → 111   const libraries = await prisma.library.findMany({
           where: {
-            userId: "3"
+            userId: "6"
                     ~~~
           },
           include: {
@@ -909,7 +781,7 @@ C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\l
   110 public static async getAllByUserId(userId: string) {
 → 111   const libraries = await prisma.library.findMany({
           where: {
-            userId: "3"
+            userId: "6"
                     ~~~
           },
           include: {
@@ -937,32 +809,9 @@ Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided S
     at async l (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:130:10067)
     at Function.getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:23)
     at getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\controller\library.controller.ts:212:25)
-[INFO] 2025-04-21T12:15:01.131Z - Get User --- Request Received
-[INFO] 2025-04-21T12:15:01.194Z - Get User --- Request Received
-[INFO] 2025-04-21T12:15:01.257Z - Get User --- Request Received
-[INFO] 2025-04-21T12:15:01.319Z - Get User --- Request Received
-[INFO] 2025-04-21T12:15:01.381Z - Get User --- Request Received
-[INFO] 2025-04-21T12:15:01.443Z - Get User --- Request Received
-[INFO] 2025-04-21T12:15:01.506Z - Get User --- Request Received
-[INFO] 2025-04-21T12:15:04.151Z - Get User --- Request Received
-[INFO] 2025-04-21T12:15:04.215Z - Get User --- Request Received
-[INFO] 2025-04-21T12:15:04.278Z - Get User --- Request Received
-[INFO] 2025-04-21T12:15:04.340Z - Get User --- Request Received
-[INFO] 2025-04-21T12:15:04.402Z - Get User --- Request Received
-[INFO] 2025-04-21T12:15:04.464Z - Get User --- Request Received
-[INFO] 2025-04-21T12:15:04.525Z - Get User --- Request Received
-[INFO] 2025-04-21T12:15:05.239Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
-[INFO] 2025-04-21T12:15:05.676Z - Friendship getAll ---- Retrieved all friendships
-[INFO] 2025-04-21T12:15:05.723Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
-[INFO] 2025-04-21T12:15:05.894Z - Friendship getSentRequests ---- Retrieved sent friendship requests
-[INFO] 2025-04-21T12:15:06.096Z - Get User --- Request Received
-[INFO] 2025-04-21T12:16:23.121Z - List movies --- Request Received
-[INFO] 2025-04-21T12:16:51.144Z - List Genres --- Request Received
-[INFO] 2025-04-21T12:16:58.689Z - Create Genre --- Created Genre [object Object]
-[INFO] 2025-04-21T12:17:04.321Z - Create Genre --- Created Genre [object Object]
-[INFO] 2025-04-21T12:17:08.963Z - Create Genre --- Created Genre [object Object]
-[INFO] 2025-04-21T12:17:15.285Z - List movies --- Request Received
-[ERROR] 2025-04-21T12:17:15.289Z - Error in LibraryController.getAllByUserId | Error: 
+[INFO] 2025-04-21T14:07:48.525Z - List movies --- Request Received
+[INFO] 2025-04-21T14:07:49.432Z - LibraryController.create ---- Library entry created for user 6 and movie 2
+[ERROR] 2025-04-21T14:07:49.437Z - Error in LibraryController.getAllByUserId | Error: 
 Invalid `prisma.library.findMany()` invocation in
 C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
 
@@ -971,7 +820,7 @@ C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\l
   110 public static async getAllByUserId(userId: string) {
 → 111   const libraries = await prisma.library.findMany({
           where: {
-            userId: "3"
+            userId: "6"
                     ~~~
           },
           include: {
@@ -1000,7 +849,7 @@ C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\l
   110 public static async getAllByUserId(userId: string) {
 → 111   const libraries = await prisma.library.findMany({
           where: {
-            userId: "3"
+            userId: "6"
                     ~~~
           },
           include: {
@@ -1028,50 +877,8 @@ Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided S
     at async l (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:130:10067)
     at Function.getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:23)
     at getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\controller\library.controller.ts:212:25)
-[INFO] 2025-04-21T12:17:31.396Z - Create Genre --- Created Genre [object Object]
-[INFO] 2025-04-21T12:17:42.871Z - List Genres --- Request Received
-[INFO] 2025-04-21T12:18:01.870Z - Add Movie to Genre - Added Movie 3 to Genre 4
-[INFO] 2025-04-21T12:18:04.704Z - Add Movie to Genre - Added Movie 3 to Genre 2
-[INFO] 2025-04-21T12:18:08.949Z - Get Movie Reviews - Retrieved reviews for Movie 3
-[INFO] 2025-04-21T12:18:08.999Z - Get User --- Request Received
-[INFO] 2025-04-21T12:18:17.892Z - Friendship getAll ---- Retrieved all friendships
-[INFO] 2025-04-21T12:18:17.937Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
-[INFO] 2025-04-21T12:18:17.984Z - Friendship getSentRequests ---- Retrieved sent friendship requests
-[INFO] 2025-04-21T12:18:18.124Z - Get User --- Request Received
-[INFO] 2025-04-21T12:18:18.431Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
-[INFO] 2025-04-21T12:18:24.169Z - List Ratings --- Request Received
-[INFO] 2025-04-21T12:18:27.771Z - List Ratings --- Request Received
-[INFO] 2025-04-21T12:23:12.902Z - List Ratings --- Request Received
-[INFO] 2025-04-21T12:27:39.243Z - List Ratings --- Request Received
-[INFO] 2025-04-21T12:32:10.415Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
-[INFO] 2025-04-21T12:32:10.419Z - List movies --- Request Received
-[INFO] 2025-04-21T12:32:10.436Z - Get User --- Request Received
-[INFO] 2025-04-21T12:32:10.466Z - Notification getUserNotifications ---- Retrieved user notifications
-[INFO] 2025-04-21T12:32:10.468Z - Friendship getAll ---- Retrieved all friendships
-[INFO] 2025-04-21T12:32:10.542Z - Notification getUserNotifications ---- Retrieved user notifications
-[INFO] 2025-04-21T12:32:10.543Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
-[INFO] 2025-04-21T12:32:10.604Z - Friendship getSentRequests ---- Retrieved sent friendship requests
-[INFO] 2025-04-21T12:33:31.666Z - Get User --- Request Received
-[INFO] 2025-04-21T12:33:33.631Z - List movies --- Request Received
-[INFO] 2025-04-21T12:33:33.692Z - Get User --- Request Received
-[INFO] 2025-04-21T12:33:33.721Z - Get User --- Request Received
-[INFO] 2025-04-21T12:33:33.785Z - Get User --- Request Received
-[INFO] 2025-04-21T12:33:33.865Z - Friendship getAll ---- Retrieved all friendships
-[INFO] 2025-04-21T12:33:33.866Z - Notification getUserNotifications ---- Retrieved user notifications
-[INFO] 2025-04-21T12:33:33.926Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
-[INFO] 2025-04-21T12:33:33.957Z - Get User --- Request Received
-[INFO] 2025-04-21T12:33:33.989Z - Friendship getSentRequests ---- Retrieved sent friendship requests
-[INFO] 2025-04-21T12:33:34.021Z - Get User --- Request Received
-[INFO] 2025-04-21T12:33:37.056Z - List movies --- Request Received
-[INFO] 2025-04-21T12:33:37.128Z - Get User --- Request Received
-[INFO] 2025-04-21T12:33:37.160Z - Notification getUserNotifications ---- Retrieved user notifications
-[INFO] 2025-04-21T12:33:37.162Z - Friendship getAll ---- Retrieved all friendships
-[INFO] 2025-04-21T12:33:37.199Z - Get User --- Request Received
-[INFO] 2025-04-21T12:33:37.235Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
-[INFO] 2025-04-21T12:33:37.235Z - Notification getUserNotifications ---- Retrieved user notifications
-[INFO] 2025-04-21T12:33:37.284Z - Friendship getSentRequests ---- Retrieved sent friendship requests
-[INFO] 2025-04-21T12:33:38.093Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
-[ERROR] 2025-04-21T12:33:46.711Z - Error in LibraryController.getAllByUserId | Error: 
+[INFO] 2025-04-21T14:07:50.548Z - LibraryController.create ---- Library entry created for user 6 and movie 3
+[ERROR] 2025-04-21T14:07:50.553Z - Error in LibraryController.getAllByUserId | Error: 
 Invalid `prisma.library.findMany()` invocation in
 C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
 
@@ -1080,7 +887,7 @@ C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\l
   110 public static async getAllByUserId(userId: string) {
 → 111   const libraries = await prisma.library.findMany({
           where: {
-            userId: "3"
+            userId: "6"
                     ~~~
           },
           include: {
@@ -1109,7 +916,7 @@ C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\l
   110 public static async getAllByUserId(userId: string) {
 → 111   const libraries = await prisma.library.findMany({
           where: {
-            userId: "3"
+            userId: "6"
                     ~~~
           },
           include: {
@@ -1137,13 +944,8 @@ Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided S
     at async l (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:130:10067)
     at Function.getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:23)
     at getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\controller\library.controller.ts:212:25)
-[INFO] 2025-04-21T12:33:46.713Z - List movies --- Request Received
-[INFO] 2025-04-21T12:34:23.344Z - List movies --- Request Received
-[INFO] 2025-04-21T12:34:23.350Z - List movies --- Request Received
-[INFO] 2025-04-21T12:34:23.414Z - Get User --- Request Received
-[INFO] 2025-04-21T12:34:23.507Z - Get User --- Request Received
-[INFO] 2025-04-21T12:34:23.517Z - List movies --- Request Received
-[ERROR] 2025-04-21T12:34:23.521Z - Error in LibraryController.getAllByUserId | Error: 
+[INFO] 2025-04-21T14:07:51.491Z - LibraryController.create ---- Library entry created for user 6 and movie 4
+[ERROR] 2025-04-21T14:07:51.496Z - Error in LibraryController.getAllByUserId | Error: 
 Invalid `prisma.library.findMany()` invocation in
 C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
 
@@ -1152,7 +954,7 @@ C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\l
   110 public static async getAllByUserId(userId: string) {
 → 111   const libraries = await prisma.library.findMany({
           where: {
-            userId: "3"
+            userId: "6"
                     ~~~
           },
           include: {
@@ -1181,7 +983,7 @@ C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\l
   110 public static async getAllByUserId(userId: string) {
 → 111   const libraries = await prisma.library.findMany({
           where: {
-            userId: "3"
+            userId: "6"
                     ~~~
           },
           include: {
@@ -1209,7 +1011,8 @@ Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided S
     at async l (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:130:10067)
     at Function.getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:23)
     at getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\controller\library.controller.ts:212:25)
-[ERROR] 2025-04-21T12:34:23.543Z - Error in LibraryController.getAllByUserId | Error: 
+[INFO] 2025-04-21T14:07:52.955Z - LibraryController.create ---- Library entry created for user 6 and movie 5
+[ERROR] 2025-04-21T14:07:52.961Z - Error in LibraryController.getAllByUserId | Error: 
 Invalid `prisma.library.findMany()` invocation in
 C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
 
@@ -1218,7 +1021,7 @@ C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\l
   110 public static async getAllByUserId(userId: string) {
 → 111   const libraries = await prisma.library.findMany({
           where: {
-            userId: "3"
+            userId: "6"
                     ~~~
           },
           include: {
@@ -1247,7 +1050,7 @@ C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\l
   110 public static async getAllByUserId(userId: string) {
 → 111   const libraries = await prisma.library.findMany({
           where: {
-            userId: "3"
+            userId: "6"
                     ~~~
           },
           include: {
@@ -1275,12 +1078,33 @@ Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided S
     at async l (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:130:10067)
     at Function.getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:23)
     at getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\controller\library.controller.ts:212:25)
-[INFO] 2025-04-21T12:34:23.545Z - List movies --- Request Received
-[INFO] 2025-04-21T12:34:23.616Z - Friendship getAll ---- Retrieved all friendships
-[INFO] 2025-04-21T12:34:23.617Z - Notification getUserNotifications ---- Retrieved user notifications
-[INFO] 2025-04-21T12:34:23.675Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
-[INFO] 2025-04-21T12:34:23.680Z - Get User --- Request Received
-[ERROR] 2025-04-21T12:34:23.716Z - Error in LibraryController.getAllByUserId | Error: 
+[WARN] 2025-04-21T14:07:53.730Z - LibraryController.create ---- Movie 5 already exists in library for user 6
+[INFO] 2025-04-21T14:07:55.769Z - List movies --- Request Received
+[INFO] 2025-04-21T14:07:55.830Z - Get User --- Request Received
+[INFO] 2025-04-21T14:07:55.899Z - Get User --- Request Received
+[INFO] 2025-04-21T14:07:55.971Z - Get User --- Request Received
+[INFO] 2025-04-21T14:07:55.986Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-21T14:07:55.987Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-21T14:07:56.033Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-21T14:07:56.078Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-21T14:07:56.641Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
+[INFO] 2025-04-21T14:07:56.642Z - Get User Ratings - Retrieved ratings for User 6
+[INFO] 2025-04-21T14:07:57.261Z - Get User --- Request Received
+[INFO] 2025-04-21T14:07:57.588Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
+[INFO] 2025-04-21T14:07:57.590Z - Get User Ratings - Retrieved ratings for User 6
+[INFO] 2025-04-21T14:07:58.355Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
+[INFO] 2025-04-21T14:07:58.356Z - Get User Ratings - Retrieved ratings for User 6
+[INFO] 2025-04-21T14:08:20.608Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-21T14:08:20.671Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-21T14:08:20.741Z - Get User Ratings - Retrieved ratings for User 6
+[INFO] 2025-04-21T14:08:20.841Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-21T14:08:22.993Z - Get User --- Request Received
+[INFO] 2025-04-21T14:08:23.274Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
+[INFO] 2025-04-21T14:08:23.275Z - Get User Ratings - Retrieved ratings for User 6
+[INFO] 2025-04-21T14:08:26.205Z - Create Rating --- Created Rating [object Object]
+[INFO] 2025-04-21T14:08:29.537Z - Create Rating --- Created Rating [object Object]
+[INFO] 2025-04-21T14:08:30.492Z - Get User Ratings - Retrieved ratings for User 6
+[ERROR] 2025-04-21T14:08:36.220Z - Error in LibraryController.getAllByUserId | Error: 
 Invalid `prisma.library.findMany()` invocation in
 C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
 
@@ -1289,7 +1113,7 @@ C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\l
   110 public static async getAllByUserId(userId: string) {
 → 111   const libraries = await prisma.library.findMany({
           where: {
-            userId: "3"
+            userId: "6"
                     ~~~
           },
           include: {
@@ -1318,7 +1142,7 @@ C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\l
   110 public static async getAllByUserId(userId: string) {
 → 111   const libraries = await prisma.library.findMany({
           where: {
-            userId: "3"
+            userId: "6"
                     ~~~
           },
           include: {
@@ -1346,771 +1170,39 @@ Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided S
     at async l (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:130:10067)
     at Function.getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:23)
     at getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\controller\library.controller.ts:212:25)
-[INFO] 2025-04-21T12:34:23.717Z - List movies --- Request Received
-[INFO] 2025-04-21T12:34:23.848Z - Friendship getSentRequests ---- Retrieved sent friendship requests
-[INFO] 2025-04-21T12:34:25.745Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
-[INFO] 2025-04-21T12:34:25.784Z - Get User Ratings - Retrieved ratings for User 3
-[INFO] 2025-04-21T12:34:31.391Z - Create Rating --- Created Rating [object Object]
-[INFO] 2025-04-21T12:34:35.692Z - List movies --- Request Received
-[INFO] 2025-04-21T12:34:35.756Z - Get User --- Request Received
-[INFO] 2025-04-21T12:34:35.765Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
-[INFO] 2025-04-21T12:34:35.766Z - Get User Ratings - Retrieved ratings for User 3
-[INFO] 2025-04-21T12:34:35.813Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
-[INFO] 2025-04-21T12:34:35.816Z - Get User Ratings - Retrieved ratings for User 3
-[INFO] 2025-04-21T12:34:35.834Z - Get User --- Request Received
-[INFO] 2025-04-21T12:34:35.892Z - Notification getUserNotifications ---- Retrieved user notifications
-[INFO] 2025-04-21T12:34:35.893Z - Friendship getAll ---- Retrieved all friendships
-[INFO] 2025-04-21T12:34:35.894Z - Get User --- Request Received
-[INFO] 2025-04-21T12:34:35.944Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
-[INFO] 2025-04-21T12:34:35.990Z - Friendship getSentRequests ---- Retrieved sent friendship requests
-[INFO] 2025-04-21T12:34:51.410Z - Get User --- Request Received
-[INFO] 2025-04-21T12:34:54.405Z - List Ratings --- Request Received
-[INFO] 2025-04-21T12:35:07.772Z - Friendship getAll ---- Retrieved all friendships
-[INFO] 2025-04-21T12:35:07.820Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
-[INFO] 2025-04-21T12:35:07.991Z - Friendship getSentRequests ---- Retrieved sent friendship requests
-[INFO] 2025-04-21T12:35:09.839Z - List movies --- Request Received
-[INFO] 2025-04-21T12:35:09.921Z - Get User --- Request Received
-[INFO] 2025-04-21T12:35:09.999Z - Get User --- Request Received
-[INFO] 2025-04-21T12:35:10.064Z - Friendship getAll ---- Retrieved all friendships
-[INFO] 2025-04-21T12:35:10.065Z - Notification getUserNotifications ---- Retrieved user notifications
-[INFO] 2025-04-21T12:35:10.069Z - Get User --- Request Received
-[INFO] 2025-04-21T12:35:10.232Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
-[INFO] 2025-04-21T12:35:10.406Z - Friendship getSentRequests ---- Retrieved sent friendship requests
-[INFO] 2025-04-21T12:35:13.230Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
-[INFO] 2025-04-21T12:35:13.231Z - Get User Ratings - Retrieved ratings for User 3
-[INFO] 2025-04-21T12:35:25.317Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
-[INFO] 2025-04-21T12:35:25.318Z - Get User Ratings - Retrieved ratings for User 3
-[INFO] 2025-04-21T12:35:26.329Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
-[INFO] 2025-04-21T12:35:26.330Z - Get User Ratings - Retrieved ratings for User 3
-[INFO] 2025-04-21T12:35:28.778Z - List movies --- Request Received
-[INFO] 2025-04-21T12:35:28.835Z - Get User --- Request Received
-[INFO] 2025-04-21T12:35:28.843Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
-[INFO] 2025-04-21T12:35:28.844Z - Get User Ratings - Retrieved ratings for User 3
-[INFO] 2025-04-21T12:35:28.883Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
-[INFO] 2025-04-21T12:35:28.884Z - Get User Ratings - Retrieved ratings for User 3
-[INFO] 2025-04-21T12:35:28.897Z - Get User --- Request Received
-[INFO] 2025-04-21T12:35:28.967Z - Notification getUserNotifications ---- Retrieved user notifications
-[INFO] 2025-04-21T12:35:28.968Z - Friendship getAll ---- Retrieved all friendships
-[INFO] 2025-04-21T12:35:28.969Z - Get User --- Request Received
-[INFO] 2025-04-21T12:35:29.021Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
-[INFO] 2025-04-21T12:35:29.193Z - Friendship getSentRequests ---- Retrieved sent friendship requests
-[INFO] 2025-04-21T12:35:30.827Z - Friendship getAll ---- Retrieved all friendships
-[INFO] 2025-04-21T12:35:30.890Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
-[INFO] 2025-04-21T12:35:30.936Z - Friendship getSentRequests ---- Retrieved sent friendship requests
-[INFO] 2025-04-21T12:35:31.139Z - Get User --- Request Received
-[INFO] 2025-04-21T12:35:31.993Z - Friendship getAll ---- Retrieved all friendships
-[INFO] 2025-04-21T12:35:32.054Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
-[INFO] 2025-04-21T12:35:32.117Z - Friendship getSentRequests ---- Retrieved sent friendship requests
-[INFO] 2025-04-21T12:35:33.150Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
-[INFO] 2025-04-21T12:35:33.151Z - Get User Ratings - Retrieved ratings for User 3
-[INFO] 2025-04-21T12:35:36.687Z - Get User --- Request Received
-[INFO] 2025-04-21T12:35:36.758Z - Notification getUserNotifications ---- Retrieved user notifications
-[INFO] 2025-04-21T12:35:36.758Z - Friendship getAll ---- Retrieved all friendships
-[INFO] 2025-04-21T12:35:36.810Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
-[INFO] 2025-04-21T12:35:36.857Z - Friendship getSentRequests ---- Retrieved sent friendship requests
-[INFO] 2025-04-21T12:35:43.334Z - Get User --- Request Received
-[INFO] 2025-04-21T12:35:43.407Z - Notification getUserNotifications ---- Retrieved user notifications
-[INFO] 2025-04-21T12:35:43.408Z - Friendship getAll ---- Retrieved all friendships
-[INFO] 2025-04-21T12:35:43.473Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
-[INFO] 2025-04-21T12:35:43.535Z - Friendship getSentRequests ---- Retrieved sent friendship requests
-[INFO] 2025-04-21T12:36:18.907Z - List movies --- Request Received
-[INFO] 2025-04-21T12:36:18.968Z - Get User --- Request Received
-[INFO] 2025-04-21T12:36:18.976Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
-[INFO] 2025-04-21T12:36:18.977Z - Get User Ratings - Retrieved ratings for User 3
-[INFO] 2025-04-21T12:36:19.013Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
-[INFO] 2025-04-21T12:36:19.014Z - Get User Ratings - Retrieved ratings for User 3
-[INFO] 2025-04-21T12:36:19.030Z - Get User --- Request Received
-[INFO] 2025-04-21T12:36:19.085Z - Notification getUserNotifications ---- Retrieved user notifications
-[INFO] 2025-04-21T12:36:19.086Z - Friendship getAll ---- Retrieved all friendships
-[INFO] 2025-04-21T12:36:19.090Z - Get User --- Request Received
-[INFO] 2025-04-21T12:36:19.138Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
-[INFO] 2025-04-21T12:36:19.185Z - Friendship getSentRequests ---- Retrieved sent friendship requests
-[INFO] 2025-04-21T12:36:20.013Z - Get User Ratings - Retrieved ratings for User 3
-[INFO] 2025-04-21T12:36:22.108Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
-[INFO] 2025-04-21T12:36:22.109Z - Get User Ratings - Retrieved ratings for User 3
-[INFO] 2025-04-21T12:36:22.379Z - Get User --- Request Received
-[ERROR] 2025-04-21T12:36:23.191Z - Error in LibraryController.getAllByUserId | Error: 
-Invalid `prisma.library.findMany()` invocation in
-C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
-
-  108 }
-  109 
-  110 public static async getAllByUserId(userId: string) {
-→ 111   const libraries = await prisma.library.findMany({
-          where: {
-            userId: "3"
-                    ~~~
-          },
-          include: {
-            movie: true,
-            user: {
-              select: {
-                id: true,
-                name: true,
-                email: true,
-                username: true,
-                profileImage: true
-              }
-            }
-          },
-          orderBy: {
-            updatedAt: "desc"
-          }
-        })
-
-Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String. | Stack: PrismaClientValidationError: 
-Invalid `prisma.library.findMany()` invocation in
-C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
-
-  108 }
-  109 
-  110 public static async getAllByUserId(userId: string) {
-→ 111   const libraries = await prisma.library.findMany({
-          where: {
-            userId: "3"
-                    ~~~
-          },
-          include: {
-            movie: true,
-            user: {
-              select: {
-                id: true,
-                name: true,
-                email: true,
-                username: true,
-                profileImage: true
-              }
-            }
-          },
-          orderBy: {
-            updatedAt: "desc"
-          }
-        })
-
-Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String.
-    at Cn (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:29:1363)
-    at Wn.handleRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:7177)
-    at Wn.handleAndLogRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6858)
-    at Wn.request (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6565)
-    at async l (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:130:10067)
-    at Function.getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:23)
-    at getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\controller\library.controller.ts:212:25)
-[INFO] 2025-04-21T12:36:23.192Z - List movies --- Request Received
-[INFO] 2025-04-21T12:36:23.675Z - Get User --- Request Received
-[INFO] 2025-04-21T12:36:23.752Z - Get User --- Request Received
-[INFO] 2025-04-21T12:36:23.814Z - Get User --- Request Received
-[INFO] 2025-04-21T12:36:23.984Z - Get User --- Request Received
-[INFO] 2025-04-21T12:36:24.158Z - Get User --- Request Received
-[INFO] 2025-04-21T12:36:24.221Z - Get User --- Request Received
-[INFO] 2025-04-21T12:36:24.283Z - Get User --- Request Received
-[INFO] 2025-04-21T12:40:07.558Z - Get User Ratings - Retrieved ratings for User 3
-[INFO] 2025-04-21T12:40:12.014Z - List movies --- Request Received
-[INFO] 2025-04-21T12:40:12.059Z - Get User --- Request Received
-[INFO] 2025-04-21T12:40:12.080Z - Get User Ratings - Retrieved ratings for User 3
-[INFO] 2025-04-21T12:40:12.137Z - Get User --- Request Received
-[INFO] 2025-04-21T12:40:12.149Z - Get User Ratings - Retrieved ratings for User 3
-[INFO] 2025-04-21T12:40:12.176Z - Get User Ratings - Retrieved ratings for User 3
-[INFO] 2025-04-21T12:40:12.198Z - Get User --- Request Received
-[INFO] 2025-04-21T12:40:12.219Z - Get User Ratings - Retrieved ratings for User 3
-[INFO] 2025-04-21T12:40:12.320Z - Notification getUserNotifications ---- Retrieved user notifications
-[INFO] 2025-04-21T12:40:12.321Z - Friendship getAll ---- Retrieved all friendships
-[INFO] 2025-04-21T12:40:12.384Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
-[INFO] 2025-04-21T12:40:12.431Z - Friendship getSentRequests ---- Retrieved sent friendship requests
-[INFO] 2025-04-21T12:40:14.747Z - List movies --- Request Received
-[INFO] 2025-04-21T12:40:14.800Z - Get User --- Request Received
-[INFO] 2025-04-21T12:40:14.863Z - Get User --- Request Received
-[INFO] 2025-04-21T12:40:14.883Z - Get User Ratings - Retrieved ratings for User 3
-[INFO] 2025-04-21T12:40:14.941Z - Get User --- Request Received
-[INFO] 2025-04-21T12:40:14.967Z - Get User Ratings - Retrieved ratings for User 3
-[INFO] 2025-04-21T12:40:14.997Z - Get User Ratings - Retrieved ratings for User 3
-[INFO] 2025-04-21T12:40:15.142Z - Notification getUserNotifications ---- Retrieved user notifications
-[INFO] 2025-04-21T12:40:15.143Z - Friendship getAll ---- Retrieved all friendships
-[INFO] 2025-04-21T12:40:15.207Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
-[INFO] 2025-04-21T12:40:15.379Z - Friendship getSentRequests ---- Retrieved sent friendship requests
-[INFO] 2025-04-21T12:40:22.196Z - List movies --- Request Received
-[ERROR] 2025-04-21T12:40:22.227Z - Error in LibraryController.getAllByUserId | Error: 
-Invalid `prisma.library.findMany()` invocation in
-C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
-
-  108 }
-  109 
-  110 public static async getAllByUserId(userId: string) {
-→ 111   const libraries = await prisma.library.findMany({
-          where: {
-            userId: "3"
-                    ~~~
-          },
-          include: {
-            movie: true,
-            user: {
-              select: {
-                id: true,
-                name: true,
-                email: true,
-                username: true,
-                profileImage: true
-              }
-            }
-          },
-          orderBy: {
-            updatedAt: "desc"
-          }
-        })
-
-Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String. | Stack: PrismaClientValidationError: 
-Invalid `prisma.library.findMany()` invocation in
-C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
-
-  108 }
-  109 
-  110 public static async getAllByUserId(userId: string) {
-→ 111   const libraries = await prisma.library.findMany({
-          where: {
-            userId: "3"
-                    ~~~
-          },
-          include: {
-            movie: true,
-            user: {
-              select: {
-                id: true,
-                name: true,
-                email: true,
-                username: true,
-                profileImage: true
-              }
-            }
-          },
-          orderBy: {
-            updatedAt: "desc"
-          }
-        })
-
-Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String.
-    at Cn (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:29:1363)
-    at Wn.handleRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:7177)
-    at Wn.handleAndLogRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6858)
-    at Wn.request (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6565)
-    at async l (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:130:10067)
-    at Function.getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:23)
-    at getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\controller\library.controller.ts:212:25)
-[INFO] 2025-04-21T12:40:24.478Z - Get Movie Reviews - Retrieved reviews for Movie 3
-[INFO] 2025-04-21T12:40:24.608Z - Get User --- Request Received
-[INFO] 2025-04-21T12:40:29.624Z - Get User Ratings - Retrieved ratings for User 3
-[INFO] 2025-04-21T12:40:29.626Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
-[INFO] 2025-04-21T12:40:32.920Z - Get Movie Reviews - Retrieved reviews for Movie 3
-[INFO] 2025-04-21T12:40:32.980Z - Get User --- Request Received
-[INFO] 2025-04-21T12:40:36.143Z - Get User --- Request Received
-[INFO] 2025-04-21T12:40:40.329Z - Get Movie Reviews - Retrieved reviews for Movie 2
-[INFO] 2025-04-21T12:40:40.387Z - Get User --- Request Received
-[INFO] 2025-04-21T12:41:08.053Z - Get User Ratings - Retrieved ratings for User 3
-[INFO] 2025-04-21T12:43:21.309Z - Get User Ratings - Retrieved ratings for User 3
-[INFO] 2025-04-21T12:43:22.300Z - Get User Ratings - Retrieved ratings for User 3
-[INFO] 2025-04-21T12:43:47.384Z - Get User Ratings - Retrieved ratings for User 3
-[INFO] 2025-04-21T12:43:47.404Z - Get User Ratings - Retrieved ratings for User 3
-[INFO] 2025-04-21T12:43:47.428Z - List movies --- Request Received
-[INFO] 2025-04-21T12:43:47.455Z - Get User --- Request Received
-[INFO] 2025-04-21T12:43:47.471Z - Notification getUserNotifications ---- Retrieved user notifications
-[INFO] 2025-04-21T12:43:47.472Z - Friendship getAll ---- Retrieved all friendships
-[INFO] 2025-04-21T12:43:47.500Z - Get User Ratings - Retrieved ratings for User 3
-[INFO] 2025-04-21T12:43:47.641Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
-[INFO] 2025-04-21T12:43:47.641Z - Notification getUserNotifications ---- Retrieved user notifications
-[INFO] 2025-04-21T12:43:47.690Z - Friendship getSentRequests ---- Retrieved sent friendship requests
-[INFO] 2025-04-21T12:46:46.170Z - List movies --- Request Received
-[INFO] 2025-04-21T12:46:46.229Z - Get User Ratings - Retrieved ratings for User 3
-[INFO] 2025-04-21T12:46:46.234Z - Get User Ratings - Retrieved ratings for User 3
-[INFO] 2025-04-21T12:46:46.256Z - Get User --- Request Received
-[INFO] 2025-04-21T12:46:46.273Z - Friendship getAll ---- Retrieved all friendships
-[INFO] 2025-04-21T12:46:46.274Z - Notification getUserNotifications ---- Retrieved user notifications
-[INFO] 2025-04-21T12:46:46.319Z - Get User Ratings - Retrieved ratings for User 3
-[INFO] 2025-04-21T12:46:46.356Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
-[INFO] 2025-04-21T12:46:46.356Z - Notification getUserNotifications ---- Retrieved user notifications
-[INFO] 2025-04-21T12:46:46.413Z - Friendship getSentRequests ---- Retrieved sent friendship requests
-[INFO] 2025-04-21T12:46:52.522Z - Delete Rating - Deleted Rating [object Object]
-[INFO] 2025-04-21T12:46:54.443Z - Get User --- Request Received
-[INFO] 2025-04-21T12:46:54.966Z - Get User Ratings - Retrieved ratings for User 3
-[INFO] 2025-04-21T12:46:55.000Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
-[INFO] 2025-04-21T12:46:58.423Z - Create Rating --- Created Rating [object Object]
-[INFO] 2025-04-21T12:47:00.652Z - Get User Ratings - Retrieved ratings for User 3
-[INFO] 2025-04-21T12:47:02.829Z - Get User Ratings - Retrieved ratings for User 3
-[INFO] 2025-04-21T12:47:02.830Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
-[INFO] 2025-04-21T12:47:03.296Z - Get User --- Request Received
-[INFO] 2025-04-21T12:47:03.857Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
-[INFO] 2025-04-21T12:47:03.858Z - Get User Ratings - Retrieved ratings for User 3
-[INFO] 2025-04-21T12:47:07.151Z - List movies --- Request Received
-[INFO] 2025-04-21T12:47:07.201Z - Get User --- Request Received
-[INFO] 2025-04-21T12:47:07.263Z - Get User --- Request Received
-[INFO] 2025-04-21T12:47:07.324Z - Get User --- Request Received
-[INFO] 2025-04-21T12:47:07.362Z - Notification getUserNotifications ---- Retrieved user notifications
-[INFO] 2025-04-21T12:47:07.363Z - Friendship getAll ---- Retrieved all friendships
-[INFO] 2025-04-21T12:47:07.419Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
-[INFO] 2025-04-21T12:47:07.466Z - Friendship getSentRequests ---- Retrieved sent friendship requests
-[INFO] 2025-04-21T12:47:08.186Z - Friendship getAll ---- Retrieved all friendships
-[INFO] 2025-04-21T12:47:08.233Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
-[INFO] 2025-04-21T12:47:08.281Z - Friendship getSentRequests ---- Retrieved sent friendship requests
-[INFO] 2025-04-21T12:47:08.605Z - Get User Ratings - Retrieved ratings for User 3
-[INFO] 2025-04-21T12:49:29.196Z - Get Movie Reviews - Retrieved reviews for Movie 3
-[INFO] 2025-04-21T12:49:29.216Z - Get User --- Request Received
-[INFO] 2025-04-21T12:49:35.772Z - Get User --- Request Received
-[INFO] 2025-04-21T12:49:36.307Z - Get User Ratings - Retrieved ratings for User 3
-[INFO] 2025-04-21T12:49:37.297Z - Friendship getAll ---- Retrieved all friendships
-[INFO] 2025-04-21T12:49:37.345Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
-[INFO] 2025-04-21T12:49:37.392Z - Friendship getSentRequests ---- Retrieved sent friendship requests
-[INFO] 2025-04-21T12:49:37.635Z - Get User Ratings - Retrieved ratings for User 3
-[INFO] 2025-04-21T12:49:37.898Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
-[INFO] 2025-04-21T12:49:37.899Z - Get User Ratings - Retrieved ratings for User 3
-[ERROR] 2025-04-21T12:49:39.227Z - Error in LibraryController.getAllByUserId | Error: 
-Invalid `prisma.library.findMany()` invocation in
-C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
-
-  108 }
-  109 
-  110 public static async getAllByUserId(userId: string) {
-→ 111   const libraries = await prisma.library.findMany({
-          where: {
-            userId: "3"
-                    ~~~
-          },
-          include: {
-            movie: true,
-            user: {
-              select: {
-                id: true,
-                name: true,
-                email: true,
-                username: true,
-                profileImage: true
-              }
-            }
-          },
-          orderBy: {
-            updatedAt: "desc"
-          }
-        })
-
-Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String. | Stack: PrismaClientValidationError: 
-Invalid `prisma.library.findMany()` invocation in
-C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
-
-  108 }
-  109 
-  110 public static async getAllByUserId(userId: string) {
-→ 111   const libraries = await prisma.library.findMany({
-          where: {
-            userId: "3"
-                    ~~~
-          },
-          include: {
-            movie: true,
-            user: {
-              select: {
-                id: true,
-                name: true,
-                email: true,
-                username: true,
-                profileImage: true
-              }
-            }
-          },
-          orderBy: {
-            updatedAt: "desc"
-          }
-        })
-
-Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String.
-    at Cn (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:29:1363)
-    at Wn.handleRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:7177)
-    at Wn.handleAndLogRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6858)
-    at Wn.request (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6565)
-    at async l (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:130:10067)
-    at Function.getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:23)
-    at getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\controller\library.controller.ts:212:25)
-[INFO] 2025-04-21T12:49:39.228Z - List movies --- Request Received
-[INFO] 2025-04-21T12:49:40.090Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
-[INFO] 2025-04-21T12:49:40.092Z - Get User Ratings - Retrieved ratings for User 3
-[INFO] 2025-04-21T12:49:47.151Z - Delete Rating - Deleted Rating [object Object]
-[INFO] 2025-04-21T12:49:48.621Z - Get User --- Request Received
-[INFO] 2025-04-21T12:49:48.845Z - Get User Ratings - Retrieved ratings for User 3
-[INFO] 2025-04-21T12:50:35.650Z - Friendship getAll ---- Retrieved all friendships
-[INFO] 2025-04-21T12:50:35.696Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
-[INFO] 2025-04-21T12:50:35.757Z - Friendship getSentRequests ---- Retrieved sent friendship requests
-[INFO] 2025-04-21T12:50:36.247Z - Get User Ratings - Retrieved ratings for User 3
-[INFO] 2025-04-21T12:50:43.380Z - Get User --- Request Received
-[INFO] 2025-04-21T12:50:43.456Z - Get User --- Request Received
-[INFO] 2025-04-21T12:50:43.626Z - Get User --- Request Received
-[INFO] 2025-04-21T12:50:43.688Z - Get User --- Request Received
-[INFO] 2025-04-21T12:50:43.749Z - Get User --- Request Received
-[INFO] 2025-04-21T12:50:43.811Z - Get User --- Request Received
-[INFO] 2025-04-21T12:50:43.872Z - Get User --- Request Received
-[INFO] 2025-04-21T12:50:47.206Z - Get User --- Request Received
-[INFO] 2025-04-21T12:50:47.219Z - Get User Reviews - Retrieved reviews for User 3
-[INFO] 2025-04-21T12:50:47.224Z - Get User Reviews - Retrieved reviews for User 3
-[INFO] 2025-04-21T12:50:47.269Z - Friendship getFollowers ---- Retrieved followers successfully
-[INFO] 2025-04-21T12:50:47.330Z - Friendship getFollowing ---- Retrieved following users successfully
-[INFO] 2025-04-21T12:50:47.500Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
-[INFO] 2025-04-21T12:50:49.339Z - Get User Ratings - Retrieved ratings for User 3
-[INFO] 2025-04-21T12:50:52.282Z - Friendship getAll ---- Retrieved all friendships
-[INFO] 2025-04-21T12:50:52.328Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
-[INFO] 2025-04-21T12:50:52.375Z - Friendship getSentRequests ---- Retrieved sent friendship requests
-[INFO] 2025-04-21T12:50:52.557Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
-[INFO] 2025-04-21T12:50:52.558Z - Get User Ratings - Retrieved ratings for User 3
-[INFO] 2025-04-21T12:52:01.316Z - Create Rating --- Created Rating [object Object]
-[INFO] 2025-04-21T12:52:03.781Z - List movies --- Request Received
-[INFO] 2025-04-21T12:52:03.845Z - Get User --- Request Received
-[INFO] 2025-04-21T12:52:03.867Z - Get User Ratings - Retrieved ratings for User 3
-[INFO] 2025-04-21T12:52:03.914Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
-[INFO] 2025-04-21T12:52:03.933Z - Get User --- Request Received
-[INFO] 2025-04-21T12:52:03.935Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
-[INFO] 2025-04-21T12:52:03.937Z - Get User Ratings - Retrieved ratings for User 3
-[INFO] 2025-04-21T12:52:03.999Z - Get User --- Request Received
-[INFO] 2025-04-21T12:52:04.011Z - Notification getUserNotifications ---- Retrieved user notifications
-[INFO] 2025-04-21T12:52:04.011Z - Friendship getAll ---- Retrieved all friendships
-[INFO] 2025-04-21T12:52:04.062Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
-[INFO] 2025-04-21T12:52:04.108Z - Friendship getSentRequests ---- Retrieved sent friendship requests
-[INFO] 2025-04-21T12:52:05.937Z - Get User --- Request Received
-[INFO] 2025-04-21T12:52:06.734Z - Get User Ratings - Retrieved ratings for User 3
-[INFO] 2025-04-21T12:52:19.493Z - Get Movie Reviews - Retrieved reviews for Movie 2
-[INFO] 2025-04-21T12:52:19.547Z - Get User --- Request Received
-[INFO] 2025-04-21T12:53:42.071Z - Get User Ratings - Retrieved ratings for User 3
-[INFO] 2025-04-21T12:53:42.541Z - Friendship getAll ---- Retrieved all friendships
-[INFO] 2025-04-21T12:53:42.711Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
-[INFO] 2025-04-21T12:53:42.756Z - Friendship getSentRequests ---- Retrieved sent friendship requests
-[INFO] 2025-04-21T12:53:46.110Z - Get User Ratings - Retrieved ratings for User 3
-[INFO] 2025-04-21T12:56:27.276Z - Get User Ratings - Retrieved ratings for User 3
-[INFO] 2025-04-21T12:58:13.975Z - Get User --- Request Received
-[INFO] 2025-04-21T12:58:15.261Z - Get User Ratings - Retrieved ratings for User 3
-[INFO] 2025-04-21T12:58:21.891Z - Get Movie Reviews - Retrieved reviews for Movie 2
-[INFO] 2025-04-21T12:58:21.917Z - Get User --- Request Received
-[INFO] 2025-04-21T13:02:36.354Z - LibraryController.delete ---- Deleted library entry ${id}
-[INFO] 2025-04-21T13:02:44.923Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
-[INFO] 2025-04-21T13:02:44.924Z - Get User Ratings - Retrieved ratings for User 3
-[INFO] 2025-04-21T13:02:45.450Z - Get User --- Request Received
-[INFO] 2025-04-21T13:02:45.904Z - Get User Ratings - Retrieved ratings for User 3
-[INFO] 2025-04-21T13:02:46.498Z - Friendship getAll ---- Retrieved all friendships
-[INFO] 2025-04-21T13:02:46.546Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
-[INFO] 2025-04-21T13:02:46.592Z - Friendship getSentRequests ---- Retrieved sent friendship requests
-[INFO] 2025-04-21T13:02:46.933Z - Get User Ratings - Retrieved ratings for User 3
-[INFO] 2025-04-21T13:03:29.428Z - Get User --- Request Received
-[INFO] 2025-04-21T13:03:29.519Z - Get Movie Reviews - Retrieved reviews for Movie 2
-[ERROR] 2025-04-21T13:07:18.458Z - Error in LibraryController.getAllByUserId | Error: 
-Invalid `prisma.library.findMany()` invocation in
-C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
-
-  108 }
-  109 
-  110 public static async getAllByUserId(userId: string) {
-→ 111   const libraries = await prisma.library.findMany({
-          where: {
-            userId: "3"
-                    ~~~
-          },
-          include: {
-            movie: true,
-            user: {
-              select: {
-                id: true,
-                name: true,
-                email: true,
-                username: true,
-                profileImage: true
-              }
-            }
-          },
-          orderBy: {
-            updatedAt: "desc"
-          }
-        })
-
-Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String. | Stack: PrismaClientValidationError: 
-Invalid `prisma.library.findMany()` invocation in
-C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
-
-  108 }
-  109 
-  110 public static async getAllByUserId(userId: string) {
-→ 111   const libraries = await prisma.library.findMany({
-          where: {
-            userId: "3"
-                    ~~~
-          },
-          include: {
-            movie: true,
-            user: {
-              select: {
-                id: true,
-                name: true,
-                email: true,
-                username: true,
-                profileImage: true
-              }
-            }
-          },
-          orderBy: {
-            updatedAt: "desc"
-          }
-        })
-
-Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String.
-    at Cn (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:29:1363)
-    at Wn.handleRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:7177)
-    at Wn.handleAndLogRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6858)
-    at Wn.request (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6565)
-    at async l (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:130:10067)
-    at Function.getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:23)
-    at getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\controller\library.controller.ts:212:25)
-[INFO] 2025-04-21T13:07:18.460Z - List movies --- Request Received
-[INFO] 2025-04-21T13:07:19.375Z - Get User --- Request Received
-[INFO] 2025-04-21T13:07:19.438Z - Get User --- Request Received
-[INFO] 2025-04-21T13:07:19.500Z - Get User --- Request Received
-[ERROR] 2025-04-21T13:07:20.058Z - Error in LibraryController.getAllByUserId | Error: 
-Invalid `prisma.library.findMany()` invocation in
-C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
-
-  108 }
-  109 
-  110 public static async getAllByUserId(userId: string) {
-→ 111   const libraries = await prisma.library.findMany({
-          where: {
-            userId: "3"
-                    ~~~
-          },
-          include: {
-            movie: true,
-            user: {
-              select: {
-                id: true,
-                name: true,
-                email: true,
-                username: true,
-                profileImage: true
-              }
-            }
-          },
-          orderBy: {
-            updatedAt: "desc"
-          }
-        })
-
-Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String. | Stack: PrismaClientValidationError: 
-Invalid `prisma.library.findMany()` invocation in
-C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
-
-  108 }
-  109 
-  110 public static async getAllByUserId(userId: string) {
-→ 111   const libraries = await prisma.library.findMany({
-          where: {
-            userId: "3"
-                    ~~~
-          },
-          include: {
-            movie: true,
-            user: {
-              select: {
-                id: true,
-                name: true,
-                email: true,
-                username: true,
-                profileImage: true
-              }
-            }
-          },
-          orderBy: {
-            updatedAt: "desc"
-          }
-        })
-
-Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String.
-    at Cn (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:29:1363)
-    at Wn.handleRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:7177)
-    at Wn.handleAndLogRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6858)
-    at Wn.request (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6565)
-    at async l (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:130:10067)
-    at Function.getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:23)
-    at getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\controller\library.controller.ts:212:25)
-[INFO] 2025-04-21T13:07:20.059Z - List movies --- Request Received
-[INFO] 2025-04-21T13:07:20.757Z - Get User --- Request Received
-[INFO] 2025-04-21T13:07:20.820Z - Get User --- Request Received
-[INFO] 2025-04-21T13:07:20.883Z - Get User --- Request Received
-[ERROR] 2025-04-21T13:13:33.010Z - Error in LibraryController.getAllByUserId | Error: 
-Invalid `prisma.library.findMany()` invocation in
-C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
-
-  108 }
-  109 
-  110 public static async getAllByUserId(userId: string) {
-→ 111   const libraries = await prisma.library.findMany({
-          where: {
-            userId: "3"
-                    ~~~
-          },
-          include: {
-            movie: true,
-            user: {
-              select: {
-                id: true,
-                name: true,
-                email: true,
-                username: true,
-                profileImage: true
-              }
-            }
-          },
-          orderBy: {
-            updatedAt: "desc"
-          }
-        })
-
-Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String. | Stack: PrismaClientValidationError: 
-Invalid `prisma.library.findMany()` invocation in
-C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
-
-  108 }
-  109 
-  110 public static async getAllByUserId(userId: string) {
-→ 111   const libraries = await prisma.library.findMany({
-          where: {
-            userId: "3"
-                    ~~~
-          },
-          include: {
-            movie: true,
-            user: {
-              select: {
-                id: true,
-                name: true,
-                email: true,
-                username: true,
-                profileImage: true
-              }
-            }
-          },
-          orderBy: {
-            updatedAt: "desc"
-          }
-        })
-
-Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String.
-    at Cn (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:29:1363)
-    at Wn.handleRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:7177)
-    at Wn.handleAndLogRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6858)
-    at Wn.request (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6565)
-    at async l (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:130:10067)
-    at Function.getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:23)
-    at getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\controller\library.controller.ts:212:25)
-[INFO] 2025-04-21T13:13:33.022Z - List movies --- Request Received
-[INFO] 2025-04-21T13:13:35.379Z - Get Movie Reviews - Retrieved reviews for Movie 3
-[INFO] 2025-04-21T13:13:35.399Z - Get User --- Request Received
-[INFO] 2025-04-21T13:13:41.255Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
-[INFO] 2025-04-21T13:13:41.295Z - Get User Ratings - Retrieved ratings for User 3
-[INFO] 2025-04-21T13:13:47.482Z - Create Rating --- Created Rating [object Object]
-[INFO] 2025-04-21T13:13:50.324Z - List movies --- Request Received
-[INFO] 2025-04-21T13:13:50.370Z - Get User --- Request Received
-[INFO] 2025-04-21T13:13:50.395Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
-[INFO] 2025-04-21T13:13:50.396Z - Get User Ratings - Retrieved ratings for User 3
-[INFO] 2025-04-21T13:13:50.436Z - Get User --- Request Received
-[INFO] 2025-04-21T13:13:50.464Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
-[INFO] 2025-04-21T13:13:50.464Z - Get User Ratings - Retrieved ratings for User 3
-[INFO] 2025-04-21T13:13:50.497Z - Get User --- Request Received
-[INFO] 2025-04-21T13:13:50.656Z - Friendship getAll ---- Retrieved all friendships
-[INFO] 2025-04-21T13:13:50.657Z - Notification getUserNotifications ---- Retrieved user notifications
-[INFO] 2025-04-21T13:13:50.702Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
-[INFO] 2025-04-21T13:13:50.749Z - Friendship getSentRequests ---- Retrieved sent friendship requests
-[INFO] 2025-04-21T13:13:52.284Z - Get Movie Reviews - Retrieved reviews for Movie 3
-[INFO] 2025-04-21T13:13:52.344Z - Get User --- Request Received
-[INFO] 2025-04-21T13:13:57.224Z - Friendship getAll ---- Retrieved all friendships
-[INFO] 2025-04-21T13:13:57.269Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
-[INFO] 2025-04-21T13:13:57.316Z - Friendship getSentRequests ---- Retrieved sent friendship requests
-[INFO] 2025-04-21T13:14:30.822Z - List Users --- Request Received
-[INFO] 2025-04-21T13:14:33.933Z - Get User --- Request Received
-[INFO] 2025-04-21T13:14:33.996Z - Get User --- Request Received
-[INFO] 2025-04-21T13:14:34.118Z - Friendship getRelationshipStatus ---- Retrieved relationship status successfully
-[INFO] 2025-04-21T13:14:34.118Z - Friendship getFollowers ---- Retrieved followers successfully
-[INFO] 2025-04-21T13:14:34.166Z - Friendship getFollowing ---- Retrieved following users successfully
-[INFO] 2025-04-21T13:14:34.214Z - Friendship getMutualFriends ---- Retrieved mutual friends successfully
-[INFO] 2025-04-21T13:14:34.293Z - Get User --- Request Received
-[INFO] 2025-04-21T13:14:34.355Z - Get User --- Request Received
-[INFO] 2025-04-21T13:14:37.622Z - Login User - Logout Successfully
-[WARN] 2025-04-21T13:14:47.490Z - Login User --- Invalid email or password 
-[INFO] 2025-04-21T13:14:50.584Z - Login User --- Login successful 🚀
-[INFO] 2025-04-21T13:14:50.642Z - Get User --- Request Received
-[INFO] 2025-04-21T13:14:50.682Z - List movies --- Request Received
-[INFO] 2025-04-21T13:14:50.705Z - Notification getUserNotifications ---- Retrieved user notifications
-[INFO] 2025-04-21T13:14:50.737Z - Get User --- Request Received
-[INFO] 2025-04-21T13:14:50.800Z - Get User --- Request Received
-[INFO] 2025-04-21T13:14:50.865Z - Get User --- Request Received
-[INFO] 2025-04-21T13:14:50.927Z - Get User --- Request Received
-[INFO] 2025-04-21T13:14:50.988Z - Get User --- Request Received
-[INFO] 2025-04-21T13:14:51.052Z - Get User --- Request Received
-[INFO] 2025-04-21T13:14:51.113Z - Get User --- Request Received
-[INFO] 2025-04-21T13:14:51.283Z - Get User --- Request Received
-[INFO] 2025-04-21T13:14:51.331Z - Get User --- Request Received
-[INFO] 2025-04-21T13:14:51.394Z - Get User --- Request Received
-[INFO] 2025-04-21T13:14:51.457Z - Get User --- Request Received
-[INFO] 2025-04-21T13:14:51.519Z - Get User --- Request Received
-[INFO] 2025-04-21T13:14:52.936Z - Get User Ratings - Retrieved ratings for User 5
-[INFO] 2025-04-21T13:14:53.282Z - Friendship getAll ---- Retrieved all friendships
-[INFO] 2025-04-21T13:14:53.329Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
-[INFO] 2025-04-21T13:14:53.500Z - Friendship getSentRequests ---- Retrieved sent friendship requests
-[INFO] 2025-04-21T13:14:53.864Z - Get User Ratings - Retrieved ratings for User 5
-[INFO] 2025-04-21T13:14:53.864Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
-[INFO] 2025-04-21T13:14:54.310Z - Get User --- Request Received
-[INFO] 2025-04-21T13:14:55.857Z - Get User Ratings - Retrieved ratings for User 5
-[INFO] 2025-04-21T13:14:56.652Z - Get User --- Request Received
-[INFO] 2025-04-21T13:14:57.072Z - Get User Ratings - Retrieved ratings for User 5
-[INFO] 2025-04-21T13:15:07.833Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
-[INFO] 2025-04-21T13:15:07.834Z - Get User Ratings - Retrieved ratings for User 5
-[INFO] 2025-04-21T13:15:11.664Z - Create Rating --- Created Rating [object Object]
-[INFO] 2025-04-21T13:15:14.240Z - Create Rating --- Created Rating [object Object]
-[INFO] 2025-04-21T13:15:15.079Z - Get User --- Request Received
-[INFO] 2025-04-21T13:15:15.761Z - Get User Ratings - Retrieved ratings for User 5
-[INFO] 2025-04-21T13:15:18.544Z - Get Movie Reviews - Retrieved reviews for Movie 5
-[INFO] 2025-04-21T13:15:18.593Z - Get User --- Request Received
-[INFO] 2025-04-21T13:15:22.793Z - Get User Ratings - Retrieved ratings for User 5
-[INFO] 2025-04-21T13:15:24.006Z - Get Movie Reviews - Retrieved reviews for Movie 4
-[INFO] 2025-04-21T13:15:24.056Z - Get User --- Request Received
-[INFO] 2025-04-21T13:15:26.177Z - Get User Ratings - Retrieved ratings for User 5
-[INFO] 2025-04-21T13:15:30.417Z - Delete Rating - Deleted Rating [object Object]
-[INFO] 2025-04-21T13:15:31.260Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
-[INFO] 2025-04-21T13:15:31.261Z - Get User Ratings - Retrieved ratings for User 5
-[INFO] 2025-04-21T13:15:32.641Z - Get Movie Reviews - Retrieved reviews for Movie 5
-[INFO] 2025-04-21T13:15:32.688Z - Get User --- Request Received
-[INFO] 2025-04-21T13:15:34.592Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
-[INFO] 2025-04-21T13:15:34.594Z - Get User Ratings - Retrieved ratings for User 5
-[INFO] 2025-04-21T13:15:38.524Z - Get Movie Reviews - Retrieved reviews for Movie 4
-[INFO] 2025-04-21T13:15:38.582Z - Get User --- Request Received
-[INFO] 2025-04-21T13:18:09.651Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
-[INFO] 2025-04-21T13:18:09.652Z - Get User Ratings - Retrieved ratings for User 5
-[INFO] 2025-04-21T13:18:23.095Z - Create Review --- Created Review [object Object]
-[INFO] 2025-04-21T13:18:24.231Z - Get User --- Request Received
-[INFO] 2025-04-21T13:18:24.930Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
-[INFO] 2025-04-21T13:18:24.931Z - Get User Ratings - Retrieved ratings for User 5
-[INFO] 2025-04-21T13:18:29.345Z - Get User Ratings - Retrieved ratings for User 5
-[INFO] 2025-04-21T13:18:29.735Z - Get User --- Request Received
-[INFO] 2025-04-21T13:18:31.735Z - Get Movie Reviews - Retrieved reviews for Movie 4
-[INFO] 2025-04-21T13:18:31.780Z - Get User --- Request Received
-[INFO] 2025-04-21T13:24:53.876Z - Get User --- Request Received
-[INFO] 2025-04-21T13:24:53.939Z - Get User --- Request Received
-[INFO] 2025-04-21T13:24:53.976Z - List movies --- Request Received
-[INFO] 2025-04-21T13:24:54.003Z - Get Movie Reviews - Retrieved reviews for Movie 4
-[INFO] 2025-04-21T13:24:54.026Z - Get Movie Reviews - Retrieved reviews for Movie 4
-[INFO] 2025-04-21T13:24:54.028Z - Get User --- Request Received
-[INFO] 2025-04-21T13:24:54.035Z - Get Movie Reviews - Retrieved reviews for Movie 4
-[INFO] 2025-04-21T13:24:54.056Z - Get Movie Reviews - Retrieved reviews for Movie 4
-[INFO] 2025-04-21T13:24:54.094Z - Get User --- Request Received
-[INFO] 2025-04-21T13:24:54.126Z - Friendship getAll ---- Retrieved all friendships
-[INFO] 2025-04-21T13:24:54.127Z - Notification getUserNotifications ---- Retrieved user notifications
-[INFO] 2025-04-21T13:24:54.157Z - Get User --- Request Received
-[INFO] 2025-04-21T13:24:54.188Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
-[INFO] 2025-04-21T13:24:54.220Z - Get User --- Request Received
-[INFO] 2025-04-21T13:24:54.235Z - Friendship getSentRequests ---- Retrieved sent friendship requests
-[INFO] 2025-04-21T13:25:40.249Z - Friendship getAll ---- Retrieved all friendships
-[INFO] 2025-04-21T13:25:40.297Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
-[INFO] 2025-04-21T13:25:40.359Z - Friendship getSentRequests ---- Retrieved sent friendship requests
-[INFO] 2025-04-21T13:26:09.763Z - Get User Ratings - Retrieved ratings for User 5
-[INFO] 2025-04-21T13:26:11.961Z - Get User Ratings - Retrieved ratings for User 5
-[INFO] 2025-04-21T13:26:11.994Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
-[ERROR] 2025-04-21T13:26:12.556Z - Error in LibraryController.getAllByUserId | Error: 
+[INFO] 2025-04-21T14:08:36.221Z - List movies --- Request Received
+[INFO] 2025-04-21T14:08:39.752Z - List movies --- Request Received
+[INFO] 2025-04-21T14:08:39.810Z - Get User --- Request Received
+[INFO] 2025-04-21T14:08:39.873Z - Get User --- Request Received
+[INFO] 2025-04-21T14:08:40.059Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-21T14:08:40.060Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-21T14:08:40.106Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-21T14:08:40.153Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-21T14:13:32.346Z - Login User - Logout Successfully
+[WARN] 2025-04-21T14:21:41.519Z - Login User --- Invalid email or password 
+[INFO] 2025-04-21T14:21:47.855Z - Login User --- Login successful 🚀
+[INFO] 2025-04-21T14:21:47.928Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-21T14:21:47.930Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-21T14:21:47.932Z - Get User --- Request Received
+[INFO] 2025-04-21T14:21:47.991Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-21T14:21:48.053Z - List movies --- Request Received
+[INFO] 2025-04-21T14:21:48.070Z - Get User --- Request Received
+[INFO] 2025-04-21T14:21:48.084Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-21T14:21:48.085Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-21T14:21:48.191Z - Get User --- Request Received
+[INFO] 2025-04-21T14:21:48.253Z - Get User --- Request Received
+[INFO] 2025-04-21T14:21:48.316Z - Get User --- Request Received
+[INFO] 2025-04-21T14:21:48.376Z - Get User --- Request Received
+[INFO] 2025-04-21T14:21:48.438Z - Get User --- Request Received
+[INFO] 2025-04-21T14:21:48.501Z - Get User --- Request Received
+[INFO] 2025-04-21T14:21:48.563Z - Get User --- Request Received
+[INFO] 2025-04-21T14:21:48.625Z - Get User --- Request Received
+[INFO] 2025-04-21T14:21:48.687Z - Get User --- Request Received
+[INFO] 2025-04-21T14:21:48.860Z - Get User --- Request Received
+[INFO] 2025-04-21T14:21:48.921Z - Get User --- Request Received
+[INFO] 2025-04-21T14:21:48.983Z - Get User --- Request Received
+[INFO] 2025-04-21T14:21:51.422Z - List movies --- Request Received
+[ERROR] 2025-04-21T14:21:51.459Z - Error in LibraryController.getAllByUserId | Error: 
 Invalid `prisma.library.findMany()` invocation in
 C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
 
@@ -2176,153 +1268,200 @@ Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided S
     at async l (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:130:10067)
     at Function.getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:23)
     at getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\controller\library.controller.ts:212:25)
-[INFO] 2025-04-21T13:26:12.557Z - List movies --- Request Received
-[INFO] 2025-04-21T13:26:13.159Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
-[INFO] 2025-04-21T13:26:13.160Z - Get User Ratings - Retrieved ratings for User 5
-[INFO] 2025-04-21T13:26:15.670Z - Get Movie Reviews - Retrieved reviews for Movie 4
-[INFO] 2025-04-21T13:26:15.733Z - Get User --- Request Received
-[INFO] 2025-04-21T13:26:46.590Z - Get Movie Reviews - Retrieved reviews for Movie 3
-[INFO] 2025-04-21T13:26:46.648Z - Get User --- Request Received
-[INFO] 2025-04-21T13:26:52.966Z - LibraryController.create ---- Library entry created for user 5 and movie 3
-[INFO] 2025-04-21T13:26:59.023Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
-[INFO] 2025-04-21T13:26:59.025Z - Get User Ratings - Retrieved ratings for User 5
-[INFO] 2025-04-21T13:27:01.593Z - Get Movie Reviews - Retrieved reviews for Movie 5
-[INFO] 2025-04-21T13:27:01.655Z - Get User --- Request Received
-[INFO] 2025-04-21T13:29:24.494Z - List movies --- Request Received
-[INFO] 2025-04-21T13:29:24.547Z - Get User --- Request Received
-[INFO] 2025-04-21T13:29:24.575Z - Get Movie Reviews - Retrieved reviews for Movie 5
-[INFO] 2025-04-21T13:29:24.624Z - Get User --- Request Received
-[INFO] 2025-04-21T13:29:24.644Z - Get Movie Reviews - Retrieved reviews for Movie 5
-[INFO] 2025-04-21T13:29:24.668Z - Get Movie Reviews - Retrieved reviews for Movie 5
-[INFO] 2025-04-21T13:29:24.717Z - Get User --- Request Received
-[INFO] 2025-04-21T13:29:24.751Z - Notification getUserNotifications ---- Retrieved user notifications
-[INFO] 2025-04-21T13:29:24.752Z - Friendship getAll ---- Retrieved all friendships
-[INFO] 2025-04-21T13:29:24.786Z - Get Movie Reviews - Retrieved reviews for Movie 5
-[INFO] 2025-04-21T13:29:24.791Z - Get User --- Request Received
-[INFO] 2025-04-21T13:29:24.828Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
-[INFO] 2025-04-21T13:29:24.873Z - Get User --- Request Received
-[INFO] 2025-04-21T13:29:24.904Z - Friendship getSentRequests ---- Retrieved sent friendship requests
-[INFO] 2025-04-21T13:29:24.950Z - Get User --- Request Received
-[INFO] 2025-04-21T13:30:33.580Z - Get Movie Reviews - Retrieved reviews for Movie 5
-[INFO] 2025-04-21T13:30:33.596Z - Get User --- Request Received
-[INFO] 2025-04-21T13:32:00.381Z - List movies --- Request Received
-[INFO] 2025-04-21T13:32:00.433Z - Get User --- Request Received
-[INFO] 2025-04-21T13:32:00.441Z - Get Movie Reviews - Retrieved reviews for Movie 5
-[INFO] 2025-04-21T13:32:00.479Z - Get Movie Reviews - Retrieved reviews for Movie 5
-[INFO] 2025-04-21T13:32:00.496Z - Get User --- Request Received
-[INFO] 2025-04-21T13:32:00.539Z - Get Movie Reviews - Retrieved reviews for Movie 5
-[INFO] 2025-04-21T13:32:00.557Z - Friendship getAll ---- Retrieved all friendships
-[INFO] 2025-04-21T13:32:00.558Z - Notification getUserNotifications ---- Retrieved user notifications
-[INFO] 2025-04-21T13:32:00.559Z - Get User --- Request Received
-[INFO] 2025-04-21T13:32:00.597Z - Get Movie Reviews - Retrieved reviews for Movie 5
-[INFO] 2025-04-21T13:32:00.613Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
-[INFO] 2025-04-21T13:32:00.620Z - Get User --- Request Received
-[INFO] 2025-04-21T13:32:00.667Z - Friendship getSentRequests ---- Retrieved sent friendship requests
-[INFO] 2025-04-21T13:32:00.683Z - Get User --- Request Received
-[INFO] 2025-04-21T13:32:00.747Z - Get User --- Request Received
-[INFO] 2025-04-21T13:32:03.456Z - Get Movie Reviews - Retrieved reviews for Movie 3
-[INFO] 2025-04-21T13:32:03.510Z - Get User --- Request Received
-[INFO] 2025-04-21T13:32:16.319Z - Get Movie Reviews - Retrieved reviews for Movie 3
-[INFO] 2025-04-21T13:32:16.487Z - Get User --- Request Received
-[INFO] 2025-04-21T13:32:19.315Z - Get Movie Reviews - Retrieved reviews for Movie 3
-[INFO] 2025-04-21T13:32:19.363Z - Get User --- Request Received
-[INFO] 2025-04-21T13:32:21.315Z - Get Movie Reviews - Retrieved reviews for Movie 3
-[INFO] 2025-04-21T13:32:21.360Z - Get User --- Request Received
-[INFO] 2025-04-21T13:32:25.313Z - Get Movie Reviews - Retrieved reviews for Movie 3
-[INFO] 2025-04-21T13:32:25.376Z - Get User --- Request Received
-[INFO] 2025-04-21T13:32:26.313Z - Get Movie Reviews - Retrieved reviews for Movie 3
-[INFO] 2025-04-21T13:32:26.362Z - Get User --- Request Received
-[INFO] 2025-04-21T13:32:29.312Z - Get Movie Reviews - Retrieved reviews for Movie 3
-[INFO] 2025-04-21T13:32:29.467Z - Get User --- Request Received
-[INFO] 2025-04-21T13:32:34.315Z - Get Movie Reviews - Retrieved reviews for Movie 3
-[INFO] 2025-04-21T13:32:34.377Z - Get User --- Request Received
-[INFO] 2025-04-21T13:32:46.421Z - List movies --- Request Received
-[INFO] 2025-04-21T13:32:46.479Z - Get User --- Request Received
-[INFO] 2025-04-21T13:32:46.502Z - Get Movie Reviews - Retrieved reviews for Movie 3
-[INFO] 2025-04-21T13:32:46.540Z - Get User --- Request Received
-[INFO] 2025-04-21T13:32:46.550Z - Get Movie Reviews - Retrieved reviews for Movie 3
-[INFO] 2025-04-21T13:32:46.603Z - Get Movie Reviews - Retrieved reviews for Movie 3
-[INFO] 2025-04-21T13:32:46.619Z - Get User --- Request Received
-[INFO] 2025-04-21T13:32:46.648Z - Notification getUserNotifications ---- Retrieved user notifications
-[INFO] 2025-04-21T13:32:46.649Z - Friendship getAll ---- Retrieved all friendships
-[INFO] 2025-04-21T13:32:46.681Z - Get User --- Request Received
-[INFO] 2025-04-21T13:32:46.696Z - Get Movie Reviews - Retrieved reviews for Movie 3
-[INFO] 2025-04-21T13:32:46.714Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
-[INFO] 2025-04-21T13:32:46.745Z - Get User --- Request Received
-[INFO] 2025-04-21T13:32:46.791Z - Friendship getSentRequests ---- Retrieved sent friendship requests
-[INFO] 2025-04-21T13:32:46.807Z - Get User --- Request Received
-[INFO] 2025-04-21T13:33:08.833Z - Get Movie Reviews - Retrieved reviews for Movie 2
-[INFO] 2025-04-21T13:33:08.886Z - Get User --- Request Received
-[INFO] 2025-04-21T13:33:21.454Z - LibraryController.create ---- Library entry created for user 5 and movie 2
-[INFO] 2025-04-21T13:33:22.573Z - Get User --- Request Received
-[INFO] 2025-04-21T13:33:22.904Z - Get User Ratings - Retrieved ratings for User 5
-[INFO] 2025-04-21T13:34:54.519Z - Friendship getAll ---- Retrieved all friendships
-[INFO] 2025-04-21T13:34:54.567Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
-[INFO] 2025-04-21T13:34:54.615Z - Friendship getSentRequests ---- Retrieved sent friendship requests
-[INFO] 2025-04-21T13:34:54.771Z - Get User --- Request Received
-[INFO] 2025-04-21T13:34:55.063Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
-[INFO] 2025-04-21T13:34:55.064Z - Get User Ratings - Retrieved ratings for User 5
-[INFO] 2025-04-21T13:35:02.058Z - Create Rating --- Created Rating [object Object]
-[INFO] 2025-04-21T13:35:04.896Z - Create Rating --- Created Rating [object Object]
-[INFO] 2025-04-21T13:35:08.256Z - Create Rating --- Created Rating [object Object]
-[INFO] 2025-04-21T13:35:09.271Z - Get User Ratings - Retrieved ratings for User 5
-[INFO] 2025-04-21T13:35:09.736Z - Get User --- Request Received
-[INFO] 2025-04-21T13:42:17.095Z - Get User Ratings - Retrieved ratings for User 5
-[INFO] 2025-04-21T13:42:17.236Z - Get User --- Request Received
-[INFO] 2025-04-21T13:42:25.876Z - Get User Ratings - Retrieved ratings for User 5
-[INFO] 2025-04-21T13:42:26.444Z - Friendship getAll ---- Retrieved all friendships
-[INFO] 2025-04-21T13:42:26.489Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
-[INFO] 2025-04-21T13:42:26.535Z - Friendship getSentRequests ---- Retrieved sent friendship requests
-[INFO] 2025-04-21T13:42:26.978Z - Get User Ratings - Retrieved ratings for User 5
-[INFO] 2025-04-21T13:42:31.740Z - Update Rating - Updated Rating [object Object]
-[INFO] 2025-04-21T13:42:42.802Z - Get Movie Reviews - Retrieved reviews for Movie 4
-[INFO] 2025-04-21T13:42:42.821Z - Get User --- Request Received
-[INFO] 2025-04-21T13:43:15.540Z - List Actors --- Request Received
-[INFO] 2025-04-21T13:43:29.474Z - MovieActor create ---- Movie-actor relationship created successfully
-[INFO] 2025-04-21T13:43:38.888Z - MovieActor create ---- Movie-actor relationship created successfully
-[INFO] 2025-04-21T13:43:40.191Z - List movies --- Request Received
-[INFO] 2025-04-21T13:43:40.247Z - Get User --- Request Received
-[INFO] 2025-04-21T13:43:40.264Z - Get Movie Reviews - Retrieved reviews for Movie 4
-[INFO] 2025-04-21T13:43:40.317Z - Get User --- Request Received
-[INFO] 2025-04-21T13:43:40.320Z - Get Movie Reviews - Retrieved reviews for Movie 4
-[INFO] 2025-04-21T13:43:40.341Z - Get Movie Reviews - Retrieved reviews for Movie 4
-[INFO] 2025-04-21T13:43:40.388Z - Get User --- Request Received
-[INFO] 2025-04-21T13:43:40.394Z - Notification getUserNotifications ---- Retrieved user notifications
-[INFO] 2025-04-21T13:43:40.395Z - Friendship getAll ---- Retrieved all friendships
-[INFO] 2025-04-21T13:43:40.431Z - Get Movie Reviews - Retrieved reviews for Movie 4
-[INFO] 2025-04-21T13:43:40.449Z - Get User --- Request Received
-[INFO] 2025-04-21T13:43:40.466Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
-[INFO] 2025-04-21T13:43:40.504Z - Get User --- Request Received
-[INFO] 2025-04-21T13:43:40.528Z - Friendship getSentRequests ---- Retrieved sent friendship requests
-[INFO] 2025-04-21T13:43:40.559Z - Get User --- Request Received
-[INFO] 2025-04-21T13:43:45.501Z - Friendship getAll ---- Retrieved all friendships
-[INFO] 2025-04-21T13:43:45.658Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
-[INFO] 2025-04-21T13:43:45.829Z - Friendship getSentRequests ---- Retrieved sent friendship requests
-[INFO] 2025-04-21T13:43:48.031Z - List Users --- Request Received
-[INFO] 2025-04-21T13:45:07.352Z - Get User Ratings - Retrieved ratings for User 5
-[INFO] 2025-04-21T13:45:08.355Z - Get User --- Request Received
-[INFO] 2025-04-21T13:45:09.458Z - Get User Ratings - Retrieved ratings for User 5
-[INFO] 2025-04-21T13:45:09.489Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
-[INFO] 2025-04-21T13:45:13.732Z - Update Rating - Updated Rating [object Object]
-[INFO] 2025-04-21T13:45:15.791Z - List movies --- Request Received
-[INFO] 2025-04-21T13:45:15.845Z - Get User --- Request Received
-[INFO] 2025-04-21T13:45:15.874Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
-[INFO] 2025-04-21T13:45:15.875Z - Get User Ratings - Retrieved ratings for User 5
-[INFO] 2025-04-21T13:45:15.922Z - Get User --- Request Received
-[INFO] 2025-04-21T13:45:15.933Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
-[INFO] 2025-04-21T13:45:15.935Z - Get User Ratings - Retrieved ratings for User 5
-[INFO] 2025-04-21T13:45:16.000Z - Get User --- Request Received
-[INFO] 2025-04-21T13:45:16.016Z - Friendship getAll ---- Retrieved all friendships
-[INFO] 2025-04-21T13:45:16.017Z - Notification getUserNotifications ---- Retrieved user notifications
-[INFO] 2025-04-21T13:45:16.079Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
-[INFO] 2025-04-21T13:45:16.126Z - Friendship getSentRequests ---- Retrieved sent friendship requests
-[INFO] 2025-04-21T13:45:16.860Z - Friendship getAll ---- Retrieved all friendships
-[INFO] 2025-04-21T13:45:16.906Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
-[INFO] 2025-04-21T13:45:16.952Z - Friendship getSentRequests ---- Retrieved sent friendship requests
-[INFO] 2025-04-21T13:45:17.123Z - Get User Ratings - Retrieved ratings for User 5
-[INFO] 2025-04-21T13:45:20.112Z - Get Movie Reviews - Retrieved reviews for Movie 2
-[INFO] 2025-04-21T13:45:20.137Z - Get User --- Request Received
-[INFO] 2025-04-21T13:45:22.887Z - Get User Ratings - Retrieved ratings for User 5
-[INFO] 2025-04-21T13:45:23.146Z - Get User --- Request Received
-[INFO] 2025-04-21T13:45:24.424Z - Get Movie Reviews - Retrieved reviews for Movie 2
-[INFO] 2025-04-21T13:45:24.473Z - Get User --- Request Received
+[INFO] 2025-04-21T14:21:55.674Z - Get Movie Reviews - Retrieved reviews for Movie 3
+[INFO] 2025-04-21T14:21:55.802Z - Get User --- Request Received
+[INFO] 2025-04-21T14:22:03.157Z - Get User --- Request Received
+[INFO] 2025-04-21T14:22:03.235Z - Get User --- Request Received
+[INFO] 2025-04-21T14:22:03.297Z - Get User --- Request Received
+[INFO] 2025-04-21T14:22:03.359Z - Get User --- Request Received
+[INFO] 2025-04-21T14:22:03.420Z - Get User --- Request Received
+[INFO] 2025-04-21T14:22:03.482Z - Get User --- Request Received
+[INFO] 2025-04-21T14:22:03.544Z - Get User --- Request Received
+[INFO] 2025-04-21T14:22:03.953Z - List movies --- Request Received
+[INFO] 2025-04-21T14:22:04.002Z - Get User --- Request Received
+[INFO] 2025-04-21T14:22:04.081Z - Get User --- Request Received
+[INFO] 2025-04-21T14:22:04.143Z - Get User --- Request Received
+[INFO] 2025-04-21T14:22:04.197Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-21T14:22:04.198Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-21T14:22:04.252Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-21T14:22:04.305Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-21T14:22:04.313Z - Get User --- Request Received
+[INFO] 2025-04-21T14:22:04.375Z - Get User --- Request Received
+[INFO] 2025-04-21T14:22:04.438Z - Get User --- Request Received
+[INFO] 2025-04-21T14:22:13.718Z - Get User Ratings - Retrieved ratings for User 5
+[INFO] 2025-04-21T14:22:15.120Z - Get Movie Reviews - Retrieved reviews for Movie 3
+[INFO] 2025-04-21T14:22:15.181Z - Get User --- Request Received
+[INFO] 2025-04-21T14:23:19.737Z - Get Movie Reviews - Retrieved reviews for Movie 2
+[INFO] 2025-04-21T14:23:19.797Z - Get User --- Request Received
+[INFO] 2025-04-21T14:23:35.323Z - Get Movie Reviews - Retrieved reviews for Movie 2
+[INFO] 2025-04-21T14:23:35.376Z - Get User --- Request Received
+[INFO] 2025-04-21T14:23:47.316Z - Get Movie Reviews - Retrieved reviews for Movie 2
+[INFO] 2025-04-21T14:23:47.373Z - Get User --- Request Received
+[INFO] 2025-04-21T14:25:50.445Z - List movies --- Request Received
+[ERROR] 2025-04-21T14:25:50.481Z - Error in LibraryController.getAllByUserId | Error: 
+Invalid `prisma.library.findMany()` invocation in
+C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
+
+  108 }
+  109 
+  110 public static async getAllByUserId(userId: string) {
+→ 111   const libraries = await prisma.library.findMany({
+          where: {
+            userId: "5"
+                    ~~~
+          },
+          include: {
+            movie: true,
+            user: {
+              select: {
+                id: true,
+                name: true,
+                email: true,
+                username: true,
+                profileImage: true
+              }
+            }
+          },
+          orderBy: {
+            updatedAt: "desc"
+          }
+        })
+
+Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String. | Stack: PrismaClientValidationError: 
+Invalid `prisma.library.findMany()` invocation in
+C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
+
+  108 }
+  109 
+  110 public static async getAllByUserId(userId: string) {
+→ 111   const libraries = await prisma.library.findMany({
+          where: {
+            userId: "5"
+                    ~~~
+          },
+          include: {
+            movie: true,
+            user: {
+              select: {
+                id: true,
+                name: true,
+                email: true,
+                username: true,
+                profileImage: true
+              }
+            }
+          },
+          orderBy: {
+            updatedAt: "desc"
+          }
+        })
+
+Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String.
+    at Cn (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:29:1363)
+    at Wn.handleRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:7177)
+    at Wn.handleAndLogRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6858)
+    at Wn.request (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6565)
+    at async l (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:130:10067)
+    at Function.getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:23)
+    at getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\controller\library.controller.ts:212:25)
+[INFO] 2025-04-21T14:27:07.833Z - Get Movie Reviews - Retrieved reviews for Movie 3
+[INFO] 2025-04-21T14:27:07.848Z - Get User --- Request Received
+[INFO] 2025-04-21T14:27:08.190Z - LibraryController.delete ---- Deleted library entry ${id}
+[INFO] 2025-04-21T14:27:11.329Z - LibraryController.create ---- Library entry created for user 5 and movie 3
+[INFO] 2025-04-21T14:27:31.978Z - Get User --- Request Received
+[INFO] 2025-04-21T14:27:32.225Z - LibraryController.getAll ---- Retrieved all library entries for user ${userId}
+[INFO] 2025-04-21T14:27:32.368Z - Get User Ratings - Retrieved ratings for User 5
+[INFO] 2025-04-21T14:27:33.411Z - Get User --- Request Received
+[ERROR] 2025-04-21T14:27:33.964Z - Error in LibraryController.getAllByUserId | Error: 
+Invalid `prisma.library.findMany()` invocation in
+C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
+
+  108 }
+  109 
+  110 public static async getAllByUserId(userId: string) {
+→ 111   const libraries = await prisma.library.findMany({
+          where: {
+            userId: "5"
+                    ~~~
+          },
+          include: {
+            movie: true,
+            user: {
+              select: {
+                id: true,
+                name: true,
+                email: true,
+                username: true,
+                profileImage: true
+              }
+            }
+          },
+          orderBy: {
+            updatedAt: "desc"
+          }
+        })
+
+Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String. | Stack: PrismaClientValidationError: 
+Invalid `prisma.library.findMany()` invocation in
+C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:44
+
+  108 }
+  109 
+  110 public static async getAllByUserId(userId: string) {
+→ 111   const libraries = await prisma.library.findMany({
+          where: {
+            userId: "5"
+                    ~~~
+          },
+          include: {
+            movie: true,
+            user: {
+              select: {
+                id: true,
+                name: true,
+                email: true,
+                username: true,
+                profileImage: true
+              }
+            }
+          },
+          orderBy: {
+            updatedAt: "desc"
+          }
+        })
+
+Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided String.
+    at Cn (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:29:1363)
+    at Wn.handleRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:7177)
+    at Wn.handleAndLogRequestError (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6858)
+    at Wn.request (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:121:6565)
+    at async l (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\backend\node_modules\.pnpm\@prisma+client@6.5.0_prisma@6.5.0_typescript@5.8.2__typescript@5.8.2\node_modules\@prisma\client\runtime\library.js:130:10067)
+    at Function.getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\services\library.service.ts:111:23)
+    at getAllByUserId (C:\Users\yunus\OneDrive\Masaüstü\Yeni klasör\MovieFlow\Backend\src\controller\library.controller.ts:212:25)
+[INFO] 2025-04-21T14:27:33.966Z - List movies --- Request Received
+[INFO] 2025-04-21T14:27:38.175Z - Get Movie Reviews - Retrieved reviews for Movie 4
+[INFO] 2025-04-21T14:27:38.235Z - Get User --- Request Received
+[INFO] 2025-04-21T14:27:44.997Z - Get Movie Reviews - Retrieved reviews for Movie 5
+[INFO] 2025-04-21T14:27:45.048Z - Get User --- Request Received
+[INFO] 2025-04-21T14:27:45.612Z - Get Movie Reviews - Retrieved reviews for Movie 4
+[INFO] 2025-04-21T14:27:45.673Z - Get User --- Request Received
+[INFO] 2025-04-21T14:29:37.515Z - List Genres --- Request Received
+[INFO] 2025-04-21T14:29:44.942Z - Add Movie to Genre - Added Movie 2 to Genre 2
+[INFO] 2025-04-21T14:29:46.616Z - Add Movie to Genre - Added Movie 2 to Genre 4
+[INFO] 2025-04-21T14:29:48.570Z - List movies --- Request Received
+[INFO] 2025-04-21T14:29:48.626Z - Get User --- Request Received
+[INFO] 2025-04-21T14:29:48.647Z - Get Movie Reviews - Retrieved reviews for Movie 4
+[INFO] 2025-04-21T14:29:48.703Z - Get User --- Request Received
+[INFO] 2025-04-21T14:29:48.714Z - Get Movie Reviews - Retrieved reviews for Movie 4
+[INFO] 2025-04-21T14:29:48.734Z - Get Movie Reviews - Retrieved reviews for Movie 4
+[INFO] 2025-04-21T14:29:48.780Z - Notification getUserNotifications ---- Retrieved user notifications
+[INFO] 2025-04-21T14:29:48.782Z - Friendship getAll ---- Retrieved all friendships
+[INFO] 2025-04-21T14:29:48.832Z - Friendship getPendingRequests ---- Retrieved pending friendship requests
+[INFO] 2025-04-21T14:29:48.878Z - Friendship getSentRequests ---- Retrieved sent friendship requests
+[INFO] 2025-04-21T14:29:48.878Z - Get User --- Request Received
+[INFO] 2025-04-21T14:29:48.912Z - Get Movie Reviews - Retrieved reviews for Movie 4
+[INFO] 2025-04-21T14:29:48.940Z - Get User --- Request Received
+[INFO] 2025-04-21T14:29:49.002Z - Get User --- Request Received
+[INFO] 2025-04-21T14:29:49.174Z - Get User --- Request Received
+[INFO] 2025-04-21T14:29:50.855Z - Get Movie Reviews - Retrieved reviews for Movie 2
+[INFO] 2025-04-21T14:29:50.911Z - Get User --- Request Received

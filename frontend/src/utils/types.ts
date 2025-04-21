@@ -195,6 +195,8 @@ export interface MovieDetailsType {
       updatedAt: string;
     };
   }[];
+  recommendedMovies?: Movie[];
+  ratings?: Rating[];
 }
 
 export interface Review {
