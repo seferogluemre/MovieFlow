@@ -52,7 +52,7 @@ export async function sendRecommendationEmail(
   console.log("İşlenecek film listesi:", movieList);
 
   // OnlyJS Movie Platform logosu - güvenilir public URL
-  const logoPath = "https://placehold.co/100x100/4267b2/white?text=OnlyJS";
+  const logoPath = `https://media.licdn.com/dms/image/v2/D4D0BAQH79hdedK8kCQ/company-logo_100_100/company-logo_100_100/0/1712151935277/onlyjs_technology_logo?e=1750896000&v=beta&t=Ijh6xb1_MYKrvcW6Z5TvxHxy1skt4c5a3vKrZCip1nU`;
 
   // HTML içeriği oluştur
   const htmlContent = `

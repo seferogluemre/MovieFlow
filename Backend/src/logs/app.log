@@ -1465,3 +1465,7 @@ Argument `userId`: Invalid value provided. Expected IntFilter or Int, provided S
 [INFO] 2025-04-21T14:29:49.174Z - Get User --- Request Received
 [INFO] 2025-04-21T14:29:50.855Z - Get Movie Reviews - Retrieved reviews for Movie 2
 [INFO] 2025-04-21T14:29:50.911Z - Get User --- Request Received
+[INFO] 2025-04-21T20:48:42.298Z - File uploaded to S3: posters/433a3344-3f6f-49f8-9c4b-fc129d438767.jpg
+[INFO] 2025-04-21T20:48:42.344Z - Update Movie - Updated Movie [object Object]
+[INFO] 2025-04-21T20:48:53.208Z - File uploaded to S3: posters/5d94dad4-6825-4828-934c-edcb6dc1ac15.jpg
+[INFO] 2025-04-21T20:48:53.211Z - Update Movie - Updated Movie [object Object]
