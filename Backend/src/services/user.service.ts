@@ -1,8 +1,8 @@
+import { USER_WHERE_CLAUSE } from "@constants/user.constant";
 import { PrismaClient } from "@prisma/client";
 import { getFullProfileImageUrl } from "@utils/url/url.helper";
 import { CreateUserType, UpdateUserType } from "@validators/user.validation";
 import bcrypt from "bcryptjs";
-import { USER_WHERE_CLAUSE } from "src/constants/user.constant";
 import { UserQueryProps } from "src/types/types";
 
 export const BASE_URL = process.env.BASE_URL || "http://localhost:3000";

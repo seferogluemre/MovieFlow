@@ -17,6 +17,4 @@ mailQueue.add(
   }
 );
 
-console.log("Mail cron işi başlatıldı! (20 saniyede bir çalışacak)");
-
 export default mailQueue;

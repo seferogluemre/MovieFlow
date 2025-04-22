@@ -1,6 +1,6 @@
-import { BaseSchema } from "src/schemas/base.schema";
-import { z } from "zod";
 import { FriendshipStatus } from "@prisma/client";
+import { BaseSchema } from "@validators/base.schema";
+import { z } from "zod";
 
 export const createFriendshipSchema = BaseSchema.extend({
   friendId: z.number().int().positive(),

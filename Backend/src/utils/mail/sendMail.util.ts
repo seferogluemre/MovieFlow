@@ -6,29 +6,22 @@ export async function sendRecommendationEmail(
   name: string,
   movies: any[]
 ) {
-  // Film bilgilerini güvenli bir şekilde kontrol ederek alın
   const movieList = movies.map((movie) => {
-    // Filmin kendisi veya movie özelliği içindeki bilgiler
     const movieData = movie.movie || movie;
 
     // Başlık
     const title = movieData.title || "İsimsiz Film";
 
-    // Yıl bilgisi - farklı alanlarda olabilir
     const year = movieData.year || movieData.releaseYear || "?";
 
-    // Poster URL - farklı alanlarda olabilir
     let posterPath = movieData.posterUrl || movieData.posterImage;
 
-    // Varsayılan poster - görsel sorunlarını önler
     const defaultPosterUrl =
       "https://placehold.co/400x600/333/white?text=Film+Posteri";
 
-    // Eğer S3 key varsa, URL'ye dönüştür
     let posterUrl;
     try {
       if (posterPath) {
-        // Eğer zaten tam URL ise kullan, değilse S3 URL'si oluştur
         posterUrl = posterPath.startsWith("http")
           ? posterPath
           : getS3Url(posterPath);
@@ -36,22 +29,12 @@ export async function sendRecommendationEmail(
         posterUrl = defaultPosterUrl;
       }
     } catch (error) {
-      console.error(`Poster URL oluşturma hatası (${title}):`, error);
       posterUrl = defaultPosterUrl;
     }
-
-    console.log(
-      `Film işleniyor: ${title}, ${year}, Poster: ${
-        posterUrl ? posterUrl.substring(0, 50) + "..." : "Yok"
-      }`
-    );
 
     return { title, year, posterUrl };
   });
 
-  console.log("İşlenecek film listesi:", movieList);
-
-  // OnlyJS Movie Platform logosu - güvenilir public URL
   const logoPath = `https://media.licdn.com/dms/image/v2/D4D0BAQH79hdedK8kCQ/company-logo_100_100/company-logo_100_100/0/1712151935277/onlyjs_technology_logo?e=1750896000&v=beta&t=Ijh6xb1_MYKrvcW6Z5TvxHxy1skt4c5a3vKrZCip1nU`;
 
   // HTML içeriği oluştur
@@ -207,11 +190,5 @@ export async function sendRecommendationEmail(
     html: htmlContent,
   };
 
-  console.log(
-    `[${new Date().toISOString()}] "${email}" adresine mail gönderiliyor...`
-  );
   await transporter.sendMail(mailOptions);
-  console.log(
-    `[${new Date().toISOString()}] "${email}" adresine mail başarıyla gönderildi!`
-  );
 }

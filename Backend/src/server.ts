@@ -14,7 +14,6 @@ import review_routes from "@routes/review.routes";
 import user_routes from "@routes/user.routes";
 import watchList_routes from "@routes/watchlist.routes";
 import wishList_routes from "@routes/wishlist.routes";
-import "@workers/index";
 import cors from "cors";
 import dotenv from "dotenv";
 import express from "express";

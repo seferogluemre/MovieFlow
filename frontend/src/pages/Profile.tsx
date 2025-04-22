@@ -109,15 +109,6 @@ const Profile: FC = () => {
       setUsername(user.username || "");
       setEmail(user.email || "");
 
-      // localStorage'da userVerified varsa ve henüz user.isVerified false ise
-      // user.isVerified'i manuel olarak true yap
-      const isVerifiedInStorage =
-        localStorage.getItem("userVerified") === "true";
-      if (isVerifiedInStorage && user && !user.isVerified) {
-        console.log("Applying isVerified=true from localStorage");
-        user.isVerified = true;
-      }
-
       if (user.profileImage) {
         if (user.profileImage.startsWith("http")) {
           setPreviewUrl(user.profileImage);
@@ -414,24 +405,11 @@ const Profile: FC = () => {
       setVerificationSuccess(true);
 
       // Kullanıcı bilgilerini tam olarak güncelle
-      const updatedUser = await checkAuthStatus();
-      console.log("User data after verification:", updatedUser);
+      await checkAuthStatus();
 
-      // Yerel state içinde isVerified'i güncelle
-      if (user) {
-        user.isVerified = true;
-      }
-
-      // Güncellenen kullanıcı verilerini lokalde hatırla
-      localStorage.setItem("userVerified", "true");
-
-      // 2 saniye sonra modalı kapat ve gerekirse sayfayı yenile
+      // 2 saniye sonra modalı kapat
       setTimeout(() => {
         handleVerificationModalClose();
-        // Eğer güncellenmiş kullanıcı verisi alamadıysak sayfayı yenileme yapalım
-        if (!updatedUser || !(updatedUser as any).isVerified) {
-          window.location.reload();
-        }
       }, 2000);
     } catch (err: any) {
       console.error("E-posta doğrulama hatası:", err);

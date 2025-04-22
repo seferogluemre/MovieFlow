@@ -114,7 +114,6 @@ export class LibraryController {
         res.status(401).json({ message: "Unauthorized" });
         return;
       }
-      // TODO: Check if the user is the owner of the library entry
       const { id } = req.params;
       const data = req.body as UpdateLibraryType;
       const library = await LibraryService.getById(Number(id));
@@ -194,7 +193,6 @@ export class LibraryController {
     try {
       const userId = req.params.userId;
 
-      // Check if userId matches current user or user is admin
       const currentUser = req.user;
       if (
         currentUser &&

@@ -1,4 +1,4 @@
-import { BaseSchema } from "src/schemas/base.schema";
+import { BaseSchema } from "@validators/base.schema";
 import { z } from "zod";
 
 export const createReviewSchema = BaseSchema.extend({

@@ -24,6 +24,7 @@
       "@config/*": ["src/config/*"],
       "@queues/*": ["src/queues/*"],
       "@workers/*": ["src/workers/*"],
+      "@constants/*": ["src/constants/*"],
       "@types/*": ["src/types/*"],
     },
     "forceConsistentCasingInFileNames": true,
