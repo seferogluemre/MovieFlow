@@ -47,14 +47,6 @@ import { useAuth } from "../context/AuthContext";
 import api, { friendshipService, userService } from "../utils/api";
 import { Friendship, TabPanelProps, User } from "../utils/types";
 
-const ProfileAvatar = styled(Avatar)(({ theme }) => ({
-  width: 150,
-  height: 150,
-  marginBottom: theme.spacing(2),
-  border: `4px solid ${theme.palette.primary.main}`,
-  cursor: "pointer",
-}));
-
 // Avatar modal için stil
 const ModalAvatarContainer = styled(Box)(({ theme }) => ({
   position: "absolute",
@@ -125,23 +117,6 @@ interface Review {
   };
 }
 
-// Doğrulanma durumu için badge bileşeni
-const VerificationBadge = styled(Box)(
-  ({ theme, isVerified }: { theme: any; isVerified: boolean }) => ({
-    display: "inline-flex",
-    alignItems: "center",
-    marginLeft: theme.spacing(1),
-    padding: theme.spacing(0.5, 1),
-    borderRadius: theme.shape.borderRadius,
-    backgroundColor: isVerified
-      ? theme.palette.success.main
-      : theme.palette.warning.light,
-    color: isVerified ? theme.palette.common.white : theme.palette.text.primary,
-    fontSize: "0.75rem",
-    fontWeight: "bold",
-  })
-);
-
 const ProfileDetail: FC = () => {
   const { id } = useParams<{ id: string }>();
   const { user: currentUser } = useAuth();
@@ -165,17 +140,14 @@ const ProfileDetail: FC = () => {
   const [loadingRelationships, setLoadingRelationships] = useState(false);
   const [userReviews, setUserReviews] = useState<Review[]>([]);
   const [loadingReviews, setLoadingReviews] = useState(false);
+  const [successMessage, setSuccessMessage] = useState<string | null>(null);
+  const [loadingAllUsers, setLoadingAllUsers] = useState(false);
 
   // Profil resmi modalı için state
   const [avatarModalOpen, setAvatarModalOpen] = useState(false);
 
   // Add new state for all users
   const [allUsers, setAllUsers] = useState<User[]>([]);
-  const [loadingAllUsers, setLoadingAllUsers] = useState(false);
-
-  // Add state for success message if it doesn't exist
-  const [successMessage, setSuccessMessage] = useState<string | null>(null);
-
   // Profil resmi tıklandığında
   const handleAvatarClick = () => {
     setAvatarModalOpen(true);
@@ -266,7 +238,9 @@ const ProfileDetail: FC = () => {
             setUserReviews(enhancedReviews);
             return;
           }
-        } catch (error) {}
+        } catch (error) {
+          console.error("Error fetching user reviews:", error);
+        }
       }
 
       // Try getting user data which might include reviews
@@ -284,7 +258,9 @@ const ProfileDetail: FC = () => {
           setUserReviews(enhancedReviews);
           return;
         }
-      } catch (error) {}
+      } catch (error) {
+        console.error("Error fetching user reviews:", error);
+      }
 
       // Fallback approach - try the direct reviews by userId endpoint
       try {
@@ -604,6 +580,7 @@ const ProfileDetail: FC = () => {
                   const data = await userService.getUserStats(userId);
                   setFriendsData((prev) => ({ ...prev, [userId]: data }));
                 } catch (err) {
+                  console.error("Error fetching user stats:", err);
                 } finally {
                   setLoadingFriends((prev) => ({ ...prev, [userId]: false }));
                 }
@@ -611,6 +588,7 @@ const ProfileDetail: FC = () => {
             });
           }
         } catch (error) {
+          console.error("Error fetching relationships:", error);
         } finally {
           setLoadingRelationships(false);
         }
@@ -629,6 +607,7 @@ const ProfileDetail: FC = () => {
           const users = await userService.getAllUsers();
           setAllUsers(users);
         } catch (error) {
+          console.error("Error fetching all users:", error);
         } finally {
           setLoadingAllUsers(false);
         }
@@ -637,18 +616,6 @@ const ProfileDetail: FC = () => {
       fetchAllUsers();
     }
   }, [friendsModalOpen, tabValue, allUsers.length]);
-
-  // Check friendship status between current user and another user
-  const checkFriendshipStatus = async (otherUserId: number) => {
-    if (!currentUser) return "none";
-
-    try {
-      const status = await friendshipService.getRelationshipStatus(otherUserId);
-      return status.type;
-    } catch (error) {
-      return "none";
-    }
-  };
 
   // Profil fotoğrafı URL'sini oluştur
   const getProfileImageUrl = (profileImage?: string | null) => {
@@ -703,16 +670,12 @@ const ProfileDetail: FC = () => {
   };
 
   const getMutualFriendsCount = () => {
-    return mutualFriends.length;
+    if (mutualFriends.length > 0) {
+      return mutualFriends.length - 1;
+    }
+    return 0;
   };
 
-  // Add helper function to handle add friend button click
-  const handleAddFriendClick = (e: React.MouseEvent, userId: number) => {
-    e.stopPropagation();
-    handleSendFriendRequest(userId);
-  };
-
-  // Function to handle cancelling friend request
   const handleCancelFriendRequest = async () => {
     if (!relationshipId) return;
 
@@ -729,7 +692,7 @@ const ProfileDetail: FC = () => {
 
       setSuccessMessage("Arkadaşlık isteği iptal edildi.");
       setTimeout(() => setSuccessMessage(null), 3000);
-    } catch (err: any) {
+    } catch (err) {
       setError("Arkadaşlık isteğini iptal ederken bir hata oluştu.");
       setTimeout(() => setError(null), 3000);
     } finally {
@@ -789,7 +752,9 @@ const ProfileDetail: FC = () => {
 
           const mutualData = await friendshipService.getMutualFriends(user.id);
           setMutualFriends(mutualData);
-        } catch (error) {}
+        } catch (error) {
+          console.error("Error fetching profile stats:", error);
+        }
       };
 
       loadProfileStats();
@@ -1015,6 +980,7 @@ const ProfileDetail: FC = () => {
     );
   }
 
+  // Return component
   return (
     <Box sx={{ maxWidth: "600px", mx: "auto", py: 4 }}>
       <Card sx={{ mb: 4 }}>
@@ -1080,7 +1046,7 @@ const ProfileDetail: FC = () => {
                 @{user.username}
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                {formatCreationTime(user.createdAt)}
+                {formatCreationTime(user.createdAt)} Katıldı
               </Typography>
             </Box>
           </Box>

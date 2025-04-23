@@ -8,7 +8,12 @@ import React, {
   useState,
 } from "react";
 import { authService, userService } from "../utils/api";
-import { closeSocket, initSocket, isSocketConnected } from "../utils/socket";
+import {
+  closeSocket,
+  hasNotificationHandler,
+  initSocket,
+  isSocketConnected,
+} from "../utils/socket";
 import { AuthContextType, User } from "../utils/types";
 
 const AuthContext = createContext<AuthContextType>({
@@ -38,47 +43,85 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const socketInitializedRef = useRef(false);
+  const socketCheckIntervalRef = useRef<NodeJS.Timeout | null>(null);
 
-  // Setup socket connection when user is authenticated
+  // Socket yaşam döngüsü yönetimi - daha güçlü bir implementasyon
   useEffect(() => {
-    if (user) {
+    // Socket bağlantısını başlat veya kapat
+    const manageSocketConnection = () => {
       const token = localStorage.getItem("accessToken");
-      if (token && !socketInitializedRef.current) {
-        // Initialize socket connection
-        console.log("AuthContext: Socket bağlantısı başlatılıyor...");
-        initSocket(token);
-        socketInitializedRef.current = true;
+
+      if (user && token) {
+        // Kullanıcı giriş yapmış, socket başlat
+        if (!isSocketConnected()) {
+          console.log("Socket bağlantısı başlatılıyor veya yenileniyor...");
+          const newSocket = initSocket(token);
+
+          if (newSocket) {
+            socketInitializedRef.current = true;
+            console.log("Socket bağlantısı başarıyla kuruldu");
+          } else {
+            console.error("Socket bağlantısı başlatılamadı!");
+          }
+        } else {
+          console.log("Socket bağlantısı zaten aktif");
+        }
+      } else {
+        // Kullanıcı çıkış yapmış veya token yok, socket kapat
+        if (socketInitializedRef.current) {
+          closeSocket();
+          socketInitializedRef.current = false;
+          console.log("Socket bağlantısı kapatıldı (kullanıcı oturumu kapalı)");
+        }
       }
-    } else {
-      // No user, close any existing connection
-      if (socketInitializedRef.current) {
-        closeSocket();
-        socketInitializedRef.current = false;
-      }
+    };
+
+    // İlk yükleme veya durum değişikliği
+    manageSocketConnection();
+
+    // Periyodik kontrol için interval başlat
+    if (user && !socketCheckIntervalRef.current) {
+      socketCheckIntervalRef.current = setInterval(() => {
+        if (!isSocketConnected()) {
+          console.log(
+            "Periyodik kontrol: Socket bağlantısı kopmuş, yenileniyor..."
+          );
+          manageSocketConnection();
+        } else if (!hasNotificationHandler()) {
+          console.log(
+            "Periyodik kontrol: Bildirim dinleyicisi yok, socket bağlantısı yenileniyor..."
+          );
+          manageSocketConnection();
+        }
+      }, 10000); // Her 10 saniyede bir kontrol
+    } else if (!user && socketCheckIntervalRef.current) {
+      clearInterval(socketCheckIntervalRef.current);
+      socketCheckIntervalRef.current = null;
     }
 
-    // Cleanup socket on unmount
+    // Cleanup işlemi
     return () => {
-      closeSocket();
-      socketInitializedRef.current = false;
+      if (socketCheckIntervalRef.current) {
+        clearInterval(socketCheckIntervalRef.current);
+        socketCheckIntervalRef.current = null;
+      }
     };
   }, [user]);
 
-  // Periyodik bağlantı kontrolü
+  // Uygulama kapanırken socket bağlantısını temizle
   useEffect(() => {
-    if (user) {
-      const checkInterval = setInterval(() => {
-        const token = localStorage.getItem("accessToken");
+    // Uygulama kapanırken socket bağlantısını kapat
+    const handleBeforeUnload = () => {
+      closeSocket();
+    };
 
-        if (token && !isSocketConnected() && socketInitializedRef.current) {
-          console.log("AuthContext: Socket bağlantısı kopmuş, yenileniyor...");
-          initSocket(token);
-        }
-      }, 30000); // Her 30 saniyede bir kontrol et
+    window.addEventListener("beforeunload", handleBeforeUnload);
 
-      return () => clearInterval(checkInterval);
-    }
-  }, [user]);
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+      closeSocket();
+    };
+  }, []);
 
   useEffect(() => {
     const accessToken = localStorage.getItem("accessToken");

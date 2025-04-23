@@ -4,6 +4,8 @@ let socket: Socket | null = null;
 let reconnectTimer: NodeJS.Timeout | null = null;
 const MAX_RECONNECT_ATTEMPTS = 5;
 let reconnectAttempts = 0;
+let notificationCallbacks: Array<(data: any) => void> = [];
+let socketEventsRegistered = false;
 
 // Initialize socket connection
 export const initSocket = (token: string) => {
@@ -19,6 +21,7 @@ export const initSocket = (token: string) => {
   }
 
   reconnectAttempts = 0;
+  socketEventsRegistered = false;
 
   // Validate token before attempting connection
   if (!token) {
@@ -39,6 +42,18 @@ export const initSocket = (token: string) => {
     timeout: 20000, // Bağlantı zaman aşımı
     transports: ["websocket"], // WebSocket protokolünü tercih et - daha hızlı
   });
+
+  registerSocketEvents();
+
+  return socket;
+};
+
+// Register all socket events
+const registerSocketEvents = () => {
+  if (!socket || socketEventsRegistered) return;
+
+  console.log("Socket olayları kaydediliyor...");
+  socketEventsRegistered = true;
 
   // Connection event handlers
   socket.on("connect", () => {
@@ -74,6 +89,7 @@ export const initSocket = (token: string) => {
 
   socket.on("disconnect", (reason) => {
     console.log("Socket.io bağlantısı kesildi:", reason);
+    socketEventsRegistered = false;
 
     // If disconnected due to io server disconnect or transport close, try to reconnect
     if (reason === "io server disconnect" || reason === "transport close") {
@@ -97,12 +113,44 @@ export const initSocket = (token: string) => {
     }
   });
 
-  // Handle notification events
+  // Handle notification events with improved logging
   socket.on("notification", (data) => {
-    console.log("Socket.io üzerinden bildirim alındı:", data);
-  });
+    console.log(
+      "%c Socket.io üzerinden bildirim alındı:",
+      "background: #4CAF50; color: white; padding: 4px 8px; border-radius: 4px;",
+      data
+    );
 
-  return socket;
+    // Özel bir event dispatcher oluştur
+    const dispatchNotificationEvent = () => {
+      // Tüm kayıtlı callback'leri çağır
+      if (notificationCallbacks.length === 0) {
+        console.warn("Bildirim alındı fakat hiç callback kayıtlı değil!");
+      }
+
+      notificationCallbacks.forEach((callback, index) => {
+        try {
+          console.log(`Callback #${index + 1} çağrılıyor...`);
+          callback(data);
+        } catch (error) {
+          console.error(`Callback #${index + 1} çalıştırılırken hata:`, error);
+        }
+      });
+    };
+
+    // Bildirim için özel dispatcher oluştur ve hemen çalıştır
+    dispatchNotificationEvent();
+
+    // DOM event olarak da bildirim gönder (global yakalama için)
+    try {
+      const notificationEvent = new CustomEvent("socketNotification", {
+        detail: data,
+      });
+      window.dispatchEvent(notificationEvent);
+    } catch (error) {
+      console.error("CustomEvent oluşturulurken hata:", error);
+    }
+  });
 };
 
 // Get existing socket
@@ -112,6 +160,9 @@ export const getSocket = () => {
 
 // Check if socket is connected
 export const isSocketConnected = () => {
+  if (socket && !socketEventsRegistered) {
+    registerSocketEvents();
+  }
   return socket ? socket.connected : false;
 };
 
@@ -129,47 +180,76 @@ export const closeSocket = () => {
   }
 
   reconnectAttempts = 0;
+  notificationCallbacks = []; // Reset callbacks
+  socketEventsRegistered = false;
 };
 
 // Setup notification handler
 export const setupNotificationHandler = (callback: (data: any) => void) => {
-  if (socket) {
-    try {
-      // Remove any existing handlers to prevent duplicates
-      socket.off("notification");
-
-      // Add the new handler
-      socket.on("notification", (data) => {
-        console.log("Socket.io üzerinden bildirim alındı:", data);
-
-        // Validate notification data
-        if (!data || typeof data !== "object") {
-          console.error("Geçersiz bildirim verisi:", data);
-          return;
-        }
-
-        // Check required fields
-        if (!data.type || !data.message) {
-          console.error("Eksik bildirim alanları:", data);
-          return;
-        }
-
-        // Call the callback with the notification data
-        console.log("Bildirim callback'i çağrılıyor...");
-        callback(data);
-      });
-
-      console.log("Bildirim işleyicisi başarıyla kuruldu ve aktif");
-
-      return true;
-    } catch (error) {
-      console.error("Bildirim işleyicisi kurulurken hata oluştu:", error);
-      return false;
-    }
+  if (!socket) {
+    console.error("Socket bağlantısı yok, bildirim dinleyicisi eklenemiyor");
+    return false;
   }
 
-  console.error("Bildirim işleyicisi kurulamadı: Socket bağlantısı yok");
-  return false;
+  try {
+    // Make sure events are registered
+    if (!socketEventsRegistered) {
+      registerSocketEvents();
+    }
+
+    // Gelen callback'i diziye ekle
+    const isCallbackAlreadyRegistered =
+      notificationCallbacks.includes(callback);
+    if (!isCallbackAlreadyRegistered) {
+      notificationCallbacks.push(callback);
+      console.log(
+        `Bildirim callback'i eklendi. Toplam: ${notificationCallbacks.length}`
+      );
+    } else {
+      console.log("Bu callback zaten kayıtlı, tekrar eklenmedi");
+    }
+
+    // Add the new handler (listeners dizisine dahil edilmesi için) - tekrar garantilemek için
+    socket.off("notification").on("notification", (data) => {
+      console.log("Socket.io üzerinden bildirim alındı:", data);
+
+      // Validate notification data
+      if (!data || typeof data !== "object") {
+        console.error("Geçersiz bildirim verisi:", data);
+        return;
+      }
+
+      // Check required fields
+      if (!data.type || !data.message) {
+        console.error("Eksik bildirim alanları:", data);
+        return;
+      }
+
+      // Call the callback with the notification data
+      console.log("Bildirim callback'i doğrudan çağrılıyor...");
+      callback(data);
+    });
+
+    console.log("Bildirim işleyicisi başarıyla kuruldu ve aktif");
+
+    // Doğrulama: listener'ların doğru şekilde eklendiğini kontrol et
+    if (socket.hasListeners && socket.hasListeners("notification")) {
+      console.log("Bildirim dinleyicisi başarıyla bağlandı ve aktif");
+    } else {
+      console.warn("Bildirim dinleyicisi eklenemedi veya aktif değil!");
+
+      // Event listener'ı yeniden ekle - son çare
+      socket.on("notification", (data) => {
+        console.log("Yedek bildirim handler'ı çalıştı:", data);
+        callback(data);
+      });
+    }
+
+    return true;
+  } catch (error) {
+    console.error("Bildirim işleyicisi kurulurken hata oluştu:", error);
+    return false;
+  }
 };
 
 // Remove notification handler
@@ -178,4 +258,10 @@ export const removeNotificationHandler = () => {
     socket.off("notification");
     console.log("Bildirim işleyicisi kaldırıldı");
   }
+  notificationCallbacks = []; // Tüm callback'leri temizle
+};
+
+// Check if notification handler is set
+export const hasNotificationHandler = () => {
+  return notificationCallbacks.length > 0;
 };

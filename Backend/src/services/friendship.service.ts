@@ -111,57 +111,76 @@ export class FriendshipService {
   }
 
   static async getAll(userId: number) {
-    // Tüm ilişkileri getir
-    const friendships = await prisma.friendship.findMany({
-      where: {
-        OR: [{ userId }, { friendId: userId }],
-      },
-      include: {
-        user: true,
-        friend: true,
-      },
-    });
+    try {
+      console.log(
+        `Friendship getAll: ${userId} kullanıcısının arkadaşlıkları getiriliyor`
+      );
 
-    // İlişkileri normalize et
-    // İki yönlü ACCEPTED ilişkileri için tek kayıt dönmesini sağla
-    const uniqueFriendshipMap = new Map();
+      // Tüm ilişkileri getir
+      const friendships = await prisma.friendship.findMany({
+        where: {
+          OR: [
+            { userId, status: FriendshipStatus.ACCEPTED },
+            { friendId: userId, status: FriendshipStatus.ACCEPTED },
+          ],
+        },
+        include: {
+          user: true,
+          friend: true,
+        },
+      });
 
-    friendships.forEach((friendship) => {
-      // İlişkideki diğer kullanıcıyı bul
-      const otherUserId =
-        friendship.userId === userId ? friendship.friendId : friendship.userId;
+      console.log(
+        `Friendship getAll: ${friendships.length} arkadaşlık kaydı bulundu`
+      );
 
-      // Eğer bu kullanıcı için bir ilişki zaten kaydedilmişse, kontrol et
-      if (uniqueFriendshipMap.has(otherUserId)) {
-        const existingFriendship = uniqueFriendshipMap.get(otherUserId);
+      // İlişkileri normalize et - her arkadaşlık ilişkisinin tek bir versiyonunu döndür
+      const uniqueFriendshipMap = new Map();
 
-        // Eğer mevcut ilişki ACCEPTED değilse ve yeni ilişki ACCEPTED ise, yenisiyle değiştir
-        if (
-          existingFriendship.status !== FriendshipStatus.ACCEPTED &&
-          friendship.status === FriendshipStatus.ACCEPTED
-        ) {
-          uniqueFriendshipMap.set(otherUserId, friendship);
+      friendships.forEach((friendship) => {
+        // İlişkideki diğer kullanıcıyı bul
+        const otherUserId =
+          friendship.userId === userId
+            ? friendship.friendId
+            : friendship.userId;
+
+        // Kendi kendine arkadaşlık ilişkisi olma durumunu kontrol et ve atla
+        if (otherUserId === userId) {
+          console.log(
+            `Friendship getAll: Kullanıcının kendisiyle olan ilişki atlanıyor (userId: ${userId})`
+          );
+          return;
         }
-        // İki ilişki de aynı statüde ise, daha yeni olanı al
-        else if (existingFriendship.status === friendship.status) {
-          if (
-            new Date(friendship.createdAt) >
-            new Date(existingFriendship.createdAt)
-          ) {
-            uniqueFriendshipMap.set(otherUserId, friendship);
-          }
+
+        // Bu ilişkinin görüntülenecek kullanıcısını belirle
+        const otherUser =
+          friendship.userId === userId ? friendship.friend : friendship.user;
+
+        // Eğer bu diğer kullanıcı için bir ilişki henüz kaydedilmemişse, ekle
+        if (!uniqueFriendshipMap.has(otherUserId)) {
+          console.log(
+            `Friendship getAll: ${otherUserId} kullanıcısı ile ilişki kaydediliyor`
+          );
+          uniqueFriendshipMap.set(otherUserId, {
+            ...friendship,
+            displayUser: otherUser, // Görüntülenecek kullanıcıyı ekle
+          });
         }
-      } else {
-        // Bu kullanıcı için ilk kayıt
-        uniqueFriendshipMap.set(otherUserId, friendship);
-      }
-    });
+      });
 
-    // Map'ten değerleri geri array'e çevir
-    const normalizedFriendships = Array.from(uniqueFriendshipMap.values());
+      // Map'ten değerleri geri array'e çevir
+      const normalizedFriendships = Array.from(uniqueFriendshipMap.values());
 
-    await prisma.$disconnect();
-    return this.enhanceFriendships(normalizedFriendships);
+      console.log(
+        `Friendship getAll: ${normalizedFriendships.length} benzersiz arkadaşlık kaydı döndürülüyor`
+      );
+
+      await prisma.$disconnect();
+      return this.enhanceFriendships(normalizedFriendships);
+    } catch (error) {
+      console.error(`Friendship getAll error:`, error);
+      throw error;
+    }
   }
 
   static async getById(id: number) {
@@ -214,7 +233,8 @@ export class FriendshipService {
         `Friendship update: ${id} ID'li arkadaşlık isteği ${data.status} durumuna güncellendi`
       );
 
-      // Eğer arkadaşlık kabul edildiyse, ters ilişkiyi de oluştur veya güncelle
+      // Eğer arkadaşlık kabul edildiyse, ters ilişkiyi kontrol et
+      // Artık yeni kayıt oluşturmuyoruz, sadece mevcut bir ters ilişki varsa güncelliyoruz
       if (data.status === FriendshipStatus.ACCEPTED) {
         // Ters ilişkiyi kontrol et
         const reverseRelation = await prisma.friendship.findFirst({
@@ -232,7 +252,13 @@ export class FriendshipService {
               status: FriendshipStatus.ACCEPTED,
             },
           });
-        } else {
+          console.log(
+            `Var olan ters ilişki (ID: ${reverseRelation.id}) ACCEPTED olarak güncellendi`
+          );
+        }
+        // Artık yeni ters ilişki oluşturmuyoruz - bu eski koddu:
+        /*
+        else {
           // Yoksa oluştur
           await prisma.friendship.create({
             data: {
@@ -244,6 +270,7 @@ export class FriendshipService {
             },
           });
         }
+        */
 
         // Create notification in database
         await NotificationService.create(
@@ -256,32 +283,19 @@ export class FriendshipService {
 
         // Send real-time notification via socket.io
         try {
-          const notificationData = {
-            type: "FRIEND_REQUEST_ACCEPTED",
-            message: `${friendship.friend.username} arkadaşlık isteğinizi kabul etti.`,
-            fromUserId: friendship.friendId,
-            metadata: { friendshipId: friendship.id },
-          };
-
-          console.log(
-            "Arkadaşlık kabul bildirimi gönderiliyor:",
-            notificationData
-          );
-
           await sendNotificationToUser(
             friendship.userId,
             "FRIEND_REQUEST_ACCEPTED",
             `${friendship.friend.username} arkadaşlık isteğinizi kabul etti.`,
             friendship.friendId,
-            { friendshipId: friendship.id },
-            false // Bildirim veritabanına zaten kaydedildi, tekrar kaydetmeye gerek yok
+            { friendshipId: friendship.id }
           );
           console.log(
-            `Friendship update: ${friendship.userId} kullanıcısına kabul bildirimi gönderildi`
+            `Friendship update: ${friendship.userId} kullanıcısına gerçek zamanlı bildirim gönderildi`
           );
         } catch (error) {
           console.error(
-            `Friendship update: Gerçek zamanlı kabul bildirimi gönderilirken hata oluştu:`,
+            `Friendship update: Gerçek zamanlı bildirim gönderilirken hata oluştu:`,
             error
           );
         }
@@ -442,33 +456,61 @@ export class FriendshipService {
   }
 
   static async getPendingRequests(userId: number) {
-    const friendships = await prisma.friendship.findMany({
-      where: {
-        friendId: userId,
-        status: FriendshipStatus.PENDING,
-      },
-      include: {
-        user: true,
-        friend: true,
-      },
-    });
-    await prisma.$disconnect();
-    return this.enhanceFriendships(friendships);
+    try {
+      // Get pending requests sent to the user
+      const friendships = await prisma.friendship.findMany({
+        where: {
+          friendId: userId,
+          status: FriendshipStatus.PENDING,
+          NOT: {
+            userId: userId, // Exclude any self-requests
+          },
+        },
+        include: {
+          user: true,
+          friend: true,
+        },
+      });
+
+      console.log(
+        `Friendship getPendingRequests: ${friendships.length} bekleyen istek bulundu`
+      );
+
+      await prisma.$disconnect();
+      return this.enhanceFriendships(friendships);
+    } catch (error) {
+      console.error(`Friendship getPendingRequests error:`, error);
+      throw error;
+    }
   }
 
   static async getSentRequests(userId: number) {
-    const friendships = await prisma.friendship.findMany({
-      where: {
-        userId: userId,
-        status: FriendshipStatus.PENDING,
-      },
-      include: {
-        user: true,
-        friend: true,
-      },
-    });
-    await prisma.$disconnect();
-    return this.enhanceFriendships(friendships);
+    try {
+      // Get pending requests sent by the user
+      const friendships = await prisma.friendship.findMany({
+        where: {
+          userId: userId,
+          status: FriendshipStatus.PENDING,
+          NOT: {
+            friendId: userId, // Exclude any self-requests
+          },
+        },
+        include: {
+          user: true,
+          friend: true,
+        },
+      });
+
+      console.log(
+        `Friendship getSentRequests: ${friendships.length} gönderilmiş istek bulundu`
+      );
+
+      await prisma.$disconnect();
+      return this.enhanceFriendships(friendships);
+    } catch (error) {
+      console.error(`Friendship getSentRequests error:`, error);
+      throw error;
+    }
   }
 
   static async followUser(userId: number, targetUserId: number) {
@@ -584,59 +626,96 @@ export class FriendshipService {
   }
 
   static async getMutualFriends(userId: number) {
-    const mutualFriendships = await prisma.friendship.findMany({
-      where: {
-        OR: [
-          { userId, status: FriendshipStatus.ACCEPTED },
-          { friendId: userId, status: FriendshipStatus.ACCEPTED },
-        ],
-      },
-      include: {
-        user: true,
-        friend: true,
-      },
-    });
+    try {
+      const mutualFriendships = await prisma.friendship.findMany({
+        where: {
+          OR: [
+            {
+              userId,
+              status: FriendshipStatus.ACCEPTED,
+              NOT: { friendId: userId },
+            },
+            {
+              friendId: userId,
+              status: FriendshipStatus.ACCEPTED,
+              NOT: { userId: userId },
+            },
+          ],
+        },
+        include: {
+          user: true,
+          friend: true,
+        },
+      });
 
-    await prisma.$disconnect();
-    return this.enhanceFriendships(mutualFriendships);
+      console.log(
+        `Friendship getMutualFriends: ${mutualFriendships.length} karşılıklı arkadaşlık bulundu`
+      );
+
+      await prisma.$disconnect();
+      return this.enhanceFriendships(mutualFriendships);
+    } catch (error) {
+      console.error(`Friendship getMutualFriends error:`, error);
+      throw error;
+    }
   }
 
   static async getFollowers(userId: number) {
-    const followers = await prisma.friendship.findMany({
-      where: {
-        friendId: userId,
-        OR: [
-          { status: "FOLLOWING" as FriendshipStatus },
-          { status: FriendshipStatus.ACCEPTED },
-        ],
-      },
-      include: {
-        user: true,
-        friend: true,
-      },
-    });
+    try {
+      const followers = await prisma.friendship.findMany({
+        where: {
+          friendId: userId,
+          NOT: { userId: userId }, // Exclude self-follows
+          OR: [
+            { status: "FOLLOWING" as FriendshipStatus },
+            { status: FriendshipStatus.ACCEPTED },
+          ],
+        },
+        include: {
+          user: true,
+          friend: true,
+        },
+      });
 
-    await prisma.$disconnect();
-    return this.enhanceFriendships(followers);
+      console.log(
+        `Friendship getFollowers: ${followers.length} takipçi bulundu`
+      );
+
+      await prisma.$disconnect();
+      return this.enhanceFriendships(followers);
+    } catch (error) {
+      console.error(`Friendship getFollowers error:`, error);
+      throw error;
+    }
   }
 
   static async getFollowing(userId: number) {
-    const following = await prisma.friendship.findMany({
-      where: {
-        userId,
-        OR: [
-          { status: "FOLLOWING" as FriendshipStatus },
-          { status: FriendshipStatus.ACCEPTED },
-        ],
-      },
-      include: {
-        user: true,
-        friend: true,
-      },
-    });
+    try {
+      const following = await prisma.friendship.findMany({
+        where: {
+          userId,
+          NOT: { friendId: userId }, // Exclude self-follows
+          OR: [
+            { status: "FOLLOWING" as FriendshipStatus },
+            { status: FriendshipStatus.ACCEPTED },
+          ],
+        },
+        include: {
+          user: true,
+          friend: true,
+        },
+      });
 
-    await prisma.$disconnect();
-    return this.enhanceFriendships(following);
+      console.log(
+        `Friendship getFollowing: ${following.length} takip edilen kullanıcı bulundu`
+      );
+
+      await prisma.$disconnect();
+      return this.enhanceFriendships(following);
+    } catch (error) {
+      console.error(`Friendship getFollowing error:`, error);
+      throw error;
+    }
   }
 
   // Helper method to determine relationship type based on status

@@ -207,6 +207,36 @@ const MainLayout: FC = () => {
     return () => clearInterval(interval);
   }, [notifications.filter((n) => !n.isRead).length]);
 
+  // Global socket notification listener
+  useEffect(() => {
+    const handleGlobalSocketNotification = (event: CustomEvent) => {
+      console.log(
+        "Global notification handler received notification:",
+        event.detail
+      );
+
+      // Forward notification to friendship context via updateNotificationsList
+      if (isAuthenticated && !loadingNotifications) {
+        console.log("Triggering notifications update from global handler");
+        fetchNotifications();
+      }
+    };
+
+    // Add global event listener for socket notifications
+    window.addEventListener(
+      "socketNotification",
+      handleGlobalSocketNotification as EventListener
+    );
+
+    // Remove event listener on cleanup
+    return () => {
+      window.removeEventListener(
+        "socketNotification",
+        handleGlobalSocketNotification as EventListener
+      );
+    };
+  }, [isAuthenticated, loadingNotifications, fetchNotifications]);
+
   return (
     <Box
       sx={{

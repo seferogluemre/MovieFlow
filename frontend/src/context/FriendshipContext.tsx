@@ -2,13 +2,16 @@ import { Alert, Snackbar } from "@mui/material";
 import {
   ReactNode,
   createContext,
+  useCallback,
   useContext,
   useEffect,
+  useRef,
   useState,
 } from "react";
 import api, { notificationService, processApiError } from "../utils/api";
 import {
   getSocket,
+  initSocket,
   isSocketConnected,
   removeNotificationHandler,
   setupNotificationHandler,
@@ -96,6 +99,13 @@ export const FriendshipProvider = ({ children }: FriendshipProviderProps) => {
   // Socket olayları için state değişkenleri
   const [onlineUsers, setOnlineUsers] = useState<number[]>([]);
 
+  // Use refs to track if updates are in progress
+  const updatingNotificationsRef = useRef(false);
+  const updateNotificationsTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  // Force re-render counter
+  const [forceRender, setForceRender] = useState(0);
+
   // Listen for socket notifications when authenticated
   useEffect(() => {
     if (isAuthenticated) {
@@ -105,147 +115,224 @@ export const FriendshipProvider = ({ children }: FriendshipProviderProps) => {
     }
   }, [isAuthenticated]);
 
+  // Socket bağlantısını kontrol et ve gerekirse yeniden bağlan
+  useEffect(() => {
+    if (isAuthenticated && user) {
+      const token = localStorage.getItem("accessToken");
+      if (token && (!getSocket() || !isSocketConnected())) {
+        console.log("Socket bağlantısı yeniden kuruluyor...");
+        initSocket(token);
+      }
+    }
+  }, [isAuthenticated, user]);
+
+  // Efficient add notification function - outside useEffect to prevent recreation
+  const addNotificationToState = useCallback(
+    (newNotification: Notification) => {
+      console.log("Yeni bildirim ekleniyor:", newNotification);
+
+      // Add notification to state
+      setNotifications((prevNotifications) => {
+        // Check if notification with same ID already exists
+        const exists = prevNotifications.some(
+          (n) =>
+            n.id === newNotification.id ||
+            (n.type === newNotification.type &&
+              n.fromUserId === newNotification.fromUserId &&
+              Math.abs(
+                new Date(n.createdAt).getTime() -
+                  new Date(newNotification.createdAt).getTime()
+              ) < 5000)
+        );
+
+        if (exists) {
+          console.log("Bu bildirim zaten mevcut, eklenmiyor");
+          return prevNotifications;
+        }
+
+        // Add new notification at the beginning
+        return [newNotification, ...prevNotifications];
+      });
+
+      // Force a re-render
+      setForceRender((prev) => prev + 1);
+    },
+    []
+  );
+
   // Bildirimler için ayrı bir useEffect ekleyelim
   useEffect(() => {
-    if (isAuthenticated) {
-      // Socket bağlantısını kontrol et
-      const socket = getSocket();
-      if (!socket || !isSocketConnected()) {
-        console.warn(
-          "FriendshipContext: Socket bağlantısı mevcut değil veya bağlı değil"
-        );
+    if (!isAuthenticated || !user) return;
+
+    // Socket bağlantısını kontrol et
+    const socket = getSocket();
+    if (!socket || !isSocketConnected()) {
+      console.warn(
+        "FriendshipContext: Socket bağlantısı mevcut değil veya bağlı değil"
+      );
+      return;
+    }
+
+    console.log("FriendshipContext: Socket event listener'ları ayarlanıyor");
+
+    // Setup notification handler for Socket.io events
+    setupNotificationHandler((data) => {
+      // Geliştirici test mesajlarını gösterme
+      if (data.type === "TEST") {
+        console.log("Test bildirimi alındı, gösterilmiyor:", data);
         return;
       }
 
-      console.log("FriendshipContext: Socket event listener'ları ayarlanıyor");
+      console.log("Bildirim alındı:", data);
 
-      // Bildirimleri güncelleme işlemini optimize etmek için bir işaretçi
-      let isUpdatingNotifications = false;
+      // Extract notification data
+      const { type, message, fromUserId, metadata } = data;
 
-      // Setup notification handler for Socket.io events
-      setupNotificationHandler((data) => {
-        // Geliştirici test mesajlarını gösterme
-        if (data.type === "TEST") {
-          console.log("Test bildirimi alındı, gösterilmiyor:", data);
-          return;
+      // Map notification types to severity levels
+      let severity: "success" | "error" | "info" | "warning" = "info";
+
+      switch (type) {
+        case "FRIEND_REQUEST":
+          severity = "info";
+          // Refresh pending requests when a new friend request is received
+          fetchPendingRequests();
+          break;
+        case "FRIEND_REQUEST_ACCEPTED":
+          severity = "success";
+          // Hemen arkadaşlık listesini güncelle - kabul edildiği için
+          fetchFriendships();
+          break;
+        case "FRIEND_REQUEST_REJECTED":
+          severity = "error";
+          break;
+        default:
+          severity = "info";
+      }
+
+      // Show notification with the appropriate severity
+      console.log(`Toast mesajı gösteriliyor: "${message}" (${severity})`);
+      setToastMessage(message);
+      setToastSeverity(severity);
+      setToastOpen(true);
+
+      // Immediately add the notification to the notifications list
+      // Create a temporary notification object with required fields
+      const tempNotification: Notification = {
+        id: Date.now(), // Temporary ID that will be replaced when we fetch from server
+        type: type as any,
+        message: message,
+        fromUserId: fromUserId,
+        userId: user?.id || 0,
+        metadata: metadata,
+        isRead: false,
+        createdAt: new Date().toISOString(),
+        fromUser: undefined, // Will be filled when we fetch from server
+      };
+
+      // Add notification to state
+      addNotificationToState(tempNotification);
+
+      // Schedule update after a short delay, but only if not already updating
+      if (!updatingNotificationsRef.current) {
+        if (updateNotificationsTimeoutRef.current) {
+          clearTimeout(updateNotificationsTimeoutRef.current);
         }
 
-        console.log("Bildirim alındı:", data);
+        updateNotificationsTimeoutRef.current = setTimeout(() => {
+          updateNotificationsTimeoutRef.current = null;
+          updatingNotificationsRef.current = true;
 
-        // Extract notification data
-        const { type, message, fromUserId, metadata } = data;
-
-        // Map notification types to severity levels
-        let severity: "success" | "error" | "info" | "warning" = "info";
-
-        switch (type) {
-          case "FRIEND_REQUEST":
-            severity = "info";
-            // Refresh pending requests when a new friend request is received
-            fetchPendingRequests();
-            break;
-          case "FRIEND_REQUEST_ACCEPTED":
-            severity = "success";
-            // Hemen arkadaşlık listesini güncelle - kabul edildiği için
-            fetchFriendships();
-            break;
-          case "FRIEND_REQUEST_REJECTED":
-            severity = "error";
-            break;
-          default:
-            severity = "info";
-        }
-
-        // Show notification with the appropriate severity
-        console.log(`Toast mesajı gösteriliyor: "${message}" (${severity})`);
-        setToastMessage(message);
-        setToastSeverity(severity);
-        setToastOpen(true);
-
-        // Immediately add the notification to the notifications list
-        // Create a temporary notification object with required fields
-        const tempNotification: Notification = {
-          id: Date.now(), // Temporary ID that will be replaced when we fetch from server
-          type: type as any,
-          message: message,
-          fromUserId: fromUserId,
-          userId: user?.id || 0,
-          metadata: metadata,
-          isRead: false,
-          createdAt: new Date().toISOString(),
-          fromUser: undefined, // Will be filled when we fetch from server
-        };
-
-        // Update notifications state immediately
-        setNotifications((prev) => [tempNotification, ...prev]);
-
-        // Still update from server to get complete data
-        if (!isUpdatingNotifications) {
-          isUpdatingNotifications = true;
-
-          // Bildirimleri hemen güncelle - gecikme olmadan
           console.log(
-            "Socket bildirimi alındı, bildirim listesi hemen güncelleniyor"
+            "Bildirim alındı, bildirimler sunucudan güncelleniyor..."
           );
           updateNotificationsList().finally(() => {
-            isUpdatingNotifications = false;
+            updatingNotificationsRef.current = false;
           });
-        }
-      });
+        }, 1000);
+      }
+    });
 
-      // Arkadaşlık istekleriyle ilgili socket olaylarını dinle
-      socket.on("friend_request_received", (data) => {
-        console.log("Socket: friend_request_received", data);
-        showNotification(data.message, "info");
+    // Arkadaşlık istekleriyle ilgili socket olaylarını dinle
+    socket.off("friend_request_received");
+    socket.on("friend_request_received", (data) => {
+      console.log("Socket: friend_request_received", data);
+      showNotification(data.message, "info");
 
-        // Çoklu render'ı önlemek için bir kere güncelleme yapalım
-        if (!isUpdatingNotifications) {
-          isUpdatingNotifications = true;
-          fetchPendingRequests().finally(() => {
-            isUpdatingNotifications = false;
-          });
-        }
-      });
-
-      socket.on("friend_request_accepted", (data) => {
-        console.log("Socket: friend_request_accepted", data);
-
-        // Hemen toast göster
-        showNotification(data.message, "success");
-
-        // Gecikme olmadan doğrudan güncelle
-        if (!isUpdatingNotifications) {
-          isUpdatingNotifications = true;
-
-          console.log(
-            "Arkadaşlık kabul bildirimi alındı, hemen listeleri güncelliyorum"
-          );
-          Promise.all([fetchFriendships(), updateNotificationsList()]).finally(
-            () => {
-              isUpdatingNotifications = false;
-            }
-          );
-        }
-      });
-
-      // Online kullanıcıları dinle
-      socket.on("online_users_list", (users) => {
-        console.log("Socket: online_users_list", users);
-        setOnlineUsers(users);
-      });
-
-      // Online kullanıcıları sorgula
-      socket.emit("get_online_users");
-
-      // Clean up on unmount
-      return () => {
-        removeNotificationHandler();
-        socket.off("friend_request_received");
-        socket.off("friend_request_accepted");
-        socket.off("online_users_list");
+      // Arkadaşlık isteği bildirimini hemen ekleyelim
+      const tempNotification: Notification = {
+        id: Date.now(),
+        type: "FRIEND_REQUEST",
+        message: data.message,
+        fromUserId: data.fromUserId,
+        userId: user?.id || 0,
+        metadata: data.metadata,
+        isRead: false,
+        createdAt: new Date().toISOString(),
       };
-    }
-  }, [isAuthenticated]);
+
+      // Add notification to state
+      addNotificationToState(tempNotification);
+
+      // Update friendship requests
+      fetchPendingRequests();
+    });
+
+    socket.off("friend_request_accepted");
+    socket.on("friend_request_accepted", (data) => {
+      console.log("Socket: friend_request_accepted", data);
+
+      // Show toast notification
+      showNotification(data.message, "success");
+
+      // Create temporary notification for accepted friend request
+      const tempNotification: Notification = {
+        id: Date.now(),
+        type: "FRIEND_REQUEST_ACCEPTED",
+        message: data.message,
+        fromUserId: data.fromUserId,
+        userId: user?.id || 0,
+        metadata: data.metadata,
+        isRead: false,
+        createdAt: new Date().toISOString(),
+      };
+
+      // Add notification to state
+      addNotificationToState(tempNotification);
+
+      // Update friendship list
+      fetchFriendships();
+    });
+
+    // Online kullanıcıları dinle
+    socket.off("online_users_list");
+    socket.on("online_users_list", (users) => {
+      console.log("Socket: online_users_list", users);
+      setOnlineUsers(users);
+    });
+
+    // Online kullanıcıları sorgula
+    socket.emit("get_online_users");
+
+    // Clean up on unmount
+    return () => {
+      removeNotificationHandler();
+      socket.off("friend_request_received");
+      socket.off("friend_request_accepted");
+      socket.off("online_users_list");
+
+      if (updateNotificationsTimeoutRef.current) {
+        clearTimeout(updateNotificationsTimeoutRef.current);
+        updateNotificationsTimeoutRef.current = null;
+      }
+    };
+  }, [isAuthenticated, user, addNotificationToState]);
+
+  // Bildirim sayısını izleyen bir useEffect ekleyelim
+  useEffect(() => {
+    console.log(
+      `Bildirim sayısı değişti: ${notifications.length} (${forceRender} kez yenilendi)`
+    );
+  }, [notifications.length, forceRender]);
 
   // Function to show notification toast - daha belirgin hale getirelim
   const showNotification = (

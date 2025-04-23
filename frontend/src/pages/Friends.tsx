@@ -139,9 +139,16 @@ const Friends: FC = () => {
 
   const processFilteredFriendships = () => {
     // Get current user ID from localStorage for direct comparison
-    const currentUserId = localStorage.getItem("user_id")
-      ? parseInt(localStorage.getItem("user_id")!)
+    const currentUserId = localStorage.getItem("userId")
+      ? parseInt(localStorage.getItem("userId")!)
       : currentUser?.id;
+
+    if (!currentUserId) {
+      console.error("Cannot filter friendships: no current user ID found");
+      return;
+    }
+
+    console.log("Current user ID for friendship filtering:", currentUserId);
 
     // This Map will track the most recent friendship for each unique user
     const uniqueFriendships = new Map();
@@ -153,6 +160,7 @@ const Friends: FC = () => {
         friendship.userId === currentUserId &&
         friendship.friendId === currentUserId
       ) {
+        console.log("Skipping self-relationship:", friendship);
         return;
       }
 
@@ -169,18 +177,24 @@ const Friends: FC = () => {
 
       // Skip if the other user is somehow the current user (extra safety)
       if (otherUserId === currentUserId) {
+        console.log(
+          "Skipping friendship where otherUser is currentUser:",
+          friendship
+        );
         return;
       }
 
+      // Get the other user object
+      const otherUser =
+        friendship.userId === currentUserId
+          ? friendship.friend
+          : friendship.user;
+
       if (searchQuery) {
         const query = searchQuery.toLowerCase();
-        const otherUser =
-          friendship.userId === currentUserId
-            ? friendship.friend
-            : friendship.user;
 
         if (
-          !otherUser.name.toLowerCase().includes(query) &&
+          !otherUser.name?.toLowerCase().includes(query) &&
           !otherUser.username.toLowerCase().includes(query)
         ) {
           return;
@@ -194,12 +208,21 @@ const Friends: FC = () => {
         new Date(friendship.createdAt) >
           new Date(uniqueFriendships.get(otherUserId).createdAt)
       ) {
-        uniqueFriendships.set(otherUserId, friendship);
+        console.log(
+          `Adding friendship with ${otherUser.username} (ID: ${otherUserId})`
+        );
+        uniqueFriendships.set(otherUserId, {
+          ...friendship,
+          // Add these fields explicitly to make it clearer which user is which
+          otherUserId: otherUserId,
+          otherUser: otherUser,
+        });
       }
     });
 
     // Convert the Map values back to an array
     const filtered = Array.from(uniqueFriendships.values());
+    console.log(`Filtered friendships: ${filtered.length}`, filtered);
     setFilteredFriendships(filtered);
   };
 
@@ -231,15 +254,31 @@ const Friends: FC = () => {
       const users = await userService.getAllUsers();
 
       // Get current user ID from localStorage for direct comparison
-      const currentUserId = localStorage.getItem("user_id")
-        ? parseInt(localStorage.getItem("user_id")!)
+      const currentUserId = localStorage.getItem("userId")
+        ? parseInt(localStorage.getItem("userId")!)
         : currentUser?.id;
 
-      // Filter out the current user from the list of all users
-      const filteredUsers = users.filter(
-        (user: User) => user.id !== currentUserId
-      );
+      if (!currentUserId) {
+        console.error("Cannot filter users: no current user ID found");
+        setFilteredUsers(users); // Show all as fallback
+        setAllUsers(users);
+        return;
+      }
 
+      console.log("Filtering out current user ID:", currentUserId);
+
+      // Filter out the current user from the list of all users
+      const filteredUsers = users.filter((user: User) => {
+        if (user.id === currentUserId) {
+          console.log("Skipping current user in all users list:", user);
+          return false;
+        }
+        return true;
+      });
+
+      console.log(
+        `Filtered ${users.length} users to ${filteredUsers.length} (removed current user)`
+      );
       setAllUsers(filteredUsers);
       setFilteredUsers(filteredUsers);
 
@@ -500,20 +539,17 @@ const Friends: FC = () => {
               <Paper elevation={3}>
                 <List>
                   {filteredFriendships.map((friendship, index) => {
-                    // Determine which user in the friendship is not the current user
-                    const currentUserId = localStorage.getItem("user_id")
-                      ? parseInt(localStorage.getItem("user_id")!)
-                      : currentUser?.id;
+                    // Use the explicitly stored otherUserId and otherUser from our processed data
+                    const otherUserId = friendship.otherUserId;
+                    const otherUser = friendship.otherUser;
 
-                    const otherUserId =
-                      friendship.userId === currentUserId
-                        ? friendship.friendId
-                        : friendship.userId;
-
-                    const otherUser =
-                      friendship.userId === currentUserId
-                        ? friendship.friend
-                        : friendship.user;
+                    if (!otherUser) {
+                      console.error(
+                        "Missing otherUser for friendship:",
+                        friendship
+                      );
+                      return null;
+                    }
 
                     return (
                       <Box key={friendship.id}>
@@ -772,12 +808,15 @@ const Friends: FC = () => {
                 {filteredUsers.map((user) => {
                   const relationship = userRelationships[user.id];
                   // Get current user ID from localStorage for double safety
-                  const currentUserId = localStorage.getItem("user_id")
-                    ? parseInt(localStorage.getItem("user_id")!)
+                  const currentUserId = localStorage.getItem("userId")
+                    ? parseInt(localStorage.getItem("userId")!)
                     : currentUser?.id;
 
                   // Skip if this is the current user (extra safety check)
-                  if (user.id === currentUserId) return null;
+                  if (user.id === currentUserId) {
+                    console.log("Skipping current user in render:", user);
+                    return null;
+                  }
 
                   return (
                     <Grid item xs={12} sm={6} md={4} key={user.id}>
