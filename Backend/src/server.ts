@@ -22,7 +22,7 @@ import helmet from "helmet";
 import { createServer } from "http";
 import path from "path";
 import { fileURLToPath } from "url";
-import { initSocketServer } from "./socket";
+import { initSocketServer } from "./socket/index";
 
 const corsOptions = {
   origin: ["http://localhost:5173", "http://127.0.0.1:5173"],
@@ -92,7 +92,6 @@ app.use(errorHandler);
 // Initialize Socket.io
 initSocketServer(httpServer);
 
-// Use HTTP server to listen instead of express app
 httpServer.listen(port, () => {
   console.log(`Sunucu ${port} portunda çalışıyor...`);
 });

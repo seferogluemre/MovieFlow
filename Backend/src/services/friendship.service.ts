@@ -11,7 +11,8 @@ import {
   RelationshipStatus,
   RelationshipType,
 } from "src/types/types";
-import { sendNotificationToUser } from "../socket";
+import { sendNotificationToUser } from "../services/socket/notification.service";
+import { getIO } from "../socket";
 import { NotificationService } from "./notification.service";
 
 export class FriendshipService {
@@ -85,6 +86,7 @@ export class FriendshipService {
         );
 
         await sendNotificationToUser(
+          getIO(),
           data.friendId,
           "FRIEND_REQUEST",
           `${friendship.user.username} size arkadaşlık isteği gönderdi.`,
@@ -284,6 +286,7 @@ export class FriendshipService {
         // Send real-time notification via socket.io
         try {
           await sendNotificationToUser(
+            getIO(),
             friendship.userId,
             "FRIEND_REQUEST_ACCEPTED",
             `${friendship.friend.username} arkadaşlık isteğinizi kabul etti.`,
@@ -341,6 +344,7 @@ export class FriendshipService {
           );
 
           await sendNotificationToUser(
+            getIO(),
             friendship.userId,
             "FRIEND_REQUEST_REJECTED",
             `${friendship.friend.username} arkadaşlık isteğinizi reddetti.`,
