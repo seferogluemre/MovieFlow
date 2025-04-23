@@ -4,9 +4,11 @@ import React, {
   ReactNode,
   useContext,
   useEffect,
+  useRef,
   useState,
 } from "react";
 import { authService, userService } from "../utils/api";
+import { closeSocket, initSocket, isSocketConnected } from "../utils/socket";
 import { AuthContextType, User } from "../utils/types";
 
 const AuthContext = createContext<AuthContextType>({
@@ -35,6 +37,48 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+  const socketInitializedRef = useRef(false);
+
+  // Setup socket connection when user is authenticated
+  useEffect(() => {
+    if (user) {
+      const token = localStorage.getItem("accessToken");
+      if (token && !socketInitializedRef.current) {
+        // Initialize socket connection
+        console.log("AuthContext: Socket bağlantısı başlatılıyor...");
+        initSocket(token);
+        socketInitializedRef.current = true;
+      }
+    } else {
+      // No user, close any existing connection
+      if (socketInitializedRef.current) {
+        closeSocket();
+        socketInitializedRef.current = false;
+      }
+    }
+
+    // Cleanup socket on unmount
+    return () => {
+      closeSocket();
+      socketInitializedRef.current = false;
+    };
+  }, [user]);
+
+  // Periyodik bağlantı kontrolü
+  useEffect(() => {
+    if (user) {
+      const checkInterval = setInterval(() => {
+        const token = localStorage.getItem("accessToken");
+
+        if (token && !isSocketConnected() && socketInitializedRef.current) {
+          console.log("AuthContext: Socket bağlantısı kopmuş, yenileniyor...");
+          initSocket(token);
+        }
+      }, 30000); // Her 30 saniyede bir kontrol et
+
+      return () => clearInterval(checkInterval);
+    }
+  }, [user]);
 
   useEffect(() => {
     const accessToken = localStorage.getItem("accessToken");
@@ -56,6 +100,8 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
       if (!accessToken || !userId) {
         setUser(null);
+        closeSocket();
+        socketInitializedRef.current = false;
         setLoading(false);
         return false;
       }
@@ -63,11 +109,21 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       try {
         const userData = await userService.getCurrentUser();
         setUser(userData);
+
+        // Initialize socket if not already connected
+        if (!socketInitializedRef.current) {
+          console.log("CheckAuth: Socket bağlantısı başlatılıyor...");
+          initSocket(accessToken);
+          socketInitializedRef.current = true;
+        }
+
         setLoading(false);
         return true;
       } catch (err: unknown) {
         // API hatası, token geçersiz olabilir ama hemen silmiyoruz
         if (axios.isAxiosError(err) && err.response?.status === 401) {
+          closeSocket();
+          socketInitializedRef.current = false;
           return false;
         }
 
@@ -81,6 +137,14 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         };
 
         setUser(basicUserData);
+
+        // Initialize socket if not already connected
+        if (!socketInitializedRef.current) {
+          console.log("CheckAuth (basic): Socket bağlantısı başlatılıyor...");
+          initSocket(accessToken);
+          socketInitializedRef.current = true;
+        }
+
         setLoading(false);
         return true;
       }
@@ -89,6 +153,8 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       localStorage.removeItem("refreshToken");
       localStorage.removeItem("userId");
       setUser(null);
+      closeSocket();
+      socketInitializedRef.current = false;
       setError("Oturum doğrulama hatası. Lütfen tekrar giriş yapın.");
       setLoading(false);
       return false;
@@ -103,6 +169,10 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       localStorage.removeItem("accessToken");
       localStorage.removeItem("refreshToken");
       localStorage.removeItem("userId");
+
+      // Mevcut socket bağlantısını kapat
+      closeSocket();
+      socketInitializedRef.current = false;
 
       const response = await authService.login(email, password);
       if (!response.accessToken || !response.refreshToken) {
@@ -127,11 +197,21 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       try {
         const userData = await userService.getCurrentUser();
         setUser(userData);
+
+        // Initialize socket connection after successful login
+        console.log("Login: Socket bağlantısı başlatılıyor...");
+        initSocket(response.accessToken);
+        socketInitializedRef.current = true;
       } catch (fetchErr) {
         console.warn(
           "Could not fetch full user details, using basic data:",
           fetchErr
         );
+
+        // Initialize socket with basic data
+        console.log("Login (basic): Socket bağlantısı başlatılıyor...");
+        initSocket(response.accessToken);
+        socketInitializedRef.current = true;
       }
     } catch (err: any) {
       const errorMessage =
@@ -152,6 +232,11 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       localStorage.removeItem("accessToken");
       localStorage.removeItem("refreshToken");
       localStorage.removeItem("userId");
+
+      // Close socket connection on logout
+      closeSocket();
+      socketInitializedRef.current = false;
+
       setUser(null);
     } catch (err) {
       console.error("Logout error:", err);

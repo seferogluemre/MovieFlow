@@ -1,4 +1,5 @@
 import {
+  CheckCircle as CheckCircleIcon,
   Check as CheckIcon,
   Close as CloseIcon,
   Email as EmailIcon,
@@ -9,7 +10,6 @@ import {
   PersonRemove as PersonRemoveIcon,
   ThumbDown as ThumbDownIcon,
   ThumbUp as ThumbUpIcon,
-  VerifiedUser as VerifiedUserIcon,
 } from "@mui/icons-material";
 import {
   Alert,
@@ -42,6 +42,7 @@ import { formatDistanceToNow } from "date-fns";
 import { tr } from "date-fns/locale";
 import { FC, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import UserOnlineStatus from "../components/UserOnlineStatus";
 import { useAuth } from "../context/AuthContext";
 import api, { friendshipService, userService } from "../utils/api";
 import { Friendship, TabPanelProps, User } from "../utils/types";
@@ -1025,37 +1026,63 @@ const ProfileDetail: FC = () => {
             p: 4,
           }}
         >
-          <ProfileAvatar
-            src={getProfileImageUrl(user.profileImage)}
-            alt={user.username}
-            onClick={handleAvatarClick}
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              flexDirection: { xs: "column", sm: "row" },
+              mb: 2,
+            }}
           >
-            {!user.profileImage && getInitials(user.username)}
-          </ProfileAvatar>
-
-          <Typography variant="h4" fontWeight="bold" gutterBottom>
-            {user.name || user.username}
-          </Typography>
-
-          <Box sx={{ display: "flex", alignItems: "center", mb: 1 }}>
-            <Typography variant="body1" color="text.secondary">
-              @{user.username}
-            </Typography>
-            <VerificationBadge isVerified={user.isVerified || false}>
-              {user.isVerified ? (
-                <>
-                  <VerifiedUserIcon sx={{ fontSize: 16, mr: 0.5 }} />
-                  Doğrulanmış
-                </>
-              ) : (
-                <>
-                  <VerifiedUserIcon
-                    sx={{ fontSize: 16, mr: 0.5, color: "text.disabled" }}
-                  />
-                  Doğrulanmamış
-                </>
-              )}
-            </VerificationBadge>
+            <Avatar
+              src={getProfileImageUrl(user.profileImage)}
+              alt={user.name}
+              onClick={handleAvatarClick}
+              sx={{
+                width: 100,
+                height: 100,
+                cursor: "pointer",
+                mb: { xs: 2, sm: 0 },
+                mr: { sm: 2 },
+              }}
+            />
+            <Box sx={{ ml: { sm: 2 } }}>
+              <Box sx={{ display: "flex", alignItems: "center" }}>
+                <Typography variant="h4" component="h1">
+                  {user.name}
+                </Typography>
+                <UserOnlineStatus userId={parseInt(id || "0")} size="large" />
+                {user.isVerified && (
+                  <Box
+                    component="span"
+                    sx={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      ml: 1,
+                      bgcolor: "success.main",
+                      color: "white",
+                      borderRadius: 1,
+                      px: 1,
+                      py: 0.5,
+                      fontSize: "0.75rem",
+                      fontWeight: "bold",
+                    }}
+                  >
+                    <CheckCircleIcon
+                      fontSize="small"
+                      sx={{ mr: 0.5, fontSize: "1rem" }}
+                    />
+                    Doğrulanmış
+                  </Box>
+                )}
+              </Box>
+              <Typography variant="body1" color="text.secondary">
+                @{user.username}
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                {formatCreationTime(user.createdAt)}
+              </Typography>
+            </Box>
           </Box>
 
           {/* Email bilgisi */}

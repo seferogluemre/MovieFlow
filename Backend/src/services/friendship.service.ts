@@ -11,6 +11,7 @@ import {
   RelationshipStatus,
   RelationshipType,
 } from "src/types/types";
+import { sendNotificationToUser } from "../socket";
 import { NotificationService } from "./notification.service";
 
 export class FriendshipService {
@@ -39,28 +40,74 @@ export class FriendshipService {
   }
 
   static async create(userId: number, data: CreateFriendshipType) {
-    const friendship = await prisma.friendship.create({
-      data: {
+    try {
+      console.log(
+        `Friendship create: ${userId} kullanıcısı ${data.friendId} kullanıcısına istek gönderiyor`
+      );
+
+      const friendship = await prisma.friendship.create({
+        data: {
+          userId,
+          friendId: data.friendId,
+          status: FriendshipStatus.PENDING,
+        },
+        include: {
+          user: true,
+          friend: true,
+        },
+      });
+
+      console.log(
+        `Friendship create: ${friendship.id} ID'li arkadaşlık isteği oluşturuldu`
+      );
+
+      // Create notification in database
+      await NotificationService.create(
+        data.friendId,
         userId,
-        friendId: data.friendId,
-        status: FriendshipStatus.PENDING,
-      },
-      include: {
-        user: true,
-        friend: true,
-      },
-    });
+        "FRIEND_REQUEST",
+        `${friendship.user.username} size arkadaşlık isteği gönderdi.`,
+        { friendshipId: friendship.id }
+      );
 
-    await NotificationService.create(
-      data.friendId,
-      userId,
-      "FRIEND_REQUEST",
-      `${friendship.user.username} size arkadaşlık isteği gönderdi.`,
-      { friendshipId: friendship.id }
-    );
+      // Send real-time notification via socket.io
+      try {
+        const notificationData = {
+          type: "FRIEND_REQUEST",
+          message: `${friendship.user.username} size arkadaşlık isteği gönderdi.`,
+          fromUserId: userId,
+          metadata: { friendshipId: friendship.id },
+        };
 
-    await prisma.$disconnect();
-    return this.enhanceFriendship(friendship);
+        console.log(
+          "Arkadaşlık isteği bildirimi gönderiliyor:",
+          notificationData
+        );
+
+        await sendNotificationToUser(
+          data.friendId,
+          "FRIEND_REQUEST",
+          `${friendship.user.username} size arkadaşlık isteği gönderdi.`,
+          userId,
+          { friendshipId: friendship.id },
+          false // Bildirim veritabanına zaten kaydedildi, tekrar kaydetmeye gerek yok
+        );
+        console.log(
+          `Friendship create: ${data.friendId} kullanıcısına gerçek zamanlı bildirim gönderildi`
+        );
+      } catch (error) {
+        console.error(
+          `Friendship create: Gerçek zamanlı bildirim gönderilirken hata oluştu:`,
+          error
+        );
+      }
+
+      await prisma.$disconnect();
+      return this.enhanceFriendship(friendship);
+    } catch (error) {
+      console.error(`Friendship create error:`, error);
+      throw error;
+    }
   }
 
   static async getAll(userId: number) {
@@ -130,98 +177,180 @@ export class FriendshipService {
   }
 
   static async update(id: number, data: UpdateFriendshipType) {
-    // Önce ilgili arkadaşlık kaydını al
-    const existingFriendship = await prisma.friendship.findUnique({
-      where: { id },
-      include: {
-        user: true,
-        friend: true,
-      },
-    });
+    try {
+      console.log(
+        `Friendship update: ${id} ID'li arkadaşlık isteği ${data.status} durumuna güncelleniyor`
+      );
 
-    if (!existingFriendship) {
-      throw new Error("Friendship not found");
-    }
-
-    // Arkadaşlık kaydını güncelle
-    const friendship = await prisma.friendship.update({
-      where: { id },
-      data: {
-        status: data.status as FriendshipStatus,
-      },
-      include: {
-        user: true,
-        friend: true,
-      },
-    });
-
-    // Eğer arkadaşlık kabul edildiyse, ters ilişkiyi de oluştur veya güncelle
-    if (data.status === FriendshipStatus.ACCEPTED) {
-      // Ters ilişkiyi kontrol et
-      const reverseRelation = await prisma.friendship.findFirst({
-        where: {
-          userId: friendship.friendId,
-          friendId: friendship.userId,
+      // Önce ilgili arkadaşlık kaydını al
+      const existingFriendship = await prisma.friendship.findUnique({
+        where: { id },
+        include: {
+          user: true,
+          friend: true,
         },
       });
 
-      if (reverseRelation) {
-        // Varsa güncelle
-        await prisma.friendship.update({
-          where: { id: reverseRelation.id },
-          data: {
-            status: FriendshipStatus.ACCEPTED,
-          },
-        });
-      } else {
-        // Yoksa oluştur
-        await prisma.friendship.create({
-          data: {
+      if (!existingFriendship) {
+        console.error(
+          `Friendship update: ${id} ID'li arkadaşlık isteği bulunamadı`
+        );
+        throw new Error("Friendship not found");
+      }
+
+      // Arkadaşlık kaydını güncelle
+      const friendship = await prisma.friendship.update({
+        where: { id },
+        data: {
+          status: data.status as FriendshipStatus,
+        },
+        include: {
+          user: true,
+          friend: true,
+        },
+      });
+
+      console.log(
+        `Friendship update: ${id} ID'li arkadaşlık isteği ${data.status} durumuna güncellendi`
+      );
+
+      // Eğer arkadaşlık kabul edildiyse, ters ilişkiyi de oluştur veya güncelle
+      if (data.status === FriendshipStatus.ACCEPTED) {
+        // Ters ilişkiyi kontrol et
+        const reverseRelation = await prisma.friendship.findFirst({
+          where: {
             userId: friendship.friendId,
             friendId: friendship.userId,
-            status: FriendshipStatus.ACCEPTED,
-            // İki kayıt arasında tutarlılık sağlamak için aynı createdAt değerini kullan
-            createdAt: friendship.createdAt,
           },
         });
-      }
 
-      await NotificationService.create(
-        friendship.userId,
-        friendship.friendId,
-        "FRIEND_REQUEST_ACCEPTED",
-        `${friendship.friend.username} arkadaşlık isteğinizi kabul etti.`,
-        { friendshipId: friendship.id }
-      );
-    } else if (data.status === FriendshipStatus.BLOCKED) {
-      // Engelleme durumunda karşılıklı ilişkiyi de güncelle
-      const reverseRelation = await prisma.friendship.findFirst({
-        where: {
-          userId: friendship.friendId,
-          friendId: friendship.userId,
-        },
-      });
+        if (reverseRelation) {
+          // Varsa güncelle
+          await prisma.friendship.update({
+            where: { id: reverseRelation.id },
+            data: {
+              status: FriendshipStatus.ACCEPTED,
+            },
+          });
+        } else {
+          // Yoksa oluştur
+          await prisma.friendship.create({
+            data: {
+              userId: friendship.friendId,
+              friendId: friendship.userId,
+              status: FriendshipStatus.ACCEPTED,
+              // İki kayıt arasında tutarlılık sağlamak için aynı createdAt değerini kullan
+              createdAt: friendship.createdAt,
+            },
+          });
+        }
 
-      if (reverseRelation) {
-        await prisma.friendship.update({
-          where: { id: reverseRelation.id },
-          data: {
-            status: FriendshipStatus.BLOCKED,
+        // Create notification in database
+        await NotificationService.create(
+          friendship.userId,
+          friendship.friendId,
+          "FRIEND_REQUEST_ACCEPTED",
+          `${friendship.friend.username} arkadaşlık isteğinizi kabul etti.`,
+          { friendshipId: friendship.id }
+        );
+
+        // Send real-time notification via socket.io
+        try {
+          const notificationData = {
+            type: "FRIEND_REQUEST_ACCEPTED",
+            message: `${friendship.friend.username} arkadaşlık isteğinizi kabul etti.`,
+            fromUserId: friendship.friendId,
+            metadata: { friendshipId: friendship.id },
+          };
+
+          console.log(
+            "Arkadaşlık kabul bildirimi gönderiliyor:",
+            notificationData
+          );
+
+          await sendNotificationToUser(
+            friendship.userId,
+            "FRIEND_REQUEST_ACCEPTED",
+            `${friendship.friend.username} arkadaşlık isteğinizi kabul etti.`,
+            friendship.friendId,
+            { friendshipId: friendship.id },
+            false // Bildirim veritabanına zaten kaydedildi, tekrar kaydetmeye gerek yok
+          );
+          console.log(
+            `Friendship update: ${friendship.userId} kullanıcısına kabul bildirimi gönderildi`
+          );
+        } catch (error) {
+          console.error(
+            `Friendship update: Gerçek zamanlı kabul bildirimi gönderilirken hata oluştu:`,
+            error
+          );
+        }
+      } else if (data.status === FriendshipStatus.BLOCKED) {
+        // Engelleme durumunda karşılıklı ilişkiyi de güncelle
+        const reverseRelation = await prisma.friendship.findFirst({
+          where: {
+            userId: friendship.friendId,
+            friendId: friendship.userId,
           },
         });
+
+        if (reverseRelation) {
+          await prisma.friendship.update({
+            where: { id: reverseRelation.id },
+            data: {
+              status: FriendshipStatus.BLOCKED,
+            },
+          });
+        }
+
+        // Create notification in database
+        await NotificationService.create(
+          friendship.userId,
+          friendship.friendId,
+          "FRIEND_REQUEST_REJECTED",
+          `${friendship.friend.username} arkadaşlık isteğinizi reddetti.`,
+          { friendshipId: friendship.id }
+        );
+
+        // Send real-time notification via socket.io
+        try {
+          const notificationData = {
+            type: "FRIEND_REQUEST_REJECTED",
+            message: `${friendship.friend.username} arkadaşlık isteğinizi reddetti.`,
+            fromUserId: friendship.friendId,
+            metadata: { friendshipId: friendship.id },
+          };
+
+          console.log(
+            "Arkadaşlık red bildirimi gönderiliyor:",
+            notificationData
+          );
+
+          await sendNotificationToUser(
+            friendship.userId,
+            "FRIEND_REQUEST_REJECTED",
+            `${friendship.friend.username} arkadaşlık isteğinizi reddetti.`,
+            friendship.friendId,
+            { friendshipId: friendship.id },
+            false // Bildirim veritabanına zaten kaydedildi, tekrar kaydetmeye gerek yok
+          );
+          console.log(
+            `Friendship update: ${friendship.userId} kullanıcısına red bildirimi gönderildi`
+          );
+        } catch (error) {
+          console.error(
+            `Friendship update: Gerçek zamanlı red bildirimi gönderilirken hata oluştu:`,
+            error
+          );
+        }
       }
 
-      await NotificationService.create(
-        friendship.userId,
-        friendship.friendId,
-        "FRIEND_REQUEST_REJECTED",
-        `${friendship.friend.username} arkadaşlık isteğinizi reddetti.`,
-        { friendshipId: friendship.id }
-      );
+      await prisma.$disconnect();
+      return this.enhanceFriendship(friendship);
+    } catch (error) {
+      console.error(`Friendship update error:`, error);
+      throw error;
     }
-
-    await prisma.$disconnect();
-    return this.enhanceFriendship(friendship);
   }
 
   static async delete(id: number) {

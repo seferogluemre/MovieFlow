@@ -37,6 +37,7 @@ import { formatDistanceToNow } from "date-fns";
 import { tr } from "date-fns/locale";
 import { FC, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import UserOnlineStatus from "../components/UserOnlineStatus";
 import { useAuth } from "../context/AuthContext";
 import { useFriendship } from "../context/FriendshipContext";
 import api, { processApiError, userService } from "../utils/api";
@@ -537,12 +538,20 @@ const Friends: FC = () => {
                             </IconButton>
                           }
                         >
-                          <ListItemAvatar>
+                          <ListItemAvatar sx={{ position: "relative" }}>
                             <Avatar
                               src={otherUser.profileImage || undefined}
                               alt={otherUser.name}
                               sx={{ width: 50, height: 50 }}
                             />
+                            <Box
+                              sx={{ position: "absolute", bottom: 0, right: 0 }}
+                            >
+                              <UserOnlineStatus
+                                userId={otherUserId}
+                                size="small"
+                              />
+                            </Box>
                           </ListItemAvatar>
                           <ListItemText
                             primary={
@@ -605,12 +614,24 @@ const Friends: FC = () => {
                             mb: 2,
                           }}
                         >
-                          <Avatar
-                            src={request.user.profileImage || undefined}
-                            alt={request.user.name}
-                            onClick={() => handleProfileClick(request.user.id)}
-                            sx={{ cursor: "pointer", width: 60, height: 60 }}
-                          />
+                          <Box sx={{ position: "relative" }}>
+                            <Avatar
+                              src={request.user.profileImage || undefined}
+                              alt={request.user.name}
+                              onClick={() =>
+                                handleProfileClick(request.user.id)
+                              }
+                              sx={{ cursor: "pointer", width: 60, height: 60 }}
+                            />
+                            <Box
+                              sx={{ position: "absolute", bottom: 0, right: 0 }}
+                            >
+                              <UserOnlineStatus
+                                userId={request.user.id}
+                                size="small"
+                              />
+                            </Box>
+                          </Box>
                           <Box sx={{ ml: 2 }}>
                             <Typography variant="h6">
                               {request.user.name}
@@ -675,14 +696,24 @@ const Friends: FC = () => {
                             mb: 2,
                           }}
                         >
-                          <Avatar
-                            src={request.friend.profileImage || undefined}
-                            alt={request.friend.name}
-                            onClick={() =>
-                              handleProfileClick(request.friend.id)
-                            }
-                            sx={{ cursor: "pointer", width: 60, height: 60 }}
-                          />
+                          <Box sx={{ position: "relative" }}>
+                            <Avatar
+                              src={request.friend.profileImage || undefined}
+                              alt={request.friend.name}
+                              onClick={() =>
+                                handleProfileClick(request.friend.id)
+                              }
+                              sx={{ cursor: "pointer", width: 60, height: 60 }}
+                            />
+                            <Box
+                              sx={{ position: "absolute", bottom: 0, right: 0 }}
+                            >
+                              <UserOnlineStatus
+                                userId={request.friend.id}
+                                size="small"
+                              />
+                            </Box>
+                          </Box>
                           <Box sx={{ ml: 2 }}>
                             <Typography variant="h6">
                               {request.friend.name}
@@ -759,16 +790,30 @@ const Friends: FC = () => {
                               mb: 2,
                             }}
                           >
-                            <Avatar
-                              src={user.profileImage || undefined}
-                              alt={user.name}
-                              onClick={() => handleProfileClick(user.id)}
-                              sx={{
-                                cursor: "pointer",
-                                width: 60,
-                                height: 60,
-                              }}
-                            />
+                            <Box sx={{ position: "relative" }}>
+                              <Avatar
+                                src={user.profileImage || undefined}
+                                alt={user.name}
+                                onClick={() => handleProfileClick(user.id)}
+                                sx={{
+                                  cursor: "pointer",
+                                  width: 60,
+                                  height: 60,
+                                }}
+                              />
+                              <Box
+                                sx={{
+                                  position: "absolute",
+                                  bottom: 0,
+                                  right: 0,
+                                }}
+                              >
+                                <UserOnlineStatus
+                                  userId={user.id}
+                                  size="small"
+                                />
+                              </Box>
+                            </Box>
                             <Box sx={{ ml: 2 }}>
                               <Typography variant="h6">{user.name}</Typography>
                               <Typography
