@@ -14,6 +14,9 @@ router.get("/:id", FriendshipController.getById);
 router.patch("/:id", FriendshipController.update);
 router.delete("/:id", FriendshipController.delete);
 
+// Yeni endpoint - online durumlu arkadaşlar
+router.get("/online/friends", FriendshipController.getFriendsWithOnlineStatus);
+
 router.post("/follow/:targetUserId", FriendshipController.followUser);
 router.delete("/follow/:targetUserId", FriendshipController.unfollowUser);
 router.get("/followers", FriendshipController.getFollowers);

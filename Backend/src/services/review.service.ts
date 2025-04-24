@@ -160,12 +160,21 @@ export class ReviewService {
           select: {
             id: true,
             title: true,
+            posterImage: true,
           },
         },
       },
     });
 
-    return reviews;
+    return reviews.map((review) => ({
+      ...review,
+      movie: review.movie
+        ? {
+            ...review.movie,
+            posterImage: getFullPosterUrl(review.movie.posterImage),
+          }
+        : null,
+    }));
   }
 
   static async getAll() {

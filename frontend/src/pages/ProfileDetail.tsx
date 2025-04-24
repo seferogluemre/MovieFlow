@@ -19,6 +19,7 @@ import {
   Button,
   Card,
   CardContent,
+  Chip,
   CircularProgress,
   Dialog,
   DialogContent,
@@ -177,9 +178,27 @@ const ProfileDetail: FC = () => {
             const status = await friendshipService.getRelationshipStatus(
               parseInt(id)
             );
+            console.log("Relationship status:", status);
             setRelationshipStatus(status.type as RelationshipStatus);
             setRelationshipId(status.id);
+
+            // Also preload the connections data to ensure UI updates properly
+            const followersData = await friendshipService.getUserFollowers(
+              parseInt(id)
+            );
+            setFollowers(followersData);
+
+            const followingData = await friendshipService.getUserFollowing(
+              parseInt(id)
+            );
+            setFollowing(followingData);
+
+            const mutualData = await friendshipService.getMutualFriends(
+              parseInt(id)
+            );
+            setMutualFriends(mutualData);
           } catch (e) {
+            console.error("Error fetching relationship status:", e);
             setRelationshipStatus("none");
           }
         }
@@ -197,6 +216,30 @@ const ProfileDetail: FC = () => {
 
     fetchUserData();
   }, [id, currentUser]);
+
+  // Check relationship status first on page load
+  useEffect(() => {
+    if (currentUser && user && currentUser.id !== user.id) {
+      const checkRelationship = async () => {
+        try {
+          const status = await friendshipService.getRelationshipStatus(user.id);
+          console.log("Current relationship status check:", status);
+
+          // If we have a relationship, update it
+          if (status) {
+            setRelationshipStatus(status.type as RelationshipStatus);
+            setRelationshipId(status.id);
+          } else {
+            setRelationshipStatus("none");
+          }
+        } catch (err) {
+          console.error("Error checking relationship status:", err);
+        }
+      };
+
+      checkRelationship();
+    }
+  }, [currentUser, user]);
 
   // Kullanıcı yorumlarını getir
   const fetchUserReviews = async (userId: number) => {
@@ -398,10 +441,13 @@ const ProfileDetail: FC = () => {
       }
 
       // Show success message
-      setSuccessMessage("Kullanıcı başarıyla takip edildi");
+      setSuccessMessage(
+        `${user.username} kullanıcısını başarıyla takip etmeye başladınız`
+      );
       setTimeout(() => setSuccessMessage(null), 3000);
     } catch (err: any) {
       setError("Kullanıcıyı takip ederken bir hata oluştu.");
+      setTimeout(() => setError(null), 3000);
     } finally {
       setIsActionInProgress(false);
     }
@@ -457,7 +503,7 @@ const ProfileDetail: FC = () => {
     // If no targetUserId provided, use the profile user's id
     const userId = targetUserId || (user ? user.id : null);
 
-    if (!userId) {
+    if (!userId || !user) {
       return;
     }
 
@@ -474,8 +520,15 @@ const ProfileDetail: FC = () => {
         setRelationshipStatus(status.type as RelationshipStatus);
         setRelationshipId(status.id);
       }
+
+      // Show success message
+      setSuccessMessage(
+        `${user.username} kullanıcısına arkadaşlık isteği gönderildi`
+      );
+      setTimeout(() => setSuccessMessage(null), 3000);
     } catch (err: any) {
       setError("Arkadaşlık isteği gönderilirken bir hata oluştu.");
+      setTimeout(() => setError(null), 3000);
     } finally {
       setIsActionInProgress(false);
     }
@@ -488,7 +541,7 @@ const ProfileDetail: FC = () => {
 
   // Handle accept friend request
   const handleAcceptFriendRequest = async () => {
-    if (!relationshipId) return;
+    if (!relationshipId || !user) return;
 
     try {
       setIsActionInProgress(true);
@@ -500,8 +553,15 @@ const ProfileDetail: FC = () => {
       );
       setRelationshipStatus(status.type as RelationshipStatus);
       setRelationshipId(status.id);
+
+      // Show success message
+      setSuccessMessage(
+        `${user.username} ile arkadaşlık isteğini kabul ettiniz`
+      );
+      setTimeout(() => setSuccessMessage(null), 3000);
     } catch (err: any) {
       setError("Arkadaşlık isteğini kabul ederken bir hata oluştu.");
+      setTimeout(() => setError(null), 3000);
     } finally {
       setIsActionInProgress(false);
     }
@@ -509,7 +569,7 @@ const ProfileDetail: FC = () => {
 
   // Handle reject friend request
   const handleRejectFriendRequest = async () => {
-    if (!relationshipId) return;
+    if (!relationshipId || !user) return;
 
     try {
       setIsActionInProgress(true);
@@ -521,8 +581,15 @@ const ProfileDetail: FC = () => {
       );
       setRelationshipStatus(status.type as RelationshipStatus);
       setRelationshipId(status.id);
+
+      // Show success message
+      setSuccessMessage(
+        `${user.username} kullanıcısının arkadaşlık isteğini reddettiniz`
+      );
+      setTimeout(() => setSuccessMessage(null), 3000);
     } catch (err: any) {
       setError("Arkadaşlık isteğini reddetken bir hata oluştu.");
+      setTimeout(() => setError(null), 3000);
     } finally {
       setIsActionInProgress(false);
     }
@@ -535,33 +602,68 @@ const ProfileDetail: FC = () => {
         setLoadingRelationships(true);
 
         try {
-          // Fetch appropriate data based on tab
-          if (tabValue === 0) {
-            // Mutual Friends
-            const data = await friendshipService.getMutualFriends(user.id);
-            setMutualFriends(data);
-          } else if (tabValue === 1) {
-            // Followers
-            const data = await friendshipService.getUserFollowers(user.id);
-            setFollowers(data);
-          } else if (tabValue === 2) {
-            // Following
-            const data = await friendshipService.getUserFollowing(user.id);
-            setFollowing(data);
-          }
+          // Always fetch all relationship data when the modal opens
+          // Followers
+          const followersData = await friendshipService.getUserFollowers(
+            user.id
+          );
+          setFollowers(followersData || []);
+          console.log(
+            "Followers data (detailed):",
+            JSON.stringify(followersData, null, 2)
+          );
 
-          // Collect all IDs we need to load
+          // Following
+          const followingData = await friendshipService.getUserFollowing(
+            user.id
+          );
+          setFollowing(followingData || []);
+          console.log(
+            "Following data (detailed):",
+            JSON.stringify(followingData, null, 2)
+          );
+
+          // Mutual Friends
+          const mutualData = await friendshipService.getMutualFriends(user.id);
+          setMutualFriends(mutualData || []);
+          console.log(
+            "Mutual friends data (detailed):",
+            JSON.stringify(mutualData, null, 2)
+          );
+
+          // Collect all user IDs we need to load details for
           let userIds: number[] = [];
 
-          if (tabValue === 0) {
-            userIds = mutualFriends.map((f) =>
-              f.userId === user.id ? f.friendId : f.userId
-            );
-          } else if (tabValue === 1) {
-            userIds = followers.map((f) => f.userId);
-          } else if (tabValue === 2) {
-            userIds = following.map((f) => f.friendId);
+          // Add follower user IDs
+          if (followersData && followersData.length > 0) {
+            followersData.forEach((friendship) => {
+              if (friendship && friendship.userId) {
+                userIds.push(friendship.userId);
+              }
+            });
           }
+
+          // Add following user IDs
+          if (followingData && followingData.length > 0) {
+            followingData.forEach((friendship) => {
+              if (friendship && friendship.friendId) {
+                userIds.push(friendship.friendId);
+              }
+            });
+          }
+
+          // Add mutual friend IDs
+          if (mutualData && mutualData.length > 0) {
+            mutualData.forEach((friend) => {
+              if (friend && friend.id) {
+                userIds.push(friend.id);
+              }
+            });
+          }
+
+          // Remove duplicates
+          userIds = [...new Set(userIds)];
+          console.log("User IDs to fetch:", userIds);
 
           // Initialize loading state for each user
           const initialLoadingState: { [key: number]: boolean } = {};
@@ -574,18 +676,22 @@ const ProfileDetail: FC = () => {
           if (Object.keys(initialLoadingState).length > 0) {
             setLoadingFriends((prev) => ({ ...prev, ...initialLoadingState }));
 
-            userIds.forEach(async (userId) => {
+            // Fetch user details for each ID
+            for (const userId of userIds) {
               if (!friendsData[userId]) {
                 try {
-                  const data = await userService.getUserStats(userId);
-                  setFriendsData((prev) => ({ ...prev, [userId]: data }));
+                  const userData = await userService.getUserStats(userId);
+                  setFriendsData((prev) => ({ ...prev, [userId]: userData }));
                 } catch (err) {
-                  console.error("Error fetching user stats:", err);
+                  console.error(
+                    `Error fetching user stats for ID ${userId}:`,
+                    err
+                  );
                 } finally {
                   setLoadingFriends((prev) => ({ ...prev, [userId]: false }));
                 }
               }
-            });
+            }
           }
         } catch (error) {
           console.error("Error fetching relationships:", error);
@@ -596,7 +702,7 @@ const ProfileDetail: FC = () => {
 
       fetchRelationships();
     }
-  }, [friendsModalOpen, tabValue, user]);
+  }, [friendsModalOpen, user]);
 
   // Load all users when the friends modal is opened
   useEffect(() => {
@@ -621,9 +727,13 @@ const ProfileDetail: FC = () => {
   const getProfileImageUrl = (profileImage?: string | null) => {
     if (!profileImage) return undefined;
 
-    return profileImage.startsWith("http")
-      ? profileImage
-      : `http://localhost:3000/uploads/${profileImage}`;
+    // Eğer URL zaten tam bir URL ise direkt döndür
+    if (profileImage.startsWith("http")) {
+      return profileImage;
+    }
+
+    // Eğer sadece dosya adı varsa, backend URL'si ile birleştir
+    return `http://localhost:3000/uploads/${profileImage}`;
   };
 
   // Kullanıcı adının ilk harflerini al
@@ -634,10 +744,16 @@ const ProfileDetail: FC = () => {
 
   // Format creation time
   const formatCreationTime = (date: string) => {
-    return formatDistanceToNow(new Date(date), {
-      addSuffix: true,
-      locale: tr,
-    });
+    try {
+      if (!date) return "bilinmeyen zaman";
+      return formatDistanceToNow(new Date(date), {
+        addSuffix: true,
+        locale: tr,
+      });
+    } catch (error) {
+      console.error("Date formatting error:", error, date);
+      return "bilinmeyen zaman";
+    }
   };
 
   // Navigate to profile
@@ -662,18 +778,35 @@ const ProfileDetail: FC = () => {
 
   // Get counts for different relationships
   const getFollowersCount = () => {
-    return followers.length;
+    return followers ? followers.length : 0;
   };
 
   const getFollowingCount = () => {
-    return following.length;
+    return following ? following.length : 0;
   };
 
   const getMutualFriendsCount = () => {
-    if (mutualFriends.length > 0) {
-      return mutualFriends.length - 1;
+    // If no mutual friends data or empty array, return 0
+    if (!mutualFriends || mutualFriends.length === 0) {
+      return 0;
     }
-    return 0;
+
+    // Check if we have direct user objects from API
+    if (
+      mutualFriends[0] &&
+      mutualFriends[0].id &&
+      !mutualFriends[0].userId &&
+      !mutualFriends[0].friendId
+    ) {
+      return mutualFriends.length;
+    }
+
+    // Filter out valid mutual friends where status is ACCEPTED
+    const validMutualFriends = mutualFriends.filter(
+      (friendship) => friendship && friendship.status === "ACCEPTED"
+    );
+
+    return validMutualFriends.length;
   };
 
   const handleCancelFriendRequest = async () => {
@@ -765,6 +898,8 @@ const ProfileDetail: FC = () => {
   const renderRelationshipStatusUI = () => {
     if (!currentUser || !user || currentUser.id === user.id) return null;
 
+    console.log("Rendering relationship UI with status:", relationshipStatus);
+
     switch (relationshipStatus) {
       case "none":
         return (
@@ -855,6 +990,20 @@ const ProfileDetail: FC = () => {
             >
               Arkadaşsınız
             </Button>
+            <Button
+              variant="outlined"
+              color="error"
+              size="small"
+              startIcon={<PersonRemoveIcon />}
+              onClick={handleRemoveFriend}
+              disabled={isActionInProgress}
+            >
+              {isActionInProgress ? (
+                <CircularProgress size={16} />
+              ) : (
+                "Arkadaşlıktan Çıkar"
+              )}
+            </Button>
           </Box>
         );
 
@@ -935,20 +1084,31 @@ const ProfileDetail: FC = () => {
             >
               Birbirinizi Takip Ediyorsunuz
             </Button>
-            <Button
-              variant="outlined"
-              color="error"
-              size="small"
-              startIcon={<PersonRemoveIcon />}
-              onClick={handleUnfollowUser}
-              disabled={isActionInProgress}
-            >
-              {isActionInProgress ? (
-                <CircularProgress size={16} />
-              ) : (
-                "Takibi Bırak"
-              )}
-            </Button>
+            <Stack direction="row" spacing={1}>
+              <Button
+                variant="outlined"
+                size="small"
+                startIcon={<PersonAddOutlinedIcon />}
+                onClick={() => handleSendFriendRequest()}
+                disabled={isActionInProgress}
+              >
+                Arkadaş Ol
+              </Button>
+              <Button
+                variant="outlined"
+                color="error"
+                size="small"
+                startIcon={<PersonRemoveIcon />}
+                onClick={handleUnfollowUser}
+                disabled={isActionInProgress}
+              >
+                {isActionInProgress ? (
+                  <CircularProgress size={16} />
+                ) : (
+                  "Takibi Bırak"
+                )}
+              </Button>
+            </Stack>
           </Box>
         );
 
@@ -983,6 +1143,19 @@ const ProfileDetail: FC = () => {
   // Return component
   return (
     <Box sx={{ maxWidth: "600px", mx: "auto", py: 4 }}>
+      {/* Success and error messages */}
+      {successMessage && (
+        <Alert severity="success" sx={{ mb: 2 }}>
+          {successMessage}
+        </Alert>
+      )}
+
+      {error && (
+        <Alert severity="error" sx={{ mb: 2 }}>
+          {error}
+        </Alert>
+      )}
+
       <Card sx={{ mb: 4 }}>
         <CardContent
           sx={{
@@ -1162,11 +1335,14 @@ const ProfileDetail: FC = () => {
                             objectFit: "cover",
                             borderRadius: 1,
                             mr: 2,
+                            bgcolor: "#dddddd",
                           }}
+                          loading="lazy"
+                          crossOrigin="anonymous"
                           onError={(e) => {
-                            // Fallback for broken images
+                            (e.target as HTMLImageElement).onError = null;
                             (e.target as HTMLImageElement).src =
-                              "https://via.placeholder.com/60x90?text=Film";
+                              "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAD0AAABaCAYAAAA6xe0SAAAACXBIWXMAAAsTAAALEwEAmpwYAAAFFmlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNi4wLWMwMDIgNzkuMTY0NDYwLCAyMDIwLzA1LzEyLTE2OjA0OjE3ICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczpleGlmPSJodHRwOi8vbnMuYWRvYmUuY29tL2V4aWYvMS4wLyIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczpkYz0iaHR0cDovL3B1cmwub3JnL2RjL2VsZW1lbnRzLzEuMS8iIHhtbG5zOnBob3Rvc2hvcD0iaHR0cDovL25zLmFkb2JlLmNvbS9waG90b3Nob3AvMS4wLyIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0RXZ0PSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VFdmVudCMiIGV4aWY6UGl4ZWxYRGltZW5zaW9uPSI2MCIgZXhpZjpQaXhlbFlEaW1lbnNpb249IjkwIiB4bXA6Q3JlYXRlRGF0ZT0iMjAyMy0wMS0wMVQxMjowMDowMFoiIHhtcDpNb2RpZnlEYXRlPSIyMDIzLTAxLTAxVDEyOjAwOjAwWiIgeG1wOk1ldGFkYXRhRGF0ZT0iMjAyMy0wMS0wMVQxMjowMDowMFoiIGRjOnRpdGxlPSJQbGFjZWhvbGRlciBNb3ZpZSBJbWFnZSIgcGhvdG9zaG9wOkNvbG9yTW9kZT0iMyIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo2YzBkMGYyMi0wZDEwLTQyNDctOTI2NC1iODI3NmQ3MWNmOWEiIHhtcE1NOkRvY3VtZW50SUQ9ImFkb2JlOmRvY2lkOnBob3Rvc2hvcDo2YzUwZGJiYS0zZDYyLTQ2NGEtYjk4Ni0wODE0MzU1MjRmMTAiIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo2YzBkMGYyMi0wZDEwLTQyNDctOTI2NC1iODI3NmQ3MWNmOWEiPiA8eG1wTU06SGlzdG9yeT4gPHJkZjpTZXE+IDxyZGY6bGkgc3RFdnQ6YWN0aW9uPSJjcmVhdGVkIiBzdEV2dDppbnN0YW5jZUlEPSJ4bXAuaWlkOjZjMGQwZjIyLTBkMTAtNDI0Ny05MjY0LWI4Mjc2ZDcxY2Y5YSIgc3RFdnQ6d2hlbj0iMjAyMy0wMS0wMVQxMjowMDowMFoiLz4gPC9yZGY6U2VxPiA8L3htcE1NOkhpc3Rvcnk+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+8UjJrgAAAYBJREFUeJzt3c1twjAYxvFnkNLxCXZCZjgxADNkA0boDjlXJF8CjEJPbQ89gEQJIYX6+ufY8ftcI1Jb+cGJExvIvF/ZCrCj7+G/Dd2rqgrr9Rpd14WuSmKbzQbX6xWllFDVyPu+x3w+R9M0qKrK+Ln5dDrher0O71OapmFVVfFz+/1+SFMFXZbltbXWt2H7vqf7/Z6iKKg8z0lrTUVR0KfabrdUliXVdU1t21JWWK1WuFwuKMuSbcyMk+7J9X3P3gI4x2loq6GthrYa2mpof8e+LuR4POJ8PrOMlcZoaKuhrYa2GtpqaKuhrYb2l2UZY9DjOLbD2UELEqQFiaE1tNXQVkNbDW01tNXQVkNbDW01tNXQVkNbDW01tNXQVkNbDW01tNXQVkNbDW01tNXQVkNbDW01tNXQVkNbDW01tNXQVkNbDW01tNXQVkNbYj/FxVn+yXy73VLTNMQ5xtYrYOLxxK7riHM8ZRVFQZzzPAY2hXv63c04S/8AE8cjh4dbRhkAAAAASUVORK5CYII=";
                           }}
                         />
                       )}
@@ -1264,7 +1440,9 @@ const ProfileDetail: FC = () => {
             <>
               {/* Mutual Friends Tab */}
               <TabPanel value={tabValue} index={0}>
-                {!mutualFriends.length ? (
+                {!mutualFriends ||
+                !mutualFriends.length ||
+                !getMutualFriendsCount() ? (
                   <Typography
                     variant="body1"
                     sx={{ textAlign: "center", py: 2 }}
@@ -1274,9 +1452,71 @@ const ProfileDetail: FC = () => {
                 ) : (
                   <List sx={{ width: "100%" }}>
                     {(() => {
+                      // Handle direct user objects in the mutualFriends array (from API)
+                      if (
+                        mutualFriends[0] &&
+                        mutualFriends[0].id &&
+                        !mutualFriends[0].userId &&
+                        !mutualFriends[0].friendId
+                      ) {
+                        return mutualFriends.map((friend, index) => (
+                          <Box key={friend.id}>
+                            <StyledListItem
+                              onClick={() => navigateToProfile(friend.id)}
+                            >
+                              <ListItemAvatar>
+                                <UserOnlineStatus
+                                  online={friend.isOnline || false}
+                                >
+                                  <Avatar
+                                    src={getProfileImageUrl(
+                                      friend.profileImage
+                                    )}
+                                    alt={friend.username}
+                                  >
+                                    {!friend.profileImage &&
+                                      getInitials(friend.username)}
+                                  </Avatar>
+                                </UserOnlineStatus>
+                              </ListItemAvatar>
+                              <ListItemText
+                                primary={
+                                  <Typography
+                                    variant="subtitle1"
+                                    fontWeight="bold"
+                                  >
+                                    {friend.name || friend.username}
+                                  </Typography>
+                                }
+                                secondary={
+                                  <Box>
+                                    <Typography
+                                      variant="body2"
+                                      color="text.secondary"
+                                      component="span"
+                                    >
+                                      @{friend.username}
+                                    </Typography>
+                                  </Box>
+                                }
+                              />
+                            </StyledListItem>
+                            {index < mutualFriends.length - 1 && (
+                              <Divider variant="inset" component="li" />
+                            )}
+                          </Box>
+                        ));
+                      }
+
+                      // Original friendship-based display logic
                       const displayedUserIds = new Set<number>();
                       return mutualFriends
                         .filter((friendship) => {
+                          // Only show ACCEPTED friendships
+                          if (!friendship || friendship.status !== "ACCEPTED") {
+                            return false;
+                          }
+
                           const otherUserId =
                             friendship.userId === user.id
                               ? friendship.friendId
@@ -1295,13 +1535,21 @@ const ProfileDetail: FC = () => {
                               ? friendship.friendId
                               : friendship.userId;
 
-                          const otherUser = friendsData[otherUserId];
-                          const isLoading = loadingFriends[otherUserId];
+                          // Use friendsData or the user/friend object from friendship
+                          const otherUser =
+                            friendsData[otherUserId] ||
+                            (friendship.userId === user.id
+                              ? friendship.friend
+                              : friendship.user);
+
+                          const isLoading = otherUser
+                            ? false
+                            : loadingFriends[otherUserId];
 
                           if (isLoading) {
                             return (
                               <Box
-                                key={friendship.id}
+                                key={friendship.id || index}
                                 sx={{
                                   p: 2,
                                   display: "flex",
@@ -1313,23 +1561,33 @@ const ProfileDetail: FC = () => {
                             );
                           }
 
-                          if (!otherUser) return null;
+                          if (!otherUser) {
+                            console.warn(
+                              "No user data for mutual friend:",
+                              friendship
+                            );
+                            return null;
+                          }
 
                           return (
-                            <Box key={friendship.id}>
+                            <Box key={friendship.id || index}>
                               <StyledListItem
                                 onClick={() => navigateToProfile(otherUser.id)}
                               >
                                 <ListItemAvatar>
-                                  <Avatar
-                                    src={getProfileImageUrl(
-                                      otherUser.profileImage
-                                    )}
-                                    alt={otherUser.username}
+                                  <UserOnlineStatus
+                                    online={friendship.isOnline || false}
                                   >
-                                    {!otherUser.profileImage &&
-                                      getInitials(otherUser.username)}
-                                  </Avatar>
+                                    <Avatar
+                                      src={getProfileImageUrl(
+                                        otherUser.profileImage
+                                      )}
+                                      alt={otherUser.username}
+                                    >
+                                      {!otherUser.profileImage &&
+                                        getInitials(otherUser.username)}
+                                    </Avatar>
+                                  </UserOnlineStatus>
                                 </ListItemAvatar>
                                 <ListItemText
                                   primary={
@@ -1357,7 +1615,7 @@ const ProfileDetail: FC = () => {
                                       >
                                         Arkadaşlık{" "}
                                         {formatCreationTime(
-                                          friendship.createdAt
+                                          friendship.createdAt || ""
                                         )}
                                       </Typography>
                                     </Box>
@@ -1377,7 +1635,7 @@ const ProfileDetail: FC = () => {
 
               {/* Followers Tab */}
               <TabPanel value={tabValue} index={1}>
-                {!followers.length ? (
+                {!followers || !followers.length ? (
                   <Typography
                     variant="body1"
                     sx={{ textAlign: "center", py: 2 }}
@@ -1387,13 +1645,370 @@ const ProfileDetail: FC = () => {
                 ) : (
                   <List sx={{ width: "100%" }}>
                     {followers.map((friendship, index) => {
-                      const followerUser = friendsData[friendship.userId];
-                      const isLoading = loadingFriends[friendship.userId];
+                      // Direct user objects (API may directly return user objects)
+                      if (
+                        friendship.id &&
+                        !friendship.userId &&
+                        !friendship.friendId
+                      ) {
+                        // Direct user object from API
+                        return (
+                          <Box key={friendship.id}>
+                            <StyledListItem
+                              onClick={() => navigateToProfile(friendship.id)}
+                            >
+                              <ListItemAvatar>
+                                <UserOnlineStatus
+                                  online={friendship.isOnline || false}
+                                >
+                                  <Avatar
+                                    src={getProfileImageUrl(
+                                      friendship.profileImage
+                                    )}
+                                    alt={friendship.username}
+                                  >
+                                    {!friendship.profileImage &&
+                                      getInitials(friendship.username)}
+                                  </Avatar>
+                                </UserOnlineStatus>
+                              </ListItemAvatar>
+                              <ListItemText
+                                primary={
+                                  <Typography
+                                    variant="subtitle1"
+                                    fontWeight="bold"
+                                  >
+                                    {friendship.name || friendship.username}
+                                  </Typography>
+                                }
+                                secondary={
+                                  <Box>
+                                    <Typography
+                                      variant="body2"
+                                      color="text.secondary"
+                                      component="span"
+                                    >
+                                      @{friendship.username}
+                                    </Typography>
+                                  </Box>
+                                }
+                              />
+                            </StyledListItem>
+                            {index < followers.length - 1 && (
+                              <Divider variant="inset" component="li" />
+                            )}
+                          </Box>
+                        );
+                      }
+
+                      // Handle friendship objects with explicit userId references
+                      if (friendship.userId && !friendship.user) {
+                        // This is just an ID reference, look up in friendsData
+                        const followerUser = friendsData[friendship.userId];
+                        const isLoading = followerUser
+                          ? false
+                          : loadingFriends[friendship.userId];
+
+                        if (isLoading) {
+                          return (
+                            <Box
+                              key={friendship.id || index}
+                              sx={{
+                                p: 2,
+                                display: "flex",
+                                justifyContent: "center",
+                              }}
+                            >
+                              <CircularProgress size={24} />
+                            </Box>
+                          );
+                        }
+
+                        if (!followerUser) {
+                          console.warn(
+                            "No user data for follower:",
+                            friendship
+                          );
+                          return null;
+                        }
+
+                        // Check if current user is viewing and they follow this person back
+                        const isCurrentUser =
+                          currentUser && currentUser.id === user.id;
+                        const isMutualFollow = following.some(
+                          (f) => f.friendId === followerUser.id
+                        );
+
+                        return (
+                          <Box key={friendship.id || index}>
+                            <StyledListItem
+                              onClick={() => navigateToProfile(followerUser.id)}
+                            >
+                              <ListItemAvatar>
+                                <UserOnlineStatus
+                                  online={friendship.isOnline || false}
+                                >
+                                  <Avatar
+                                    src={getProfileImageUrl(
+                                      followerUser.profileImage
+                                    )}
+                                    alt={followerUser.username}
+                                  >
+                                    {!followerUser.profileImage &&
+                                      getInitials(followerUser.username)}
+                                  </Avatar>
+                                </UserOnlineStatus>
+                              </ListItemAvatar>
+                              <ListItemText
+                                primary={
+                                  <Typography
+                                    variant="subtitle1"
+                                    fontWeight="bold"
+                                  >
+                                    {followerUser.name || followerUser.username}
+                                  </Typography>
+                                }
+                                secondary={
+                                  <Box>
+                                    <Typography
+                                      variant="body2"
+                                      color="text.secondary"
+                                      component="span"
+                                    >
+                                      @{followerUser.username}
+                                    </Typography>
+                                    <Typography
+                                      variant="body2"
+                                      color="text.secondary"
+                                      component="div"
+                                      sx={{ mt: 0.5 }}
+                                    >
+                                      Takip ediyor{" "}
+                                      {formatCreationTime(
+                                        friendship.createdAt || ""
+                                      )}
+                                    </Typography>
+                                  </Box>
+                                }
+                              />
+                              {isCurrentUser && (
+                                <Box ml={1}>
+                                  {isMutualFollow ? (
+                                    <Chip
+                                      size="small"
+                                      icon={<CheckIcon />}
+                                      label="Karşılıklı"
+                                      color="primary"
+                                      sx={{ fontSize: "0.75rem" }}
+                                    />
+                                  ) : (
+                                    <Button
+                                      variant="outlined"
+                                      size="small"
+                                      onClick={(e) => {
+                                        e.stopPropagation();
+                                        handleFollowUser();
+                                      }}
+                                      startIcon={<PersonAddIcon />}
+                                    >
+                                      Takip Et
+                                    </Button>
+                                  )}
+                                </Box>
+                              )}
+                            </StyledListItem>
+                            {index < followers.length - 1 && (
+                              <Divider variant="inset" component="li" />
+                            )}
+                          </Box>
+                        );
+                      }
+
+                      // For friendship objects that include user data directly
+                      const followerUser = friendship.user
+                        ? friendship.user
+                        : null;
+
+                      if (!followerUser) {
+                        console.warn("No user data for follower:", friendship);
+                        return null;
+                      }
+
+                      // Check if current user is viewing and they follow this person back
+                      const isCurrentUser =
+                        currentUser && currentUser.id === user.id;
+                      const isMutualFollow = following.some(
+                        (f) => f.friendId === followerUser.id
+                      );
+
+                      return (
+                        <Box key={friendship.id || index}>
+                          <StyledListItem
+                            onClick={() => navigateToProfile(followerUser.id)}
+                          >
+                            <ListItemAvatar>
+                              <UserOnlineStatus
+                                online={friendship.isOnline || false}
+                              >
+                                <Avatar
+                                  src={getProfileImageUrl(
+                                    followerUser.profileImage
+                                  )}
+                                  alt={followerUser.username}
+                                >
+                                  {!followerUser.profileImage &&
+                                    getInitials(followerUser.username)}
+                                </Avatar>
+                              </UserOnlineStatus>
+                            </ListItemAvatar>
+                            <ListItemText
+                              primary={
+                                <Typography
+                                  variant="subtitle1"
+                                  fontWeight="bold"
+                                >
+                                  {followerUser.name || followerUser.username}
+                                </Typography>
+                              }
+                              secondary={
+                                <Box>
+                                  <Typography
+                                    variant="body2"
+                                    color="text.secondary"
+                                    component="span"
+                                  >
+                                    @{followerUser.username}
+                                  </Typography>
+                                  <Typography
+                                    variant="body2"
+                                    color="text.secondary"
+                                    component="div"
+                                    sx={{ mt: 0.5 }}
+                                  >
+                                    Takip ediyor{" "}
+                                    {formatCreationTime(
+                                      friendship.createdAt || ""
+                                    )}
+                                  </Typography>
+                                </Box>
+                              }
+                            />
+                            {isCurrentUser && (
+                              <Box ml={1}>
+                                {isMutualFollow ? (
+                                  <Chip
+                                    size="small"
+                                    icon={<CheckIcon />}
+                                    label="Karşılıklı"
+                                    color="primary"
+                                    sx={{ fontSize: "0.75rem" }}
+                                  />
+                                ) : (
+                                  <Button
+                                    variant="outlined"
+                                    size="small"
+                                    onClick={(e) => {
+                                      e.stopPropagation();
+                                      handleFollowUser();
+                                    }}
+                                    startIcon={<PersonAddIcon />}
+                                  >
+                                    Takip Et
+                                  </Button>
+                                )}
+                              </Box>
+                            )}
+                          </StyledListItem>
+                          {index < followers.length - 1 && (
+                            <Divider variant="inset" component="li" />
+                          )}
+                        </Box>
+                      );
+                    })}
+                  </List>
+                )}
+              </TabPanel>
+
+              {/* Following Tab */}
+              <TabPanel value={tabValue} index={2}>
+                {!following || !following.length ? (
+                  <Typography
+                    variant="body1"
+                    sx={{ textAlign: "center", py: 2 }}
+                  >
+                    Henüz takip ettiği kullanıcı yok.
+                  </Typography>
+                ) : (
+                  <List sx={{ width: "100%" }}>
+                    {following.map((friendship, index) => {
+                      // For direct user objects (API may directly return user objects)
+                      if (
+                        friendship.id &&
+                        !friendship.friendId &&
+                        !friendship.userId
+                      ) {
+                        return (
+                          <Box key={friendship.id}>
+                            <StyledListItem
+                              onClick={() => navigateToProfile(friendship.id)}
+                            >
+                              <ListItemAvatar>
+                                <UserOnlineStatus
+                                  online={friendship.isOnline || false}
+                                >
+                                  <Avatar
+                                    src={getProfileImageUrl(
+                                      friendship.profileImage
+                                    )}
+                                    alt={friendship.username}
+                                  >
+                                    {!friendship.profileImage &&
+                                      getInitials(friendship.username)}
+                                  </Avatar>
+                                </UserOnlineStatus>
+                              </ListItemAvatar>
+                              <ListItemText
+                                primary={
+                                  <Typography
+                                    variant="subtitle1"
+                                    fontWeight="bold"
+                                  >
+                                    {friendship.name || friendship.username}
+                                  </Typography>
+                                }
+                                secondary={
+                                  <Box>
+                                    <Typography
+                                      variant="body2"
+                                      color="text.secondary"
+                                      component="span"
+                                    >
+                                      @{friendship.username}
+                                    </Typography>
+                                  </Box>
+                                }
+                              />
+                            </StyledListItem>
+                            {index < following.length - 1 && (
+                              <Divider variant="inset" component="li" />
+                            )}
+                          </Box>
+                        );
+                      }
+
+                      // For friendship objects with friendId
+                      const followingUser = friendship.friendId
+                        ? friendsData[friendship.friendId] || friendship.friend
+                        : null;
+
+                      const isLoading = followingUser
+                        ? false
+                        : loadingFriends[friendship.friendId];
 
                       if (isLoading) {
                         return (
                           <Box
-                            key={friendship.id}
+                            key={friendship.id || index}
                             sx={{
                               p: 2,
                               display: "flex",
@@ -1405,20 +2020,21 @@ const ProfileDetail: FC = () => {
                         );
                       }
 
-                      if (!followerUser) return null;
+                      if (!followingUser) {
+                        console.warn("No user data for following:", friendship);
+                        return null;
+                      }
 
-                      // Check if current user is viewing and they follow this person back
-                      const isCurrentUser =
-                        currentUser && currentUser.id === user.id;
-                      const isMutualFollow = following.some(
-                        (f) => f.friendId === followerUser.id
+                      // Check mutual status
+                      const isMutualFollow = followers.some(
+                        (f) => f.userId === followingUser.id
                       );
                       const isFriend = friendship.status === "ACCEPTED";
 
                       return (
-                        <Box key={friendship.id}>
+                        <Box key={friendship.id || index}>
                           <StyledListItem
-                            onClick={() => navigateToProfile(followerUser.id)}
+                            onClick={() => navigateToProfile(followingUser.id)}
                             sx={{
                               borderLeft: isFriend
                                 ? "4px solid #4caf50"
@@ -1428,15 +2044,19 @@ const ProfileDetail: FC = () => {
                             }}
                           >
                             <ListItemAvatar>
-                              <Avatar
-                                src={getProfileImageUrl(
-                                  followerUser.profileImage
-                                )}
-                                alt={followerUser.username}
+                              <UserOnlineStatus
+                                online={friendship.isOnline || false}
                               >
-                                {!followerUser.profileImage &&
-                                  getInitials(followerUser.username)}
-                              </Avatar>
+                                <Avatar
+                                  src={getProfileImageUrl(
+                                    followingUser.profileImage
+                                  )}
+                                  alt={followingUser.username}
+                                >
+                                  {!followingUser.profileImage &&
+                                    getInitials(followingUser.username)}
+                                </Avatar>
+                              </UserOnlineStatus>
                             </ListItemAvatar>
                             <ListItemText
                               primary={
@@ -1447,7 +2067,8 @@ const ProfileDetail: FC = () => {
                                     variant="subtitle1"
                                     fontWeight="bold"
                                   >
-                                    {followerUser.name || followerUser.username}
+                                    {followingUser.name ||
+                                      followingUser.username}
                                   </Typography>
                                   {isFriend && (
                                     <Typography
@@ -1488,95 +2109,6 @@ const ProfileDetail: FC = () => {
                                     color="text.secondary"
                                     component="span"
                                   >
-                                    @{followerUser.username}
-                                  </Typography>
-                                  <Typography
-                                    variant="body2"
-                                    color="text.secondary"
-                                    component="div"
-                                    sx={{ mt: 0.5 }}
-                                  >
-                                    Takip ediyor{" "}
-                                    {formatCreationTime(friendship.createdAt)}
-                                  </Typography>
-                                </Box>
-                              }
-                            />
-                          </StyledListItem>
-                          {index < followers.length - 1 && (
-                            <Divider variant="inset" component="li" />
-                          )}
-                        </Box>
-                      );
-                    })}
-                  </List>
-                )}
-              </TabPanel>
-
-              {/* Following Tab */}
-              <TabPanel value={tabValue} index={2}>
-                {!following.length ? (
-                  <Typography
-                    variant="body1"
-                    sx={{ textAlign: "center", py: 2 }}
-                  >
-                    Henüz takip ettiği kullanıcı yok.
-                  </Typography>
-                ) : (
-                  <List sx={{ width: "100%" }}>
-                    {following.map((friendship, index) => {
-                      const followingUser = friendsData[friendship.friendId];
-                      const isLoading = loadingFriends[friendship.friendId];
-
-                      if (isLoading) {
-                        return (
-                          <Box
-                            key={friendship.id}
-                            sx={{
-                              p: 2,
-                              display: "flex",
-                              justifyContent: "center",
-                            }}
-                          >
-                            <CircularProgress size={24} />
-                          </Box>
-                        );
-                      }
-
-                      if (!followingUser) return null;
-
-                      return (
-                        <Box key={friendship.id}>
-                          <StyledListItem
-                            onClick={() => navigateToProfile(followingUser.id)}
-                          >
-                            <ListItemAvatar>
-                              <Avatar
-                                src={getProfileImageUrl(
-                                  followingUser.profileImage
-                                )}
-                                alt={followingUser.username}
-                              >
-                                {!followingUser.profileImage &&
-                                  getInitials(followingUser.username)}
-                              </Avatar>
-                            </ListItemAvatar>
-                            <ListItemText
-                              primary={
-                                <Typography
-                                  variant="subtitle1"
-                                  fontWeight="bold"
-                                >
-                                  {followingUser.name || followingUser.username}
-                                </Typography>
-                              }
-                              secondary={
-                                <Box>
-                                  <Typography
-                                    variant="body2"
-                                    color="text.secondary"
-                                    component="span"
-                                  >
                                     @{followingUser.username}
                                   </Typography>
                                   <Typography
@@ -1586,7 +2118,9 @@ const ProfileDetail: FC = () => {
                                     sx={{ mt: 0.5 }}
                                   >
                                     Takip ediliyor{" "}
-                                    {formatCreationTime(friendship.createdAt)}
+                                    {formatCreationTime(
+                                      friendship.createdAt || ""
+                                    )}
                                   </Typography>
                                 </Box>
                               }

@@ -8,6 +8,18 @@ export interface CustomSocket extends Socket {
 // Types for socket events
 export interface FriendRequestData {
   targetUserId: number;
+  requestId?: number; // Arkadaşlık isteği ID'si
+}
+
+// Friendship işlemleri için response tipi
+export interface FriendshipResult {
+  id?: number;
+  userId?: number;
+  friendId?: number;
+  status?: string;
+  createdAt?: Date;
+  error?: string;
+  success?: boolean;
 }
 
 export interface NotificationData {
@@ -15,4 +27,5 @@ export interface NotificationData {
   message: string;
   fromUserId: number;
   metadata?: any;
+  timestamp?: number;
 }

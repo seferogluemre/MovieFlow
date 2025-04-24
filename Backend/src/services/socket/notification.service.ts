@@ -1,6 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 import { Server } from "socket.io";
-import { getUserSocketId } from "../../utils/socket/userStatus";
+import { getUserSocketIds } from "../../utils/socket/userStatus";
 
 const prisma = new PrismaClient();
 
@@ -20,23 +20,28 @@ export const sendNotificationToUser = async (
     );
 
     // Check if the target user is online
-    const targetSocketId = getUserSocketId(targetUserId);
+    const targetSocketIds = await getUserSocketIds(targetUserId);
+    const isUserOnline = targetSocketIds.length > 0;
     console.log(
       `Hedef kullanıcı online mi? ${targetUserId}: ${
-        targetSocketId ? "Evet" : "Hayır"
+        isUserOnline ? "Evet" : "Hayır"
       }`
     );
 
-    if (targetSocketId) {
-      // Send the notification to the target user
-      io.to(targetSocketId).emit("notification", {
-        type,
-        message,
-        fromUserId,
-        metadata,
+    if (isUserOnline) {
+      // Send the notification to all of the target user's socket connections
+      targetSocketIds.forEach((socketId) => {
+        io.to(socketId).emit("notification", {
+          type,
+          message,
+          fromUserId,
+          metadata,
+        });
       });
       console.log(
-        `Bildirim socket üzerinden gönderildi - Socket ID: ${targetSocketId}`
+        `Bildirim socket üzerinden gönderildi - Socket IDs: ${targetSocketIds.join(
+          ", "
+        )}`
       );
     } else {
       console.log(
@@ -61,7 +66,7 @@ export const sendNotificationToUser = async (
       return notification;
     }
 
-    return { success: true, socketSent: !!targetSocketId };
+    return { success: true, socketSent: isUserOnline };
   } catch (error) {
     console.error("Error sending notification:", error);
     throw error;

@@ -41,7 +41,6 @@ model User {
   profileImage              String?
   isAdmin                   Boolean   @default(false)
   isPrivate                 Boolean   @default(false)
-  isOnline                  Boolean   @default(false)
   createdAt                 DateTime  @default(now())
   updatedAt                 DateTime  @updatedAt
   isVerified                Boolean   @default(false)

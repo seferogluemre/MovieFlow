@@ -89,7 +89,6 @@ app.use("/api/mail", mail_routes);
 
 app.use(errorHandler);
 
-// Initialize Socket.io
 initSocketServer(httpServer);
 
 httpServer.listen(port, () => {

@@ -13,6 +13,7 @@ import {
 } from "src/types/types";
 import { sendNotificationToUser } from "../services/socket/notification.service";
 import { getIO } from "../socket";
+import { isUserOnline as checkUserOnline } from "../utils/socket/userStatus";
 import { NotificationService } from "./notification.service";
 
 export class FriendshipService {
@@ -139,7 +140,8 @@ export class FriendshipService {
       // İlişkileri normalize et - her arkadaşlık ilişkisinin tek bir versiyonunu döndür
       const uniqueFriendshipMap = new Map();
 
-      friendships.forEach((friendship) => {
+      // Promise'leri bir dizi içinde topla
+      const promises = friendships.map(async (friendship) => {
         // İlişkideki diğer kullanıcıyı bul
         const otherUserId =
           friendship.userId === userId
@@ -158,17 +160,24 @@ export class FriendshipService {
         const otherUser =
           friendship.userId === userId ? friendship.friend : friendship.user;
 
+        // Redis'ten online durumunu kontrol et
+        const isOnline = await checkUserOnline(otherUserId);
+
         // Eğer bu diğer kullanıcı için bir ilişki henüz kaydedilmemişse, ekle
         if (!uniqueFriendshipMap.has(otherUserId)) {
           console.log(
-            `Friendship getAll: ${otherUserId} kullanıcısı ile ilişki kaydediliyor`
+            `Friendship getAll: ${otherUserId} kullanıcısı ile ilişki kaydediliyor (Online: ${isOnline})`
           );
           uniqueFriendshipMap.set(otherUserId, {
             ...friendship,
             displayUser: otherUser, // Görüntülenecek kullanıcıyı ekle
+            isOnline: isOnline, // Online durumunu ekle
           });
         }
       });
+
+      // Tüm promise'lerin tamamlanmasını bekle
+      await Promise.all(promises);
 
       // Map'ten değerleri geri array'e çevir
       const normalizedFriendships = Array.from(uniqueFriendshipMap.values());
@@ -629,21 +638,59 @@ export class FriendshipService {
     return { success: true };
   }
 
-  static async getMutualFriends(userId: number) {
+  /**
+   * Kullanıcının arkadaşlarının ID'lerini getirir
+   * @param userId Kullanıcı ID'si
+   * @returns Arkadaş ID'leri dizisi
+   */
+  static async getUserFriendIds(userId: number): Promise<number[]> {
     try {
-      const mutualFriendships = await prisma.friendship.findMany({
+      console.log(
+        `Friendship getUserFriendIds: ${userId} için arkadaş ID'leri getiriliyor`
+      );
+
+      // İki yönlü arkadaşlık ilişkilerini getir
+      const friendships = await prisma.friendship.findMany({
         where: {
           OR: [
-            {
-              userId,
-              status: FriendshipStatus.ACCEPTED,
-              NOT: { friendId: userId },
-            },
-            {
-              friendId: userId,
-              status: FriendshipStatus.ACCEPTED,
-              NOT: { userId: userId },
-            },
+            { userId, status: FriendshipStatus.ACCEPTED },
+            { friendId: userId, status: FriendshipStatus.ACCEPTED },
+          ],
+        },
+        select: {
+          userId: true,
+          friendId: true,
+        },
+      });
+
+      // Arkadaş ID'lerini ayıkla
+      const friendIds = friendships.map((friendship) =>
+        friendship.userId === userId ? friendship.friendId : friendship.userId
+      );
+
+      console.log(
+        `Friendship getUserFriendIds: ${friendIds.length} arkadaş ID'si bulundu`
+      );
+      return friendIds;
+    } catch (error) {
+      console.error(`Friendship getUserFriendIds error:`, error);
+      return [];
+    }
+  }
+
+  /**
+   * Kullanıcının arkadaşlarının online durumlarını da içeren liste getirir
+   * @param userId Kullanıcı ID'si
+   * @returns Online durumları ile arkadaş listesi
+   */
+  static async getFriendsWithOnlineStatus(userId: number) {
+    try {
+      // Tüm kabul edilmiş arkadaşlıkları getir
+      const friendships = await prisma.friendship.findMany({
+        where: {
+          OR: [
+            { userId, status: FriendshipStatus.ACCEPTED },
+            { friendId: userId, status: FriendshipStatus.ACCEPTED },
           ],
         },
         include: {
@@ -652,28 +699,105 @@ export class FriendshipService {
         },
       });
 
-      console.log(
-        `Friendship getMutualFriends: ${mutualFriendships.length} karşılıklı arkadaşlık bulundu`
+      // Arkadaşları normalize et
+      const uniqueFriendshipMap = new Map();
+
+      for (const friendship of friendships) {
+        // İlişkideki diğer kullanıcıyı bul
+        const otherUserId =
+          friendship.userId === userId
+            ? friendship.friendId
+            : friendship.userId;
+
+        // Kendi kendine arkadaşlık ilişkisi durumunu atla
+        if (otherUserId === userId) continue;
+
+        // Bu ilişkinin görüntülenecek kullanıcısını belirle
+        const otherUser =
+          friendship.userId === userId ? friendship.friend : friendship.user;
+
+        // Redis'ten online durumunu kontrol et
+        const isOnline = await checkUserOnline(otherUserId);
+
+        // Eğer bu diğer kullanıcı için bir ilişki henüz kaydedilmemişse, ekle
+        if (!uniqueFriendshipMap.has(otherUserId)) {
+          uniqueFriendshipMap.set(otherUserId, {
+            ...friendship,
+            displayUser: otherUser,
+            isOnline: isOnline, // Online durumunu ekle
+          });
+        }
+      }
+
+      // Map'ten değerleri geri array'e çevir
+      const friendsWithStatus = Array.from(uniqueFriendshipMap.values());
+
+      return this.enhanceFriendships(friendsWithStatus);
+    } catch (error) {
+      console.error(`Friendship getFriendsWithOnlineStatus error:`, error);
+      throw error;
+    }
+  }
+
+  /**
+   * İki kullanıcının ortak arkadaşlarını getirir
+   * @param userId Kullanıcı ID'si
+   * @param targetUserId Hedef kullanıcı ID'si
+   * @returns Ortak arkadaşların listesi
+   */
+  static async getMutualFriends(userId: number, targetUserId: number) {
+    try {
+      // Kullanıcının arkadaşlarını getir
+      const userFriendIds = await this.getUserFriendIds(userId);
+
+      // Hedef kullanıcının arkadaşlarını getir
+      const targetFriendIds = await this.getUserFriendIds(targetUserId);
+
+      // Ortak arkadaşların ID'lerini bul
+      const mutualFriendIds = userFriendIds.filter((id) =>
+        targetFriendIds.includes(id)
       );
 
-      await prisma.$disconnect();
-      return this.enhanceFriendships(mutualFriendships);
+      // Ortak arkadaşların bilgilerini getir
+      if (mutualFriendIds.length > 0) {
+        const mutualFriends = await prisma.user.findMany({
+          where: {
+            id: {
+              in: mutualFriendIds,
+            },
+          },
+          select: {
+            id: true,
+            username: true,
+            profileImage: true,
+          },
+        });
+
+        // Online durumlarını kontrol et
+        const mutualFriendsWithStatus = await Promise.all(
+          mutualFriends.map(async (friend) => ({
+            ...friend,
+            profileImage: getFullProfileImageUrl(friend.profileImage),
+            isOnline: await checkUserOnline(friend.id),
+          }))
+        );
+
+        return mutualFriendsWithStatus;
+      }
+
+      return [];
     } catch (error) {
-      console.error(`Friendship getMutualFriends error:`, error);
-      throw error;
+      console.error(`Ortak arkadaşlar getirilirken hata:`, error);
+      return [];
     }
   }
 
   static async getFollowers(userId: number) {
     try {
-      const followers = await prisma.friendship.findMany({
+      const followerFriendships = await prisma.friendship.findMany({
         where: {
           friendId: userId,
-          NOT: { userId: userId }, // Exclude self-follows
-          OR: [
-            { status: "FOLLOWING" as FriendshipStatus },
-            { status: FriendshipStatus.ACCEPTED },
-          ],
+          status: FriendshipStatus.FOLLOWING,
         },
         include: {
           user: true,
@@ -681,12 +805,21 @@ export class FriendshipService {
         },
       });
 
-      console.log(
-        `Friendship getFollowers: ${followers.length} takipçi bulundu`
+      // Takipçilerin online durumlarını kontrol et
+      const followersWithStatus = await Promise.all(
+        followerFriendships.map(async (friendship) => {
+          // Redis'ten takipçinin online durumunu kontrol et
+          const isOnline = await checkUserOnline(friendship.userId);
+
+          return {
+            ...friendship,
+            isOnline: isOnline,
+          };
+        })
       );
 
       await prisma.$disconnect();
-      return this.enhanceFriendships(followers);
+      return this.enhanceFriendships(followersWithStatus);
     } catch (error) {
       console.error(`Friendship getFollowers error:`, error);
       throw error;
@@ -695,14 +828,10 @@ export class FriendshipService {
 
   static async getFollowing(userId: number) {
     try {
-      const following = await prisma.friendship.findMany({
+      const followingFriendships = await prisma.friendship.findMany({
         where: {
           userId,
-          NOT: { friendId: userId }, // Exclude self-follows
-          OR: [
-            { status: "FOLLOWING" as FriendshipStatus },
-            { status: FriendshipStatus.ACCEPTED },
-          ],
+          status: FriendshipStatus.FOLLOWING,
         },
         include: {
           user: true,
@@ -710,12 +839,21 @@ export class FriendshipService {
         },
       });
 
-      console.log(
-        `Friendship getFollowing: ${following.length} takip edilen kullanıcı bulundu`
+      // Takip edilenlerin online durumlarını kontrol et
+      const followingWithStatus = await Promise.all(
+        followingFriendships.map(async (friendship) => {
+          // Redis'ten takip edilenin online durumunu kontrol et
+          const isOnline = await checkUserOnline(friendship.friendId);
+
+          return {
+            ...friendship,
+            isOnline: isOnline,
+          };
+        })
       );
 
       await prisma.$disconnect();
-      return this.enhanceFriendships(following);
+      return this.enhanceFriendships(followingWithStatus);
     } catch (error) {
       console.error(`Friendship getFollowing error:`, error);
       throw error;

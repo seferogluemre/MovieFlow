@@ -875,4 +875,49 @@ For validation errors:
     "fieldName": ["Error description"]
   }
 }
-``` 
+```
+
+## Redis Kurulumu
+
+Uygulama artık çevrimiçi kullanıcı yönetimi için Redis kullanmaktadır. Redis'i kurmanız ve çalıştırmanız gerekmektedir:
+
+### Windows için Redis Kurulumu
+
+1. [Redis for Windows](https://github.com/tporadowski/redis/releases) adresinden Redis'i indirin
+2. Kurulumu tamamlayın ve servisi başlatın
+3. Varsayılan port: 6379
+
+### Linux için Redis Kurulumu
+
+```bash
+sudo apt update
+sudo apt install redis-server
+sudo systemctl start redis-server
+```
+
+### macOS için Redis Kurulumu
+
+```bash
+brew install redis
+brew services start redis
+```
+
+### Docker ile Redis
+
+```bash
+docker run --name movieflow-redis -p 6379:6379 -d redis
+```
+
+### Çevrimiçi Kullanıcı Sistemi
+
+Çevrimiçi kullanıcı yönetimi artık veritabanı yerine Redis kullanmaktadır. Bu değişiklikle:
+
+1. Daha hızlı ve ölçeklenebilir çevrimiçi kullanıcı takibi
+2. Veritabanı üzerindeki yük azaltıldı
+3. Çoklu cihaz desteği eklendi (bir kullanıcı birden fazla cihazdan giriş yapabilir)
+4. Daha doğru 'son görülme' bilgisi
+
+Redis'teki veri yapıları:
+- `online_users`: Tüm çevrimiçi kullanıcıların ID'lerini içeren küme
+- `user_sessions:{userId}`: Her kullanıcının aktif oturumlarını içeren küme
+- `user:{userId}`: Kullanıcı detaylarını (son görülme zamanı vb.) içeren hash 

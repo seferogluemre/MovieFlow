@@ -1,49 +1,68 @@
 import { Server } from "socket.io";
+import { getUserFriends } from "../../services/friend.service";
 import { CustomSocket } from "../../types/socket.types";
 import {
-  addOnlineUser,
-  removeOnlineUser,
-  updateUserOnlineStatus,
+  getUserSocketIds,
+  removeUserSession,
+  setUserOnline,
 } from "../../utils/socket/userStatus";
 
-export const handleConnection = (io: Server, socket: CustomSocket) => {
+export const handleConnection = async (io: Server, socket: CustomSocket) => {
   try {
     const userId = socket.userId;
 
     if (!userId) {
-      console.error("Socket bağlantısı: userId bulunamadı");
+      console.log("UserId olmayan socket bağlantısı reddedildi");
       socket.disconnect();
       return;
     }
 
-    console.log(`User connected: ${userId}`);
-
-    // Update user's online status to true in the database
-    updateUserOnlineStatus(userId, true);
-
-    // Store the user's socket id in the map
-    addOnlineUser(userId, socket.id);
+    // Kullanıcıyı Redis'te online olarak işaretle
+    await setUserOnline(userId, socket.id);
 
     // Kullanıcıya bağlantı onayı gönder
     socket.emit("connected", { userId, status: "online" });
 
-    // Tüm kullanıcılara bu kullanıcının online olduğunu bildir
-    io.emit("user_status_changed", { userId, isOnline: true });
+    // Kullanıcının arkadaşlarını getir
+    const friendIds = await getUserFriends(userId);
 
-    // Handle disconnect event
-    socket.on("disconnect", () => {
-      console.log(`User disconnected: ${userId}`);
+    // Arkadaşlarına kullanıcının online olduğunu bildir
+    for (const friendId of friendIds) {
+      // Her bir arkadaşın socket ID'lerini getir
+      const friendSocketIds = await getUserSocketIds(friendId);
 
-      // Update user's online status to false in the database
-      updateUserOnlineStatus(userId, false);
+      // Her bir socket'e bildirim gönder
+      for (const socketId of friendSocketIds) {
+        io.to(socketId).emit("user_status_changed", {
+          userId,
+          isOnline: true,
+          timestamp: Date.now(),
+        });
+      }
+    }
 
-      // Remove the user from the online users map
-      removeOnlineUser(userId);
+    // Bağlantı kesildiğinde
+    socket.on("disconnect", async () => {
+      // Kullanıcı oturumunu kapat ve tamamen çıkış yaptıysa true döner
+      const isFullyOffline = await removeUserSession(userId, socket.id);
 
-      // Tüm kullanıcılara bu kullanıcının offline olduğunu bildir
-      io.emit("user_status_changed", { userId, isOnline: false });
+      // Kullanıcı tamamen çıkış yaptıysa (tüm oturumları kapatıldıysa) arkadaşlarına bildir
+      if (isFullyOffline) {
+        for (const friendId of friendIds) {
+          const friendSocketIds = await getUserSocketIds(friendId);
+
+          for (const socketId of friendSocketIds) {
+            io.to(socketId).emit("user_status_changed", {
+              userId,
+              isOnline: false,
+              timestamp: Date.now(),
+            });
+          }
+        }
+      }
     });
   } catch (error) {
-    console.error("Socket connection error:", error);
+    console.error("Socket bağlantı hatası:", error);
+    socket.disconnect();
   }
 };

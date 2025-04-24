@@ -16,17 +16,14 @@ export const initSocketServer = (httpServer: HttpServer) => {
       methods: ["GET", "POST"],
       credentials: true,
     },
-    // Daha güvenilir bağlantı için ping timeout ve interval değerleri
     pingTimeout: 60000,
     pingInterval: 25000,
   });
 
-  // Authentication middleware for Socket.io
   io.use(socketAuthMiddleware);
 
-  // Handle connections
   io.on("connection", (socket: CustomSocket) => {
-    registerSocketHandlers(io, socket);
+    registerSocketHandlers(io!, socket);
   });
 
   return io;

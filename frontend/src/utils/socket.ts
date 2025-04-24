@@ -7,11 +7,8 @@ let reconnectAttempts = 0;
 let notificationCallbacks: Array<(data: any) => void> = [];
 let socketEventsRegistered = false;
 
-// Initialize socket connection
 export const initSocket = (token: string) => {
-  // Close existing socket if it exists
   if (socket) {
-    console.log("Önceki socket bağlantısı kapatılıyor...");
     socket.disconnect();
   }
 
@@ -23,7 +20,6 @@ export const initSocket = (token: string) => {
   reconnectAttempts = 0;
   socketEventsRegistered = false;
 
-  // Validate token before attempting connection
   if (!token) {
     console.error("Socket bağlantısı için token sağlanmadı!");
     return null;
@@ -31,7 +27,6 @@ export const initSocket = (token: string) => {
 
   console.log("Socket.io bağlantısı başlatılıyor...");
 
-  // Create new socket connection
   socket = io("http://localhost:3000", {
     auth: { token },
     withCredentials: true,
@@ -39,8 +34,8 @@ export const initSocket = (token: string) => {
     reconnection: true,
     reconnectionAttempts: MAX_RECONNECT_ATTEMPTS,
     reconnectionDelay: 1000,
-    timeout: 20000, // Bağlantı zaman aşımı
-    transports: ["websocket"], // WebSocket protokolünü tercih et - daha hızlı
+    timeout: 20000,
+    transports: ["websocket"],
   });
 
   registerSocketEvents();
@@ -48,17 +43,15 @@ export const initSocket = (token: string) => {
   return socket;
 };
 
-// Register all socket events
 const registerSocketEvents = () => {
   if (!socket || socketEventsRegistered) return;
 
   console.log("Socket olayları kaydediliyor...");
   socketEventsRegistered = true;
 
-  // Connection event handlers
   socket.on("connect", () => {
     console.log("Socket.io bağlantısı başarılı");
-    reconnectAttempts = 0; // Reset reconnect attempts on successful connection
+    reconnectAttempts = 0;
   });
 
   socket.on("connected", (data) => {
@@ -74,7 +67,6 @@ const registerSocketEvents = () => {
         `Yeniden bağlanma denemesi ${reconnectAttempts}/${MAX_RECONNECT_ATTEMPTS}...`
       );
 
-      // Start reconnect timer if not already running
       if (!reconnectTimer) {
         reconnectTimer = setTimeout(() => {
           reconnectTimer = null;
@@ -82,7 +74,7 @@ const registerSocketEvents = () => {
             console.log("Yeniden bağlanılıyor...");
             socket.connect();
           }
-        }, 3000); // 3 saniye sonra tekrar dene
+        }, 3000);
       }
     }
   });
@@ -180,7 +172,7 @@ export const closeSocket = () => {
   }
 
   reconnectAttempts = 0;
-  notificationCallbacks = []; // Reset callbacks
+  notificationCallbacks = [];
   socketEventsRegistered = false;
 };
 
@@ -192,12 +184,10 @@ export const setupNotificationHandler = (callback: (data: any) => void) => {
   }
 
   try {
-    // Make sure events are registered
     if (!socketEventsRegistered) {
       registerSocketEvents();
     }
 
-    // Gelen callback'i diziye ekle
     const isCallbackAlreadyRegistered =
       notificationCallbacks.includes(callback);
     if (!isCallbackAlreadyRegistered) {
@@ -209,36 +199,30 @@ export const setupNotificationHandler = (callback: (data: any) => void) => {
       console.log("Bu callback zaten kayıtlı, tekrar eklenmedi");
     }
 
-    // Add the new handler (listeners dizisine dahil edilmesi için) - tekrar garantilemek için
     socket.off("notification").on("notification", (data) => {
       console.log("Socket.io üzerinden bildirim alındı:", data);
 
-      // Validate notification data
       if (!data || typeof data !== "object") {
         console.error("Geçersiz bildirim verisi:", data);
         return;
       }
 
-      // Check required fields
       if (!data.type || !data.message) {
         console.error("Eksik bildirim alanları:", data);
         return;
       }
 
-      // Call the callback with the notification data
       console.log("Bildirim callback'i doğrudan çağrılıyor...");
       callback(data);
     });
 
     console.log("Bildirim işleyicisi başarıyla kuruldu ve aktif");
 
-    // Doğrulama: listener'ların doğru şekilde eklendiğini kontrol et
     if (socket.hasListeners && socket.hasListeners("notification")) {
       console.log("Bildirim dinleyicisi başarıyla bağlandı ve aktif");
     } else {
       console.warn("Bildirim dinleyicisi eklenemedi veya aktif değil!");
 
-      // Event listener'ı yeniden ekle - son çare
       socket.on("notification", (data) => {
         console.log("Yedek bildirim handler'ı çalıştı:", data);
         callback(data);
@@ -252,16 +236,14 @@ export const setupNotificationHandler = (callback: (data: any) => void) => {
   }
 };
 
-// Remove notification handler
 export const removeNotificationHandler = () => {
   if (socket) {
     socket.off("notification");
     console.log("Bildirim işleyicisi kaldırıldı");
   }
-  notificationCallbacks = []; // Tüm callback'leri temizle
+  notificationCallbacks = [];
 };
 
-// Check if notification handler is set
 export const hasNotificationHandler = () => {
   return notificationCallbacks.length > 0;
 };

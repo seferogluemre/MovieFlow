@@ -371,4 +371,33 @@ export class FriendshipController {
         .json({ message: error.message || "Internal server error" });
     }
   }
+
+  static async getFriendsWithOnlineStatus(
+    req: Request,
+    res: Response
+  ): Promise<void> {
+    try {
+      const userId = req.user?.id;
+      if (!userId) {
+        logWarn(
+          "Friendship getFriendsWithOnlineStatus ---- Unauthorized access attempt"
+        );
+        res.status(401).json({ message: "Unauthorized" });
+        return;
+      }
+
+      const friendsWithStatus =
+        await FriendshipService.getFriendsWithOnlineStatus(Number(userId));
+
+      logInfo(
+        "Friendship getFriendsWithOnlineStatus ---- Retrieved friends with online status"
+      );
+      res.json(friendsWithStatus);
+    } catch (error) {
+      logWarn(
+        "Friendship getFriendsWithOnlineStatus ---- Error retrieving friends with status"
+      );
+      res.status(500).json({ message: "Internal server error" });
+    }
+  }
 }
