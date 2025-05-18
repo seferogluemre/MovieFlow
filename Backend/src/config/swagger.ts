@@ -20,7 +20,7 @@ const options = {
       },
     ],
   },
-  apis: [path.join(__dirname, "../routes/*.ts")], // Swagger açıklamaları olan dosyaları belirtiyorsun
+  apis: [path.join(__dirname, "../routes/*.ts")],
 };
 
 export const swaggerSpec = swaggerJSDoc(options);

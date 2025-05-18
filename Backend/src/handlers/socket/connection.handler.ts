@@ -17,7 +17,6 @@ export const handleConnection = async (io: Server, socket: CustomSocket) => {
       return;
     }
 
-    // Kullanıcıyı Redis'te online olarak işaretle
     await setUserOnline(userId, socket.id);
 
     // Kullanıcıya bağlantı onayı gönder
@@ -41,12 +40,9 @@ export const handleConnection = async (io: Server, socket: CustomSocket) => {
       }
     }
 
-    // Bağlantı kesildiğinde
     socket.on("disconnect", async () => {
-      // Kullanıcı oturumunu kapat ve tamamen çıkış yaptıysa true döner
       const isFullyOffline = await removeUserSession(userId, socket.id);
 
-      // Kullanıcı tamamen çıkış yaptıysa (tüm oturumları kapatıldıysa) arkadaşlarına bildir
       if (isFullyOffline) {
         for (const friendId of friendIds) {
           const friendSocketIds = await getUserSocketIds(friendId);
