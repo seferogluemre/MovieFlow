@@ -21,11 +21,10 @@ import express from "express";
 import helmet from "helmet";
 import { createServer } from "http";
 import path from "path";
+import swaggerUi from "swagger-ui-express";
 import { fileURLToPath } from "url";
-import { initSocketServer } from "./socket/index";
-import swaggerUi from 'swagger-ui-express'
 import { swaggerSpec } from "./config/swagger";
-
+import { initSocketServer } from "./socket/index";
 
 const corsOptions = {
   origin: ["http://localhost:5173", "http://127.0.0.1:5173"],
@@ -90,8 +89,8 @@ app.use("/api/movie-actors", movieActorRoutes);
 app.use("/api/notifications", notificationRoutes);
 app.use("/api/mail", mail_routes);
 
-
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+// Swagger API Documentation
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 app.use(errorHandler);
 

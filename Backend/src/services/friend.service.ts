@@ -1,9 +1,7 @@
-import { PrismaClient } from "@prisma/client";
+import prisma from "@core/prisma";
 import { getIO } from "../socket";
 import { FriendshipResult } from "../types/socket.types";
 import { sendNotificationToUser } from "./socket/notification.service";
-
-const prisma = new PrismaClient();
 
 /**
  * Kullanıcının arkadaşlarının ID'lerini getirir
@@ -26,7 +24,6 @@ export const getUserFriends = async (userId: number): Promise<number[]> => {
       },
     });
 
-    // Arkadaş ID'lerini ayıkla
     const friendIds = friendships.map((friendship) =>
       friendship.userId === userId ? friendship.friendId : friendship.userId
     );

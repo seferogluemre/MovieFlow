@@ -1,14 +1,13 @@
-import { USER_WHERE_CLAUSE } from "@constants/user.constant";
+import prisma from "@core/prisma";
 import { PrismaClient } from "@prisma/client";
 import { getFullProfileImageUrl } from "@utils/url/url.helper";
 import { CreateUserType, UpdateUserType } from "@validators/user.validation";
 import bcrypt from "bcryptjs";
-import { UserQueryProps } from "src/types/types";
 
 export const BASE_URL = process.env.BASE_URL || "http://localhost:3000";
+
 export class UserService {
-  static async index(query: UserQueryProps) {
-    const prisma = new PrismaClient();
+  static async index() {
     const users = await prisma.user.findMany({
       where: USER_WHERE_CLAUSE(query),
       select: {
@@ -31,8 +30,6 @@ export class UserService {
   }
 
   static async create(data: CreateUserType) {
-    const prisma = new PrismaClient();
-
     // Şifreyi hashle
     const hashedPassword = await bcrypt.hash(data.password, 10);
 
@@ -54,7 +51,6 @@ export class UserService {
       return { message: "Incorrect id or email submission" };
     }
 
-    const prisma = new PrismaClient();
     const user = await prisma.user.findUnique({
       where: {
         id: id,
@@ -91,7 +87,6 @@ export class UserService {
   }
 
   static async getUserByEmail(email?: string) {
-    const prisma = new PrismaClient();
     const user = await prisma.user.findUnique({
       where: {
         email: email,
@@ -132,14 +127,6 @@ export class UserService {
       return { message: "ID is required" };
     }
 
-    console.log("UserService.update çağrıldı:", { id, data });
-    console.log("ProfileImage değeri:", data.profileImage);
-    console.log(
-      "ProfileImage tipi:",
-      data.profileImage === null ? "null" : typeof data.profileImage
-    );
-    console.log("isPrivate değeri:", data.isPrivate);
-
     const prisma = new PrismaClient();
     const existingUser = await prisma.user.findUnique({
       where: { id: Number(id) },
@@ -149,7 +136,6 @@ export class UserService {
       throw new Error("User not found");
     }
 
-    // Güncellenecek alanları belirle
     const updateData: any = {};
 
     if (data.name !== undefined) updateData.name = data.name;
@@ -159,9 +145,7 @@ export class UserService {
     // isPrivate alan güncellemesi
     if (data.isPrivate !== undefined) updateData.isPrivate = data.isPrivate;
 
-    // profileImage özel işleme
     if (data.profileImage !== undefined) {
-      // null değeri alabilir - profil resmi siliniyor
       if (data.profileImage === null) {
         console.log("ProfileImage NULL olarak işleniyor");
         updateData.profileImage = null;
@@ -175,8 +159,6 @@ export class UserService {
       }
     }
 
-    console.log("Veritabanı güncellemesi yapılıyor:", updateData);
-
     const user = await prisma.user.update({
       where: {
         id: Number(id),
@@ -185,8 +167,6 @@ export class UserService {
     });
 
     await prisma.$disconnect();
-
-    console.log("Kullanıcı başarıyla güncellendi:", user);
 
     return {
       ...user,
@@ -199,7 +179,6 @@ export class UserService {
       return { message: "ID is required" };
     }
 
-    const prisma = new PrismaClient();
     const user = await prisma.user.delete({
       where: {
         id: id,

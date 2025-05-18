@@ -1,4 +1,4 @@
-import { PrismaClient } from "@prisma/client";
+import prisma from "@/core/prisma";
 import {
   getFullActorPhotoUrl,
   getFullPosterUrl,
@@ -10,8 +10,6 @@ import fs from "fs";
 import path from "path";
 
 dotenv.config();
-
-const prisma = new PrismaClient();
 
 export class MovieService {
   static async create(data: CreateMovieType) {

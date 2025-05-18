@@ -1,8 +1,6 @@
-import { PrismaClient } from "@prisma/client";
+import prisma from "@/core/prisma";
 import { getFullPosterUrl } from "@utils/url/url.helper";
 import { CreateMovieGenreType } from "@validators/movie-genre.validation";
-
-const prisma = new PrismaClient();
 
 export class MovieGenreService {
   static async create(data: CreateMovieGenreType) {

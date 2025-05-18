@@ -1,5 +1,5 @@
 import { getS3Url, upload, uploadToS3 } from "@/utils/services/s3-upload.util";
-import prisma from "@config/database";
+import prisma from "@core/prisma";
 import { UserService } from "@services/user.service";
 import { logInfo, logWarn } from "@utils/logging/logger.util";
 import {
@@ -13,8 +13,7 @@ import { z } from "zod";
 export class UserController {
   static async index(req: Request, res: Response): Promise<void> {
     try {
-      const { isAdmin, username } = req.params;
-      const users = await UserService.index({ isAdmin, username });
+      const users = await UserService.index();
 
       logInfo(`List Users --- Request Received`);
 

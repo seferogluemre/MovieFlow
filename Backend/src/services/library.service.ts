@@ -1,4 +1,4 @@
-import { PrismaClient } from "@prisma/client";
+import prisma from "@core/prisma";
 import {
   getFullPosterUrl,
   getFullProfileImageUrl,
@@ -7,8 +7,6 @@ import {
   CreateLibraryType,
   UpdateLibraryType,
 } from "@validators/library.validation";
-
-const prisma = new PrismaClient();
 
 export class LibraryService {
   static async create(userId: number, data: CreateLibraryType) {

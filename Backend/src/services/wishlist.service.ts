@@ -1,11 +1,9 @@
-import { PrismaClient } from "@prisma/client";
+import prisma from "@core/prisma";
 import { getFullPosterUrl } from "@utils/url/url.helper";
 import {
   CreateWishlistInput,
   UpdateWishlistInput,
 } from "@validators/wishlist.validator";
-
-const prisma = new PrismaClient();
 
 export class WishlistService {
   static async create(userId: number, data: CreateWishlistInput) {

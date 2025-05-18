@@ -1,5 +1,5 @@
 import { getS3Url, upload, uploadToS3 } from "@/utils/services/s3-upload.util";
-import prisma from "@config/database";
+import prisma from "@core/prisma";
 import { MovieService } from "@services/movie.service";
 import { logInfo, logWarn } from "@utils/logging/logger.util";
 import { Request, Response } from "express";

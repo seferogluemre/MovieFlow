@@ -1,11 +1,9 @@
-import { PrismaClient } from "@prisma/client";
+import prisma from "@/core/prisma";
 import { getFullPosterUrl } from "@utils/url/url.helper";
 import {
   CreateWatchlistInput,
   UpdateWatchlistInput,
 } from "@validators/watchlist.validator";
-
-const prisma = new PrismaClient();
 
 export class WatchlistService {
   static async create(userId: number, data: CreateWatchlistInput) {

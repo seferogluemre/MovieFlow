@@ -6,7 +6,6 @@ import { sendNotificationToUser } from "../services/socket/notification.service"
 import { CustomSocket } from "../types/socket.types";
 import { getOnlineUsers, isUserOnline } from "../utils/socket/userStatus";
 
-// Global instance for Socket.io
 let io: Server | null = null;
 
 export const initSocketServer = (httpServer: HttpServer) => {
@@ -37,10 +36,8 @@ export const getIO = () => {
   return io;
 };
 
-// Export utility functions
 export { getOnlineUsers, isUserOnline };
 
-// Export notification service
 export const sendNotification = (
   targetUserId: number,
   type: string,

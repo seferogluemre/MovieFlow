@@ -1,4 +1,4 @@
-import prisma from "@config/database";
+import prisma from "@core/prisma";
 import { NotificationType } from "@prisma/client";
 
 export class NotificationService {

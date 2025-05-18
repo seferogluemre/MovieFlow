@@ -1,4 +1,4 @@
-import prisma from "@config/database";
+import prisma from "@core/prisma";
 import { Friendship, FriendshipStatus, NotificationType } from "@prisma/client";
 import { getFullProfileImageUrl } from "@utils/url/url.helper";
 import {

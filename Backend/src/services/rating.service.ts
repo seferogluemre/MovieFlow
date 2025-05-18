@@ -1,4 +1,4 @@
-import { PrismaClient } from "@prisma/client";
+import prisma from "@core/prisma";
 import {
   getFullPosterUrl,
   getFullProfileImageUrl,
@@ -7,8 +7,6 @@ import {
   CreateRatingType,
   UpdateRatingType,
 } from "@validators/rating.validation";
-
-const prisma = new PrismaClient();
 
 export class RatingService {
   static async create(userId: number, data: CreateRatingType) {

@@ -1,4 +1,4 @@
-import { PrismaClient } from "@prisma/client";
+import prisma from "@/core/prisma";
 import {
   getFullPosterUrl,
   getFullProfileImageUrl,
@@ -7,8 +7,6 @@ import {
   CreateReviewType,
   UpdateReviewType,
 } from "@validators/review.validation";
-
-const prisma = new PrismaClient();
 
 export class ReviewService {
   static async index() {

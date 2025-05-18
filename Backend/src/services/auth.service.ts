@@ -1,4 +1,4 @@
-import prisma from "@config/database";
+import prisma from "@core/prisma";
 
 export class AuthService {
   static async create(userId: number) {

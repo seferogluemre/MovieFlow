@@ -1,4 +1,4 @@
-import { PrismaClient } from "@prisma/client";
+import prisma from "@/core/prisma";
 import { getFullActorPhotoUrl, getFullPosterUrl } from "@utils/url/url.helper";
 import {
   CreateMovieActorType,
@@ -7,7 +7,6 @@ import {
 
 export class MovieActorService {
   static async create(data: CreateMovieActorType) {
-    const prisma = new PrismaClient();
     const movieActor = await prisma.movieActor.create({
       data,
       include: {
@@ -30,7 +29,6 @@ export class MovieActorService {
   }
 
   static async getAll() {
-    const prisma = new PrismaClient();
     const movieActors = await prisma.movieActor.findMany({
       include: {
         movie: true,
@@ -52,7 +50,6 @@ export class MovieActorService {
   }
 
   static async getByMovieId(movieId: number) {
-    const prisma = new PrismaClient();
     const movieActors = await prisma.movieActor.findMany({
       where: { movieId },
       include: {
@@ -75,7 +72,6 @@ export class MovieActorService {
   }
 
   static async getByActorId(actorId: number) {
-    const prisma = new PrismaClient();
     const movieActors = await prisma.movieActor.findMany({
       where: { actorId },
       include: {
@@ -102,7 +98,6 @@ export class MovieActorService {
     actorId: number,
     data: UpdateMovieActorType
   ) {
-    const prisma = new PrismaClient();
     const movieActor = await prisma.movieActor.update({
       where: {
         movieId_actorId: {
@@ -131,7 +126,6 @@ export class MovieActorService {
   }
 
   static async delete(movieId: number, actorId: number) {
-    const prisma = new PrismaClient();
     const movieActor = await prisma.movieActor.delete({
       where: {
         movieId_actorId: {

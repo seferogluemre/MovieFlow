@@ -1,11 +1,8 @@
 import { mailTransporter, verifyMailConnection } from "@/config/mail.config";
 import { createVerificationData, generateVerificationCode } from "@/utils/mail";
-import { PrismaClient } from "@prisma/client";
+import prisma from "@core/prisma";
 import fs from "fs";
 import path from "path";
-
-// Prisma instance oluşturma
-const prisma = new PrismaClient();
 
 export class EmailService {
   static transporter = mailTransporter;
@@ -37,16 +34,10 @@ export class EmailService {
         };
       }
 
-      // Doğrulama kodu oluştur
       const verificationCode = generateVerificationCode();
-      console.log(
-        `${email} için doğrulama kodu oluşturuldu: ${verificationCode}`
-      );
 
-      // Doğrulama verilerini oluştur (kod ve son kullanma tarihi)
       const verificationData = createVerificationData(verificationCode);
 
-      // Kullanıcı bilgilerini güncelle
       await prisma.user.update({
         where: { email },
         data: {
@@ -57,13 +48,11 @@ export class EmailService {
         },
       });
 
-      // E-posta içeriğini oluştur
       const htmlContent = this.generateVerificationEmail(
         user.username,
         verificationCode
       );
 
-      // E-postayı gönder
       const result = await this.sendEmailWithDynamicFrom(
         email,
         "E-posta Adresinizi Doğrulayın - MovieFlow",

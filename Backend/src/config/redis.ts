@@ -1,20 +1,5 @@
-import dotenv from "dotenv";
-import Redis from "ioredis";
+import cache from "../core/cache";
 
-dotenv.config();
-
-const redisClient = new Redis({
-  host: process.env.REDIS_HOST || "localhost",
-  port: parseInt(process.env.REDIS_PORT || "6379"),
-  password: process.env.REDIS_PASSWORD,
-});
-
-redisClient.on("connect", () => {
-  console.log("Redis bağlantısı başarılı");
-});
-
-redisClient.on("error", (err) => {
-  console.error("Redis bağlantı hatası:", err);
-});
-
-export default redisClient;
+// This file now just re-exports the Cache singleton from core/cache.ts
+// to maintain backward compatibility with existing code
+export default cache;

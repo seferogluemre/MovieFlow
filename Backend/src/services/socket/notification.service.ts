@@ -1,10 +1,7 @@
-import { PrismaClient } from "@prisma/client";
+import prisma from "@core/prisma";
 import { Server } from "socket.io";
 import { getUserSocketIds } from "../../utils/socket/userStatus";
 
-const prisma = new PrismaClient();
-
-// Send a notification to a specific user
 export const sendNotificationToUser = async (
   io: Server,
   targetUserId: number,
@@ -15,10 +12,6 @@ export const sendNotificationToUser = async (
   saveToDatabase: boolean = false
 ) => {
   try {
-    console.log(
-      `Bildirim gönderiliyor - Hedef: ${targetUserId}, Tip: ${type}, İleti: "${message}"`
-    );
-
     // Check if the target user is online
     const targetSocketIds = await getUserSocketIds(targetUserId);
     const isUserOnline = targetSocketIds.length > 0;

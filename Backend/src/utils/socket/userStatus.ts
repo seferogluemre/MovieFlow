@@ -1,21 +1,20 @@
-import redisClient from "../../config/redis";
+import { REDIS_KEYS } from "@constants/redisKeys";
+import cache from "@core/cache";
 
-const ONLINE_USERS_KEY = "online_users";
-
-// Kullanıcıyı çevrimiçi olarak işaretle
 export const setUserOnline = async (
   userId: number,
   socketId: string
 ): Promise<void> => {
   try {
-    // Kullanıcıyı online kullanıcılar kümesine ekle
-    await redisClient.sadd(ONLINE_USERS_KEY, userId.toString());
+    await cache.addToSet(REDIS_KEYS.ONLINE_USERS, userId.toString());
 
-    // Bu socket ID'yi kullanıcının oturumlarına ekle
-    await redisClient.sadd(`user_sessions:${userId}`, socketId);
+    await cache.addToSet(REDIS_KEYS.USER_SESSIONS(userId), socketId);
 
-    // Son görülme zamanını güncelle
-    await redisClient.hset(`user:${userId}`, "lastSeen", Date.now().toString());
+    await cache.setHashField(
+      REDIS_KEYS.USER(userId),
+      REDIS_KEYS.USER_LAST_SEEN,
+      Date.now().toString()
+    );
 
     console.log(`Kullanıcı ${userId} çevrimiçi oldu (Socket: ${socketId})`);
   } catch (error) {
@@ -31,31 +30,21 @@ export const removeUserSession = async (
   socketId: string
 ): Promise<boolean> => {
   try {
-    // Kullanıcının oturumlarından bu socket'i çıkar
-    await redisClient.srem(`user_sessions:${userId}`, socketId);
+    await cache.removeFromSet(REDIS_KEYS.USER_SESSIONS(userId), socketId);
 
-    // Kullanıcının kalan oturum sayısını kontrol et
-    const remainingSessions = await redisClient.scard(
-      `user_sessions:${userId}`
+    const remainingSessions = await cache.getSetSize(
+      REDIS_KEYS.USER_SESSIONS(userId)
     );
 
-    // Kullanıcının hiç oturumu kalmadıysa, online listesinden çıkar
     if (remainingSessions === 0) {
-      await redisClient.srem(ONLINE_USERS_KEY, userId.toString());
-      await redisClient.hset(
-        `user:${userId}`,
-        "lastSeen",
+      await cache.removeFromSet(REDIS_KEYS.ONLINE_USERS, userId.toString());
+      await cache.setHashField(
+        REDIS_KEYS.USER(userId),
+        REDIS_KEYS.USER_LAST_SEEN,
         Date.now().toString()
       );
-      console.log(
-        `Kullanıcı ${userId} çevrimdışı oldu (tüm oturumlar kapatıldı)`
-      );
-      return true; // Kullanıcı tamamen çıkış yaptı
+      return true;
     }
-
-    console.log(
-      `Kullanıcı ${userId} için bir oturum kapatıldı (${remainingSessions} oturum kaldı)`
-    );
     return false;
   } catch (error) {
     console.error(`Kullanıcı ${userId} için oturum kaldırılırken hata:`, error);
@@ -63,11 +52,11 @@ export const removeUserSession = async (
   }
 };
 
-// Kullanıcının online durumunu kontrol et
 export const isUserOnline = async (userId: number): Promise<boolean> => {
   try {
-    return (
-      (await redisClient.sismember(ONLINE_USERS_KEY, userId.toString())) === 1
+    return await cache.isMemberOfSet(
+      REDIS_KEYS.ONLINE_USERS,
+      userId.toString()
     );
   } catch (error) {
     console.error(
@@ -80,7 +69,7 @@ export const isUserOnline = async (userId: number): Promise<boolean> => {
 
 export const getOnlineUsers = async (): Promise<number[]> => {
   try {
-    const onlineUsers = await redisClient.smembers(ONLINE_USERS_KEY);
+    const onlineUsers = await cache.getSetMembers(REDIS_KEYS.ONLINE_USERS);
     return onlineUsers.map((id) => parseInt(id));
   } catch (error) {
     console.error("Online kullanıcılar alınırken hata:", error);
@@ -113,7 +102,7 @@ export const getOnlineFriends = async (
 // Kullanıcının socket ID'sini getir
 export const getUserSocketIds = async (userId: number): Promise<string[]> => {
   try {
-    return await redisClient.smembers(`user_sessions:${userId}`);
+    return await cache.getSetMembers(REDIS_KEYS.USER_SESSIONS(userId));
   } catch (error) {
     console.error(
       `Kullanıcı ${userId} için socket ID'ler alınırken hata:`,
@@ -128,7 +117,10 @@ export const getUserLastSeen = async (
   userId: number
 ): Promise<number | null> => {
   try {
-    const lastSeen = await redisClient.hget(`user:${userId}`, "lastSeen");
+    const lastSeen = await cache.getHashField(
+      REDIS_KEYS.USER(userId),
+      REDIS_KEYS.USER_LAST_SEEN
+    );
     return lastSeen ? parseInt(lastSeen) : null;
   } catch (error) {
     console.error(

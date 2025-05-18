@@ -1,4 +1,4 @@
-import prisma from "@config/database";
+import prisma from "@core/prisma";
 import mailQueue from "@queues/mail.queue";
 import { sendRecommendationEmail } from "@utils/mail/sendMail.util";
 

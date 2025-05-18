@@ -17,11 +17,6 @@ export interface UpdateUserProps {
   profileImage?: string | null;
 }
 
-export interface UserQueryProps {
-  username?: string;
-  isAdmin?: string | boolean;
-}
-
 // Session type
 export interface CreateSession {
   userId: number;

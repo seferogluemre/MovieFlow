@@ -1,11 +1,9 @@
-import { PrismaClient } from "@prisma/client";
+import prisma from "@core/prisma";
 import { getFullActorPhotoUrl, getFullPosterUrl } from "@utils/url/url.helper";
 import {
   CreateActorType,
   UpdateActorType,
 } from "../validators/actor.validation";
-
-const prisma = new PrismaClient();
 
 export class ActorService {
   static async index() {
